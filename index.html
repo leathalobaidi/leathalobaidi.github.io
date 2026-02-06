@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leath Al Obaidi</title>
+  <meta name="description" content="Economist, reader, and explorer of ideas. Notes on economics, business, language, literature, history, and philosophy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-ink: #1a1a1a;
+      --color-paper: #faf8f5;
+      --color-muted: #6b6560;
+      --color-accent: #c45d3e;
+      --color-border: #e0dbd5;
+      --color-surface: #f0ece6;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-ink);
+      background: var(--color-paper);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Layout */
+    .site-container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    .site-header {
+      padding: 40px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .site-name {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+
+    .site-name:hover { color: var(--color-accent); }
+
+    .site-nav {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .site-nav a {
+      font-size: 0.875rem;
+      color: var(--color-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .site-nav a:hover { color: var(--color-ink); }
+    .site-nav a.active { color: var(--color-ink); }
+
+    /* Hero */
+    .hero {
+      padding: 80px 0 60px;
+    }
+
+    .hero-greeting {
+      font-family: var(--font-serif);
+      font-size: 2.75rem;
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+
+    .hero-greeting em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .hero-bio {
+      font-size: 1.05rem;
+      color: var(--color-muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    .hero-bio a {
+      color: var(--color-ink);
+      text-decoration: underline;
+      text-decoration-color: var(--color-border);
+      text-underline-offset: 3px;
+      transition: text-decoration-color 0.2s;
+    }
+
+    .hero-bio a:hover {
+      text-decoration-color: var(--color-accent);
+    }
+
+    .pronunciation {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-muted);
+      font-size: 0.95em;
+    }
+
+    /* Divider */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: 0;
+    }
+
+    /* Section */
+    .section {
+      padding: 48px 0;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-muted);
+      margin-bottom: 24px;
+    }
+
+    /* Now section */
+    .now-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .now-item {
+      display: flex;
+      gap: 16px;
+      align-items: baseline;
+    }
+
+    .now-marker {
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+
+    .now-text {
+      font-size: 1rem;
+      color: var(--color-ink);
+      line-height: 1.7;
+    }
+
+    .now-text a {
+      color: var(--color-accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .now-text a:hover {
+      text-decoration: underline;
+    }
+
+    /* Links grid */
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--color-surface);
+      border-radius: 8px;
+      text-decoration: none;
+      color: var(--color-ink);
+      transition: all 0.2s;
+    }
+
+    .link-card:hover {
+      background: var(--color-border);
+    }
+
+    .link-card svg {
+      width: 20px;
+      height: 20px;
+      color: var(--color-muted);
+      flex-shrink: 0;
+    }
+
+    .link-card:hover svg {
+      color: var(--color-accent);
+    }
+
+    .link-card-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .link-card-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .link-card-desc {
+      font-size: 0.75rem;
+      color: var(--color-muted);
+    }
+
+    /* Pages list */
+    .page-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .page-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--color-border);
+      text-decoration: none;
+      color: var(--color-ink);
+      transition: all 0.15s;
+    }
+
+    .page-link:first-child {
+      border-top: 1px solid var(--color-border);
+    }
+
+    .page-link:hover {
+      padding-left: 8px;
+    }
+
+    .page-link-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 500;
+    }
+
+    .page-link-desc {
+      font-size: 0.85rem;
+      color: var(--color-muted);
+      margin-top: 2px;
+    }
+
+    .page-link-arrow {
+      font-size: 1.25rem;
+      color: var(--color-muted);
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .page-link:hover .page-link-arrow {
+      transform: translateX(4px);
+      color: var(--color-accent);
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--color-surface);
+      border-radius: 8px;
+      padding: 32px;
+    }
+
+    .contact-box p {
+      font-size: 1rem;
+      color: var(--color-ink);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .contact-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s;
+      font-family: var(--font-sans);
+    }
+
+    .contact-btn-primary {
+      background: var(--color-ink);
+      color: var(--color-paper);
+    }
+
+    .contact-btn-primary:hover {
+      background: var(--color-accent);
+    }
+
+    .contact-btn-secondary {
+      background: transparent;
+      color: var(--color-ink);
+      border: 1px solid var(--color-border);
+    }
+
+    .contact-btn-secondary:hover {
+      border-color: var(--color-ink);
+    }
+
+    /* Footer */
+    .site-footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .footer-text {
+      font-size: 0.8rem;
+      color: var(--color-muted);
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-socials a {
+      color: var(--color-muted);
+      transition: color 0.2s;
+    }
+
+    .footer-socials a:hover {
+      color: var(--color-accent);
+    }
+
+    .footer-socials svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero { padding: 56px 0 40px; }
+      .hero-greeting { font-size: 2rem; }
+      .links-grid { grid-template-columns: 1fr; }
+      .site-header { flex-direction: column; gap: 16px; }
+      .contact-box { padding: 24px; }
+      .site-footer { flex-direction: column; gap: 16px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-container">
+
+    <!-- Header -->
+    <header class="site-header">
+      <a href="/" class="site-name">Leath Al Obaidi</a>
+      <nav>
+        <ul class="site-nav">
+          <li><a href="notes.html">Notes</a></li>
+          <li><a href="listography.html">Listography</a></li>
+          <li><a href="#about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1 class="hero-greeting">Hello, I'm <em>Leath</em></h1>
+      <p class="hero-bio">
+        <span class="pronunciation">/le&#618;&theta;/ &mdash; rhymes with "faith"</span><br><br>
+        I'm an economist at the <a href="https://www.british-business-bank.co.uk/" target="_blank" rel="noopener">British Business Bank</a>. In my free time I explore the world of ideas &mdash; economics, business, management, language, literature, history, and philosophy. I love making notes and reviewing books, and I have a habit of turning everything into lists.
+      </p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Explore -->
+    <section class="section">
+      <p class="section-label">Explore</p>
+      <div class="page-links">
+        <a href="notes.html" class="page-link">
+          <div>
+            <div class="page-link-title">My Notes</div>
+            <div class="page-link-desc">Book reviews, ideas, and things I've learnt</div>
+          </div>
+          <span class="page-link-arrow">&rarr;</span>
+        </a>
+        <a href="listography.html" class="page-link">
+          <div>
+            <div class="page-link-title">Listography</div>
+            <div class="page-link-desc">Lists of everything &mdash; books, films, places, and more</div>
+          </div>
+          <span class="page-link-arrow">&rarr;</span>
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Now -->
+    <section class="section" id="about">
+      <p class="section-label">About me in 27 seconds</p>
+      <div class="now-content">
+        <div class="now-item">
+          <div class="now-marker"></div>
+          <div class="now-text">Economist at the <strong>British Business Bank</strong></div>
+        </div>
+        <div class="now-item">
+          <div class="now-marker"></div>
+          <div class="now-text">Exploring ideas across economics, business, language, literature, history, and philosophy</div>
+        </div>
+        <div class="now-item">
+          <div class="now-marker"></div>
+          <div class="now-text">Writing book reviews and notes &mdash; see <a href="notes.html">My Notes</a></div>
+        </div>
+        <div class="now-item">
+          <div class="now-marker"></div>
+          <div class="now-text">Compulsive list-maker &mdash; see my <a href="listography.html">Listography</a> of everything</div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Find me -->
+    <section class="section">
+      <p class="section-label">Find me elsewhere</p>
+      <div class="links-grid">
+        <a href="https://leathalobaidi.substack.com" target="_blank" rel="noopener" class="link-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16"/><path d="M4 8h16"/><path d="M4 12l8 6 8-6"/></svg>
+          <div class="link-card-text">
+            <span class="link-card-title">Substack</span>
+            <span class="link-card-desc">Newsletter</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/leathalobaidi" target="_blank" rel="noopener" class="link-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <div class="link-card-text">
+            <span class="link-card-title">LinkedIn</span>
+            <span class="link-card-desc">Professional</span>
+          </div>
+        </a>
+        <a href="https://twitter.com/leathalobaidi" target="_blank" rel="noopener" class="link-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768"/><path d="M20 4l-6.768 6.768"/></svg>
+          <div class="link-card-text">
+            <span class="link-card-title">X / Twitter</span>
+            <span class="link-card-desc">Thoughts</span>
+          </div>
+        </a>
+        <a href="https://github.com/leathalobaidi" target="_blank" rel="noopener" class="link-card">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          <div class="link-card-text">
+            <span class="link-card-title">GitHub</span>
+            <span class="link-card-desc">Code</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Contact -->
+    <section class="section">
+      <p class="section-label">Let's chat</p>
+      <div class="contact-box">
+        <p>I'm always happy to speak via Zoom, even if we don't have much in common. Drop me a line or book a time that works for you.</p>
+        <div class="contact-links">
+          <a href="mailto:alobaidi.leath@gmail.com" class="contact-btn contact-btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            Send an email
+          </a>
+          <a href="https://calendly.com/leathalobaidi" target="_blank" rel="noopener" class="contact-btn contact-btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Book on Calendly
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <span class="footer-text">&copy; 2026 Leath Al Obaidi</span>
+      <div class="footer-socials">
+        <a href="https://leathalobaidi.substack.com" target="_blank" rel="noopener" aria-label="Substack">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16"/><path d="M4 8h16"/><path d="M4 12l8 6 8-6"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/leathalobaidi" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://twitter.com/leathalobaidi" target="_blank" rel="noopener" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768"/><path d="M20 4l-6.768 6.768"/></svg>
+        </a>
+        <a href="https://github.com/leathalobaidi" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+        </a>
+      </div>
+    </footer>
+
+  </div>
+
+</body>
+</html>
