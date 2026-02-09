@@ -1,531 +1,1537 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Leath Al Obaidi</title>
-  <meta name="description" content="Economist, reader, and explorer of ideas. Notes on economics, business, language, literature, history, and philosophy.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --color-ink: #1a1a1a;
-      --color-paper: #faf8f5;
-      --color-muted: #6b6560;
-      --color-accent: #c45d3e;
-      --color-border: #e0dbd5;
-      --color-surface: #f0ece6;
-      --font-serif: 'Newsreader', Georgia, serif;
-      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+<html lang="en"><head><meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal site of Leath Al Obaidi. Economist working in regulatory finance. Book reviews, reading notes, curated lists, and writing on economics, business, and ideas.">
+    <meta property="og:title" content="Leath Al Obaidi — Economist &amp; Writer">
+    <meta property="og:description" content="Personal site of Leath Al Obaidi. Economist working in regulatory finance. Book reviews, reading notes, curated lists, and writing on economics, business, and ideas.">
+    <meta property="og:url" content="https://leathalobaidi.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@pluckup_courage">
+    <link rel="canonical" href="https://leathalobaidi.com/">
+    <title>Leath Al Obaidi — Economist &amp; Writer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #c45d3e;
+            --color-text: #2a2a2a;
+            --color-text-light: #666666;
+            --color-background: #fafafa;
+            --color-border: #e8e8e8;
+            --color-card-bg: #ffffff;
+            --color-callout-bg: #fef4f1;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --max-width: 680px;
+            --transition: all 0.3s ease;
+        }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
-    body {
-      font-family: var(--font-sans);
-      color: var(--color-ink);
-      background: var(--color-paper);
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-    }
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            font-size: 16px;
+        }
 
-    /* Layout */
-    .site-container {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+        @media (max-width: 640px) {
+            body { font-size: 15px; }
+        }
 
-    /* Header */
-    .site-header {
-      padding: 40px 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-    }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
 
-    .site-name {
-      font-family: var(--font-serif);
-      font-size: 1.25rem;
-      font-weight: 500;
-      color: var(--color-ink);
-      text-decoration: none;
-      letter-spacing: -0.01em;
-    }
+        h1 { font-size: 2.5rem; margin-top: 0; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.3rem; }
+        p { margin-bottom: var(--spacing-md); }
 
-    .site-name:hover { color: var(--color-accent); }
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
 
-    .site-nav {
-      display: flex;
-      gap: 28px;
-      list-style: none;
-    }
+        a:hover {
+            opacity: 0.75;
+            border-bottom-color: var(--color-primary);
+        }
 
-    .site-nav a {
-      font-size: 0.875rem;
-      color: var(--color-muted);
-      text-decoration: none;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
 
-    .site-nav a:hover { color: var(--color-ink); }
-    .site-nav a.active { color: var(--color-ink); }
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--color-background);
+            z-index: 100;
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-md) 0;
+        }
 
-    /* Hero */
-    .hero {
-      padding: 80px 0 60px;
-    }
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .hero-greeting {
-      font-family: var(--font-serif);
-      font-size: 2.75rem;
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      line-height: 1.2;
-      margin-bottom: 32px;
-    }
+        .nav-brand {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-text);
+            text-decoration: none;
+            border-bottom: none;
+            cursor: pointer;
+        }
 
-    .hero-greeting em {
-      font-style: italic;
-      color: var(--color-accent);
-    }
+        .nav-brand:hover { color: var(--color-primary); }
 
-    .hero-bio {
-      font-size: 1.05rem;
-      color: var(--color-muted);
-      max-width: 560px;
-      line-height: 1.8;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
 
-    .hero-bio a {
-      color: var(--color-ink);
-      text-decoration: underline;
-      text-decoration-color: var(--color-border);
-      text-underline-offset: 3px;
-      transition: text-decoration-color 0.2s;
-    }
+        .nav-links a {
+            color: var(--color-text);
+            border-bottom: none;
+            font-size: 0.95rem;
+        }
 
-    .hero-bio a:hover {
-      text-decoration-color: var(--color-accent);
-    }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-primary);
+            opacity: 1;
+        }
 
-    .pronunciation {
-      font-family: var(--font-serif);
-      font-style: italic;
-      color: var(--color-muted);
-      font-size: 0.95em;
-    }
+        @media (max-width: 640px) {
+            .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; }
+        }
 
-    /* Divider */
-    .divider {
-      border: none;
-      border-top: 1px solid var(--color-border);
-      margin: 0;
-    }
+        /* Page Section */
+        .page-section {
+            padding-top: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+            border-bottom: 1px solid var(--color-border);
+        }
 
-    /* Section */
-    .section {
-      padding: 48px 0;
-    }
+        .page-section:last-of-type { border-bottom: none; }
 
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-muted);
-      margin-bottom: 24px;
-    }
+        /* Section Divider Title */
+        .section-divider {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
+            font-family: var(--font-sans);
+        }
 
-    /* Now section */
-    .now-content {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
+        /* ===== HOME ===== */
+        .hero { margin-bottom: var(--spacing-xl); }
 
-    .now-item {
-      display: flex;
-      gap: 16px;
-      align-items: baseline;
-    }
+        .hero-name {
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-xs);
+        }
 
-    .now-marker {
-      width: 6px;
-      height: 6px;
-      min-width: 6px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      margin-top: 10px;
-    }
+        .hero-name strong {
+            color: var(--color-primary);
+            font-weight: 600;
+            font-style: italic;
+        }
 
-    .now-text {
-      font-size: 1rem;
-      color: var(--color-ink);
-      line-height: 1.7;
-    }
+        .hero-pronunciation {
+            color: var(--color-text-light);
+            font-style: italic;
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.95rem;
+        }
 
-    .now-text a {
-      color: var(--color-accent);
-      text-decoration: none;
-      font-weight: 500;
-    }
+        .hero-bio { color: var(--color-text); line-height: 1.8; }
+        .hero-bio p { margin-bottom: var(--spacing-lg); }
 
-    .now-text a:hover {
-      text-decoration: underline;
-    }
+        .explore-heading {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            font-weight: 600;
+        }
 
-    /* Links grid */
-    .links-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
 
-    .link-card {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 16px 20px;
-      background: var(--color-surface);
-      border-radius: 8px;
-      text-decoration: none;
-      color: var(--color-ink);
-      transition: all 0.2s;
-    }
+        .card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-lg);
+            border-radius: 4px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
 
-    .link-card:hover {
-      background: var(--color-border);
-    }
+        .card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 2px 8px rgba(196, 93, 62, 0.08);
+        }
 
-    .link-card svg {
-      width: 20px;
-      height: 20px;
-      color: var(--color-muted);
-      flex-shrink: 0;
-    }
+        .card h3 { margin-top: 0; color: var(--color-text); }
+        .card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
 
-    .link-card:hover svg {
-      color: var(--color-accent);
-    }
+        .publications-list, .roles-list { list-style: none; }
 
-    .link-card-text {
-      display: flex;
-      flex-direction: column;
-    }
+        .publications-list li, .roles-list li {
+            margin-bottom: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border);
+        }
 
-    .link-card-title {
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
+        .publications-list li:last-child, .roles-list li:last-child {
+            border-bottom: none; margin-bottom: 0; padding-bottom: 0;
+        }
 
-    .link-card-desc {
-      font-size: 0.75rem;
-      color: var(--color-muted);
-    }
+        .publication-title, .role-title {
+            font-weight: 600; color: var(--color-text);
+            display: block; margin-bottom: var(--spacing-xs);
+        }
 
-    /* Pages list */
-    .page-links {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
+        .publication-year, .role-org {
+            color: var(--color-text-light); font-size: 0.9rem;
+        }
 
-    .page-link {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--color-border);
-      text-decoration: none;
-      color: var(--color-ink);
-      transition: all 0.15s;
-    }
+        .section-intro {
+            color: var(--color-text-light);
+            margin-bottom: var(--spacing-lg);
+            font-size: 0.95rem;
+        }
 
-    .page-link:first-child {
-      border-top: 1px solid var(--color-border);
-    }
+        .newsletter-callout {
+            background-color: var(--color-callout-bg);
+            border: 1px solid #f5ddd4;
+            padding: var(--spacing-lg);
+            border-radius: 4px;
+            margin-bottom: var(--spacing-xl);
+            text-align: center;
+        }
 
-    .page-link:hover {
-      padding-left: 8px;
-    }
+        .newsletter-callout p { color: var(--color-text); margin-bottom: var(--spacing-lg); line-height: 1.8; }
 
-    .page-link-title {
-      font-family: var(--font-serif);
-      font-size: 1.15rem;
-      font-weight: 500;
-    }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--color-primary);
+            color: #ffffff;
+            border-radius: 4px;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
 
-    .page-link-desc {
-      font-size: 0.85rem;
-      color: var(--color-muted);
-      margin-top: 2px;
-    }
+        .btn:hover {
+            opacity: 0.85;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 93, 62, 0.2);
+            border-bottom: none;
+        }
 
-    .page-link-arrow {
-      font-size: 1.25rem;
-      color: var(--color-muted);
-      transition: transform 0.2s, color 0.2s;
-    }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+        }
 
-    .page-link:hover .page-link-arrow {
-      transform: translateX(4px);
-      color: var(--color-accent);
-    }
+        .btn-secondary:hover { background-color: var(--color-callout-bg); }
 
-    /* Contact */
-    .contact-box {
-      background: var(--color-surface);
-      border-radius: 8px;
-      padding: 32px;
-    }
+        .buttons-row {
+            display: flex; gap: var(--spacing-md);
+            justify-content: center; flex-wrap: wrap;
+        }
 
-    .contact-box p {
-      font-size: 1rem;
-      color: var(--color-ink);
-      line-height: 1.7;
-      margin-bottom: 20px;
-    }
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+        }
 
-    .contact-box p:last-child {
-      margin-bottom: 0;
-    }
+        .social-link {
+            display: block; padding: var(--spacing-md);
+            border: 1px solid var(--color-border);
+            border-radius: 4px; transition: var(--transition);
+            text-decoration: none; color: inherit;
+        }
 
-    .contact-links {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+        .social-link:hover { border-color: var(--color-primary); background-color: var(--color-callout-bg); opacity: 1; }
+        .social-platform { font-weight: 600; color: var(--color-text); display: block; margin-bottom: var(--spacing-xs); }
+        .social-description { color: var(--color-text-light); font-size: 0.85rem; }
 
-    .contact-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 20px;
-      font-size: 0.875rem;
-      font-weight: 500;
-      text-decoration: none;
-      border-radius: 6px;
-      transition: all 0.2s;
-      font-family: var(--font-sans);
-    }
+        .contact-section {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-lg);
+            border-radius: 4px;
+            text-align: center;
+        }
 
-    .contact-btn-primary {
-      background: var(--color-ink);
-      color: var(--color-paper);
-    }
+        .contact-section p { color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--spacing-lg); }
 
-    .contact-btn-primary:hover {
-      background: var(--color-accent);
-    }
+        /* ===== NOTES ===== */
+        .recently-added { margin-bottom: var(--spacing-xl); }
 
-    .contact-btn-secondary {
-      background: transparent;
-      color: var(--color-ink);
-      border: 1px solid var(--color-border);
-    }
+        .notes-section-title {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--spacing-sm);
+            color: var(--color-text);
+        }
 
-    .contact-btn-secondary:hover {
-      border-color: var(--color-ink);
-    }
+        .recent-notes-list { display: flex; flex-direction: column; gap: var(--spacing-sm); }
 
-    /* Footer */
-    .site-footer {
-      padding: 40px 0;
-      border-top: 1px solid var(--color-border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 20px;
-    }
+        .recent-note {
+            background-color: #fff; border-left: 3px solid var(--color-primary);
+            padding: var(--spacing-sm); border-radius: 4px;
+            display: flex; justify-content: space-between; align-items: flex-start;
+            transition: background-color 0.2s ease;
+        }
 
-    .footer-text {
-      font-size: 0.8rem;
-      color: var(--color-muted);
-    }
+        .recent-note:hover { background-color: #fdf8f5; }
+        .recent-note-content { flex: 1; }
+        .recent-note-title { font-weight: 500; margin-bottom: 0.25rem; color: var(--color-text); }
 
-    .footer-socials {
-      display: flex;
-      gap: 16px;
-    }
+        .recent-note-meta {
+            display: flex; gap: 0.5rem;
+            font-size: 0.85rem; color: #999;
+        }
 
-    .footer-socials a {
-      color: var(--color-muted);
-      transition: color 0.2s;
-    }
+        .new-badge {
+            display: inline-block; background-color: var(--color-primary); color: white;
+            font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.5rem;
+            border-radius: 3px; text-transform: uppercase; white-space: nowrap;
+            margin-left: auto;
+        }
 
-    .footer-socials a:hover {
-      color: var(--color-accent);
-    }
+        .search-container { margin-bottom: var(--spacing-lg); }
 
-    .footer-socials svg {
-      width: 18px;
-      height: 18px;
-    }
+        #search-input {
+            width: 100%; padding: 0.875rem 1rem;
+            font-family: var(--font-sans); font-size: 1rem;
+            border: 1px solid #d4d0c8; border-radius: 6px;
+            background-color: #fff; color: var(--color-text);
+            transition: border-color 0.2s ease;
+        }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .hero { padding: 56px 0 40px; }
-      .hero-greeting { font-size: 2rem; }
-      .links-grid { grid-template-columns: 1fr; }
-      .site-header { flex-direction: column; gap: 16px; }
-      .contact-box { padding: 24px; }
-      .site-footer { flex-direction: column; gap: 16px; text-align: center; }
-    }
-  </style>
+        #search-input::placeholder { color: #999; }
+        #search-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(196, 93, 62, 0.1); }
+
+        .filters-container {
+            position: sticky; top: 60px;
+            background-color: var(--color-background);
+            padding: var(--spacing-sm) 0;
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+            z-index: 90;
+        }
+
+        .filter-label {
+            font-size: 0.85rem; font-weight: 500; color: var(--color-text-light);
+            margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        .filter-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+        .filter-pill {
+            padding: 0.5rem 1rem; border: 1px solid #d4d0c8;
+            background-color: #fff; color: var(--color-text);
+            border-radius: 20px; font-size: 0.9rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
+            font-family: var(--font-sans);
+        }
+
+        .filter-pill:hover { border-color: var(--color-primary); }
+        .filter-pill.active { background-color: var(--color-primary); color: white; border-color: var(--color-primary); }
+
+        .notes-count { font-size: 0.9rem; color: #999; margin-bottom: var(--spacing-md); }
+
+        .notes-list { display: flex; flex-direction: column; gap: var(--spacing-md); }
+
+        .note-item {
+            background-color: #fff; padding: 1.25rem; border-radius: 6px;
+            border: 1px solid var(--color-border); transition: all 0.2s ease;
+        }
+
+        .note-item:hover { border-color: var(--color-primary); background-color: #fdf8f5; }
+        .note-item.hidden { display: none; }
+
+        .note-title {
+            font-family: var(--font-serif); font-size: 1.1rem;
+            font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);
+        }
+
+        .note-title a { color: var(--color-text); border-bottom: 2px solid transparent; }
+        .note-title a:hover { border-bottom-color: var(--color-primary); opacity: 1; }
+
+        .note-meta {
+            display: flex; flex-wrap: wrap; gap: 0.75rem;
+            align-items: center; font-size: 0.85rem;
+        }
+
+        .note-category { color: var(--color-text-light); font-weight: 500; }
+
+        .note-label {
+            display: inline-block; font-size: 0.75rem; font-weight: 600;
+            padding: 0.35rem 0.65rem; border-radius: 4px;
+            text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap;
+        }
+
+        .label-book-review { background-color: #e8d5c4; color: #6b4423; }
+        .label-reading-notes { background-color: #d4e5f7; color: #1a4d7a; }
+        .label-original-essay { background-color: #e6d9f0; color: #5a3366; }
+        .label-summary { background-color: #d4f0e8; color: #1a5a45; }
+        .label-analysis { background-color: #f0e6d9; color: #6b5a3e; }
+        .note-date { color: #999; margin-left: auto; white-space: nowrap; }
+
+        .empty-state { text-align: center; padding: var(--spacing-xl) var(--spacing-md); color: #999; }
+
+        /* ===== LISTOGRAPHY ===== */
+        .stats-bar {
+            display: flex; justify-content: center; gap: 20px;
+            padding: 20px; background-color: #fff;
+            border: 1px solid var(--color-border); border-radius: 4px;
+            margin-bottom: var(--spacing-xl);
+            font-size: 13px; color: var(--color-text-light); font-weight: 500;
+        }
+
+        .stats-bar span { display: flex; align-items: center; }
+
+        .stats-bar span:not(:last-child)::after {
+            content: ''; display: inline-block; width: 1px; height: 16px;
+            background-color: var(--color-border); margin-left: 20px;
+        }
+
+        .list-card { margin-bottom: 45px; }
+        .list-header { margin-bottom: 20px; }
+
+        .list-title {
+            font-family: var(--font-serif); font-size: 1.5rem;
+            font-weight: 600; color: var(--color-text); margin-bottom: 8px;
+            margin-top: 0;
+        }
+
+        .list-count { font-size: 13px; color: #999; font-weight: 500; }
+        .list-items { list-style: none; }
+
+        .list-item { padding: 18px 0; border-bottom: 1px solid var(--color-border); }
+        .list-item:last-child { border-bottom: none; }
+
+        .item-title {
+            font-weight: 600; color: var(--color-text);
+            margin-bottom: 8px; display: flex; gap: 8px; align-items: flex-start;
+        }
+
+        .item-title a { color: var(--color-primary); font-weight: 600; }
+        .item-title a:hover { text-decoration: underline; }
+        .item-bullet { color: var(--color-primary); font-weight: 600; flex-shrink: 0; }
+        .item-annotation { font-size: 14px; color: var(--color-text-light); line-height: 1.6; }
+        .placeholder-items { color: #999; font-size: 14px; font-style: italic; padding: 18px 0; }
+
+        /* ===== PROJECTS ===== */
+        .project-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 4px; padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg); transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 2px 12px rgba(196, 93, 62, 0.08);
+        }
+
+        .project-header {
+            display: flex; align-items: flex-start;
+            justify-content: space-between; gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-header h2 { margin: 0; font-size: 1.5rem; }
+
+        .project-badges { display: flex; gap: var(--spacing-xs); flex-shrink: 0; flex-wrap: wrap; }
+
+        .badge {
+            display: inline-block; font-size: 0.75rem; font-weight: 600;
+            padding: 0.25rem 0.6rem; border-radius: 3px; letter-spacing: 0.02em; white-space: nowrap;
+        }
+
+        .badge-chrome { background-color: #e8f5e9; color: #2e7d32; }
+        .badge-mit { background-color: #fff8e1; color: #f57f17; }
+        .badge-v3 { background-color: #e3f2fd; color: #1565c0; }
+
+        .project-description { color: var(--color-text); line-height: 1.8; margin-bottom: var(--spacing-md); }
+
+        .project-features { margin-bottom: var(--spacing-lg); }
+
+        .project-features h3 {
+            font-size: 1rem; margin-top: 0; margin-bottom: var(--spacing-sm);
+            font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.05em;
+        }
+
+        .feature-list { list-style: none; }
+
+        .feature-list li {
+            padding: var(--spacing-xs) 0; padding-left: 1.2rem;
+            position: relative; color: var(--color-text); line-height: 1.6;
+        }
+
+        .feature-list li::before {
+            content: '\2014'; position: absolute; left: 0;
+            color: var(--color-primary); font-weight: 600;
+        }
+
+        .project-tech { display: flex; gap: var(--spacing-xs); flex-wrap: wrap; margin-bottom: var(--spacing-md); }
+
+        .tech-tag {
+            font-size: 0.8rem; padding: 0.2rem 0.5rem;
+            background-color: #f5f5f5; border: 1px solid var(--color-border);
+            border-radius: 3px; color: var(--color-text-light);
+        }
+
+        .project-links {
+            display: flex; gap: var(--spacing-md); flex-wrap: wrap;
+            padding-top: var(--spacing-md); border-top: 1px solid var(--color-border);
+        }
+
+        .project-link {
+            display: inline-flex; align-items: center;
+            gap: 0.4rem; font-size: 0.9rem; font-weight: 600;
+        }
+
+        .project-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+        .wip-section { margin-top: var(--spacing-xl); }
+
+        .wip-label {
+            display: inline-block; font-family: var(--font-sans);
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.08em; padding: 0.2rem 0.6rem;
+            background-color: #fff3cd; color: #856404;
+            border-radius: 3px; vertical-align: middle;
+        }
+
+        .wip-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-left: 3px solid #e8b931;
+            border-radius: 4px; padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md); transition: var(--transition);
+        }
+
+        .wip-card:hover { border-left-color: var(--color-primary); box-shadow: 0 2px 8px rgba(196, 93, 62, 0.06); }
+        .wip-card h3 { margin-top: 0; margin-bottom: var(--spacing-xs); font-size: 1.2rem; }
+
+        .wip-card .wip-type {
+            display: inline-block; font-size: 0.75rem; font-weight: 600;
+            padding: 0.15rem 0.5rem; border-radius: 3px; margin-bottom: var(--spacing-sm);
+        }
+
+        .type-podcast { background-color: #e8f5e9; color: #2e7d32; }
+        .type-community { background-color: #e3f2fd; color: #1565c0; }
+        .type-writing { background-color: #fce4ec; color: #c62828; }
+        .type-app { background-color: #f3e5f5; color: #6a1b9a; }
+        .type-sport { background-color: #fff3e0; color: #e65100; }
+        .type-org { background-color: #e0f2f1; color: #00695c; }
+
+        .wip-card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
+        .wip-card a.wip-link { display: inline-block; margin-top: var(--spacing-sm); font-size: 0.9rem; }
+
+        .wip-divider { border: none; border-top: 1px solid var(--color-border); margin: var(--spacing-xl) 0; }
+
+        .built-with {
+            background-color: var(--color-callout-bg);
+            border: 1px solid #f5ddd4;
+            padding: var(--spacing-lg); border-radius: 4px;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .built-with h2 { margin-top: 0; font-size: 1.3rem; }
+        .built-with p { color: var(--color-text); line-height: 1.8; margin-bottom: 0; }
+
+        /* ===== ABOUT ===== */
+        .story-section { margin-bottom: var(--spacing-lg); }
+        .story-section p { margin-bottom: var(--spacing-md); line-height: 1.8; }
+        .story-section p:last-child { margin-bottom: 0; }
+
+        .now-section {
+            background-color: #f5f5f3; padding: var(--spacing-lg);
+            border-radius: 8px; margin: var(--spacing-xl) 0;
+        }
+
+        .now-section h2 { margin-top: 0; }
+
+        .now-section .updated {
+            font-size: 0.9rem; color: #7a7a78;
+            font-style: italic; margin-bottom: var(--spacing-md);
+        }
+
+        .now-section ul { list-style: none; padding: 0; }
+
+        .now-section li {
+            padding: 0.75rem 0; padding-left: 1.5rem;
+            position: relative; color: var(--color-text);
+        }
+
+        .now-section li::before {
+            content: '\2014'; position: absolute; left: 0;
+            color: var(--color-primary); font-weight: 600;
+        }
+
+        .about-contact-section {
+            margin: var(--spacing-xl) 0; padding: var(--spacing-lg);
+            background-color: #f5f5f3; border-radius: 8px; text-align: center;
+        }
+
+        .about-contact-section p { margin-bottom: var(--spacing-md); }
+
+        .button-group { display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-social {
+            display: flex; justify-content: center;
+            gap: var(--spacing-md); margin-top: var(--spacing-md);
+        }
+
+        .footer-social a { color: var(--color-text-light); font-size: 0.85rem; }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+            .container { padding: 0 var(--spacing-sm); }
+            .nav-container { padding: 0 var(--spacing-sm); }
+            .cards-grid { grid-template-columns: 1fr; }
+            .social-grid { grid-template-columns: repeat(2, 1fr); }
+            .buttons-row, .button-group { flex-direction: column; align-items: stretch; }
+            .btn { text-align: center; width: 100%; }
+            .project-header { flex-direction: column; }
+            .project-links { flex-direction: column; gap: var(--spacing-sm); }
+            .stats-bar { flex-direction: column; gap: 12px; }
+            .stats-bar span:not(:last-child)::after { display: none; }
+            .recent-note { flex-direction: column; gap: 0.5rem; }
+            .new-badge { margin-left: 0; margin-top: 0.5rem; }
+            .filter-pills { gap: 0.5rem; }
+            .filter-pill { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="site-container">
-
-    <!-- Header -->
-    <header class="site-header">
-      <a href="/" class="site-name">Leath Al Obaidi</a>
-      <nav>
-        <ul class="site-nav">
-          <li><a href="notes.html">Notes</a></li>
-          <li><a href="listography.html">Listography</a></li>
-          <li><a href="#about">About</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero">
-      <h1 class="hero-greeting">Hello, I'm <em>Leath</em></h1>
-      <p class="hero-bio">
-        <span class="pronunciation">/le&#618;&theta;/ &mdash; rhymes with "faith"</span><br><br>
-        I'm an economist at the <a href="https://www.british-business-bank.co.uk/" target="_blank" rel="noopener">British Business Bank</a>. In my free time I explore the world of ideas &mdash; economics, business, management, language, literature, history, and philosophy. I love making notes and reviewing books, and I have a habit of turning everything into lists.
-      </p>
-    </section>
-
-    <hr class="divider">
-
-    <!-- Explore -->
-    <section class="section">
-      <p class="section-label">Explore</p>
-      <div class="page-links">
-        <a href="notes.html" class="page-link">
-          <div>
-            <div class="page-link-title">My Notes</div>
-            <div class="page-link-desc">Book reviews, ideas, and things I've learnt</div>
-          </div>
-          <span class="page-link-arrow">&rarr;</span>
-        </a>
-        <a href="listography.html" class="page-link">
-          <div>
-            <div class="page-link-title">Listography</div>
-            <div class="page-link-desc">Lists of everything &mdash; books, films, places, and more</div>
-          </div>
-          <span class="page-link-arrow">&rarr;</span>
-        </a>
-      </div>
-    </section>
-
-    <hr class="divider">
-
-    <!-- Now -->
-    <section class="section" id="about">
-      <p class="section-label">About me in 27 seconds</p>
-      <div class="now-content">
-        <div class="now-item">
-          <div class="now-marker"></div>
-          <div class="now-text">Economist at the <strong>British Business Bank</strong></div>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="nav-brand">Leath</a>
+            <ul class="nav-links">
+                <li><a href="#notes" class="">Notes</a></li>
+                <li><a href="#listography" class="">Listography</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
         </div>
-        <div class="now-item">
-          <div class="now-marker"></div>
-          <div class="now-text">Exploring ideas across economics, business, language, literature, history, and philosophy</div>
-        </div>
-        <div class="now-item">
-          <div class="now-marker"></div>
-          <div class="now-text">Writing book reviews and notes &mdash; see <a href="notes.html">My Notes</a></div>
-        </div>
-        <div class="now-item">
-          <div class="now-marker"></div>
-          <div class="now-text">Compulsive list-maker &mdash; see my <a href="listography.html">Listography</a> of everything</div>
-        </div>
-      </div>
-    </section>
+    </nav>
 
-    <hr class="divider">
+    <div class="container">
 
-    <!-- Find me -->
-    <section class="section">
-      <p class="section-label">Find me elsewhere</p>
-      <div class="links-grid">
-        <a href="https://leathalobaidi.substack.com" target="_blank" rel="noopener" class="link-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16"/><path d="M4 8h16"/><path d="M4 12l8 6 8-6"/></svg>
-          <div class="link-card-text">
-            <span class="link-card-title">Substack</span>
-            <span class="link-card-desc">Newsletter</span>
-          </div>
-        </a>
-        <a href="https://linkedin.com/in/leathalobaidi" target="_blank" rel="noopener" class="link-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <div class="link-card-text">
-            <span class="link-card-title">LinkedIn</span>
-            <span class="link-card-desc">Professional</span>
-          </div>
-        </a>
-        <a href="https://twitter.com/leathalobaidi" target="_blank" rel="noopener" class="link-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768"/><path d="M20 4l-6.768 6.768"/></svg>
-          <div class="link-card-text">
-            <span class="link-card-title">X / Twitter</span>
-            <span class="link-card-desc">Thoughts</span>
-          </div>
-        </a>
-        <a href="https://github.com/leathalobaidi" target="_blank" rel="noopener" class="link-card">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-          <div class="link-card-text">
-            <span class="link-card-title">GitHub</span>
-            <span class="link-card-desc">Code</span>
-          </div>
-        </a>
-      </div>
-    </section>
+        <!-- ==================== HOME ==================== -->
+        <section id="home" class="page-section">
+            <div class="hero">
+                <h1 class="hero-name">Hello, I'm <strong>Leath</strong></h1>
+                <p class="hero-pronunciation">/leɪθ/ — rhymes with faith</p>
+                <div class="hero-bio">
+                    <p>I'm an economist working in regulatory finance at Smart DCC, the company running Britain's smart meter data network. Previously, I spent six years at the British Business Bank, where I helped secure over £1bn in government funding and led programmes that supported over a million businesses during the pandemic. I also serve as a Non-Executive Director at Wenta, a social enterprise supporting small businesses, and sit on the Council of the Society of Professional Economists.</p>
+                    <p>I grew up between Iraq and Austria, studied economics in Vienna and Nottingham, and now live in London. This site is where I share what I'm reading, thinking about, and working on. I'm interested in economics, regulation, business, language, history, and philosophy.</p>
+                </div>
+            </div>
 
-    <hr class="divider">
+            <p class="explore-heading">Explore</p>
+            <div class="cards-grid">
+                <div class="card" onclick="document.getElementById(&#39;notes&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
+                    <h3>My Notes</h3>
+                    <p>Book reviews, reading notes, and ideas across economics, philosophy, literature, and more. 141 notes and counting.</p>
+                </div>
+                <div class="card" onclick="document.getElementById(&#39;listography&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
+                    <h3>Listography</h3>
+                    <p>Curated lists of books, thinkers, ideas, and systems that shape how I see the world. 14 lists, 200+ items.</p>
+                </div>
+                <div class="card" onclick="document.getElementById(&#39;projects&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
+                    <h3>Projects</h3>
+                    <p>Chrome extensions I've built — tools for the Financial Times, YouTube, and Letterboxd. All open-source on GitHub.</p>
+                </div>
+            </div>
 
-    <!-- Contact -->
-    <section class="section">
-      <p class="section-label">Let's chat</p>
-      <div class="contact-box">
-        <p>I'm always happy to speak via Zoom, even if we don't have much in common. Drop me a line or book a time that works for you.</p>
-        <div class="contact-links">
-          <a href="mailto:alobaidi.leath@gmail.com" class="contact-btn contact-btn-primary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            Send an email
-          </a>
-          <a href="https://calendly.com/leathalobaidi" target="_blank" rel="noopener" class="contact-btn contact-btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-            Book on Calendly
-          </a>
-        </div>
-      </div>
-    </section>
+            <h2>Publications</h2>
+            <p class="section-intro">Reports and research I've authored or co-authored during my time at the British Business Bank and Ofgem.</p>
+            <ul class="publications-list">
+                <li>
+                    <span class="publication-title">Small Business Finance Market Report</span>
+                    <span class="publication-year">2019, 2020, 2021, 2022, 2023</span>
+                </li>
+                <li>
+                    <span class="publication-title">UK Private Debt Research Report</span>
+                    <span class="publication-year">2020</span>
+                </li>
+                <li>
+                    <span class="publication-title">Going Digital: The Challenges Facing European SMEs</span>
+                    <span class="publication-year">2019</span>
+                </li>
+                <li>
+                    <span class="publication-title">UK Business Angel Market</span>
+                    <span class="publication-year">2018, 2020</span>
+                </li>
+                <li>
+                    <span class="publication-title">Using Intellectual Property to Access Growth Funding</span>
+                    <span class="publication-year">2018</span>
+                </li>
+                <li>
+                    <span class="publication-title">State of the Energy Market (contributing author)</span>
+                    <span class="publication-year">2017</span>
+                </li>
+            </ul>
+
+            <h2>Roles &amp; Affiliations</h2>
+            <ul class="roles-list">
+                <li>
+                    <span class="role-title">Senior Regulatory Finance Manager</span>
+                    <span class="role-org">Smart DCC (2024–present)</span>
+                </li>
+                <li>
+                    <span class="role-title">Senior Manager, Economist</span>
+                    <span class="role-org">British Business Bank (2018–2024)</span>
+                </li>
+                <li>
+                    <span class="role-title">Non-Executive Director</span>
+                    <span class="role-org">Wenta (2019–present)</span>
+                </li>
+                <li>
+                    <span class="role-title">Council Member</span>
+                    <span class="role-org">Society of Professional Economists</span>
+                </li>
+                <li>
+                    <span class="role-title">Member</span>
+                    <span class="role-org">Royal Economic Society</span>
+                </li>
+            </ul>
+
+            <div style="margin-top:var(--spacing-xl)">
+                <div class="newsletter-callout">
+                    <p>I write occasionally on economics, books, and ideas. Subscribe on Substack to get new posts by email.</p>
+                    <a href="https://leathalobaidi.substack.com/" class="btn">Subscribe on Substack</a>
+                </div>
+            </div>
+
+            <div class="social-grid">
+                <a href="https://leathalobaidi.substack.com/" class="social-link">
+                    <span class="social-platform">Substack</span>
+                    <span class="social-description">Newsletter and longer writing</span>
+                </a>
+                <a href="https://linkedin.com/in/leath-al-obaidi/" class="social-link">
+                    <span class="social-platform">LinkedIn</span>
+                    <span class="social-description">Professional profile and updates</span>
+                </a>
+                <a href="https://x.com/pluckup_courage" class="social-link">
+                    <span class="social-platform">X</span>
+                    <span class="social-description">Short takes and threads</span>
+                </a>
+                <a href="https://github.com/leathalobaidi" class="social-link">
+                    <span class="social-platform">GitHub</span>
+                    <span class="social-description">Code and side projects</span>
+                </a>
+            </div>
+
+            <div class="contact-section">
+                <p>If you'd like to chat about regulatory economics, small business finance, or what I'm reading, I'd love to hear from you.</p>
+                <div class="buttons-row">
+                    <a href="mailto:alobaidi.leath@gmail.com" class="btn">Send an email</a>
+                    <a href="https://calendly.com/leathalobaidi" class="btn btn-secondary">Book on Calendly</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== NOTES ==================== -->
+        <section id="notes" class="page-section">
+            <h1>Notes</h1>
+            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);">Book reviews, reading notes, and ideas. 141 notes across 9 categories.</p>
+
+            <div class="recently-added">
+                <h2 class="notes-section-title">Recently Added</h2>
+                <div class="recent-notes-list">
+                    <div class="recent-note">
+                        <div class="recent-note-content">
+                            <div class="recent-note-title"><a href="#">Thinking, Fast and Slow — Daniel Kahneman</a></div>
+                            <div class="recent-note-meta">
+                                <span>Psychology</span>
+                                <span class="note-label label-book-review">Book Review</span>
+                            </div>
+                        </div>
+                        <span class="new-badge">New</span>
+                    </div>
+                    <div class="recent-note">
+                        <div class="recent-note-content">
+                            <div class="recent-note-title"><a href="#">The Use of Knowledge in Society — Friedrich Hayek</a></div>
+                            <div class="recent-note-meta">
+                                <span>Economics</span>
+                                <span class="note-label label-reading-notes">Reading Notes</span>
+                            </div>
+                        </div>
+                        <span class="new-badge">New</span>
+                    </div>
+                    <div class="recent-note">
+                        <div class="recent-note-content">
+                            <div class="recent-note-title"><a href="#">Why Nations Fail — Acemoglu &amp; Robinson</a></div>
+                            <div class="recent-note-meta">
+                                <span>Economics</span>
+                                <span class="note-label label-book-review">Book Review</span>
+                            </div>
+                        </div>
+                        <span class="new-badge">New</span>
+                    </div>
+                    <div class="recent-note">
+                        <div class="recent-note-content">
+                            <div class="recent-note-title"><a href="#">On Writing Well — William Zinsser</a></div>
+                            <div class="recent-note-meta">
+                                <span>Language &amp; Writing</span>
+                                <span class="note-label label-book-review">Book Review</span>
+                            </div>
+                        </div>
+                        <span class="new-badge">New</span>
+                    </div>
+                    <div class="recent-note">
+                        <div class="recent-note-content">
+                            <div class="recent-note-title"><a href="#">The Hedgehog and the Fox — Isaiah Berlin</a></div>
+                            <div class="recent-note-meta">
+                                <span>Philosophy</span>
+                                <span class="note-label label-original-essay">Original Essay</span>
+                            </div>
+                        </div>
+                        <span class="new-badge">New</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search notes by title, category, or keyword..." aria-label="Search notes">
+            </div>
+
+            <div class="filters-container">
+                <div class="filter-label">Filter by category</div>
+                <div class="filter-pills">
+                    <button class="filter-pill active" data-category="All">All</button>
+                    <button class="filter-pill" data-category="Economics">Economics</button>
+                    <button class="filter-pill" data-category="Business &amp; Management">Business</button>
+                    <button class="filter-pill" data-category="Philosophy">Philosophy</button>
+                    <button class="filter-pill" data-category="Literature &amp; Fiction">Literature</button>
+                    <button class="filter-pill" data-category="History">History</button>
+                    <button class="filter-pill" data-category="Language &amp; Writing">Writing</button>
+                    <button class="filter-pill" data-category="Psychology">Psychology</button>
+                    <button class="filter-pill" data-category="Science &amp; Technology">Science</button>
+                    <button class="filter-pill" data-category="Miscellaneous">Misc</button>
+                </div>
+            </div>
+
+            <div class="notes-count">Showing <span id="notes-showing">15</span> of <span id="total-notes">15</span> notes</div>
+
+            <div class="notes-list" id="notes-container">
+                <div class="note-item" data-category="Economics" data-labels="book-review" data-searchtext="thinking fast and slow daniel kahneman economics psychology">
+                    <div class="note-title"><a href="#">Thinking, Fast and Slow — Daniel Kahneman</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Dec 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Economics" data-labels="reading-notes" data-searchtext="use of knowledge in society friedrich hayek economics">
+                    <div class="note-title"><a href="#">The Use of Knowledge in Society — Friedrich Hayek</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-reading-notes">Reading Notes</span>
+                        <span class="note-date">Nov 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Economics" data-labels="book-review" data-searchtext="why nations fail daron acemoglu james robinson economic growth institutions">
+                    <div class="note-title"><a href="#">Why Nations Fail — Acemoglu &amp; Robinson</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Oct 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Language &amp; Writing" data-labels="book-review" data-searchtext="on writing well william zinsser writing craft clarity">
+                    <div class="note-title"><a href="#">On Writing Well — William Zinsser</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Language &amp; Writing</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Sep 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Philosophy" data-labels="original-essay" data-searchtext="hedgehog and fox isaiah berlin philosophy universalists specialists">
+                    <div class="note-title"><a href="#">The Hedgehog and the Fox — Isaiah Berlin</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Philosophy</span>
+                        <span class="note-label label-original-essay">Original Essay</span>
+                        <span class="note-date">Aug 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Economics" data-labels="original-essay" data-searchtext="ergodicity economics primer probability finance">
+                    <div class="note-title"><a href="#">Ergodicity Economics: A Primer</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-original-essay">Original Essay</span>
+                        <span class="note-date">Jul 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Philosophy" data-labels="reading-notes" data-searchtext="meditations marcus aurelius stoicism philosophy">
+                    <div class="note-title"><a href="#">Meditations — Marcus Aurelius</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Philosophy</span>
+                        <span class="note-label label-reading-notes">Reading Notes</span>
+                        <span class="note-date">Jun 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Literature &amp; Fiction" data-labels="book-review" data-searchtext="great gatsby f scott fitzgerald american literature fiction">
+                    <div class="note-title"><a href="#">The Great Gatsby — F. Scott Fitzgerald</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Literature &amp; Fiction</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">May 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="History" data-labels="book-review" data-searchtext="sapiens yuval noah harari human history evolution civilization">
+                    <div class="note-title"><a href="#">Sapiens — Yuval Noah Harari</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">History</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Apr 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Language &amp; Writing" data-labels="reading-notes" data-searchtext="how to read a book mortimer adler reading comprehension learning">
+                    <div class="note-title"><a href="#">How to Read a Book — Mortimer Adler</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Language &amp; Writing</span>
+                        <span class="note-label label-reading-notes">Reading Notes</span>
+                        <span class="note-date">Mar 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Science &amp; Technology" data-labels="book-review" data-searchtext="the information james gleick information theory communication">
+                    <div class="note-title"><a href="#">The Information — James Gleick</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Science &amp; Technology</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Feb 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Philosophy" data-labels="reading-notes" data-searchtext="the prince niccolo machiavelli political philosophy power">
+                    <div class="note-title"><a href="#">The Prince — Niccolò Machiavelli</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Philosophy</span>
+                        <span class="note-label label-reading-notes">Reading Notes</span>
+                        <span class="note-date">Jan 2025</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Science &amp; Technology" data-labels="book-review" data-searchtext="scale geoffrey west complexity networks cities biology">
+                    <div class="note-title"><a href="#">Scale — Geoffrey West</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Science &amp; Technology</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Dec 2024</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Economics" data-labels="book-review" data-searchtext="the black swan nassim nicholas taleb probability risk uncertainty">
+                    <div class="note-title"><a href="#">The Black Swan — Nassim Nicholas Taleb</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Nov 2024</span>
+                    </div>
+                </div>
+                <div class="note-item" data-category="Psychology" data-labels="book-review" data-searchtext="range david epstein generalism specialization learning">
+                    <div class="note-title"><a href="#">Range — David Epstein</a></div>
+                    <div class="note-meta">
+                        <span class="note-category">Psychology</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                        <span class="note-date">Oct 2024</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="empty-state" id="empty-state" style="display:none;">
+                <p>No notes found. Try adjusting your search or filters.</p>
+            </div>
+        </section>
+
+        <!-- ==================== LISTOGRAPHY ==================== -->
+        <section id="listography" class="page-section">
+            <h1>Listography</h1>
+            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);">Making lists is how I make sense of the world. 14 lists, 200+ items.</p>
+
+            <div class="stats-bar">
+                <span>14 lists</span>
+                <span>200+ items</span>
+                <span>Updated February 2026</span>
+            </div>
+
+            <!-- List 1: Books to Read -->
+            <div class="list-card">
+                <div class="list-header">
+                    <h2 class="list-title">Books to Read</h2>
+                    <div class="list-count">9 items</div>
+                </div>
+                <ul class="list-items">
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> The Ride of a Lifetime — Robert Iger</div>
+                        <div class="item-annotation">Recommended by three people I respect. Want to understand how Iger navigated Disney's digital transformation and media disruption.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> Measure What Matters — John Doerr</div>
+                        <div class="item-annotation">OKRs keep coming up in conversations about organisational effectiveness at Wenta. Want to understand the framework properly.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> Good Strategy Bad Strategy — Richard Rumelt</div>
+                        <div class="item-annotation">A counterweight to all the strategy frameworks floating around. Rumelt's critique of corporate strategy is sharp and necessary.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> The Goal — Eliyahu Goldratt</div>
+                        <div class="item-annotation">Theory of Constraints is everywhere in operations thinking. Want to understand it through the original narrative novel.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> How to Take Smart Notes — Sönke Ahrens</div>
+                        <div class="item-annotation">About the Zettelkasten method. My current note-taking feels scattered; this might offer structure.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> The Structure of Scientific Revolutions — Thomas Kuhn</div>
+                        <div class="item-annotation">Paradigm shifts. Fundamental to how I think about regulatory change and disruption.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> Playing to Win — A.G. Lafley &amp; Roger Martin</div>
+                        <div class="item-annotation">Strategy from the Procter &amp; Gamble perspective. Practical and grounded in real competitive dynamics.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> The Art of Action — Stephen Bungay</div>
+                        <div class="item-annotation">Combines Boyd's OODA Loop with practical business strategy. Been meaning to read this for three years.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> Permission Marketing — Seth Godin</div>
+                        <div class="item-annotation">Written in 1999 but still relevant to how fintech thinks about customer relationships and permission to engage.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- List 2: Books I've Reviewed -->
+            <div class="list-card">
+                <div class="list-header">
+                    <h2 class="list-title">Books I've Reviewed</h2>
+                    <div class="list-count">11 items</div>
+                </div>
+                <ul class="list-items">
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">Thinking, Fast and Slow — Daniel Kahneman</a></div>
+                        <div class="item-annotation">The book that fundamentally changed how I think about decision-making, bias, and regulation. Every economic regulator should read this.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">Why Nations Fail — Acemoglu &amp; Robinson</a></div>
+                        <div class="item-annotation">Essential reading for anyone working in economic development or policy. The extractive vs. inclusive institutions framework is powerful.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">The Courage to Be Disliked — Kishimi &amp; Koga</a></div>
+                        <div class="item-annotation">Adlerian psychology through Socratic dialogue. Shifted how I think about relationships, expectations, and change.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">Antifragile — Nassim Nicholas Taleb</a></div>
+                        <div class="item-annotation">Changed my entire approach to risk and optionality. The framework applies to regulation, finance, and personal resilience.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">The Master and Margarita — Mikhail Bulgakov</a></div>
+                        <div class="item-annotation">A masterpiece of political allegory dressed as magical realism. The Devil arrives in Stalin's Moscow to satirise Soviet bureaucracy.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">Slouching Towards Utopia — Brad DeLong</a></div>
+                        <div class="item-annotation">Economic history from 1870–2010. DeLong argues that the long 20th century was about managing growth's inequality.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">The Economic Singularity — Calum Chace</a></div>
+                        <div class="item-annotation">A serious, sober take on AI and the future of work. Better than most of the hype, but still speculative.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">The Righteous Mind — Jonathan Haidt</a></div>
+                        <div class="item-annotation">How moral intuitions shape politics. Haidt's framework for understanding different moral foundations is invaluable for policy work.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">The Lessons of History — Will &amp; Ariel Durant</a></div>
+                        <div class="item-annotation">A slim, elegant synthesis of what history teaches. More relevant to understanding recurring patterns than most thick histories.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">Sapiens — Yuval Noah Harari</a></div>
+                        <div class="item-annotation">A grand narrative of human history through the lens of cognitive, agricultural, and scientific revolutions. Sweeping but sometimes oversimplified.</div>
+                    </li>
+                    <li class="list-item">
+                        <div class="item-title"><span class="item-bullet">•</span> <a href="#">The Lean Startup — Eric Ries</a></div>
+                        <div class="item-annotation">Taught a generation of founders to validate assumptions fast. The build-measure-learn loop is still the best framework for innovation under uncertainty.</div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- List 3: Favourite Thinkers & Writers -->
+            <div class="list-card">
+                <div class="list-header">
+                    <h2 class="list-title">Favourite Thinkers &amp; Writers</h2>
+                    <div class="list-count">10 items</div>
+                </div>
+                <ul class="list-items">
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Tyler Cowen</div><div class="item-annotation">His ability to connect economics to culture, food, and everyday life is unmatched. Marginal Revolution is a daily read.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> David Perell</div><div class="item-annotation">Taught me that writing online is the most underrated professional skill. His essays on technology and culture are sharp.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Nassim Nicholas Taleb</div><div class="item-annotation">Antifragile changed how I think about risk in regulation and finance. Provocative but consistently right about tail risk.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Adam Smith</div><div class="item-annotation">More than just the invisible hand. His work on moral sentiment and social behaviour is deeper than most people realise.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Isaiah Berlin</div><div class="item-annotation">On pluralism, freedom, and the conflict between values. His essay on Herzen shaped how I think about liberty and tradeoffs.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Friedrich Hayek</div><div class="item-annotation">The Road to Serfdom is overrated, but his work on knowledge problems and dispersed information is fundamental to regulation.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Paul Graham</div><div class="item-annotation">His essays on startups, technology, and writing shaped how I think about progress. Clear thinking expressed simply.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> René Girard</div><div class="item-annotation">Mimetic theory. Once you understand that we desire what others desire, you can't unsee it in politics, markets, and culture.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Yancey Strickler</div><div class="item-annotation">On creative independence and how to fund the work that matters. His writing on patronage and economics of culture is original.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Hannah Arendt</div><div class="item-annotation">On totalitarianism, power, and the political. Dense but revelatory about how societies can lose freedom slowly.</div></li>
+                </ul>
+            </div>
+
+            <!-- List 4: Stripe Press Collection -->
+            <div class="list-card">
+                <div class="list-header">
+                    <h2 class="list-title">Stripe Press Collection</h2>
+                    <div class="list-count">4 items</div>
+                </div>
+                <ul class="list-items">
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> The Dream Machine — M. Mitchell Waldrop</div><div class="item-annotation">The story of J.C.R. Licklider and the birth of personal computing. Stripe Press at its best: deep history of an idea that changed everything.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> The Alignment Problem — Brian Christian</div><div class="item-annotation">How do we ensure AI systems do what we want them to do? The most thoughtful book on AI safety and ethics I've read.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> The Roaring Twenties — Benjamin H. Hall</div><div class="item-annotation">Economic history of the post-war boom. Relevant to understanding inflation, policy responses, and how economies recover.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> The Seafaring Tradition — James Nestor</div><div class="item-annotation">On how maritime history shapes modern commerce and technology. Unique perspective from Stripe Press.</div></li>
+                </ul>
+            </div>
+
+            <!-- List 5: Ideas That Stuck With Me -->
+            <div class="list-card">
+                <div class="list-header">
+                    <h2 class="list-title">Ideas That Stuck With Me</h2>
+                    <div class="list-count">7 items</div>
+                </div>
+                <ul class="list-items">
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Ergodicity</div><div class="item-annotation">The insight that time averages and ensemble averages aren't the same thing. Changes everything about how you think about risk and ruin.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Mimetic Theory</div><div class="item-annotation">René Girard's idea that we desire what others desire. Once you see it, you can't unsee it in markets, politics, and relationships.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Skin in the Game</div><div class="item-annotation">Taleb's argument that people making decisions should bear the consequences. Fundamental to good regulation and accountability.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Second-Order Thinking</div><div class="item-annotation">Always ask: and then what? Most policy mistakes and market failures come from ignoring second and third-order effects.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> The Lindy Effect</div><div class="item-annotation">Things that have survived a long time will probably survive longer. A useful filter for what to read, who to learn from, and what to build.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Via Negativa</div><div class="item-annotation">Improvement by subtraction. Often the best thing to do is remove something rather than add. Applies to policy, code, and life.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> OODA Loop</div><div class="item-annotation">Boyd's observe-orient-decide-act framework. Useful for thinking about organisational speed and competitive advantage.</div></li>
+                </ul>
+            </div>
+
+            <!-- List 6: Interests & Obsessions -->
+            <div class="list-card">
+                <div class="list-header">
+                    <h2 class="list-title">Interests &amp; Obsessions</h2>
+                    <div class="list-count">6 items</div>
+                </div>
+                <ul class="list-items">
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Regulatory Economics</div><div class="item-annotation">How do you design rules that protect consumers without stifling innovation? This is my day job, essentially. Endlessly fascinating.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Iraqi History &amp; Diaspora</div><div class="item-annotation">Understanding where I come from. The modern history of Iraq is fascinating and underexplored in English literature.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Small Business Finance</div><div class="item-annotation">Six years at the British Business Bank showed me how much the SME lending market matters for the real economy and employment.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Austrian Economics Tradition</div><div class="item-annotation">Studying in Vienna gave me a different perspective. Hayek, Schumpeter, Mises, the whole tradition of thinking about markets and knowledge.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Language &amp; Etymology</div><div class="item-annotation">Words have histories. Understanding them makes you a better writer, thinker, and communicator. Trilingual perspective helps.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Triathlon &amp; Endurance Sport</div><div class="item-annotation">The discipline of training for three disciplines teaches you about consistency, marginal gains, and the importance of recovery.</div></li>
+                </ul>
+            </div>
+
+            <!-- List 7: Life Systems -->
+            <div class="list-card">
+                <div class="list-header">
+                    <h2 class="list-title">Life Systems</h2>
+                    <div class="list-count">4 items</div>
+                </div>
+                <ul class="list-items">
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Second Brain (Notion)</div><div class="item-annotation">I keep everything in Notion — reading notes, project plans, lists, research. It's how I think externally and maintain context.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Spaced Repetition</div><div class="item-annotation">Using Anki to remember what I read. Without it, most books would fade in weeks. Spacing out review forces deeper retention.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Weekly Review</div><div class="item-annotation">Every Sunday: review the week, plan the next one, update the lists. Simple but transformative for clarity and intention.</div></li>
+                    <li class="list-item"><div class="item-title"><span class="item-bullet">•</span> Morning Pages</div><div class="item-annotation">Three pages of longhand writing first thing. Clears the mind before the day starts. Unfiltered, stream-of-consciousness thinking.</div></li>
+                </ul>
+            </div>
+
+            <!-- Placeholder Lists -->
+            <div class="list-card"><div class="list-header"><h2 class="list-title">Podcasts I Return To</h2><div class="list-count">~15 items</div></div><div class="placeholder-items">[Annotated items to be added]</div></div>
+            <div class="list-card"><div class="list-header"><h2 class="list-title">Films That Changed How I Think</h2><div class="list-count">~12 items</div></div><div class="placeholder-items">[Annotated items to be added]</div></div>
+            <div class="list-card"><div class="list-header"><h2 class="list-title">Places That Matter</h2><div class="list-count">~8 items</div></div><div class="placeholder-items">[Annotated items to be added]</div></div>
+            <div class="list-card"><div class="list-header"><h2 class="list-title">Quotes I Live By</h2><div class="list-count">~10 items</div></div><div class="placeholder-items">[Annotated items to be added]</div></div>
+            <div class="list-card"><div class="list-header"><h2 class="list-title">Tools &amp; Software</h2><div class="list-count">~10 items</div></div><div class="placeholder-items">[Annotated items to be added]</div></div>
+            <div class="list-card"><div class="list-header"><h2 class="list-title">Writing That Influenced Me</h2><div class="list-count">~15 items</div></div><div class="placeholder-items">[Annotated items to be added]</div></div>
+            <div class="list-card"><div class="list-header"><h2 class="list-title">People I'd Love to Meet</h2><div class="list-count">~8 items</div></div><div class="placeholder-items">[Annotated items to be added]</div></div>
+        </section>
+
+        <!-- ==================== PROJECTS ==================== -->
+        <section id="projects" class="page-section">
+            <h1>Projects</h1>
+            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-xl);">Chrome extensions and tools I've built. All open-source on GitHub.</p>
+
+            <!-- FT Expand All Comments -->
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>FT Expand All Comments</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-chrome">Chrome Extension</span>
+                        <span class="badge badge-v3">Manifest V3</span>
+                        <span class="badge badge-mit">MIT</span>
+                    </div>
+                </div>
+                <p class="project-description">A Chrome extension that brings back the classic Financial Times comment experience. The FT's current comment system collapses all replies by default, making it tedious to follow discussions. This extension lets you expand or collapse all comments with one click, or set it to auto-expand every time.</p>
+                <div class="project-features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li><strong>Expand All</strong> — instantly expand every comment and reply with one click</li>
+                        <li><strong>Collapse All</strong> — collapse replies while keeping top-level comments visible</li>
+                        <li><strong>Always Expand</strong> — toggle on to auto-expand comments on every FT article you visit</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Chrome Extensions API</span>
+                    <span class="tech-tag">Shadow DOM</span>
+                    <span class="tech-tag">MutationObserver</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/leathalobaidi/ft-expand-comments" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </article>
+
+            <!-- YouTube Tab Sorter -->
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>YouTube Tab Sorter</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-chrome">Chrome Extension</span>
+                        <span class="badge badge-v3">Manifest V3</span>
+                        <span class="badge badge-mit">MIT</span>
+                    </div>
+                </div>
+                <p class="project-description">A Chrome extension that sorts your YouTube video tabs by duration — shortest videos on the left, longest on the right. Built for those moments when you have a dozen YouTube tabs open and only a few minutes to spare.</p>
+                <div class="project-features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li><strong>One-Click Sort</strong> — click the toolbar icon to instantly organise all your YouTube tabs</li>
+                        <li><strong>Smart Duration Detection</strong> — uses multiple fallback methods to accurately detect video length</li>
+                        <li><strong>Clean Organisation</strong> — YouTube videos sorted by length, other tabs moved to the right</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Chrome Extensions API</span>
+                    <span class="tech-tag">YouTube Data API</span>
+                    <span class="tech-tag">ISO 8601</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/leathalobaidi/youtube-tab-sorter" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </article>
+
+            <!-- Vypode for Letterboxd -->
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Vypode for Letterboxd</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-chrome">Chrome Extension</span>
+                        <span class="badge badge-v3">Manifest V3</span>
+                        <span class="badge badge-mit">MIT</span>
+                    </div>
+                </div>
+                <p class="project-description">A swipe-style interface for quickly rating and managing films on Letterboxd. Browse through films as a card deck — swipe to mark as watched, like, or add to your watchlist. Actions happen in the background so you never leave the deck.</p>
+                <div class="project-features">
+                    <h3>Features</h3>
+                    <ul class="feature-list">
+                        <li><strong>Swipe Deck</strong> — browse films as cards with mouse or keyboard controls</li>
+                        <li><strong>Background Actions</strong> — rate, like, or watchlist films without leaving the deck view</li>
+                        <li><strong>Auto-Advance</strong> — automatically moves to the next film after each action</li>
+                        <li><strong>Auto-Next Page</strong> — when you finish a page of films, it loads the next page automatically</li>
+                        <li><strong>Works Everywhere</strong> — popular films, decade browsing, genre pages, watchlists, and user lists</li>
+                    </ul>
+                </div>
+                <div class="project-features">
+                    <h3>Controls</h3>
+                    <ul class="feature-list">
+                        <li><strong>Mark as Watched</strong> — left zone or left arrow key</li>
+                        <li><strong>Like</strong> — top zone or up arrow key</li>
+                        <li><strong>Add to Watchlist</strong> — right zone or right arrow key</li>
+                        <li><strong>Skip</strong> — bottom zone or down arrow key</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">CSS Animations</span>
+                    <span class="tech-tag">Chrome Extensions API</span>
+                    <span class="tech-tag">Letterboxd</span>
+                </div>
+                <div class="project-links">
+                    <a href="https://github.com/leathalobaidi/vypode-letterboxd-extension" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+                        View on GitHub
+                    </a>
+                </div>
+            </article>
+
+            <section class="built-with">
+                <h2>How these were built</h2>
+                <p>All three extensions were built through conversational AI pair programming with Claude (Anthropic) — from initial concept to working extension in a single session each. They're all open-source under the MIT licence. If you spot a bug or have a feature request, open an issue on GitHub.</p>
+            </section>
+
+            <hr class="wip-divider">
+
+            <div class="wip-section">
+                <h2>Work in Progress <span class="wip-label">In Progress</span></h2>
+                <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);line-height:1.8;">Things I'm actively building, writing, or training for. Some are close to launch, others are still taking shape.</p>
+
+                <article class="wip-card">
+                    <h3>InfraMosaic</h3>
+                    <span class="wip-type type-podcast">Podcast</span>
+                    <p>A podcast about energy infrastructure, the energy transition, and the people building it. Currently in pre-production — studio scouted, equipment researched.</p>
+                    <a href="https://www.inframosaic.com/" class="wip-link">inframosaic.com</a>
+                </article>
+
+                <article class="wip-card">
+                    <h3>SPE Book Review Podcast</h3>
+                    <span class="wip-type type-podcast">Podcast</span>
+                    <p>A podcast for the Society of Professional Economists where I interview authors about their economics books. Format drafted, recording workflow being set up.</p>
+                </article>
+
+                <article class="wip-card">
+                    <h3>Stripe Press Book Club</h3>
+                    <span class="wip-type type-community">Community</span>
+                    <p>A reading community built around Stripe Press titles — 19 books on technology, economics, science, and civilisation, read across four seasonal quarters in 2026.</p>
+                </article>
+
+                <article class="wip-card">
+                    <h3>Substack Newsletter</h3>
+                    <span class="wip-type type-writing">Writing</span>
+                    <p>My newsletter on economics, books, and ideas. Drafts in the queue on economic paradoxes, barriers to growth in developed nations, and UK institutional decline.</p>
+                    <a href="https://leathalobaidi.substack.com/" class="wip-link">leathalobaidi.substack.com</a>
+                </article>
+
+                <article class="wip-card">
+                    <h3>Essays &amp; Blog Posts</h3>
+                    <span class="wip-type type-writing">Writing</span>
+                    <p>Longer pieces I'm working on: "The Barriers to Growth in the Developed Nation," a post on insolvable economic problems, one on economic paradoxes, and "We Stopped Building Cathedral Policies."</p>
+                </article>
+
+                <article class="wip-card">
+                    <h3>SPE Website Modernisation</h3>
+                    <span class="wip-type type-org">Organisation</span>
+                    <p>Leading the digital transformation of the Society of Professional Economists' website and online presence.</p>
+                </article>
+
+                <article class="wip-card">
+                    <h3>Movie Memory</h3>
+                    <span class="wip-type type-app">App</span>
+                    <p>An app to track and remember the films you've watched. Still in development.</p>
+                </article>
+
+                <article class="wip-card">
+                    <h3>Triathlon Training</h3>
+                    <span class="wip-type type-sport">Sport</span>
+                    <p>Training for triathlon. Professional bike fit done, working through a structured training plan across swim, bike, and run.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- ==================== ABOUT ==================== -->
+        <section id="about" class="page-section">
+            <h1>About</h1>
+
+            <div class="story-section">
+                <p>I'm Leath Al Obaidi, an economist based in London. I grew up between Iraq and Austria — my family moved to Vienna when I was young, and I spent my formative years there. I studied economics at the University of Vienna, where I learned to think in German and in the Austrian economic tradition. I later moved to England for my master's at the University of Nottingham.</p>
+            </div>
+
+            <div class="story-section">
+                <p>Before I became an economist, I worked as a paramedic in Vienna with the Arbeiter-Samariter-Bund. I co-founded a travel company. I interned at the Vienna Institute for International Economic Studies and the Economist Intelligence Unit. I edited the Iraqi Economists Network. These experiences taught me that the most interesting careers aren't linear — they're shaped by curiosity and circumstance.</p>
+            </div>
+
+            <div class="story-section">
+                <p>I've spent the last decade working at the intersection of economics, regulation, and public policy. At Ofgem, I evaluated energy price controls, led impact assessments, and contributed to enforcement casework. At the British Business Bank, I helped secure over £1bn in government funding through Spending Review bids, led the economic case for pandemic loan schemes that protected over a million businesses, and directed the Start Up Loan programme worth £825m. I published research on SME finance, private debt, angel investing, and European digitalisation. I now work in regulatory finance at Smart DCC, the company that runs Britain's smart meter data network, where I lead pricing strategy and financial controls for the national rollout.</p>
+            </div>
+
+            <div class="story-section">
+                <p>Outside my day job, I serve as a Non-Executive Director at Wenta, a social enterprise that supports small businesses across Hertfordshire. I sit on the Council of the Society of Professional Economists, where I'm helping to modernise the organisation and expand its programme of events across the UK and Europe. I previously served as Treasurer of Mind in Haringey, where I helped grow the charity's budget from £200k to £1m.</p>
+            </div>
+
+            <div class="story-section">
+                <p>I read widely — economics, history, philosophy, literature, and anything that helps me understand how the world works. This site is where I keep my reading notes, book reviews, and curated lists. I believe that writing about what you read is the best way to actually learn from it. My favourite thinkers include Tyler Cowen, Nassim Taleb, Isaiah Berlin, and Friedrich Hayek.</p>
+            </div>
+
+            <div class="story-section">
+                <p>I speak English and German fluently. I'm training for my first triathlon. I run a Stripe Press Book Club. I'm always looking for good conversation about economics, books, or ideas.</p>
+            </div>
+
+            <div class="now-section">
+                <h2>What I'm doing now</h2>
+                <p class="updated">Updated February 2026</p>
+                <ul>
+                    <li>Working on 4G regulatory pricing strategy at Smart DCC</li>
+                    <li>Serving on the SPE Council — planning events and modernisation</li>
+                    <li>Non-Executive Director at Wenta</li>
+                    <li>Training for a triathlon</li>
+                    <li>Running the Stripe Press Book Club</li>
+                    <li>Reading and reviewing books on this site</li>
+                </ul>
+            </div>
+
+            <div class="about-contact-section">
+                <h2>Get in touch</h2>
+                <p>If you'd like to get in touch, send me an email or book a time on Calendly. I'm always happy to chat about economics, regulation, books, or anything on this site.</p>
+                <div class="button-group">
+                    <a href="mailto:alobaidi.leath@gmail.com" class="btn">Send an email</a>
+                    <a href="https://calendly.com/leathalobaidi" class="btn btn-secondary">Book a call</a>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
     <!-- Footer -->
-    <footer class="site-footer">
-      <span class="footer-text">&copy; 2026 Leath Al Obaidi</span>
-      <div class="footer-socials">
-        <a href="https://leathalobaidi.substack.com" target="_blank" rel="noopener" aria-label="Substack">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16"/><path d="M4 8h16"/><path d="M4 12l8 6 8-6"/></svg>
-        </a>
-        <a href="https://linkedin.com/in/leathalobaidi" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
-        <a href="https://twitter.com/leathalobaidi" target="_blank" rel="noopener" aria-label="Twitter">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4l11.733 16h4.267l-11.733-16z"/><path d="M4 20l6.768-6.768"/><path d="M20 4l-6.768 6.768"/></svg>
-        </a>
-        <a href="https://github.com/leathalobaidi" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-        </a>
-      </div>
+    <footer>
+        <div class="footer-content">
+            <p>© 2026 Leath Al Obaidi. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="https://leathalobaidi.substack.com/">Substack</a>
+                <a href="https://linkedin.com/in/leath-al-obaidi/">LinkedIn</a>
+                <a href="https://x.com/pluckup_courage">X</a>
+                <a href="https://github.com/leathalobaidi">GitHub</a>
+            </div>
+        </div>
     </footer>
 
-  </div>
+    <script>
+        // Notes search and filter
+        const searchInput = document.getElementById('search-input');
+        const filterPills = document.querySelectorAll('.filter-pill');
+        const noteItems = document.querySelectorAll('.note-item');
+        const emptyState = document.getElementById('empty-state');
+        const notesShowing = document.getElementById('notes-showing');
+        const totalNotes = document.getElementById('total-notes');
 
-</body>
-</html>
+        let activeCategory = 'All';
+        let searchQuery = '';
+
+        totalNotes.textContent = noteItems.length;
+        notesShowing.textContent = noteItems.length;
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            filterNotes();
+        });
+
+        filterPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                filterPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+                activeCategory = pill.getAttribute('data-category');
+                filterNotes();
+            });
+        });
+
+        function filterNotes() {
+            let visibleCount = 0;
+            noteItems.forEach(note => {
+                const cat = note.getAttribute('data-category');
+                const text = note.getAttribute('data-searchtext');
+                const catMatch = activeCategory === 'All' || cat === activeCategory;
+                const searchMatch = searchQuery === '' || text.includes(searchQuery);
+                if (catMatch && searchMatch) {
+                    note.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    note.classList.add('hidden');
+                }
+            });
+            notesShowing.textContent = visibleCount;
+            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Active nav link on scroll
+        const sections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = 'home';
+            sections.forEach(section => {
+                const top = section.offsetTop - 80;
+                if (window.scrollY >= top) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+
+</body></html>
