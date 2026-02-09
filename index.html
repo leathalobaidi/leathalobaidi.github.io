@@ -708,7 +708,7 @@
             <div class="cards-grid">
                 <div class="card" onclick="document.getElementById(&#39;notes&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
                     <h3>My Notes</h3>
-                    <p>Book reviews, reading notes, and ideas across economics, philosophy, literature, and more. 141 notes and counting.</p>
+                    <p>A reading log of books and essays across economics, philosophy, literature, and more. Full notes coming soon.</p>
                 </div>
                 <div class="card" onclick="document.getElementById(&#39;listography&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
                     <h3>Listography</h3>
@@ -731,11 +731,11 @@
             <p class="section-intro">Reports and research I've authored or co-authored during my time at the British Business Bank and Ofgem.</p>
             <ul class="publications-list">
                 <li>
-                    <span class="publication-title">Small Business Finance Market Report</span>
+                    <a href="https://www.british-business-bank.co.uk/research/small-business-finance-markets" class="publication-title">Small Business Finance Market Report</a>
                     <span class="publication-year">2019, 2020, 2021, 2022, 2023</span>
                 </li>
                 <li>
-                    <span class="publication-title">UK Private Debt Research Report</span>
+                    <a href="https://www.british-business-bank.co.uk/research/uk-private-debt" class="publication-title">UK Private Debt Research Report</a>
                     <span class="publication-year">2020</span>
                 </li>
                 <li>
@@ -743,15 +743,15 @@
                     <span class="publication-year">2019</span>
                 </li>
                 <li>
-                    <span class="publication-title">UK Business Angel Market</span>
+                    <a href="https://www.british-business-bank.co.uk/research/the-uk-business-angel-market" class="publication-title">UK Business Angel Market</a>
                     <span class="publication-year">2018, 2020</span>
                 </li>
                 <li>
-                    <span class="publication-title">Using Intellectual Property to Access Growth Funding</span>
+                    <a href="https://www.british-business-bank.co.uk/research/using-intellectual-property-to-access-growth-funding" class="publication-title">Using Intellectual Property to Access Growth Funding</a>
                     <span class="publication-year">2018</span>
                 </li>
                 <li>
-                    <span class="publication-title">State of the Energy Market (contributing author)</span>
+                    <a href="https://www.ofgem.gov.uk/publications/state-energy-market-2017" class="publication-title">State of the Energy Market (contributing author)</a>
                     <span class="publication-year">2017</span>
                 </li>
             </ul>
@@ -804,211 +804,94 @@
         <!-- ==================== NOTES ==================== -->
         <section id="notes" class="page-section">
             <h1>Notes</h1>
-            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);">Book reviews, reading notes, and ideas. 141 notes across 9 categories.</p>
+            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-sm);">A reading log of books and essays I've been working through. Full reviews and notes are being written up — check back soon.</p>
+            <p style="color:var(--color-primary);font-size:0.9rem;font-weight:500;margin-bottom:var(--spacing-lg);">Notes coming soon</p>
 
-            <div class="recently-added">
-                <h2 class="notes-section-title">Recently Added</h2>
-                <div class="recent-notes-list">
-                    <div class="recent-note">
-                        <div class="recent-note-content">
-                            <div class="recent-note-title"><a href="javascript:void(0)" style="cursor:default;">Thinking, Fast and Slow — Daniel Kahneman</a></div>
-                            <div class="recent-note-meta">
-                                <span>Psychology</span>
-                                <span class="note-label label-book-review">Book Review</span>
-                            </div>
-                        </div>
-                        <span class="new-badge">New</span>
-                    </div>
-                    <div class="recent-note">
-                        <div class="recent-note-content">
-                            <div class="recent-note-title"><a href="javascript:void(0)" style="cursor:default;">The Use of Knowledge in Society — Friedrich Hayek</a></div>
-                            <div class="recent-note-meta">
-                                <span>Economics</span>
-                                <span class="note-label label-reading-notes">Reading Notes</span>
-                            </div>
-                        </div>
-                        <span class="new-badge">New</span>
-                    </div>
-                    <div class="recent-note">
-                        <div class="recent-note-content">
-                            <div class="recent-note-title"><a href="javascript:void(0)" style="cursor:default;">Why Nations Fail — Acemoglu &amp; Robinson</a></div>
-                            <div class="recent-note-meta">
-                                <span>Economics</span>
-                                <span class="note-label label-book-review">Book Review</span>
-                            </div>
-                        </div>
-                        <span class="new-badge">New</span>
-                    </div>
-                    <div class="recent-note">
-                        <div class="recent-note-content">
-                            <div class="recent-note-title"><a href="javascript:void(0)" style="cursor:default;">On Writing Well — William Zinsser</a></div>
-                            <div class="recent-note-meta">
-                                <span>Language &amp; Writing</span>
-                                <span class="note-label label-book-review">Book Review</span>
-                            </div>
-                        </div>
-                        <span class="new-badge">New</span>
-                    </div>
-                    <div class="recent-note">
-                        <div class="recent-note-content">
-                            <div class="recent-note-title"><a href="javascript:void(0)" style="cursor:default;">The Hedgehog and the Fox — Isaiah Berlin</a></div>
-                            <div class="recent-note-meta">
-                                <span>Philosophy</span>
-                                <span class="note-label label-original-essay">Original Essay</span>
-                            </div>
-                        </div>
-                        <span class="new-badge">New</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="search-container">
-                <input type="text" id="search-input" placeholder="Search notes by title, category, or keyword..." aria-label="Search notes">
-            </div>
-
-            <div class="filters-container">
-                <div class="filter-label">Filter by category</div>
-                <div class="filter-pills">
-                    <button class="filter-pill active" data-category="All">All</button>
-                    <button class="filter-pill" data-category="Economics">Economics</button>
-                    <button class="filter-pill" data-category="Business &amp; Management">Business</button>
-                    <button class="filter-pill" data-category="Philosophy">Philosophy</button>
-                    <button class="filter-pill" data-category="Literature &amp; Fiction">Literature</button>
-                    <button class="filter-pill" data-category="History">History</button>
-                    <button class="filter-pill" data-category="Language &amp; Writing">Writing</button>
-                    <button class="filter-pill" data-category="Psychology">Psychology</button>
-                    <button class="filter-pill" data-category="Science &amp; Technology">Science</button>
-                    <button class="filter-pill" data-category="Miscellaneous">Misc</button>
-                </div>
-            </div>
-
-            <div class="notes-count">Showing <span id="notes-showing">15</span> of <span id="total-notes">15</span> notes</div>
-
-            <div class="notes-list" id="notes-container">
-                <div class="note-item" data-category="Economics" data-labels="book-review" data-searchtext="thinking fast and slow daniel kahneman economics psychology">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">Thinking, Fast and Slow — Daniel Kahneman</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Economics</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Dec 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Economics" data-labels="reading-notes" data-searchtext="use of knowledge in society friedrich hayek economics">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">The Use of Knowledge in Society — Friedrich Hayek</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Economics</span>
-                        <span class="note-label label-reading-notes">Reading Notes</span>
-                        <span class="note-date">Nov 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Economics" data-labels="book-review" data-searchtext="why nations fail daron acemoglu james robinson economic growth institutions">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">Why Nations Fail — Acemoglu &amp; Robinson</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Economics</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Oct 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Language &amp; Writing" data-labels="book-review" data-searchtext="on writing well william zinsser writing craft clarity">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">On Writing Well — William Zinsser</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Language &amp; Writing</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Sep 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Philosophy" data-labels="original-essay" data-searchtext="hedgehog and fox isaiah berlin philosophy universalists specialists">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">The Hedgehog and the Fox — Isaiah Berlin</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Philosophy</span>
-                        <span class="note-label label-original-essay">Original Essay</span>
-                        <span class="note-date">Aug 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Economics" data-labels="original-essay" data-searchtext="ergodicity economics primer probability finance">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">Ergodicity Economics: A Primer</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Economics</span>
-                        <span class="note-label label-original-essay">Original Essay</span>
-                        <span class="note-date">Jul 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Philosophy" data-labels="reading-notes" data-searchtext="meditations marcus aurelius stoicism philosophy">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">Meditations — Marcus Aurelius</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Philosophy</span>
-                        <span class="note-label label-reading-notes">Reading Notes</span>
-                        <span class="note-date">Jun 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Literature &amp; Fiction" data-labels="book-review" data-searchtext="great gatsby f scott fitzgerald american literature fiction">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">The Great Gatsby — F. Scott Fitzgerald</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Literature &amp; Fiction</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">May 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="History" data-labels="book-review" data-searchtext="sapiens yuval noah harari human history evolution civilization">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">Sapiens — Yuval Noah Harari</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">History</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Apr 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Language &amp; Writing" data-labels="reading-notes" data-searchtext="how to read a book mortimer adler reading comprehension learning">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">How to Read a Book — Mortimer Adler</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Language &amp; Writing</span>
-                        <span class="note-label label-reading-notes">Reading Notes</span>
-                        <span class="note-date">Mar 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Science &amp; Technology" data-labels="book-review" data-searchtext="the information james gleick information theory communication">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">The Information — James Gleick</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Science &amp; Technology</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Feb 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Philosophy" data-labels="reading-notes" data-searchtext="the prince niccolo machiavelli political philosophy power">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">The Prince — Niccolò Machiavelli</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Philosophy</span>
-                        <span class="note-label label-reading-notes">Reading Notes</span>
-                        <span class="note-date">Jan 2025</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Science &amp; Technology" data-labels="book-review" data-searchtext="scale geoffrey west complexity networks cities biology">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">Scale — Geoffrey West</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Science &amp; Technology</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Dec 2024</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Economics" data-labels="book-review" data-searchtext="the black swan nassim nicholas taleb probability risk uncertainty">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">The Black Swan — Nassim Nicholas Taleb</a></div>
-                    <div class="note-meta">
-                        <span class="note-category">Economics</span>
-                        <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Nov 2024</span>
-                    </div>
-                </div>
-                <div class="note-item" data-category="Psychology" data-labels="book-review" data-searchtext="range david epstein generalism specialization learning">
-                    <div class="note-title"><a href="javascript:void(0)" style="cursor:default;">Range — David Epstein</a></div>
+            <div class="notes-list">
+                <div class="note-item">
+                    <div class="note-title">Thinking, Fast and Slow — Daniel Kahneman</div>
                     <div class="note-meta">
                         <span class="note-category">Psychology</span>
                         <span class="note-label label-book-review">Book Review</span>
-                        <span class="note-date">Oct 2024</span>
                     </div>
                 </div>
-            </div>
-
-            <div class="empty-state" id="empty-state" style="display:none;">
-                <p>No notes found. Try adjusting your search or filters.</p>
+                <div class="note-item">
+                    <div class="note-title">The Use of Knowledge in Society — Friedrich Hayek</div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-reading-notes">Reading Notes</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">Why Nations Fail — Acemoglu &amp; Robinson</div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">On Writing Well — William Zinsser</div>
+                    <div class="note-meta">
+                        <span class="note-category">Language &amp; Writing</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">The Hedgehog and the Fox — Isaiah Berlin</div>
+                    <div class="note-meta">
+                        <span class="note-category">Philosophy</span>
+                        <span class="note-label label-original-essay">Original Essay</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">Ergodicity Economics: A Primer</div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-original-essay">Original Essay</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">Meditations — Marcus Aurelius</div>
+                    <div class="note-meta">
+                        <span class="note-category">Philosophy</span>
+                        <span class="note-label label-reading-notes">Reading Notes</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">The Great Gatsby — F. Scott Fitzgerald</div>
+                    <div class="note-meta">
+                        <span class="note-category">Literature &amp; Fiction</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">Sapiens — Yuval Noah Harari</div>
+                    <div class="note-meta">
+                        <span class="note-category">History</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">The Black Swan — Nassim Nicholas Taleb</div>
+                    <div class="note-meta">
+                        <span class="note-category">Economics</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">The Prince — Niccolò Machiavelli</div>
+                    <div class="note-meta">
+                        <span class="note-category">Philosophy</span>
+                        <span class="note-label label-reading-notes">Reading Notes</span>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-title">Range — David Epstein</div>
+                    <div class="note-meta">
+                        <span class="note-category">Psychology</span>
+                        <span class="note-label label-book-review">Book Review</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -1354,95 +1237,28 @@
             </div>
         </section>
 
-        <!-- ==================== ABOUT ==================== -->
-        <section id="about" class="page-section">
-            <h1>About</h1>
-
-            <div class="now-section">
-                <h2>What I'm doing now</h2>
-                <p class="updated">Updated February 2026</p>
-                <ul>
-                    <li>Working on 4G regulatory pricing strategy at Smart DCC</li>
-                    <li>Serving on the SPE Council — planning events and modernisation</li>
-                    <li>Non-Executive Director at Wenta</li>
-                    <li>Training for a triathlon</li>
-                    <li>Running the Stripe Press Book Club</li>
-                    <li>Reading and reviewing books on this site</li>
-                </ul>
-            </div>
-
-            <div class="about-contact-section">
-                <h2>Get in touch</h2>
-                <p>Happy to chat about regulatory economics, energy pricing, small business finance, or building side projects.</p>
-                <div class="button-group">
-                    <a href="mailto:alobaidi.leath@gmail.com" class="btn">Send an email</a>
-                    <a href="https://calendly.com/leathalobaidi" class="btn btn-secondary">Book a call</a>
-                </div>
-            </div>
-        </section>
 
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <p>© 2026 Leath Al Obaidi. All rights reserved.</p>
+            <p style="margin-bottom:var(--spacing-sm);">Happy to chat about regulatory economics, energy pricing, small business finance, or building side projects.</p>
+            <div class="buttons-row" style="margin-bottom:var(--spacing-lg);">
+                <a href="mailto:alobaidi.leath@gmail.com" class="btn">Send an email</a>
+                <a href="https://calendly.com/leathalobaidi" class="btn btn-secondary">Book a call</a>
+            </div>
             <div class="footer-social">
                 <a href="https://leathalobaidi.substack.com/">Substack</a>
                 <a href="https://linkedin.com/in/leath-al-obaidi/">LinkedIn</a>
                 <a href="https://x.com/pluckup_courage">X</a>
                 <a href="https://github.com/leathalobaidi">GitHub</a>
             </div>
+            <p style="margin-top:var(--spacing-md);">&copy; 2026 Leath Al Obaidi</p>
         </div>
     </footer>
 
     <script>
-        // Notes search and filter
-        const searchInput = document.getElementById('search-input');
-        const filterPills = document.querySelectorAll('.filter-pill');
-        const noteItems = document.querySelectorAll('.note-item');
-        const emptyState = document.getElementById('empty-state');
-        const notesShowing = document.getElementById('notes-showing');
-        const totalNotes = document.getElementById('total-notes');
-
-        let activeCategory = 'All';
-        let searchQuery = '';
-
-        totalNotes.textContent = noteItems.length;
-        notesShowing.textContent = noteItems.length;
-
-        searchInput.addEventListener('input', (e) => {
-            searchQuery = e.target.value.toLowerCase().trim();
-            filterNotes();
-        });
-
-        filterPills.forEach(pill => {
-            pill.addEventListener('click', () => {
-                filterPills.forEach(p => p.classList.remove('active'));
-                pill.classList.add('active');
-                activeCategory = pill.getAttribute('data-category');
-                filterNotes();
-            });
-        });
-
-        function filterNotes() {
-            let visibleCount = 0;
-            noteItems.forEach(note => {
-                const cat = note.getAttribute('data-category');
-                const text = note.getAttribute('data-searchtext');
-                const catMatch = activeCategory === 'All' || cat === activeCategory;
-                const searchMatch = searchQuery === '' || text.includes(searchQuery);
-                if (catMatch && searchMatch) {
-                    note.classList.remove('hidden');
-                    visibleCount++;
-                } else {
-                    note.classList.add('hidden');
-                }
-            });
-            notesShowing.textContent = visibleCount;
-            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-
         // Active nav link on scroll
         const sections = document.querySelectorAll('.page-section');
         const navLinks = document.querySelectorAll('.nav-links a');
