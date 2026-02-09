@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog — Essays and writing by Leath Al Obaidi on economics, competition, philosophy, and ideas.">
+    <meta property="og:title" content="Blog — Leath Al Obaidi">
+    <meta property="og:description" content="Essays and writing on economics, competition, philosophy, and ideas.">
+    <meta property="og:url" content="https://leathalobaidi.com/blog">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Blog — Leath Al Obaidi">
+    <link rel="canonical" href="https://leathalobaidi.com/blog">
+    <title>Blog — Leath Al Obaidi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #c45d3e;
+            --color-text: #2a2a2a;
+            --color-text-light: #666666;
+            --color-background: #fafafa;
+            --color-border: #e8e8e8;
+            --color-card-bg: #ffffff;
+            --color-callout-bg: #fef4f1;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --max-width: 680px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        @media (max-width: 640px) {
+            body { font-size: 15px; }
+        }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            opacity: 0.75;
+            border-bottom-color: var(--color-primary);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--color-background);
+            z-index: 100;
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-md) 0;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-brand:hover { color: var(--color-primary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            border-bottom: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-primary);
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; }
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: var(--spacing-xl) 0 var(--spacing-lg);
+        }
+
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: var(--spacing-xs);
+        }
+
+        .page-header p {
+            color: var(--color-text-light);
+            font-size: 1.05rem;
+        }
+
+        /* Blog Post Card */
+        .blog-list {
+            padding-bottom: var(--spacing-xl);
+        }
+
+        .blog-card {
+            display: block;
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--color-border);
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        .blog-card:first-child {
+            border-top: 1px solid var(--color-border);
+        }
+
+        .blog-card:hover {
+            opacity: 1;
+            border-bottom-color: var(--color-border);
+        }
+
+        .blog-card:hover .blog-card-title {
+            color: var(--color-primary);
+        }
+
+        .blog-card-title {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+            color: var(--color-text);
+        }
+
+        .blog-card-subtitle {
+            font-family: var(--font-serif);
+            font-style: italic;
+            color: var(--color-text-light);
+            font-size: 1rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .blog-card-excerpt {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;">Leath</a>
+            <ul class="nav-links">
+                <li><a href="/notes">Notes</a></li>
+                <li><a href="/listography">Listography</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/blog" class="active">Blog</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <header class="page-header">
+            <h1>Blog</h1>
+            <p>Essays and writing on economics, competition, philosophy, and ideas.</p>
+        </header>
+
+        <section class="blog-list">
+
+            <a href="/blog/competition-and-rivalry" class="blog-card">
+                <h2 class="blog-card-title">Competition and Rivalry</h2>
+                <p class="blog-card-subtitle">The fire that never sleeps &mdash; and the question of whether we should let it burn</p>
+                <p class="blog-card-excerpt">The impulse to compete drives progress, both for the individual and the species. It is a force that never sleeps. From Peter Thiel's contrarian take on monopolies to Girard's mimetic desire, this essay explores competition across sport, philosophy, economics, and everyday life.</p>
+            </a>
+
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Leath Al Obaidi</p>
+        </div>
+    </footer>
+
+</body>
+</html>

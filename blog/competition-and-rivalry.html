@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Competition and Rivalry: The Fire That Never Sleeps — an essay by Leath Al Obaidi on competition, mimetic desire, and rethinking what it means to win.">
+    <meta property="og:title" content="Competition and Rivalry — Leath Al Obaidi">
+    <meta property="og:description" content="The fire that never sleeps — and the question of whether we should let it burn.">
+    <meta property="og:url" content="https://leathalobaidi.com/blog/competition-and-rivalry">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Competition and Rivalry — Leath Al Obaidi">
+    <link rel="canonical" href="https://leathalobaidi.com/blog/competition-and-rivalry">
+    <title>Competition and Rivalry — Leath Al Obaidi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #c45d3e;
+            --color-text: #2a2a2a;
+            --color-text-light: #666666;
+            --color-background: #fafafa;
+            --color-border: #e8e8e8;
+            --color-card-bg: #ffffff;
+            --color-callout-bg: #fef4f1;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --max-width: 680px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--color-background);
+            z-index: 100;
+            border-bottom: 1px solid var(--color-border);
+            padding: 1.5rem 0;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .nav-brand:hover { color: var(--color-primary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-primary);
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { gap: 1rem; font-size: 0.9rem; }
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Article Header */
+        .article-header {
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 2.5rem;
+        }
+
+        .article-header .back-link {
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .article-header .back-link:hover {
+            color: var(--color-primary);
+        }
+
+        .article-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.4rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin: 0 0 0.75rem;
+        }
+
+        .article-header .subtitle {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.15rem;
+            color: var(--color-text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .article-header .byline {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Article Body */
+        .article-body {
+            padding-bottom: 4rem;
+        }
+
+        .article-body h2, .article-body h3, .article-body h4 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .article-body h2 {
+            font-size: 1.8rem;
+            margin: 3rem 0 1rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--color-primary);
+            color: var(--color-text);
+        }
+
+        .article-body .part-label {
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .article-body h2.part-title {
+            border-top: none;
+            margin-top: 0.5rem;
+            padding-top: 0;
+            text-align: center;
+            padding-bottom: 1.5rem;
+            border-bottom: 2px solid var(--color-primary);
+            margin-bottom: 2rem;
+        }
+
+        .article-body h3 {
+            font-size: 1.4rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .article-body h4 {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .article-body p {
+            margin-bottom: 1.25rem;
+            line-height: 1.85;
+        }
+
+        .article-body a {
+            color: var(--color-primary);
+            text-decoration: underline;
+            text-decoration-color: rgba(196, 93, 62, 0.3);
+            text-underline-offset: 3px;
+            font-weight: 400;
+            border-bottom: none;
+        }
+
+        .article-body a:hover {
+            text-decoration-color: var(--color-primary);
+            opacity: 1;
+        }
+
+        /* Blockquotes */
+        blockquote {
+            background: var(--color-callout-bg);
+            border-left: 4px solid var(--color-primary);
+            padding: 1.25rem 1.5rem;
+            margin: 1.75rem 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        blockquote .source {
+            display: block;
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            font-style: normal;
+        }
+
+        /* Images */
+        .blog-image {
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .blog-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .blog-image.small img { max-width: 420px; }
+        .blog-image.medium img { max-width: 560px; }
+
+        .blog-image figcaption {
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+            margin-top: 0.5rem;
+            font-style: italic;
+        }
+
+        /* Callout */
+        .callout {
+            background: var(--color-callout-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .callout h4 {
+            margin-top: 0;
+        }
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Divider */
+        .divider {
+            text-align: center;
+            margin: 2.5rem 0;
+            color: var(--color-border);
+            font-size: 1.4rem;
+            letter-spacing: 12px;
+        }
+
+        /* Angles grid */
+        .angles-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1.75rem 0;
+        }
+
+        .angle-card {
+            background: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            padding: 1.125rem;
+        }
+
+        .angle-card h5 {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--color-primary);
+            margin-bottom: 0.375rem;
+        }
+
+        .angle-card p {
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 640px) {
+            .angles-grid { grid-template-columns: 1fr; }
+            body { font-size: 15px; }
+            .article-header h1 { font-size: 1.8rem; }
+        }
+
+        /* Resource list */
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 0.95rem;
+        }
+
+        .resource-list li:last-child { border-bottom: none; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: 2rem 0;
+            margin-top: 3rem;
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+
+        footer a {
+            color: var(--color-primary);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;">Leath</a>
+            <ul class="nav-links">
+                <li><a href="/notes">Notes</a></li>
+                <li><a href="/listography">Listography</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/blog" class="active">Blog</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <header class="article-header">
+            <a href="/blog" class="back-link">&larr; Back to Blog</a>
+            <h1>Competition and Rivalry</h1>
+            <p class="subtitle">The fire that never sleeps &mdash; and the question of whether we should let it burn</p>
+            <p class="byline">By Leath Al-Obaidi</p>
+        </header>
+
+        <article class="article-body">
+
+<p>The impulse to compete drives progress, both for the individual and the species. It is a force that never sleeps. It is a fire that demands action, immediate and continuous. It is a burning flame that can never be extinguished.</p>
+
+<p>It dominates our lives in matters, both large and small, profound and trivial. And the impulse to compete resides within us all whether we choose to give it direct expression or not.</p>
+
+<p>It wakes us up in the morning, it gives us energy and focus by exciting the senses. It makes the mundane bearable and our day-to-day lives almost exciting. The minutiae becomes essential, and what seems essential can become overwhelming.</p>
+
+<p>It drives men to the loftiest heights of accomplishment while spiraling other men, often the same men, into the deepest depths of despair. It's what makes the pain of failure nearly intolerable and the euphoria of victory beyond words.</p>
+
+<p>This desire drives some of us to the largest arenas, while driving others as far from any arena as possible. Some revel in the glory of a good fight, while others fight against themselves and swear that there are no good battles worth fighting.</p>
+
+<p>And some of us become so utterly consumed by this passion to compete that our desire to achieve victory is often quickly and quietly transformed into an even more intense desire to achieve the kind of recognition &mdash; from both friends and strangers &mdash; that often accompanies these alleged victories.</p>
+
+<p>The drive to compete fills our lives, it makes us feel our lives are worth living, and if given enough time&hellip; this craving for the rewards and recognition that come our way whenever we defeat our fellow human beings will eventually and permanently poison every relationship we have ever cared about.</p>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/mind-map.png" alt="Mind map sketch exploring the themes of competition and rivalry">
+    <figcaption>Early brainstorm: mapping the many forms of competition &mdash; from sport to market economics to game theory</figcaption>
+  </figure>
+</div>
+
+<p>Let us discuss competition on three fronts. What is winning? What is losing? Is competition necessary? Is success truly to be found in victory, in beating someone else?</p>
+
+<!-- PART ONE -->
+<p class="part-label">Part One</p>
+<h2 class="part-title">The Nature of Competition</h2>
+
+<h3>&ldquo;Competition Is for Losers&rdquo; &mdash; Peter Thiel</h3>
+
+<p>Perhaps no one in modern business has made a more provocative case against competition than Peter Thiel. In his book <em>Zero to One</em> and numerous talks, Thiel argues that competition destroys profits and narrows our thinking.</p>
+
+<div class="blog-image medium">
+  <figure>
+    <img src="/blog/images/thiel-two-edged.jpeg" alt="Tweet by Enzo Avigo sharing Peter Thiel quote about competition being two-edged">
+    <figcaption>Peter Thiel at Chicago Ideas Week: &ldquo;Competition is a two-edged thing&rdquo;</figcaption>
+  </figure>
+</div>
+
+<blockquote>
+  &ldquo;The tremendous price of competition is that you often stop asking some bigger questions about what's truly important and truly valuable. Don't always go through the tiny little door that everyone's trying to rush through, maybe go around the corner and go through the vast gate that nobody is taking.&rdquo;
+  <span class="source">&mdash; Peter Thiel (<a href="https://x.com/brianjji/status/1716126592282349881?s=46">via Brian Ji on X</a>)</span>
+</blockquote>
+
+<div class="blog-image medium">
+  <figure>
+    <img src="/blog/images/thiel-law-school.jpeg" alt="Peter Thiel's story about law school clerkship from Zero to One">
+    <figcaption>From <em>Zero to One</em>, pp. 36&ndash;37: Thiel's personal story of nearly winning the Supreme Court clerkship &mdash; and how losing it was the best thing that happened to him</figcaption>
+  </figure>
+</div>
+
+<p>Thiel's advice for young people is clear:</p>
+<blockquote>
+  (i) Think very hard and concretely about the future<br>
+  (ii) Do not substitute education for thought<br>
+  (iii) Avoid hyper-competition; do not do what everyone else is doing<br>
+  (iv) Identify areas of innovation at the frontier; do new things there
+</blockquote>
+
+<div class="blog-image medium">
+  <figure>
+    <img src="/blog/images/competition-is-for-losers-notes.png" alt="Summary notes of Peter Thiel's Competition is for Losers framework">
+    <figcaption>Summary: Thiel's framework &mdash; from the value of monopolies to building something nobody else can measure</figcaption>
+  </figure>
+</div>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/competition-is-for-losers.jpeg" alt="Larger version of Competition is for Losers notes by Peter Thiel">
+  </figure>
+</div>
+
+<p>If you want to start a company, look for an important problem that people can't measure, so you can build for years without competition. Don't divide your attention: focusing on one thing yields increasing returns for each unit of effort.</p>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/dont-divide-attention.png" alt="Text about not dividing your attention and focusing on convex output curves">
+    <figcaption>The convexity of focus: an extra hour on the current project has a much higher return than five minutes on twelve new things</figcaption>
+  </figure>
+</div>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>The Invisible Plague: Mimetic Desire</h3>
+
+<p>The invisible plague of higher institutions and their brilliant minds today is mimetic desire. The same applies to those in the arena.</p>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/elite-students.png" alt="Quote about elite students and competition in higher education">
+    <figcaption>&ldquo;Elite students climb confidently until they reach a level of competition sufficiently intense to beat their dreams out of them.&rdquo;</figcaption>
+  </figure>
+</div>
+
+<p>Ren&eacute; Girard's theory of mimetic desire tells us that we don't want things because we independently decided we want them. We want things because <em>other people</em> want them. We compete not for what we truly need, but to keep up with or surpass the people to whom we like to compare ourselves. When we win, others lose, and vice versa.</p>
+
+<p>This led the journalist and satirist H. L. Mencken in 1916 to define wealth as &ldquo;any income that is at least $100 more a year than the income of one's wife's sister&rdquo; (from <em>A Book of Burlesques</em>).</p>
+
+<blockquote>
+  Nothing wrong with wanting the same thing as others &mdash; just make sure it is what <em>you</em> truly want and not simply mediated through models of desire.
+</blockquote>
+
+<p>Girard, however, presents a different view of sacrifice, in which it is not the gods but human beings who are the primary agents. According to Girard, human beings have a fundamental tendency to imitate one another, and this leads to conflicts and rivalries over scarce resources and desirable objects. These conflicts can escalate into a mimetic crisis, in which the community becomes divided and violent. In order to resolve the crisis and restore social order, the community will often select a scapegoat &mdash; someone who will be blamed for the crisis and then sacrificed.</p>
+
+<p>In Girard's view, the Christian concept of atonement &mdash; Jesus's death as a sacrifice for human sins &mdash; can be seen as the end of the sacrificial tradition, because the sacrifice of Jesus exposed the scapegoat mechanism, and ultimately ended the use of sacrificial victims to restore social order.</p>
+
+<p>I first learned about this in my freshman Russian literature class and wrote a lengthy paper on how love is mediated through desire. As Nietzsche wrote, even love is a conquest, which of course requires at least a bit of competition. In section 14 of the <em>Gay Science</em>, he explores how our pleasure in ourselves tries to maintain itself by changing something new into ourselves &mdash; and that is what possession means.</p>
+
+<p><strong>Further reading:</strong> <em><a href="https://academic.oup.com/book/2946">&ldquo;Deceit, Desire, and the Novel: Self and Other in Literary Structure&rdquo;</a></em> by Ren&eacute; Girard; <a href="https://www.cbc.ca/ideas/mobile/touch/episodes/2011/02/28/the-scapgoat-rene-girards-anthropology-of-violence-and-religion/">Girard's Anthropology of Violence and Religion, Parts 1&ndash;5 (CBC Ideas)</a></p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>Meditations on Moloch: The Systemic Trap</h3>
+
+<p>&ldquo;Meditations on Moloch&rdquo; by Scott Alexander discusses systemic traps where individual actions driven by self-interest lead to collectively suboptimal outcomes. Using Allen Ginsberg's poem as a starting point, Alexander explores various real-world examples such as the Prisoner's Dilemma, the Malthusian trap, and capitalism, highlighting how these scenarios reflect the concept of Moloch &mdash; a metaphor for destructive competitive pressures.</p>
+
+<p>The essay suggests that while individuals may recognise better collective strategies, they are often unable to implement them due to the system's constraints.</p>
+
+<p>For a detailed read, visit the original post <a href="https://slatestarcodex.com/2014/07/30/meditations-on-moloch/">here</a>.</p>
+
+<p><strong>See also:</strong> <a href="https://www.ted.com/talks/liv_boeree_the_dark_side_of_competition_in_ai">The dark side of competition in AI (TED Talk, Liv Boeree)</a> | <a href="https://www.ted.com/talks/liv_boeree_the_deadly_trap_that_could_create_an_ai_catastrophe/transcript">The deadly trap that could create an AI catastrophe (TED)</a></p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>Life Is a Squid Game &mdash; Or Is It?</h3>
+
+<p>The Netflix series <em>Squid Game</em> depicts debt-ridden characters who compete in a series of childhood games. The winners get a huge cash prize, but the losers will die. It's the latest in the so-called &ldquo;battle royale&rdquo; genre of stories, named after the 1999 novel by the Japanese author Koushun Takami.</p>
+
+<p>The Squid Game can certainly feel like an extreme version of life: a zero-sum competition, with winners and losers. We all want the same things &mdash; a fulfilling job, a family, a house, nice holidays &mdash; but living under conditions of scarcity means some of us won't get what we want. Hence life becomes a battle, a competition to beat others.</p>
+
+<p>The series' creator, Hwang Dong-hyuk, has openly stated that the story reflects real life. He remarked: &ldquo;I wanted to write a story that was an allegory or fable about modern capitalist society, something that depicts an extreme competition, somewhat like the extreme competition of life&rdquo; (<a href="https://variety.com/2021/global/asia/squid-game-director-hwang-dong-hyuk-korean-series-global-success-1235073355/">Variety, September 2021</a>).</p>
+
+<p>But the extreme nature of the Squid Game is also an opportunity to pause and question whether we really want those things and whether they are worth living in a constant state of competition for. It can be scary to question whether our goals in life really make sense, but it can also be liberating, allowing us to step out of the game we thought we had to play.</p>
+
+<p>The real enemies of Squid Game's characters are not their fellow competitors, but those who have created the competition in the first place. We begin to take back control when we decide to step out of the game and question the model of happiness with which our culture presents us. And the good news is that doing so is free.</p>
+
+<blockquote>
+  Capitalism has sold us an off-the-shelf, one-size-fits-all conception of the good life. To be a happy citizen of the industrialised world, we need to have a satisfying career, raise some (but not too many) children, have the latest iPhone, live in a home that is at least as nice as the ones our colleagues live in, go on holidays that look like our friends' Instagram photos, and earn enough money to finance all these things. It's easier than it ought to be to buy into this version of what life should be, and to pursue it unquestioningly.
+  <span class="source">&mdash; Rebecca Roache, &ldquo;<a href="https://iai.tv/articles/life-is-a-squid-game-auid-1942?_auid=2020">Life is a squid game</a>&rdquo;</span>
+</blockquote>
+
+<p>We pay a steep price for the sense of ease that comes with buying into someone else's plan. It's hard (and unsettling) to toss aside the off-the-shelf template for happiness and instead construct our own bespoke model. Doing so involves facing up to the fact that some aspects of our lives might not be right for us. None of us wants to discover that we've been frantically pedalling down the wrong road.</p>
+
+<p>We've already mentioned one reason for this: scarcity. The best jobs, homes, holidays, and so on are hard to get. With all that overtime we don't have much time or energy left for navel-gazing reflection on whether we really want the things we're working so hard to obtain, or whether they will really make us happy.</p>
+
+<p>Counterpoint: <a href="https://iai.tv/articles/life-is-not-a-squid-game-auid-1943&amp;utm_source=reddit&amp;_auid=2020">Life is not a squid game</a></p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>Money, Status, and the Losing Game</h3>
+
+<p>Why are we so mistaken about the value of money? One reason might be that money is linked to social status in a way that medicine and food are not. Social status is relative: it makes no sense to think of rising or falling in social status except by comparison to other people. We care about money not simply to meet our basic human needs, but in order to keep up with or surpass the people to whom we like to compare ourselves.</p>
+
+<p>This competition for money as a proxy for status is a losing game: as we rise in social status, the group of people to whom we compare ourselves changes too, which moves our goalposts and ensures that we never score. Like the characters in <em>Squid Game</em>, we have the uncanny experience of thinking: the cash prize for which they're competing is more than they would ever need to pay off their debts; at $45.6 billion (almost $30 million each), it's a sum so huge as to be almost meaningless to the average person.</p>
+
+<p>According to Dan Gilbert, Harvard psychologist and author of <em>Stumbling on Happiness</em>, &ldquo;once you get basic human needs met, a lot more money doesn't make a lot more happiness.&rdquo; Not only is it unnecessary to be rich; it doesn't even make us happy. (<a href="https://time.com/collection/guide-to-happiness/4856954/can-money-buy-you-happiness/">Here's How Money Really Can Buy You Happiness &mdash; TIME</a>)</p>
+
+<p>We should view money the way we view medicine or food. We know that while it's good to have medicine or food when we're sick or hungry, medicating or feeding ourselves after we've recovered or when we're full can lead to problems.</p>
+
+<p>Consider the panic-buying of everything from toilet paper to petrol. People were buying even when they didn't need these things: few people actually need dozens of toilet rolls at once, and nobody needs to queue for hours to buy petrol when they still have a week's worth left in their tank. But when toilet paper or petrol are in short supply, pausing to reflect on whether they actually need it feels like a luxury that many people feel they can't afford. Instead, it's a case of: fight to get it now, and worry about whether we really need it later &mdash; if two rolls is useful, then 48 rolls must be even better, right?</p>
+
+<p>Panic-buying may be rare, but capitalism thrives on scarcity. Convincing people that they don't have enough stuff keeps them spending, and those who are content with what they have are bad for the economy.</p>
+
+<!-- PART TWO -->
+<p class="part-label">Part Two</p>
+<h2 class="part-title">Competition in Practice</h2>
+
+<h3>The High Jump Story: Thinking the Opposite</h3>
+
+<div class="blog-image medium">
+  <figure>
+    <img src="/blog/images/fosbury-flop.jpeg" alt="Story of Dick Fosbury inventing the Fosbury Flop at the 1968 Mexico Olympics">
+    <figcaption>Dick Fosbury changed high jump forever at the 1968 Mexico Olympics &mdash; by turning his back on the bar</figcaption>
+  </figure>
+</div>
+
+<p>Until the Mexico Olympics of 1968, the customary way for a high jumper to cross the bar was with his body parallel to it, in a technique known as the Western Roll. But that was about to change. A little-known athlete approached the bar, which was set at a world record height of 7ft 4&frac14; inches. He took off, but instead of turning his body towards the bar, he turned his back on it. He brought his legs up and flipped over the bar backwards.</p>
+
+<p>His name was Dick Fosbury, and his method of jumping became known as the Fosbury Flop. It is still used today. He jumped higher than any man before, by thinking the opposite from everyone else. This example is just a technique for thinking, but here the technique for thinking became a technique for jumping &mdash; turning a flop into a success.</p>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/second-place-meme.jpg" alt="Meme: Second place is the first loser">
+    <figcaption>The toxic side of competition culture, distilled into a meme</figcaption>
+  </figure>
+</div>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>The Sacrifices We Don't Want to See</h3>
+
+<p>From David Foster Wallace's 1995 essay, <em><a href="http://www.esquire.com/features/sports/the-string-theory-0796">The String Theory</a></em>:</p>
+
+<blockquote>
+  It's better for us not to know the kinds of sacrifices the professional-grade athlete has made to get so very good at one particular thing. Oh, we'll invoke lush clich&eacute;s about the lonely heroism of Olympic athletes, the pain and analgesia of football, the early rising and hours of practice and restricted diets, the preflight celibacy, et cetera. But the actual facts of the sacrifices repel us when we see them: basketball geniuses who cannot read, sprinters who dope themselves, defensive tackles who shoot up with bovine hormones until they collapse or explode. We prefer not to consider closely the shockingly vapid and primitive comments uttered by athletes in postcontest interviews or to consider what impoverishments in one's mental life would allow people actually to think the way great athletes seem to think. An ascetic focus. A subsumption of almost all other features of human life to one chosen talent and pursuit. A consent to live in a world that, like a child's world, is very small.
+  <span class="source">&mdash; David Foster Wallace, &ldquo;The String Theory&rdquo; (1995)</span>
+</blockquote>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>The Unseen Competitor: Stories of Persistence and Injustice</h3>
+
+<div class="blog-image">
+  <figure>
+    <img src="/blog/images/katalin-kariko.jpeg" alt="Tweet about Nobel Prize winner Katalin Kariko being demoted 4 times">
+    <figcaption>Nobel Prize winner Katalin Karik&oacute; was &ldquo;demoted 4 times&rdquo; at her old job. Her advice: &ldquo;You have to focus on what's next.&rdquo;</figcaption>
+  </figure>
+</div>
+
+<div class="blog-image">
+  <figure>
+    <img src="/blog/images/nobel-prize-prasher.jpeg" alt="Wikipedia article about Douglas Prasher and the Nobel Prize">
+    <figcaption>Douglas Prasher's critical work on GFP led to a Nobel Prize &mdash; for three other scientists. Only three individuals can share in a single Nobel Prize. Prasher ended up driving a shuttle bus for $8.50 an hour.</figcaption>
+  </figure>
+</div>
+
+<p>These stories reveal competition's cruelty. The system doesn't always reward the person who contributed most. Sometimes the structure of the competition itself &mdash; its rules, its limits &mdash; determines who wins and who is forgotten.</p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>Is Competition Bad for Self-Esteem?</h3>
+
+<p>There are a number of reasons that competition may promote an unhealthy mindset in children and adults.</p>
+
+<p>Most parents want to think of ourselves as good sports. We want our children to be good sports, too. We repeat, over and over, that in competition, it doesn't matter if you win or lose &mdash; it's how you play the game. But when they win, let's be honest: we're thrilled. We glory in their triumph. We praise their ability, tell them they're champions, give them treats and other awards, and we say things like &ldquo;Winners are grinners!&rdquo;</p>
+
+<p>But when they lose, we point out our children's need for improvement, their deficits, and their mistakes. We blame the coach, the weather, the other team, or the referee. Sometimes we even get mad.</p>
+
+<p>Winning is an exclusive event. Only one student can be dux. Only one team can win the premiership. Only one child can reign supreme in the spelling bee. Winning pushes some kids into a mindset, and the outcomes can, in some cases, be dire.</p>
+
+<div class="callout">
+  <h4>A Winning Mindset Can Be an Unhealthy Mindset</h4>
+  <p>A winning mindset can alienate positive relationships.</p>
+  <p>A winning mindset can limit curiosity, creativity, and exploration.</p>
+  <p>A winning mindset undercuts an openness to collaborate with others. If my child sees everyone as a competitor, he is unlikely to work with them, share ideas, build them up, and promote the idea of team.</p>
+  <p>The need to win can create a willingness to do &ldquo;whatever it takes&rdquo; &mdash; whether on the sporting field, in the classroom, in politics or in the boardroom. Ethically bankrupt behaviour is found almost wherever there is competition.</p>
+</div>
+
+<p>&ldquo;That girl over there is very competitive&rdquo; may be meant in a complimentary way, but we generally do not encourage friendships with competitive people.</p>
+
+<p>The tendency to see competition as validation is very deep. We always think of advertising as things that work on other people. &ldquo;Who are all these stupid people who fall for these ads on TV?&rdquo; Seeing competition as validation works to a disturbing extent on all of us. It's something we all should work to overcome.</p>
+
+<blockquote>
+  &ldquo;I don't think there is any easy psychological formula to avoid it or what therapy to recommend... Never underestimate how big of a problem it is. We always think this is something that afflicts other people, so it's easy for me to point to people in business school, at Harvard, on Wall Street.&rdquo;
+  <span class="source">&mdash; Peter Thiel</span>
+</blockquote>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>The Myth of Meritocracy</h3>
+
+<div class="blog-image medium">
+  <figure>
+    <img src="/blog/images/yale-grades-meritocracy.png" alt="Screenshot discussing how nearly everyone gets As at Yale and the myth of meritocracy">
+    <figcaption>&ldquo;The myth of the meritocracy is so thick on college campuses you could lose a boot in it.&rdquo;</figcaption>
+  </figure>
+</div>
+
+<p>These women are high-achievers. They achieved at a competitive school; they are achieving in challenging jobs and business environments; their drive (and peer group) expects them to achieve at a high-level in raising children on top of that. (<a href="https://www.vox.com/features/23979357/millennials-motherhood-dread-parenting-birthrate-women-policy">How millennials learned to dread motherhood &mdash; Vox</a>)</p>
+
+<p>From our school days on, at the very latest, our environment primes us for competition. We compete to get good grades in school in order to get into a good college. We compete for the seats in said colleges. We compete with our classmates in college in order to get a good job. We compete with others for a promotion in our jobs. We compete with others of the same sex to find a mate. We compete with others regarding our possessions (keeping up with the Joneses).</p>
+
+<p>This is just a partial list, but as you can see, almost every aspect in our lives is a competition. Unfortunately, this is the way our society is structured. In fact, it seems that it is embedded in our psyche.</p>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/justin-best-linkedin.jpeg" alt="LinkedIn profile of Justin Best: Junior Analyst at Union Square Advisors, Olympic Champion">
+    <figcaption>When your LinkedIn reads &ldquo;Junior Analyst | Olympic Champion&rdquo; &mdash; competition and career identity intertwined</figcaption>
+  </figure>
+</div>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>The Philosophy of Competitive Games</h3>
+
+<p>Competing against others is deeply ingrained in games. Whether it's matchmade online lobbies, the arcades, or simply comparing your experience of what seemed to be single-player experiences with others in the schoolyard &mdash; one question lingers behind every corner: <strong>How good are you, actually?</strong></p>
+
+<div class="angles-grid">
+  <div class="angle-card">
+    <h5>Angle 1: Dominance</h5>
+    <p>Winning in the game asserts superiority in a discipline. By dominating others in the virtual world, potential feelings of inferiority experienced in day-to-day life may be balanced out.</p>
+  </div>
+  <div class="angle-card">
+    <h5>Angle 2: Feedback</h5>
+    <p>A ranking can serve as a tool to efficiently increase one's competence. The learning process becomes the reward, with the ranking just one piece of the underlying clockwork.</p>
+  </div>
+  <div class="angle-card">
+    <h5>Angle 3: Honour &amp; Reputation</h5>
+    <p>It is ingrained into many to achieve something and gain honour, respect and reputation, be it in front of the whole world, or just in one's own circle of friends.</p>
+  </div>
+  <div class="angle-card">
+    <h5>Angle 4: Preparation for Real Life</h5>
+    <p>Job hunting, promotions, careers &mdash; competitive games can be excellent tools to shape competitiveness for future life.</p>
+  </div>
+  <div class="angle-card">
+    <h5>Angle 5: Rewards &amp; Gambling</h5>
+    <p>Be it lootboxes or prize money, many compete to gain something. Others are in it for the thrill of high stakes and random chances &mdash; a drawback to our survival instinct as hunters and gatherers.</p>
+  </div>
+  <div class="angle-card">
+    <h5>Angle 6: (In)Fighting</h5>
+    <p>Fighting (especially for a cause) is ingrained into us. Our history is full of wars, revolutions, and conflicts. If you've ever wondered why so many games are centred around combat, this might be the reason.</p>
+  </div>
+  <div class="angle-card">
+    <h5>Angle 7: Steaming Off</h5>
+    <p>Many play competitive games for the sole purpose of steaming off frustration. It can work, but it poses the risk of directing that frustration at other players &mdash; a source of much in-game toxicity.</p>
+  </div>
+  <div class="angle-card">
+    <h5>The Other Side</h5>
+    <p>Competitive games as learning machines for systems thinking. Whether other players are involved or not is almost irrelevant. The learning process can be enhanced by collaboration and exchange.</p>
+  </div>
+</div>
+
+<p>Quite a number of psychological phenomena arise from competitive gaming: players are frequently irritated, make anger-fuelled mistakes, or even snap and leave the game. Others suffer from &ldquo;ladder anxiety&rdquo; &mdash; they don't even dare enter the matchmaking anymore. There's simply too much at stake once having success in-game is so closely tied to one's self-esteem.</p>
+
+<p>The better way? Just find the right level of challenge for yourself. Spectate not just as a fan, but to improve yourself. And finally, just stop when the game has nothing more to say, instead of having to obsessively keep up your status of domination.</p>
+
+<p><strong>Further reading:</strong> <a href="http://keithburgun.net/difficulty-in-videogames/">Difficulty in Videogames</a> | <a href="http://keithburgun.net/beyond-the-pentakill-21st-century-competition/">Beyond the Pentakill: 21st Century Competition</a> | <a href="https://fischerdesign.medium.com/the-philosophy-of-competitive-games-ed3873140f9">The Philosophy of Competitive Games (Fabian Fischer)</a> | <a href="https://liquipedia.net/starcraft2/Dealing_with_anxiety">Dealing with Anxiety in StarCraft 2</a></p>
+
+<!-- PART THREE -->
+<p class="part-label">Part Three</p>
+<h2 class="part-title">Rethinking Competition</h2>
+
+<h3>Stoicism and Competition</h3>
+
+<p>At face value, competition and competitive behaviour do not seem to align with Stoic values very well. Competition itself seems derived from a desire to prove to oneself and/or others that you are superior at something &mdash; physical fitness, intelligence, dating, even war. If your goal is to prove to others that you are superior, then you aren't following Stoic virtues.</p>
+
+<p>But is it possible to be competitive only from a desire to prove to <em>yourself</em> that you are superior? Would this also go against Stoic values? Or would Stoicism insist there should never have been a need to prove anything in the first place?</p>
+
+<blockquote>
+  &ldquo;My entire life I wanted to be a helicopter pilot for the Army. As a cadet all throughout college, we had to constantly compete in a variety of categories which determined our place on an order of merit list. I wanted aviation. I got medical. However, I did not give up, and by continuing to perform well I was eventually chosen to change my career field. I am now in flight school.&rdquo;
+  <span class="source">&mdash; Reddit user, r/Stoicism</span>
+</blockquote>
+
+<p>I do, however, believe it is possible to engage in competition not for the sake of itself but in order to reach a goal I have set for myself, therefore not going against Stoic values. Competition for me is not validation. It's &ldquo;so I can do better than something&rdquo; rather than &ldquo;claim to be the best,&rdquo; which is always a hard sell and a setup for failure.</p>
+
+<p>There are definitely negative aspects to competition. People can often harm others emotionally and physically when engaging in competition, and many resort to underhanded methods to &ldquo;prove&rdquo; their superiority. There is also anger and frustration when one fails. Often when I play games my goal is to win. The more I like a game, the more I try to get better at it. The better I get, the more frustrated I get when I fail. I notice that I let the anger get to me &mdash; and believe that the competition I engage in is the reason for me ignoring Stoic practice.</p>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/compete-against-yourself.png" alt="Motivational image: Your competition isn't other people, it's your procrastination, your negative thoughts, your comfort zone">
+    <figcaption>&ldquo;Your competition isn't other people. Your competition is your procrastination, your negative thoughts, your comfort zone. Compete against that.&rdquo;</figcaption>
+  </figure>
+</div>
+
+<p><strong>Stoicism threads on competition:</strong></p>
+<ul class="resource-list">
+  <li><a href="https://www.reddit.com/r/Stoicism/s/41fTuVWye6">r/Stoicism &mdash; Competition and Stoic values</a></li>
+  <li><a href="https://www.reddit.com/r/Stoicism/s/Bfi5KXfZRG">r/Stoicism &mdash; On competitive mindset</a></li>
+  <li><a href="https://www.reddit.com/r/Stoicism/s/aqqlojeWxi">r/Stoicism &mdash; Rivalry and inner peace</a></li>
+  <li><a href="https://www.reddit.com/r/Stoicism/s/k8Pk7SnWSB">r/Stoicism &mdash; Competing with yourself</a></li>
+  <li><a href="https://www.reddit.com/r/Stoicism/s/zBj7GABlCE">r/Stoicism &mdash; Further discussion</a></li>
+</ul>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>Follow the Innate Feelings Inside of You</h3>
+
+<div class="blog-image small">
+  <figure>
+    <img src="/blog/images/kanye-tweets.png" alt="Kanye West tweets about not following crowds and following your own vision">
+    <figcaption>Kanye West: &ldquo;Don't follow crowds. Follow the innate feelings inside of you. Do what you feel, not what you think.&rdquo;</figcaption>
+  </figure>
+</div>
+
+<p>&ldquo;You have the best ideas. Other people's opinions are usually more distractive than informative. Follow your own vision. Base your actions on love. Do things you love and if you don't absolutely love something, stop doing it as soon as you can.&rdquo;</p>
+
+<p>Miles Davis said: &ldquo;Sometimes it takes a long time to be able to play like yourself.&rdquo; When you first get into a new craft, you just try to be like your inspiration, to change who you actually are so that you can perform. I think that in jazz and writing and a lot of creative fields, it's about getting back to the person who you truly are &mdash; but on the other side of school, on the other side of hard work and dedication.</p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>The Dream of Solomeo: Humanistic Capitalism</h3>
+
+<blockquote>
+  &ldquo;As a boy, I saw my teary-eyed father, as he was subject to humiliation and offense at work, and even today I do not understand why he should be humiliated and belittled; however, inspired by the pain I read in those eyes, I decided that the dream of my life would be to live and work for the moral and economic dignity of the human being. I wanted a company that made healthy profits, but did so with ethics, dignity and morals. I wanted human beings to work in slightly better places, earn a little more in wages and feel like thinking souls at work. Let us try not to turn our backs on poverty.&rdquo;
+  <span class="source">&mdash; Brunello Cucinelli, <em>The Dream of Solomeo</em> (<a href="https://brunellocucinelli.com/">brunellocucinelli.com</a>)</span>
+</blockquote>
+
+<p>Humankind needs dignity more than bread. And his father always told him he should be a good, decent person. This is what competition looks like when it's directed inward &mdash; competing not against others, but against the conditions that rob people of their humanity.</p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>The Antidote: Action Over Rumination</h3>
+
+<p>One of my most significant, visceral learnings from working 1-1 with people is that action is absolutely paramount to changing how you feel. If you want to feel better, you need to change what you are <em>doing</em>. You need to act in alignment with your desires. If you continue stalling on what you <em>know</em> you need to do, thinking you are going to make yourself feel better through more reflection once you already understand the feeling, you may begin making a problem bigger than it is.</p>
+
+<p>Progress can't happen without applying self-knowledge through action.</p>
+
+<blockquote>
+  &ldquo;Don't be afraid of death. We all get one chance at this game and then die. Don't waste it, but don't worry too much. Others have accomplished far less.&rdquo;
+</blockquote>
+
+<p>Here's my evolution on this topic: I grew up loving competition. Heck, I was the age lazy champion in my years of high school. But as I've grown older I've mellowed a little. My inner introspection into how competition affects self-esteem, wellbeing, and achievement, has changed my view of competition.</p>
+
+<p>I strongly suggest to have collaboration rather than competition. When collaboration would produce better results, competition kills newness and innovation. Competition can also be bad when people are forced to compete in fields they're not competitive in.</p>
+
+<p>It's also a problem when your identity gets caught up &mdash; if you just set off thinking &ldquo;that is the winner of a competition,&rdquo; but then you realise you're not this person or unable to achieve it. Then you get into a slump, depressed about it, and reevaluate what the competition means to you.</p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>What's the Alternative?</h3>
+
+<p>In sports, competition should be for the love of the game. Competition is &ldquo;bad&rdquo; when the rules of competition are broken by the competitors or when the rules are unfair. In other cultures this isn't always the case. In Japan, if one baseball team is way ahead in the game, they allow the other team to catch up, so that the losers are not embarrassed. This has to do with something more than winning &mdash; it has to do with honour and respect for others.</p>
+
+<p>The assumption is that winning is simply outdoing your competition, but ancient philosophers would argue otherwise.</p>
+
+<div class="callout">
+<p><strong>Be confident but not self-important.</strong></p>
+<p>Learn everything you can. Try to lack in no category. Spread good, useful and correct knowledge.</p>
+<p>Become a &ldquo;resource&rdquo; to your fellow man. Help your friends, family and strangers. Become friends with people who are useful.</p>
+<p>Our personal goals are our ultimate reward.</p>
+</div>
+
+<p>Here's my two cents worth: There is no intrinsic meaning or &ldquo;point&rdquo; of life. It simply is. There will only be a meaning to your life if you get out there and actively create one. To put it another way: &ldquo;The meaning of life is to make life meaningful.&rdquo;</p>
+
+<p>If you applied that to humans, we should be enabling ourselves and others to live the best, happiest lives we can. You do so by serving others and allowing them to serve you.</p>
+
+<div class="divider">&bull; &bull; &bull;</div>
+
+<h3>Closing Thoughts</h3>
+
+<p>Competition is neither wholly good nor wholly bad. It is a fire. Uncontrolled, it burns everything around it &mdash; relationships, self-worth, even the joy of the thing we were competing in. But carefully tended, it lights the way to genuine mastery and self-knowledge.</p>
+
+<p>The question is not whether to compete, but <em>what</em> to compete for, <em>why</em> we're competing, and <em>who</em> we're really competing against. If the answer is &ldquo;myself, yesterday&rdquo; &mdash; you're probably on the right track.</p>
+
+<blockquote>
+  &ldquo;Sometimes it takes a long time to be able to play like yourself.&rdquo;
+  <span class="source">&mdash; Miles Davis</span>
+</blockquote>
+
+<!-- FURTHER READING -->
+<section style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid var(--color-border);">
+<h3>Further Reading &amp; Resources</h3>
+
+<h4>Books</h4>
+<ul class="resource-list">
+  <li><em>No Contest: The Case Against Competition</em> &mdash; Alfie Kohn (<a href="https://www.alfiekohn.org/contest/">alfiekohn.org</a>)</li>
+  <li><em>Zero to One</em> &mdash; Peter Thiel</li>
+  <li><em>Deceit, Desire, and the Novel</em> &mdash; Ren&eacute; Girard (<a href="https://academic.oup.com/book/2946">Oxford Academic</a>)</li>
+  <li><em>Competition: A Critical History of a Concept</em> (<a href="https://www.researchgate.net/publication/336834590_Competition_A_Critical_History_of_a_Concept">ResearchGate</a>)</li>
+  <li><em>The Competition Obsession: A Philosophy of Non-Competitive Living</em> (<a href="https://www.abebooks.co.uk/9780960686803/Competition-Obsession-Philosophy-Non-Competitive-Living-0960686800/plp">AbeBooks</a>)</li>
+  <li><em>Capitalism: Competition, Conflict, Crisis</em></li>
+  <li><em>The Dream of Solomeo</em> &mdash; Brunello Cucinelli</li>
+  <li><em>Stumbling on Happiness</em> &mdash; Dan Gilbert</li>
+  <li><em>Two Arms and a Head: The Death of a Newly Paraplegic Philosopher</em> (<a href="http://www.2arms1head.com/">2arms1head.com</a>)</li>
+  <li><em>Prosocial: Using Evolutionary Science to Build Productive, Equitable, and Collaborative Groups</em> &mdash; David Sloan Wilson (<a href="https://www.amazon.com/Prosocial-Evolutionary-Productive-Equitable-Collaborative/dp/1684030242">Amazon</a>)</li>
+  <li><em>Law for Sale: A Philosophical Critique of Regulatory Competition</em></li>
+  <li><em>Morality, Competition, and the Firm: The Market Failures Approach to Business Ethics</em></li>
+</ul>
+
+<h4>Academic &amp; Philosophy</h4>
+<ul class="resource-list">
+  <li><a href="http://plato.stanford.edu/entries/desert/">Stanford Encyclopedia of Philosophy: Desert</a></li>
+  <li><a href="http://plato.stanford.edu/entries/justice-distributive/">SEP: Distributive Justice</a></li>
+  <li><a href="http://plato.stanford.edu/entries/egalitarianism/">SEP: Egalitarianism</a></li>
+  <li><a href="http://plato.stanford.edu/entries/equal-opportunity/">SEP: Equal Opportunity</a></li>
+  <li><a href="http://plato.stanford.edu/entries/economic-justice/">SEP: Economic Justice</a></li>
+  <li><a href="http://plato.stanford.edu/entries/justice-bad-luck/">SEP: Justice and Bad Luck</a></li>
+  <li><a href="https://plato.stanford.edu/entries/markets/">SEP: Markets</a></li>
+  <li><a href="https://plato.stanford.edu/entries/money-finance/">SEP: Money and Finance</a></li>
+  <li><a href="https://plato.stanford.edu/entries/economics/">SEP: Philosophy of Economics</a></li>
+  <li><a href="https://journals.sagepub.com/doi/full/10.1177/1470594X221082260">The Puzzle of Competitive Fairness &mdash; Oisin Suttle (2022)</a></li>
+  <li><a href="https://journals.sagepub.com/doi/10.1177/0276146700201009">A Philosophical Essay about A General Theory of Competition</a></li>
+  <li><a href="https://journals.sagepub.com/doi/abs/10.1177/0263276419878247">Competition: A Critical History of a Concept &mdash; Nicholas Gane (2020)</a></li>
+  <li><a href="https://link.springer.com/article/10.1007/s10842-006-9475-6">Competitiveness: From a Dangerous Obsession to a Welfare Creating Ability</a></li>
+  <li><a href="https://link.springer.com/book/10.1007/978-3-030-22133-1">Philosophy and Sport (Springer)</a></li>
+  <li><a href="https://www.tandfonline.com/doi/full/10.1080/14767430.2017.1332807">Buchanan and Vanberg critique of Kirzner on entrepreneurship</a></li>
+  <li><a href="https://www.essex.ac.uk/research-projects/competition-and-competitiveness">Competition and Competitiveness &mdash; University of Essex</a></li>
+  <li><a href="https://www.ucl.ac.uk/cles/research/theory-and-history-competition-law">Theory and History of Competition Law &mdash; UCL</a></li>
+  <li><a href="https://www.jstor.org/stable/23987372">Wettbewerb als Interaktionsmodus (JSTOR)</a></li>
+  <li><a href="https://academic.oup.com/book/35114">Oxford Academic: Competition</a></li>
+</ul>
+
+<h4>Articles &amp; Essays</h4>
+<ul class="resource-list">
+  <li><a href="https://www.alfiekohn.org/article/case-competition/">The Case Against Competition &mdash; Alfie Kohn</a></li>
+  <li><a href="https://iai.tv/articles/life-is-a-squid-game-auid-1942?_auid=2020">Life is a squid game &mdash; IAI</a></li>
+  <li><a href="https://iai.tv/articles/life-is-not-a-squid-game-auid-1943&amp;utm_source=reddit&amp;_auid=2020">Life is not a squid game &mdash; IAI</a></li>
+  <li><a href="https://www.inquiryreviews.com/2023/10/review-of-darwin-economy-liberty.html">Review: The Darwin Economy</a></li>
+  <li><a href="https://www.theguardian.com/books/2017/may/26/knowing-the-score-david-papineau-review">Knowing the Score by David Papineau &mdash; The Guardian</a></li>
+  <li><a href="https://fivebooks.com/best-books/david-papineau-philosophy-sport/">Best Books: Philosophy of Sport &mdash; Five Books</a></li>
+  <li><a href="https://mastering-hayek.com/f-a-hayeks-economic-ideas-an-expert-qa/">F.A. Hayek's Economic Ideas: An Expert Q&amp;A</a></li>
+  <li><a href="https://marginalrevolution.com/marginalrevolution/2023/11/two-simple-points.html">Two Simple Points &mdash; Marginal Revolution</a></li>
+  <li><a href="https://freakonomics.com/podcast/how-to-succeed-at-failing-part-1-the-chain-of-events/">How to Succeed at Failing &mdash; Freakonomics</a></li>
+  <li><a href="https://on.ft.com/40p8g0e">Financial Times article</a></li>
+  <li>Don Lavoie on rivalry, economics and hermeneutics</li>
+</ul>
+
+<h4>Videos</h4>
+<ul class="resource-list">
+  <li><a href="https://www.youtube.com/watch?v=TjnuwBhTnnw">What drives us to be competitive? (TEDxYouth)</a></li>
+  <li><a href="https://www.youtube.com/watch?v=hmEa-YAcFk8">YouTube: Competition &amp; Psychology</a></li>
+  <li><a href="https://www.youtube.com/watch?v=X1kihl6M0Gk">YouTube: Competition Deep Dive</a></li>
+  <li><a href="https://www.youtube.com/watch?v=Q1QOphdPKAI">TEDx Talk on Competition</a></li>
+  <li><a href="https://www.youtube.com/watch?v=mGTV8qLbBWE&amp;t=35m0s">YouTube: Discussion at 35:00</a></li>
+  <li><a href="https://youtu.be/TLjnfVean48?si=oaRvnUHJzhUl1QrB">YouTube Short: Competition</a></li>
+  <li><a href="https://youtu.be/ZVUma4VEp9Q?si=RUQSFDAqGbnxxT6o">YouTube: U.S. Open Epics &mdash; Tiger and Rocco</a></li>
+  <li><a href="https://www.netflix.com/gb/title/80198306">Netflix: Losers (Documentary)</a></li>
+</ul>
+
+<h4>Social Media / X (Twitter) Posts</h4>
+<ul class="resource-list">
+  <li><a href="https://x.com/brianjji/status/1716126592282349881">Brian Ji: Peter Thiel on the price of competition</a></li>
+  <li><a href="https://x.com/brianjji/status/1727548426345226619">Brian Ji: Competition thread</a></li>
+  <li><a href="https://x.com/brianjji/status/1731508632200806814">Brian Ji: Further thoughts</a></li>
+  <li><a href="https://x.com/brianjji/status/1737352328976753070">Brian Ji: On rivalry</a></li>
+  <li><a href="https://x.com/0zne/status/1722977718105711082">Enzo Avigo: Thiel on competition</a></li>
+  <li><a href="https://x.com/build_or_die/status/1722864412506153360">BUILD OR DIE</a></li>
+  <li><a href="https://x.com/build_or_die/status/1727884821618176384">BUILD OR DIE: Follow-up</a></li>
+  <li><a href="https://x.com/dkthomp/status/1731859167575720145">Derek Thompson</a></li>
+  <li><a href="https://x.com/trungtphan/status/1784778836434927900">Trung Phan</a></li>
+  <li><a href="https://x.com/aaron_renn/status/1846569960505557214">Aaron Renn</a></li>
+  <li><a href="https://x.com/arjunkhemani/status/1865291079693799745">Arjun Khemani</a></li>
+  <li><a href="https://x.com/startuparchive_/status/1879873735160971602">Startup Archive: Thiel on competition</a></li>
+</ul>
+
+<h4>Reddit Discussions</h4>
+<ul class="resource-list">
+  <li><a href="https://www.reddit.com/r/philosophy/s/22DF8WmjJM">r/philosophy: Competition</a></li>
+  <li><a href="https://www.reddit.com/r/philosophy/s/DkYF3wIYTg">r/philosophy: On rivalry</a></li>
+  <li><a href="https://www.reddit.com/r/philosophy/s/PlIfv9slNq">r/philosophy: Ethics of competition</a></li>
+  <li><a href="https://www.reddit.com/r/askphilosophy/s/0NJbDDgVew">r/askphilosophy: Competition question</a></li>
+  <li><a href="https://www.reddit.com/r/askphilosophy/s/8Jolo6sZZP">r/askphilosophy: Nietzsche &amp; competition</a></li>
+  <li><a href="https://www.reddit.com/r/Economics/s/YLgU2zXIqz">r/Economics</a></li>
+  <li><a href="https://www.reddit.com/r/truegaming/s/0mUVAkHSti">r/truegaming: Competitive gaming</a></li>
+</ul>
+
+<h4>Noted Thinkers Referenced</h4>
+<ul class="resource-list">
+  <li>Peter Thiel &mdash; entrepreneur, investor, author of <em>Zero to One</em></li>
+  <li>Ren&eacute; Girard &mdash; mimetic desire, scapegoat theory</li>
+  <li>Scott Alexander &mdash; &ldquo;Meditations on Moloch&rdquo;</li>
+  <li>David Foster Wallace &mdash; &ldquo;The String Theory&rdquo;</li>
+  <li>Friedrich Nietzsche &mdash; will to power, the Gay Science</li>
+  <li>Rebecca Roache &mdash; philosopher, IAI contributor</li>
+  <li>Alfie Kohn &mdash; <em>No Contest</em></li>
+  <li>Brunello Cucinelli &mdash; humanistic capitalism</li>
+  <li>Dan Gilbert &mdash; <em>Stumbling on Happiness</em></li>
+  <li>David Papineau &mdash; philosophy of sport</li>
+  <li>F.A. Hayek &mdash; economics &amp; competition</li>
+  <li>Don Lavoie &mdash; rivalry and hermeneutics</li>
+  <li>Katalin Karik&oacute; &mdash; Nobel Prize winner</li>
+</ul>
+
+</section>
+
+        </article>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Leath Al Obaidi</p>
+        </div>
+    </footer>
+
+</body>
+</html>
