@@ -1,0 +1,1439 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join the Stripe Press Book Club. Read every Stripe Press book in a year with a reading community that believes in progress. Free to join, delivered on Substack.">
+    <meta property="og:title" content="Stripe Press Book Club — Read every Stripe Press book in a year">
+    <meta property="og:description" content="A reading community for people who believe in progress. We&#39;re working through the entire Stripe Press catalogue — 19 books on technology, economics, science, and civilisation.">
+    <meta property="og:url" content="https://leathalobaidi.com/stripe-press-club">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:creator" content="@pluckup_courage">
+    <link rel="canonical" href="https://leathalobaidi.com/stripe-press-club">
+    <title>Stripe Press Book Club — Read every Stripe Press book in a year</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.8s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            line-height: 1.3;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(1.875rem, 5vw, 3rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.005em;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1.25rem;
+            color: #3a3a3a;
+            font-weight: 300;
+            transition: color 0.8s ease;
+        }
+
+        a {
+            color: #b8860b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            border-bottom: 1px solid rgba(184, 134, 11, 0.3);
+        }
+
+        a:hover {
+            color: #996f0a;
+            border-bottom-color: #996f0a;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        .btn:hover {
+            background-color: #333333;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-bottom: none;
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .container-narrow {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e0e0e0, transparent);
+            margin: 0;
+            transition: background 0.8s ease;
+        }
+
+        /* ── Hero Section ── */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 4rem 1.5rem 3rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: #6a6a6a;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.1s both;
+            font-family: 'Playfair Display', serif;
+            font-weight: 400;
+            transition: color 0.8s ease;
+        }
+
+        .hero-description {
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+            animation: fadeInUp 1s ease-out 0.2s both;
+            transition: color 0.8s ease;
+        }
+
+        .hero-cta {
+            margin: 2rem 0 1.5rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .hero-cta .btn {
+            font-size: 1.1rem;
+        }
+
+        .hero-subtext {
+            font-size: 0.9rem;
+            color: #888888;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            transition: color 0.8s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── Cover Mosaic (Hero) — mini flip cards ── */
+        .cover-mosaic {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 10px;
+            max-width: 900px;
+            margin: 3rem auto 0;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .mini-flip {
+            perspective: 600px;
+            cursor: pointer;
+        }
+
+        .mini-flip-inner {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .mini-flip:hover .mini-flip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .mini-flip-front,
+        .mini-flip-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .mini-flip-front img,
+        .mini-flip-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .mini-flip-back {
+            transform: rotateY(180deg);
+        }
+
+        @media (hover: none) {
+            .mini-flip:hover .mini-flip-inner {
+                transform: none;
+            }
+            .mini-flip-inner.flipped {
+                transform: rotateY(180deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .mini-flip-inner {
+                transition: none;
+            }
+            .mini-flip-front,
+            .mini-flip-back {
+                transition: opacity 0.3s ease;
+                backface-visibility: visible;
+                -webkit-backface-visibility: visible;
+            }
+            .mini-flip-back {
+                transform: none;
+                opacity: 0;
+            }
+            .mini-flip:hover .mini-flip-inner {
+                transform: none;
+            }
+            .mini-flip:hover .mini-flip-front {
+                opacity: 0;
+            }
+            .mini-flip:hover .mini-flip-back {
+                opacity: 1;
+            }
+        }
+
+        /* ── Category Sections ── */
+        .category-section {
+            padding: 4rem 0;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 400;
+            color: #1a1a1a;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+            transition: color 0.8s ease;
+        }
+
+        .category-title em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .category-count {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #999999;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.8s ease;
+        }
+
+        /* ── Book Flip Cards Grid ── */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 2rem 1.5rem;
+        }
+
+        /* Wrapper holds the card + caption */
+        .book-card-wrapper {
+            position: relative;
+        }
+
+        .book-card {
+            perspective: 800px;
+            cursor: pointer;
+        }
+
+        .book-card-inner {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .book-card:hover .book-card-inner,
+        .book-card:focus-within .book-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .book-card-front,
+        .book-card-back {
+            position: absolute;
+            inset: 0;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .book-card-front img,
+        .book-card-back img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .book-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* ── Text overlay on the back face of book cards ── */
+        .book-back-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem 1rem 1rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.7) 55%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .back-overlay-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.25;
+        }
+
+        .back-overlay-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 0.02em;
+        }
+
+        .back-overlay-desc {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 300;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.45;
+            margin-top: 0.3rem;
+        }
+
+        /* Mini-flip back overlay — compact for small tiles */
+        .mini-back-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.25rem 0.4rem 0.35rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            gap: 0.05rem;
+        }
+
+        .mini-back-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.55rem;
+            font-weight: 600;
+            color: #ffffff;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mini-back-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.45rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Accessible focus ring on the card */
+        .book-card:focus-within .book-card-inner {
+            outline: 2px solid #b8860b;
+            outline-offset: 4px;
+            border-radius: 8px;
+        }
+
+        /* Touch devices: tap to toggle flip */
+        @media (hover: none) {
+            .book-card:hover .book-card-inner {
+                transform: none;
+            }
+            .book-card-inner.flipped {
+                transform: rotateY(180deg);
+            }
+        }
+
+        /* Reduced motion: crossfade instead of flip */
+        @media (prefers-reduced-motion: reduce) {
+            .book-card-inner {
+                transition: none;
+            }
+            .book-card-front,
+            .book-card-back {
+                transition: opacity 0.3s ease;
+                backface-visibility: visible;
+                -webkit-backface-visibility: visible;
+            }
+            .book-card-back {
+                transform: none;
+                opacity: 0;
+            }
+            .book-card:hover .book-card-inner,
+            .book-card:focus-within .book-card-inner {
+                transform: none;
+            }
+            .book-card:hover .book-card-front,
+            .book-card:focus-within .book-card-front {
+                opacity: 0;
+            }
+            .book-card:hover .book-card-back,
+            .book-card:focus-within .book-card-back {
+                opacity: 1;
+            }
+        }
+
+        /* ── Book Modal (click-to-expand detail) ── */
+        .book-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .book-modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .book-modal {
+            background: #ffffff;
+            border-radius: 12px;
+            max-width: 720px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(20px) scale(0.97);
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.15);
+        }
+
+        .book-modal-overlay.active .book-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        .book-modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 36px;
+            height: 36px;
+            border: none;
+            background: #f0f0f0;
+            border-radius: 50%;
+            font-size: 1.25rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            transition: background 0.2s ease, color 0.2s ease;
+            z-index: 10;
+            line-height: 1;
+        }
+
+        .book-modal-close:hover {
+            background: #e0e0e0;
+            color: #1a1a1a;
+        }
+
+        .book-modal-content {
+            display: flex;
+            gap: 2rem;
+            padding: 2.5rem;
+        }
+
+        .book-modal-cover {
+            width: 220px;
+            min-width: 220px;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+
+        .book-modal-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .book-modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 0.35rem;
+            line-height: 1.25;
+        }
+
+        .book-modal-author {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #888888;
+            margin-bottom: 1.25rem;
+        }
+
+        .book-modal-desc {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+            margin-bottom: 1.75rem;
+        }
+
+        .book-modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .book-modal-actions .btn {
+            font-size: 0.9rem;
+            padding: 0.75rem 1.5rem;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background-color: transparent;
+            color: #1a1a1a;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            border: 1px solid #d0d0d0;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.02em;
+        }
+
+        .btn-outline:hover {
+            border-color: #1a1a1a;
+            background-color: #f8f8f6;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        @media (max-width: 600px) {
+            .book-modal-content {
+                flex-direction: column;
+                padding: 1.5rem;
+                align-items: center;
+                text-align: center;
+            }
+
+            .book-modal-cover {
+                width: 180px;
+                min-width: 180px;
+            }
+
+            .book-modal-info {
+                align-items: center;
+            }
+
+            .book-modal-actions {
+                justify-content: center;
+            }
+        }
+
+        /* Screen-reader-only text */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* ── About Section ── */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+            transition: color 0.8s ease;
+        }
+
+        .about-content a {
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* ── How It Works ── */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .step {
+            padding: 2rem;
+            border-left: 3px solid #1a1a1a;
+        }
+
+        .step h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            transition: color 0.8s ease;
+        }
+
+        .step p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4a4a4a;
+            transition: color 0.8s ease;
+        }
+
+        /* ── Who Is This For ── */
+        .personas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .persona {
+            padding: 2rem;
+            border: 1px solid #e0e0e0;
+            background-color: #f8f8f6;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .persona:hover {
+            border-color: #d0d0d0;
+            background-color: #f0f0ee;
+        }
+
+        .persona h3 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+            transition: color 0.8s ease;
+        }
+
+        .persona p {
+            color: #4a4a4a;
+            font-size: 1rem;
+            line-height: 1.7;
+            transition: color 0.8s ease;
+        }
+
+        /* ── About Host ── */
+        .host-section {
+            background-color: #f8f8f6;
+            padding: 3rem 2.5rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .host-section p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #4a4a4a;
+            margin-bottom: 1.5rem;
+            transition: color 0.8s ease;
+        }
+
+        .host-section a {
+            display: inline-block;
+        }
+
+        /* ── Final CTA ── */
+        .final-cta {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.04) 0%, rgba(26, 26, 26, 0.02) 100%);
+            border: 1px solid #e0e0e0;
+            padding: 4rem 2.5rem;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .final-cta h2 {
+            margin-bottom: 1rem;
+        }
+
+        .final-cta .subtitle {
+            font-size: 1.1rem;
+            color: #6a6a6a;
+            margin-bottom: 2rem;
+            font-family: 'Playfair Display', serif;
+            transition: color 0.8s ease;
+        }
+
+        /* ── Footer ── */
+        footer {
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            color: #888888;
+            font-size: 0.9rem;
+            transition: border-color 0.8s ease, color 0.8s ease;
+        }
+
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #b8860b;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            section {
+                padding: 3.5rem 0;
+            }
+
+            .hero {
+                min-height: 80vh;
+                padding: 2.5rem 1.5rem 2rem;
+            }
+
+            .cover-mosaic {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+                margin-top: 2rem;
+            }
+
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem 1rem;
+            }
+
+            .steps {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.25rem;
+            }
+
+            .step {
+                padding: 1.5rem;
+            }
+
+            .final-cta {
+                padding: 3rem 1.5rem;
+            }
+
+            .host-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .container, .container-narrow {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 2.5rem 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .hero .subtitle {
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 1.75rem;
+            }
+
+            .cover-mosaic {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.25rem 0.75rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 1.75rem;
+            }
+
+            .personas {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .step {
+                padding: 1.25rem;
+            }
+
+            .btn {
+                padding: 0.9rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            .final-cta {
+                padding: 2.5rem 1.5rem;
+            }
+
+            footer {
+                padding: 2rem 1rem;
+            }
+
+            .footer-links {
+                gap: 1rem;
+            }
+
+            .category-title {
+                font-size: clamp(1.75rem, 5vw, 2.5rem);
+            }
+
+            .book-back-overlay {
+                padding: 1.5rem 0.65rem 0.65rem;
+            }
+
+            .back-overlay-title {
+                font-size: 0.8rem;
+            }
+
+            .back-overlay-author {
+                font-size: 0.6rem;
+            }
+
+            .back-overlay-desc {
+                font-size: 0.65rem;
+                line-height: 1.35;
+                margin-top: 0.2rem;
+            }
+
+            .mini-back-overlay {
+                padding: 0.8rem 0.3rem 0.25rem;
+            }
+
+            .mini-back-title {
+                font-size: 0.45rem;
+            }
+
+            .mini-back-author {
+                font-size: 0.35rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Stripe Press Book Club</h1>
+            <p class="subtitle">Read every Stripe Press book in a year. One quarter at a time.</p>
+            <p class="hero-description">A reading community for people who believe in progress. We're working through the entire Stripe Press catalogue: 19 books on technology, economics, science, and civilisation, with weekly discussions and a shared love of beautifully made books.</p>
+            <div class="hero-cta">
+                <a href="https://stripepressclub.substack.com/" class="btn">Subscribe on Substack</a>
+            </div>
+            <p class="hero-subtext">Free to join. New posts and reading schedules delivered to your inbox.</p>
+
+            <!-- Cover Mosaic — mini flip cards -->
+            <div class="cover-mosaic">
+                <div class="mini-flip" data-bg="#e8ece2" data-title="Maintenance" data-author="Stewart Brand" data-desc="The civilisational importance of maintaining what we've built." data-cover="images/maintenance-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/maintenance-cover.png" alt="Maintenance"></div><div class="mini-flip-back"><img src="images/maintenance-desc.png" alt="Maintenance description"></div></div></div>
+                <div class="mini-flip" data-bg="#dfe4ee" data-title="The Origins of Efficiency" data-author="Brian Potter" data-desc="How improving production efficiency drives the most consequential changes in history." data-cover="images/origins-of-efficiency-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/origins-of-efficiency-cover.png" alt="The Origins of Efficiency"></div><div class="mini-flip-back"><img src="images/origins-of-efficiency-desc.png" alt="The Origins of Efficiency description"></div></div></div>
+                <div class="mini-flip" data-bg="#e8e8e8" data-title="The Scaling Era" data-author="Dwarkesh Patel" data-desc="An oral history of AI, 2019–2025." data-cover="images/scaling-era-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/scaling-era-cover.png" alt="The Scaling Era"></div><div class="mini-flip-back"><img src="images/scaling-era-desc.png" alt="The Scaling Era description"></div></div></div>
+                <div class="mini-flip" data-bg="#f0e0e5" data-title="Boom" data-author="Hobart and Huber" data-desc="How bubbles create the ideal conditions for transformative innovation." data-cover="images/boom-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/boom-cover.png" alt="Boom"></div><div class="mini-flip-back"><img src="images/boom-desc.png" alt="Boom description"></div></div></div>
+                <div class="mini-flip" data-bg="#edeadb" data-title="Poor Charlie's Almanack" data-author="Charles T. Munger" data-desc="The wit and wisdom of Berkshire Hathaway's legendary vice chairman." data-cover="images/poor-charlies-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/poor-charlies-cover.png" alt="Poor Charlie's Almanack"></div><div class="mini-flip-back"><img src="images/poor-charlies-desc.png" alt="Poor Charlie's Almanack description"></div></div></div>
+                <div class="mini-flip" data-bg="#dde2f2" data-title="Scaling People" data-author="Claire Hughes Johnson" data-desc="Practical tactics for management and company building." data-cover="images/scaling-people-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/scaling-people-cover.png" alt="Scaling People"></div><div class="mini-flip-back"><img src="images/scaling-people-desc.png" alt="Scaling People description"></div></div></div>
+                <div class="mini-flip" data-bg="#eaead8" data-title="Pieces of the Action" data-author="Vannevar Bush" data-desc="An inside account of one of the most innovative R&amp;D ecosystems of the 20th century." data-cover="images/pieces-of-the-action-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/pieces-of-the-action-cover.png" alt="Pieces of the Action"></div><div class="mini-flip-back"><img src="images/pieces-of-the-action-desc.png" alt="Pieces of the Action description"></div></div></div>
+                <div class="mini-flip" data-bg="#dde9ed" data-title="Where Is My Flying Car?" data-author="J. Storrs Hall" data-desc="An examination of the global stagnation that started in the 1970s." data-cover="images/flying-car-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/flying-car-cover.png" alt="Where Is My Flying Car?"></div><div class="mini-flip-back"><img src="images/flying-car-desc.png" alt="Where Is My Flying Car? description"></div></div></div>
+                <div class="mini-flip" data-bg="#ede4da" data-title="The Big Score" data-author="Michael S. Malone" data-desc="From semiconductors to startups, the origins of Silicon Valley." data-cover="images/big-score-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/big-score-cover.png" alt="The Big Score"></div><div class="mini-flip-back"><img src="images/big-score-desc.png" alt="The Big Score description"></div></div></div>
+                <div class="mini-flip" data-bg="#eddddd" data-title="Scientific Freedom" data-author="Donald W. Braben" data-desc="Why scientific freedom is the elixir of civilisation." data-cover="images/scientific-freedom-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/scientific-freedom-cover.png" alt="Scientific Freedom"></div><div class="mini-flip-back"><img src="images/scientific-freedom-desc.png" alt="Scientific Freedom description"></div></div></div>
+                <div class="mini-flip" data-bg="#f0e8d6" data-title="Working in Public" data-author="Nadia Asparouhova" data-desc="The making and maintenance of open source software." data-cover="images/working-in-public-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/working-in-public-cover.png" alt="Working in Public"></div><div class="mini-flip-back"><img src="images/working-in-public-desc.png" alt="Working in Public description"></div></div></div>
+                <div class="mini-flip" data-bg="#e5e8de" data-title="The Art of Doing Science and Engineering" data-author="Richard Hamming" data-desc="A provocative challenge to anyone who wants to build something that matters." data-cover="images/art-of-science-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/art-of-science-cover.png" alt="The Art of Doing Science and Engineering"></div><div class="mini-flip-back"><img src="images/art-of-science-desc.png" alt="The Art of Doing Science and Engineering description"></div></div></div>
+                <div class="mini-flip" data-bg="#dce0ee" data-title="The Making of Prince of Persia" data-author="Jordan Mechner" data-desc="The illustrated journals of a game designer, 1985–1993." data-cover="images/prince-of-persia-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/prince-of-persia-cover.png" alt="The Making of Prince of Persia"></div><div class="mini-flip-back"><img src="images/prince-of-persia-desc.png" alt="The Making of Prince of Persia description"></div></div></div>
+                <div class="mini-flip" data-bg="#f0e6d6" data-title="Get Together" data-author="Richardson, Huynh and Sotto" data-desc="How to build a community with your people." data-cover="images/get-together-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/get-together-cover.png" alt="Get Together"></div><div class="mini-flip-back"><img src="images/get-together-desc.png" alt="Get Together description"></div></div></div>
+                <div class="mini-flip" data-bg="#e6e7e9" data-title="An Elegant Puzzle" data-author="Will Larson" data-desc="Systems of engineering management for growing organisations." data-cover="images/elegant-puzzle-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/elegant-puzzle-cover.png" alt="An Elegant Puzzle"></div><div class="mini-flip-back"><img src="images/elegant-puzzle-desc.png" alt="An Elegant Puzzle description"></div></div></div>
+                <div class="mini-flip" data-bg="#ddddf0" data-title="The Revolt of the Public" data-author="Martin Gurri" data-desc="How information abundance is reshaping politics and authority." data-cover="images/revolt-of-the-public-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/revolt-of-the-public-cover.png" alt="The Revolt of the Public"></div><div class="mini-flip-back"><img src="images/revolt-of-the-public-desc.png" alt="The Revolt of the Public description"></div></div></div>
+                <div class="mini-flip" data-bg="#f0dddd" data-title="Stubborn Attachments" data-author="Tyler Cowen" data-desc="A vision for a society of free, prosperous, and responsible individuals." data-cover="images/stubborn-attachments-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/stubborn-attachments-cover.png" alt="Stubborn Attachments"></div><div class="mini-flip-back"><img src="images/stubborn-attachments-desc.png" alt="Stubborn Attachments description"></div></div></div>
+                <div class="mini-flip" data-bg="#dfe3ec" data-title="The Dream Machine" data-author="M. Mitchell Waldrop" data-desc="The sprawling history of how we got from punch cards to personal computers." data-cover="images/dream-machine-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/dream-machine-cover.png" alt="The Dream Machine"></div><div class="mini-flip-back"><img src="images/dream-machine-desc.png" alt="The Dream Machine description"></div></div></div>
+                <div class="mini-flip" data-bg="#dee4ee" data-title="High Growth Handbook" data-author="Elad Gil" data-desc="The playbook for growing your startup into a global brand." data-cover="images/high-growth-cover.png"><div class="mini-flip-inner"><div class="mini-flip-front"><img src="images/high-growth-cover.png" alt="High Growth Handbook"></div><div class="mini-flip-back"><img src="images/high-growth-desc.png" alt="High Growth Handbook description"></div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- About Stripe Press -->
+    <section>
+        <div class="container-narrow">
+            <h2>About Stripe Press</h2>
+            <div class="about-content">
+                <p>Stripe Press publishes ideas for progress. Books about science, technology, economics, and the forces that shape civilisation. Their catalogue includes new ideas from established and emerging thinkers, alongside reimagined editions of enduring works with renewed relevance today. Every title is beautifully designed, intellectually ambitious, and made for curious, high-agency readers.</p>
+                <a href="https://press.stripe.com/">Browse the catalogue at press.stripe.com →</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- ═══ BUSINESS & MANAGEMENT ═══ -->
+    <section class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">Business <em>and</em> Management</h2>
+                <p class="category-count">5 books</p>
+            </div>
+
+            <div class="books-grid">
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#dee4ee" data-title="High Growth Handbook" data-author="Elad Gil" data-desc="The playbook for growing your startup into a global brand." data-cover="images/high-growth-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="High Growth Handbook by Elad Gil">
+                            <div class="book-card-front"><img src="images/high-growth-cover.png" alt="High Growth Handbook by Elad Gil"></div>
+                            <div class="book-card-back"><img src="images/high-growth-desc.png" alt="High Growth Handbook description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#e6e7e9" data-title="An Elegant Puzzle" data-author="Will Larson" data-desc="Systems of engineering management for growing organisations." data-cover="images/elegant-puzzle-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="An Elegant Puzzle by Will Larson">
+                            <div class="book-card-front"><img src="images/elegant-puzzle-cover.png" alt="An Elegant Puzzle by Will Larson"></div>
+                            <div class="book-card-back"><img src="images/elegant-puzzle-desc.png" alt="An Elegant Puzzle description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#dde2f2" data-title="Scaling People" data-author="Claire Hughes Johnson" data-desc="Practical tactics for management and company building." data-cover="images/scaling-people-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Scaling People by Claire Hughes Johnson">
+                            <div class="book-card-front"><img src="images/scaling-people-cover.png" alt="Scaling People by Claire Hughes Johnson"></div>
+                            <div class="book-card-back"><img src="images/scaling-people-desc.png" alt="Scaling People description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#f0e6d6" data-title="Get Together" data-author="Richardson, Huynh and Sotto" data-desc="How to build a community with your people." data-cover="images/get-together-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Get Together by Richardson, Huynh and Sotto">
+                            <div class="book-card-front"><img src="images/get-together-cover.png" alt="Get Together by Richardson, Huynh and Sotto"></div>
+                            <div class="book-card-back"><img src="images/get-together-desc.png" alt="Get Together description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#edeadb" data-title="Poor Charlie's Almanack" data-author="Charles T. Munger" data-desc="The wit and wisdom of Berkshire Hathaway's legendary vice chairman." data-cover="images/poor-charlies-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Poor Charlie's Almanack by Charles T. Munger">
+                            <div class="book-card-front"><img src="images/poor-charlies-cover.png" alt="Poor Charlie's Almanack by Charles T. Munger"></div>
+                            <div class="book-card-back"><img src="images/poor-charlies-desc.png" alt="Poor Charlie's Almanack description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- ═══ ECONOMICS & HISTORY ═══ -->
+    <section class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">Economics <em>and</em> History</h2>
+                <p class="category-count">4 books</p>
+            </div>
+
+            <div class="books-grid">
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#f0dddd" data-title="Stubborn Attachments" data-author="Tyler Cowen" data-desc="A vision for a society of free, prosperous, and responsible individuals." data-cover="images/stubborn-attachments-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Stubborn Attachments by Tyler Cowen">
+                            <div class="book-card-front"><img src="images/stubborn-attachments-cover.png" alt="Stubborn Attachments by Tyler Cowen"></div>
+                            <div class="book-card-back"><img src="images/stubborn-attachments-desc.png" alt="Stubborn Attachments description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#ede4da" data-title="The Big Score" data-author="Michael S. Malone" data-desc="From semiconductors to startups, the origins of Silicon Valley." data-cover="images/big-score-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="The Big Score by Michael S. Malone">
+                            <div class="book-card-front"><img src="images/big-score-cover.png" alt="The Big Score by Michael S. Malone"></div>
+                            <div class="book-card-back"><img src="images/big-score-desc.png" alt="The Big Score description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#eaead8" data-title="Pieces of the Action" data-author="Vannevar Bush" data-desc="An inside account of one of the most innovative R&amp;D ecosystems of the 20th century." data-cover="images/pieces-of-the-action-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Pieces of the Action by Vannevar Bush">
+                            <div class="book-card-front"><img src="images/pieces-of-the-action-cover.png" alt="Pieces of the Action by Vannevar Bush"></div>
+                            <div class="book-card-back"><img src="images/pieces-of-the-action-desc.png" alt="Pieces of the Action description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#dfe3ec" data-title="The Dream Machine" data-author="M. Mitchell Waldrop" data-desc="The sprawling history of how we got from punch cards to personal computers." data-cover="images/dream-machine-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="The Dream Machine by M. Mitchell Waldrop">
+                            <div class="book-card-front"><img src="images/dream-machine-cover.png" alt="The Dream Machine by M. Mitchell Waldrop"></div>
+                            <div class="book-card-back"><img src="images/dream-machine-desc.png" alt="The Dream Machine description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- ═══ IDEAS & INNOVATION ═══ -->
+    <section class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">Ideas <em>and</em> Innovation</h2>
+                <p class="category-count">5 books</p>
+            </div>
+
+            <div class="books-grid">
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#dfe4ee" data-title="The Origins of Efficiency" data-author="Brian Potter" data-desc="How improving production efficiency drives the most consequential changes in history." data-cover="images/origins-of-efficiency-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="The Origins of Efficiency by Brian Potter">
+                            <div class="book-card-front"><img src="images/origins-of-efficiency-cover.png" alt="The Origins of Efficiency by Brian Potter"></div>
+                            <div class="book-card-back"><img src="images/origins-of-efficiency-desc.png" alt="The Origins of Efficiency description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#f0e0e5" data-title="Boom" data-author="Hobart and Huber" data-desc="How bubbles create the ideal conditions for transformative innovation." data-cover="images/boom-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Boom by Hobart and Huber">
+                            <div class="book-card-front"><img src="images/boom-cover.png" alt="Boom by Hobart and Huber"></div>
+                            <div class="book-card-back"><img src="images/boom-desc.png" alt="Boom description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#ddddf0" data-title="The Revolt of the Public" data-author="Martin Gurri" data-desc="How information abundance is reshaping politics and authority." data-cover="images/revolt-of-the-public-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="The Revolt of the Public by Martin Gurri">
+                            <div class="book-card-front"><img src="images/revolt-of-the-public-cover.png" alt="The Revolt of the Public by Martin Gurri"></div>
+                            <div class="book-card-back"><img src="images/revolt-of-the-public-desc.png" alt="The Revolt of the Public description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#dce0ee" data-title="The Making of Prince of Persia" data-author="Jordan Mechner" data-desc="The illustrated journals of a game designer, 1985–1993." data-cover="images/prince-of-persia-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="The Making of Prince of Persia by Jordan Mechner">
+                            <div class="book-card-front"><img src="images/prince-of-persia-cover.png" alt="The Making of Prince of Persia by Jordan Mechner"></div>
+                            <div class="book-card-back"><img src="images/prince-of-persia-desc.png" alt="The Making of Prince of Persia description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#e8ece2" data-title="Maintenance" data-author="Stewart Brand" data-desc="The civilisational importance of maintaining what we've built." data-cover="images/maintenance-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Maintenance by Stewart Brand">
+                            <div class="book-card-front"><img src="images/maintenance-cover.png" alt="Maintenance by Stewart Brand"></div>
+                            <div class="book-card-back"><img src="images/maintenance-desc.png" alt="Maintenance description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- ═══ SCIENCE & TECHNOLOGY ═══ -->
+    <section class="category-section">
+        <div class="container">
+            <div class="category-header">
+                <h2 class="category-title">Science <em>and</em> Technology</h2>
+                <p class="category-count">5 books</p>
+            </div>
+
+            <div class="books-grid">
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#e8e8e8" data-title="The Scaling Era" data-author="Dwarkesh Patel" data-desc="An oral history of AI, 2019–2025." data-cover="images/scaling-era-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="The Scaling Era by Dwarkesh Patel">
+                            <div class="book-card-front"><img src="images/scaling-era-cover.png" alt="The Scaling Era by Dwarkesh Patel"></div>
+                            <div class="book-card-back"><img src="images/scaling-era-desc.png" alt="The Scaling Era description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#dde9ed" data-title="Where Is My Flying Car?" data-author="J. Storrs Hall" data-desc="An examination of the global stagnation that started in the 1970s." data-cover="images/flying-car-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Where Is My Flying Car? by J. Storrs Hall">
+                            <div class="book-card-front"><img src="images/flying-car-cover.png" alt="Where Is My Flying Car? by J. Storrs Hall"></div>
+                            <div class="book-card-back"><img src="images/flying-car-desc.png" alt="Where Is My Flying Car? description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#eddddd" data-title="Scientific Freedom" data-author="Donald W. Braben" data-desc="Why scientific freedom is the elixir of civilisation." data-cover="images/scientific-freedom-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Scientific Freedom by Donald W. Braben">
+                            <div class="book-card-front"><img src="images/scientific-freedom-cover.png" alt="Scientific Freedom by Donald W. Braben"></div>
+                            <div class="book-card-back"><img src="images/scientific-freedom-desc.png" alt="Scientific Freedom description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#f0e8d6" data-title="Working in Public" data-author="Nadia Asparouhova" data-desc="The making and maintenance of open source software." data-cover="images/working-in-public-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="Working in Public by Nadia Asparouhova">
+                            <div class="book-card-front"><img src="images/working-in-public-cover.png" alt="Working in Public by Nadia Asparouhova"></div>
+                            <div class="book-card-back"><img src="images/working-in-public-desc.png" alt="Working in Public description"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book-card-wrapper">
+                    <div class="book-card" data-bg="#e5e8de" data-title="The Art of Doing Science and Engineering" data-author="Richard Hamming" data-desc="A provocative challenge to anyone who wants to build something that matters." data-cover="images/art-of-science-cover.png">
+                        <div class="book-card-inner" tabindex="0" role="group" aria-label="The Art of Doing Science and Engineering by Richard Hamming">
+                            <div class="book-card-front"><img src="images/art-of-science-cover.png" alt="The Art of Doing Science and Engineering by Richard Hamming"></div>
+                            <div class="book-card-back"><img src="images/art-of-science-desc.png" alt="The Art of Doing Science and Engineering description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- How It Works -->
+    <section>
+        <div class="container-narrow">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Subscribe</h3>
+                    <p>Join the <a href="https://stripepressclub.substack.com/">Substack</a> for free. You'll get the reading schedule, discussion prompts, and book notes delivered to your inbox.</p>
+                </div>
+                <div class="step">
+                    <h3>Read</h3>
+                    <p>Get your copy of each quarter's books. Read at your own pace. We share weekly prompts and highlights to keep you on track.</p>
+                </div>
+                <div class="step">
+                    <h3>Discuss</h3>
+                    <p>Join the conversation. Share your notes, highlights, and questions. Connect with other readers who care about progress.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- Who Is This For -->
+    <section>
+        <div class="container-narrow">
+            <h2>Who Is This For?</h2>
+            <div class="personas">
+                <div class="persona">
+                    <h3>Stripe Press fans</h3>
+                    <p>You already love these books. Now read them with a community.</p>
+                </div>
+                <div class="persona">
+                    <h3>Builders and founders</h3>
+                    <p>Ideas about scaling, technology, and progress, applied to what you're building.</p>
+                </div>
+                <div class="persona">
+                    <h3>Curious generalists</h3>
+                    <p>Economics, science, technology, history. If you read widely, you'll feel at home.</p>
+                </div>
+                <div class="persona">
+                    <h3>Aspiring readers</h3>
+                    <p>19 books feels ambitious. A structured schedule and a group makes it achievable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- About Host -->
+    <section>
+        <div class="container-narrow">
+            <div class="host-section">
+                <p>Run by <strong>Leath Al Obaidi</strong>. Economist, reader, and builder of things on the internet. Currently working in regulatory finance at Smart DCC. Previously British Business Bank. SPE Council member. Loves Stripe Press books enough to start a club.</p>
+                <a href="https://leathalobaidi.com/">leathalobaidi.com →</a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- Final CTA -->
+    <section>
+        <div class="container-narrow">
+            <div class="final-cta">
+                <h2>Join the Stripe Press Book Club</h2>
+                <p class="subtitle">Subscribe on Substack for free. First quarter starts January 2026.</p>
+                <a href="https://stripepressclub.substack.com/" class="btn">Subscribe Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Stripe Press Book Club · Run by Leath Al Obaidi · Not affiliated with Stripe, Inc.</p>
+            <div class="footer-links">
+                <a href="https://stripepressclub.substack.com/">Substack</a>
+                <a href="https://leathalobaidi.com/">leathalobaidi.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Book Detail Modal -->
+    <div class="book-modal-overlay" id="bookModal">
+        <div class="book-modal">
+            <button class="book-modal-close" aria-label="Close">&times;</button>
+            <div class="book-modal-content">
+                <img class="book-modal-cover" id="modalCover" src="" alt="">
+                <div class="book-modal-info">
+                    <h3 class="book-modal-title" id="modalTitle"></h3>
+                    <p class="book-modal-author" id="modalAuthor"></p>
+                    <p class="book-modal-desc" id="modalDesc"></p>
+                    <div class="book-modal-actions">
+                        <a class="btn" id="modalBuyLink" href="https://press.stripe.com/" target="_blank" rel="noopener">View on Stripe Press</a>
+                        <a class="btn-outline" href="https://stripepressclub.substack.com/" target="_blank" rel="noopener">Join the Book Club</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        var defaultBg = '#ffffff';
+        var overlay = document.getElementById('bookModal');
+        var modalCover = document.getElementById('modalCover');
+        var modalTitle = document.getElementById('modalTitle');
+        var modalAuthor = document.getElementById('modalAuthor');
+        var modalDesc = document.getElementById('modalDesc');
+
+        // ── Inject text overlays on the back face of each book card ──
+        document.querySelectorAll('.book-card').forEach(function(card) {
+            var title = card.getAttribute('data-title');
+            var author = card.getAttribute('data-author');
+            var desc = card.getAttribute('data-desc');
+            if (!title) return;
+            var back = card.querySelector('.book-card-back');
+            if (!back) return;
+            var ov = document.createElement('div');
+            ov.className = 'book-back-overlay';
+            ov.innerHTML =
+                '<span class="back-overlay-title">' + title + '</span>' +
+                '<span class="back-overlay-author">' + author + '</span>' +
+                '<span class="back-overlay-desc">' + desc + '</span>';
+            back.appendChild(ov);
+        });
+
+        // ── Inject compact text overlays on mini-flip backs ──
+        document.querySelectorAll('.mini-flip').forEach(function(card) {
+            var title = card.getAttribute('data-title');
+            var author = card.getAttribute('data-author');
+            if (!title) return;
+            var back = card.querySelector('.mini-flip-back');
+            if (!back) return;
+            var ov = document.createElement('div');
+            ov.className = 'mini-back-overlay';
+            ov.innerHTML =
+                '<span class="mini-back-title">' + title + '</span>' +
+                '<span class="mini-back-author">' + author + '</span>';
+            back.appendChild(ov);
+        });
+
+        // ── Background colour shift on hover ──
+        document.querySelectorAll('[data-bg]').forEach(function(el) {
+            el.addEventListener('mouseenter', function() {
+                document.body.style.backgroundColor = el.getAttribute('data-bg');
+            });
+            el.addEventListener('mouseleave', function() {
+                document.body.style.backgroundColor = defaultBg;
+            });
+        });
+
+        // ── Modal: open on click ──
+        function openModal(el) {
+            var title = el.getAttribute('data-title');
+            var author = el.getAttribute('data-author');
+            var desc = el.getAttribute('data-desc');
+            var cover = el.getAttribute('data-cover');
+            if (!title) return;
+
+            modalCover.src = cover;
+            modalCover.alt = title + ' by ' + author;
+            modalTitle.textContent = title;
+            modalAuthor.textContent = author;
+            modalDesc.textContent = desc;
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Attach click to all book cards and mini-flips
+        document.querySelectorAll('.book-card, .mini-flip').forEach(function(card) {
+            card.addEventListener('click', function(e) {
+                // Don't open modal if user is selecting text
+                if (window.getSelection().toString()) return;
+                openModal(card);
+            });
+        });
+
+        // Close modal
+        overlay.querySelector('.book-modal-close').addEventListener('click', closeModal);
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // ── Touch-device tap-to-flip ──
+        if (matchMedia('(hover: none)').matches) {
+            document.querySelectorAll('.book-card-inner, .mini-flip-inner').forEach(function(card) {
+                var tapCount = 0;
+                var tapTimer;
+                card.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    tapCount++;
+                    if (tapCount === 1) {
+                        // First tap: flip the card
+                        card.classList.toggle('flipped');
+                        var parent = card.closest('[data-bg]');
+                        if (parent) {
+                            document.body.style.backgroundColor = card.classList.contains('flipped')
+                                ? parent.getAttribute('data-bg')
+                                : defaultBg;
+                        }
+                        tapTimer = setTimeout(function() { tapCount = 0; }, 400);
+                    } else if (tapCount === 2) {
+                        // Double-tap: open modal
+                        clearTimeout(tapTimer);
+                        tapCount = 0;
+                        var parent = card.closest('[data-bg]');
+                        if (parent) openModal(parent);
+                    }
+                });
+            });
+        }
+    })();
+    </script>
+</body></html>
