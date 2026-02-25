@@ -1,0 +1,1957 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fred Whitton Challenge — Training Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+
+/* ============================================================  VARIABLES  */
+[data-theme="dark"] {
+  --bg:          #0c0c0c; --bg2: #141414; --bg3: #1a1a1a;
+  --surface:     #202020; --surface2: #262626;
+  --border:      #2e2e2e; --border2: #222;
+  --text:        #f0ede8; --text-muted: #666; --text-dim: #3a3a3a;
+  --accent:      #c8001e; --accent-glow: rgba(200,0,30,0.12);
+  --toggle-bg:   #2e2e2e; --shadow: 0 1px 4px rgba(0,0,0,0.6);
+  --chart-bg:    #111; --chart-grid: #222;
+}
+[data-theme="light"] {
+  --bg:          #f7f4ef; --bg2: #eeebe4; --bg3: #e6e2da;
+  --surface:     #dedad2; --surface2: #d5d0c8;
+  --border:      #c8c3ba; --border2: #d5d0c8;
+  --text:        #1a1614; --text-muted: #888; --text-dim: #c0bab2;
+  --accent:      #c8001e; --accent-glow: rgba(200,0,30,0.08);
+  --toggle-bg:   #c8c3ba; --shadow: 0 1px 4px rgba(0,0,0,0.1);
+  --chart-bg:    #e6e2da; --chart-grid: #c8c3ba;
+}
+
+/* SESSION COLOURS — normal */
+:root {
+  --c-rest: #555;   --c-easy: #9ab8d0; --c-mod: #c8d8e8;
+  --c-hard: #e0c880; --c-key: #f0ede8; --c-int: #e84060;
+}
+[data-theme="light"] {
+  --c-rest: #aaa; --c-easy: #4070a0; --c-mod: #305080;
+  --c-hard: #806000; --c-key: #1a1614; --c-int: #c8001e;
+}
+
+/* COLORBLIND SAFE — Wong palette */
+[data-cb="true"] {
+  --c-rest: #767676; --c-easy: #56B4E9; --c-mod: #0072B2;
+  --c-hard: #E69F00; --c-key: #009E73; --c-int: #D55E00;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: 'Barlow', sans-serif; font-size: 13px; line-height: 1.5;
+  transition: background 0.35s, color 0.35s; min-height: 100vh;
+  padding-bottom: 72px; /* room for today bar */
+}
+
+/* ============================================================  TOOLBAR  */
+.toolbar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 0 24px; height: 50px;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  transition: background 0.35s, border-color 0.35s;
+}
+.brand { font-family: 'Bebas Neue', cursive; font-size: 18px; letter-spacing: 2px; color: var(--text); }
+.brand span { color: var(--accent); }
+.toolbar-right { display: flex; align-items: center; gap: 10px; flex-wrap: nowrap; }
+.tb-sep { width: 1px; height: 20px; background: var(--border); flex-shrink: 0; }
+
+.toggle-wrap { display: flex; align-items: center; gap: 6px; }
+.toggle-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; }
+.toggle { position: relative; width: 36px; height: 20px; cursor: pointer; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.track { position: absolute; inset: 0; background: var(--toggle-bg); border-radius: 10px; transition: background 0.3s; }
+.toggle input:checked + .track { background: var(--accent); }
+.thumb { position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; background: var(--bg); border-radius: 50%; transition: transform 0.3s; pointer-events: none; }
+.toggle input:checked ~ .thumb { transform: translateX(16px); }
+
+.tb-btn {
+  padding: 5px 10px; border: 1px solid var(--border); border-radius: 3px;
+  background: transparent; color: var(--text-muted);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s; white-space: nowrap;
+}
+.tb-btn:hover { border-color: var(--accent); color: var(--accent); }
+.tb-btn.active { background: var(--accent-glow); border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================  HERO  */
+.hero {
+  background: var(--bg2); border-bottom: 3px solid var(--accent);
+  padding: 44px 28px 36px;
+  display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap;
+  position: relative; overflow: hidden; transition: background 0.35s;
+}
+.hero::before {
+  content: 'FWC'; position: absolute; right: -10px; bottom: -24px;
+  font-family: 'Bebas Neue', cursive; font-size: 200px; line-height: 1;
+  color: var(--accent); opacity: 0.05; pointer-events: none; user-select: none;
+}
+.hero-title { font-family: 'Bebas Neue', cursive; font-size: 72px; line-height: 0.92; color: var(--text); letter-spacing: 1px; }
+.hero-title span { color: var(--accent); display: block; }
+.hero-sub { margin-top: 12px; font-size: 13px; color: var(--text-muted); max-width: 360px; line-height: 1.7; }
+.cd-block { text-align: right; }
+.cd-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+.cd-num { font-family: 'Bebas Neue', cursive; font-size: 72px; line-height: 1; color: var(--accent); }
+.cd-date { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 4px; }
+
+/* ============================================================  PROGRESS  */
+.prog-wrap {
+  background: var(--bg3); border-bottom: 1px solid var(--border);
+  padding: 12px 28px; display: flex; align-items: center; gap: 14px; transition: background 0.35s;
+}
+.prog-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; min-width: 100px; }
+.prog-outer { flex: 1; height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+.prog-inner { height: 100%; background: linear-gradient(90deg, #880010, var(--accent)); border-radius: 2px; transition: width 1.2s ease; }
+.prog-pct { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; color: var(--accent); min-width: 32px; text-align: right; }
+
+/* ============================================================  TAB NAV  */
+.tab-nav {
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 0 28px; display: flex; align-items: flex-end; gap: 0;
+  transition: background 0.35s, border-color 0.35s;
+}
+.tab-btn {
+  display: flex; align-items: center; gap: 7px;
+  padding: 12px 18px 11px; background: transparent;
+  border: none; border-bottom: 2px solid transparent;
+  color: var(--text-muted);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: color 0.2s, border-color 0.2s; margin-bottom: -1px;
+}
+.tab-btn:hover { color: var(--text); }
+.tab-btn.active { color: var(--text); border-bottom-color: var(--accent); }
+.tab-icon { font-size: 13px; }
+.view-panel { display: none; }
+.view-panel.active { display: block; }
+
+/* ============================================================  FILTER BAR  */
+.filter-bar {
+  background: var(--bg2); border-bottom: 1px solid var(--border);
+  padding: 10px 28px; display: flex; align-items: center; gap: 7px; flex-wrap: wrap; transition: background 0.35s;
+}
+.filter-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-right: 2px; white-space: nowrap; }
+.f-btn {
+  display: flex; align-items: center; gap: 5px; padding: 4px 11px;
+  border: 1px solid var(--border); border-radius: 20px; background: transparent;
+  color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+}
+.f-btn:hover { border-color: var(--text-muted); color: var(--text); }
+.f-btn.active { background: var(--accent-glow); border-color: var(--accent); color: var(--text); }
+.f-dot { width: 7px; height: 7px; border-radius: 50%; }
+.dot-rest { background: var(--c-rest); } .dot-easy { background: var(--c-easy); }
+.dot-mod  { background: var(--c-mod); }  .dot-hard { background: var(--c-hard); }
+.dot-key  { background: var(--c-key); }  .dot-int  { background: var(--c-int); }
+
+.expand-controls { margin-left: auto; display: flex; gap: 5px; }
+.ec-btn { padding: 4px 10px; border: 1px solid var(--border); border-radius: 3px; background: transparent; color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all 0.2s; }
+.ec-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================  LIST VIEW  */
+.plan { padding: 24px 28px 40px; max-width: 900px; display: flex; flex-direction: column; gap: 12px; }
+
+.month-block {}
+.month-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; background: var(--bg2); border: 1px solid var(--border); border-radius: 6px;
+  cursor: pointer; user-select: none; transition: background 0.2s, border-color 0.2s; gap: 12px;
+}
+.month-toggle:hover { border-color: var(--accent); background: var(--bg3); }
+.month-toggle.open  { border-color: var(--accent); border-radius: 6px 6px 0 0; }
+.month-left { display: flex; align-items: center; gap: 14px; }
+.month-name-lbl { font-family: 'Bebas Neue', cursive; font-size: 32px; letter-spacing: 1px; color: var(--text); line-height: 1; }
+.month-pill { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); background: var(--accent-glow); border: 1px solid var(--accent); padding: 2px 9px; border-radius: 10px; opacity: 0.85; }
+.month-stats { display: flex; align-items: center; gap: 10px; }
+.mstat { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+.mstat strong { color: var(--text); font-weight: 600; }
+.chevron { width: 14px; height: 14px; border-right: 2px solid var(--text-muted); border-bottom: 2px solid var(--text-muted); transform: rotate(-45deg); transition: transform 0.3s, border-color 0.2s; flex-shrink: 0; }
+.month-toggle.open .chevron { transform: rotate(45deg); border-color: var(--accent); }
+.month-body { display: none; background: var(--bg3); border: 1px solid var(--accent); border-top: none; border-radius: 0 0 6px 6px; padding: 8px 12px 12px; flex-direction: column; gap: 6px; }
+.month-body.open { display: flex; }
+
+.week-block {}
+.week-toggle {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 14px; background: var(--surface); border: 1px solid var(--border2); border-radius: 4px;
+  cursor: pointer; user-select: none; transition: background 0.15s, border-color 0.2s; gap: 10px;
+}
+.week-toggle:hover { border-color: var(--border); }
+.week-toggle.open { border-radius: 4px 4px 0 0; border-color: var(--border); }
+.week-left { display: flex; align-items: center; gap: 12px; }
+.week-num { font-family: 'Bebas Neue', cursive; font-size: 22px; color: var(--accent); line-height: 1; min-width: 38px; }
+.week-summary { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.ws-dot { width: 6px; height: 6px; border-radius: 50%; }
+.week-mileage { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); margin-left: 4px; }
+.week-tss { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; color: var(--text-muted); margin-left: 2px; }
+.wk-chevron { width: 11px; height: 11px; border-right: 1.5px solid var(--text-muted); border-bottom: 1.5px solid var(--text-muted); transform: rotate(-45deg); transition: transform 0.25s, border-color 0.2s; flex-shrink: 0; }
+.week-toggle.open .wk-chevron { transform: rotate(45deg); border-color: var(--accent); }
+.week-body { display: none; background: var(--surface2); border: 1px solid var(--border2); border-top: none; border-radius: 0 0 4px 4px; flex-direction: column; }
+.week-body.open { display: flex; }
+
+/* SESSION ROW */
+.session-row {
+  display: flex; align-items: stretch; gap: 0;
+  border-bottom: 1px solid var(--border2); transition: background 0.2s;
+  position: relative;
+}
+.session-row:last-child { border-bottom: none; }
+.session-row:hover { background: rgba(255,255,255,0.02); }
+.session-row.is-today { background: var(--accent-glow) !important; }
+.session-row.done-row .session-title::after { content: ' ✓'; color: var(--c-key); opacity: 0.7; font-size: 11px; }
+
+.session-day {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-muted); min-width: 96px; padding: 12px 14px;
+  border-right: 1px solid var(--border2); flex-shrink: 0; line-height: 1;
+}
+.session-bar { width: 3px; align-self: stretch; flex-shrink: 0; }
+.session-content { flex: 1; padding: 10px 14px; display: flex; flex-direction: column; gap: 3px; }
+.session-top { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.session-badge {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+  padding: 2px 6px; border-radius: 2px; border: 1px solid; line-height: 1.4; flex-shrink: 0;
+}
+.session-title { font-size: 13px; }
+.session-meta { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--text-muted); }
+
+/* session actions: complete + note */
+.session-actions { display: flex; align-items: center; gap: 8px; padding: 10px 12px; flex-shrink: 0; }
+.sess-done {
+  width: 18px; height: 18px; border-radius: 3px; border: 1px solid var(--border);
+  background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: transparent; transition: all 0.2s; flex-shrink: 0;
+}
+.sess-done:hover { border-color: var(--c-key); }
+.sess-done.checked { background: var(--c-key); border-color: var(--c-key); color: var(--bg); }
+[data-cb="true"] .sess-done.checked { background: var(--c-key); border-color: var(--c-key); }
+.note-btn {
+  width: 20px; height: 20px; border: none; background: transparent; cursor: pointer;
+  color: var(--text-muted); font-size: 13px; display: flex; align-items: center; justify-content: center;
+  border-radius: 3px; transition: color 0.2s; padding: 0; flex-shrink: 0;
+}
+.note-btn:hover { color: var(--text); }
+.note-btn.has-note { color: var(--c-hard); }
+
+.note-area {
+  display: none; padding: 8px 14px 12px 96px; background: var(--bg3);
+  border-top: 1px solid var(--border2);
+}
+.note-area.open { display: block; }
+.note-area textarea {
+  width: 100%; min-height: 52px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 3px; color: var(--text); font-family: 'Barlow', sans-serif; font-size: 12px;
+  padding: 8px 10px; resize: vertical; outline: none; transition: border-color 0.2s;
+  line-height: 1.5;
+}
+.note-area textarea:focus { border-color: var(--accent); }
+.note-area textarea::placeholder { color: var(--text-muted); }
+
+.session-row.hidden  { display: none !important; }
+.week-block.wk-hidden { display: none !important; }
+
+/* SESSION TYPE STYLES */
+.type-rest .session-bar { background: var(--c-rest); }
+.type-easy .session-bar { background: var(--c-easy); }
+.type-mod  .session-bar { background: var(--c-mod); }
+.type-hard .session-bar { background: var(--c-hard); }
+.type-key  .session-bar { background: var(--c-key); }
+.type-int  .session-bar { background: var(--c-int); }
+
+.type-rest .session-title { color: var(--text-muted); font-style: italic; }
+.type-easy .session-title { color: var(--c-easy); }
+.type-mod  .session-title { color: var(--c-mod); }
+.type-hard .session-title { color: var(--c-hard); }
+.type-key  .session-title { color: var(--c-key); }
+.type-int  .session-title { color: var(--c-int); }
+
+.type-rest .session-badge { background: rgba(85,85,85,0.12); color: var(--c-rest); border-color: rgba(85,85,85,0.25); }
+.type-easy .session-badge { background: rgba(154,184,208,0.12); color: var(--c-easy); border-color: rgba(154,184,208,0.25); }
+.type-mod  .session-badge { background: rgba(200,216,232,0.12); color: var(--c-mod);  border-color: rgba(200,216,232,0.25); }
+.type-hard .session-badge { background: rgba(224,200,128,0.12); color: var(--c-hard); border-color: rgba(224,200,128,0.25); }
+.type-key  .session-badge { background: rgba(240,237,232,0.10); color: var(--c-key);  border-color: rgba(240,237,232,0.2); }
+.type-int  .session-badge { background: rgba(232,64,96,0.12);   color: var(--c-int);  border-color: rgba(232,64,96,0.25); }
+.race-badge-cell .session-badge { background: rgba(200,0,30,0.2); color: var(--accent); border-color: rgba(200,0,30,0.4); }
+.race-badge-cell { background: rgba(200,0,30,0.06) !important; }
+.race-badge-cell .session-title { color: var(--accent) !important; font-weight: 500; }
+.race-badge-cell .session-day { color: var(--accent); }
+
+/* ============================================================  CALENDAR VIEW  */
+.cal-wrap { padding: 28px 28px 40px; display: flex; flex-direction: column; gap: 40px; }
+.cal-month-header { display: flex; align-items: baseline; gap: 14px; margin-bottom: 16px; border-left: 3px solid var(--accent); padding-left: 16px; }
+.cal-month-name { font-family: 'Bebas Neue', cursive; font-size: 42px; line-height: 1; text-transform: uppercase; color: var(--text); }
+.cal-month-pill { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); background: var(--accent-glow); border: 1px solid var(--accent); padding: 2px 9px; border-radius: 10px; opacity: 0.85; }
+.cal-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.cal-table th { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); padding: 10px 10px; text-align: left; border-bottom: 2px solid var(--border); background: var(--bg3); font-weight: 600; }
+.cal-table th.wk-th { width: 36px; text-align: center; color: var(--accent); }
+.cal-table th:not(.wk-th) { width: calc((100% - 36px) / 7); }
+.cal-table td { padding: 10px 10px; vertical-align: top; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); transition: background 0.15s; cursor: pointer; }
+.cal-table td:last-child { border-right: none; }
+.cal-table tr:hover td { background: rgba(255,255,255,0.02); }
+.cal-table td.wk-num { font-family: 'Bebas Neue', cursive; font-size: 18px; color: var(--accent); text-align: center; vertical-align: middle; background: rgba(200,0,30,0.04); border-right: 1px solid var(--border); cursor: default; }
+.cal-table td.is-today { background: var(--accent-glow) !important; }
+.cal-cell { display: flex; flex-direction: column; gap: 3px; }
+.cal-badge { font-family: 'Barlow Condensed', sans-serif; font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase; padding: 2px 6px; border-radius: 2px; border: 1px solid; display: inline-block; line-height: 1.4; align-self: flex-start; }
+.cal-title { font-size: 11.5px; line-height: 1.35; }
+.cal-meta  { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; color: var(--text-muted); }
+
+/* cal type colours */
+.ct-rest .cal-title { color: var(--text-muted); font-style: italic; }
+.ct-easy .cal-title, .ct-mod .cal-title, .ct-hard .cal-title, .ct-key .cal-title, .ct-int .cal-title { color: var(--text); }
+.ct-easy .cal-badge { background: rgba(154,184,208,0.12); color: var(--c-easy); border-color: rgba(154,184,208,0.25); }
+.ct-mod  .cal-badge { background: rgba(200,216,232,0.12); color: var(--c-mod);  border-color: rgba(200,216,232,0.25); }
+.ct-hard .cal-badge { background: rgba(224,200,128,0.12); color: var(--c-hard); border-color: rgba(224,200,128,0.25); }
+.ct-key  .cal-badge { background: rgba(240,237,232,0.10); color: var(--c-key);  border-color: rgba(240,237,232,0.2); }
+.ct-int  .cal-badge { background: rgba(232,64,96,0.12);   color: var(--c-int);  border-color: rgba(232,64,96,0.25); }
+.ct-rest .cal-badge { background: rgba(85,85,85,0.12); color: var(--c-rest); border-color: rgba(85,85,85,0.25); }
+
+/* left accent strip per type */
+.ct-easy td, .ct-mod td, .ct-hard td, .ct-key td, .ct-int td { border-left: 2px solid transparent; }
+.cal-table td.ct-easy { border-left: 2px solid var(--c-easy); }
+.cal-table td.ct-mod  { border-left: 2px solid var(--c-mod); }
+.cal-table td.ct-hard { border-left: 2px solid var(--c-hard); }
+.cal-table td.ct-key  { border-left: 2px solid var(--c-key); }
+.cal-table td.ct-int  { border-left: 2px solid var(--c-int); }
+
+.ct-race { background: rgba(200,0,30,0.06) !important; border-left: 2px solid var(--accent) !important; }
+.ct-race .cal-badge { background: rgba(200,0,30,0.2); color: var(--accent); border-color: rgba(200,0,30,0.4); }
+.ct-race .cal-title { color: var(--accent); font-weight: 500; }
+
+/* cal tooltip */
+.cal-tooltip {
+  position: fixed; z-index: 200; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 4px; padding: 10px 14px; font-size: 12px; max-width: 220px; pointer-events: none;
+  box-shadow: var(--shadow); display: none; line-height: 1.6;
+}
+.cal-tooltip.visible { display: block; }
+.cal-tt-title { font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.cal-tt-meta  { color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-size: 11px; }
+
+/* ============================================================  STATS VIEW  */
+.stats-wrap { padding: 28px 28px 40px; }
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 32px; }
+.stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 16px 18px; }
+.stat-card-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px; }
+.stat-card-val { font-family: 'Bebas Neue', cursive; font-size: 36px; line-height: 1; color: var(--accent); }
+.stat-card-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+.chart-section { background: var(--bg2); border: 1px solid var(--border); border-radius: 6px; padding: 20px; margin-bottom: 24px; }
+.chart-title { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+.chart-container { width: 100%; overflow-x: auto; }
+.chart-svg { display: block; }
+
+/* ============================================================  TODAY BAR  */
+.today-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 10px 28px; display: flex; align-items: center; gap: 14px;
+  transition: background 0.35s, border-color 0.35s;
+  box-shadow: 0 -4px 16px rgba(0,0,0,0.3);
+}
+[data-theme="light"] .today-bar { box-shadow: 0 -2px 8px rgba(0,0,0,0.1); }
+.today-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); white-space: nowrap; min-width: 90px; }
+.today-sessions { display: flex; align-items: center; gap: 6px; flex: 1; flex-wrap: wrap; }
+.today-pill {
+  display: flex; align-items: center; gap: 5px;
+  padding: 4px 10px; border-radius: 12px; border: 1px solid var(--border);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-muted); background: var(--bg3); white-space: nowrap;
+}
+.today-pill.today-active { border-color: var(--accent); background: var(--accent-glow); color: var(--text); }
+.today-pill-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+.jump-btn {
+  padding: 5px 14px; background: var(--accent); border: none; border-radius: 3px;
+  color: #fff; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: opacity 0.2s; white-space: nowrap; flex-shrink: 0;
+}
+.jump-btn:hover { opacity: 0.85; }
+.today-week-lbl { font-family: 'Bebas Neue', cursive; font-size: 18px; color: var(--accent); flex-shrink: 0; }
+
+/* ============================================================  PRINT  */
+@media print {
+  body { background: #fff !important; color: #000 !important; padding-bottom: 0; font-size: 11px; }
+  .toolbar, .today-bar, .filter-bar, .tab-nav, .prog-wrap, .hero::before,
+  .expand-controls, .session-actions, .note-area, .note-btn, .sess-done,
+  .cal-tooltip, .stats-wrap { display: none !important; }
+  .hero { background: #fff !important; border-bottom: 2px solid #000 !important; padding: 20px 20px 16px; }
+  .hero-title { font-size: 48px; color: #000 !important; }
+  .hero-title span { color: #c8001e !important; }
+  .hero-sub { color: #444 !important; }
+  .cd-num, .cd-lbl, .cd-date { display: none; }
+  .view-panel { display: block !important; }
+  .month-body { display: flex !important; border: 1px solid #ccc !important; }
+  .month-toggle { background: #f0f0f0 !important; border: 1px solid #ccc !important; page-break-after: avoid; }
+  .month-toggle.open { border-radius: 6px 6px 0 0 !important; }
+  .week-body { display: flex !important; border: 1px solid #eee !important; }
+  .week-toggle { background: #f8f8f8 !important; border: 1px solid #eee !important; page-break-after: avoid; }
+  .session-row { border-bottom: 1px solid #eee !important; }
+  .session-day { color: #666 !important; border-right: 1px solid #eee !important; }
+  .session-title { color: #000 !important; }
+  .cal-table th { background: #f0f0f0 !important; color: #444 !important; border-bottom: 1px solid #ccc !important; }
+  .cal-table td { border-color: #eee !important; }
+  .cal-wrap { display: none; } /* print list only */
+  #view-list { display: block !important; }
+  #view-cal, #view-stats { display: none !important; }
+  .tab-btn { display: none; }
+  .plan { padding: 12px 0; }
+  .cal-month-header { border-left-color: #c8001e !important; }
+  @page { margin: 15mm; }
+}
+
+/* ============================================================  RESPONSIVE  */
+@media (max-width: 700px) {
+  .hero { padding: 28px 16px 24px; } .hero-title { font-size: 52px; } .cd-num { font-size: 52px; }
+  .plan { padding: 16px 12px 100px; } .prog-wrap { padding: 10px 12px; }
+  .toolbar { padding: 0 12px; } .session-day { min-width: 70px; font-size: 9px; }
+  .expand-controls { display: none; } .cal-wrap { padding: 16px 8px 100px; }
+  .cal-table { display: block; overflow-x: auto; } .stats-wrap { padding: 16px 12px 100px; }
+  .today-bar { display: none; }
+  .toolbar-right { gap: 6px; }
+  .tb-sep { display: none; }
+  /* hide desktop filter bar on mobile — replaced by bottom sheet */
+  .filter-bar { display: none; }
+  /* hide desktop tab labels on mobile */
+  .tab-btn .tab-lbl { display: none; }
+  .tab-btn { padding: 10px 16px 9px; font-size: 16px; }
+  .tab-icon { font-size: 18px; }
+  /* tighter week header on mobile */
+  .week-tss, .ramp-warn { display: none; }
+  .week-mileage { font-size: 9px; }
+}
+
+/* ============================================================  MOBILE BOTTOM NAV  */
+.mobile-nav {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+  background: var(--bg2); border-top: 1px solid var(--border);
+  padding: 0; height: 56px; box-shadow: 0 -2px 12px rgba(0,0,0,0.4);
+  transition: background 0.35s, border-color 0.35s;
+}
+.mobile-nav-inner {
+  display: flex; align-items: stretch; height: 100%;
+}
+.mob-nav-btn {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  background: transparent; border: none; cursor: pointer;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-muted); transition: color 0.2s; padding: 0; position: relative;
+}
+.mob-nav-btn .mob-icon { font-size: 18px; line-height: 1; }
+.mob-nav-btn.active { color: var(--accent); }
+.mob-nav-btn.active::after {
+  content: ''; position: absolute; bottom: 0; left: 25%; right: 25%; height: 2px;
+  background: var(--accent); border-radius: 1px 1px 0 0;
+}
+.mob-nav-sep { width: 1px; background: var(--border); margin: 10px 0; flex-shrink: 0; }
+
+@media (max-width: 700px) {
+  .mobile-nav { display: flex; }
+  /* push content up from nav */
+  body { padding-bottom: 56px; }
+}
+
+/* ============================================================  BOTTOM SHEET (FILTER)  */
+.sheet-overlay {
+  display: none; position: fixed; inset: 0; z-index: 299;
+  background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.sheet-overlay.open { display: block; }
+
+.bottom-sheet {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+  background: var(--bg2); border-top: 1px solid var(--border);
+  border-radius: 16px 16px 0 0;
+  padding: 0 0 calc(env(safe-area-inset-bottom, 0px) + 56px);
+  transform: translateY(100%);
+  transition: transform 0.32s cubic-bezier(0.32,0.72,0,1), background 0.35s;
+  max-height: 80vh; overflow-y: auto;
+}
+.bottom-sheet.open { transform: translateY(0); }
+
+.sheet-handle {
+  display: flex; justify-content: center; padding: 12px 0 6px;
+  cursor: pointer;
+}
+.sheet-handle::after {
+  content: ''; width: 36px; height: 4px; border-radius: 2px;
+  background: var(--border);
+}
+.sheet-title {
+  font-family: 'Bebas Neue', cursive; font-size: 22px; letter-spacing: 1px;
+  color: var(--text); padding: 4px 20px 14px; border-bottom: 1px solid var(--border);
+}
+.sheet-section { padding: 16px 20px 8px; }
+.sheet-section-lbl {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;
+}
+.sheet-filter-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
+}
+.sheet-f-btn {
+  display: flex; align-items: center; gap: 8px; padding: 12px 14px;
+  border: 1px solid var(--border); border-radius: 8px; background: var(--bg3);
+  color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.18s; text-align: left;
+}
+.sheet-f-btn .f-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+.sheet-f-btn.active { border-color: var(--accent); background: var(--accent-glow); color: var(--text); }
+.sheet-actions { display: flex; gap: 8px; padding: 8px 20px 16px; }
+.sheet-action-btn {
+  flex: 1; padding: 12px; border: 1px solid var(--border); border-radius: 8px;
+  background: var(--bg3); color: var(--text-muted);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.18s;
+}
+.sheet-action-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================  SESSION DETAIL MODAL  */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 399;
+  background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  align-items: flex-end; /* mobile: bottom sheet style */
+}
+.modal-overlay.open { display: flex; }
+
+.session-modal {
+  width: 100%; background: var(--bg2);
+  border-radius: 20px 20px 0 0; border-top: 1px solid var(--border);
+  padding: 0 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
+  transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
+  max-height: 85vh; overflow-y: auto;
+}
+.modal-overlay.open .session-modal { transform: translateY(0); }
+
+@media (min-width: 701px) {
+  .modal-overlay { align-items: center; justify-content: center; }
+  .session-modal {
+    width: 480px; border-radius: 12px; border: 1px solid var(--border);
+    max-height: 80vh; transform: scale(0.94) translateY(8px);
+    transition: transform 0.25s cubic-bezier(0.32,0.72,0,1), opacity 0.2s;
+    opacity: 0;
+  }
+  .modal-overlay.open .session-modal { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.modal-handle { display: flex; justify-content: center; padding: 12px 0 4px; cursor: pointer; }
+.modal-handle::after { content: ''; width: 36px; height: 4px; background: var(--border); border-radius: 2px; }
+.modal-header { padding: 12px 20px 16px; border-bottom: 1px solid var(--border); }
+.modal-date { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+.modal-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; border: 1px solid; margin-bottom: 8px; }
+.modal-title { font-family: 'Bebas Neue', cursive; font-size: 28px; line-height: 1; color: var(--text); }
+
+.modal-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
+.modal-stat-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.modal-stat { flex: 1; min-width: 80px; background: var(--bg3); border-radius: 8px; padding: 12px 14px; }
+.modal-stat-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+.modal-stat-val { font-family: 'Bebas Neue', cursive; font-size: 24px; line-height: 1; color: var(--text); }
+.modal-stat-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; color: var(--text-muted); }
+
+.modal-sparkline-wrap { background: var(--bg3); border-radius: 8px; padding: 12px 14px; }
+.modal-sparkline-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+
+.modal-note-wrap { }
+.modal-note-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
+.modal-note-ta {
+  width: 100%; min-height: 80px; background: var(--bg3); border: 1px solid var(--border);
+  border-radius: 8px; color: var(--text); font-family: 'Barlow', sans-serif; font-size: 13px;
+  padding: 12px 14px; resize: none; outline: none; transition: border-color 0.2s; line-height: 1.6;
+}
+.modal-note-ta:focus { border-color: var(--accent); }
+.modal-note-ta::placeholder { color: var(--text-muted); }
+
+.modal-footer { padding: 12px 20px 16px; display: flex; gap: 10px; border-top: 1px solid var(--border); }
+.modal-done-btn {
+  flex: 1; padding: 14px; border-radius: 10px; border: 1px solid var(--border);
+  background: var(--bg3); color: var(--text-muted);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.modal-done-btn.done { background: var(--c-key); border-color: var(--c-key); color: var(--bg); }
+.modal-close-btn {
+  padding: 14px 20px; border-radius: 10px; border: 1px solid var(--border);
+  background: transparent; color: var(--text-muted);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  cursor: pointer; transition: all 0.2s;
+}
+.modal-close-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ============================================================  SWIPE TO COMPLETE  */
+.session-wrapper {
+  position: relative; overflow: hidden;
+}
+.swipe-hint {
+  position: absolute; right: 0; top: 0; bottom: 0; width: 72px;
+  background: var(--c-key); display: flex; align-items: center; justify-content: center;
+  font-size: 18px; color: var(--bg); transform: translateX(100%);
+  transition: transform 0.2s; z-index: 1; pointer-events: none;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+.swipe-hint.swipe-undo { background: var(--c-rest); font-size: 14px; letter-spacing: 1px; }
+.session-row {
+  position: relative; z-index: 2;
+  transition: transform 0.2s cubic-bezier(0.25,0.46,0.45,0.94);
+  touch-action: pan-y;
+  will-change: transform;
+}
+
+/* FAB  — today shortcut */
+.fab {
+  display: none;
+  position: fixed; bottom: 70px; right: 16px; z-index: 190;
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--accent); border: none; color: #fff;
+  font-size: 20px; cursor: pointer; box-shadow: 0 3px 12px rgba(200,0,30,0.4);
+  align-items: center; justify-content: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.fab:active { transform: scale(0.93); box-shadow: 0 1px 6px rgba(200,0,30,0.3); }
+@media (max-width: 700px) { .fab { display: flex; } }
+
+/* Touch-friendly tap targets */
+@media (max-width: 700px) {
+  .sess-done { width: 28px; height: 28px; border-radius: 6px; }
+  .note-btn   { width: 28px; height: 28px; font-size: 16px; }
+  .session-row { cursor: pointer; }
+  .week-toggle { padding: 14px 12px; }
+  .month-toggle { padding: 16px 14px; }
+  .month-name-lbl { font-size: 26px; }
+}
+
+
+/* ============================================================  VISUAL ENHANCEMENTS  */
+
+/* Pulsing today row */
+@keyframes todayPulse {
+  0%,100% { box-shadow: inset 2px 0 0 var(--accent), 0 0 0 rgba(200,0,30,0); }
+  50%      { box-shadow: inset 2px 0 0 var(--accent), 0 0 12px rgba(200,0,30,0.18); }
+}
+.session-row.is-today {
+  background: var(--accent-glow) !important;
+  animation: todayPulse 2.5s ease-in-out infinite;
+}
+
+/* Session row fade-in when week opens */
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.week-body.open > div {
+  animation: rowFadeIn 0.22s ease both;
+}
+.week-body.open > div:nth-child(1) { animation-delay: 0.02s; }
+.week-body.open > div:nth-child(2) { animation-delay: 0.05s; }
+.week-body.open > div:nth-child(3) { animation-delay: 0.08s; }
+.week-body.open > div:nth-child(4) { animation-delay: 0.11s; }
+.week-body.open > div:nth-child(5) { animation-delay: 0.14s; }
+.week-body.open > div:nth-child(6) { animation-delay: 0.17s; }
+.week-body.open > div:nth-child(7) { animation-delay: 0.20s; }
+
+/* Ramp rate warning badge */
+.ramp-warn {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 8px; letter-spacing: 1px; text-transform: uppercase;
+  color: #e0c880; border: 1px solid rgba(224,200,128,0.35); background: rgba(224,200,128,0.08);
+  padding: 1px 6px; border-radius: 2px; margin-left: 4px;
+}
+.ramp-ok {
+  display: inline-flex; align-items: center; gap: 3px;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 8px; letter-spacing: 1px;
+  color: var(--text-muted); padding: 1px 4px;
+}
+
+/* Elevation sparkline */
+.elev-sparkline {
+  display: inline-block; vertical-align: middle;
+  margin-left: 10px; opacity: 0.75;
+}
+.elev-sparkline:hover { opacity: 1; }
+
+/* Session row sparkline area */
+.session-row .session-actions { align-items: center; }
+
+/* Hero silhouette */
+.hero-silhouette {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  pointer-events: none; user-select: none;
+}
+.hero-silhouette svg { display: block; }
+
+/* Animated chart bars via CSS */
+@keyframes barGrow {
+  from { transform: scaleY(0); transform-origin: bottom; }
+  to   { transform: scaleY(1); transform-origin: bottom; }
+}
+.chart-bar-animate {
+  animation: barGrow 0.6s cubic-bezier(0.22,0.61,0.36,1) both;
+}
+
+/* Week toggle ramp indicator dot */
+.ramp-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; margin-left: 2px;
+}
+.ramp-dot.ramp-high { background: #e0c880; }
+.ramp-dot.ramp-ok   { background: var(--c-easy); opacity: 0.5; }
+
+/* Progress bar animate on load */
+@keyframes progGrow {
+  from { width: 0%; }
+}
+.prog-inner { animation: progGrow 1.4s cubic-bezier(0.22,0.61,0.36,1) both; }
+
+/* Key ride row — sparkline in meta */
+.session-row.has-sparkline .session-content { padding-bottom: 10px; }
+
+/* Tooltip in list view */
+.list-tooltip {
+  position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
+  background: var(--surface); border: 1px solid var(--border); border-radius: 3px;
+  padding: 5px 10px; font-family: 'Barlow Condensed', sans-serif; font-size: 10px;
+  color: var(--text); pointer-events: none; z-index: 50; white-space: nowrap;
+  box-shadow: var(--shadow); display: none;
+}
+.session-row:hover .list-tooltip { display: block; }
+
+/* Smooth chart SVG transition */
+#chartSvg rect.chart-bar { transition: height 0.5s cubic-bezier(0.22,0.61,0.36,1), y 0.5s cubic-bezier(0.22,0.61,0.36,1); }
+
+</style>
+</head>
+<body>
+
+<!-- TOOLTIP (cal) -->
+<div class="cal-tooltip" id="calTip">
+  <div class="cal-tt-title" id="calTipTitle"></div>
+  <div class="cal-tt-meta"  id="calTipMeta"></div>
+</div>
+
+<!-- ============================================================  TOOLBAR  -->
+<div class="toolbar">
+  <div class="brand">Fred Whitton <span>Challenge</span></div>
+  <div class="toolbar-right">
+    <span class="toggle-lbl" id="unit-mi" style="color:var(--text)">mi</span>
+    <label class="toggle"><input type="checkbox" id="unitToggle" onchange="toggleUnit()"><div class="track"></div><div class="thumb"></div></label>
+    <span class="toggle-lbl" id="unit-km">km</span>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" id="cb-btn" onclick="toggleCB()" title="Colour-blind mode">CB</button>
+    <div class="tb-sep"></div>
+    <button class="tb-btn" onclick="window.print()" title="Print">⎙ Print</button>
+    <div class="tb-sep"></div>
+    <span class="toggle-lbl">Dark</span>
+    <label class="toggle"><input type="checkbox" id="themeToggle" onchange="toggleTheme()"><div class="track"></div><div class="thumb"></div></label>
+    <span class="toggle-lbl">Light</span>
+  </div>
+</div>
+
+<!-- ============================================================  HERO  -->
+<div class="hero">
+  <div>
+    <h1 class="hero-title">Training<span>Plan</span></h1>
+    <p class="hero-sub">12 weeks to the Lake District's hardest sportive — <span class="dist-mi">112 miles</span><span class="dist-km" style="display:none">180 km</span> over England's highest passes.</p>
+  </div>
+  <div class="cd-block">
+    <div class="cd-lbl">Days to Race</div>
+    <div class="cd-num" id="countdown">—</div>
+    <div class="cd-date">Race Day · 11 May 2025</div>
+  </div>
+
+  <!-- Route silhouette -->
+  <div class="hero-silhouette">
+    <svg viewBox="0 0 900 60" preserveAspectRatio="none" width="100%" height="60" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="silGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="rgba(200,0,30,0.18)"/>
+          <stop offset="100%" stop-color="rgba(200,0,30,0.02)"/>
+        </linearGradient>
+      </defs>
+      <path d="M0,58 L0,52 C30,51 50,50 70,48 C90,46 100,44 120,40 C130,38 138,34 148,28 C155,23 160,20 168,24 C175,28 178,32 185,36 C190,38 195,36 200,30 C206,22 210,14 218,8 C224,4 228,6 232,12 C236,18 238,24 244,28 C250,32 255,34 265,38 C275,42 285,44 310,46 C340,48 360,48 390,46 C420,44 440,42 460,40 C475,39 485,38 500,36 C515,34 525,30 535,24 C542,20 548,16 556,18 C562,20 566,24 572,28 C578,32 582,34 595,38 C610,42 630,44 660,44 C685,44 700,42 715,38 C725,35 730,32 738,28 C744,25 748,26 754,30 C760,34 763,36 772,38 C782,40 800,42 830,46 C855,48 875,50 900,52 L900,60 Z" fill="url(#silGrad)"/>
+      <path d="M0,52 C30,51 50,50 70,48 C90,46 100,44 120,40 C130,38 138,34 148,28 C155,23 160,20 168,24 C175,28 178,32 185,36 C190,38 195,36 200,30 C206,22 210,14 218,8 C224,4 228,6 232,12 C236,18 238,24 244,28 C250,32 255,34 265,38 C275,42 285,44 310,46 C340,48 360,48 390,46 C420,44 440,42 460,40 C475,39 485,38 500,36 C515,34 525,30 535,24 C542,20 548,16 556,18 C562,20 566,24 572,28 C578,32 582,34 595,38 C610,42 630,44 660,44 C685,44 700,42 715,38 C725,35 730,32 738,28 C744,25 748,26 754,30 C760,34 763,36 772,38 C782,40 800,42 830,46 C855,48 875,50 900,52" fill="none" stroke="rgba(200,0,30,0.35)" stroke-width="1.5"/>
+      <!-- climb labels -->
+      <text x="222" y="4" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(200,0,30,0.6)" letter-spacing="0.5">HARDKNOTT</text>
+      <text x="148" y="24" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(200,0,30,0.5)" letter-spacing="0.5">WRYNOSE</text>
+      <text x="544" y="16" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="7" fill="rgba(200,0,30,0.45)" letter-spacing="0.5">WHINLATTER</text>
+    </svg>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="prog-wrap">
+  <div class="prog-lbl">Plan Progress</div>
+  <div class="prog-outer"><div class="prog-inner" id="progressBar" style="width:0%"></div></div>
+  <div class="prog-pct" id="progressPct">0%</div>
+</div>
+
+<!-- TABS -->
+<div class="tab-nav">
+  <button class="tab-btn active" id="tab-list" onclick="switchTab('list')"><span class="tab-icon">☰</span> List</button>
+  <button class="tab-btn" id="tab-cal"  onclick="switchTab('cal')"><span class="tab-icon">⊞</span> Calendar</button>
+  <button class="tab-btn" id="tab-stats" onclick="switchTab('stats')"><span class="tab-icon">▦</span> Stats</button>
+</div>
+
+<!-- ============================================================  LIST VIEW  -->
+<div id="view-list" class="view-panel active">
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-lbl">Filter —</span>
+    <button class="f-btn active" data-filter="all" onclick="setFilter('all')">All</button>
+    <button class="f-btn" data-filter="rest" onclick="setFilter('rest')"><span class="f-dot dot-rest"></span>Rest</button>
+    <button class="f-btn" data-filter="easy" onclick="setFilter('easy')"><span class="f-dot dot-easy"></span>Easy</button>
+    <button class="f-btn" data-filter="mod"  onclick="setFilter('mod')"><span class="f-dot dot-mod"></span>Moderate</button>
+    <button class="f-btn" data-filter="hard" onclick="setFilter('hard')"><span class="f-dot dot-hard"></span>Long Ride</button>
+    <button class="f-btn" data-filter="int"  onclick="setFilter('int')"><span class="f-dot dot-int"></span>Intervals</button>
+    <button class="f-btn" data-filter="key"  onclick="setFilter('key')"><span class="f-dot dot-key"></span>Key Ride</button>
+    <div class="expand-controls">
+      <button class="ec-btn" onclick="expandAll()">Expand All</button>
+      <button class="ec-btn" onclick="collapseAll()">Collapse All</button>
+    </div>
+  </div>
+
+  <!-- LIST RENDERED BY JS -->
+  <div class="plan" id="plan"></div>
+</div>
+
+<!-- ============================================================  CALENDAR VIEW  -->
+<div id="view-cal" class="view-panel">
+  <div class="cal-wrap" id="calWrap"></div>
+</div>
+
+<!-- ============================================================  STATS VIEW  -->
+<div id="view-stats" class="view-panel">
+  <div class="stats-wrap">
+    <div class="stats-grid" id="statsGrid"></div>
+    <div class="chart-section">
+      <div class="chart-title">Weekly Mileage / Load</div>
+      <div class="chart-container"><svg class="chart-svg" id="chartSvg"></svg></div>
+    </div>
+    <div class="chart-section">
+      <div class="chart-title">Session Breakdown</div>
+      <div class="chart-container"><svg class="chart-svg" id="donutSvg"></svg></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================  TODAY BAR  -->
+<div class="today-bar" id="todayBar">
+  <div class="today-lbl" id="todayWeekLbl">—</div>
+  <div class="today-sessions" id="todaySessions"></div>
+  <button class="jump-btn" onclick="jumpToToday()">↓ Today</button>
+</div>
+
+
+<!-- ============================================================  MOBILE BOTTOM NAV  -->
+<div class="mobile-nav">
+  <div class="mobile-nav-inner">
+    <button class="mob-nav-btn active" id="mob-tab-list" onclick="mobSwitchTab('list')">
+      <span class="mob-icon">☰</span>
+      <span>List</span>
+    </button>
+    <div class="mob-nav-sep"></div>
+    <button class="mob-nav-btn" id="mob-tab-cal" onclick="mobSwitchTab('cal')">
+      <span class="mob-icon">⊞</span>
+      <span>Calendar</span>
+    </button>
+    <div class="mob-nav-sep"></div>
+    <button class="mob-nav-btn" id="mob-tab-stats" onclick="mobSwitchTab('stats')">
+      <span class="mob-icon">▦</span>
+      <span>Stats</span>
+    </button>
+    <div class="mob-nav-sep"></div>
+    <button class="mob-nav-btn" id="mob-tab-filter" onclick="openFilterSheet()">
+      <span class="mob-icon" id="mob-filter-icon">⊟</span>
+      <span>Filter</span>
+    </button>
+  </div>
+</div>
+
+<!-- FAB -->
+<button class="fab" id="fab" onclick="jumpToToday()" title="Jump to today">◎</button>
+
+<!-- FILTER BOTTOM SHEET -->
+<div class="sheet-overlay" id="sheetOverlay" onclick="closeFilterSheet()"></div>
+<div class="bottom-sheet" id="filterSheet">
+  <div class="sheet-handle" onclick="closeFilterSheet()"></div>
+  <div class="sheet-title">Filter Sessions</div>
+  <div class="sheet-section">
+    <div class="sheet-section-lbl">Session Type</div>
+    <div class="sheet-filter-grid">
+      <button class="sheet-f-btn active" data-filter="all" onclick="sheetFilter('all')">All Sessions</button>
+      <button class="sheet-f-btn" data-filter="rest" onclick="sheetFilter('rest')"><span class="f-dot dot-rest"></span>Rest</button>
+      <button class="sheet-f-btn" data-filter="easy" onclick="sheetFilter('easy')"><span class="f-dot dot-easy"></span>Easy</button>
+      <button class="sheet-f-btn" data-filter="mod" onclick="sheetFilter('mod')"><span class="f-dot dot-mod"></span>Moderate</button>
+      <button class="sheet-f-btn" data-filter="hard" onclick="sheetFilter('hard')"><span class="f-dot dot-hard"></span>Long Ride</button>
+      <button class="sheet-f-btn" data-filter="int" onclick="sheetFilter('int')"><span class="f-dot dot-int"></span>Intervals</button>
+      <button class="sheet-f-btn" data-filter="key" onclick="sheetFilter('key')"><span class="f-dot dot-key"></span>Key Ride</button>
+    </div>
+  </div>
+  <div class="sheet-actions">
+    <button class="sheet-action-btn" onclick="expandAll(); closeFilterSheet()">Expand All</button>
+    <button class="sheet-action-btn" onclick="collapseAll(); closeFilterSheet()">Collapse All</button>
+    <button class="sheet-action-btn" onclick="jumpToToday(); closeFilterSheet()">↓ Today</button>
+  </div>
+</div>
+
+<!-- SESSION DETAIL MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
+  <div class="session-modal" id="sessionModal">
+    <div class="modal-handle" onclick="closeModal()"></div>
+    <div class="modal-header">
+      <div class="modal-date" id="modal-date"></div>
+      <div class="modal-badge" id="modal-badge"></div>
+      <div class="modal-title" id="modal-title"></div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-stat-row" id="modal-stats"></div>
+      <div id="modal-sparkline-wrap" style="display:none" class="modal-sparkline-wrap">
+        <div class="modal-sparkline-lbl">Elevation Profile</div>
+        <div id="modal-sparkline"></div>
+      </div>
+      <div class="modal-note-wrap">
+        <div class="modal-note-lbl">Session Notes</div>
+        <textarea class="modal-note-ta" id="modal-note" placeholder="Log how it went — time, effort, conditions…"></textarea>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-done-btn" id="modal-done-btn" onclick="toggleModalDone()">
+        <span id="modal-done-icon">○</span> <span id="modal-done-lbl">Mark Complete</span>
+      </button>
+      <button class="modal-close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ============================================================
+//  PLAN DATA
+// ============================================================
+const MONTHS = [
+  { name: 'February', pill: 'Foundation',   weeks: [1,2,3,4] },
+  { name: 'March',    pill: 'Build Volume',  weeks: [5,6,7,8] },
+  { name: 'April',    pill: 'Peak & Taper',  weeks: [9,10,11,12] },
+];
+
+// type: rest|easy|mod|hard|key|int|race
+// mi: miles (null = no distance), elev: metres, tss: training stress score
+const WEEKS = [
+  { num:1, label:'W1', mi:62, tss:120, days:[
+    {date:'2025-02-03',day:'Mon 3 Feb', type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2025-02-04',day:'Tue 4 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-05',day:'Wed 5 Feb', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-02-06',day:'Thu 6 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-07',day:'Fri 7 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-08',day:'Sat 8 Feb', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-02-09',day:'Sun 9 Feb', type:'mod', badge:'Moderate', title:'2.5hr Ride',                 mi:32,   elev:null, tss:70},
+  ]},
+  { num:2, label:'W2', mi:75, tss:155, days:[
+    {date:'2025-02-10',day:'Mon 10 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-11',day:'Tue 11 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-12',day:'Wed 12 Feb',type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2025-02-13',day:'Thu 13 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-02-14',day:'Fri 14 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-15',day:'Sat 15 Feb',type:'easy',badge:'Easy',     title:'1.5hr Ride',                 mi:20,   elev:null, tss:40},
+    {date:'2025-02-16',day:'Sun 16 Feb',type:'hard',badge:'Long Ride',title:'3hr Ride',                   mi:40,   elev:null, tss:125},
+  ]},
+  { num:3, label:'W3', mi:85, tss:185, days:[
+    {date:'2025-02-17',day:'Mon 17 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-18',day:'Tue 18 Feb',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 80% effort',  mi:null, elev:null, tss:75},
+    {date:'2025-02-19',day:'Wed 19 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-20',day:'Thu 20 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-02-21',day:'Fri 21 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-22',day:'Sat 22 Feb',type:'easy',badge:'Easy',     title:'1.5hr Ride',                 mi:20,   elev:null, tss:40},
+    {date:'2025-02-23',day:'Sun 23 Feb',type:'hard',badge:'Long Ride',title:'4hr Ride',                   mi:50,   elev:null, tss:155},
+  ]},
+  { num:4, label:'W4', mi:77, tss:190, days:[
+    {date:'2025-02-24',day:'Mon 24 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-25',day:'Tue 25 Feb',type:'int', badge:'Intervals',title:'8 × 4min @ 90% / 3min rest', mi:null, elev:null, tss:80},
+    {date:'2025-02-26',day:'Wed 26 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-02-27',day:'Thu 27 Feb',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2025-02-28',day:'Fri 28 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-03-01',day:'Sat 1 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-02',day:'Sun 2 Mar', type:'key', badge:'Key Ride', title:'42 miles',                   mi:42,   elev:2000, tss:150},
+  ]},
+  { num:5, label:'W5', mi:110, tss:220, days:[
+    {date:'2025-03-03',day:'Mon 3 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-04',day:'Tue 4 Mar', type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2025-03-05',day:'Wed 5 Mar', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-03-06',day:'Thu 6 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-07',day:'Fri 7 Mar', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-03-08',day:'Sat 8 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-09',day:'Sun 9 Mar', type:'hard',badge:'Long Ride',title:'5hr Ride',                   mi:60,   elev:null, tss:195},
+  ]},
+  { num:6, label:'W6', mi:95, tss:240, days:[
+    {date:'2025-03-10',day:'Mon 10 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-11',day:'Tue 11 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2025-03-12',day:'Wed 12 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-13',day:'Thu 13 Mar',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 80% effort',  mi:null, elev:null, tss:75},
+    {date:'2025-03-14',day:'Fri 14 Mar',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-03-15',day:'Sat 15 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-16',day:'Sun 16 Mar',type:'hard',badge:'Long Ride',title:'6hr Ride',                   mi:80,   elev:null, tss:245},
+  ]},
+  { num:7, label:'W7', mi:130, tss:265, days:[
+    {date:'2025-03-17',day:'Mon 17 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-18',day:'Tue 18 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
+    {date:'2025-03-19',day:'Wed 19 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-20',day:'Thu 20 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle Spin',     mi:null, elev:null, tss:25},
+    {date:'2025-03-21',day:'Fri 21 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
+    {date:'2025-03-22',day:'Sat 22 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-23',day:'Sun 23 Mar',type:'key', badge:'Key Ride', title:'70 miles',                   mi:70,   elev:2500, tss:220},
+  ]},
+  { num:8, label:'W8', mi:175, tss:320, days:[
+    {date:'2025-03-24',day:'Mon 24 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-25',day:'Tue 25 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle Spin',     mi:15,   elev:null, tss:30},
+    {date:'2025-03-26',day:'Wed 26 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
+    {date:'2025-03-27',day:'Thu 27 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-28',day:'Fri 28 Mar',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2025-03-29',day:'Sat 29 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-03-30',day:'Sun 30 Mar',type:'key', badge:'Sportive', title:'100–110 miles',              mi:105,  elev:null, tss:295},
+  ]},
+  { num:9, label:'W9', mi:110, tss:235, days:[
+    {date:'2025-03-31',day:'Mon 31 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-01',day:'Tue 1 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-02',day:'Wed 2 Apr', type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2025-04-03',day:'Thu 3 Apr', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-04-04',day:'Fri 4 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-05',day:'Sat 5 Apr', type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2025-04-06',day:'Sun 6 Apr', type:'hard',badge:'Long Ride',title:'5hr Ride',                   mi:60,   elev:null, tss:195},
+  ]},
+  { num:10, label:'W10', mi:90, tss:220, days:[
+    {date:'2025-04-07',day:'Mon 7 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-08',day:'Tue 8 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-09',day:'Wed 9 Apr', type:'int', badge:'Intervals',title:'8 × 4min @ 90% / 3min rest', mi:null, elev:null, tss:80},
+    {date:'2025-04-10',day:'Thu 10 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-11',day:'Fri 11 Apr',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2025-04-12',day:'Sat 12 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-13',day:'Sun 13 Apr',type:'key', badge:'Key Ride', title:'70 miles',                   mi:70,   elev:2800, tss:220},
+  ]},
+  { num:11, label:'W11', mi:70, tss:160, days:[
+    {date:'2025-04-14',day:'Mon 14 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-15',day:'Tue 15 Apr',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 75% effort',  mi:null, elev:null, tss:65},
+    {date:'2025-04-16',day:'Wed 16 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-17',day:'Thu 17 Apr',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2025-04-18',day:'Fri 18 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-19',day:'Sat 19 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-20',day:'Sun 20 Apr',type:'mod', badge:'Moderate', title:'4hr Ride',                   mi:50,   elev:null, tss:160},
+  ]},
+  { num:12, label:'W12', mi:45, tss:80, raceWeek:true, days:[
+    {date:'2025-04-21',day:'Mon 21 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-22',day:'Tue 22 Apr',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2025-04-23',day:'Wed 23 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-24',day:'Thu 24 Apr',type:'easy',badge:'Easy',     title:'45min Spin / Turbo',         mi:null, elev:null, tss:20},
+    {date:'2025-04-25',day:'Fri 25 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2025-04-26',day:'Sat 26 Apr',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle',          mi:15,   elev:null, tss:25},
+    {date:'2025-05-11',day:'Sun 11 May',type:'race',badge:'Race Day', title:'Fred Whitton Challenge',     mi:112,  elev:3700, tss:400},
+  ]},
+];
+
+const PLAN_START = new Date('2025-02-03');
+const RACE_DATE  = new Date('2025-05-11T07:00:00');
+const MI_TO_KM = 1.60934;
+const M_TO_FT  = 3.28084;
+
+let useKm = false;
+let useCB = false;
+
+// ============================================================
+//  HELPERS
+// ============================================================
+function today0() { const d = new Date(); d.setHours(0,0,0,0); return d; }
+
+function fmtDist(mi) {
+  if (mi === null || mi === undefined) return '';
+  if (typeof mi === 'string' && mi.includes('-')) {
+    const [lo,hi] = mi.split('-').map(Number);
+    return useKm ? `${Math.round(lo*MI_TO_KM)}–${Math.round(hi*MI_TO_KM)} km` : `${lo}–${hi} miles`;
+  }
+  const v = Number(mi);
+  return useKm ? `${Math.round(v * MI_TO_KM)} km` : `${v} miles`;
+}
+
+function fmtElev(m) {
+  if (!m) return '';
+  return useKm ? `< ${Math.round(m)} m gain` : `< ${Math.round(m * M_TO_FT).toLocaleString()} ft gain`;
+}
+
+function lsGet(k) { try { return localStorage.getItem(k); } catch(e) { return null; } }
+function lsSet(k,v) { try { localStorage.setItem(k,v); } catch(e) {} }
+
+// ============================================================
+//  RENDER LIST
+// ============================================================
+
+// ============================================================
+//  ELEVATION PROFILES — approximate Fred Whitton training routes
+//  Points: [distanceFraction, elevationFraction] 0–1
+// ============================================================
+const ELEV_PROFILES = {
+  // W4: 42mi, <2000m — local hilly loop, 2 passes
+  '2025-03-02': [[0,0.1],[0.08,0.12],[0.18,0.22],[0.28,0.52],[0.35,0.36],[0.45,0.18],[0.55,0.44],[0.62,0.30],[0.72,0.14],[0.85,0.18],[1.0,0.1]],
+  // W7: 70mi, <2500m — 3 bigger climbs
+  '2025-03-23': [[0,0.08],[0.06,0.10],[0.15,0.18],[0.24,0.55],[0.30,0.38],[0.38,0.16],[0.46,0.12],[0.54,0.50],[0.60,0.34],[0.67,0.15],[0.74,0.42],[0.81,0.28],[0.90,0.14],[1.0,0.08]],
+  // W8: 100-110mi sportive — bigger loop
+  '2025-03-30': [[0,0.09],[0.05,0.11],[0.12,0.16],[0.20,0.48],[0.26,0.32],[0.32,0.14],[0.38,0.12],[0.43,0.75],[0.48,0.52],[0.53,0.14],[0.60,0.10],[0.66,0.46],[0.72,0.30],[0.78,0.12],[0.85,0.40],[0.92,0.22],[1.0,0.09]],
+  // W10: 70mi, <2800m — peak climbing
+  '2025-04-13': [[0,0.08],[0.07,0.12],[0.14,0.20],[0.22,0.62],[0.28,0.42],[0.34,0.16],[0.41,0.14],[0.49,0.58],[0.55,0.38],[0.62,0.12],[0.70,0.50],[0.77,0.32],[0.86,0.18],[1.0,0.08]],
+  // Race: 112mi — full Fred Whitton
+  '2025-05-11': [[0,0.10],[0.05,0.12],[0.10,0.15],[0.15,0.18],[0.22,0.20],[0.25,0.44],[0.28,0.28],[0.30,0.16],[0.32,0.28],[0.36,0.82],[0.40,0.55],[0.44,0.12],[0.50,0.10],[0.58,0.13],[0.61,0.14],[0.65,0.52],[0.69,0.35],[0.73,0.12],[0.78,0.14],[0.82,0.46],[0.87,0.28],[0.92,0.18],[0.96,0.24],[1.0,0.10]],
+};
+
+function buildSparkline(profile, color, w=90, h=24) {
+  if (!profile) return '';
+  const pad = 2;
+  const pts = profile.map(([x,y]) => {
+    const px = pad + x * (w - pad*2);
+    const py = h - pad - y * (h - pad*2);
+    return `${px.toFixed(1)},${py.toFixed(1)}`;
+  }).join(' ');
+  // filled area: close to bottom
+  const first = profile[0], last = profile[profile.length-1];
+  const areaFirst = `${(pad + first[0]*(w-pad*2)).toFixed(1)},${h-pad}`;
+  const areaLast  = `${(pad + last[0]*(w-pad*2)).toFixed(1)},${h-pad}`;
+  const areaPath  = `M${areaFirst} L${pts.split(' ').map(p=>p).join(' L')} L${areaLast} Z`;
+
+  const col = color || 'rgba(200,0,30,0.6)';
+  const fillCol = color ? color.replace('0.6','0.12').replace('0.8','0.12') : 'rgba(200,0,30,0.10)';
+
+  return `<svg class="elev-sparkline" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg" title="Elevation profile">
+    <path d="${areaPath}" fill="${fillCol}"/>
+    <polyline points="${pts}" fill="none" stroke="${col}" stroke-width="1.2" stroke-linejoin="round"/>
+  </svg>`;
+}
+
+function renderList() {
+  const plan = document.getElementById('plan');
+  plan.innerHTML = '';
+
+  MONTHS.forEach(month => {
+    const wks = WEEKS.filter(w => month.weeks.includes(w.num));
+
+    const mb = document.createElement('div');
+    mb.className = 'month-block';
+
+    const toggle = document.createElement('div');
+    toggle.className = 'month-toggle';
+    toggle.innerHTML = `
+      <div class="month-left">
+        <div class="month-name-lbl">${month.name}</div>
+        <div class="month-pill">${month.pill}</div>
+      </div>
+      <div class="month-stats">
+        <div class="mstat">Weeks <strong>${wks[0].label}–${wks[wks.length-1].label}</strong></div>
+      </div>
+      <div class="chevron"></div>`;
+    toggle.onclick = () => {
+      toggle.classList.toggle('open');
+      body.classList.toggle('open');
+    };
+
+    const body2 = document.createElement('div');
+    body2.className = 'month-body';
+
+    wks.forEach(wk => {
+      const wb = document.createElement('div');
+      wb.className = 'week-block';
+      wb.dataset.week = wk.num;
+
+      const wkMi = wk.days.reduce((s,d) => s + (d.mi || 0), 0);
+
+      const wt = document.createElement('div');
+      wt.className = 'week-toggle';
+      const dots = wk.days.map(d => `<span class="ws-dot" style="background:var(--c-${d.type})" title="${d.badge}"></span>`).join('');
+      // ramp rate
+      const prevWk = WEEKS.find(w => w.num === wk.num - 1);
+      let rampHtml = '';
+      if (prevWk && prevWk.tss > 0) {
+        const ramp = Math.round(((wk.tss - prevWk.tss) / prevWk.tss) * 100);
+        if (ramp > 10) {
+          rampHtml = `<span class="ramp-warn" title="Load increases ${ramp}% — watch for fatigue">▲ ${ramp > 0 ? '+':''}${ramp}%</span>`;
+        } else if (ramp < -15) {
+          rampHtml = `<span class="ramp-warn" style="color:var(--c-easy);border-color:rgba(154,184,208,0.3);background:rgba(154,184,208,0.06);" title="Recovery week — load drops ${Math.abs(ramp)}%">▼ ${ramp}%</span>`;
+        }
+      }
+      wt.innerHTML = `
+        <div class="week-left">
+          <div class="week-num" ${wk.raceWeek?'style="color:var(--accent)"':''}>${wk.label}</div>
+          <div class="week-summary">${dots}</div>
+          <div class="week-mileage" data-mi="${wkMi}">${fmtDist(wkMi)}</div>
+          <div class="week-tss">· TSS ~${wk.tss}</div>
+          ${rampHtml}
+        </div>
+        <div class="wk-chevron"></div>`;
+      wt.onclick = () => {
+        wt.classList.toggle('open');
+        wbody.classList.toggle('open');
+      };
+
+      const wbody = document.createElement('div');
+      wbody.className = 'week-body';
+
+      wk.days.forEach(sess => {
+        const done  = lsGet('fwc-done-' + sess.date) === '1';
+        const note  = lsGet('fwc-note-' + sess.date) || '';
+        const isToday = +new Date(sess.date) === +today0();
+
+        const row = document.createElement('div');
+        row.className = `session-row type-${sess.type}${isToday ? ' is-today' : ''}${done ? ' done-row' : ''}${sess.type==='race' ? ' race-badge-cell' : ''}`;
+        row.dataset.type = sess.type;
+        row.dataset.date = sess.date;
+
+        let metaHtml = '';
+        if (sess.mi) metaHtml += `<span data-mi="${sess.mi}">${fmtDist(sess.mi)}</span>`;
+        if (sess.elev) metaHtml += `<span data-elev="${sess.elev}" style="margin-left:6px">${fmtElev(sess.elev)}</span>`;
+        const sparkSvg = ELEV_PROFILES[sess.date] ? buildSparkline(
+          ELEV_PROFILES[sess.date],
+          sess.type === 'race' ? 'rgba(200,0,30,0.8)' : 'rgba(224,200,128,0.7)'
+        ) : '';
+        if (sparkSvg) row.classList.add('has-sparkline');
+
+        row.innerHTML = `
+          <div class="session-day">${sess.day}</div>
+          <div class="session-bar"></div>
+          <div class="session-content">
+            <div class="session-top">
+              <span class="session-badge">${sess.badge}</span>
+              <span class="session-title">${sess.title}</span>
+            </div>
+            ${(metaHtml || sparkSvg) ? `<div class="session-meta">${metaHtml}${sparkSvg}</div>` : ''}
+          </div>
+          <div class="session-actions">
+            <div class="sess-done${done ? ' checked' : ''}" title="Mark complete" data-date="${sess.date}">✓</div>
+            <button class="note-btn${note ? ' has-note' : ''}" title="Add note" data-date="${sess.date}">✎</button>
+          </div>`;
+
+        const noteArea = document.createElement('div');
+        noteArea.className = 'note-area';
+        noteArea.innerHTML = `<textarea placeholder="How did it go? Log time, feeling, conditions…" data-date="${sess.date}">${note}</textarea>`;
+        noteArea.querySelector('textarea').addEventListener('input', e => {
+          lsSet('fwc-note-' + sess.date, e.target.value);
+          row.querySelector('.note-btn').classList.toggle('has-note', !!e.target.value);
+        });
+
+        // events
+        row.querySelector('.sess-done').addEventListener('click', e => {
+          const el = e.currentTarget;
+          const isDone = el.classList.toggle('checked');
+          lsSet('fwc-done-' + sess.date, isDone ? '1' : '0');
+          row.classList.toggle('done-row', isDone);
+          renderStats();
+        });
+        row.querySelector('.note-btn').addEventListener('click', () => {
+          noteArea.classList.toggle('open');
+          if (noteArea.classList.contains('open')) noteArea.querySelector('textarea').focus();
+        });
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'session-wrapper';
+
+        // swipe hint element
+        const isDoneNow = lsGet('fwc-done-' + sess.date) === '1';
+        const hint = document.createElement('div');
+        hint.className = 'swipe-hint' + (isDoneNow ? ' swipe-undo' : '');
+        hint.textContent = isDoneNow ? 'UNDO' : '✓';
+        wrapper.append(hint, row, noteArea);
+        wbody.append(wrapper);
+
+        // attach swipe and mobile tap
+        initSwipe(row, sess);
+        attachMobileRowTap(row, sess);
+      });
+
+      wb.append(wt, wbody);
+      body2.append(wb);
+    });
+
+    toggle.onclick = () => { toggle.classList.toggle('open'); body2.classList.toggle('open'); };
+    mb.append(toggle, body2);
+    plan.append(mb);
+  });
+}
+
+// ============================================================
+//  RENDER CALENDAR
+// ============================================================
+function renderCalendar() {
+  const wrap = document.getElementById('calWrap');
+  wrap.innerHTML = '';
+
+  const tod = today0();
+
+  MONTHS.forEach(month => {
+    const wks = WEEKS.filter(w => month.weeks.includes(w.num));
+
+    const section = document.createElement('div');
+    section.className = 'cal-month';
+    section.innerHTML = `
+      <div class="cal-month-header">
+        <div class="cal-month-name">${month.name}</div>
+        <div class="cal-month-pill">${month.pill}</div>
+      </div>`;
+
+    const table = document.createElement('table');
+    table.className = 'cal-table';
+    table.innerHTML = `<thead><tr>
+      <th class="wk-th">Wk</th>
+      <th>Monday</th><th>Tuesday</th><th>Wednesday</th>
+      <th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th>
+    </tr></thead>`;
+
+    const tbody = document.createElement('tbody');
+    wks.forEach(wk => {
+      const tr = document.createElement('tr');
+      const wkTd = document.createElement('td');
+      wkTd.className = 'wk-num';
+      wkTd.textContent = wk.label;
+      if (wk.raceWeek) wkTd.style.color = 'var(--accent)';
+      tr.append(wkTd);
+
+      wk.days.forEach(sess => {
+        const td = document.createElement('td');
+        td.className = `ct-${sess.type === 'race' ? 'race' : sess.type}`;
+        if (+new Date(sess.date) === +tod) td.classList.add('is-today');
+
+        let metaParts = [];
+        if (sess.mi) metaParts.push(`<span data-mi="${sess.mi}">${fmtDist(sess.mi)}</span>`);
+        if (sess.elev) metaParts.push(`<span data-elev="${sess.elev}">${fmtElev(sess.elev)}</span>`);
+
+        td.innerHTML = `<div class="cal-cell">
+          <span class="cal-badge">${sess.badge}</span>
+          <div class="cal-title">${sess.title}</div>
+          ${metaParts.length ? `<div class="cal-meta">${metaParts.join(' ')}</div>` : ''}
+        </div>`;
+
+        // tooltip
+        td.addEventListener('mouseenter', e => {
+          const tip = document.getElementById('calTip');
+          tip.classList.add('visible');
+          document.getElementById('calTipTitle').textContent = `${sess.day} — ${sess.badge}`;
+          let meta = sess.title;
+          if (sess.mi) meta += `  ·  ${fmtDist(sess.mi)}`;
+          if (sess.elev) meta += `  ·  ${fmtElev(sess.elev)}`;
+          meta += `  ·  TSS ~${sess.tss}`;
+          document.getElementById('calTipMeta').textContent = meta;
+          positionTip(e);
+        });
+        td.addEventListener('mousemove', positionTip);
+        td.addEventListener('mouseleave', () => document.getElementById('calTip').classList.remove('visible'));
+
+        tr.append(td);
+      });
+
+      tbody.append(tr);
+    });
+
+    table.append(tbody);
+    section.append(table);
+    wrap.append(section);
+  });
+}
+
+function positionTip(e) {
+  const tip = document.getElementById('calTip');
+  let x = e.clientX + 14, y = e.clientY - 10;
+  if (x + 240 > window.innerWidth) x = e.clientX - 240;
+  if (y + 80 > window.innerHeight) y = e.clientY - 80;
+  tip.style.left = x + 'px';
+  tip.style.top  = y + 'px';
+}
+
+// ============================================================
+//  RENDER STATS
+// ============================================================
+function renderStats() {
+  const allSessions = WEEKS.flatMap(w => w.days);
+  const totalMi = allSessions.reduce((s,d) => s + (d.mi||0), 0);
+  const totalTss = WEEKS.reduce((s,w) => s + w.tss, 0);
+  const doneSessions = allSessions.filter(d => lsGet('fwc-done-'+d.date) === '1').length;
+  const notedSessions = allSessions.filter(d => !!lsGet('fwc-note-'+d.date)).length;
+  const rides = allSessions.filter(d => d.type !== 'rest').length;
+
+  const grid = document.getElementById('statsGrid');
+  grid.innerHTML = [
+    {lbl:'Total Distance', val: useKm ? Math.round(totalMi*MI_TO_KM)+' km' : totalMi+' mi', unit:'over 12 weeks'},
+    {lbl:'Total TSS',       val: totalTss, unit: 'training stress score'},
+    {lbl:'Training Days',   val: rides, unit: 'sessions (excl. rest)'},
+    {lbl:'Completed',       val: doneSessions, unit: `of ${allSessions.length} sessions`},
+    {lbl:'Sessions Noted',  val: notedSessions, unit: 'with journal entries'},
+  ].map(s => `<div class="stat-card"><div class="stat-card-lbl">${s.lbl}</div><div class="stat-card-val">${s.val}</div><div class="stat-card-unit">${s.unit}</div></div>`).join('');
+
+  drawChart();
+  drawDonut();
+}
+
+function drawChart() {
+  const svg = document.getElementById('chartSvg');
+  const W = Math.max(svg.parentElement.clientWidth, 560);
+  const H = 180, PAD = {top:16, right:20, bottom:40, left:48};
+  const iW = W - PAD.left - PAD.right;
+  const iH = H - PAD.top - PAD.bottom;
+
+  const maxMi = Math.max(...WEEKS.map(w => w.mi));
+  const maxTss = Math.max(...WEEKS.map(w => w.tss));
+  const bW = iW / WEEKS.length;
+
+  const todayTs = +today0();
+  const planStartTs = +PLAN_START;
+  const planEndTs = +RACE_DATE;
+  const todayPct = Math.min(1, Math.max(0, (todayTs - planStartTs)/(planEndTs-planStartTs)));
+
+  let out = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">`;
+  // bg
+  out += `<rect width="${W}" height="${H}" fill="none"/>`;
+
+  // month bands
+  const monthColors = {'February':'rgba(200,0,30,0.04)','March':'rgba(200,0,30,0.07)','April':'rgba(200,0,30,0.03)'};
+  MONTHS.forEach(m => {
+    const wks = WEEKS.filter(w => m.weeks.includes(w.num));
+    const x0 = PAD.left + (wks[0].num-1) * bW;
+    const x1 = PAD.left + wks[wks.length-1].num * bW;
+    out += `<rect x="${x0}" y="${PAD.top}" width="${x1-x0}" height="${iH}" fill="${monthColors[m.name]||'none'}"/>`;
+    out += `<text x="${(x0+x1)/2}" y="${H-6}" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="9" letter-spacing="1" fill="currentColor" opacity="0.4">${m.name.toUpperCase()}</text>`;
+  });
+
+  // y-axis grid
+  [0.25,0.5,0.75,1].forEach(t => {
+    const y = PAD.top + iH * (1-t);
+    out += `<line x1="${PAD.left}" y1="${y}" x2="${PAD.left+iW}" y2="${y}" stroke="currentColor" stroke-opacity="0.08" stroke-width="1"/>`;
+    const label = Math.round(maxMi * t);
+    out += `<text x="${PAD.left-6}" y="${y+4}" text-anchor="end" font-family="Barlow Condensed,sans-serif" font-size="9" fill="currentColor" opacity="0.4">${useKm ? Math.round(label*MI_TO_KM) : label}</text>`;
+  });
+
+  // bars
+  WEEKS.forEach((wk,i) => {
+    const x = PAD.left + i * bW + bW*0.15;
+    const barW = bW * 0.7;
+    const barH = (wk.mi / maxMi) * iH;
+    const y = PAD.top + iH - barH;
+    const wkDates = wk.days.map(d => +new Date(d.date));
+    const isPast = wkDates[wkDates.length-1] < todayTs;
+    const isCurr = wkDates.some(d => d >= todayTs) && wkDates[0] <= todayTs;
+    const done = wk.days.filter(d => lsGet('fwc-done-'+d.date)==='1').length;
+    const doneH = wk.days.length ? (done/wk.days.length) * barH : 0;
+    const col = isCurr ? 'rgba(200,0,30,0.9)' : isPast ? 'rgba(200,0,30,0.3)' : 'rgba(200,0,30,0.5)';
+    out += `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" fill="${col}" rx="2" style="transform-origin:${x+barW/2}px ${PAD.top+iH}px; animation: barGrow 0.5s cubic-bezier(0.22,0.61,0.36,1) ${(i*0.04).toFixed(2)}s both"/>`;
+    // completion overlay
+    if (doneH > 0) {
+      out += `<rect x="${x}" y="${PAD.top+iH-doneH}" width="${barW}" height="${doneH}" fill="rgba(200,0,30,0.15)" rx="2" stroke="rgba(200,0,30,0.6)" stroke-width="0.5"/>`;
+    }
+    out += `<text x="${x+barW/2}" y="${H-28}" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" fill="currentColor" opacity="0.5">${wk.label}</text>`;
+  });
+
+  // TSS line
+  const tssPts = WEEKS.map((wk,i) => {
+    const x = PAD.left + i * bW + bW*0.5;
+    const y = PAD.top + iH * (1 - wk.tss/maxTss);
+    return `${x},${y}`;
+  }).join(' ');
+  out += `<polyline points="${tssPts}" fill="none" stroke="rgba(224,200,128,0.6)" stroke-width="1.5" stroke-dasharray="4 2"/>`;
+  WEEKS.forEach((wk,i) => {
+    const x = PAD.left + i*bW + bW*0.5;
+    const y = PAD.top + iH*(1-wk.tss/maxTss);
+    out += `<circle cx="${x}" cy="${y}" r="2.5" fill="rgba(224,200,128,0.8)"/>`;
+  });
+
+  // today line
+  const todayX = PAD.left + todayPct * iW;
+  if (todayPct > 0 && todayPct < 1) {
+    out += `<line x1="${todayX}" y1="${PAD.top}" x2="${todayX}" y2="${PAD.top+iH}" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0.7"/>`;
+    out += `<text x="${todayX+4}" y="${PAD.top+12}" font-family="Barlow Condensed,sans-serif" font-size="9" fill="var(--accent)" opacity="0.8">TODAY</text>`;
+  }
+
+  // legend
+  out += `<rect x="${W-140}" y="${PAD.top}" width="10" height="10" fill="rgba(200,0,30,0.5)" rx="1"/>`;
+  out += `<text x="${W-126}" y="${PAD.top+9}" font-family="Barlow Condensed,sans-serif" font-size="9" fill="currentColor" opacity="0.5">${useKm?'KM':'MILES'}</text>`;
+  out += `<line x1="${W-140}" y1="${PAD.top+22}" x2="${W-128}" y2="${PAD.top+22}" stroke="rgba(224,200,128,0.7)" stroke-width="1.5" stroke-dasharray="4 2"/>`;
+  out += `<text x="${W-124}" y="${PAD.top+26}" font-family="Barlow Condensed,sans-serif" font-size="9" fill="currentColor" opacity="0.5">TSS</text>`;
+
+  // Add CSS animation keyframes inline for bars
+  const animDefs = `<defs><style>
+    @keyframes barGrow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  </style></defs>`;
+  out = out.replace('<rect width=', animDefs + '<rect width=');
+
+  out += '</svg>';
+  svg.outerHTML = out;
+}
+
+function drawDonut() {
+  const svg = document.getElementById('donutSvg');
+  if (!svg) return;
+  const W = Math.min(svg.parentElement.clientWidth, 480), H = 160;
+  const cx = 80, cy = H/2, r = 55;
+
+  const types = ['easy','mod','hard','key','int','rest'];
+  const labels = {easy:'Easy',mod:'Moderate',hard:'Long Ride',key:'Key Ride',int:'Intervals',rest:'Rest'};
+  const counts = {};
+  types.forEach(t => { counts[t] = 0; });
+  WEEKS.forEach(w => w.days.forEach(d => { counts[d.type] = (counts[d.type]||0)+1; }));
+
+  const total = Object.values(counts).reduce((a,b) => a+b, 0);
+  let angle = -Math.PI/2;
+  let paths = '';
+  let legend = '';
+  const colVars = {easy:'--c-easy',mod:'--c-mod',hard:'--c-hard',key:'--c-key',int:'--c-int',rest:'--c-rest'};
+
+  types.forEach((t,i) => {
+    const pct = counts[t] / total;
+    if (pct === 0) return;
+    const a1 = angle, a2 = angle + pct * 2 * Math.PI;
+    const x1 = cx + r * Math.cos(a1), y1 = cy + r * Math.sin(a1);
+    const x2 = cx + r * Math.cos(a2), y2 = cy + r * Math.sin(a2);
+    const lg = a2-a1 > Math.PI ? 1 : 0;
+    paths += `<path d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${lg} 1 ${x2},${y2} Z" fill="var(${colVars[t]})" opacity="0.8"/>`;
+    angle = a2;
+    const ly = 30 + i*22;
+    legend += `<rect x="${cx*2+20}" y="${ly}" width="10" height="10" fill="var(${colVars[t]})" rx="2" opacity="0.8"/>`;
+    legend += `<text x="${cx*2+36}" y="${ly+9}" font-family="Barlow Condensed,sans-serif" font-size="11" fill="currentColor" opacity="0.7">${labels[t]} — ${counts[t]}</text>`;
+  });
+
+  const out = `<svg id="donutSvg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="currentColor" stroke-opacity="0.05" stroke-width="1"/>
+    ${paths}
+    <circle cx="${cx}" cy="${cy}" r="${r*0.5}" fill="var(--bg2)"/>
+    <text x="${cx}" y="${cy-6}" text-anchor="middle" font-family="Bebas Neue,cursive" font-size="20" fill="currentColor">${total}</text>
+    <text x="${cx}" y="${cy+10}" text-anchor="middle" font-family="Barlow Condensed,sans-serif" font-size="8" letter-spacing="1" fill="currentColor" opacity="0.5">SESSIONS</text>
+    ${legend}
+  </svg>`;
+  svg.outerHTML = out;
+}
+
+// ============================================================
+//  TODAY BAR
+// ============================================================
+function renderTodayBar() {
+  const tod = today0();
+  let currentWeek = null;
+  WEEKS.forEach(w => {
+    const dates = w.days.map(d => +new Date(d.date));
+    if (dates[0] <= +tod && +tod <= dates[dates.length-1]) currentWeek = w;
+    if (!currentWeek && dates[0] > +tod && !currentWeek) {
+      // upcoming week
+    }
+  });
+  if (!currentWeek) {
+    // find next upcoming
+    currentWeek = WEEKS.find(w => +new Date(w.days[0].date) > +tod) || WEEKS[WEEKS.length-1];
+  }
+
+  const weekLbl = document.getElementById('todayWeekLbl');
+  const sessDiv = document.getElementById('todaySessions');
+
+  weekLbl.textContent = currentWeek.label;
+  sessDiv.innerHTML = '';
+
+  currentWeek.days.forEach(sess => {
+    const d = new Date(sess.date);
+    const isToday = +d === +tod;
+    const pill = document.createElement('div');
+    pill.className = 'today-pill' + (isToday ? ' today-active' : '');
+    const dayAbbr = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
+    pill.innerHTML = `<span class="today-pill-dot" style="background:var(--c-${sess.type})"></span>${dayAbbr} ${d.getDate()} · ${sess.badge}`;
+    sessDiv.append(pill);
+  });
+}
+
+// ============================================================
+//  JUMP TO TODAY
+// ============================================================
+function jumpToToday() {
+  switchTab('list');
+  const tod = today0();
+  // open month + week containing today (or nearest future)
+  let targetRow = null;
+  document.querySelectorAll('.session-row[data-date]').forEach(row => {
+    const d = new Date(row.dataset.date);
+    if (+d === +tod && !targetRow) targetRow = row;
+  });
+  if (!targetRow) {
+    // find nearest upcoming
+    let nearest = null, nearestDiff = Infinity;
+    document.querySelectorAll('.session-row[data-date]').forEach(row => {
+      const d = new Date(row.dataset.date);
+      const diff = +d - +tod;
+      if (diff >= 0 && diff < nearestDiff) { nearestDiff = diff; nearest = row; }
+    });
+    targetRow = nearest;
+  }
+  if (!targetRow) return;
+
+  // open the month and week
+  const wkBody = targetRow.closest('.week-body');
+  const monthBody = targetRow.closest('.month-body');
+  if (wkBody && !wkBody.classList.contains('open')) {
+    wkBody.classList.add('open');
+    wkBody.previousElementSibling?.classList.add('open');
+  }
+  if (monthBody && !monthBody.classList.contains('open')) {
+    monthBody.classList.add('open');
+    monthBody.previousElementSibling?.classList.add('open');
+  }
+  setTimeout(() => targetRow.scrollIntoView({behavior:'smooth', block:'center'}), 50);
+}
+
+// ============================================================
+//  AUTO OPEN CURRENT WEEK
+// ============================================================
+function autoOpen() {
+  const tod = today0();
+  document.querySelectorAll('.week-body').forEach(wb => {
+    const rows = wb.querySelectorAll('.session-row[data-date]');
+    if (!rows.length) return;
+    const dates = Array.from(rows).map(r => +new Date(r.dataset.date));
+    const minD = Math.min(...dates), maxD = Math.max(...dates);
+    if (minD <= +tod && +tod <= maxD) {
+      wb.classList.add('open');
+      wb.previousElementSibling?.classList.add('open');
+      const mb = wb.closest('.month-body');
+      if (mb) { mb.classList.add('open'); mb.previousElementSibling?.classList.add('open'); }
+    }
+  });
+}
+
+// ============================================================
+//  FILTER
+// ============================================================
+let activeFilter = 'all';
+function setFilter(f) {
+  activeFilter = f;
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  document.querySelectorAll('#plan .session-row').forEach(row => {
+    const wrapper = row.parentElement;
+    wrapper.classList.toggle('hidden', f !== 'all' && row.dataset.type !== f);
+  });
+  document.querySelectorAll('.week-block').forEach(wb => {
+    const hasVisible = !!wb.querySelector('.week-body .hidden:not(*) , .week-body > div:not(.hidden)');
+    const anyVisible = Array.from(wb.querySelectorAll('.week-body > div')).some(d => !d.classList.contains('hidden'));
+    wb.classList.toggle('wk-hidden', !anyVisible && f !== 'all');
+  });
+}
+
+// ============================================================
+//  EXPAND / COLLAPSE
+// ============================================================
+function expandAll() {
+  document.querySelectorAll('.month-toggle, .week-toggle').forEach(t => t.classList.add('open'));
+  document.querySelectorAll('.month-body, .week-body').forEach(b => b.classList.add('open'));
+}
+function collapseAll() {
+  document.querySelectorAll('.month-toggle, .week-toggle').forEach(t => t.classList.remove('open'));
+  document.querySelectorAll('.month-body, .week-body').forEach(b => b.classList.remove('open'));
+}
+
+// ============================================================
+//  TABS
+// ============================================================
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('tab-' + tab).classList.add('active');
+  document.getElementById('view-' + tab).classList.add('active');
+  if (tab === 'stats') renderStats();
+}
+
+// ============================================================
+//  UNITS
+// ============================================================
+function toggleUnit() {
+  useKm = document.getElementById('unitToggle').checked;
+  document.getElementById('unit-mi').style.color = useKm ? 'var(--text-muted)' : 'var(--text)';
+  document.getElementById('unit-km').style.color = useKm ? 'var(--text)'       : 'var(--text-muted)';
+  document.querySelectorAll('.dist-mi').forEach(el => el.style.display = useKm ? 'none' : '');
+  document.querySelectorAll('.dist-km').forEach(el => el.style.display = useKm ? '' : 'none');
+  // update all data-mi spans
+  document.querySelectorAll('[data-mi]').forEach(el => { el.textContent = fmtDist(el.dataset.mi); });
+  // update week-mileage data-mi
+  document.querySelectorAll('.week-mileage[data-mi]').forEach(el => { el.textContent = fmtDist(el.dataset.mi); });
+  // update elev
+  document.querySelectorAll('[data-elev]').forEach(el => { el.textContent = fmtElev(el.dataset.elev); });
+  if (document.getElementById('view-stats').classList.contains('active')) renderStats();
+  renderCalendar();
+  renderTodayBar();
+}
+
+// ============================================================
+//  THEME
+// ============================================================
+function toggleTheme() {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  if (document.getElementById('view-stats').classList.contains('active')) renderStats();
+}
+
+// ============================================================
+//  COLOUR-BLIND
+// ============================================================
+function toggleCB() {
+  useCB = !useCB;
+  document.documentElement.setAttribute('data-cb', useCB ? 'true' : 'false');
+  document.getElementById('cb-btn').classList.toggle('active', useCB);
+}
+
+// ============================================================
+//  COUNTDOWN + PROGRESS
+// ============================================================
+function updateStats() {
+  const now = new Date();
+  const diff = RACE_DATE - now;
+  const days = Math.max(0, Math.ceil(diff / 86400000));
+  document.getElementById('countdown').textContent = days > 0 ? days : '🏁';
+  const total = RACE_DATE - PLAN_START;
+  const elapsed = now - PLAN_START;
+  const pct = Math.min(100, Math.max(0, Math.round(elapsed/total*100)));
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// ============================================================
+//  MARK TODAY IN LIST
+// ============================================================
+function markTodayList() {
+  const tod = today0();
+  document.querySelectorAll('.session-row[data-date]').forEach(row => {
+    if (+new Date(row.dataset.date) === +tod) row.classList.add('is-today');
+  });
+}
+
+// ============================================================
+//  INIT
+// ============================================================
+renderList();
+renderCalendar();
+autoOpen();
+markTodayList();
+renderTodayBar();
+updateStats();
+setInterval(updateStats, 60000);
+
+// ============================================================
+//  MOBILE BOTTOM NAV
+// ============================================================
+function mobSwitchTab(tab) {
+  switchTab(tab);
+  document.querySelectorAll('.mob-nav-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.getElementById('mob-tab-' + tab);
+  if (btn) btn.classList.add('active');
+}
+
+// ============================================================
+//  FILTER BOTTOM SHEET
+// ============================================================
+function openFilterSheet() {
+  document.getElementById('sheetOverlay').classList.add('open');
+  document.getElementById('filterSheet').classList.add('open');
+  document.getElementById('mob-tab-filter').classList.add('active');
+}
+function closeFilterSheet() {
+  document.getElementById('sheetOverlay').classList.remove('open');
+  document.getElementById('filterSheet').classList.remove('open');
+  document.getElementById('mob-tab-filter').classList.remove('active');
+}
+function sheetFilter(f) {
+  setFilter(f);
+  // sync desktop filter buttons
+  document.querySelectorAll('.f-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  // sync sheet buttons
+  document.querySelectorAll('.sheet-f-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
+  // update filter icon indicator
+  const icon = document.getElementById('mob-filter-icon');
+  if (icon) icon.style.color = f === 'all' ? '' : 'var(--accent)';
+  closeFilterSheet();
+}
+
+// ============================================================
+//  SESSION DETAIL MODAL
+// ============================================================
+let modalDate = null;
+function openModal(sess) {
+  modalDate = sess.date;
+  const isDone = lsGet('fwc-done-' + sess.date) === '1';
+  const note   = lsGet('fwc-note-' + sess.date) || '';
+
+  document.getElementById('modal-date').textContent  = sess.day;
+  document.getElementById('modal-title').textContent = sess.title;
+
+  const badge = document.getElementById('modal-badge');
+  badge.textContent = sess.badge;
+  badge.className = 'modal-badge';
+  // apply type colour via inline style (reuse css vars)
+  const typeColors = {
+    rest:'var(--c-rest)',easy:'var(--c-easy)',mod:'var(--c-mod)',
+    hard:'var(--c-hard)',key:'var(--c-key)',int:'var(--c-int)',race:'var(--accent)'
+  };
+  const c = typeColors[sess.type] || 'var(--text-muted)';
+  badge.style.color = c;
+  badge.style.borderColor = c;
+  badge.style.background = 'transparent';
+
+  // stats
+  const statsRow = document.getElementById('modal-stats');
+  statsRow.innerHTML = '';
+  const stats = [{lbl:'TSS', val: sess.tss, unit:'training stress'}];
+  if (sess.mi) stats.push({lbl:'Distance', val: fmtDist(sess.mi), unit: useKm ? 'km':'miles'});
+  if (sess.elev) stats.push({lbl:'Elevation', val: fmtElev(sess.elev), unit: useKm ? 'm gain':'ft gain'});
+  stats.forEach(s => {
+    statsRow.innerHTML += `<div class="modal-stat">
+      <div class="modal-stat-lbl">${s.lbl}</div>
+      <div class="modal-stat-val">${s.val}</div>
+    </div>`;
+  });
+
+  // sparkline
+  const spWrap = document.getElementById('modal-sparkline-wrap');
+  const spEl = document.getElementById('modal-sparkline');
+  const profile = ELEV_PROFILES[sess.date];
+  if (profile) {
+    const col = sess.type === 'race' ? 'rgba(200,0,30,0.8)' : 'rgba(224,200,128,0.7)';
+    spEl.innerHTML = buildSparkline(profile, col, 320, 54);
+    spWrap.style.display = '';
+  } else {
+    spWrap.style.display = 'none';
+  }
+
+  // note
+  document.getElementById('modal-note').value = note;
+
+  // done button
+  const doneBtn = document.getElementById('modal-done-btn');
+  const doneIcon = document.getElementById('modal-done-icon');
+  const doneLbl  = document.getElementById('modal-done-lbl');
+  doneBtn.classList.toggle('done', isDone);
+  doneIcon.textContent = isDone ? '✓' : '○';
+  doneLbl.textContent  = isDone ? 'Completed' : 'Mark Complete';
+
+  document.getElementById('modalOverlay').classList.add('open');
+
+  // note save
+  document.getElementById('modal-note').oninput = (e) => {
+    lsSet('fwc-note-' + sess.date, e.target.value);
+    // update list note button
+    const noteBtn = document.querySelector(`.note-btn[data-date="${sess.date}"]`);
+    if (noteBtn) noteBtn.classList.toggle('has-note', !!e.target.value);
+  };
+}
+
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  modalDate = null;
+}
+function closeModalIfOutside(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function toggleModalDone() {
+  if (!modalDate) return;
+  const isDone = lsGet('fwc-done-' + modalDate) !== '1';
+  lsSet('fwc-done-' + modalDate, isDone ? '1' : '0');
+  const doneBtn = document.getElementById('modal-done-btn');
+  doneBtn.classList.toggle('done', isDone);
+  document.getElementById('modal-done-icon').textContent = isDone ? '✓' : '○';
+  document.getElementById('modal-done-lbl').textContent  = isDone ? 'Completed' : 'Mark Complete';
+  // update list row
+  const row = document.querySelector(`.session-row[data-date="${modalDate}"]`);
+  if (row) {
+    row.classList.toggle('done-row', isDone);
+    const cb = row.querySelector('.sess-done');
+    if (cb) cb.classList.toggle('checked', isDone);
+  }
+  renderStats();
+}
+
+// ============================================================
+//  SWIPE TO COMPLETE
+// ============================================================
+function initSwipe(row, sess) {
+  let startX = 0, startY = 0, dx = 0;
+  let swiping = false, committed = false;
+  const THRESHOLD = 72;
+
+  function getWrapper() { return row.closest('.session-wrapper') || row.parentElement; }
+
+  row.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    dx = 0; swiping = false; committed = false;
+    row.style.transition = 'none';
+  }, {passive: true});
+
+  row.addEventListener('touchmove', e => {
+    const cx = e.touches[0].clientX, cy = e.touches[0].clientY;
+    const adx = Math.abs(cx - startX), ady = Math.abs(cy - startY);
+    if (!swiping && ady > adx) return; // vertical scroll, ignore
+    swiping = true;
+    dx = cx - startX;
+    if (dx < 0) dx = 0; // only right-to-left swipe (swipe right = complete)
+    // actually: swipe right = positive dx
+    if (dx > 0) {
+      e.preventDefault();
+      row.style.transform = `translateX(${Math.min(dx, THRESHOLD + 20)}px)`;
+      const hint = getWrapper().querySelector('.swipe-hint');
+      if (hint) hint.style.transform = `translateX(${Math.max(0, 100 - (dx/THRESHOLD)*100)}%)`;
+    }
+  }, {passive: false});
+
+  row.addEventListener('touchend', () => {
+    row.style.transition = '';
+    const isDone = lsGet('fwc-done-' + sess.date) === '1';
+    if (dx >= THRESHOLD) {
+      const newDone = !isDone;
+      lsSet('fwc-done-' + sess.date, newDone ? '1' : '0');
+      row.classList.toggle('done-row', newDone);
+      const cb = row.querySelector('.sess-done');
+      if (cb) cb.classList.toggle('checked', newDone);
+      renderStats();
+      // bounce feedback
+      row.style.transform = `translateX(${THRESHOLD + 4}px)`;
+      setTimeout(() => { row.style.transform = ''; }, 200);
+    } else {
+      row.style.transform = '';
+    }
+    const hint = getWrapper().querySelector('.swipe-hint');
+    if (hint) hint.style.transform = '';
+    dx = 0;
+  });
+}
+
+// ============================================================
+//  MOBILE: tap row to open modal (on mobile only)
+// ============================================================
+function attachMobileRowTap(row, sess) {
+  row.addEventListener('click', e => {
+    if (window.innerWidth > 700) return;
+    // don't open if tapping checkbox or note button
+    if (e.target.closest('.sess-done, .note-btn')) return;
+    openModal(sess);
+  });
+}
+
+// ============================================================
+//  SYNC MOBILE NAV with tab switches
+// ============================================================
+const _origSwitchTab = switchTab;
+// override to also sync mob nav
+function switchTab(tab) {
+  _origSwitchTab(tab);
+  document.querySelectorAll('.mob-nav-btn').forEach(b => {
+    const id = b.id.replace('mob-tab-', '');
+    b.classList.toggle('active', id === tab);
+  });
+  document.getElementById('mob-tab-filter')?.classList.remove('active');
+}
+
+// ============================================================
+//  KEYBOARD: close modal on Escape
+// ============================================================
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeModal(); closeFilterSheet(); }
+});
+
+</script>
+</body>
+</html>
