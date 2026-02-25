@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>London Marathon 2026 — Training Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #ffffff;
+  --surface: #f7f8fa;
+  --surface2: #eef0f4;
+  --border: #e2e5eb;
+  --text: #1a1d26;
+  --text-dim: #5a6070;
+  --text-faint: #8b92a4;
+  --easy: #2563eb;
+  --easy-bg: rgba(37,99,235,0.07);
+  --long: #d97706;
+  --long-bg: rgba(217,119,6,0.07);
+  --strength: #059669;
+  --strength-bg: rgba(5,150,105,0.07);
+  --marathon: #dc2626;
+  --marathon-bg: rgba(220,38,38,0.07);
+  --shakeout: #7c3aed;
+  --shakeout-bg: rgba(124,58,237,0.07);
+  --accent: #d97706;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  padding: 80px 0 60px;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(217,119,6,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #1a1d26 30%, var(--accent));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-sub {
+  font-size: 18px;
+  color: var(--text-dim);
+  max-width: 600px;
+  font-weight: 300;
+}
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+.hero-stat { display: flex; flex-direction: column; }
+.hero-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--text);
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+/* ── NAV PILLS ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 12px 0;
+}
+.nav-inner {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.nav-pill:hover { color: var(--text); border-color: var(--text-faint); }
+.nav-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  font-weight: 500;
+}
+
+/* ── SECTIONS ── */
+.section { padding: 48px 0; }
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+.section-desc {
+  color: var(--text-dim);
+  margin-bottom: 32px;
+  font-weight: 300;
+}
+
+/* ── VOLUME CHART ── */
+.chart-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  margin-bottom: 48px;
+}
+.chart-title {
+  font-size: 14px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 24px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 180px;
+}
+.chart-bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+.chart-bar {
+  width: 100%;
+  border-radius: 6px 6px 2px 2px;
+  position: relative;
+  transition: all 0.3s;
+  cursor: pointer;
+  min-height: 4px;
+}
+.chart-bar:hover { filter: brightness(1.1); transform: scaleY(1.03); transform-origin: bottom; }
+.chart-bar-dist { background: linear-gradient(180deg, var(--easy) 0%, rgba(37,99,235,0.3) 100%); }
+.chart-bar-dur { background: linear-gradient(180deg, var(--long) 0%, rgba(217,119,6,0.3) 100%); }
+.chart-bar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-top: 8px;
+}
+.chart-bar-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.chart-legend { display: flex; gap: 24px; margin-top: 20px; }
+.chart-legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-dim); }
+.chart-legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+
+/* ── WEEK BLOCK ── */
+.week-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.week-block:hover { border-color: #ccd0d8; }
+.week-block.open { box-shadow: 0 2px 16px rgba(0,0,0,0.04); }
+.week-header {
+  padding: 20px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+.week-header-left { display: flex; align-items: center; gap: 16px; }
+.week-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+}
+.week-dates { font-size: 14px; color: var(--text-dim); font-weight: 300; }
+.week-summary { display: flex; gap: 12px; align-items: center; }
+.week-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--surface2);
+  color: var(--text-dim);
+}
+.week-toggle {
+  width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 6px;
+  background: var(--surface2);
+  color: var(--text-dim);
+  font-size: 14px;
+  transition: transform 0.3s;
+}
+.week-block.open .week-toggle { transform: rotate(180deg); }
+.week-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s ease;
+}
+.week-block.open .week-body {
+  grid-template-rows: 1fr;
+}
+.week-body-inner {
+  overflow: hidden;
+}
+.week-sessions {
+  padding: 0 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* ── DAILY DRILL-DOWN ── */
+.chart-drilldown {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  display: none;
+}
+.chart-drilldown.visible { display: block; }
+.chart-drilldown-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.chart-drilldown-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.chart-drilldown-close {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-dim);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.chart-drilldown-close:hover { border-color: var(--text-faint); color: var(--text); }
+.daily-bars {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  height: 140px;
+  align-items: end;
+}
+.daily-bar-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  justify-content: flex-end;
+}
+.daily-bar {
+  width: 100%;
+  max-width: 60px;
+  border-radius: 6px 6px 2px 2px;
+  min-height: 2px;
+  transition: all 0.3s;
+  position: relative;
+}
+.daily-bar:hover { filter: brightness(1.1); }
+.daily-bar.rest-bar {
+  border: 1px dashed var(--border);
+  background: transparent !important;
+  min-height: 20px;
+}
+.daily-bar-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-bottom: 4px;
+  text-align: center;
+  white-space: nowrap;
+}
+.daily-bar-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-top: 6px;
+  text-align: center;
+}
+.daily-bar-type {
+  font-size: 9px;
+  color: var(--text-dim);
+  text-align: center;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.chart-bar-group { cursor: pointer; }
+.chart-bar-group:hover .chart-bar-label { color: var(--text); }
+.chart-bar-group.selected .chart-bar-label {
+  color: var(--accent);
+  font-weight: 500;
+}
+.chart-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-faint);
+  margin-top: 8px;
+  text-align: center;
+  font-style: italic;
+}
+@media (max-width: 768px) {
+  .daily-bars { height: 100px; }
+}
+
+/* ── WEEK DAY GRID ── */
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 0 24px 16px;
+}
+.day-cell {
+  border-radius: 10px;
+  padding: 10px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  transition: all 0.15s;
+}
+.day-cell:hover { border-color: #ccd0d8; }
+.day-cell.rest {
+  background: var(--surface);
+  border-style: dashed;
+  opacity: 0.55;
+}
+.day-cell.is-marathon {
+  border-color: var(--marathon);
+  background: var(--marathon-bg);
+}
+.day-cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.day-cell-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-faint);
+}
+.day-cell-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-faint);
+}
+.day-cell-type {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 2px;
+}
+.day-cell-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.day-cell-stats {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dim);
+  margin-top: auto;
+}
+.day-cell-rest-label {
+  font-size: 11px;
+  color: var(--text-faint);
+  margin-top: auto;
+  font-style: italic;
+}
+.day-cell.type-easy .day-cell-dot { background: var(--easy); }
+.day-cell.type-long .day-cell-dot { background: var(--long); }
+.day-cell.type-strength .day-cell-dot { background: var(--strength); }
+.day-cell.type-marathon .day-cell-dot { background: var(--marathon); }
+.day-cell.type-shakeout .day-cell-dot { background: var(--shakeout); }
+
+@media (max-width: 768px) {
+  .week-days { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 480px) {
+  .week-days { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── SESSION CARD ── */
+.session {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+.session:hover { background: var(--surface2); border-color: var(--border); }
+.session-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-faint);
+}
+.session-date-day {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+.session-main { display: flex; flex-direction: column; gap: 6px; }
+.session-type {
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.session-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.session-meta { display: flex; flex-wrap: wrap; gap: 6px; }
+.session-chip {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.session-detail {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.5;
+}
+.session-right {
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+}
+.session-duration {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--text);
+}
+.session-duration-unit { font-size: 11px; color: var(--text-faint); }
+.session-dist { font-size: 12px; color: var(--text-dim); margin-top: 2px; }
+
+/* Session type colours */
+.type-easy .session-dot { background: var(--easy); }
+.type-easy .session-chip { background: var(--easy-bg); color: var(--easy); }
+.type-long .session-dot { background: var(--long); }
+.type-long .session-chip { background: var(--long-bg); color: var(--long); }
+.type-strength .session-dot { background: var(--strength); }
+.type-strength .session-chip { background: var(--strength-bg); color: var(--strength); }
+.type-marathon .session-dot { background: var(--marathon); }
+.type-marathon .session-chip { background: var(--marathon-bg); color: var(--marathon); }
+.type-shakeout .session-dot { background: var(--shakeout); }
+.type-shakeout .session-chip { background: var(--shakeout-bg); color: var(--shakeout); }
+
+/* ── RULES & ZONES ── */
+.rules-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 12px;
+}
+.rule-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  transition: border-color 0.2s;
+}
+.rule-card:hover { border-color: #ccd0d8; }
+.rule-area {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.rule-text {
+  font-size: 14px;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.zones-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.zones-table th {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  text-align: left;
+  padding: 14px 20px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+}
+.zones-table td {
+  padding: 16px 20px;
+  font-size: 14px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border);
+  font-weight: 300;
+}
+.zones-table tr:last-child td { border-bottom: none; }
+.zones-table td:first-child {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  color: var(--text);
+}
+
+/* ── MARATHON BANNER ── */
+.race-day {
+  background: linear-gradient(135deg, rgba(220,38,38,0.05), rgba(217,119,6,0.05));
+  border: 1px solid rgba(220,38,38,0.15);
+  border-radius: 16px;
+  padding: 32px;
+  text-align: center;
+  margin: 32px 0;
+}
+.race-day h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  color: var(--marathon);
+  margin-bottom: 8px;
+}
+.race-day p { color: var(--text-dim); font-weight: 300; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .hero-stats { gap: 24px; }
+  .session { grid-template-columns: 1fr; gap: 8px; }
+  .session-right { text-align: left; display: flex; gap: 12px; }
+  .week-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .week-summary { flex-wrap: wrap; }
+  .rules-grid { grid-template-columns: 1fr; }
+  .chart-bars { height: 120px; }
+}
+
+/* ── EXERCISE CARDS ── */
+.workout-block {
+  margin-bottom: 32px;
+}
+.workout-block-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.workout-block-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.workout-block-icon.str { background: var(--strength-bg); }
+.workout-block-icon.mob { background: var(--shakeout-bg); }
+.workout-block-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+}
+.workout-block-sub {
+  font-size: 13px;
+  color: var(--text-faint);
+  font-family: 'JetBrains Mono', monospace;
+}
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+.exercise-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.exercise-card:hover {
+  border-color: #ccd0d8;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.exercise-illus {
+  background: var(--surface2);
+  height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.exercise-illus svg {
+  width: 100%;
+  height: 100%;
+}
+.exercise-info {
+  padding: 16px;
+}
+.exercise-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--text-faint);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.exercise-name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 4px 0 8px;
+}
+.exercise-target {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+.exercise-target.t-calves { background: var(--easy-bg); color: var(--easy); }
+.exercise-target.t-glutes { background: var(--strength-bg); color: var(--strength); }
+.exercise-target.t-hamstrings { background: var(--long-bg); color: var(--long); }
+.exercise-target.t-core { background: var(--marathon-bg); color: var(--marathon); }
+.exercise-target.t-mobility { background: var(--shakeout-bg); color: var(--shakeout); }
+.exercise-rx {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.exercise-cue {
+  font-size: 13px;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .exercise-grid { grid-template-columns: 1fr; }
+}
+
+/* ── ANIMATION ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate { animation: fadeUp 0.5s ease both; }
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="container">
+    <div class="hero-eyebrow animate">Risk-Adjusted Training Plan</div>
+    <h1 class="animate delay-1">London Marathon<br>2026</h1>
+    <p class="hero-sub animate delay-2">9-week programme with run/walk strategy, heart rate guardrails, and integrated strength work. Built for a safe, controlled finish.</p>
+    <div class="hero-stats animate delay-3">
+      <div class="hero-stat">
+        <span class="hero-stat-value">9</span>
+        <span class="hero-stat-label">Weeks</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">53</span>
+        <span class="hero-stat-label">Sessions</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">361 km</span>
+        <span class="hero-stat-label">Total Distance</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-value">26 Apr</span>
+        <span class="hero-stat-label">Race Day</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <button class="nav-pill active" data-target="overview">Overview</button>
+      <button class="nav-pill" data-target="plan">Training Plan</button>
+      <button class="nav-pill" data-target="rules">Rules</button>
+      <button class="nav-pill" data-target="zones">Zones</button>
+      <button class="nav-pill" data-target="strength">Strength & Mobility</button>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+
+  <section class="section" id="overview">
+    <div class="chart-wrap">
+      <div class="chart-title">Weekly Volume Progression</div>
+      <div class="chart-bars" id="volumeChart"></div>
+      <div class="chart-legend">
+        <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--easy)"></div>Distance (km)</div>
+        <div class="chart-legend-item"><div class="chart-legend-dot" style="background:var(--long)"></div>Duration (hrs)</div>
+      </div>
+      <div class="chart-hint">Click a week to see daily breakdown</div>
+      <div class="chart-drilldown" id="drilldown">
+        <div class="chart-drilldown-header">
+          <span class="chart-drilldown-title" id="drilldownTitle">Week 1 — Daily Breakdown</span>
+          <button class="chart-drilldown-close" id="drilldownClose">✕ Close</button>
+        </div>
+        <div class="daily-bars" id="dailyBars"></div>
+      </div>
+    </div>
+    <div class="race-day">
+      <h3>Race Day — Sunday 26 April 2026</h3>
+      <p>42.2 km · Zone 2 then Zone 3 · Gel every 30 min from 30 min · Start slower than feels right</p>
+    </div>
+  </section>
+
+  <section class="section" id="plan">
+    <h2 class="section-title">Week by Week</h2>
+    <p class="section-desc">Click any week to expand the full session details.</p>
+    <div id="weekBlocks"></div>
+  </section>
+
+  <section class="section" id="rules">
+    <h2 class="section-title">Training Rules</h2>
+    <p class="section-desc">Non-negotiable guardrails to keep you healthy and consistent.</p>
+    <div class="rules-grid" id="rulesGrid"></div>
+  </section>
+
+  <section class="section" id="zones">
+    <h2 class="section-title">Heart Rate Zones</h2>
+    <p class="section-desc">Your effort language for every session.</p>
+    <table class="zones-table">
+      <thead>
+        <tr><th>Zone</th><th>Definition</th><th>How It Should Feel</th><th>Typical Markers</th></tr>
+      </thead>
+      <tbody id="zonesBody"></tbody>
+    </table>
+  </section>
+
+  <!-- STRENGTH & MOBILITY -->
+  <section class="section" id="strength">
+    <h2 class="section-title">Strength & Mobility Routine</h2>
+    <p class="section-desc">25 minutes, twice a week. This is your injury insurance. Complete all exercises in order.</p>
+    <div id="workoutBlocks"></div>
+  </section>
+
+</main>
+
+<div style="height:80px"></div>
+
+<script>
+const DATA = {"sessions": [{"week": 1, "date": "2026-02-25", "day": "Wed", "type": "Easy run", "duration": 40, "distance": 5.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 1, "date": "2026-02-26", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 1, "date": "2026-02-27", "day": "Fri", "type": "Easy run", "duration": 40, "distance": 5.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 1, "date": "2026-02-28", "day": "Sat", "type": "Easy run", "duration": 45, "distance": 6.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 1, "date": "2026-03-01", "day": "Sun", "type": "Long run", "duration": 70, "distance": 8.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "1 gel at 35 min. Water small sips."}, {"week": 2, "date": "2026-03-03", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 2, "date": "2026-03-04", "day": "Wed", "type": "Easy run", "duration": 45, "distance": 6.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 2, "date": "2026-03-05", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 2, "date": "2026-03-06", "day": "Fri", "type": "Easy run", "duration": 45, "distance": 6.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 2, "date": "2026-03-07", "day": "Sat", "type": "Easy run", "duration": 50, "distance": 7.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 2, "date": "2026-03-08", "day": "Sun", "type": "Long run", "duration": 85, "distance": 10.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "1 gel at 35 min. Water small sips."}, {"week": 3, "date": "2026-03-10", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 3, "date": "2026-03-11", "day": "Wed", "type": "Easy run", "duration": 45, "distance": 6.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 3, "date": "2026-03-12", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 3, "date": "2026-03-13", "day": "Fri", "type": "Easy run", "duration": 50, "distance": 7.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 3, "date": "2026-03-14", "day": "Sat", "type": "Easy run", "duration": 50, "distance": 7.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 3, "date": "2026-03-15", "day": "Sun", "type": "Long run", "duration": 100, "distance": 12.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "Gel at 30 and 60 min. Aim 30 to 45g carbs per hour."}, {"week": 4, "date": "2026-03-17", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 4, "date": "2026-03-18", "day": "Wed", "type": "Easy run", "duration": 50, "distance": 7.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 4, "date": "2026-03-19", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 4, "date": "2026-03-20", "day": "Fri", "type": "Easy run", "duration": 50, "distance": 7.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 4, "date": "2026-03-21", "day": "Sat", "type": "Easy run", "duration": 55, "distance": 8.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 4, "date": "2026-03-22", "day": "Sun", "type": "Long run", "duration": 120, "distance": 14.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "Gel at 30 and 60 min. Aim 30 to 45g carbs per hour."}, {"week": 5, "date": "2026-03-24", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 5, "date": "2026-03-25", "day": "Wed", "type": "Easy run", "duration": 50, "distance": 7.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 5, "date": "2026-03-26", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 5, "date": "2026-03-27", "day": "Fri", "type": "Easy run", "duration": 55, "distance": 8.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 5, "date": "2026-03-28", "day": "Sat", "type": "Easy run", "duration": 55, "distance": 8.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 5, "date": "2026-03-29", "day": "Sun", "type": "Long run", "duration": 145, "distance": 17.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "Gel at 30 and 60 min. Aim 30 to 45g carbs per hour."}, {"week": 6, "date": "2026-03-31", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 6, "date": "2026-04-01", "day": "Wed", "type": "Easy run", "duration": 55, "distance": 8.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 6, "date": "2026-04-02", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 6, "date": "2026-04-03", "day": "Fri", "type": "Easy run", "duration": 55, "distance": 8.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 6, "date": "2026-04-04", "day": "Sat", "type": "Easy run", "duration": 60, "distance": 9.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 6, "date": "2026-04-05", "day": "Sun", "type": "Long run", "duration": 165, "distance": 20.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "Gel every 30 min from 30 min. Electrolytes. Aim 45 to 60g carbs per hour."}, {"week": 7, "date": "2026-04-07", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 7, "date": "2026-04-08", "day": "Wed", "type": "Easy run", "duration": 55, "distance": 8.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 7, "date": "2026-04-09", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 7, "date": "2026-04-10", "day": "Fri", "type": "Easy run", "duration": 60, "distance": 9.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 7, "date": "2026-04-11", "day": "Sat", "type": "Easy run", "duration": 60, "distance": 9.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 7, "date": "2026-04-12", "day": "Sun", "type": "Long run", "duration": 185, "distance": 22.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "Gel every 30 min from 30 min. Electrolytes. Aim 45 to 60g carbs per hour."}, {"week": 8, "date": "2026-04-14", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 8, "date": "2026-04-15", "day": "Wed", "type": "Easy run", "duration": 60, "distance": 9.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 8, "date": "2026-04-16", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 8, "date": "2026-04-17", "day": "Fri", "type": "Easy run", "duration": 60, "distance": 9.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 8, "date": "2026-04-18", "day": "Sat", "type": "Easy run", "duration": 60, "distance": 9.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 8, "date": "2026-04-19", "day": "Sun", "type": "Long run", "duration": 205, "distance": 24.0, "runWalk": "3:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "Gel every 30 min from 30 min. Electrolytes. Aim 45 to 60g carbs per hour."}, {"week": 9, "date": "2026-04-21", "day": "Tue", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 9, "date": "2026-04-22", "day": "Wed", "type": "Easy run", "duration": 45, "distance": 6.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 9, "date": "2026-04-23", "day": "Thu", "type": "Strength + mobility", "duration": 25, "distance": null, "runWalk": null, "effort": "Strength", "hr": null, "pace": "Form focus. Calves, soleus, glutes, hamstrings, core. Ankle and hip mobility.", "fuel": "Normal meals. Protein with each meal. Hydrate."}, {"week": 9, "date": "2026-04-24", "day": "Fri", "type": "Easy run", "duration": 40, "distance": 5.0, "runWalk": "2:1", "effort": "Zone 2", "hr": "120 to 135, cap 138", "pace": "Conversational, nasal breathing", "fuel": "No gel. Water optional."}, {"week": 9, "date": "2026-04-25", "day": "Sat", "type": "Shake out", "duration": 20, "distance": 3.0, "runWalk": "2:1", "effort": "Zone 1 to 2", "hr": "120 to 135, cap 138", "pace": "Very easy, short strides only if fresh", "fuel": "No gel. Water optional."}, {"week": 9, "date": "2026-04-26", "day": "Sun", "type": "Marathon", "duration": 360, "distance": 42.2, "runWalk": "2:1", "effort": "Zone 2 then Zone 3", "hr": "Race day. Start controlled. Expect HR drift.", "pace": "Start slower than feels right. Protect heart rate.", "fuel": "Gel 15 min pre start. Then gel every 30 min from 30 min. One caffeine gel after 180 min. Water each station."}], "rules": [{"area": "Effort", "rule": "Zone 2 is mandatory for Easy and Long runs. Target HR 120 to 135. Hard cap 138. If HR > 138 for 20s: walk until < 125 then run again."}, {"area": "Pace", "rule": "Use pace ranges as guardrails only. Prioritise breathing and form over pace."}, {"area": "Walking", "rule": "Walk breaks are strategic. Default: Easy runs 2 min run 1 min walk. Long runs 3 min run 1 min walk. Walk brisk, tall posture."}, {"area": "Progression", "rule": "Increase long run time by 10% max per week. Every 4th week reduce long run by 20% for consolidation."}, {"area": "Missed run", "rule": "Skip it. No stacking. Protect consistency."}, {"area": "Strength", "rule": "Two sessions weekly, 25 min. Calves, soleus, glutes, hamstrings, core. This is injury insurance."}, {"area": "Mobility", "rule": "Daily shoulder and thoracic mobility is non negotiable given collarbone history."}, {"area": "Quality", "rule": "Weeks 1 to 4: zero quality sessions. Weeks 5 to 8: max one quality session weekly only if easy runs stay under 135 bpm average for 45 min."}, {"area": "Fuel", "rule": "Runs 75 min plus: practise gels and fluids. Stop gels 45 min before finish."}, {"area": "Injury", "rule": "Any sharp pain or gait change: stop. If soreness persists 48h, reduce next week volume."}, {"area": "Sleep", "rule": "Sleep is the primary recovery lever. If sleep is poor, remove intensity and shorten runs."}], "zones": [{"zone": "Zone 1", "definition": "Very easy", "feel": "Warm up, cool down", "markers": "Easy chat, HR roughly 110 to 125"}, {"zone": "Zone 2", "definition": "Easy aerobic", "feel": "Comfortably hard? No. It should feel easy", "markers": "Full sentences, HR 120 to 135, hard cap 138"}, {"zone": "Zone 3", "definition": "Steady", "feel": "Short phrases only", "markers": "Used late in the race if stable"}]};
+
+var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+function fmtDate(d) {
+  var dt = new Date(d + 'T00:00:00');
+  return dt.getDate() + ' ' + MONTHS[dt.getMonth()];
+}
+
+function typeClass(t) {
+  if (t.indexOf('Easy') !== -1) return 'easy';
+  if (t.indexOf('Long') !== -1) return 'long';
+  if (t.indexOf('Strength') !== -1) return 'strength';
+  if (t.indexOf('Marathon') !== -1) return 'marathon';
+  if (t.indexOf('Shake') !== -1) return 'shakeout';
+  return 'easy';
+}
+
+var ruleIcons = {
+  Effort: '❤️', Pace: '⏱️', Walking: '🚶', Progression: '📈',
+  'Missed run': '⏭️', Strength: '💪', Mobility: '🧘', Quality: '⚡',
+  Fuel: '⛽', Injury: '🩹', Sleep: '😴'
+};
+
+// ── Volume Chart ──
+var weeks = {};
+DATA.sessions.forEach(function(s) {
+  if (!weeks[s.week]) weeks[s.week] = { dist: 0, dur: 0 };
+  weeks[s.week].dur += s.duration;
+  if (s.distance) weeks[s.week].dist += s.distance;
+});
+
+var weekNums = Object.keys(weeks).map(Number).sort(function(a,b){ return a-b; });
+var maxDur = Math.max.apply(null, weekNums.map(function(w){ return weeks[w].dur; }));
+var maxDist = Math.max.apply(null, weekNums.map(function(w){ return weeks[w].dist; }));
+
+var chartEl = document.getElementById('volumeChart');
+weekNums.forEach(function(w) {
+  var g = document.createElement('div');
+  g.className = 'chart-bar-group';
+
+  var valDur = document.createElement('div');
+  valDur.className = 'chart-bar-value';
+  valDur.style.color = 'var(--long)';
+  valDur.textContent = (Math.round(weeks[w].dur / 60 * 10) / 10) + 'h';
+
+  var barDur = document.createElement('div');
+  barDur.className = 'chart-bar chart-bar-dur';
+  barDur.style.height = (weeks[w].dur / maxDur * 130) + 'px';
+
+  var valDist = document.createElement('div');
+  valDist.className = 'chart-bar-value';
+  valDist.style.color = 'var(--easy)';
+  valDist.textContent = Math.round(weeks[w].dist) + 'km';
+
+  var barDist = document.createElement('div');
+  barDist.className = 'chart-bar chart-bar-dist';
+  barDist.style.height = (weeks[w].dist / maxDist * 130) + 'px';
+  barDist.style.marginTop = '4px';
+
+  var label = document.createElement('div');
+  label.className = 'chart-bar-label';
+  label.textContent = (w === weekNums[weekNums.length-1]) ? 'W' + w + ' 🏁' : 'W' + w;
+
+  g.appendChild(valDur);
+  g.appendChild(barDur);
+  g.appendChild(valDist);
+  g.appendChild(barDist);
+  g.appendChild(label);
+  chartEl.appendChild(g);
+});
+
+// ── Drilldown ──
+var drilldownEl = document.getElementById('drilldown');
+var drilldownTitle = document.getElementById('drilldownTitle');
+var dailyBarsEl = document.getElementById('dailyBars');
+var selectedWeekBar = null;
+
+var DAY_ABBR = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+var typeColors = {
+  easy: 'var(--easy)',
+  long: 'var(--long)',
+  strength: 'var(--strength)',
+  marathon: 'var(--marathon)',
+  shakeout: 'var(--shakeout)'
+};
+
+function showDrilldown(weekNum) {
+  var ws = DATA.sessions.filter(function(s){ return s.week === weekNum; });
+  if (!ws.length) return;
+
+  // Find Monday of this ISO week
+  var firstDate = new Date(ws[0].date + 'T00:00:00');
+  var dow = firstDate.getDay();
+  var mondayOff = dow === 0 ? -6 : 1 - dow;
+  var monday = new Date(firstDate);
+  monday.setDate(monday.getDate() + mondayOff);
+
+  // Build lookup by date string
+  var byDate = {};
+  ws.forEach(function(s){ byDate[s.date] = s; });
+
+  // Find max duration for scaling
+  var maxD = Math.max.apply(null, ws.map(function(s){ return s.duration; }));
+
+  drilldownTitle.textContent = 'Week ' + weekNum + ' — Daily Breakdown';
+  dailyBarsEl.innerHTML = '';
+
+  for (var d = 0; d < 7; d++) {
+    var cellDate = new Date(monday);
+    cellDate.setDate(monday.getDate() + d);
+    var dateStr = cellDate.getFullYear() + '-' +
+      String(cellDate.getMonth()+1).padStart(2,'0') + '-' +
+      String(cellDate.getDate()).padStart(2,'0');
+
+    var session = byDate[dateStr] || null;
+    var group = document.createElement('div');
+    group.className = 'daily-bar-group';
+
+    if (session) {
+      var tc = typeClass(session.type);
+      var color = typeColors[tc] || 'var(--easy)';
+
+      var val = document.createElement('div');
+      val.className = 'daily-bar-value';
+      var valText = session.duration + 'm';
+      if (session.distance) valText += ' / ' + session.distance + 'km';
+      val.textContent = valText;
+
+      var bar = document.createElement('div');
+      bar.className = 'daily-bar';
+      bar.style.height = Math.max(8, session.duration / maxD * 100) + 'px';
+      bar.style.background = color;
+      bar.style.borderRadius = '6px 6px 2px 2px';
+
+      var lbl = document.createElement('div');
+      lbl.className = 'daily-bar-label';
+      lbl.textContent = DAY_ABBR[d];
+
+      var typeLbl = document.createElement('div');
+      typeLbl.className = 'daily-bar-type';
+      var shortType = session.type.replace(' + mobility', '').replace(' run', '');
+      typeLbl.textContent = shortType;
+
+      group.appendChild(val);
+      group.appendChild(bar);
+      group.appendChild(lbl);
+      group.appendChild(typeLbl);
+    } else {
+      var bar2 = document.createElement('div');
+      bar2.className = 'daily-bar rest-bar';
+
+      var lbl2 = document.createElement('div');
+      lbl2.className = 'daily-bar-label';
+      lbl2.textContent = DAY_ABBR[d];
+
+      var restLbl = document.createElement('div');
+      restLbl.className = 'daily-bar-type';
+      restLbl.textContent = 'Rest';
+
+      group.appendChild(bar2);
+      group.appendChild(lbl2);
+      group.appendChild(restLbl);
+    }
+    dailyBarsEl.appendChild(group);
+  }
+
+  drilldownEl.classList.add('visible');
+}
+
+document.getElementById('drilldownClose').addEventListener('click', function() {
+  drilldownEl.classList.remove('visible');
+  if (selectedWeekBar) {
+    selectedWeekBar.classList.remove('selected');
+    selectedWeekBar = null;
+  }
+});
+
+// Add click handlers to chart bar groups
+var barGroups = chartEl.querySelectorAll('.chart-bar-group');
+barGroups.forEach(function(bg, idx) {
+  bg.addEventListener('click', function() {
+    if (selectedWeekBar) selectedWeekBar.classList.remove('selected');
+    bg.classList.add('selected');
+    selectedWeekBar = bg;
+    showDrilldown(weekNums[idx]);
+  });
+});
+
+// ── Week Blocks ──
+var blocksEl = document.getElementById('weekBlocks');
+var grouped = {};
+DATA.sessions.forEach(function(s) {
+  if (!grouped[s.week]) grouped[s.week] = [];
+  grouped[s.week].push(s);
+});
+
+weekNums.forEach(function(w, i) {
+  var ss = grouped[w];
+  var dates = ss.map(function(s){ return s.date; });
+  var dateRange = fmtDate(dates[0]) + ' – ' + fmtDate(dates[dates.length - 1]);
+  var totalDist = ss.reduce(function(a, s){ return a + (s.distance || 0); }, 0);
+  var totalDur = ss.reduce(function(a, s){ return a + s.duration; }, 0);
+
+  var block = document.createElement('div');
+  block.className = 'week-block' + (i === 0 ? ' open' : '');
+
+  var sessionsHtml = ss.map(function(s) {
+    var tc = typeClass(s.type);
+    var chips = [];
+    if (s.effort) chips.push(s.effort);
+    if (s.runWalk) chips.push('R:W ' + s.runWalk);
+    if (s.hr) chips.push('♥ ' + s.hr);
+    var details = [];
+    if (s.pace) details.push(s.pace);
+    if (s.fuel) details.push(s.fuel);
+
+    var chipsHtml = chips.length
+      ? '<div class="session-meta">' + chips.map(function(c){ return '<span class="session-chip">' + c + '</span>'; }).join('') + '</div>'
+      : '';
+    var detailHtml = details.length
+      ? '<div class="session-detail">' + details.join(' · ') + '</div>'
+      : '';
+    var distHtml = s.distance
+      ? '<div class="session-dist">' + s.distance + ' km</div>'
+      : '';
+
+    return '<div class="session type-' + tc + '">' +
+      '<div class="session-date"><div class="session-date-day">' + s.day + '</div>' + fmtDate(s.date) + '</div>' +
+      '<div class="session-main">' +
+        '<div class="session-type"><span class="session-dot"></span>' + s.type + '</div>' +
+        chipsHtml + detailHtml +
+      '</div>' +
+      '<div class="session-right">' +
+        '<div class="session-duration">' + s.duration + '<span class="session-duration-unit"> min</span></div>' +
+        distHtml +
+      '</div>' +
+    '</div>';
+  }).join('');
+
+  // Build day grid (Mon-Sun)
+  var DAY_NAMES = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  // Find the Monday of the ISO week for these sessions
+  var firstDate = new Date(dates[0] + 'T00:00:00');
+  var dayOfWeek = firstDate.getDay(); // 0=Sun, 1=Mon...
+  var mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+  var monday = new Date(firstDate);
+  monday.setDate(monday.getDate() + mondayOffset);
+
+  var dayGridHtml = '<div class="week-days">';
+  for (var d = 0; d < 7; d++) {
+    var cellDate = new Date(monday);
+    cellDate.setDate(monday.getDate() + d);
+    var cellDateStr = cellDate.getFullYear() + '-' +
+      String(cellDate.getMonth()+1).padStart(2,'0') + '-' +
+      String(cellDate.getDate()).padStart(2,'0');
+    // Find session for this day
+    var match = null;
+    for (var si = 0; si < ss.length; si++) {
+      if (ss[si].date === cellDateStr) { match = ss[si]; break; }
+    }
+    if (match) {
+      var tc = typeClass(match.type);
+      var isMarathon = match.type.indexOf('Marathon') !== -1;
+      var statsText = match.duration + 'min';
+      if (match.distance) statsText += ' · ' + match.distance + 'km';
+      dayGridHtml += '<div class="day-cell type-' + tc + (isMarathon ? ' is-marathon' : '') + '">' +
+        '<div class="day-cell-header"><span class="day-cell-name">' + DAY_NAMES[d] + '</span><span class="day-cell-date">' + fmtDate(cellDateStr) + '</span></div>' +
+        '<div class="day-cell-type"><span class="day-cell-dot"></span>' + match.type + '</div>' +
+        '<div class="day-cell-stats">' + statsText + '</div>' +
+      '</div>';
+    } else {
+      dayGridHtml += '<div class="day-cell rest">' +
+        '<div class="day-cell-header"><span class="day-cell-name">' + DAY_NAMES[d] + '</span><span class="day-cell-date">' + fmtDate(cellDateStr) + '</span></div>' +
+        '<div class="day-cell-rest-label">Rest</div>' +
+      '</div>';
+    }
+  }
+  dayGridHtml += '</div>';
+
+  block.innerHTML =
+    '<div class="week-header">' +
+      '<div class="week-header-left">' +
+        '<span class="week-num">Week ' + w + '</span>' +
+        '<span class="week-dates">' + dateRange + '</span>' +
+      '</div>' +
+      '<div class="week-summary">' +
+        '<span class="week-tag">' + Math.round(totalDist) + ' km</span>' +
+        '<span class="week-tag">' + (Math.round(totalDur / 60 * 10) / 10) + ' hrs</span>' +
+        '<span class="week-tag">' + ss.length + ' sessions</span>' +
+        '<div class="week-toggle">▾</div>' +
+      '</div>' +
+    '</div>' +
+    '<div class="week-body"><div class="week-body-inner">' +
+      dayGridHtml +
+      '<div class="week-sessions">' + sessionsHtml + '</div>' +
+    '</div></div>';
+
+  // Toggle handler
+  block.querySelector('.week-header').addEventListener('click', function() {
+    block.classList.toggle('open');
+  });
+
+  blocksEl.appendChild(block);
+});
+
+// ── Rules ──
+var rulesEl = document.getElementById('rulesGrid');
+DATA.rules.forEach(function(r) {
+  var icon = ruleIcons[r.area] || '📌';
+  var card = document.createElement('div');
+  card.className = 'rule-card';
+  card.innerHTML = '<div class="rule-area">' + icon + ' ' + r.area + '</div>' +
+    '<div class="rule-text">' + r.rule + '</div>';
+  rulesEl.appendChild(card);
+});
+
+// ── Zones ──
+var zonesBody = document.getElementById('zonesBody');
+DATA.zones.forEach(function(z) {
+  var tr = document.createElement('tr');
+  tr.innerHTML = '<td>' + z.zone + '</td><td>' + z.definition + '</td><td>' + z.feel + '</td><td>' + z.markers + '</td>';
+  zonesBody.appendChild(tr);
+});
+
+// ── Nav ──
+var pills = document.querySelectorAll('.nav-pill');
+pills.forEach(function(pill) {
+  pill.addEventListener('click', function() {
+    pills.forEach(function(p){ p.classList.remove('active'); });
+    pill.classList.add('active');
+    var target = document.getElementById(pill.getAttribute('data-target'));
+    if (target) {
+      var navHeight = document.getElementById('nav').offsetHeight;
+      var top = target.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+      window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  });
+});
+
+// ── Strength & Mobility Exercises ──
+var SKIN = '#5a6070';
+var SKIN2 = '#8b92a4';
+var FLOOR = '#d1d5db';
+var ACCENT_S = '#059669';
+var ACCENT_M = '#7c3aed';
+
+var strengthExercises = [
+  {
+    name: 'Single-Leg Calf Raise',
+    target: 'calves',
+    targetLabel: 'Calves',
+    rx: '3 × 15 each leg',
+    cue: 'Stand on edge of step, one foot. Rise to full height, pause 1 second at top, lower slowly below step level. Keep knee straight.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="20" y="95" width="160" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<rect x="80" y="80" width="50" height="15" rx="3" fill="' + FLOOR + '" opacity="0.6"/>' +
+      '<!-- standing figure -->' +
+      '<circle cx="105" cy="22" r="8" fill="' + SKIN + '"/>' +
+      '<line x1="105" y1="30" x2="105" y2="58" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="105" y1="36" x2="90" y2="48" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="105" y1="36" x2="120" y2="48" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="105" y1="58" x2="105" y2="75" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="105" y1="75" x2="105" y2="80" stroke="' + ACCENT_S + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- raised leg -->' +
+      '<line x1="105" y1="58" x2="118" y2="68" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="118" y1="68" x2="115" y2="78" stroke="' + SKIN2 + '" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3"/>' +
+      '<!-- arrows -->' +
+      '<path d="M125 40 L125 25" stroke="' + ACCENT_S + '" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arr)"/>' +
+      '<defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="' + ACCENT_S + '"/></marker></defs>' +
+      '</svg>'
+  },
+  {
+    name: 'Bent-Knee Calf Raise',
+    target: 'calves',
+    targetLabel: 'Soleus',
+    rx: '3 × 15 each leg',
+    cue: 'Same as calf raise but bend knee to 30°. This shifts load to the soleus — crucial for running endurance. Slow and controlled.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="20" y="95" width="160" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<rect x="80" y="80" width="50" height="15" rx="3" fill="' + FLOOR + '" opacity="0.6"/>' +
+      '<circle cx="105" cy="22" r="8" fill="' + SKIN + '"/>' +
+      '<line x1="105" y1="30" x2="105" y2="55" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="105" y1="36" x2="90" y2="48" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="105" y1="36" x2="120" y2="48" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- bent knee -->' +
+      '<line x1="105" y1="55" x2="100" y2="70" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="100" y1="70" x2="105" y2="80" stroke="' + ACCENT_S + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- angle arc -->' +
+      '<path d="M108 60 Q102 66 96 63" stroke="' + ACCENT_S + '" stroke-width="1" fill="none"/>' +
+      '<text x="92" y="58" font-size="8" fill="' + ACCENT_S + '">30°</text>' +
+      '</svg>'
+  },
+  {
+    name: 'Glute Bridge',
+    target: 'glutes',
+    targetLabel: 'Glutes',
+    rx: '3 × 12 (2s hold at top)',
+    cue: 'Lie on back, feet hip-width. Drive hips up squeezing glutes hard. Hold 2 seconds. Don\'t arch lower back — ribs stay down.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="115" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- lying figure -->' +
+      '<circle cx="40" cy="95" r="8" fill="' + SKIN + '"/>' +
+      '<line x1="48" y1="95" x2="90" y2="95" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- hips raised -->' +
+      '<line x1="90" y1="95" x2="115" y2="78" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- thighs -->' +
+      '<line x1="115" y1="78" x2="135" y2="95" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- shins -->' +
+      '<line x1="135" y1="95" x2="135" y2="115" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- glute highlight -->' +
+      '<circle cx="115" cy="78" r="6" fill="' + ACCENT_S + '" opacity="0.15"/>' +
+      '<path d="M115 65 L115 55" stroke="' + ACCENT_S + '" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arr)"/>' +
+      '<!-- arms flat -->' +
+      '<line x1="55" y1="95" x2="55" y2="108" stroke="' + SKIN2 + '" stroke-width="2" stroke-linecap="round"/>' +
+      '</svg>'
+  },
+  {
+    name: 'Single-Leg Romanian Deadlift',
+    target: 'hamstrings',
+    targetLabel: 'Hamstrings',
+    rx: '3 × 10 each leg',
+    cue: 'Stand on one leg, hinge at hips, reach opposite hand toward floor. Back leg extends behind. Feel hamstring stretch. Stay tall through spine.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="125" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- standing leg -->' +
+      '<line x1="80" y1="100" x2="80" y2="125" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- torso hinged -->' +
+      '<line x1="80" y1="100" x2="120" y2="65" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- head -->' +
+      '<circle cx="128" cy="58" r="8" fill="' + SKIN + '"/>' +
+      '<!-- back leg extended -->' +
+      '<line x1="80" y1="100" x2="40" y2="72" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="40" y1="72" x2="28" y2="72" stroke="' + SKIN2 + '" stroke-width="2" stroke-linecap="round"/>' +
+      '<!-- arms hanging -->' +
+      '<line x1="110" y1="72" x2="95" y2="100" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- hamstring highlight -->' +
+      '<line x1="80" y1="100" x2="80" y2="108" stroke="' + ACCENT_S + '" stroke-width="5" stroke-linecap="round" opacity="0.25"/>' +
+      '</svg>'
+  },
+  {
+    name: 'Dead Bug',
+    target: 'core',
+    targetLabel: 'Core',
+    rx: '3 × 8 each side',
+    cue: 'Lie on back, arms up, knees at 90°. Extend opposite arm and leg while pressing lower back into floor. Exhale as you extend. Slow.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="115" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- torso lying -->' +
+      '<circle cx="100" cy="100" r="8" fill="' + SKIN + '"/>' +
+      '<line x1="100" y1="100" x2="60" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- left arm extended back -->' +
+      '<line x1="100" y1="100" x2="130" y2="80" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- right arm up -->' +
+      '<line x1="85" y1="98" x2="85" y2="78" stroke="' + ACCENT_S + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- right leg at 90 -->' +
+      '<line x1="60" y1="100" x2="50" y2="85" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="50" y1="85" x2="40" y2="95" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- left leg extended -->' +
+      '<line x1="60" y1="100" x2="30" y2="80" stroke="' + ACCENT_S + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="30" y1="80" x2="22" y2="78" stroke="' + ACCENT_S + '" stroke-width="2" stroke-linecap="round"/>' +
+      '<!-- core brace -->' +
+      '<rect x="65" y="97" rx="2" width="20" height="6" fill="' + ACCENT_S + '" opacity="0.15"/>' +
+      '</svg>'
+  },
+  {
+    name: 'Side Plank',
+    target: 'core',
+    targetLabel: 'Core / Obliques',
+    rx: '2 × 30s each side',
+    cue: 'Elbow under shoulder, feet stacked. Lift hips to form straight line. Don\'t let hips sag. Breathe steadily. Scale to knees if needed.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="120" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- support arm -->' +
+      '<line x1="55" y1="120" x2="55" y2="95" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- torso -->' +
+      '<line x1="55" y1="95" x2="130" y2="80" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- head -->' +
+      '<circle cx="55" cy="86" r="8" fill="' + SKIN + '"/>' +
+      '<!-- legs -->' +
+      '<line x1="130" y1="80" x2="165" y2="120" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- top arm up -->' +
+      '<line x1="80" y1="90" x2="80" y2="65" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- alignment line -->' +
+      '<line x1="45" y1="95" x2="170" y2="75" stroke="' + ACCENT_S + '" stroke-width="1" stroke-dasharray="4 4" opacity="0.4"/>' +
+      '</svg>'
+  }
+];
+
+var mobilityExercises = [
+  {
+    name: 'Ankle Dorsiflexion Stretch',
+    target: 'mobility',
+    targetLabel: 'Ankle',
+    rx: '2 × 30s each side',
+    cue: 'Lunge position, front foot flat. Drive knee forward over toes keeping heel down. Feel stretch in front of ankle and Achilles.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="125" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- front leg lunging -->' +
+      '<line x1="90" y1="125" x2="90" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="90" y1="100" x2="75" y2="80" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- foot flat -->' +
+      '<line x1="80" y1="125" x2="100" y2="125" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- torso -->' +
+      '<line x1="75" y1="80" x2="75" y2="45" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<circle cx="75" cy="37" r="8" fill="' + SKIN + '"/>' +
+      '<!-- back leg -->' +
+      '<line x1="75" y1="80" x2="140" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="140" y1="100" x2="150" y2="125" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- knee arrow -->' +
+      '<path d="M95 105 L105 98" stroke="' + ACCENT_M + '" stroke-width="1.5" stroke-linecap="round" marker-end="url(#arrM)"/>' +
+      '<defs><marker id="arrM" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="' + ACCENT_M + '"/></marker></defs>' +
+      '</svg>'
+  },
+  {
+    name: 'Hip 90/90 Stretch',
+    target: 'mobility',
+    targetLabel: 'Hip',
+    rx: '2 × 30s each side',
+    cue: 'Sit on floor, front leg at 90°, back leg at 90°. Keep chest tall and lean gently forward over front shin. Switch sides.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="125" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- seated torso -->' +
+      '<circle cx="90" cy="52" r="8" fill="' + SKIN + '"/>' +
+      '<line x1="90" y1="60" x2="90" y2="90" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- front leg 90 -->' +
+      '<line x1="90" y1="90" x2="60" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="60" y1="100" x2="40" y2="90" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- back leg 90 -->' +
+      '<line x1="90" y1="90" x2="120" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="120" y1="100" x2="140" y2="110" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- hip highlight -->' +
+      '<circle cx="90" cy="90" r="8" fill="' + ACCENT_M + '" opacity="0.12"/>' +
+      '<!-- hands on floor -->' +
+      '<line x1="90" y1="68" x2="75" y2="80" stroke="' + SKIN2 + '" stroke-width="2" stroke-linecap="round"/>' +
+      '<line x1="90" y1="68" x2="105" y2="80" stroke="' + SKIN2 + '" stroke-width="2" stroke-linecap="round"/>' +
+      '</svg>'
+  },
+  {
+    name: 'Thoracic Rotation',
+    target: 'mobility',
+    targetLabel: 'Thoracic Spine',
+    rx: '2 × 8 each side',
+    cue: 'All fours, hand behind head. Rotate elbow down toward opposite arm, then open up toward ceiling. Follow elbow with eyes. Breathe out as you open.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="125" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- all fours base -->' +
+      '<line x1="60" y1="125" x2="60" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="140" y1="125" x2="140" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<!-- torso horizontal -->' +
+      '<line x1="60" y1="100" x2="140" y2="100" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<circle cx="145" cy="95" r="7" fill="' + SKIN + '"/>' +
+      '<!-- support arm -->' +
+      '<line x1="130" y1="100" x2="130" y2="125" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- rotating arm up -->' +
+      '<line x1="110" y1="100" x2="100" y2="65" stroke="' + ACCENT_M + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- rotation arc -->' +
+      '<path d="M115 88 Q105 72 95 65" stroke="' + ACCENT_M + '" stroke-width="1.2" fill="none" stroke-dasharray="3 3"/>' +
+      '</svg>'
+  },
+  {
+    name: 'Shoulder Pass-Through',
+    target: 'mobility',
+    targetLabel: 'Shoulder',
+    rx: '2 × 10 slow reps',
+    cue: 'Hold band or towel wide. Raise overhead and rotate behind back keeping arms straight. Widen grip if tight. Essential for your collarbone recovery.',
+    svg: '<svg viewBox="0 0 200 140" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+      '<rect x="10" y="130" width="180" height="6" rx="3" fill="' + FLOOR + '"/>' +
+      '<!-- standing figure -->' +
+      '<circle cx="100" cy="28" r="8" fill="' + SKIN + '"/>' +
+      '<line x1="100" y1="36" x2="100" y2="80" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="100" y1="80" x2="90" y2="108" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="100" y1="80" x2="110" y2="108" stroke="' + SKIN + '" stroke-width="3" stroke-linecap="round"/>' +
+      '<line x1="90" y1="108" x2="90" y2="130" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="110" y1="108" x2="110" y2="130" stroke="' + SKIN + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- arms overhead with band -->' +
+      '<line x1="100" y1="44" x2="65" y2="22" stroke="' + ACCENT_M + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<line x1="100" y1="44" x2="135" y2="22" stroke="' + ACCENT_M + '" stroke-width="2.5" stroke-linecap="round"/>' +
+      '<!-- band -->' +
+      '<path d="M65 22 Q100 12 135 22" stroke="' + ACCENT_M + '" stroke-width="2" fill="none"/>' +
+      '<!-- rotation arrow -->' +
+      '<path d="M145 30 Q155 50 145 70" stroke="' + ACCENT_M + '" stroke-width="1.2" fill="none" stroke-dasharray="3 3" marker-end="url(#arrM)"/>' +
+      '</svg>'
+  }
+];
+
+function buildExerciseCards(exercises, container) {
+  var grid = document.createElement('div');
+  grid.className = 'exercise-grid';
+  exercises.forEach(function(ex, i) {
+    var targetClass = 't-' + ex.target;
+    var card = document.createElement('div');
+    card.className = 'exercise-card';
+    card.innerHTML =
+      '<div class="exercise-illus">' + ex.svg + '</div>' +
+      '<div class="exercise-info">' +
+        '<div class="exercise-num">Exercise ' + (i+1) + '</div>' +
+        '<div class="exercise-name">' + ex.name + '</div>' +
+        '<span class="exercise-target ' + targetClass + '">' + ex.targetLabel + '</span>' +
+        '<div class="exercise-rx">' + ex.rx + '</div>' +
+        '<div class="exercise-cue">' + ex.cue + '</div>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+  container.appendChild(grid);
+}
+
+var workoutEl = document.getElementById('workoutBlocks');
+
+// Strength block
+var strBlock = document.createElement('div');
+strBlock.className = 'workout-block';
+strBlock.innerHTML = '<div class="workout-block-header">' +
+  '<div class="workout-block-icon str">💪</div>' +
+  '<div><div class="workout-block-title">Strength</div>' +
+  '<div class="workout-block-sub">~20 min · 6 exercises</div></div></div>';
+buildExerciseCards(strengthExercises, strBlock);
+workoutEl.appendChild(strBlock);
+
+// Mobility block
+var mobBlock = document.createElement('div');
+mobBlock.className = 'workout-block';
+mobBlock.innerHTML = '<div class="workout-block-header">' +
+  '<div class="workout-block-icon mob">🧘</div>' +
+  '<div><div class="workout-block-title">Mobility</div>' +
+  '<div class="workout-block-sub">~5 min · 4 exercises</div></div></div>';
+buildExerciseCards(mobilityExercises, mobBlock);
+workoutEl.appendChild(mobBlock);
+
+// ── Scroll spy ──
+var sections = ['overview', 'plan', 'rules', 'zones', 'strength'];
+window.addEventListener('scroll', function() {
+  var navHeight = document.getElementById('nav').offsetHeight + 40;
+  var current = '';
+  sections.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top < navHeight + 60) {
+      current = id;
+    }
+  });
+  if (current) {
+    pills.forEach(function(p) {
+      p.classList.toggle('active', p.getAttribute('data-target') === current);
+    });
+  }
+});
+</script>
+</body>
+</html>
