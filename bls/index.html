@@ -1,0 +1,2398 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bigger Leaner Stronger – Workout Planner</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --push: #3B82F6;
+    --push-bg: #EFF6FF;
+    --pull: #F97316;
+    --pull-bg: #FFF7ED;
+    --squat: #10B981;
+    --squat-bg: #ECFDF5;
+    --upper: #8B5CF6;
+    --upper-bg: #F5F3FF;
+    --legs: #10B981;
+    --legs-bg: #ECFDF5;
+    --bg: #FAFAF9;
+    --card: #FFFFFF;
+    --text: #1C1917;
+    --text-muted: #78716C;
+    --border: #E7E5E4;
+    --radius: 12px;
+    --deload: #EF4444;
+    --deload-bg: #FEF2F2;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .header {
+    background: linear-gradient(135deg, #1E3A5F 0%, #2563EB 50%, #3B82F6 100%);
+    padding: 48px 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 70%, rgba(255,255,255,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .header h1 {
+    font-family: 'Instrument Serif', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    color: white;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    position: relative;
+  }
+
+  .header p {
+    color: rgba(255,255,255,0.7);
+    margin-top: 8px;
+    font-size: 0.95rem;
+    position: relative;
+  }
+
+  /* Main Tabs */
+  .main-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    background: linear-gradient(135deg, #1a3455 0%, #1d4ed8 100%);
+    padding: 0 20px 0;
+    position: relative;
+  }
+
+  .main-tab {
+    padding: 14px 28px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+  }
+
+  .main-tab:hover { color: rgba(255,255,255,0.85); }
+
+  .main-tab.active {
+    color: white;
+  }
+
+  .main-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 12px;
+    right: 12px;
+    height: 3px;
+    background: white;
+    border-radius: 3px 3px 0 0;
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ====== WORKOUT PLANNER TAB ====== */
+  .planner-controls {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,249,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 0;
+  }
+
+  .planner-controls-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .control-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .control-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    min-width: 70px;
+  }
+
+  .routine-pills, .phase-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .r-pill, .p-pill {
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .r-pill:hover, .p-pill:hover { border-color: #A8A29E; color: var(--text); }
+  .r-pill.active { background: var(--text); color: white; border-color: var(--text); }
+  .p-pill.active { background: var(--push); color: white; border-color: var(--push); }
+  .p-pill.deload { font-style: italic; }
+  .p-pill.deload.active { background: var(--deload); border-color: var(--deload); }
+
+  /* Workout Day Cards */
+  .workout-days { padding: 20px 0 40px; }
+
+  .workout-day {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    margin-bottom: 16px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .workout-day:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .day-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .day-number.push { background: var(--push-bg); color: var(--push); }
+  .day-number.pull { background: var(--pull-bg); color: var(--pull); }
+  .day-number.squat, .day-number.legs, .day-number.lower-body { background: var(--squat-bg); color: var(--squat); }
+  .day-number.upper-body, .day-number.upper-body-a, .day-number.upper-body-b { background: var(--upper-bg); color: var(--upper); }
+
+  .day-info { flex: 1; }
+  .day-title { font-weight: 700; font-size: 1rem; }
+  .day-subtitle { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+
+  .day-toggle {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+    color: var(--text-muted);
+  }
+
+  .day-toggle.open { transform: rotate(180deg); }
+
+  .day-exercises {
+    padding: 0 20px 20px;
+    display: none;
+  }
+
+  .day-exercises.open { display: block; }
+
+  .exercise-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .exercise-item {
+    background: var(--bg);
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .exercise-item:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
+  }
+
+  .exercise-item-body {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+  }
+
+  .exercise-number {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+  }
+
+  .exercise-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #e5e5e5;
+  }
+
+  .exercise-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .exercise-thumb a {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .exercise-thumb:hover a { opacity: 1; }
+
+  .exercise-thumb a svg {
+    width: 22px;
+    height: 22px;
+    fill: white;
+  }
+
+  .exercise-details { flex: 1; min-width: 0; }
+  .exercise-name { font-weight: 600; font-size: 0.9rem; }
+
+  .exercise-prescription {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .warmup-badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    background: #FEF3C7;
+    color: #B45309;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+
+  .deload-banner {
+    background: var(--deload-bg);
+    border: 1.5px solid #FECACA;
+    border-radius: var(--radius);
+    padding: 14px 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #991B1B;
+    font-weight: 500;
+  }
+
+  .deload-banner svg { flex-shrink: 0; }
+
+  /* ====== EXERCISE LIBRARY TAB ====== */
+  .controls {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,249,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+  }
+
+  .controls-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .search-wrap {
+    flex: 1;
+    min-width: 200px;
+    position: relative;
+  }
+
+  .search-wrap svg {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 10px 14px 10px 42px;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    font-family: inherit;
+    font-size: 0.9rem;
+    background: var(--card);
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-input:focus { border-color: var(--push); }
+
+  .filter-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  .pill {
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .pill:hover { border-color: #A8A29E; color: var(--text); }
+  .pill.active-all { background: var(--text); color: white; border-color: var(--text); }
+  .pill.active-push { background: var(--push); color: white; border-color: var(--push); }
+  .pill.active-pull { background: var(--pull); color: white; border-color: var(--pull); }
+  .pill.active-squat { background: var(--squat); color: white; border-color: var(--squat); }
+
+  .equipment-filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .eq-pill {
+    padding: 6px 12px;
+    border-radius: 100px;
+    border: 1px solid var(--border);
+    background: transparent;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .eq-pill:hover { background: var(--card); color: var(--text); }
+  .eq-pill.active { background: var(--text); color: white; border-color: var(--text); }
+
+  .results-count {
+    padding: 20px 0 4px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .category-section { margin-top: 24px; }
+
+  .category-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    padding: 5px 12px;
+    border-radius: 6px;
+  }
+
+  .category-label.push { color: var(--push); background: var(--push-bg); }
+  .category-label.pull { color: var(--pull); background: var(--pull-bg); }
+  .category-label.squat { color: var(--squat); background: var(--squat-bg); }
+
+  .category-label .dot { width: 7px; height: 7px; border-radius: 50%; }
+  .category-label.push .dot { background: var(--push); }
+  .category-label.pull .dot { background: var(--pull); }
+  .category-label.squat .dot { background: var(--squat); }
+
+  .exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+    gap: 14px;
+    margin-bottom: 32px;
+  }
+
+  .exercise-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    overflow: hidden;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .exercise-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); transform: translateY(-2px); }
+
+  .card-thumb {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #e5e5e5;
+  }
+  .card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .card-stripe { position: absolute; top: 0; left: 0; width: 4px; height: 100%; }
+  .card-stripe.push { background: var(--push); }
+  .card-stripe.pull { background: var(--pull); }
+  .card-stripe.squat { background: var(--squat); }
+
+  .yt-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .exercise-card:hover .yt-btn { opacity: 1; }
+  .yt-btn svg { width: 16px; height: 16px; fill: white; }
+
+  .card-body { padding: 14px 16px; }
+  .card-name { font-weight: 600; font-size: 0.95rem; line-height: 1.3; }
+  .card-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+  .card-tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 3px 8px;
+    background: var(--bg);
+    border-radius: 4px;
+    color: var(--text-muted);
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text-muted);
+    display: none;
+  }
+  .empty-state.visible { display: block; }
+  .empty-state svg { margin-bottom: 12px; opacity: 0.4; }
+
+  .footer {
+    text-align: center;
+    padding: 32px 20px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .header { padding: 36px 20px 16px; }
+    .search-wrap { min-width: 100%; }
+    .exercise-grid { grid-template-columns: 1fr; }
+    .main-tab { padding: 12px 16px; font-size: 0.82rem; }
+    .control-row { gap: 8px; }
+    .exercise-items-grid { grid-template-columns: 1fr; }
+    .p-pill { padding: 6px 10px; font-size: 0.75rem; }
+  }
+
+  /* Paired exercise images in planner */
+  .exercise-thumb-pair {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    display: flex;
+    gap: 1px;
+    background: #e5e5e5;
+  }
+
+  .exercise-thumb-pair img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .exercise-thumb-pair .yt-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .exercise-thumb-pair:hover .yt-overlay { opacity: 1; }
+
+  .exercise-thumb-pair .yt-overlay svg {
+    width: 36px;
+    height: 36px;
+    fill: white;
+  }
+
+  /* Paired images in library cards */
+  .card-img-pair {
+    display: flex;
+    gap: 1px;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-img-pair img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Bigger Leaner Stronger</h1>
+  <p>Workout Planner · Exercise Library</p>
+</div>
+
+<div class="main-tabs">
+  <button class="main-tab active" data-tab="planner">Workout Planner</button>
+  <button class="main-tab" data-tab="library">Exercise Library</button>
+</div>
+
+<!-- ====== WORKOUT PLANNER ====== -->
+<div class="tab-content active" id="tab-planner">
+  <div class="planner-controls">
+    <div class="planner-controls-inner">
+      <div class="control-row">
+        <span class="control-label">Routine</span>
+        <div class="routine-pills">
+          <button class="r-pill" data-routine="3-Day Routine">3-Day</button>
+          <button class="r-pill" data-routine="4-Day Routine">4-Day</button>
+          <button class="r-pill active" data-routine="5-Day Routine">5-Day</button>
+        </div>
+      </div>
+      <div class="control-row">
+        <span class="control-label">Phase</span>
+        <div class="phase-pills" id="phasePills"><button class="p-pill active" data-phase="0">Phase 1</button><button class="p-pill deload" data-phase="1">Deload 1</button><button class="p-pill" data-phase="2">Phase 2</button><button class="p-pill deload" data-phase="3">Deload 2</button><button class="p-pill" data-phase="4">Phase 3</button><button class="p-pill deload" data-phase="5">Deload 3</button><button class="p-pill" data-phase="6">Phase 4</button><button class="p-pill deload" data-phase="7">Deload 4</button><button class="p-pill" data-phase="8">Phase 5</button><button class="p-pill deload" data-phase="9">Deload 5</button><button class="p-pill" data-phase="10">Phase 6</button><button class="p-pill deload" data-phase="11">Deload 6</button></div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div id="deloadBanner" class="deload-banner" style="display: none; margin-top: 20px;">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+      <span>Deload week — lighter loads, fewer sets. Let your body recover.</span>
+    </div>
+    <div class="workout-days" id="workoutDays">
+      <div class="workout-day">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number push">1</div>
+          <div class="day-info">
+            <div class="day-title">Workout 1 — Push</div>
+            <div class="day-subtitle">4 exercises</div>
+          </div>
+          <div class="day-toggle open">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+        <div class="day-exercises open">
+          <div class="exercise-items-grid">
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-1.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-2.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/YLBMLUfBwUo" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">1</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Barbell Bench Press</div>
+              <div class="exercise-prescription">
+                <span class="warmup-badge">Warm-up</span>
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-11.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-12.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/cPbElRT55C8" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">2</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Incline Barbell Bench Press</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-3.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-4.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/F1-6iSktxHc" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">3</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Dumbbell Bench Press</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-21.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-22.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/QlWG2iGsWwA" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">4</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Triceps Pushdown</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div></div>
+        </div>
+      </div>
+      <div class="workout-day">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number pull">2</div>
+          <div class="day-info">
+            <div class="day-title">Workout 2 — Pull</div>
+            <div class="day-subtitle">4 exercises</div>
+          </div>
+          <div class="day-toggle open">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+        <div class="day-exercises open">
+          <div class="exercise-items-grid">
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-29.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-30.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/5A4sDRrYY4w" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">1</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Barbell Deadlift</div>
+              <div class="exercise-prescription">
+                <span class="warmup-badge">Warm-up</span>
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-35.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-36.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/BjJzsDciak8" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">2</div>
+            <div class="exercise-details">
+              <div class="exercise-name">One-Arm Dumbbell Row</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-41.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-42.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/PJXwrqUJG9A" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">3</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Lat Pulldown (Medium-Grip)</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-47.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-48.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/lxTiu9or6Ow" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">4</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Alternating Dumbbell Curl</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div></div>
+        </div>
+      </div>
+      <div class="workout-day">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number upper-body-a">3</div>
+          <div class="day-info">
+            <div class="day-title">Workout 3 — Upper Body A</div>
+            <div class="day-subtitle">4 exercises</div>
+          </div>
+          <div class="day-toggle open">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+        <div class="day-exercises open">
+          <div class="exercise-items-grid">
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-17.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-18.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/DevBtt_s240" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">1</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Seated Dumbbell Press</div>
+              <div class="exercise-prescription">
+                <span class="warmup-badge">Warm-up</span>
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-27.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-28.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/yUNf3UGc2fQ" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">2</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Dumbbell Side Lateral Raise</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-53.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-54.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/oYTGPYLfpSM" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">3</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Dumbbell Rear Lateral Raise</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-23.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-24.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/ZOUDq0fMWO8" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">4</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Seated Triceps Press</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div></div>
+        </div>
+      </div>
+      <div class="workout-day">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number legs">4</div>
+          <div class="day-info">
+            <div class="day-title">Workout 4 — Legs</div>
+            <div class="day-subtitle">4 exercises</div>
+          </div>
+          <div class="day-toggle open">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+        <div class="day-exercises open">
+          <div class="exercise-items-grid">
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-59.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-60.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/KJ_tmkdWmE0" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">1</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Barbell Squat</div>
+              <div class="exercise-prescription">
+                <span class="warmup-badge">Warm-up</span>
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-73.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-74.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/1N9BEWbf0E4" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">2</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Leg Curl</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-67.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-68.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/shOprEcfDPM" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">3</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Leg Press</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-69.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-70.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/1x1sL4GwQoA" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">4</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Dumbbell Lunge</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div></div>
+        </div>
+      </div>
+      <div class="workout-day">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number upper-body-b">5</div>
+          <div class="day-info">
+            <div class="day-title">Workout 5 — Upper Body B</div>
+            <div class="day-subtitle">4 exercises</div>
+          </div>
+          <div class="day-toggle open">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+        </div>
+        <div class="day-exercises open">
+          <div class="exercise-items-grid">
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-9.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-10.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/vDZ0QvMw_w0" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">1</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Close-Grip Bench Press</div>
+              <div class="exercise-prescription">
+                <span class="warmup-badge">Warm-up</span>
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-37.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-38.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/7axGGH96gKg" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">2</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Chin-up</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 4–6 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-43.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-44.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/BHT2QCiyo3A" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">3</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Seated Cable Row (Close-Grip)</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="exercise-item">
+          
+          <div class="exercise-thumb-pair">
+            <img src="./images/ex-45.jpg" alt="start" loading="lazy">
+            <img src="./images/ex-46.jpg" alt="end" loading="lazy">
+            <a href="https://youtu.be/iwYZYvWc9BY" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+            </a>
+          </div>
+          <div class="exercise-item-body">
+            <div class="exercise-number">4</div>
+            <div class="exercise-details">
+              <div class="exercise-name">Barbell Curl</div>
+              <div class="exercise-prescription">
+                
+                3 hard sets of 6–8 reps
+              </div>
+            </div>
+          </div>
+        </div></div>
+        </div>
+      </div></div>
+  </div>
+</div>
+
+<!-- ====== EXERCISE LIBRARY ====== -->
+<div class="tab-content" id="tab-library">
+  <div class="controls">
+    <div class="controls-inner">
+      <div class="search-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="text" class="search-input" id="search" placeholder="Search exercises..." autocomplete="off">
+      </div>
+      <div class="filter-pills">
+        <button class="pill active-all" data-filter="all">All</button>
+        <button class="pill" data-filter="push">Push</button>
+        <button class="pill" data-filter="pull">Pull</button>
+        <button class="pill" data-filter="squat">Squat</button>
+      </div>
+      <div class="equipment-filters">
+        <button class="eq-pill active" data-eq="all">All Equipment</button>
+        <button class="eq-pill" data-eq="barbell">Barbell</button>
+        <button class="eq-pill" data-eq="dumbbell">Dumbbell</button>
+        <button class="eq-pill" data-eq="cable">Cable / Machine</button>
+        <button class="eq-pill" data-eq="bodyweight">Bodyweight</button>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="results-count" id="resultsCount">39 exercises</div>
+    <div id="exerciseList">
+      <div class="category-section">
+        <div class="category-label push"><span class="dot"></span>PUSH</div>
+        <div class="exercise-grid">
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-1.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-2.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/YLBMLUfBwUo" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Bench Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">chest</span><span class="card-tag">triceps</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-11.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-12.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/cPbElRT55C8" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Incline Barbell Bench Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">chest</span><span class="card-tag">shoulders</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-3.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-4.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/F1-6iSktxHc" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dumbbell Bench Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">chest</span><span class="card-tag">triceps</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-5.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-6.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/IQFBxglnH_k" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Incline Dumbbell Bench Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">chest</span><span class="card-tag">shoulders</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-7.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-8.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/1ruyC5U0bjU" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dip</div>
+                <div class="card-tags">
+                  <span class="card-tag">chest</span><span class="card-tag">triceps</span>
+                  <span class="card-tag">bodyweight</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-9.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-10.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/vDZ0QvMw_w0" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Close-Grip Bench Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">triceps</span><span class="card-tag">chest</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-13.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-14.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/38M3yr0jsbg" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Standing Barbell Overhead Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">shoulders</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-15.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-16.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/iZ3cVBL_q4o" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Seated Barbell Overhead Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">shoulders</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-17.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-18.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/DevBtt_s240" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Seated Dumbbell Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">shoulders</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-19.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-20.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/uGxWKUbnsJ0" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Arnold Dumbbell Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">shoulders</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-21.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-22.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/QlWG2iGsWwA" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Triceps Pushdown</div>
+                <div class="card-tags">
+                  <span class="card-tag">triceps</span>
+                  <span class="card-tag">cable</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-23.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-24.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/ZOUDq0fMWO8" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Seated Triceps Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">triceps</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-25.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-26.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/ai_dq1UGHdc" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Lying Triceps Extension (Skullcrusher)</div>
+                <div class="card-tags">
+                  <span class="card-tag">triceps</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe push"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-27.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-28.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/yUNf3UGc2fQ" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dumbbell Side Lateral Raise</div>
+                <div class="card-tags">
+                  <span class="card-tag">shoulders</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+      <div class="category-section">
+        <div class="category-label pull"><span class="dot"></span>PULL</div>
+        <div class="exercise-grid">
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-29.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-30.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/5A4sDRrYY4w" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Deadlift</div>
+                <div class="card-tags">
+                  <span class="card-tag">back</span><span class="card-tag">hamstrings</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-31.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-32.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/ua-Zlgpe1no" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Romanian Deadlift</div>
+                <div class="card-tags">
+                  <span class="card-tag">hamstrings</span><span class="card-tag">back</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-33.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-34.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/f2MCvjTekS4" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Row</div>
+                <div class="card-tags">
+                  <span class="card-tag">back</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-35.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-36.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/BjJzsDciak8" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">One-Arm Dumbbell Row</div>
+                <div class="card-tags">
+                  <span class="card-tag">back</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-37.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-38.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/7axGGH96gKg" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Chin-Up</div>
+                <div class="card-tags">
+                  <span class="card-tag">back</span><span class="card-tag">biceps</span>
+                  <span class="card-tag">bodyweight</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-39.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-40.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/ZAUysGXcDRA" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Pull-Up</div>
+                <div class="card-tags">
+                  <span class="card-tag">back</span>
+                  <span class="card-tag">bodyweight</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-41.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-42.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/PJXwrqUJG9A" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Lat Pulldown</div>
+                <div class="card-tags">
+                  <span class="card-tag">back</span>
+                  <span class="card-tag">cable</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-43.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-44.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/BHT2QCiyo3A" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Seated Cable Row</div>
+                <div class="card-tags">
+                  <span class="card-tag">back</span>
+                  <span class="card-tag">cable</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-45.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-46.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/iwYZYvWc9BY" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Curl</div>
+                <div class="card-tags">
+                  <span class="card-tag">biceps</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-47.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-48.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/lxTiu9or6Ow" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Alternating Dumbbell Curl</div>
+                <div class="card-tags">
+                  <span class="card-tag">biceps</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-49.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-50.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/mi22rJGSqjw" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dumbbell Hammer Curl</div>
+                <div class="card-tags">
+                  <span class="card-tag">biceps</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-55.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-56.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/JC1LaG4wYcg" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">E-Z Bar Curl</div>
+                <div class="card-tags">
+                  <span class="card-tag">biceps</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-51.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-52.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/NUi2qOi1z7g" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Rear Delt Row</div>
+                <div class="card-tags">
+                  <span class="card-tag">rear delts</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-53.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-54.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/oYTGPYLfpSM" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dumbbell Rear Lateral Raise</div>
+                <div class="card-tags">
+                  <span class="card-tag">rear delts</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe pull"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-57.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-58.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/nOf0LvTzR9c" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Machine Reverse Fly</div>
+                <div class="card-tags">
+                  <span class="card-tag">rear delts</span>
+                  <span class="card-tag">cable</span>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+      <div class="category-section">
+        <div class="category-label squat"><span class="dot"></span>SQUAT</div>
+        <div class="exercise-grid">
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-59.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-60.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/KJ_tmkdWmE0" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Squat</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-61.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-62.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/kVykuX_pNf4" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Front Squat</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-67.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-68.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/shOprEcfDPM" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Leg Press</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">cable</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-63.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-64.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/kRpkxSn0720" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Single-Leg Split Squat (Barbell)</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-65.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-66.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/Dgh2pUffzjU" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Single-Leg Split Squat (Dumbbell)</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-69.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-70.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/1x1sL4GwQoA" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dumbbell Lunge (In-Place)</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-71.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-72.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/QDaI5nFY2RA" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dumbbell Lunge (Reverse)</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-75.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-76.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/XiKHky5VXo4" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Barbell Lunge (In-Place)</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">barbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-77.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-78.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/o1LfP6FyaeY" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Dumbbell Bulgarian Split Squat</div>
+                <div class="card-tags">
+                  <span class="card-tag">quads</span><span class="card-tag">glutes</span>
+                  <span class="card-tag">dumbbell</span>
+                </div>
+              </div>
+            </div>
+          
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe squat"></div>
+                
+                <div class="card-img-pair">
+                  <img src="./images/ex-73.jpg" alt="start" loading="lazy">
+                  <img src="./images/ex-74.jpg" alt="end" loading="lazy">
+                </div>
+                <a class="yt-btn" href="https://youtu.be/1N9BEWbf0E4" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">Leg Curl (Lying or Seated)</div>
+                <div class="card-tags">
+                  <span class="card-tag">hamstrings</span>
+                  <span class="card-tag">cable</span>
+                </div>
+              </div>
+            </div>
+          
+        </div>
+      </div></div>
+    <div class="empty-state" id="emptyState">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <p>No exercises match your filters.</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Based on <em>Bigger Leaner Stronger</em> by Mike Matthews · Legion Athletics
+</div>
+
+<script>
+// ====== EXERCISE DATA ======
+const exercises = [
+  { name: "Barbell Bench Press", category: "push", equipment: "barbell", muscles: ["chest", "triceps"], yt: "YLBMLUfBwUo", imgs: [1, 2] },
+  { name: "Incline Barbell Bench Press", category: "push", equipment: "barbell", muscles: ["chest", "shoulders"], yt: "cPbElRT55C8", imgs: [11, 12] },
+  { name: "Dumbbell Bench Press", category: "push", equipment: "dumbbell", muscles: ["chest", "triceps"], yt: "F1-6iSktxHc", imgs: [3, 4] },
+  { name: "Incline Dumbbell Bench Press", category: "push", equipment: "dumbbell", muscles: ["chest", "shoulders"], yt: "IQFBxglnH_k", imgs: [5, 6] },
+  { name: "Dip", category: "push", equipment: "bodyweight", muscles: ["chest", "triceps"], yt: "1ruyC5U0bjU", imgs: [7, 8] },
+  { name: "Close-Grip Bench Press", category: "push", equipment: "barbell", muscles: ["triceps", "chest"], yt: "vDZ0QvMw_w0", imgs: [9, 10] },
+  { name: "Standing Barbell Overhead Press", category: "push", equipment: "barbell", muscles: ["shoulders"], yt: "38M3yr0jsbg", imgs: [13, 14] },
+  { name: "Seated Barbell Overhead Press", category: "push", equipment: "barbell", muscles: ["shoulders"], yt: "iZ3cVBL_q4o", imgs: [15, 16] },
+  { name: "Seated Dumbbell Press", category: "push", equipment: "dumbbell", muscles: ["shoulders"], yt: "DevBtt_s240", imgs: [17, 18] },
+  { name: "Arnold Dumbbell Press", category: "push", equipment: "dumbbell", muscles: ["shoulders"], yt: "uGxWKUbnsJ0", imgs: [19, 20] },
+  { name: "Triceps Pushdown", category: "push", equipment: "cable", muscles: ["triceps"], yt: "QlWG2iGsWwA", imgs: [21, 22] },
+  { name: "Seated Triceps Press", category: "push", equipment: "dumbbell", muscles: ["triceps"], yt: "ZOUDq0fMWO8", imgs: [23, 24] },
+  { name: "Lying Triceps Extension (Skullcrusher)", category: "push", equipment: "barbell", muscles: ["triceps"], yt: "ai_dq1UGHdc", imgs: [25, 26] },
+  { name: "Dumbbell Side Lateral Raise", category: "push", equipment: "dumbbell", muscles: ["shoulders"], yt: "yUNf3UGc2fQ", imgs: [27, 28] },
+  { name: "Barbell Deadlift", category: "pull", equipment: "barbell", muscles: ["back", "hamstrings"], yt: "5A4sDRrYY4w", imgs: [29, 30] },
+  { name: "Romanian Deadlift", category: "pull", equipment: "barbell", muscles: ["hamstrings", "back"], yt: "ua-Zlgpe1no", imgs: [31, 32] },
+  { name: "Barbell Row", category: "pull", equipment: "barbell", muscles: ["back"], yt: "f2MCvjTekS4", imgs: [33, 34] },
+  { name: "One-Arm Dumbbell Row", category: "pull", equipment: "dumbbell", muscles: ["back"], yt: "BjJzsDciak8", imgs: [35, 36] },
+  { name: "Chin-Up", category: "pull", equipment: "bodyweight", muscles: ["back", "biceps"], yt: "7axGGH96gKg", imgs: [37, 38] },
+  { name: "Pull-Up", category: "pull", equipment: "bodyweight", muscles: ["back"], yt: "ZAUysGXcDRA", imgs: [39, 40] },
+  { name: "Lat Pulldown", category: "pull", equipment: "cable", muscles: ["back"], yt: "PJXwrqUJG9A", imgs: [41, 42] },
+  { name: "Seated Cable Row", category: "pull", equipment: "cable", muscles: ["back"], yt: "BHT2QCiyo3A", imgs: [43, 44] },
+  { name: "Barbell Curl", category: "pull", equipment: "barbell", muscles: ["biceps"], yt: "iwYZYvWc9BY", imgs: [45, 46] },
+  { name: "Alternating Dumbbell Curl", category: "pull", equipment: "dumbbell", muscles: ["biceps"], yt: "lxTiu9or6Ow", imgs: [47, 48] },
+  { name: "Dumbbell Hammer Curl", category: "pull", equipment: "dumbbell", muscles: ["biceps"], yt: "mi22rJGSqjw", imgs: [49, 50] },
+  { name: "E-Z Bar Curl", category: "pull", equipment: "barbell", muscles: ["biceps"], yt: "JC1LaG4wYcg", imgs: [55, 56] },
+  { name: "Barbell Rear Delt Row", category: "pull", equipment: "barbell", muscles: ["rear delts"], yt: "NUi2qOi1z7g", imgs: [51, 52] },
+  { name: "Dumbbell Rear Lateral Raise", category: "pull", equipment: "dumbbell", muscles: ["rear delts"], yt: "oYTGPYLfpSM", imgs: [53, 54] },
+  { name: "Machine Reverse Fly", category: "pull", equipment: "cable", muscles: ["rear delts"], yt: "nOf0LvTzR9c", imgs: [57, 58] },
+  { name: "Barbell Squat", category: "squat", equipment: "barbell", muscles: ["quads", "glutes"], yt: "KJ_tmkdWmE0", imgs: [59, 60] },
+  { name: "Barbell Front Squat", category: "squat", equipment: "barbell", muscles: ["quads"], yt: "kVykuX_pNf4", imgs: [61, 62] },
+  { name: "Leg Press", category: "squat", equipment: "cable", muscles: ["quads", "glutes"], yt: "shOprEcfDPM", imgs: [67, 68] },
+  { name: "Single-Leg Split Squat (Barbell)", category: "squat", equipment: "barbell", muscles: ["quads", "glutes"], yt: "kRpkxSn0720", imgs: [63, 64] },
+  { name: "Single-Leg Split Squat (Dumbbell)", category: "squat", equipment: "dumbbell", muscles: ["quads", "glutes"], yt: "Dgh2pUffzjU", imgs: [65, 66] },
+  { name: "Dumbbell Lunge (In-Place)", category: "squat", equipment: "dumbbell", muscles: ["quads", "glutes"], yt: "1x1sL4GwQoA", imgs: [69, 70] },
+  { name: "Dumbbell Lunge (Reverse)", category: "squat", equipment: "dumbbell", muscles: ["quads", "glutes"], yt: "QDaI5nFY2RA", imgs: [71, 72] },
+  { name: "Barbell Lunge (In-Place)", category: "squat", equipment: "barbell", muscles: ["quads", "glutes"], yt: "XiKHky5VXo4", imgs: [75, 76] },
+  { name: "Dumbbell Bulgarian Split Squat", category: "squat", equipment: "dumbbell", muscles: ["quads", "glutes"], yt: "o1LfP6FyaeY", imgs: [77, 78] },
+  { name: "Leg Curl (Lying or Seated)", category: "squat", equipment: "cable", muscles: ["hamstrings"], yt: "1N9BEWbf0E4", imgs: [73, 74] },
+];
+
+// Name-to-YT lookup for workout planner
+const ytLookup = {};
+exercises.forEach(ex => {
+  ytLookup[ex.name.toLowerCase()] = ex.yt;
+  // Add simplified names
+  const simplified = ex.name.replace(/\s*\(.*?\)\s*/g, '').toLowerCase();
+  ytLookup[simplified] = ex.yt;
+});
+// Additional manual mappings for workout spreadsheet names
+const extraMappings = {
+  "lying triceps extension": "ai_dq1UGHdc",
+  "skullcrusher": "ai_dq1UGHdc",
+  "chin-up": "7axGGH96gKg",
+  "chinup": "7axGGH96gKg",
+  "chin up": "7axGGH96gKg",
+  "pull-up": "ZAUysGXcDRA",
+  "pullup": "ZAUysGXcDRA",
+  "pull up": "ZAUysGXcDRA",
+  "lat pulldown": "PJXwrqUJG9A",
+  "seated cable row": "BHT2QCiyo3A",
+  "leg curl": "1N9BEWbf0E4",
+  "dumbbell lunge": "1x1sL4GwQoA",
+  "dumbbell side lateral raise": "yUNf3UGc2fQ",
+  "dumbbell rear lateral raise": "oYTGPYLfpSM",
+  "machine reverse fly": "nOf0LvTzR9c",
+  "barbell rear delt row": "NUi2qOi1z7g",
+  "e-z bar curl": "JC1LaG4wYcg",
+  "dip": "1ruyC5U0bjU",
+};
+Object.assign(ytLookup, extraMappings);
+
+function findYt(name) {
+  const n = name.toLowerCase().trim();
+  if (ytLookup[n]) return ytLookup[n];
+  // Try stripping parenthetical
+  const stripped = n.replace(/\s*\(.*?\)\s*/g, '').replace(/["\u201c\u201d]/g, '').trim();
+  if (ytLookup[stripped]) return ytLookup[stripped];
+  // Try partial match
+  for (const key in ytLookup) {
+    if (n.includes(key) || key.includes(stripped)) return ytLookup[key];
+  }
+  return null;
+}
+
+// Image path helper
+function imgPath(num) {
+  return `./images/ex-${num}.jpg`;
+}
+
+// Name-to-imgs lookup for local exercise photos
+const imgLookup = {};
+exercises.forEach(ex => {
+  if (ex.imgs) {
+    imgLookup[ex.name.toLowerCase()] = ex.imgs;
+    const simplified = ex.name.replace(/\s*\(.*?\)\s*/g, '').toLowerCase();
+    imgLookup[simplified] = ex.imgs;
+  }
+});
+const extraImgMappings = {
+  "chin-up": [37, 38],
+  "chinup": [37, 38],
+  "chin up": [37, 38],
+  "pull-up": [39, 40],
+  "pullup": [39, 40],
+  "pull up": [39, 40],
+  "lat pulldown": [41, 42],
+  "lat pulldown (medium grip)": [41, 42],
+  "lat pulldown (medium-grip)": [41, 42],
+  "lat pulldown (close-grip)": [41, 42],
+  "seated cable row": [43, 44],
+  "seated cable row (wide-grip)": [43, 44],
+  "seated cable row (close-grip)": [43, 44],
+  "leg curl": [73, 74],
+  "dumbbell lunge": [69, 70],
+  "lying triceps extension": [25, 26],
+  "skullcrusher": [25, 26],
+  "dumbbell rear lateral raise": [53, 54],
+  "dumbbell side lateral raise": [27, 28],
+  "machine reverse fly": [57, 58],
+  "barbell rear delt row": [51, 52],
+  "e-z bar curl": [55, 56],
+  "dip": [7, 8],
+};
+Object.assign(imgLookup, extraImgMappings);
+
+function findImgs(name) {
+  const n = name.toLowerCase().trim();
+  if (imgLookup[n]) return imgLookup[n];
+  // Try stripping parenthetical
+  const stripped = n.replace(/\s*\(.*?\)\s*/g, '').replace(/["\u201c\u201d]/g, '').trim();
+  if (imgLookup[stripped]) return imgLookup[stripped];
+  // Try partial match
+  for (const key in imgLookup) {
+    if (n.includes(key) || key.includes(stripped)) return imgLookup[key];
+  }
+  return null;
+}
+
+// ====== WORKOUT ROUTINE DATA ======
+const routineData = {"3-Day Routine": {"phases": ["Phase 1 (Weeks 1-8)", "Deload #1 (Week 9)", "Phase 2 (Weeks 10-17)", "Deload #2 (Week 18)", "Phase 3 (Weeks 19-26)", "Deload #3 (Week 27)", "Phase 4 (Weeks 28-35)", "Deload #4 (Week 36)", "Phase 5 (Weeks 37-44)", "Deload #5 (Week 45)", "Phase 6 (Weeks 46-53)", "Deload #6 (Week 54)"], "workouts": [{"title": "Workout 1", "type": "Push", "exercises": [["Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps"], ["Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Barbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps"], ["Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\n2 hard sets of 2 reps", "Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Barbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\n2 hard sets of 2 reps"], ["Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n3 hard sets of 6\u20138 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n2 hard sets of 4 reps", "Seated Triceps Press\n3 hard sets of 6\u20138 reps", "Seated Triceps Press\n2 hard sets of 4 reps", "Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n3 hard sets of 6\u20138 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n2 hard sets of 4 reps", "Seated Triceps Press\n3 hard sets of 6\u20138 reps", "Seated Triceps Press\n2 hard sets of 4 reps"]]}, {"title": "Workout 2", "type": "Pull", "exercises": [["Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps"], ["One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Wide-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Wide-Grip)\n2 hard sets of 2 reps", "Barbell Row\n3 hard sets of 4\u20136 reps", "Barbell Row\n2 hard sets of 2 reps", "One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Close-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Close-Grip)\n2 hard sets of 2 reps", "Barbell Row\n3 hard sets of 4\u20136 reps", "Barbell Row\n2 hard sets of 2 reps"], ["Lat Pulldown (Medium Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Medium Grip) \n2 hard sets of 4 reps", "Chin-up\n3 hard sets of 4\u20136 reps", "Chin-up\n2 hard sets of 2 reps", "Pull-up\n3 hard sets of 4\u20136 reps", "Pull-up\n2 hard sets of 2 reps", "Lat Pulldown (Close-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Close-Grip)\n2 hard sets of 4 reps", "Chin-up\n3 hard sets of 4\u20136 reps", "Chin-up\n2 hard sets of 2 reps", "Pull-up\n3 hard sets of 4\u20136 reps", "Pull-up\n2 hard sets of 2 reps"], ["Alternating Dumbbell Curl\n3 hard sets of 6\u20138 reps", "Alternating Dumbbell Curl\n2 hard sets of 4 reps", "Barbell Curl\n3 hard sets of 6\u20138 reps", "Barbell Curl\n2 hard sets of 4 reps", "Dumbbell Hammer Curl\n3 hard sets of 6\u20138 reps", "Dumbbell Hammer Curl\n2 hard sets of 4 reps", "Alternating Dumbbell Curl\n3 hard sets of 6\u20138 reps", "Alternating Dumbbell Curl\n2 hard sets of 4 reps", "E-Z Bar Curl\n3 hard sets of 6\u20138 reps", "E-Z Bar Curl\n2 hard sets of 4 reps", "Dumbbell Hammer Curl\n3 hard sets of 6\u20138 reps", "Dumbbell Hammer Curl\n2 hard sets of 4 reps"]]}, {"title": "Workout 3", "type": "Lower Body", "exercises": [["Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps"], ["Leg Curl \n3 hard sets of 6\u20138 reps", "Leg Curl \n2 hard sets of 4 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps"], ["Leg Press\n3 hard sets of 6\u20138 reps", "Leg Press\n2 hard sets of 4 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps", "Leg Press\n3 hard sets of 6\u20138 reps", "Leg Press\n2 hard sets of 4 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps", "Leg Press\n3 hard sets of 6\u20138 reps", "Leg Press\n2 hard sets of 4 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps"], ["Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps", "Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps", "Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps"]]}]}, "4-Day Routine": {"phases": ["Phase 1 (Weeks 1-8)", "Deload #1 (Week 9)", "Phase 2 (Weeks 10-17)", "Deload #2 (Week 18)", "Phase 3 (Weeks 19-26)", "Deload #3 (Week 27)", "Phase 4 (Weeks 28-35)", "Deload #4 (Week 36)", "Phase 5 (Weeks 37-44)", "Deload #5 (Week 45)", "Phase 6 (Weeks 46-53)", "Deload #6 (Week 54)"], "workouts": [{"title": "Workout 1", "type": "Push", "exercises": [["Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps"], ["Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Barbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps"], ["Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\n2 hard sets of 2 reps", "Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Barbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\n2 hard sets of 2 reps"], ["Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n3 hard sets of 6\u20138 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n2 hard sets of 4 reps", "Seated Triceps Press\n3 hard sets of 6\u20138 reps", "Seated Triceps Press\n2 hard sets of 4 reps", "Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n3 hard sets of 6\u20138 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n2 hard sets of 4 reps", "Seated Triceps Press\n3 hard sets of 6\u20138 reps", "Seated Triceps Press\n2 hard sets of 4 reps"]]}, {"title": "Workout 2", "type": "Pull", "exercises": [["Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps"], ["One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Wide-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Wide-Grip)\n2 hard sets of 2 reps", "Barbell Row\n3 hard sets of 4\u20136 reps", "Barbell Row\n2 hard sets of 2 reps", "One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Close-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Close-Grip)\n2 hard sets of 2 reps", "Barbell Row\n3 hard sets of 4\u20136 reps", "Barbell Row\n2 hard sets of 2 reps"], ["Lat Pulldown (Medium-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Medium-Grip) \n2 hard sets of 4 reps", "Chin-up\n3 hard sets of 4\u20136 reps", "Chin-up\n2 hard sets of 2 reps", "Pull-up\n3 hard sets of 4\u20136 reps", "Pull-up\n2 hard sets of 2 reps", "Lat Pulldown (Close-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Close-Grip)\n2 hard sets of 4 reps", "Chin-up\n3 hard sets of 4\u20136 reps", "Chin-up\n2 hard sets of 2 reps", "Pull-up\n3 hard sets of 4\u20136 reps", "Pull-up\n2 hard sets of 2 reps"], ["Alternating Dumbbell Curl\n3 hard sets of 6\u20138 reps", "Alternating Dumbbell Curl\n2 hard sets of 4 reps", "Barbell Curl\n3 hard sets of 6\u20138 reps", "Barbell Curl\n2 hard sets of 4 reps", "Dumbbell Hammer Curl\n3 hard sets of 6\u20138 reps", "Dumbbell Hammer Curl\n2 hard sets of 4 reps", "Alternating Dumbbell Curl\n3 hard sets of 6\u20138 reps", "Alternating Dumbbell Curl\n2 hard sets of 4 reps", "E-Z Bar Curl\n3 hard sets of 6\u20138 reps", "E-Z Bar Curl\n2 hard sets of 4 reps", "Dumbbell Hammer Curl\n3 hard sets of 6\u20138 reps", "Dumbbell Hammer Curl\n2 hard sets of 4 reps"]]}, {"title": "Workout 3", "type": "Upper Body", "exercises": [["Seated Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Seated Dumbbell Press\nWarm-up and 2 hard sets of 2 reps", "Arnold Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Arnold Dumbbell Press\nWarm-up and 2 hard sets of 2 reps", "Seated Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Seated Dumbbell Press\nWarm-up and 2 hard sets of 2 reps", "Arnold Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Arnold Dumbbell Press\nWarm-up and 2 hard sets of 2 reps", "Seated Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Seated Dumbbell Press\nWarm-up and 2 hard sets of 2 reps", "Arnold Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Arnold Dumbbell Press\nWarm-up and 2 hard sets of 2 reps"], ["Seated Cable Row (Close-Grip)\n3 hard sets of 6\u20138 reps", "Seated Cable Row (Close-Grip)\n2 hard sets of 4 reps", "One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Wide-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Wide-Grip)\n2 hard sets of 2 reps", "Seated Cable Row (Close-Grip)\n3 hard sets of 6\u20138 reps", "Seated Cable Row (Close-Grip)\n2 hard sets of 4 reps", "One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Wide-Grip)\n3 hard sets of 6\u20138 reps", "Seated Cable Row (Wide-Grip)\n2 hard sets of 4 reps"], ["Close-Grip Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Close-Grip Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dip\nWarm-up and 3 hard sets of 4\u20136 reps", "Dip\nWarm-up and 2 hard sets of 2 reps", "Close-Grip Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Close-Grip Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dip\nWarm-up and 3 hard sets of 4\u20136 reps", "Dip\nWarm-up and 2 hard sets of 2 reps", "Close-Grip Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Close-Grip Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dip\nWarm-up and 3 hard sets of 4\u20136 reps", "Dip\nWarm-up and 2 hard sets of 2 reps"], ["Dumbbell Rear Lateral Raise \n3 hard sets of 6\u20138 reps", "Dumbbell Rear Lateral Raise\n2 hard sets of 4 reps", "Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps", "Machine Reverse Fly\n3 hard sets of 6\u20138 reps", "Machine Reverse Fly\n2 hard sets of 4 reps", "Dumbbell Rear Lateral Raise \n3 hard sets of 6\u20138 reps", "Dumbbell Rear Lateral Raise\n2 hard sets of 4 reps", "Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps", "Machine Reverse Fly\n3 hard sets of 6\u20138 reps", "Machine Reverse Fly\n2 hard sets of 4 reps"]]}, {"title": "Workout 4", "type": "Legs", "exercises": [["Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps"], ["Leg Curl \n3 hard sets of 6\u20138 reps", "Leg Curl \n2 hard sets of 4 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps"], ["Leg Press\n3 hard sets of 6\u20138 reps", "Leg Press\n2 hard sets of 4 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps", "Leg Press\n3 hard sets of 6\u20138 reps", "Leg Press\n2 hard sets of 4 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps", "Leg Press\n3 hard sets of 6\u20138 reps", "Leg Press\n2 hard sets of 4 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps"], ["Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps", "Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps", "Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps"]]}]}, "5-Day Routine": {"phases": ["Phase 1 (Weeks 1\u20138)", "Deload #1 (Week 9)", "Phase 2 (Weeks 10\u201317)", "Deload #2 (Week 18)", "Phase 3 (Weeks 19\u201326)", "Deload #3 (Week 27)", "Phase 4 (Weeks 28\u201335)", "Deload #4 (Week 36)", "Phase 5 (Weeks 37\u201344)", "Deload #5 (Week 45)", "Phase 6 (Weeks 46\u201353)", "Deload #6 (Week 54)"], "workouts": [{"title": "Workout 1", "type": "Push", "exercises": [["Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps", "Incline Barbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\nWarm-up and 2 hard sets of 2 reps"], ["Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Barbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\nWarm-up and 2 hard sets of 2 reps"], ["Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\n2 hard sets of 2 reps", "Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Barbell Bench Press\n2 hard sets of 2 reps", "Incline Barbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Barbell Bench Press\n2 hard sets of 2 reps", "Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Dumbbell Bench Press\n2 hard sets of 2 reps", "Incline Dumbbell Bench Press\n3 hard sets of 4\u20136 reps", "Incline Dumbbell Bench Press\n2 hard sets of 2 reps"], ["Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n3 hard sets of 6\u20138 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n2 hard sets of 4 reps", "Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n3 hard sets of 6\u20138 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n2 hard sets of 4 reps", "Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n3 hard sets of 6\u20138 reps", "Lying Triceps Extension (\u201cSkullcrusher\u201d)\n2 hard sets of 4 reps"]]}, {"title": "Workout 2", "type": "Pull", "exercises": [["Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps", "Barbell Deadlift\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Deadlift\nWarm-up and 2 hard sets of 2 reps"], ["One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Wide-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Wide-Grip)\n2 hard sets of 2 reps", "Barbell Row\n3 hard sets of 4\u20136 reps", "Barbell Row\n2 hard sets of 2 reps", "One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Close-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Close-Grip)\n2 hard sets of 2 reps", "Barbell Row\n3 hard sets of 4\u20136 reps", "Barbell Row\n2 hard sets of 2 reps"], ["Lat Pulldown (Medium-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Medium-Grip) \n2 hard sets of 4 reps", "Lat Pulldown (Close-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Close-Grip)\n2 hard sets of 4 reps", "Lat Pulldown (Medium-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Medium-Grip) \n2 hard sets of 4 reps", "Lat Pulldown (Close-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Close-Grip)\n2 hard sets of 4 reps", "Lat Pulldown (Medium-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Medium-Grip) \n2 hard sets of 4 reps", "Lat Pulldown (Close-Grip)\n3 hard sets of 6\u20138 reps", "Lat Pulldown (Close-Grip)\n2 hard sets of 4 reps"], ["Alternating Dumbbell Curl\n3 hard sets of 6\u20138 reps", "Alternating Dumbbell Curl\n2 hard sets of 4 reps", "Dumbbell Hammer Curl\n3 hard sets of 6\u20138 reps", "Dumbbell Hammer Curl\n2 hard sets of 4 reps", "Alternating Dumbbell Curl\n3 hard sets of 6\u20138 reps", "Alternating Dumbbell Curl\n2 hard sets of 4 reps", "Dumbbell Hammer Curl\n3 hard sets of 6\u20138 reps", "Dumbbell Hammer Curl\n2 hard sets of 4 reps", "Alternating Dumbbell Curl\n3 hard sets of 6\u20138 reps", "Alternating Dumbbell Curl\n2 hard sets of 4 reps", "Dumbbell Hammer Curl\n3 hard sets of 6\u20138 reps", "Dumbbell Hammer Curl\n2 hard sets of 4 reps"]]}, {"title": "Workout 3", "type": "Upper Body A", "exercises": [["Seated Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Seated Dumbbell Press\nWarm-up and 2 hard sets of 2 reps", "Seated Barbell Overhead Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Seated Barbell Overhead Press\nWarm-up and 2 hard sets of 2 reps", "Standing Barbell Overhead Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Standing Barbell Overhead Press\nWarm-up and 2 hard sets of 2 reps", "Arnold Dumbbell Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Arnold Dumbbell Press\nWarm-up and 2 hard sets of 2 reps", "Seated Barbell Overhead Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Seated Barbell Overhead Press\nWarm-up and 2 hard sets of 2 reps", "Standing Barbell Overhead Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Standing Barbell Overhead Press\nWarm-up and 2 hard sets of 2 reps"], ["Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps", "Barbell Rear Delt Row\n3 hard sets of 6\u20138 reps", "Barbell Rear Delt Row\n2 hard sets of 4 reps", "Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps", "Machine Reverse Fly\n3 hard sets of 6\u20138 reps", "Machine Reverse Fly\n2 hard sets of 4 reps", "Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps", "Barbell Rear Delt Row\n3 hard sets of 6\u20138 reps", "Barbell Rear Delt Row\n2 hard sets of 4 reps"], ["Dumbbell Rear Lateral Raise \n3 hard sets of 6\u20138 reps", "Dumbbell Rear Lateral Raise\n2 hard sets of 4 reps", "Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps", "Dumbbell Rear Lateral Raise \n3 hard sets of 6\u20138 reps", "Dumbbell Rear Lateral Raise\n2 hard sets of 4 reps", "Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps", "Dumbbell Rear Lateral Raise \n3 hard sets of 6\u20138 reps", "Dumbbell Rear Lateral Raise\n2 hard sets of 4 reps", "Dumbbell Side Lateral Raise\n3 hard sets of 6\u20138 reps", "Dumbbell Side Lateral Raise\n2 hard sets of 4 reps"], ["Seated Triceps Press\n3 hard sets of 6\u20138 reps", "Seated Triceps Press\n2 hard sets of 4 reps", "Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Seated Triceps Press\n3 hard sets of 6\u20138 reps", "Seated Triceps Press\n2 hard sets of 4 reps", "Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps", "Seated Triceps Press\n3 hard sets of 6\u20138 reps", "Seated Triceps Press\n2 hard sets of 4 reps", "Triceps Pushdown\n3 hard sets of 6\u20138 reps", "Triceps Pushdown\n2 hard sets of 4 reps"]]}, {"title": "Workout 4", "type": "Legs", "exercises": [["Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps", "Barbell Squat\nWarm-up and 3 hard sets of 4\u20136 reps", "Barbell Squat\nWarm-up and 2 hard sets of 2 reps"], ["Leg Curl \n3 hard sets of 6\u20138 reps", "Leg Curl \n2 hard sets of 4 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Leg Curl \n3 hard sets of 6\u20138 reps", "Leg Curl \n2 hard sets of 4 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps", "Leg Curl \n3 hard sets of 6\u20138 reps", "Leg Curl \n2 hard sets of 4 reps", "Romanian Deadlift\n3 hard sets of 4\u20136 reps", "Romanian Deadlift\n2 hard sets of 2 reps"], ["Leg Press\n3 hard sets of 4\u20136 reps", "Leg Press\n2 hard sets of 2 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps", "Leg Press\n3 hard sets of 4\u20136 reps", "Leg Press\n2 hard sets of 2 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps", "Leg Press\n3 hard sets of 4\u20136 reps", "Leg Press\n2 hard sets of 2 reps", "Barbell Front Squat\n3 hard sets of 4\u20136 reps", "Barbell Front Squat\n2 hard sets of 4 reps"], ["Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps", "Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps", "Dumbbell Lunge\n3 hard sets of 6\u20138 reps", "Dumbbell Lunge\n2 hard sets of 4 reps", "Dumbbell Bulgarian Split Squat\n3 hard sets of 6\u20138 reps", "Dumbbell Bulgarian Split Squat\n2 hard sets of 4 reps"]]}, {"title": "Workout 5", "type": "Upper Body B", "exercises": [["Close-Grip Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Close-Grip Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dip\nWarm-up and 3 hard sets of 4\u20136 reps", "Dip\nWarm-up and 2 hard sets of 2 reps", "Close-Grip Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Close-Grip Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dip\nWarm-up and 3 hard sets of 4\u20136 reps", "Dip\nWarm-up and 2 hard sets of 2 reps", "Close-Grip Bench Press\nWarm-up and 3 hard sets of 4\u20136 reps", "Close-Grip Bench Press\nWarm-up and 2 hard sets of 2 reps", "Dip\nWarm-up and 3 hard sets of 4\u20136 reps", "Dip\nWarm-up and 2 hard sets of 2 reps"], ["Chin-up\n3 hard sets of 4\u20136 reps", "Chin-up\n2 hard sets of 2 reps", "Pull-up\n3 hard sets of 4\u20136 reps", "Pull-up\n2 hard sets of 2 reps", "Chin-up\n3 hard sets of 4\u20136 reps", "Chin-up\n2 hard sets of 2 reps", "Pull-up\n3 hard sets of 4\u20136 reps", "Pull-up\n2 hard sets of 2 reps", "Chin-up\n3 hard sets of 4\u20136 reps", "Chin-up\n2 hard sets of 2 reps", "Pull-up\n3 hard sets of 4\u20136 reps", "Pull-up\n2 hard sets of 2 reps"], ["Seated Cable Row (Close-Grip)\n3 hard sets of 6\u20138 reps", "Seated Cable Row (Close-Grip)\n2 hard sets of 4 reps", "One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Wide-Grip)\n3 hard sets of 4\u20136 reps", "Seated Cable Row (Wide-Grip)\n2 hard sets of 2 reps", "Seated Cable Row (Close-Grip)\n3 hard sets of 6\u20138 reps", "Seated Cable Row (Close-Grip)\n2 hard sets of 4 reps", "One-Arm Dumbbell Row\n3 hard sets of 4\u20136 reps", "One-Arm Dumbbell Row\n2 hard sets of 2 reps", "Seated Cable Row (Wide-Grip)\n3 hard sets of 6\u20138 reps", "Seated Cable Row (Wide-Grip)\n2 hard sets of 4 reps"], ["Barbell Curl\n3 hard sets of 6\u20138 reps", "Barbell Curl\n2 hard sets of 4 reps", "E-Z Bar Curl\n3 hard sets of 6\u20138 reps", "E-Z Bar Curl\n2 hard sets of 4 reps", "Barbell Curl\n3 hard sets of 6\u20138 reps", "Barbell Curl\n2 hard sets of 4 reps", "E-Z Bar Curl\n3 hard sets of 6\u20138 reps", "E-Z Bar Curl\n2 hard sets of 4 reps", "Barbell Curl\n3 hard sets of 6\u20138 reps", "Barbell Curl\n2 hard sets of 4 reps", "E-Z Bar Curl\n3 hard sets of 6\u20138 reps", "E-Z Bar Curl\n2 hard sets of 4 reps"]]}]}};
+
+// ====== PLANNER STATE ======
+let currentRoutine = "3-Day Routine";
+let currentPhaseIdx = 0;
+
+function getTypeClass(type) {
+  return type.toLowerCase().replace(/\s+/g, '-');
+}
+
+function renderPhasePills() {
+  const container = document.getElementById('phasePills');
+  const phases = routineData[currentRoutine].phases;
+  // Show only training phases (not deloads) plus a separate deload toggle
+  let html = '';
+  // We'll pair phases: Phase + Deload
+  for (let i = 0; i < phases.length; i++) {
+    const phase = phases[i];
+    const isDeload = phase.toLowerCase().includes('deload');
+    const shortLabel = isDeload
+      ? phase.replace(/Deload #(\d+).*/, 'Deload $1')
+      : phase.replace(/Phase (\d+).*/, 'Phase $1');
+    html += `<button class="p-pill${isDeload ? ' deload' : ''}${i === currentPhaseIdx ? ' active' : ''}" data-phase="${i}">${shortLabel}</button>`;
+  }
+  container.innerHTML = html;
+
+  container.querySelectorAll('.p-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentPhaseIdx = parseInt(btn.dataset.phase);
+      container.querySelectorAll('.p-pill').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      renderWorkouts();
+    });
+  });
+}
+
+function renderWorkouts() {
+  const data = routineData[currentRoutine];
+  const phase = data.phases[currentPhaseIdx];
+  const isDeload = phase.toLowerCase().includes('deload');
+  const container = document.getElementById('workoutDays');
+  const banner = document.getElementById('deloadBanner');
+
+  banner.style.display = isDeload ? 'flex' : 'none';
+
+  let html = '';
+  data.workouts.forEach((workout, wi) => {
+    const typeClass = getTypeClass(workout.type);
+    const exerciseList = workout.exercises.map((exPhases, ei) => {
+      const text = exPhases[currentPhaseIdx] || '';
+      if (!text) return '';
+      const lines = text.split('\n');
+      const exName = lines[0].trim();
+      const prescription = lines.length > 1 ? lines[1].trim() : '';
+      const hasWarmup = prescription.toLowerCase().includes('warm-up');
+      const yt = findYt(exName);
+      const exImgs = findImgs(exName);
+
+      return `
+        <div class="exercise-item">
+          ${exImgs ? `
+          <div class="exercise-thumb-pair">
+            <img src="${imgPath(exImgs[0])}" alt="start" loading="lazy">
+            <img src="${imgPath(exImgs[1])}" alt="end" loading="lazy">
+            ${yt ? `<a href="https://youtu.be/${yt}" target="_blank" rel="noopener" class="yt-overlay" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>` : ''}
+          </div>` : yt ? `
+          <div class="exercise-thumb">
+            <img src="https://img.youtube.com/vi/${yt}/mqdefault.jpg" alt="${exName}" loading="lazy">
+            <a href="https://youtu.be/${yt}" target="_blank" rel="noopener" title="Watch on YouTube">
+              <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </a>
+          </div>` : ''}
+          <div class="exercise-item-body">
+            <div class="exercise-number">${ei + 1}</div>
+            <div class="exercise-details">
+              <div class="exercise-name">${exName}</div>
+              <div class="exercise-prescription">
+                ${hasWarmup ? '<span class="warmup-badge">Warm-up</span>' : ''}
+                ${prescription.replace(/warm-up and /i, '').replace(/Warm-up and /i, '')}
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+
+    html += `
+      <div class="workout-day">
+        <div class="day-header" onclick="toggleDay(this)">
+          <div class="day-number ${typeClass}">${wi + 1}</div>
+          <div class="day-info">
+            <div class="day-title">${workout.title} — ${workout.type}</div>
+            <div class="day-subtitle">${workout.exercises.length} exercises</div>
+          </div>
+          <div class="day-toggle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+        <div class="day-exercises">
+          <div class="exercise-items-grid">${exerciseList}</div>
+        </div>
+      </div>`;
+  });
+
+  container.innerHTML = html;
+
+  // Auto-expand all
+  container.querySelectorAll('.day-exercises').forEach(el => {
+    el.classList.add('open');
+    el.previousElementSibling.querySelector('.day-toggle').classList.add('open');
+  });
+}
+
+function toggleDay(header) {
+  const exercises = header.nextElementSibling;
+  const toggle = header.querySelector('.day-toggle');
+  exercises.classList.toggle('open');
+  toggle.classList.toggle('open');
+}
+
+// Routine pill clicks
+document.querySelectorAll('.r-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.r-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentRoutine = btn.dataset.routine;
+    currentPhaseIdx = 0;
+    renderPhasePills();
+    renderWorkouts();
+  });
+});
+
+// ====== EXERCISE LIBRARY ======
+let activeCategory = "all";
+let activeEquipment = "all";
+let searchTerm = "";
+
+function renderLibrary() {
+  const filtered = exercises.filter(ex => {
+    const matchCat = activeCategory === "all" || ex.category === activeCategory;
+    const matchEq = activeEquipment === "all" || ex.equipment === activeEquipment;
+    const matchSearch = searchTerm === "" ||
+      ex.name.toLowerCase().includes(searchTerm) ||
+      ex.muscles.some(m => m.includes(searchTerm)) ||
+      ex.equipment.includes(searchTerm);
+    return matchCat && matchEq && matchSearch;
+  });
+
+  const container = document.getElementById("exerciseList");
+  const empty = document.getElementById("emptyState");
+  const count = document.getElementById("resultsCount");
+
+  count.textContent = `${filtered.length} exercise${filtered.length !== 1 ? 's' : ''}`;
+
+  if (filtered.length === 0) {
+    container.innerHTML = "";
+    empty.classList.add("visible");
+    return;
+  }
+  empty.classList.remove("visible");
+
+  const order = ["push", "pull", "squat"];
+  const groups = {};
+  filtered.forEach(ex => {
+    if (!groups[ex.category]) groups[ex.category] = [];
+    groups[ex.category].push(ex);
+  });
+
+  let html = "";
+  order.forEach(cat => {
+    if (!groups[cat]) return;
+    html += `
+      <div class="category-section">
+        <div class="category-label ${cat}"><span class="dot"></span>${cat.toUpperCase()}</div>
+        <div class="exercise-grid">
+          ${groups[cat].map(ex => `
+            <div class="exercise-card">
+              <div class="card-thumb">
+                <div class="card-stripe ${ex.category}"></div>
+                ${ex.imgs ? `
+                <div class="card-img-pair">
+                  <img src="${imgPath(ex.imgs[0])}" alt="start" loading="lazy">
+                  <img src="${imgPath(ex.imgs[1])}" alt="end" loading="lazy">
+                </div>` : `
+                <img src="https://img.youtube.com/vi/${ex.yt}/mqdefault.jpg" alt="${ex.name}" loading="lazy">`}
+                <a class="yt-btn" href="https://youtu.be/${ex.yt}" target="_blank" rel="noopener" title="Watch on YouTube">
+                  <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+              </div>
+              <div class="card-body">
+                <div class="card-name">${ex.name}</div>
+                <div class="card-tags">
+                  ${ex.muscles.map(m => `<span class="card-tag">${m}</span>`).join("")}
+                  <span class="card-tag">${ex.equipment}</span>
+                </div>
+              </div>
+            </div>
+          `).join("")}
+        </div>
+      </div>`;
+  });
+
+  container.innerHTML = html;
+}
+
+document.querySelectorAll(".pill").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".pill").forEach(b => b.className = "pill");
+    const f = btn.dataset.filter;
+    btn.classList.add(f === "all" ? "active-all" : `active-${f}`);
+    activeCategory = f;
+    renderLibrary();
+  });
+});
+
+document.querySelectorAll(".eq-pill").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".eq-pill").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    activeEquipment = btn.dataset.eq;
+    renderLibrary();
+  });
+});
+
+document.getElementById("search").addEventListener("input", e => {
+  searchTerm = e.target.value.toLowerCase().trim();
+  renderLibrary();
+});
+
+// ====== MAIN TAB SWITCHING ======
+document.querySelectorAll('.main-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.main-tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+  });
+});
+
+// ====== INIT ======
+renderPhasePills();
+renderWorkouts();
+renderLibrary();
+</script>
+
+
+</body></html>
