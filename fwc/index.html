@@ -409,226 +409,13 @@ body {
 /* ============================================================  RESPONSIVE  */
 @media (max-width: 700px) {
   .hero { padding: 28px 16px 24px; } .hero-title { font-size: 52px; } .cd-num { font-size: 52px; }
-  .plan { padding: 16px 12px 100px; } .prog-wrap { padding: 10px 12px; }
+  .plan { padding: 16px 12px 40px; } .filter-bar { padding: 8px 12px; } .prog-wrap { padding: 10px 12px; }
   .toolbar { padding: 0 12px; } .session-day { min-width: 70px; font-size: 9px; }
-  .expand-controls { display: none; } .cal-wrap { padding: 16px 8px 100px; }
-  .cal-table { display: block; overflow-x: auto; } .stats-wrap { padding: 16px 12px 100px; }
-  .today-bar { display: none; }
-  .toolbar-right { gap: 6px; }
+  .expand-controls { display: none; } .cal-wrap { padding: 16px 8px 40px; }
+  .cal-table { display: block; overflow-x: auto; } .stats-wrap { padding: 16px 12px 40px; }
+  .today-bar { padding: 8px 12px; gap: 8px; } .toolbar-right { gap: 6px; }
   .tb-sep { display: none; }
-  /* hide desktop filter bar on mobile — replaced by bottom sheet */
-  .filter-bar { display: none; }
-  /* hide desktop tab labels on mobile */
-  .tab-btn .tab-lbl { display: none; }
-  .tab-btn { padding: 10px 16px 9px; font-size: 16px; }
-  .tab-icon { font-size: 18px; }
-  /* tighter week header on mobile */
-  .week-tss, .ramp-warn { display: none; }
-  .week-mileage { font-size: 9px; }
 }
-
-/* ============================================================  MOBILE BOTTOM NAV  */
-.mobile-nav {
-  display: none;
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
-  background: var(--bg2); border-top: 1px solid var(--border);
-  padding: 0; height: 56px; box-shadow: 0 -2px 12px rgba(0,0,0,0.4);
-  transition: background 0.35s, border-color 0.35s;
-}
-.mobile-nav-inner {
-  display: flex; align-items: stretch; height: 100%;
-}
-.mob-nav-btn {
-  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
-  background: transparent; border: none; cursor: pointer;
-  font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase;
-  color: var(--text-muted); transition: color 0.2s; padding: 0; position: relative;
-}
-.mob-nav-btn .mob-icon { font-size: 18px; line-height: 1; }
-.mob-nav-btn.active { color: var(--accent); }
-.mob-nav-btn.active::after {
-  content: ''; position: absolute; bottom: 0; left: 25%; right: 25%; height: 2px;
-  background: var(--accent); border-radius: 1px 1px 0 0;
-}
-.mob-nav-sep { width: 1px; background: var(--border); margin: 10px 0; flex-shrink: 0; }
-
-@media (max-width: 700px) {
-  .mobile-nav { display: flex; }
-  /* push content up from nav */
-  body { padding-bottom: 56px; }
-}
-
-/* ============================================================  BOTTOM SHEET (FILTER)  */
-.sheet-overlay {
-  display: none; position: fixed; inset: 0; z-index: 299;
-  background: rgba(0,0,0,0.5); backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-.sheet-overlay.open { display: block; }
-
-.bottom-sheet {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
-  background: var(--bg2); border-top: 1px solid var(--border);
-  border-radius: 16px 16px 0 0;
-  padding: 0 0 calc(env(safe-area-inset-bottom, 0px) + 56px);
-  transform: translateY(100%);
-  transition: transform 0.32s cubic-bezier(0.32,0.72,0,1), background 0.35s;
-  max-height: 80vh; overflow-y: auto;
-}
-.bottom-sheet.open { transform: translateY(0); }
-
-.sheet-handle {
-  display: flex; justify-content: center; padding: 12px 0 6px;
-  cursor: pointer;
-}
-.sheet-handle::after {
-  content: ''; width: 36px; height: 4px; border-radius: 2px;
-  background: var(--border);
-}
-.sheet-title {
-  font-family: 'Bebas Neue', cursive; font-size: 22px; letter-spacing: 1px;
-  color: var(--text); padding: 4px 20px 14px; border-bottom: 1px solid var(--border);
-}
-.sheet-section { padding: 16px 20px 8px; }
-.sheet-section-lbl {
-  font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px;
-}
-.sheet-filter-grid {
-  display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;
-}
-.sheet-f-btn {
-  display: flex; align-items: center; gap: 8px; padding: 12px 14px;
-  border: 1px solid var(--border); border-radius: 8px; background: var(--bg3);
-  color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif;
-  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; transition: all 0.18s; text-align: left;
-}
-.sheet-f-btn .f-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
-.sheet-f-btn.active { border-color: var(--accent); background: var(--accent-glow); color: var(--text); }
-.sheet-actions { display: flex; gap: 8px; padding: 8px 20px 16px; }
-.sheet-action-btn {
-  flex: 1; padding: 12px; border: 1px solid var(--border); border-radius: 8px;
-  background: var(--bg3); color: var(--text-muted);
-  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; transition: all 0.18s;
-}
-.sheet-action-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ============================================================  SESSION DETAIL MODAL  */
-.modal-overlay {
-  display: none; position: fixed; inset: 0; z-index: 399;
-  background: rgba(0,0,0,0.65); backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  align-items: flex-end; /* mobile: bottom sheet style */
-}
-.modal-overlay.open { display: flex; }
-
-.session-modal {
-  width: 100%; background: var(--bg2);
-  border-radius: 20px 20px 0 0; border-top: 1px solid var(--border);
-  padding: 0 0 calc(env(safe-area-inset-bottom, 0px) + 8px);
-  transform: translateY(100%); transition: transform 0.3s cubic-bezier(0.32,0.72,0,1);
-  max-height: 85vh; overflow-y: auto;
-}
-.modal-overlay.open .session-modal { transform: translateY(0); }
-
-@media (min-width: 701px) {
-  .modal-overlay { align-items: center; justify-content: center; }
-  .session-modal {
-    width: 480px; border-radius: 12px; border: 1px solid var(--border);
-    max-height: 80vh; transform: scale(0.94) translateY(8px);
-    transition: transform 0.25s cubic-bezier(0.32,0.72,0,1), opacity 0.2s;
-    opacity: 0;
-  }
-  .modal-overlay.open .session-modal { transform: scale(1) translateY(0); opacity: 1; }
-}
-
-.modal-handle { display: flex; justify-content: center; padding: 12px 0 4px; cursor: pointer; }
-.modal-handle::after { content: ''; width: 36px; height: 4px; background: var(--border); border-radius: 2px; }
-.modal-header { padding: 12px 20px 16px; border-bottom: 1px solid var(--border); }
-.modal-date { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
-.modal-badge { display: inline-block; font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 3px; border: 1px solid; margin-bottom: 8px; }
-.modal-title { font-family: 'Bebas Neue', cursive; font-size: 28px; line-height: 1; color: var(--text); }
-
-.modal-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 14px; }
-.modal-stat-row { display: flex; gap: 12px; flex-wrap: wrap; }
-.modal-stat { flex: 1; min-width: 80px; background: var(--bg3); border-radius: 8px; padding: 12px 14px; }
-.modal-stat-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
-.modal-stat-val { font-family: 'Bebas Neue', cursive; font-size: 24px; line-height: 1; color: var(--text); }
-.modal-stat-unit { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; color: var(--text-muted); }
-
-.modal-sparkline-wrap { background: var(--bg3); border-radius: 8px; padding: 12px 14px; }
-.modal-sparkline-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-
-.modal-note-wrap { }
-.modal-note-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 8px; }
-.modal-note-ta {
-  width: 100%; min-height: 80px; background: var(--bg3); border: 1px solid var(--border);
-  border-radius: 8px; color: var(--text); font-family: 'Barlow', sans-serif; font-size: 13px;
-  padding: 12px 14px; resize: none; outline: none; transition: border-color 0.2s; line-height: 1.6;
-}
-.modal-note-ta:focus { border-color: var(--accent); }
-.modal-note-ta::placeholder { color: var(--text-muted); }
-
-.modal-footer { padding: 12px 20px 16px; display: flex; gap: 10px; border-top: 1px solid var(--border); }
-.modal-done-btn {
-  flex: 1; padding: 14px; border-radius: 10px; border: 1px solid var(--border);
-  background: var(--bg3); color: var(--text-muted);
-  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 6px;
-}
-.modal-done-btn.done { background: var(--c-key); border-color: var(--c-key); color: var(--bg); }
-.modal-close-btn {
-  padding: 14px 20px; border-radius: 10px; border: 1px solid var(--border);
-  background: transparent; color: var(--text-muted);
-  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; transition: all 0.2s;
-}
-.modal-close-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-/* ============================================================  SWIPE TO COMPLETE  */
-.session-wrapper {
-  position: relative; overflow: hidden;
-}
-.swipe-hint {
-  position: absolute; right: 0; top: 0; bottom: 0; width: 72px;
-  background: var(--c-key); display: flex; align-items: center; justify-content: center;
-  font-size: 18px; color: var(--bg); transform: translateX(100%);
-  transition: transform 0.2s; z-index: 1; pointer-events: none;
-  font-family: 'Barlow Condensed', sans-serif;
-}
-.swipe-hint.swipe-undo { background: var(--c-rest); font-size: 14px; letter-spacing: 1px; }
-.session-row {
-  position: relative; z-index: 2;
-  transition: transform 0.2s cubic-bezier(0.25,0.46,0.45,0.94);
-  touch-action: pan-y;
-  will-change: transform;
-}
-
-/* FAB  — today shortcut */
-.fab {
-  display: none;
-  position: fixed; bottom: 70px; right: 16px; z-index: 190;
-  width: 48px; height: 48px; border-radius: 50%;
-  background: var(--accent); border: none; color: #fff;
-  font-size: 20px; cursor: pointer; box-shadow: 0 3px 12px rgba(200,0,30,0.4);
-  align-items: center; justify-content: center;
-  transition: transform 0.15s, box-shadow 0.15s;
-}
-.fab:active { transform: scale(0.93); box-shadow: 0 1px 6px rgba(200,0,30,0.3); }
-@media (max-width: 700px) { .fab { display: flex; } }
-
-/* Touch-friendly tap targets */
-@media (max-width: 700px) {
-  .sess-done { width: 28px; height: 28px; border-radius: 6px; }
-  .note-btn   { width: 28px; height: 28px; font-size: 16px; }
-  .session-row { cursor: pointer; }
-  .week-toggle { padding: 14px 12px; }
-  .month-toggle { padding: 16px 14px; }
-  .month-name-lbl { font-size: 26px; }
-}
-
 
 /* ============================================================  VISUAL ENHANCEMENTS  */
 
@@ -763,7 +550,7 @@ body {
   <div class="cd-block">
     <div class="cd-lbl">Days to Race</div>
     <div class="cd-num" id="countdown">—</div>
-    <div class="cd-date">Race Day · 11 May 2025</div>
+    <div class="cd-date">Race Day · 11 May 2026</div>
   </div>
 
   <!-- Route silhouette -->
@@ -848,88 +635,6 @@ body {
   <button class="jump-btn" onclick="jumpToToday()">↓ Today</button>
 </div>
 
-
-<!-- ============================================================  MOBILE BOTTOM NAV  -->
-<div class="mobile-nav">
-  <div class="mobile-nav-inner">
-    <button class="mob-nav-btn active" id="mob-tab-list" onclick="mobSwitchTab('list')">
-      <span class="mob-icon">☰</span>
-      <span>List</span>
-    </button>
-    <div class="mob-nav-sep"></div>
-    <button class="mob-nav-btn" id="mob-tab-cal" onclick="mobSwitchTab('cal')">
-      <span class="mob-icon">⊞</span>
-      <span>Calendar</span>
-    </button>
-    <div class="mob-nav-sep"></div>
-    <button class="mob-nav-btn" id="mob-tab-stats" onclick="mobSwitchTab('stats')">
-      <span class="mob-icon">▦</span>
-      <span>Stats</span>
-    </button>
-    <div class="mob-nav-sep"></div>
-    <button class="mob-nav-btn" id="mob-tab-filter" onclick="openFilterSheet()">
-      <span class="mob-icon" id="mob-filter-icon">⊟</span>
-      <span>Filter</span>
-    </button>
-  </div>
-</div>
-
-<!-- FAB -->
-<button class="fab" id="fab" onclick="jumpToToday()" title="Jump to today">◎</button>
-
-<!-- FILTER BOTTOM SHEET -->
-<div class="sheet-overlay" id="sheetOverlay" onclick="closeFilterSheet()"></div>
-<div class="bottom-sheet" id="filterSheet">
-  <div class="sheet-handle" onclick="closeFilterSheet()"></div>
-  <div class="sheet-title">Filter Sessions</div>
-  <div class="sheet-section">
-    <div class="sheet-section-lbl">Session Type</div>
-    <div class="sheet-filter-grid">
-      <button class="sheet-f-btn active" data-filter="all" onclick="sheetFilter('all')">All Sessions</button>
-      <button class="sheet-f-btn" data-filter="rest" onclick="sheetFilter('rest')"><span class="f-dot dot-rest"></span>Rest</button>
-      <button class="sheet-f-btn" data-filter="easy" onclick="sheetFilter('easy')"><span class="f-dot dot-easy"></span>Easy</button>
-      <button class="sheet-f-btn" data-filter="mod" onclick="sheetFilter('mod')"><span class="f-dot dot-mod"></span>Moderate</button>
-      <button class="sheet-f-btn" data-filter="hard" onclick="sheetFilter('hard')"><span class="f-dot dot-hard"></span>Long Ride</button>
-      <button class="sheet-f-btn" data-filter="int" onclick="sheetFilter('int')"><span class="f-dot dot-int"></span>Intervals</button>
-      <button class="sheet-f-btn" data-filter="key" onclick="sheetFilter('key')"><span class="f-dot dot-key"></span>Key Ride</button>
-    </div>
-  </div>
-  <div class="sheet-actions">
-    <button class="sheet-action-btn" onclick="expandAll(); closeFilterSheet()">Expand All</button>
-    <button class="sheet-action-btn" onclick="collapseAll(); closeFilterSheet()">Collapse All</button>
-    <button class="sheet-action-btn" onclick="jumpToToday(); closeFilterSheet()">↓ Today</button>
-  </div>
-</div>
-
-<!-- SESSION DETAIL MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModalIfOutside(event)">
-  <div class="session-modal" id="sessionModal">
-    <div class="modal-handle" onclick="closeModal()"></div>
-    <div class="modal-header">
-      <div class="modal-date" id="modal-date"></div>
-      <div class="modal-badge" id="modal-badge"></div>
-      <div class="modal-title" id="modal-title"></div>
-    </div>
-    <div class="modal-body">
-      <div class="modal-stat-row" id="modal-stats"></div>
-      <div id="modal-sparkline-wrap" style="display:none" class="modal-sparkline-wrap">
-        <div class="modal-sparkline-lbl">Elevation Profile</div>
-        <div id="modal-sparkline"></div>
-      </div>
-      <div class="modal-note-wrap">
-        <div class="modal-note-lbl">Session Notes</div>
-        <textarea class="modal-note-ta" id="modal-note" placeholder="Log how it went — time, effort, conditions…"></textarea>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button class="modal-done-btn" id="modal-done-btn" onclick="toggleModalDone()">
-        <span id="modal-done-icon">○</span> <span id="modal-done-lbl">Mark Complete</span>
-      </button>
-      <button class="modal-close-btn" onclick="closeModal()">Close</button>
-    </div>
-  </div>
-</div>
-
 <script>
 // ============================================================
 //  PLAN DATA
@@ -944,117 +649,117 @@ const MONTHS = [
 // mi: miles (null = no distance), elev: metres, tss: training stress score
 const WEEKS = [
   { num:1, label:'W1', mi:62, tss:120, days:[
-    {date:'2025-02-03',day:'Mon 3 Feb', type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
-    {date:'2025-02-04',day:'Tue 4 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-05',day:'Wed 5 Feb', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-02-06',day:'Thu 6 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-07',day:'Fri 7 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-08',day:'Sat 8 Feb', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-02-09',day:'Sun 9 Feb', type:'mod', badge:'Moderate', title:'2.5hr Ride',                 mi:32,   elev:null, tss:70},
+    {date:'2026-02-03',day:'Mon 3 Feb', type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2026-02-04',day:'Tue 4 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-05',day:'Wed 5 Feb', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-02-06',day:'Thu 6 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-07',day:'Fri 7 Feb', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-08',day:'Sat 8 Feb', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-02-09',day:'Sun 9 Feb', type:'mod', badge:'Moderate', title:'2.5hr Ride',                 mi:32,   elev:null, tss:70},
   ]},
   { num:2, label:'W2', mi:75, tss:155, days:[
-    {date:'2025-02-10',day:'Mon 10 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-11',day:'Tue 11 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-12',day:'Wed 12 Feb',type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
-    {date:'2025-02-13',day:'Thu 13 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-02-14',day:'Fri 14 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-15',day:'Sat 15 Feb',type:'easy',badge:'Easy',     title:'1.5hr Ride',                 mi:20,   elev:null, tss:40},
-    {date:'2025-02-16',day:'Sun 16 Feb',type:'hard',badge:'Long Ride',title:'3hr Ride',                   mi:40,   elev:null, tss:125},
+    {date:'2026-02-10',day:'Mon 10 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-11',day:'Tue 11 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-12',day:'Wed 12 Feb',type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2026-02-13',day:'Thu 13 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-02-14',day:'Fri 14 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-15',day:'Sat 15 Feb',type:'easy',badge:'Easy',     title:'1.5hr Ride',                 mi:20,   elev:null, tss:40},
+    {date:'2026-02-16',day:'Sun 16 Feb',type:'hard',badge:'Long Ride',title:'3hr Ride',                   mi:40,   elev:null, tss:125},
   ]},
   { num:3, label:'W3', mi:85, tss:185, days:[
-    {date:'2025-02-17',day:'Mon 17 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-18',day:'Tue 18 Feb',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 80% effort',  mi:null, elev:null, tss:75},
-    {date:'2025-02-19',day:'Wed 19 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-20',day:'Thu 20 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-02-21',day:'Fri 21 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-22',day:'Sat 22 Feb',type:'easy',badge:'Easy',     title:'1.5hr Ride',                 mi:20,   elev:null, tss:40},
-    {date:'2025-02-23',day:'Sun 23 Feb',type:'hard',badge:'Long Ride',title:'4hr Ride',                   mi:50,   elev:null, tss:155},
+    {date:'2026-02-17',day:'Mon 17 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-18',day:'Tue 18 Feb',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 80% effort',  mi:null, elev:null, tss:75},
+    {date:'2026-02-19',day:'Wed 19 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-20',day:'Thu 20 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-02-21',day:'Fri 21 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-22',day:'Sat 22 Feb',type:'easy',badge:'Easy',     title:'1.5hr Ride',                 mi:20,   elev:null, tss:40},
+    {date:'2026-02-23',day:'Sun 23 Feb',type:'hard',badge:'Long Ride',title:'4hr Ride',                   mi:50,   elev:null, tss:155},
   ]},
   { num:4, label:'W4', mi:77, tss:190, days:[
-    {date:'2025-02-24',day:'Mon 24 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-25',day:'Tue 25 Feb',type:'int', badge:'Intervals',title:'8 × 4min @ 90% / 3min rest', mi:null, elev:null, tss:80},
-    {date:'2025-02-26',day:'Wed 26 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-02-27',day:'Thu 27 Feb',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
-    {date:'2025-02-28',day:'Fri 28 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-03-01',day:'Sat 1 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-02',day:'Sun 2 Mar', type:'key', badge:'Key Ride', title:'42 miles',                   mi:42,   elev:2000, tss:150},
+    {date:'2026-02-24',day:'Mon 24 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-25',day:'Tue 25 Feb',type:'int', badge:'Intervals',title:'8 × 4min @ 90% / 3min rest', mi:null, elev:null, tss:80},
+    {date:'2026-02-26',day:'Wed 26 Feb',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-02-27',day:'Thu 27 Feb',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2026-02-28',day:'Fri 28 Feb',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-03-01',day:'Sat 1 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-02',day:'Sun 2 Mar', type:'key', badge:'Key Ride', title:'42 miles',                   mi:42,   elev:2000, tss:150},
   ]},
   { num:5, label:'W5', mi:110, tss:220, days:[
-    {date:'2025-03-03',day:'Mon 3 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-04',day:'Tue 4 Mar', type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
-    {date:'2025-03-05',day:'Wed 5 Mar', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-03-06',day:'Thu 6 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-07',day:'Fri 7 Mar', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-03-08',day:'Sat 8 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-09',day:'Sun 9 Mar', type:'hard',badge:'Long Ride',title:'5hr Ride',                   mi:60,   elev:null, tss:195},
+    {date:'2026-03-03',day:'Mon 3 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-04',day:'Tue 4 Mar', type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2026-03-05',day:'Wed 5 Mar', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-03-06',day:'Thu 6 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-07',day:'Fri 7 Mar', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-03-08',day:'Sat 8 Mar', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-09',day:'Sun 9 Mar', type:'hard',badge:'Long Ride',title:'5hr Ride',                   mi:60,   elev:null, tss:195},
   ]},
   { num:6, label:'W6', mi:95, tss:240, days:[
-    {date:'2025-03-10',day:'Mon 10 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-11',day:'Tue 11 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
-    {date:'2025-03-12',day:'Wed 12 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-13',day:'Thu 13 Mar',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 80% effort',  mi:null, elev:null, tss:75},
-    {date:'2025-03-14',day:'Fri 14 Mar',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-03-15',day:'Sat 15 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-16',day:'Sun 16 Mar',type:'hard',badge:'Long Ride',title:'6hr Ride',                   mi:80,   elev:null, tss:245},
+    {date:'2026-03-10',day:'Mon 10 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-11',day:'Tue 11 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2026-03-12',day:'Wed 12 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-13',day:'Thu 13 Mar',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 80% effort',  mi:null, elev:null, tss:75},
+    {date:'2026-03-14',day:'Fri 14 Mar',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-03-15',day:'Sat 15 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-16',day:'Sun 16 Mar',type:'hard',badge:'Long Ride',title:'6hr Ride',                   mi:80,   elev:null, tss:245},
   ]},
   { num:7, label:'W7', mi:130, tss:265, days:[
-    {date:'2025-03-17',day:'Mon 17 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-18',day:'Tue 18 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
-    {date:'2025-03-19',day:'Wed 19 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-20',day:'Thu 20 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle Spin',     mi:null, elev:null, tss:25},
-    {date:'2025-03-21',day:'Fri 21 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
-    {date:'2025-03-22',day:'Sat 22 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-23',day:'Sun 23 Mar',type:'key', badge:'Key Ride', title:'70 miles',                   mi:70,   elev:2500, tss:220},
+    {date:'2026-03-17',day:'Mon 17 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-18',day:'Tue 18 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
+    {date:'2026-03-19',day:'Wed 19 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-20',day:'Thu 20 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle Spin',     mi:null, elev:null, tss:25},
+    {date:'2026-03-21',day:'Fri 21 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
+    {date:'2026-03-22',day:'Sat 22 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-23',day:'Sun 23 Mar',type:'key', badge:'Key Ride', title:'70 miles',                   mi:70,   elev:2500, tss:220},
   ]},
   { num:8, label:'W8', mi:175, tss:320, days:[
-    {date:'2025-03-24',day:'Mon 24 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-25',day:'Tue 25 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle Spin',     mi:15,   elev:null, tss:30},
-    {date:'2025-03-26',day:'Wed 26 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
-    {date:'2025-03-27',day:'Thu 27 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-28',day:'Fri 28 Mar',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
-    {date:'2025-03-29',day:'Sat 29 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-03-30',day:'Sun 30 Mar',type:'key', badge:'Sportive', title:'100–110 miles',              mi:105,  elev:null, tss:295},
+    {date:'2026-03-24',day:'Mon 24 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-25',day:'Tue 25 Mar',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle Spin',     mi:15,   elev:null, tss:30},
+    {date:'2026-03-26',day:'Wed 26 Mar',type:'mod', badge:'Moderate', title:'2hr Ride',                   mi:30,   elev:null, tss:70},
+    {date:'2026-03-27',day:'Thu 27 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-28',day:'Fri 28 Mar',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2026-03-29',day:'Sat 29 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-03-30',day:'Sun 30 Mar',type:'key', badge:'Sportive', title:'100–110 miles',              mi:105,  elev:null, tss:295},
   ]},
   { num:9, label:'W9', mi:110, tss:235, days:[
-    {date:'2025-03-31',day:'Mon 31 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-01',day:'Tue 1 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-02',day:'Wed 2 Apr', type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
-    {date:'2025-04-03',day:'Thu 3 Apr', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-04-04',day:'Fri 4 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-05',day:'Sat 5 Apr', type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
-    {date:'2025-04-06',day:'Sun 6 Apr', type:'hard',badge:'Long Ride',title:'5hr Ride',                   mi:60,   elev:null, tss:195},
+    {date:'2026-03-31',day:'Mon 31 Mar',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-01',day:'Tue 1 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-02',day:'Wed 2 Apr', type:'easy',badge:'Easy',     title:'1hr Ride / Turbo / Commute', mi:null, elev:null, tss:30},
+    {date:'2026-04-03',day:'Thu 3 Apr', type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-04-04',day:'Fri 4 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-05',day:'Sat 5 Apr', type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2026-04-06',day:'Sun 6 Apr', type:'hard',badge:'Long Ride',title:'5hr Ride',                   mi:60,   elev:null, tss:195},
   ]},
   { num:10, label:'W10', mi:90, tss:220, days:[
-    {date:'2025-04-07',day:'Mon 7 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-08',day:'Tue 8 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-09',day:'Wed 9 Apr', type:'int', badge:'Intervals',title:'8 × 4min @ 90% / 3min rest', mi:null, elev:null, tss:80},
-    {date:'2025-04-10',day:'Thu 10 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-11',day:'Fri 11 Apr',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
-    {date:'2025-04-12',day:'Sat 12 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-13',day:'Sun 13 Apr',type:'key', badge:'Key Ride', title:'70 miles',                   mi:70,   elev:2800, tss:220},
+    {date:'2026-04-07',day:'Mon 7 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-08',day:'Tue 8 Apr', type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-09',day:'Wed 9 Apr', type:'int', badge:'Intervals',title:'8 × 4min @ 90% / 3min rest', mi:null, elev:null, tss:80},
+    {date:'2026-04-10',day:'Thu 10 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-11',day:'Fri 11 Apr',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2026-04-12',day:'Sat 12 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-13',day:'Sun 13 Apr',type:'key', badge:'Key Ride', title:'70 miles',                   mi:70,   elev:2800, tss:220},
   ]},
   { num:11, label:'W11', mi:70, tss:160, days:[
-    {date:'2025-04-14',day:'Mon 14 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-15',day:'Tue 15 Apr',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 75% effort',  mi:null, elev:null, tss:65},
-    {date:'2025-04-16',day:'Wed 16 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-17',day:'Thu 17 Apr',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
-    {date:'2025-04-18',day:'Fri 18 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-19',day:'Sat 19 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-20',day:'Sun 20 Apr',type:'mod', badge:'Moderate', title:'4hr Ride',                   mi:50,   elev:null, tss:160},
+    {date:'2026-04-14',day:'Mon 14 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-15',day:'Tue 15 Apr',type:'int', badge:'Hill Reps',title:'1hr — Ascend @ 75% effort',  mi:null, elev:null, tss:65},
+    {date:'2026-04-16',day:'Wed 16 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-17',day:'Thu 17 Apr',type:'mod', badge:'Moderate', title:'1.5hr Ride',                 mi:20,   elev:null, tss:55},
+    {date:'2026-04-18',day:'Fri 18 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-19',day:'Sat 19 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-20',day:'Sun 20 Apr',type:'mod', badge:'Moderate', title:'4hr Ride',                   mi:50,   elev:null, tss:160},
   ]},
   { num:12, label:'W12', mi:45, tss:80, raceWeek:true, days:[
-    {date:'2025-04-21',day:'Mon 21 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-22',day:'Tue 22 Apr',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
-    {date:'2025-04-23',day:'Wed 23 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-24',day:'Thu 24 Apr',type:'easy',badge:'Easy',     title:'45min Spin / Turbo',         mi:null, elev:null, tss:20},
-    {date:'2025-04-25',day:'Fri 25 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
-    {date:'2025-04-26',day:'Sat 26 Apr',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle',          mi:15,   elev:null, tss:25},
-    {date:'2025-05-11',day:'Sun 11 May',type:'race',badge:'Race Day', title:'Fred Whitton Challenge',     mi:112,  elev:3700, tss:400},
+    {date:'2026-04-21',day:'Mon 21 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-22',day:'Tue 22 Apr',type:'easy',badge:'Easy',     title:'1hr Ride',                   mi:15,   elev:null, tss:30},
+    {date:'2026-04-23',day:'Wed 23 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-24',day:'Thu 24 Apr',type:'easy',badge:'Easy',     title:'45min Spin / Turbo',         mi:null, elev:null, tss:20},
+    {date:'2026-04-25',day:'Fri 25 Apr',type:'rest',badge:'Rest',     title:'Rest Day',                   mi:null, elev:null, tss:0},
+    {date:'2026-04-26',day:'Sat 26 Apr',type:'easy',badge:'Easy',     title:'1hr Ride / Gentle',          mi:15,   elev:null, tss:25},
+    {date:'2026-05-11',day:'Sun 11 May',type:'race',badge:'Race Day', title:'Fred Whitton Challenge',     mi:112,  elev:3700, tss:400},
   ]},
 ];
 
-const PLAN_START = new Date('2025-02-03');
-const RACE_DATE  = new Date('2025-05-11T07:00:00');
+const PLAN_START = new Date('2026-02-03');
+const RACE_DATE  = new Date('2026-05-11T07:00:00');
 const MI_TO_KM = 1.60934;
 const M_TO_FT  = 3.28084;
 
@@ -1094,15 +799,15 @@ function lsSet(k,v) { try { localStorage.setItem(k,v); } catch(e) {} }
 // ============================================================
 const ELEV_PROFILES = {
   // W4: 42mi, <2000m — local hilly loop, 2 passes
-  '2025-03-02': [[0,0.1],[0.08,0.12],[0.18,0.22],[0.28,0.52],[0.35,0.36],[0.45,0.18],[0.55,0.44],[0.62,0.30],[0.72,0.14],[0.85,0.18],[1.0,0.1]],
+  '2026-03-02': [[0,0.1],[0.08,0.12],[0.18,0.22],[0.28,0.52],[0.35,0.36],[0.45,0.18],[0.55,0.44],[0.62,0.30],[0.72,0.14],[0.85,0.18],[1.0,0.1]],
   // W7: 70mi, <2500m — 3 bigger climbs
-  '2025-03-23': [[0,0.08],[0.06,0.10],[0.15,0.18],[0.24,0.55],[0.30,0.38],[0.38,0.16],[0.46,0.12],[0.54,0.50],[0.60,0.34],[0.67,0.15],[0.74,0.42],[0.81,0.28],[0.90,0.14],[1.0,0.08]],
+  '2026-03-23': [[0,0.08],[0.06,0.10],[0.15,0.18],[0.24,0.55],[0.30,0.38],[0.38,0.16],[0.46,0.12],[0.54,0.50],[0.60,0.34],[0.67,0.15],[0.74,0.42],[0.81,0.28],[0.90,0.14],[1.0,0.08]],
   // W8: 100-110mi sportive — bigger loop
-  '2025-03-30': [[0,0.09],[0.05,0.11],[0.12,0.16],[0.20,0.48],[0.26,0.32],[0.32,0.14],[0.38,0.12],[0.43,0.75],[0.48,0.52],[0.53,0.14],[0.60,0.10],[0.66,0.46],[0.72,0.30],[0.78,0.12],[0.85,0.40],[0.92,0.22],[1.0,0.09]],
+  '2026-03-30': [[0,0.09],[0.05,0.11],[0.12,0.16],[0.20,0.48],[0.26,0.32],[0.32,0.14],[0.38,0.12],[0.43,0.75],[0.48,0.52],[0.53,0.14],[0.60,0.10],[0.66,0.46],[0.72,0.30],[0.78,0.12],[0.85,0.40],[0.92,0.22],[1.0,0.09]],
   // W10: 70mi, <2800m — peak climbing
-  '2025-04-13': [[0,0.08],[0.07,0.12],[0.14,0.20],[0.22,0.62],[0.28,0.42],[0.34,0.16],[0.41,0.14],[0.49,0.58],[0.55,0.38],[0.62,0.12],[0.70,0.50],[0.77,0.32],[0.86,0.18],[1.0,0.08]],
+  '2026-04-13': [[0,0.08],[0.07,0.12],[0.14,0.20],[0.22,0.62],[0.28,0.42],[0.34,0.16],[0.41,0.14],[0.49,0.58],[0.55,0.38],[0.62,0.12],[0.70,0.50],[0.77,0.32],[0.86,0.18],[1.0,0.08]],
   // Race: 112mi — full Fred Whitton
-  '2025-05-11': [[0,0.10],[0.05,0.12],[0.10,0.15],[0.15,0.18],[0.22,0.20],[0.25,0.44],[0.28,0.28],[0.30,0.16],[0.32,0.28],[0.36,0.82],[0.40,0.55],[0.44,0.12],[0.50,0.10],[0.58,0.13],[0.61,0.14],[0.65,0.52],[0.69,0.35],[0.73,0.12],[0.78,0.14],[0.82,0.46],[0.87,0.28],[0.92,0.18],[0.96,0.24],[1.0,0.10]],
+  '2026-05-11': [[0,0.10],[0.05,0.12],[0.10,0.15],[0.15,0.18],[0.22,0.20],[0.25,0.44],[0.28,0.28],[0.30,0.16],[0.32,0.28],[0.36,0.82],[0.40,0.55],[0.44,0.12],[0.50,0.10],[0.58,0.13],[0.61,0.14],[0.65,0.52],[0.69,0.35],[0.73,0.12],[0.78,0.14],[0.82,0.46],[0.87,0.28],[0.92,0.18],[0.96,0.24],[1.0,0.10]],
 };
 
 function buildSparkline(profile, color, w=90, h=24) {
@@ -1251,19 +956,8 @@ function renderList() {
         });
 
         const wrapper = document.createElement('div');
-        wrapper.className = 'session-wrapper';
-
-        // swipe hint element
-        const isDoneNow = lsGet('fwc-done-' + sess.date) === '1';
-        const hint = document.createElement('div');
-        hint.className = 'swipe-hint' + (isDoneNow ? ' swipe-undo' : '');
-        hint.textContent = isDoneNow ? 'UNDO' : '✓';
-        wrapper.append(hint, row, noteArea);
+        wrapper.append(row, noteArea);
         wbody.append(wrapper);
-
-        // attach swipe and mobile tap
-        initSwipe(row, sess);
-        attachMobileRowTap(row, sess);
       });
 
       wb.append(wt, wbody);
@@ -1731,227 +1425,6 @@ markTodayList();
 renderTodayBar();
 updateStats();
 setInterval(updateStats, 60000);
-
-// ============================================================
-//  MOBILE BOTTOM NAV
-// ============================================================
-function mobSwitchTab(tab) {
-  switchTab(tab);
-  document.querySelectorAll('.mob-nav-btn').forEach(b => b.classList.remove('active'));
-  const btn = document.getElementById('mob-tab-' + tab);
-  if (btn) btn.classList.add('active');
-}
-
-// ============================================================
-//  FILTER BOTTOM SHEET
-// ============================================================
-function openFilterSheet() {
-  document.getElementById('sheetOverlay').classList.add('open');
-  document.getElementById('filterSheet').classList.add('open');
-  document.getElementById('mob-tab-filter').classList.add('active');
-}
-function closeFilterSheet() {
-  document.getElementById('sheetOverlay').classList.remove('open');
-  document.getElementById('filterSheet').classList.remove('open');
-  document.getElementById('mob-tab-filter').classList.remove('active');
-}
-function sheetFilter(f) {
-  setFilter(f);
-  // sync desktop filter buttons
-  document.querySelectorAll('.f-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
-  // sync sheet buttons
-  document.querySelectorAll('.sheet-f-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === f));
-  // update filter icon indicator
-  const icon = document.getElementById('mob-filter-icon');
-  if (icon) icon.style.color = f === 'all' ? '' : 'var(--accent)';
-  closeFilterSheet();
-}
-
-// ============================================================
-//  SESSION DETAIL MODAL
-// ============================================================
-let modalDate = null;
-function openModal(sess) {
-  modalDate = sess.date;
-  const isDone = lsGet('fwc-done-' + sess.date) === '1';
-  const note   = lsGet('fwc-note-' + sess.date) || '';
-
-  document.getElementById('modal-date').textContent  = sess.day;
-  document.getElementById('modal-title').textContent = sess.title;
-
-  const badge = document.getElementById('modal-badge');
-  badge.textContent = sess.badge;
-  badge.className = 'modal-badge';
-  // apply type colour via inline style (reuse css vars)
-  const typeColors = {
-    rest:'var(--c-rest)',easy:'var(--c-easy)',mod:'var(--c-mod)',
-    hard:'var(--c-hard)',key:'var(--c-key)',int:'var(--c-int)',race:'var(--accent)'
-  };
-  const c = typeColors[sess.type] || 'var(--text-muted)';
-  badge.style.color = c;
-  badge.style.borderColor = c;
-  badge.style.background = 'transparent';
-
-  // stats
-  const statsRow = document.getElementById('modal-stats');
-  statsRow.innerHTML = '';
-  const stats = [{lbl:'TSS', val: sess.tss, unit:'training stress'}];
-  if (sess.mi) stats.push({lbl:'Distance', val: fmtDist(sess.mi), unit: useKm ? 'km':'miles'});
-  if (sess.elev) stats.push({lbl:'Elevation', val: fmtElev(sess.elev), unit: useKm ? 'm gain':'ft gain'});
-  stats.forEach(s => {
-    statsRow.innerHTML += `<div class="modal-stat">
-      <div class="modal-stat-lbl">${s.lbl}</div>
-      <div class="modal-stat-val">${s.val}</div>
-    </div>`;
-  });
-
-  // sparkline
-  const spWrap = document.getElementById('modal-sparkline-wrap');
-  const spEl = document.getElementById('modal-sparkline');
-  const profile = ELEV_PROFILES[sess.date];
-  if (profile) {
-    const col = sess.type === 'race' ? 'rgba(200,0,30,0.8)' : 'rgba(224,200,128,0.7)';
-    spEl.innerHTML = buildSparkline(profile, col, 320, 54);
-    spWrap.style.display = '';
-  } else {
-    spWrap.style.display = 'none';
-  }
-
-  // note
-  document.getElementById('modal-note').value = note;
-
-  // done button
-  const doneBtn = document.getElementById('modal-done-btn');
-  const doneIcon = document.getElementById('modal-done-icon');
-  const doneLbl  = document.getElementById('modal-done-lbl');
-  doneBtn.classList.toggle('done', isDone);
-  doneIcon.textContent = isDone ? '✓' : '○';
-  doneLbl.textContent  = isDone ? 'Completed' : 'Mark Complete';
-
-  document.getElementById('modalOverlay').classList.add('open');
-
-  // note save
-  document.getElementById('modal-note').oninput = (e) => {
-    lsSet('fwc-note-' + sess.date, e.target.value);
-    // update list note button
-    const noteBtn = document.querySelector(`.note-btn[data-date="${sess.date}"]`);
-    if (noteBtn) noteBtn.classList.toggle('has-note', !!e.target.value);
-  };
-}
-
-function closeModal() {
-  document.getElementById('modalOverlay').classList.remove('open');
-  modalDate = null;
-}
-function closeModalIfOutside(e) {
-  if (e.target === document.getElementById('modalOverlay')) closeModal();
-}
-function toggleModalDone() {
-  if (!modalDate) return;
-  const isDone = lsGet('fwc-done-' + modalDate) !== '1';
-  lsSet('fwc-done-' + modalDate, isDone ? '1' : '0');
-  const doneBtn = document.getElementById('modal-done-btn');
-  doneBtn.classList.toggle('done', isDone);
-  document.getElementById('modal-done-icon').textContent = isDone ? '✓' : '○';
-  document.getElementById('modal-done-lbl').textContent  = isDone ? 'Completed' : 'Mark Complete';
-  // update list row
-  const row = document.querySelector(`.session-row[data-date="${modalDate}"]`);
-  if (row) {
-    row.classList.toggle('done-row', isDone);
-    const cb = row.querySelector('.sess-done');
-    if (cb) cb.classList.toggle('checked', isDone);
-  }
-  renderStats();
-}
-
-// ============================================================
-//  SWIPE TO COMPLETE
-// ============================================================
-function initSwipe(row, sess) {
-  let startX = 0, startY = 0, dx = 0;
-  let swiping = false, committed = false;
-  const THRESHOLD = 72;
-
-  function getWrapper() { return row.closest('.session-wrapper') || row.parentElement; }
-
-  row.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    startY = e.touches[0].clientY;
-    dx = 0; swiping = false; committed = false;
-    row.style.transition = 'none';
-  }, {passive: true});
-
-  row.addEventListener('touchmove', e => {
-    const cx = e.touches[0].clientX, cy = e.touches[0].clientY;
-    const adx = Math.abs(cx - startX), ady = Math.abs(cy - startY);
-    if (!swiping && ady > adx) return; // vertical scroll, ignore
-    swiping = true;
-    dx = cx - startX;
-    if (dx < 0) dx = 0; // only right-to-left swipe (swipe right = complete)
-    // actually: swipe right = positive dx
-    if (dx > 0) {
-      e.preventDefault();
-      row.style.transform = `translateX(${Math.min(dx, THRESHOLD + 20)}px)`;
-      const hint = getWrapper().querySelector('.swipe-hint');
-      if (hint) hint.style.transform = `translateX(${Math.max(0, 100 - (dx/THRESHOLD)*100)}%)`;
-    }
-  }, {passive: false});
-
-  row.addEventListener('touchend', () => {
-    row.style.transition = '';
-    const isDone = lsGet('fwc-done-' + sess.date) === '1';
-    if (dx >= THRESHOLD) {
-      const newDone = !isDone;
-      lsSet('fwc-done-' + sess.date, newDone ? '1' : '0');
-      row.classList.toggle('done-row', newDone);
-      const cb = row.querySelector('.sess-done');
-      if (cb) cb.classList.toggle('checked', newDone);
-      renderStats();
-      // bounce feedback
-      row.style.transform = `translateX(${THRESHOLD + 4}px)`;
-      setTimeout(() => { row.style.transform = ''; }, 200);
-    } else {
-      row.style.transform = '';
-    }
-    const hint = getWrapper().querySelector('.swipe-hint');
-    if (hint) hint.style.transform = '';
-    dx = 0;
-  });
-}
-
-// ============================================================
-//  MOBILE: tap row to open modal (on mobile only)
-// ============================================================
-function attachMobileRowTap(row, sess) {
-  row.addEventListener('click', e => {
-    if (window.innerWidth > 700) return;
-    // don't open if tapping checkbox or note button
-    if (e.target.closest('.sess-done, .note-btn')) return;
-    openModal(sess);
-  });
-}
-
-// ============================================================
-//  SYNC MOBILE NAV with tab switches
-// ============================================================
-const _origSwitchTab = switchTab;
-// override to also sync mob nav
-function switchTab(tab) {
-  _origSwitchTab(tab);
-  document.querySelectorAll('.mob-nav-btn').forEach(b => {
-    const id = b.id.replace('mob-tab-', '');
-    b.classList.toggle('active', id === tab);
-  });
-  document.getElementById('mob-tab-filter')?.classList.remove('active');
-}
-
-// ============================================================
-//  KEYBOARD: close modal on Escape
-// ============================================================
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeModal(); closeFilterSheet(); }
-});
-
 </script>
 </body>
 </html>
