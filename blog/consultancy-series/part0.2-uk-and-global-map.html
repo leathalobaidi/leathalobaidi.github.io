@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economics consultancies · Network + Map dashboard</title>
+<meta name="author" content="Leath Al Obaidi">
+<meta name="description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. Ninety firms pinned to postcodes, wired to a single filter panel.">
+<link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/part0.2-uk-and-global-map">
+<meta property="og:title" content="Economics consultancies · Network + Map dashboard">
+<meta property="og:description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. Ninety firms pinned to postcodes, wired to a single filter panel.">
+<meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/part0.2-uk-and-global-map">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leath Al Obaidi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Economics consultancies · Network + Map dashboard">
+<meta name="twitter:description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. Ninety firms pinned to postcodes, wired to a single filter panel.">
+
+<link rel="stylesheet" href="apple-theme.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: #fff; color: #1d1d1f; line-height: 1.7; font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .container { max-width: 1260px; margin: 0 auto; padding: 40px 20px 80px; }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    gap: 36px;
+    align-items: start;
+    margin-top: 24px;
+  }
+  .main-col { min-width: 0; }
+  .side-col {
+    position: sticky; top: 20px;
+    align-self: start;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    padding-right: 4px;
+  }
+  .side-col::-webkit-scrollbar { width: 6px; }
+  .side-col::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 3px; }
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .side-col { position: relative; top: 0; max-height: none; overflow: visible; }
+  }
+
+  /* ── iPad (≤1024px) ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .container { padding: 32px 24px 60px; }
+    .chart { height: 520px; }
+    #city-map, #uk-map { height: 460px; }
+  }
+
+  /* ── iPhone (≤600px) ─────────────────────────────────── */
+  @media (max-width: 600px) {
+    body { font-size: 16px; line-height: 1.6; }
+    h1 { font-size: 24px; }
+    .subtitle { font-size: 16px; }
+    .byline { font-size: 12px; }
+    .container { padding: 24px 16px 48px; max-width: 100%; }
+    .section h2 { font-size: 20px; }
+    .section .sub { font-size: 14px; }
+    .section .note-num { font-size: 10px; }
+    .series-nav {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .series-nav a, .series-nav span { flex: 0 0 auto; }
+    .chart-box { padding: 12px; border-radius: 8px; }
+    .chart-box .title { font-size: 12px; }
+    .chart-box .meta { font-size: 9px; }
+    .chart { height: 360px; }
+    #city-map, #uk-map { height: 340px; }
+    .filter-panel { padding: 12px 14px; }
+    .filter-panel h3 { font-size: 9px; }
+    .footer { padding: 32px 16px; font-size: 10px; }
+    .data-table { font-size: 12px; }
+    .data-table th { font-size: 10px; }
+    .table-overflow { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  }
+
+  /* ── iPhone SE (≤375px) ──────────────────────────────── */
+  @media (max-width: 375px) {
+    body { font-size: 15px; }
+    h1 { font-size: 22px; }
+    .chart { height: 300px; }
+    #city-map, #uk-map { height: 280px; }
+    .data-table { font-size: 11px; }
+  }
+
+  .pub-name {
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px; color: #ff3b30; margin-bottom: 24px;
+  }
+  h1 { font-size: 32px; font-weight: 800; line-height: 1.2; margin-bottom: 10px; color: #1d1d1f; letter-spacing: -0.01em; }
+  .subtitle { font-size: 18px; color: #8e8e93; font-style: italic; margin-bottom: 24px; }
+  .byline { font-family: 'Inter', sans-serif; font-size: 13px; color: #8e8e93; margin-bottom: 40px; }
+  .byline strong { color: #1d1d1f; }
+  .section { padding: 48px 0 24px; border-top: 2px solid #1d1d1f; }
+  .section:first-of-type { border-top: none; padding-top: 0; }
+  .section .note-num {
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #ff3b30;
+    font-weight: 600; letter-spacing: 1.5px; margin-bottom: 4px; text-transform: uppercase;
+  }
+  .section h2 {
+    font-family: 'Inter', sans-serif; font-size: 24px; font-weight: 800; color: #1d1d1f;
+    margin-bottom: 6px; letter-spacing: -0.005em;
+  }
+  .section .sub { color: #8e8e93; font-style: italic; margin-bottom: 24px; font-size: 16px; }
+  p { margin-bottom: 18px; }
+  strong { font-weight: 600; }
+  a { color: #ff3b30; text-decoration: underline; text-underline-offset: 2px; }
+  .chart-box {
+    background: #f5f5f7; border: 1px solid #d2d2d7; border-radius: 10px;
+    padding: 18px; margin: 24px 0;
+  }
+  .chart-box .title {
+    font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 700; color: #1d1d1f;
+    margin-bottom: 2px;
+  }
+  .chart-box .meta {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8e8e93;
+    margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .chart { width: 100%; height: 620px; }
+  #city-map { width: 100%; height: 560px; border-radius: 8px; border: 1px solid #d2d2d7; }
+  #uk-map { width: 100%; height: 560px; border-radius: 8px; border: 1px solid #d2d2d7; }
+  .uk-map-legend {
+    background: #fff; padding: 8px 10px; border-radius: 6px;
+    border: 1px solid #d2d2d7; font: 11px Inter, system-ui, sans-serif;
+    line-height: 1.6; box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+
+  /* ---------- Filter panel (sticky sidebar) ---------- */
+  .filter-panel {
+    background: #fff; border: 1px solid #d2d2d7; border-radius: 10px;
+    padding: 16px 18px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 2px 12px rgba(29,29,31,0.04);
+  }
+  .filter-panel h3 {
+    font-size: 10px; font-weight: 700; color: #ff3b30;
+    text-transform: uppercase; letter-spacing: 1.2px; margin-bottom: 12px;
+    display: flex; justify-content: space-between; align-items: center; gap: 8px;
+  }
+  .filter-panel h3 .reset-all {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    background: #1d1d1f; color: #fff; border: none; cursor: pointer;
+    padding: 4px 8px; border-radius: 5px; letter-spacing: 0.5px;
+  }
+  .filter-panel h3 .reset-all:hover { background: #ff3b30; }
+  .filter-grid { display: flex; flex-direction: column; gap: 14px; }
+  .filter-block { min-width: 0; }
+  .filter-label {
+    font-size: 10px; font-weight: 700; color: #8e8e93;
+    text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 8px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .filter-label .val {
+    font-family: 'JetBrains Mono', monospace; color: #1d1d1f; font-size: 11px;
+  }
+  .filter-label .small-btn {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px;
+    background: none; border: none; color: #ff3b30; cursor: pointer;
+    text-transform: uppercase; letter-spacing: 0.5px; padding: 0;
+  }
+  .filter-label .small-btn:hover { color: #1d1d1f; }
+  .filter-block input[type=range] { width: 100%; accent-color: #ff3b30; cursor: pointer; }
+  .filter-block select {
+    width: 100%; font-family: 'Inter', sans-serif; font-size: 13px;
+    padding: 7px 10px; border: 1px solid #d2d2d7; border-radius: 6px;
+    background: #f5f5f7; color: #1d1d1f; cursor: pointer;
+  }
+  .filter-block select:focus { outline: none; border-color: #ff3b30; background: #fff; }
+
+  /* Tickbox pills */
+  .tickbox-list {
+    display: flex; flex-wrap: wrap; gap: 5px;
+    max-height: 260px; overflow-y: auto;
+    padding: 6px; background: #f5f5f7; border-radius: 6px;
+    border: 1px solid #d2d2d7;
+  }
+  .tickbox-list.cats { max-height: none; }
+  .tickbox-list::-webkit-scrollbar { width: 6px; }
+  .tickbox-list::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 3px; }
+  .tickbox {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; font-weight: 600;
+    padding: 5px 10px 5px 8px; border-radius: 999px;
+    cursor: pointer; user-select: none;
+    transition: transform 0.08s ease;
+    background: #fff; color: #1d1d1f;
+  }
+  .tickbox::before {
+    content: ''; display: inline-block;
+    width: 11px; height: 11px; border-radius: 3px;
+    border: 1.5px solid currentColor;
+    background: currentColor;
+    box-shadow: inset 0 0 0 1.5px #fff;
+    flex-shrink: 0;
+  }
+  .tickbox.off::before { background: transparent; box-shadow: inset 0 0 0 0 #fff; }
+  .tickbox:hover { transform: translateY(-1px); }
+  .tickbox.off { opacity: 0.45; }
+
+  /* Category pill colours */
+  .tickbox.cat-0 { color: #1d1d1f; background: #f2f2f4; }
+  .tickbox.cat-1 { color: #5856d6; background: #f0f0fa; }
+  .tickbox.cat-2 { color: #0071e3; background: #e8f3ff; }
+  .tickbox.cat-3 { color: #ff9500; background: #fff4e5; }
+  .tickbox.cat-4 { color: #ff3b30; background: #ffeae8; }
+  .tickbox.cat-5 { color: #00a693; background: #e5f7f4; }
+
+  .firm-group-header {
+    width: 100%; font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: #8e8e93; padding: 6px 4px 3px; margin-top: 4px;
+    border-top: 1px dashed #d2d2d7;
+  }
+  .firm-group-header:first-child { border-top: none; margin-top: 0; }
+
+  .filter-summary {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    color: #8e8e93; padding-top: 12px; margin-top: 4px;
+    border-top: 1px dashed #d2d2d7;
+    display: flex; flex-direction: column; gap: 6px; line-height: 1.5;
+  }
+  .filter-summary b { color: #1d1d1f; }
+
+  .callout {
+    background: #f0f9ff; border-left: 4px solid #0071e3;
+    padding: 14px 18px; margin: 22px 0; border-radius: 0 8px 8px 0;
+    font-family: 'Inter', sans-serif; font-size: 14px; color: #1e40af;
+  }
+  .callout.amber { background: #fff8eb; border-left-color: #ff9500; color: #92400e; }
+  .data-table { width: 100%; border-collapse: collapse; margin: 20px 0 28px; font-family: 'Inter', sans-serif; font-size: 13px; }
+  .data-table th { text-align: left; padding: 9px 11px; border-bottom: 2px solid #1d1d1f; font-weight: 600; color: #1d1d1f; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .data-table td { padding: 9px 11px; border-bottom: 1px solid #d2d2d7; color: #1d1d1f; }
+  .data-table .num { text-align: right; font-variant-numeric: tabular-nums; font-family: 'JetBrains Mono', monospace; }
+  .footer { font-family: 'Inter', sans-serif; font-size: 12px; color: #8e8e93; margin-top: 48px; padding-top: 24px; border-top: 1px solid #d2d2d7; }
+
+  /* Leaflet light-theme overrides */
+  .leaflet-popup-content-wrapper, .leaflet-popup-tip {
+    background: #fff; color: #1d1d1f;
+    border: 1px solid #d2d2d7; border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(29,29,31,0.08);
+  }
+  .leaflet-popup-content { margin: 10px 14px; font-size: 12px; line-height: 1.5; font-family: 'Inter', sans-serif; }
+  .leaflet-popup-content b { color: #1d1d1f; font-weight: 700; }
+  .leaflet-popup-content .tag { color: #ff3b30; font-weight: 600; font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+  .leaflet-popup-content .muted { color: #8e8e93; font-size: 11px; }
+  .leaflet-control-attribution { background: rgba(255,255,255,0.9) !important; color: #8e8e93 !important; font-size: 10px !important; }
+  .leaflet-control-attribution a { color: #ff3b30 !important; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
+
+  <div class="series-nav">
+    <a href="part0.1-visual-story.html">Visual</a>
+    <span class="current">Maps</span>
+    <a href="part1-who-was-here-in-2000.html">Part 1</a>
+    <a href="part2-founders-decade.html">Part 2</a>
+    <a href="part3-professionalisation.html">Part 3</a>
+    <a href="part4-global-arms-race.html">Part 4</a>
+    <a href="part5-profit-machine.html">Part 5</a>
+    <a href="part6-the-cma-drain.html">Part 6</a>
+    <a href="part7-the-people-network.html">Part 7</a>
+    <a href="methodology-claude-code.html">Methodology</a>
+  </div>
+
+  <h1>Where the economists actually are</h1>
+  <p class="subtitle">Begin in Britain; then step back for the world. Three interactive maps and one force-directed graph, ninety firms in total, wired to a single filter panel.</p>
+  <p class="byline"><strong>Interactive dashboard</strong> &middot; UK registered-office map (90 firms) &middot; global office overlap network &amp; world map (45 firms) &middot; source: Companies House filings + each firm's published office list, Jan 2026</p>
+
+  <div class="layout">
+  <div class="main-col">
+
+  <!-- ========================================================== -->
+  <!-- SECTION 0 · UK map (NOTE I from the data-notes)             -->
+  <!-- ========================================================== -->
+  <section class="section" id="note-uk">
+    <div class="note-num">NOTE I · UK MAP</div>
+    <h2>The UK map: where the firms actually are</h2>
+    <p class="sub">Every registered office address from the 90-firm UK dataset, pinned to an interactive UK map. Fifty-five firms in London, twenty-five elsewhere in the UK, ten without a separately filed registered-office address.</p>
+
+    <p>Most of the industry sits in London, but not all of it. Plot every firm's registered office and two things come into focus at once: the tight London clusters that form the core of the market, and a thinner scattering of firms working out of Oxford, Cambridge, Edinburgh, and a handful of regional towns. The London map is not one cluster but four, and the four clusters do not overlap so much as they face different clients through different doors; each postcode has its own logic. The logic is always geographical. Walk the streets and you can read the business model from the building.</p>
+
+    <div class="chart-box">
+      <div class="title">UK registered office addresses</div>
+      <div class="meta">source: Companies House &middot; address filings &middot; 90-firm UK dataset</div>
+      <div id="uk-map"></div>
+    </div>
+
+    <p><strong>Cluster 1: the Square Mile (EC2, EC3, EC4).</strong> Here live the litigation and disputes firms, a trove of expert-witness outfits packed into a few square blocks. FTI Consulting sits on Aldersgate Street. A&amp;M Europe, A&amp;M Tax and A&amp;M Disputes share 30 Old Bailey. Brattle Group occupies 100 Wood Street; CRA International, 8 Finsbury Circus; NERA, the St Botolph Building on Houndsditch; BRG UK, 8 Salisbury Square. All of it fits inside a ten-minute walk, and all of it orbits the Royal Courts of Justice and the Commercial Court. If your business is expert-witness testimony, you want to be a short cab ride from the bench &mdash; and nowhere on this map is the gravity quite so dense.</p>
+
+    <p><strong>Cluster 2: Bloomsbury, Holborn and Fitzrovia.</strong> These are the competition and strategy boutiques. RBB Economics keeps its rooms at 199 Bishopsgate; Frontier Economics is on Clifton Street; Keystone anchors itself near Holborn. The cluster sits closer to UCL, LSE and SOAS &mdash; the academic reservoirs the firms draw on &mdash; and closer to Chancery Lane, the long spine of Magic Circle solicitors. If you are a competition economist giving evidence to the CMA one morning and briefing a Linklaters partner on a merger case the next, Bloomsbury is the logical postcode.</p>
+
+    <p><strong>Cluster 3: Victoria and Westminster (SW1).</strong> The policy shops and the political advisers, who want to be within sight of Whitehall because their clients are government departments. Baringa Partners occupies 62 Buckingham Gate; Capital Economics sits at 100 Victoria Street; Independent Economics takes 15 Whitehall itself. For Flint Global, being a three-minute walk from HM Treasury is not decorative; it is the product.</p>
+
+    <p><strong>Cluster 4: the West End (W1).</strong> The macro research houses. Macro Advisory Partners at 4 Albemarle Street. The cluster is small but the addresses are deliberate: Mayfair is where the hedge funds and asset managers keep their desks, and the macro firms want to be within easy reach of the subscribers who pay them.</p>
+
+    <p><strong>Outside London, twenty-five firms across the country.</strong> The biggest names sit in Oxford. <strong>Oxera Consulting LLP</strong> keeps its registered office at Park Central on Park End Street, a two-minute walk from Oxford railway station; <strong>Oxford Economics Ltd</strong> sits on St Aldates; <strong>AFRY Management Consulting</strong>, the Swedish-owned energy-regulation practice, is registered a few doors down; <strong>SQW Ltd</strong>, the innovation-policy consultancy, works out of the Oxford Centre for Innovation on Alfred Street. Four of the twenty-seven non-London firms share the same Oxford cluster. It is the one corner of the UK where an economics-consulting agglomeration has actually taken hold outside the capital.</p>
+
+    <p>Cambridge has one: <strong>Cambridge Econometrics Ltd</strong> on Covent Garden &mdash; the Cambridge street, not the London one. Edinburgh has <strong>BiGGAR Economics Ltd</strong> on Shandwick Place; Glasgow has <strong>EKOS Consulting (UK) Ltd</strong>; Newcastle has <strong>Pantheon Macroeconomics Ltd</strong>; Liverpool has <strong>AMION Consulting Ltd</strong>; Birmingham has <strong>Warwick Economics &amp; Development</strong>; Leeds has <strong>York Aviation LLP</strong>. The rest are scattered across residential addresses in Kent, Surrey, Greater Manchester, Nottingham, Newbury and Harrogate &mdash; one- and two-person boutiques for which the registered office is simply the founder's front room.</p>
+
+    <div class="callout amber">
+      <strong>Ten firms sit in the dataset but never appear on the UK map.</strong> Five are Big Four or mid-tier economics practices (Deloitte, PwC, BDO, Grant Thornton, RSM) that do not file separately from their parents. Three are non-UK-incorporated or embedded: E.CA in Berlin; Fraser of Allander tucked inside Strathclyde; Skylark Consulting Group below the filing threshold. NEF Consulting and PA Consulting's economics practice round out the ten: both are absorbed into larger group accounts. These firms surface on the <em>global</em> views further down the page &mdash; just not on this registered-office map.
+    </div>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- SECTION 1 · Force-directed network                          -->
+  <!-- ========================================================== -->
+  <section class="section" id="note-network">
+    <div class="note-num">VIEW 2 · OFFICE OVERLAP NETWORK · GLOBAL</div>
+    <h2>Now go global: which firms share a city with whom</h2>
+    <p class="sub">Leaving the UK-only view behind: a force-directed graph of the 45 firms with a credible international footprint. An edge appears when two firms operate from at least N of the same cities worldwide &mdash; N set by the slider in the sidebar.</p>
+
+    <p>The officer graph in NOTE H was organised around <strong>people flow</strong>: who has shared a director or LLP member with whom. Compass Lexecon sat in the middle of that picture because, over two decades, it has exported and imported staff across the rest of the cluster. This note swaps the edge definition. Here a line exists whenever two firms keep <strong>offices in at least three of the same cities</strong> &mdash; it is a map of where the firms physically overlap, not who they share.</p>
+
+    <p>The hub changes. The firms with the most physical overlap turn out to be the ones that run the largest office footprints; <strong>Alvarez &amp; Marsal</strong>, <strong>Ankura</strong>, <strong>Compass Lexecon</strong>, <strong>Oxford Economics</strong> and the <strong>Big 4 economics practices</strong> all gravitate to the middle. The small boutiques &mdash; DotEcon, Europe Economics, Credo, WIK-Consult, Bates White, Cebr, Fathom &mdash; orbit the rim with one or two edges each, sometimes none at all.</p>
+
+    <div class="chart-box">
+      <div class="title">Firm &times; firm office-overlap network</div>
+      <div class="meta">edge thickness = number of shared cities &middot; node size = total offices &middot; source: 45-firm office directory</div>
+      <div class="chart" id="chart-network"></div>
+    </div>
+
+    <div class="callout amber">
+      <strong>London-only firms.</strong> DotEcon, Europe Economics, Credo, Cebr, Fathom Financial Consulting and Macro Hive all appear to keep no office outside London &mdash; six single-city boutiques with a London-only footprint. Bates White (Washington DC only) and WIK-Consult (Bad Honnef only) are isolated for the same structural reason, from different cities.
+    </div>
+
+    <div class="table-overflow">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Rank</th><th>Firm</th><th class="num">Offices</th><th class="num">Edges</th><th class="num">Max overlap</th>
+        </tr>
+      </thead>
+      <tbody id="rankTable"></tbody>
+    </table>
+    </div>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- SECTION 2 · City map                                        -->
+  <!-- ========================================================== -->
+  <section class="section" id="note-map">
+    <div class="note-num">VIEW 3 · WORLD MAP</div>
+    <h2>Where the global firms actually are</h2>
+    <p class="sub">The same 45 firms from the network above, now pinned to a world map. Dot size = number of firms present in the city. Curves = HQ&rarr;office corridors, thicker when multiple firms share the same route.</p>
+
+    <p>The network graph shows structural overlap; the map below shows geography. Taken together they settle a question the chord diagram in Part 7 could not quite answer: <strong>is the overlap real, or is it just London?</strong> Filter by a single category or a single firm, and watch the dots redistribute across the map in real time.</p>
+
+    <div class="chart-box">
+      <div class="title">Global office footprint</div>
+      <div class="meta">source: carto basemap &middot; 45-firm office directory &middot; dashed arcs &amp; hollow dots = reach via parent network (EIU through The Economist Group)</div>
+      <div id="city-map"></div>
+    </div>
+
+    <p>The dashed lines and hollow dots on the map pick out one particular structural wrinkle. <strong>The Economist Intelligence Unit operates four branded offices of its own</strong> &mdash; London, New York, Hong Kong, Dubai &mdash; but <strong>services clients from a further twelve cities through the broader Economist Group network</strong>: Washington DC, Chicago, Los Angeles, Brussels, Frankfurt, Geneva, Paris, Johannesburg, Singapore, Tokyo, Shanghai, Mumbai. The network graph treats all sixteen cities as real presence for edge-counting, because that is how EIU sells reach to its clients; the map, more fastidious, distinguishes them so the reader can see at a glance which cities have an actual EIU desk and which are merely access through a parent.</p>
+  </section>
+
+  <div class="footer">
+    <p><strong>Methodology.</strong> Each firm's office list was taken from its official website in January 2026 (or Wikipedia where the site returned 404s). Single-city firms (London-only, DC-only, etc.) are included as isolated nodes on the network. The threshold of three shared cities filters out the London-only background noise on the network view. The map view is not threshold-dependent. Both views share a single filter panel and update in lock-step. <em>Macro / forecasting</em> category added Jan 2026: Oxford Economics, Capital Economics, EIU, Cebr, Fathom, Macro Advisory Partners, Macro Hive, Continuum Economics.</p>
+    <p style="margin-top:16px;padding-top:16px;border-top:1px solid #d2d2d7;"><strong>Leath Al Obaidi</strong> &mdash; independent research on the UK economics consultancy industry.</p>
+    <p style="font-size:12px;opacity:.75;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> &mdash; you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. Underlying Companies House data is &copy; Crown copyright, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3.0/">Open Government Licence v3.0</a>.</p>
+    <p style="font-size:12px;opacity:.75;">Cite as: Al Obaidi, L. (2026). <em>UK Economics Consultancy: A Historical Series</em>. leathalobaidi.com</p>
+    <p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. The author holds no financial position in any firm discussed. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
+  </div>
+
+  </div><!-- /main-col -->
+
+  <aside class="side-col">
+    <div class="filter-panel">
+      <h3>
+        <span>Filters</span>
+        <button class="reset-all" id="resetAll">Reset all</button>
+      </h3>
+      <div class="filter-grid">
+
+        <div class="filter-block">
+          <div class="filter-label">
+            <span>Min shared cities <span style="color:#c7c7cc">· network</span></span>
+            <span class="val" id="thresholdVal">3</span>
+          </div>
+          <input type="range" id="thresholdSlider" min="1" max="6" value="3" step="1">
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-label">
+            <span>Filter by city</span>
+            <button class="small-btn" id="cityReset">clear</button>
+          </div>
+          <select id="citySelect">
+            <option value="__all__">All cities</option>
+          </select>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-label">
+            <span>Categories</span>
+            <button class="small-btn" id="catReset">toggle all</button>
+          </div>
+          <div class="tickbox-list cats" id="catPills">
+            <div class="tickbox cat-0" data-cat="0">Litigation / disputes</div>
+            <div class="tickbox cat-1" data-cat="1">Comp + Lit overlap</div>
+            <div class="tickbox cat-2" data-cat="2">Competition boutiques</div>
+            <div class="tickbox cat-3" data-cat="3">Policy / think tanks</div>
+            <div class="tickbox cat-4" data-cat="4">Big 4 / broad</div>
+            <div class="tickbox cat-5" data-cat="5">Macro / forecasting</div>
+          </div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-label">
+            <span>Firms <span style="color:#c7c7cc">· untick to hide</span></span>
+            <button class="small-btn" id="firmReset">select all</button>
+          </div>
+          <div class="tickbox-list" id="firmPills"></div>
+        </div>
+
+        <div class="filter-summary">
+          <span id="summaryLeft">—</span>
+          <span id="summaryRight">—</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  </div><!-- /layout -->
+</div><!-- /container -->
+
+<script>
+// ============================================================================
+// Firm dataset (45 firms · macro category added)
+// ============================================================================
+const FIRMS = [
+  // ---- Competition / antitrust boutiques (cat 2) ----
+  { name:'RBB Economics', cat:2, hq:'London', offices:['Amsterdam','Berlin','Brussels','Copenhagen','Düsseldorf','Helsinki','London','Madrid','Milan','Oslo','Paris','Stockholm','Melbourne','Sydney','Singapore','Santiago','Johannesburg'] },
+  { name:'Frontier Economics', cat:2, hq:'London', offices:['London','Amsterdam','Berlin','Brussels','Cologne','Dublin','Madrid','Paris','Prague'] },
+  { name:'DotEcon', cat:2, hq:'London', offices:['London'] },
+  { name:'Oxera', cat:2, hq:'Oxford', offices:['Oxford','London','Brussels','Paris','Berlin','Amsterdam','Madrid','Milan'] },
+  { name:'Copenhagen Economics', cat:2, hq:'Copenhagen', offices:['Copenhagen','Stockholm','Helsinki','Brussels'] },
+  { name:'Lear', cat:2, hq:'Rome', offices:['Rome','London'] },
+  { name:'E.CA Economics', cat:2, hq:'Berlin', offices:['Berlin','Munich','Brussels','London'] },
+  { name:'CEPA', cat:2, hq:'London', offices:['London','Sydney'] },
+  { name:'Europe Economics', cat:2, hq:'London', offices:['London'] },
+  { name:'WIK-Consult', cat:2, hq:'Bad Honnef', offices:['Bad Honnef'] },
+  { name:'Credo', cat:2, hq:'London', offices:['London'] },
+
+  // ---- Litigation / disputes (cat 0) ----
+  { name:'Compass Lexecon', cat:0, hq:'London', offices:['London','Madrid','Paris','Düsseldorf','Brussels','Chicago','New York','Washington DC','Houston','Los Angeles','Oakland','Miami','Boston','Buenos Aires','Santiago','Singapore','Beijing','Shanghai','Hong Kong'] },
+  { name:'FTI Consulting', cat:0, hq:'Washington DC', offices:['Washington DC','New York','London','Dubai','São Paulo','Toronto','Beijing','Shanghai','Mumbai','Singapore','Tokyo','Hong Kong','Milan','Sydney','Mexico City'] },
+  { name:'BRG', cat:0, hq:'Emeryville', offices:['Emeryville','New York','Washington DC','Chicago','Boston','Los Angeles','Dallas','London','Sydney','Singapore','Hong Kong','Dubai','Toronto'] },
+  { name:'Ankura', cat:0, hq:'Washington DC', offices:['Washington DC','Ann Arbor','Atlanta','Boston','Chicago','Dallas','Fairfield','Houston','Irvine','Los Angeles','Miami','Nashville','New York','Philadelphia','Phoenix','San Francisco','San Juan','Seattle','Tampa','Toronto','Vancouver','Monterrey','Brussels','Dubai','Dublin','Frankfurt','London','Riyadh','Beijing','Brisbane','Gurugram','Hong Kong','Melbourne','Mumbai','Perth','Shanghai','Singapore','Sydney'] },
+  { name:'Secretariat', cat:0, hq:'Atlanta', offices:['Atlanta','Washington DC','New York','Chicago','Dallas','San Francisco','Tallahassee','London','Dubai','Singapore','Hong Kong','Sydney','Melbourne'] },
+  { name:'Alvarez & Marsal', cat:0, hq:'New York', offices:['New York','Atlanta','Boston','Charlotte','Chicago','Dallas','Denver','Houston','Los Angeles','Miami','Nashville','London','Birmingham','Manchester','Leeds','Glasgow','Stockholm','Dubai','Riyadh','Doha','Singapore','Tokyo','Osaka','Hong Kong','Beijing','Kuala Lumpur','Jakarta','Mumbai','Sydney','Melbourne','Perth','Toronto'] },
+
+  // ---- Comp + Litigation overlap (cat 1) ----
+  { name:'CRA', cat:1, hq:'Boston', offices:['Boston','New York','Washington DC','Chicago','Los Angeles','San Francisco','Dallas','Houston','Toronto','London','Brussels','Paris','Munich','Madrid','Milan','Dubai','Singapore','Auckland','Wellington','São Paulo'] },
+  { name:'NERA', cat:1, hq:'New York', offices:['New York','Boston','Chicago','Houston','Los Angeles','Mexico City','Miami','Philadelphia','San Francisco','Toronto','Washington DC','White Plains','Berlin','Frankfurt','Geneva','London','Madrid','Milan','Paris','Auckland','Tokyo','Wellington'] },
+  { name:'Analysis Group', cat:1, hq:'Boston', offices:['Boston','New York','Chicago','San Francisco','Washington DC','Dallas','Los Angeles','Denver','Menlo Park','Montreal','London','Paris','Beijing'] },
+  { name:'Cornerstone Research', cat:1, hq:'Boston', offices:['Boston','Chicago','Los Angeles','New York','San Francisco','Menlo Park','Washington DC','London','Brussels'] },
+  { name:'Brattle Group', cat:1, hq:'Boston', offices:['Boston','Chicago','New York','San Francisco','Toronto','Washington DC','London','Brussels','Madrid','Rome','Paris','Sydney'] },
+  { name:'Bates White', cat:1, hq:'Washington DC', offices:['Washington DC'] },
+  { name:'Keystone Strategy', cat:1, hq:'Boston', offices:['Boston','New York','San Francisco','Seattle','London','Dubai'] },
+
+  // ---- Policy / think tanks (cat 3) ----
+  { name:'RAND Europe', cat:3, hq:'Cambridge', offices:['Cambridge','Brussels'] },
+  { name:'Vivid Economics', cat:3, hq:'London', offices:['London','Amsterdam','New York'] },
+  { name:'Cambridge Econometrics', cat:3, hq:'Cambridge', offices:['Cambridge','Northampton MA','Brussels','Budapest'] },
+  { name:'ICF', cat:3, hq:'Reston', offices:['Reston','Washington DC','Seattle','London','Brussels','Madrid','Mumbai','Toronto'] },
+  { name:'Kantar Public', cat:3, hq:'London', offices:['London','New York','Paris','Madrid','Milan','Frankfurt','Mumbai','Shanghai','São Paulo','Dublin'] },
+  { name:'ODI Global', cat:3, hq:'London', offices:['London','Brussels','Washington DC'] },
+
+  // ---- Big 4 / broad (cat 4) ----
+  { name:'Deloitte Economic Advisory', cat:4, hq:'New York', offices:['New York','London','Washington DC','Sydney','Frankfurt','Toronto','Dubai','Singapore','Tokyo','São Paulo','Johannesburg','Mumbai'] },
+  { name:'PwC Economics', cat:4, hq:'London', offices:['London','New York','Washington DC','Frankfurt','Paris','Sydney','Singapore','Hong Kong','São Paulo','Dubai','Tokyo','Mumbai'] },
+  { name:'EY-Parthenon', cat:4, hq:'London', offices:['London','New York','Boston','Munich','Paris','Dubai','Singapore','Hong Kong','Mumbai','Sydney','Tokyo','Frankfurt','São Paulo'] },
+  { name:'KPMG Economics', cat:4, hq:'Amsterdam', offices:['Amsterdam','London','New York','Frankfurt','Paris','Sydney','Singapore','Hong Kong','Tokyo','Mumbai','São Paulo','Toronto'] },
+  // McKinsey removed from tracked firms — not a core economics consultancy.
+  // McKinsey appears in the series narrative as the acquirer of Vivid Economics (March 2021) only.
+  { name:'AlixPartners', cat:4, hq:'New York', offices:['New York','Chicago','Dallas','Los Angeles','San Francisco','Washington DC','London','Paris','Munich','Frankfurt','Milan','Madrid','Düsseldorf','Dubai','Shanghai','Hong Kong','Tokyo','Singapore'] },
+  { name:'Edgeworth Economics', cat:4, hq:'Washington DC', offices:['Washington DC','New York','San Francisco'] },
+  { name:'Castalia', cat:4, hq:'Washington DC', offices:['Washington DC','Sydney','Auckland','Wellington','Paris','Bogotá'] },
+
+  // ---- Macro / forecasting (cat 5) · NEW ----
+  // ---- Verified Jan 2026 from each firm's website / contact page ----
+  { name:'Oxford Economics', cat:5, hq:'Oxford', offices:['Oxford','London','Belfast','Paris','Milan','Frankfurt','Dublin','New York','Chicago','Philadelphia','Toronto','Mexico City','Cape Town','Dubai','Hong Kong','Tokyo','Singapore','Sydney'] },
+  { name:'Capital Economics', cat:5, hq:'London', offices:['London','Toronto','Singapore'] },
+  { name:'Economist Intelligence Unit', cat:5, hq:'London',
+    offices:['London','New York','Hong Kong','Dubai',
+             'Washington DC','Chicago','Los Angeles','Brussels','Frankfurt','Geneva','Paris','Johannesburg','Singapore','Tokyo','Shanghai','Mumbai'],
+    extendedSet: new Set(['Washington DC','Chicago','Los Angeles','Brussels','Frankfurt','Geneva','Paris','Johannesburg','Singapore','Tokyo','Shanghai','Mumbai']) },
+  { name:'Cebr', cat:5, hq:'London', offices:['London'] },
+  { name:'Fathom Financial Consulting', cat:5, hq:'London', offices:['London','New York'] },
+  { name:'Macro Advisory Partners', cat:5, hq:'London', offices:['London','New York','Copenhagen'] },
+  { name:'Macro Hive', cat:5, hq:'London', offices:['London'] },
+  { name:'Continuum Economics', cat:5, hq:'London', offices:['London','Princeton','Singapore'] }
+];
+
+const CAT_NAMES = ['Litigation / disputes','Comp + Lit overlap','Competition boutiques','Policy / think tanks','Big 4 / broad','Macro / forecasting'];
+const CAT_COLORS = ['#1d1d1f','#5856d6','#0071e3','#ff9500','#ff3b30','#00a693'];
+const NUM_CATS = CAT_COLORS.length;
+
+// ============================================================================
+// City coordinates
+// ============================================================================
+const CITIES = {
+  'London':[51.5074,-0.1278],'Oxford':[51.7520,-1.2577],'Cambridge':[52.2053,0.1218],
+  'Birmingham':[52.4862,-1.8904],'Manchester':[53.4808,-2.2426],'Leeds':[53.8008,-1.5491],'Glasgow':[55.8642,-4.2518],
+  'Belfast':[54.5973,-5.9301],
+  'Brussels':[50.8503,4.3517],'Paris':[48.8566,2.3522],'Berlin':[52.5200,13.4050],'Munich':[48.1351,11.5820],
+  'Frankfurt':[50.1109,8.6821],'Düsseldorf':[51.2277,6.7735],'Cologne':[50.9375,6.9603],'Bad Honnef':[50.6447,7.2272],
+  'Amsterdam':[52.3676,4.9041],'Madrid':[40.4168,-3.7038],'Milan':[45.4642,9.1900],'Rome':[41.9028,12.4964],
+  'Copenhagen':[55.6761,12.5683],'Stockholm':[59.3293,18.0686],'Oslo':[59.9139,10.7522],'Helsinki':[60.1699,24.9384],
+  'Geneva':[46.2044,6.1432],'Zurich':[47.3769,8.5417],'Dublin':[53.3498,-6.2603],'Prague':[50.0755,14.4378],'Budapest':[47.4979,19.0402],
+  'New York':[40.7128,-74.0060],'Washington DC':[38.9072,-77.0369],'Boston':[42.3601,-71.0589],'Chicago':[41.8781,-87.6298],
+  'San Francisco':[37.7749,-122.4194],'Los Angeles':[34.0522,-118.2437],'Dallas':[32.7767,-96.7970],'Houston':[29.7604,-95.3698],
+  'Miami':[25.7617,-80.1918],'Atlanta':[33.7490,-84.3880],'Philadelphia':[39.9526,-75.1652],'Seattle':[47.6062,-122.3321],
+  'Denver':[39.7392,-104.9903],'Nashville':[36.1627,-86.7816],'Charlotte':[35.2271,-80.8431],'Phoenix':[33.4484,-112.0740],
+  'Tampa':[27.9506,-82.4572],'Irvine':[33.6846,-117.8265],'Oakland':[37.8044,-122.2711],'Menlo Park':[37.4530,-122.1817],
+  'White Plains':[41.0340,-73.7629],'Ann Arbor':[42.2808,-83.7430],'Fairfield':[41.1408,-73.2613],'Emeryville':[37.8313,-122.2852],
+  'Reston':[38.9586,-77.3570],'Northampton MA':[42.3251,-72.6412],'Tallahassee':[30.4383,-84.2807],'San Juan':[18.4655,-66.1057],
+  'Toronto':[43.6532,-79.3832],'Vancouver':[49.2827,-123.1207],'Montreal':[45.5017,-73.5673],
+  'Mexico City':[19.4326,-99.1332],'Monterrey':[25.6866,-100.3161],
+  'Buenos Aires':[-34.6037,-58.3816],'Santiago':[-33.4489,-70.6693],'São Paulo':[-23.5505,-46.6333],'Bogotá':[4.7110,-74.0721],
+  'Princeton':[40.3573,-74.6672],
+  'Dubai':[25.2048,55.2708],'Riyadh':[24.7136,46.6753],'Doha':[25.2854,51.5310],'Johannesburg':[-26.2041,28.0473],'Cape Town':[-33.9249,18.4241],
+  'Singapore':[1.3521,103.8198],'Hong Kong':[22.3193,114.1694],'Beijing':[39.9042,116.4074],'Shanghai':[31.2304,121.4737],
+  'Tokyo':[35.6762,139.6503],'Osaka':[34.6937,135.5023],'Seoul':[37.5665,126.9780],
+  'Mumbai':[19.0760,72.8777],'Gurugram':[28.4595,77.0266],'Hyderabad':[17.3850,78.4867],
+  'Jakarta':[-6.2088,106.8456],'Kuala Lumpur':[3.1390,101.6869],
+  'Sydney':[-33.8688,151.2093],'Melbourne':[-37.8136,144.9631],'Brisbane':[-27.4698,153.0251],'Perth':[-31.9505,115.8605],
+  'Auckland':[-36.8485,174.7633],'Wellington':[-41.2865,174.7762]
+};
+
+// ============================================================================
+// Pre-compute pairwise overlaps
+// ============================================================================
+const PAIRS = [];
+for (let i = 0; i < FIRMS.length; i++) {
+  for (let j = i + 1; j < FIRMS.length; j++) {
+    const a = FIRMS[i], b = FIRMS[j];
+    const setB = new Set(b.offices);
+    let shared = 0;
+    a.offices.forEach(c => { if (setB.has(c)) shared++; });
+    if (shared > 0) PAIRS.push({ a: a.name, b: b.name, shared });
+  }
+}
+
+// ============================================================================
+// Filter state
+// ============================================================================
+const state = {
+  threshold: 3,
+  city: '__all__',
+  cats: new Set([0,1,2,3,4,5]),
+  firms: new Set(FIRMS.map(f => f.name))
+};
+
+// ============================================================================
+// Build individual firm tickboxes (grouped by category)
+// ============================================================================
+const firmPills = document.getElementById('firmPills');
+for (let cat = 0; cat < NUM_CATS; cat++) {
+  const firmsInCat = FIRMS.filter(f => f.cat === cat);
+  if (!firmsInCat.length) continue;
+  const header = document.createElement('div');
+  header.className = 'firm-group-header';
+  header.textContent = CAT_NAMES[cat];
+  firmPills.appendChild(header);
+  firmsInCat.forEach(f => {
+    const pill = document.createElement('div');
+    pill.className = `tickbox cat-${cat}`;
+    pill.dataset.firm = f.name;
+    pill.textContent = f.name;
+    pill.addEventListener('click', () => {
+      if (state.firms.has(f.name)) {
+        state.firms.delete(f.name);
+        pill.classList.add('off');
+      } else {
+        state.firms.add(f.name);
+        pill.classList.remove('off');
+      }
+      render();
+    });
+    firmPills.appendChild(pill);
+  });
+}
+
+// ============================================================================
+// Populate city dropdown
+// ============================================================================
+const allCities = new Set();
+FIRMS.forEach(f => f.offices.forEach(c => allCities.add(c)));
+const citySelect = document.getElementById('citySelect');
+Array.from(allCities).sort().forEach(city => {
+  const o = document.createElement('option');
+  o.value = city; o.textContent = city;
+  citySelect.appendChild(o);
+});
+
+function visibleFirms() {
+  return FIRMS.filter(f => {
+    if (!state.firms.has(f.name)) return false;
+    if (!state.cats.has(f.cat)) return false;
+    if (state.city !== '__all__' && !f.offices.includes(state.city)) return false;
+    return true;
+  });
+}
+
+// ============================================================================
+// Network chart
+// ============================================================================
+const netChart = echarts.init(document.getElementById('chart-network'));
+netChart.setOption({
+  backgroundColor: '#f5f5f7',
+  tooltip: {
+    backgroundColor: '#fff', borderColor: '#d2d2d7', borderWidth: 1,
+    textStyle: { color: '#1d1d1f', fontSize: 12, fontFamily: 'Inter' },
+    formatter: p => {
+      if (p.dataType === 'node') {
+        return `<b>${p.data.name}</b><br/>${p.data.offices} offices<br/>${p.data.edges} graph edges`;
+      } else {
+        return `<b>${p.data.source}</b> ↔ <b>${p.data.target}</b><br/>${p.data.value} shared cities`;
+      }
+    }
+  },
+  legend: {
+    data: CAT_NAMES,
+    top: 6, textStyle: { color: '#1d1d1f', fontSize: 11, fontFamily: 'Inter' },
+    itemWidth: 12, itemHeight: 10
+  },
+  series: [{
+    type: 'graph',
+    layout: 'force',
+    force: { repulsion: 320, edgeLength: [60, 160], gravity: 0.1, friction: 0.15 },
+    categories: CAT_NAMES.map((n, i) => ({ name: n, itemStyle: { color: CAT_COLORS[i] } })),
+    roam: true,
+    draggable: true,
+    label: { show: true, position: 'right', fontSize: 10, fontWeight: 600, color: '#1d1d1f', fontFamily: 'Inter' },
+    lineStyle: { opacity: 0.55, curveness: 0.12 },
+    emphasis: { focus: 'adjacency', lineStyle: { width: 5 }, label: { fontSize: 12 } }
+  }]
+});
+function applyMobileOverrides() {
+  const w = window.innerWidth;
+  if (w > 600) return;
+  netChart.setOption({
+    legend: { textStyle: { fontSize: 9 }, itemWidth: 8, itemHeight: 6, itemGap: 6 },
+    series: [{
+      label: { fontSize: 8 },
+      force: { repulsion: 180, edgeLength: [30, 90] }
+    }]
+  });
+  netChart.resize();
+}
+window.addEventListener('resize', () => { netChart.resize(); applyMobileOverrides(); });
+document.addEventListener('DOMContentLoaded', () => { applyMobileOverrides(); });
+
+// ============================================================================
+// Leaflet map
+// ============================================================================
+const map = L.map('city-map', { center: [30, 5], zoom: 2, worldCopyJump: true, scrollWheelZoom: true });
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
+  attribution: '© OpenStreetMap · CARTO', subdomains: 'abcd', maxZoom: 10
+}).addTo(map);
+L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
+  subdomains: 'abcd', maxZoom: 10, pane: 'shadowPane'
+}).addTo(map);
+
+const arcLayer = L.layerGroup().addTo(map);
+const dotLayer = L.layerGroup().addTo(map);
+
+function curvedLine(a, b, n = 40) {
+  const [lat1, lon1] = a, [lat2, lon2] = b;
+  const midLat = (lat1 + lat2) / 2, midLon = (lon1 + lon2) / 2;
+  const dx = lon2 - lon1, dy = lat2 - lat1;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  const offset = dist * 0.22;
+  const ctrlLat = midLat + offset * Math.sign(midLat || 1);
+  const ctrlLon = midLon;
+  const pts = [];
+  for (let i = 0; i <= n; i++) {
+    const t = i / n;
+    const lat = (1-t)*(1-t)*lat1 + 2*(1-t)*t*ctrlLat + t*t*lat2;
+    const lon = (1-t)*(1-t)*lon1 + 2*(1-t)*t*ctrlLon + t*t*lon2;
+    pts.push([lat, lon]);
+  }
+  return pts;
+}
+
+// ============================================================================
+// Render
+// ============================================================================
+const tbody = document.getElementById('rankTable');
+const sumLeft = document.getElementById('summaryLeft');
+const sumRight = document.getElementById('summaryRight');
+
+function render() {
+  const active = visibleFirms();
+  const activeNames = new Set(active.map(f => f.name));
+
+  const visiblePairs = PAIRS.filter(p =>
+    p.shared >= state.threshold && activeNames.has(p.a) && activeNames.has(p.b)
+  );
+  const overlap = new Map();
+  active.forEach(f => overlap.set(f.name, { edges: 0, maxOverlap: 0 }));
+  visiblePairs.forEach(p => {
+    const oa = overlap.get(p.a), ob = overlap.get(p.b);
+    oa.edges++; ob.edges++;
+    if (p.shared > oa.maxOverlap) oa.maxOverlap = p.shared;
+    if (p.shared > ob.maxOverlap) ob.maxOverlap = p.shared;
+  });
+  const netLinks = visiblePairs.map(p => {
+    const w = Math.min(8, 0.8 + p.shared * 0.35);
+    const color = p.shared >= 8 ? '#ff3b30' : p.shared >= 5 ? '#0071e3' : '#8e8e93';
+    return { source: p.a, target: p.b, value: p.shared, lineStyle: { color, width: w, opacity: 0.55 } };
+  });
+  const netNodes = active.map(f => ({
+    name: f.name,
+    symbolSize: 12 + Math.sqrt(f.offices.length) * 5.5,
+    category: f.cat,
+    value: f.offices.length,
+    offices: f.offices.length,
+    edges: overlap.get(f.name).edges
+  }));
+  netChart.setOption({ series: [{ data: netNodes, links: netLinks }] });
+
+  // Map
+  arcLayer.clearLayers();
+  dotLayer.clearLayers();
+  const routeMap = new Map();
+  const cityMap = new Map();
+  const cityHasCore = new Map(); // city -> true if at least one firm has a core (non-extended) office there
+  active.forEach(firm => {
+    if (!CITIES[firm.hq]) return;
+    const extSet = firm.extendedSet || new Set();
+    firm.offices.forEach(city => {
+      if (!CITIES[city]) return;
+      const isExt = extSet.has(city);
+      if (!cityMap.has(city)) cityMap.set(city, new Set());
+      cityMap.get(city).add(firm.name);
+      if (!cityHasCore.has(city)) cityHasCore.set(city, false);
+      if (!isExt) cityHasCore.set(city, true);
+      if (city === firm.hq) return;
+      const key = firm.hq + '||' + city;
+      if (!routeMap.has(key)) routeMap.set(key, { hq: firm.hq, office: city, count: 0, firms: [], cats: new Set(), extCount: 0 });
+      const r = routeMap.get(key);
+      r.count += 1;
+      if (isExt) r.extCount += 1;
+      r.firms.push(firm.name);
+      r.cats.add(firm.cat);
+    });
+  });
+  const routes = Array.from(routeMap.values());
+  const maxRouteCount = routes.reduce((m, r) => Math.max(m, r.count), 1);
+  const maxCityFirms = Array.from(cityMap.values()).reduce((m, s) => Math.max(m, s.size), 1);
+  routes.sort((a, b) => a.count - b.count).forEach(r => {
+    const t = r.count / maxRouteCount;
+    const catArr = Array.from(r.cats);
+    const baseColor = catArr.length === 1 ? CAT_COLORS[catArr[0]] : '#1d1d1f';
+    const isExtendedOnly = r.extCount === r.count && r.extCount > 0;
+    const weight = 0.8 + t * 4.5;
+    const opacity = isExtendedOnly ? 0.45 : (0.25 + t * 0.55);
+    const pts = curvedLine(CITIES[r.hq], CITIES[r.office]);
+    const styleOpts = { color: baseColor, weight, opacity, smoothFactor: 1 };
+    if (isExtendedOnly) styleOpts.dashArray = '4, 6';
+    const line = L.polyline(pts, styleOpts);
+    line.bindPopup(
+      `<b>${r.hq} → ${r.office}</b><br/>
+       <span class="tag">${r.count} firm${r.count>1?'s':''}${isExtendedOnly?' · via parent network':''}</span><br/>
+       <span class="muted">${r.firms.slice(0,6).join(', ')}${r.firms.length>6?', +'+(r.firms.length-6)+' more':''}</span>`
+    );
+    arcLayer.addLayer(line);
+  });
+  cityMap.forEach((firmsSet, city) => {
+    const coord = CITIES[city];
+    if (!coord) return;
+    const count = firmsSet.size;
+    const t = count / maxCityFirms;
+    const radius = 4 + t * 14;
+    const catCount = new Array(NUM_CATS).fill(0);
+    firmsSet.forEach(fn => {
+      const f = FIRMS.find(x => x.name === fn);
+      if (f) catCount[f.cat]++;
+    });
+    const dominantCat = catCount.indexOf(Math.max(...catCount));
+    const fill = CAT_COLORS[dominantCat];
+    const isExtOnly = cityHasCore.get(city) === false;
+    const marker = L.circleMarker(coord, isExtOnly
+      ? { radius, color: fill, weight: 2, fillColor: fill, fillOpacity: 0.08, dashArray: '3, 3' }
+      : { radius, color: '#fff', weight: 1.5, fillColor: fill, fillOpacity: 0.85 }
+    );
+    marker.bindPopup(
+      `<b>${city}</b>${isExtOnly ? ' <span class="muted">(parent network only)</span>' : ''}<br/>
+       <span class="tag">${count} firm${count>1?'s':''} present</span><br/>
+       <span class="muted">${Array.from(firmsSet).slice(0,8).join(', ')}${firmsSet.size>8?', +'+(firmsSet.size-8)+' more':''}</span>`
+    );
+    dotLayer.addLayer(marker);
+  });
+
+  const cityLabel = state.city === '__all__' ? 'all cities' : `"${state.city}"`;
+  sumLeft.innerHTML = `Net: <b>${netNodes.length}</b> firms · <b>${netLinks.length}</b> edges<br/>Map: <b>${cityMap.size}</b> cities · <b>${routes.length}</b> routes`;
+  sumRight.innerHTML = `threshold ≥ <b>${state.threshold}</b> · <b>${state.cats.size}</b>/${NUM_CATS} cats<br/><b>${state.firms.size}</b>/${FIRMS.length} firms · ${cityLabel}`;
+
+  tbody.innerHTML = '';
+  const ranked = netNodes.slice()
+    .sort((a, b) => b.offices - a.offices || b.edges - a.edges)
+    .slice(0, 12);
+  ranked.forEach((n, i) => {
+    const max = overlap.get(n.name).maxOverlap;
+    tbody.insertAdjacentHTML('beforeend',
+      `<tr>
+        <td class="num">${i + 1}</td>
+        <td>${n.name}</td>
+        <td class="num">${n.offices}</td>
+        <td class="num">${n.edges}</td>
+        <td class="num">${max}</td>
+      </tr>`
+    );
+  });
+}
+
+// ============================================================================
+// Wire up filter controls
+// ============================================================================
+const thresholdSlider = document.getElementById('thresholdSlider');
+const thresholdVal = document.getElementById('thresholdVal');
+thresholdSlider.addEventListener('input', () => {
+  state.threshold = +thresholdSlider.value;
+  thresholdVal.textContent = state.threshold;
+  render();
+});
+
+citySelect.addEventListener('change', () => { state.city = citySelect.value; render(); });
+document.getElementById('cityReset').addEventListener('click', () => {
+  state.city = '__all__'; citySelect.value = '__all__'; render();
+});
+
+document.querySelectorAll('#catPills .tickbox').forEach(pill => {
+  pill.addEventListener('click', () => {
+    const cat = +pill.dataset.cat;
+    if (state.cats.has(cat)) {
+      state.cats.delete(cat);
+      pill.classList.add('off');
+      FIRMS.filter(f => f.cat === cat).forEach(f => {
+        state.firms.delete(f.name);
+        const fp = document.querySelector(`#firmPills .tickbox[data-firm="${CSS.escape(f.name)}"]`);
+        if (fp) fp.classList.add('off');
+      });
+    } else {
+      state.cats.add(cat);
+      pill.classList.remove('off');
+      FIRMS.filter(f => f.cat === cat).forEach(f => {
+        state.firms.add(f.name);
+        const fp = document.querySelector(`#firmPills .tickbox[data-firm="${CSS.escape(f.name)}"]`);
+        if (fp) fp.classList.remove('off');
+      });
+    }
+    render();
+  });
+});
+
+document.getElementById('catReset').addEventListener('click', () => {
+  const allOn = state.cats.size === NUM_CATS;
+  if (allOn) {
+    state.cats.clear();
+    document.querySelectorAll('#catPills .tickbox').forEach(p => p.classList.add('off'));
+    state.firms.clear();
+    document.querySelectorAll('#firmPills .tickbox').forEach(p => p.classList.add('off'));
+  } else {
+    state.cats = new Set([0,1,2,3,4,5]);
+    document.querySelectorAll('#catPills .tickbox').forEach(p => p.classList.remove('off'));
+    state.firms = new Set(FIRMS.map(f => f.name));
+    document.querySelectorAll('#firmPills .tickbox').forEach(p => p.classList.remove('off'));
+  }
+  render();
+});
+
+document.getElementById('firmReset').addEventListener('click', () => {
+  state.firms = new Set(FIRMS.map(f => f.name));
+  document.querySelectorAll('#firmPills .tickbox').forEach(p => p.classList.remove('off'));
+  state.cats = new Set([0,1,2,3,4,5]);
+  document.querySelectorAll('#catPills .tickbox').forEach(p => p.classList.remove('off'));
+  render();
+});
+
+document.getElementById('resetAll').addEventListener('click', () => {
+  state.threshold = 3;
+  thresholdSlider.value = 3; thresholdVal.textContent = 3;
+  state.city = '__all__'; citySelect.value = '__all__';
+  state.cats = new Set([0,1,2,3,4,5]);
+  document.querySelectorAll('#catPills .tickbox').forEach(p => p.classList.remove('off'));
+  state.firms = new Set(FIRMS.map(f => f.name));
+  document.querySelectorAll('#firmPills .tickbox').forEach(p => p.classList.remove('off'));
+  render();
+});
+
+render();
+setTimeout(() => map.invalidateSize(), 100);
+
+// ============================================================================
+// UK map · NOTE I · 90-firm UK registered-office dataset (lifted from part0.2)
+// ============================================================================
+(function() {
+  const UK_OFFICES = [
+    // London (54)
+    {name:'AlixPartners UK LLP', addr:'6 New Street Square, London, EC4A 3BF', lat:51.5155, lng:-0.1084, cat:'Broad'},
+    {name:'Baringa Partners LLP', addr:'62 Buckingham Gate, London, SW1E 6AJ', lat:51.4981, lng:-0.1365, cat:'Broad'},
+    {name:'Econic Partners (UK)', addr:'Bloomsbury House, 74-77 Great Russell Street, London, WC1B 3DA', lat:51.5192, lng:-0.1242, cat:'Competition'},
+    {name:'Fingleton Ltd', addr:'7-10 Chandos Street, London, W1G 9DQ', lat:51.5173, lng:-0.1449, cat:'Competition'},
+    {name:'Frontier Economics Ltd', addr:'Worship Square, 65 Clifton Street, London, EC2A 4JE', lat:51.5224, lng:-0.0836, cat:'Competition'},
+    {name:'RBB Economics LLP', addr:'199 Bishopsgate, London, EC2M 3TY', lat:51.5202, lng:-0.0792, cat:'Competition'},
+    {name:'A&M Disputes & Investigations LLP', addr:'30 Old Bailey, London, EC4M 7AU', lat:51.5149, lng:-0.1025, cat:'Litigation'},
+    {name:'A&M Europe LLP', addr:'30 Old Bailey, London, EC4M 7AU', lat:51.5149, lng:-0.1025, cat:'Litigation'},
+    {name:'A&M Tax LLP', addr:'30 Old Bailey, London, EC4M 7AU', lat:51.5149, lng:-0.1025, cat:'Litigation'},
+    {name:'Accuracy UK Ltd', addr:'6 Bevis Marks, London, EC3A 7BA', lat:51.5150, lng:-0.0795, cat:'Litigation'},
+    {name:'BRG UK Ltd', addr:'8 Salisbury Square, London, EC4Y 8BB', lat:51.5137, lng:-0.1061, cat:'Litigation'},
+    {name:'FTI Consulting LLP', addr:'200 Aldersgate Street, London, EC1A 4HD', lat:51.5175, lng:-0.0975, cat:'Litigation'},
+    {name:'Fideres Partners LLP', addr:'134-138 Borough High Street, London, SE1 1LB', lat:51.5026, lng:-0.0926, cat:'Litigation'},
+    {name:'Secretariat International UK', addr:'22 Bishopsgate, London, EC2N 4BQ', lat:51.5141, lng:-0.0835, cat:'Litigation'},
+    {name:'Capital Economics Ltd', addr:'100 Victoria Street, London, SW1E 5JL', lat:51.4970, lng:-0.1404, cat:'Macro'},
+    {name:'Capital Economics Research Ltd', addr:'100 Victoria Street, London, SW1E 5JL', lat:51.4970, lng:-0.1404, cat:'Macro'},
+    {name:'Cebr', addr:'4 Bath Street, London, EC1V 9DX', lat:51.5279, lng:-0.0917, cat:'Macro'},
+    {name:'Continuum Economics (4Cast)', addr:'1 Harrington Gardens, London, SW7 4JJ', lat:51.4931, lng:-0.1828, cat:'Macro'},
+    {name:'Economic Perspectives Ltd', addr:'85 Great Portland Street, London, W1W 7LT', lat:51.5185, lng:-0.1424, cat:'Macro'},
+    {name:'Fathom Financial Consulting', addr:'47 Bevenden Street, London, N1 6BH', lat:51.5299, lng:-0.0851, cat:'Macro'},
+    {name:'Independent Economics LLP', addr:'15 Whitehall, London, SW1A 2DD', lat:51.5070, lng:-0.1271, cat:'Macro'},
+    {name:'Macro Advisory Partners LLP', addr:'4 Albemarle Street, London, W1S 4GA', lat:51.5082, lng:-0.1409, cat:'Macro'},
+    {name:'Macro Hive Ltd', addr:'5 Churchill Place, Canary Wharf, London, E14 5RD', lat:51.5051, lng:-0.0145, cat:'Macro'},
+    {name:'Oxford Analytica Ltd', addr:'1 London Bridge Street, London, SE1 9GF', lat:51.5055, lng:-0.0881, cat:'Macro'},
+    {name:'The Economist Intelligence Unit', addr:'The Adelphi, 1-11 John Adam Street, London, WC2N 6HT', lat:51.5091, lng:-0.1222, cat:'Macro'},
+    {name:'Analysis Group Ltd', addr:'1 Angel Court, London, EC2R 7HJ', lat:51.5153, lng:-0.0875, cat:'Overlap'},
+    {name:'Brattle Group Ltd', addr:'100 Wood Street, London, EC2V 7AN', lat:51.5164, lng:-0.0945, cat:'Overlap'},
+    {name:'CRA International UK', addr:'8 Finsbury Circus, London, EC2M 7EA', lat:51.5173, lng:-0.0859, cat:'Overlap'},
+    {name:'Cornerstone Research UK', addr:'4 More London Riverside, London, SE1 2AU', lat:51.5044, lng:-0.0804, cat:'Overlap'},
+    {name:'NERA UK Limited', addr:'138 Houndsditch, London, EC3A 7AW', lat:51.5148, lng:-0.0770, cat:'Overlap'},
+    {name:'Alma Economics Ltd', addr:'43 Tanner Street, London, SE1 3PL', lat:51.4999, lng:-0.0777, cat:'Policy'},
+    {name:'Buttermere Consulting Ltd', addr:'843 Finchley Road, London, NW11 8NA', lat:51.5691, lng:-0.1953, cat:'Policy'},
+    {name:"Ecorys UK Ltd", addr:"4 St Dunstan's Hill, London, EC3R 8AD", lat:51.5094, lng:-0.0829, cat:'Policy'},
+    {name:'Head and Heart Economics Ltd', addr:'31 Chippenham Road, London, W9 2AH', lat:51.5243, lng:-0.1973, cat:'Policy'},
+    {name:'ICF Consulting Services Ltd', addr:'62/63 Threadneedle Street, London, EC2R 8HP', lat:51.5142, lng:-0.0865, cat:'Policy'},
+    {name:'London Economics Ltd', addr:'Somerset House, New Wing, Strand, London, WC2R 1LA', lat:51.5109, lng:-0.1177, cat:'Policy'},
+    {name:'Public First Ltd', addr:'40 Villiers Street, London, WC2N 6NJ', lat:51.5076, lng:-0.1230, cat:'Policy'},
+    {name:'Simetrica-Jacobs Ltd', addr:'The Shepherds Building, Charecroft Way, London, W14 0EE', lat:51.5028, lng:-0.2199, cat:'Policy'},
+    {name:'Steer Davies & Gleave Ltd', addr:'14-21 Rushworth Street, London, SE1 0RB', lat:51.5010, lng:-0.1018, cat:'Policy'},
+    {name:'Vivid Economics Ltd', addr:'100 Museum Street, London, WC1A 1PB', lat:51.5169, lng:-0.1244, cat:'Policy'},
+    {name:'Volterra Partners LLP', addr:'91-94 Lower Marsh, London, SE1 7AB', lat:51.5015, lng:-0.1116, cat:'Policy'},
+    {name:'Westbourne Research Services', addr:'279 Westbourne Park Road, London, W11 1EE', lat:51.5169, lng:-0.2046, cat:'Policy'},
+    {name:'eftec', addr:'10f Printing House Yard, Hackney Road, London, E2 7PR', lat:51.5277, lng:-0.0774, cat:'Policy'},
+    {name:'Belmana Consultancy', addr:'39-41 North Road, London, N7 9DP', lat:51.5494, lng:-0.1197, cat:'Regulation'},
+    {name:'CEPA', addr:'55-56 Lincolns Inn Fields, London, WC2A 3LJ', lat:51.5156, lng:-0.1182, cat:'Regulation'},
+    {name:'DotEcon Ltd', addr:'27-31 Clerkenwell Close, London, EC1R 0AT', lat:51.5241, lng:-0.1066, cat:'Regulation'},
+    {name:'ECA Economics Ltd', addr:'41 Lonsdale Road, London, NW6 6RA', lat:51.5371, lng:-0.2035, cat:'Regulation'},
+    {name:'Economic Consulting Associates', addr:'41 Lonsdale Road, London, NW6 6RA', lat:51.5371, lng:-0.2035, cat:'Regulation'},
+    {name:'Economic Insight Ltd', addr:'125 Old Broad Street, London, EC2N 1AR', lat:51.5145, lng:-0.0861, cat:'Regulation'},
+    {name:'Flint Global Ltd', addr:'The Met Building, 22 Percy Street, London, W1T 2BU', lat:51.5187, lng:-0.1331, cat:'Regulation'},
+    {name:'MCC Economics Ltd', addr:'128 City Road, London, EC1V 2NX', lat:51.5273, lng:-0.0889, cat:'Regulation'},
+    {name:'Plum Consulting London LLP', addr:'8 Blackstock Mews, London, N4 2BT', lat:51.5620, lng:-0.1012, cat:'Regulation'},
+    {name:'Reckon LLP', addr:'163 Herne Hill, London, SE24 9LR', lat:51.4534, lng:-0.1008, cat:'Regulation'},
+    // Non-London UK (27)
+    {name:'Keystone Strategy Ltd', addr:'8 Keywood Drive, Hersham, Walton-on-Thames, KT12 5EH', lat:51.3732, lng:-0.4035, cat:'Competition'},
+    {name:'Oxera Consulting LLP', addr:'Park Central, 40/41 Park End Street, Oxford, OX1 1JD', lat:51.7526, lng:-1.2657, cat:'Competition'},
+    {name:'Calverley Economic Advisors', addr:'1 Providence Avenue, Rochester, ME1 1NF', lat:51.3875, lng:0.5103, cat:'Macro'},
+    {name:'Longview Economics Ltd', addr:'8-10 South Street, Epsom, KT18 7PF', lat:51.3323, lng:-0.2709, cat:'Macro'},
+    {name:'Lorenzo Codogno Macro Advisors', addr:'Prince Imperial Road, Chislehurst, Kent, BR7 5LX', lat:51.4147, lng:0.0685, cat:'Macro'},
+    {name:'Oxford Economics Ltd', addr:'60 St Aldates, Oxford, OX1 1ST', lat:51.7475, lng:-1.2567, cat:'Macro'},
+    {name:'Pantheon Macroeconomics Ltd', addr:'Cathedral Buildings, Dean Street, Newcastle upon Tyne, NE1 1PG', lat:54.9705, lng:-1.6098, cat:'Macro'},
+    {name:'AMION Consulting Ltd', addr:'100 Old Hall Street, Liverpool, L3 9QJ', lat:53.4109, lng:-2.9947, cat:'Policy'},
+    {name:'Analytically Driven Ltd', addr:'Great Love Farm, Love Lane, Headcorn, TN27 9HL', lat:51.1666, lng:0.6552, cat:'Policy'},
+    {name:'Aviation Economics Ltd', addr:'25 Rectory Road, West Bridgford, Nottingham, NG2 6BE', lat:52.9300, lng:-1.1297, cat:'Policy'},
+    {name:'BiGGAR Economics Ltd', addr:'67 Shandwick Place, Edinburgh, EH2 4SD', lat:55.9490, lng:-3.2101, cat:'Policy'},
+    {name:'Cambridge Econometrics Ltd', addr:'19a Covent Garden, Cambridge, CB1 2HT', lat:52.2000, lng:0.1342, cat:'Policy'},
+    {name:'RAND Europe CIC', addr:'Eastbrook, Shaftesbury Road, Cambridge, CB2 8BF', lat:52.1900, lng:0.1300, cat:'Policy'},
+    {name:'Derrick Jones Economics Ltd', addr:'9 Cheam Road, Epsom, KT17 1SP', lat:51.3489, lng:-0.2486, cat:'Policy'},
+    {name:'EKOS Consulting (UK) Ltd', addr:'137 Sauchiehall Street, Glasgow, G2 3EW', lat:55.8646, lng:-4.2581, cat:'Policy'},
+    {name:'Econance Ltd', addr:'26 Hampstead Drive, Whitefield, Manchester, M45 7YA', lat:53.5516, lng:-2.2996, cat:'Policy'},
+    {name:'LIVE Economics Ltd', addr:'30 Longcroft Avenue, Banstead, SM7 3AE', lat:51.3263, lng:-0.1910, cat:'Policy'},
+    {name:'Pragmatix Advisory Ltd', addr:'146 New London Road, Chelmsford, CM2 0AW', lat:51.7282, lng:0.4660, cat:'Policy'},
+    {name:'SAMI Consulting Ltd', addr:'2 Toomers Wharf, Canal Walk, Newbury, RG14 1DY', lat:51.4018, lng:-1.3229, cat:'Policy'},
+    {name:'SQW Ltd', addr:'Oxford Centre for Innovation, 9 Alfred Street, Oxford, OX1 4EH', lat:51.7518, lng:-1.2555, cat:'Policy'},
+    {name:'Saltmarsh Economics Ltd', addr:'20 Kings Lynn Road, Hunstanton, PE36 5HP', lat:52.9373, lng:0.4939, cat:'Policy'},
+    {name:'Stephen Wells Consulting', addr:'39/43 London Road, Hadleigh, Benfleet, SS7 2QL', lat:51.5560, lng:0.6026, cat:'Policy'},
+    {name:'WPI Economics Ltd', addr:'Stanmore Business Centre, Howard Road, Stanmore, HA7 1FW', lat:51.6050, lng:-0.2970, cat:'Policy'},
+    {name:'Warwick Economics & Development', addr:'Grosvenor House, 11 St Pauls Square, Birmingham, B3 1RB', lat:52.4858, lng:-1.9047, cat:'Policy'},
+    {name:'York Aviation LLP', addr:'Smithfield House, 92 North Street, Leeds, LS2 7PN', lat:53.8017, lng:-1.5378, cat:'Policy'},
+    {name:'AFRY Management Consulting', addr:'King Charles House, Park End Street, Oxford, OX1 1JD', lat:51.7526, lng:-1.2657, cat:'Regulation'},
+    {name:'Connected Economics Ltd', addr:'Well Barn, Tutwell, Callington, PL17 8LU', lat:50.5595, lng:-4.2746, cat:'Regulation'},
+    {name:'Indepen Consulting Ltd (dissolved)', addr:'93 Queen Street, Sheffield, S1 1WF', lat:53.3806, lng:-1.4702, cat:'Regulation'}
+  ];
+
+  const UK_CAT_COLORS = {
+    Broad:       '#ff2d55',
+    Competition: '#0071e3',
+    Litigation:  '#34c759',
+    Macro:       '#af52de',
+    Overlap:     '#ff9500',
+    Policy:      '#8e8e93',
+    Regulation:  '#5ac8fa'
+  };
+
+  const ukMap = L.map('uk-map').setView([53.0, -2.2], 6);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+    maxZoom: 19
+  }).addTo(ukMap);
+
+  // Jitter duplicate coordinates so co-located firms don't hide each other.
+  const seen = {};
+  UK_OFFICES.forEach(o => {
+    const key = `${o.lat.toFixed(4)}_${o.lng.toFixed(4)}`;
+    const n = seen[key] || 0;
+    seen[key] = n + 1;
+    if (n > 0) {
+      const angle = (n * 2.4) % (Math.PI * 2);
+      o.lat += Math.cos(angle) * 0.00012;
+      o.lng += Math.sin(angle) * 0.00018;
+    }
+  });
+
+  UK_OFFICES.forEach(o => {
+    L.circleMarker([o.lat, o.lng], {
+      radius: 7,
+      fillColor: UK_CAT_COLORS[o.cat] || '#1d1d1f',
+      color: '#fff',
+      weight: 1.5,
+      fillOpacity: 0.9
+    }).addTo(ukMap).bindPopup(`<strong>${o.name}</strong><br>${o.addr}<br><em>${o.cat}</em>`);
+  });
+
+  // Legend overlay
+  const legend = L.control({position: 'topright'});
+  legend.onAdd = function() {
+    const div = L.DomUtil.create('div', 'uk-map-legend');
+    div.innerHTML = Object.entries(UK_CAT_COLORS).map(([k, c]) =>
+      `<div><span style="display:inline-block;width:10px;height:10px;background:${c};border-radius:50%;margin-right:6px;vertical-align:middle"></span>${k}</div>`
+    ).join('');
+    return div;
+  };
+  legend.addTo(ukMap);
+
+  setTimeout(() => ukMap.invalidateSize(), 120);
+})();
+</script>
+</body>
+</html>

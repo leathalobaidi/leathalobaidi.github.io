@@ -1,0 +1,2365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economics Consultancy — A Visual Story</title>
+<meta name="author" content="Leath Al Obaidi">
+<meta name="description" content="Twelve charts, one market. The shape of UK economics consulting in 2025 — £2 billion of fees, ninety firms, one fifty-six-per-cent profit margin at the top.">
+<link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/part0.1-visual-story">
+<meta property="og:title" content="Economics Consultancy — A Visual Story">
+<meta property="og:description" content="Twelve charts, one market. The shape of UK economics consulting in 2025 — £2 billion of fees, ninety firms, one fifty-six-per-cent profit margin at the top.">
+<meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/part0.1-visual-story">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leath Al Obaidi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Economics Consultancy — A Visual Story">
+<meta name="twitter:description" content="Twelve charts, one market. The shape of UK economics consulting in 2025 — £2 billion of fees, ninety firms, one fifty-six-per-cent profit margin at the top.">
+
+<link rel="stylesheet" href="apple-theme.css">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-svg-annotation@2.5.1/d3-annotation.min.js"></script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+  :root {
+    --bg:            #ffffff;
+    --bg-card:       #f5f5f7;
+    --bg-elev:       #ffffff;
+    --border:        #d2d2d7;
+    --border-bright: #86868b;
+    --text:          #1d1d1f;
+    --text-dim:      #6e6e73;
+    --text-muted:    #86868b;
+    --accent:        #0066cc;
+    --accent-bright: #0071e3;
+    --accent-dim:    #c7deff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 17px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 3px; background: var(--accent-bright);
+    z-index: 100; width: 0%;
+    transition: width 0.1s linear;
+  }
+
+  .nav {
+    position: fixed; top: 20px; right: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    z-index: 50;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+  .nav .divider { color: var(--border); margin: 0 6px; }
+  .nav .current { color: var(--accent-bright); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(0,113,227,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0,113,227,0.12) 0%, transparent 60%),
+      #ffffff;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 40%, transparent 100%);
+  }
+  .hero-inner { position: relative; z-index: 1; max-width: 1100px; }
+  .hero .eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 3px;
+    color: var(--accent-bright);
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid var(--accent-dim);
+    border-radius: 4px;
+    background: rgba(0,113,227,0.08);
+  }
+  .hero h1 {
+    font-size: clamp(48px, 9vw, 128px);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 28px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #6e6e73 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hero .sub {
+    font-size: clamp(17px, 2vw, 22px);
+    color: var(--text-dim);
+    max-width: 680px;
+    margin: 0 auto 60px;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+  .hero .stats-row {
+    display: flex; gap: 48px;
+    justify-content: center;
+    margin-bottom: 72px;
+    flex-wrap: wrap;
+  }
+  .hero-stat .n {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 32px; font-weight: 600;
+    color: var(--accent-bright);
+    line-height: 1;
+  }
+  .hero-stat .l {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 8px;
+  }
+  .scroll-indicator {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 2px;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { opacity: 0.3; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(10px); }
+  }
+
+  /* INTRO */
+  .intro {
+    max-width: 680px; margin: 0 auto;
+    padding: 120px 24px 40px;
+  }
+  .intro p {
+    font-size: 20px;
+    margin-bottom: 28px;
+    color: var(--text);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+  .intro p.first-letter::first-letter {
+    font-size: 88px;
+    float: left;
+    line-height: 72px;
+    padding: 8px 14px 0 0;
+    color: var(--accent-bright);
+    font-weight: 800;
+    font-family: 'Inter', sans-serif;
+  }
+  .intro strong { color: #1d1d1f; font-weight: 600; }
+
+  /* CHAPTER LAYOUT */
+  .chapter {
+    max-width: 1280px; margin: 0 auto;
+    padding: 100px 32px 40px;
+  }
+  .chapter-header {
+    text-align: center;
+    max-width: 820px; margin: 0 auto 52px;
+  }
+  .chapter-header .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--accent-bright);
+    letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .chapter-header h2 {
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    background: linear-gradient(180deg, #1d1d1f 0%, #6e6e73 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .chapter-header .lede {
+    font-size: 19px; color: var(--text-dim);
+    margin-top: 20px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  /* CHART CARD */
+  .chart-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 28px 18px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.02) inset;
+    margin-bottom: 40px;
+  }
+  .chart-header {
+    display: flex; justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px; padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap; gap: 10px;
+  }
+  .chart-title {
+    font-size: 15px; font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .chart-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+  .chart-badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--accent-bright);
+    background: rgba(0,113,227,0.1);
+    border: 1px solid var(--accent-dim);
+    padding: 4px 10px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .toggle-bar {
+    display: flex; gap: 6px;
+    margin: 4px 0 14px 0;
+    padding: 4px;
+    background: #f5f5f7;
+    border: 1px solid #e5e5ea;
+    border-radius: 980px;
+    width: fit-content;
+  }
+  .toggle-btn {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 12px; font-weight: 600;
+    color: #6e6e73;
+    background: transparent;
+    border: none; cursor: pointer;
+    padding: 6px 18px;
+    border-radius: 980px;
+    transition: all 0.2s ease;
+  }
+  .toggle-btn:hover { color: #1d1d1f; }
+  .toggle-btn.is-active {
+    background: #ffffff;
+    color: #0071e3;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  }
+  .segment-legend {
+    display: flex; flex-wrap: wrap; gap: 14px 22px;
+    margin: 14px 0 4px 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .seg-item { display: inline-flex; align-items: center; gap: 6px; }
+  .seg-sw {
+    width: 10px; height: 10px; border-radius: 2px;
+    display: inline-block;
+  }
+  .seg-lbl { text-transform: uppercase; }
+  .echart-container {
+    width: 100%;
+    height: 560px;
+    position: relative;
+  }
+  .echart-container.tall  { height: 680px; }
+  .echart-container.short { height: 440px; }
+
+  /* d3-annotation overlay */
+  .annotation-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: visible;
+  }
+  .annotation-overlay .annotation-note-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 700;
+    fill: #1d1d1f;
+  }
+  .annotation-overlay .annotation-note-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10.5px; font-weight: 400;
+    fill: #6e6e73;
+  }
+  .annotation-overlay .annotation-note-bg {
+    fill: rgba(13, 13, 13, 0);
+  }
+  .annotation-overlay .annotation path {
+    stroke: #0071e3;
+    stroke-width: 1.5; fill: none;
+  }
+  .annotation-overlay .annotation-connector path {
+    stroke: #0071e3;
+    stroke-width: 1.25;
+  }
+
+  /* COMMENTARY */
+  .commentary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 8px;
+  }
+  .commentary p {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+  .commentary p + p { margin-top: 14px; }
+  .commentary strong { color: #1d1d1f; font-weight: 600; }
+  .commentary .callout {
+    background: rgba(0,113,227,0.06);
+    border-left: 3px solid var(--accent-bright);
+    padding: 18px 20px;
+    border-radius: 0 8px 8px 0;
+  }
+  .commentary .callout .tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--accent-bright);
+    text-transform: uppercase; letter-spacing: 1.5px;
+    font-weight: 600; margin-bottom: 8px;
+  }
+  .commentary .callout p { color: var(--text); }
+
+  @media (max-width: 820px) {
+    .commentary { grid-template-columns: 1fr; gap: 24px; }
+    .chapter { padding: 80px 20px 30px; }
+    .chart-wrap { padding: 16px 18px 12px; }
+    .echart-container { height: 460px; }
+    .echart-container.tall { height: 560px; }
+    .echart-container.short { height: 380px; }
+    .nav { display: none; }
+  }
+
+  /* FINAL */
+  .final {
+    padding: 160px 24px 140px;
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .final h2 {
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 40px;
+    background: linear-gradient(180deg, #1d1d1f 0%, #6e6e73 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .final p {
+    font-size: 19px; color: var(--text-dim);
+    margin-bottom: 24px;
+    font-weight: 300;
+    line-height: 1.55;
+  }
+  .final-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin: 72px 0;
+    padding: 48px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .final-stats .fs .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 40px; font-weight: 600;
+    color: var(--accent-bright);
+    line-height: 1;
+  }
+  .final-stats .fs .lbl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 10px;
+  }
+  .footer {
+    padding: 60px 24px 80px;
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+    max-width: 680px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+  .footer a { color: var(--accent-bright); text-decoration: none; }
+  @media (max-width: 820px) {
+    .final-stats { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  }
+
+  /* ── iPad (≤1024px) ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .chapter { max-width: 960px; padding: 80px 24px 36px; }
+    .hero .stats-row { gap: 32px; }
+    .echart-container       { height: 480px; }
+    .echart-container.tall  { height: 580px; }
+    .echart-container.short { height: 380px; }
+    .series-nav { gap: 4px; padding: 8px 10px; }
+    .series-nav a, .series-nav span { font-size: 11px; padding: 6px 8px; }
+    .intro { padding: 80px 24px 30px; }
+    .final { padding: 100px 24px 80px; }
+  }
+
+  /* ── iPhone (≤600px) ─────────────────────────────────── */
+  @media (max-width: 600px) {
+    body { font-size: 16px; line-height: 1.6; }
+    .hero h1 { font-size: clamp(32px, 8vw, 36px); }
+    .hero .sub { font-size: 17px; margin-bottom: 36px; }
+    .hero .stats-row { gap: 20px; }
+    .hero-stat .n { font-size: 24px; }
+    .hero-stat .l { font-size: 9px; }
+    .hero .eyebrow { font-size: 10px; padding: 6px 12px; letter-spacing: 2px; }
+    .scroll-indicator { font-size: 10px; }
+
+    .chapter { padding: 60px 16px 24px; }
+    .chapter-header h2 { font-size: clamp(24px, 6vw, 26px); }
+    .chapter-header .lede { font-size: 16px; }
+    .chapter-header .num { font-size: 10px; letter-spacing: 2px; }
+
+    .intro { padding: 60px 16px 24px; }
+    .intro p { font-size: 17px; }
+    .intro p.first-letter::first-letter { font-size: 64px; line-height: 54px; }
+
+    .chart-wrap { padding: 12px 14px 10px; border-radius: 10px; }
+    .chart-title { font-size: 13px; }
+    .chart-sub { font-size: 9px; }
+    .chart-badge { font-size: 9px; padding: 3px 8px; }
+    .chart-header { margin-bottom: 10px; padding-bottom: 8px; }
+
+    .echart-container       { height: 340px; }
+    .echart-container.tall  { height: 420px; }
+    .echart-container.short { height: 280px; }
+
+    .commentary p { font-size: 14px; }
+    .commentary .callout { padding: 14px 16px; }
+    .commentary .callout .tag { font-size: 9px; }
+
+    .toggle-bar { gap: 4px; padding: 3px; }
+    .toggle-btn { font-size: 11px; padding: 5px 12px; }
+    .segment-legend { font-size: 10px; gap: 8px 14px; }
+
+    .final { padding: 80px 16px 60px; }
+    .final h2 { font-size: clamp(24px, 6vw, 28px); }
+    .final p { font-size: 16px; }
+    .final-stats { grid-template-columns: repeat(2, 1fr); gap: 16px; margin: 40px 0; padding: 28px 0; }
+    .final-stats .fs .num { font-size: 28px; }
+    .final-stats .fs .lbl { font-size: 9px; }
+
+    .footer { padding: 32px 16px; font-size: 10px; }
+
+    .series-nav {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      gap: 4px; padding: 8px 10px;
+    }
+    .series-nav a, .series-nav span {
+      flex: 0 0 auto;
+      font-size: 11px; padding: 6px 10px;
+    }
+
+    .nav { display: none; }
+    .pub-name { font-size: 10px; padding: 10px 12px; }
+
+    .annotation-overlay { display: none; }
+  }
+
+  /* ── iPhone SE (≤375px) ──────────────────────────────── */
+  @media (max-width: 375px) {
+    body { font-size: 15px; }
+    .hero h1 { font-size: 28px; }
+    .chapter-header h2 { font-size: 22px; }
+    .echart-container       { height: 280px; }
+    .echart-container.tall  { height: 350px; }
+    .echart-container.short { height: 240px; }
+    .final-stats .fs .num { font-size: 24px; }
+    .commentary p { font-size: 13px; }
+    .intro p { font-size: 15px; }
+  }
+
+  .series-nav {
+    display: flex; flex-wrap: wrap; gap: 6px;
+    max-width: 1100px; margin: 18px auto 0 auto;
+    padding: 10px 14px;
+    background: #f5f5f7; border: 1px solid #d2d2d7; border-radius: 10px;
+    font-family: 'Inter', -apple-system, sans-serif;
+    position: relative; z-index: 10;
+  }
+  .series-nav a, .series-nav span {
+    font-size: 12px; font-weight: 600;
+    padding: 7px 12px; border-radius: 6px;
+    text-decoration: none; text-align: center;
+    flex: 1; white-space: nowrap;
+  }
+  .series-nav .current { background: #1d1d1f; color: #ffffff; }
+  .series-nav a { background: #ffffff; color: #1d1d1f; border: 1px solid #d2d2d7; }
+  .series-nav a:hover { border-color: #0071e3; color: #0071e3; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
+
+<div class="series-nav">
+    <span class="current">Visual</span>
+    <a href="part0.2-uk-and-global-map.html">Maps</a>
+    <a href="part1-who-was-here-in-2000.html">Part 1</a>
+    <a href="part2-founders-decade.html">Part 2</a>
+    <a href="part3-professionalisation.html">Part 3</a>
+    <a href="part4-global-arms-race.html">Part 4</a>
+    <a href="part5-profit-machine.html">Part 5</a>
+    <a href="part6-the-cma-drain.html">Part 6</a>
+    <a href="part7-the-people-network.html">Part 7</a>
+    <a href="methodology-claude-code.html">Methodology</a>
+  </div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Economics Consultancy<br>A Visual Story</h1>
+    <p class="sub">Britain's £2 billion economics consultancy trade, reconstructed from 8,110 filings at Companies House in Cardiff.</p>
+    <div class="stats-row">
+      <div class="hero-stat"><div class="n">90</div><div class="l">Firms</div></div>
+      <div class="hero-stat"><div class="n">£2bn+</div><div class="l">Revenue</div></div>
+      <div class="hero-stat"><div class="n">8,110</div><div class="l">Filings</div></div>
+      <div class="hero-stat"><div class="n">25 yrs</div><div class="l">Of history</div></div>
+    </div>
+    <div class="scroll-indicator">↓  SCROLL TO BEGIN</div>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <p class="first-letter">Walk past 199 Bishopsgate on a weekday morning and you pass a glass tower whose tenants happen to run one of the highest-profit-per-partner professional services firms in Britain &mdash; at least among the ones that file accounts detailed enough to prove it. No sign on the door says so. There are eighteen partners inside. Each of them takes home more than three million pounds a year, and the top earner pockets £5.77m.</p>
+  <p>You have almost certainly never heard of them.</p>
+  <p>RBB Economics is the loudest example of a trade that most people cannot name three firms from. Ninety of these outfits are registered in the United Kingdom; together they collect more than <strong>£2 billion</strong> in annual fees &mdash; a figure broadly consistent with <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr's March 2018 estimate</a> of £1.53 billion for 2016/17 growing at 11.3% a year, extrapolated forward. They advise competition authorities, they advise law firms, they advise regulators and they advise governments, and most of their work happens behind the closed doors of merger reviews, regulatory proceedings and litigation. You do not see it. You see only the tower.</p>
+  <p>The paper trail, however, is another matter. Every firm files its accounts at Companies House in Cardiff, where they become public, indexed and free. The last twenty-five years of those filings run to 8,110 documents; the audited numbers inside 1,100 of the PDFs are what this essay draws on. Eight charts carry the story.</p>
+</section>
+
+<!-- CHAPTER 1: TREEMAP -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 01</div>
+    <h2>The shape of the market</h2>
+    <p class="lede">Ninety firms, grouped by what they do, sized by revenue.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">UK Economics Consultancy Universe</div>
+        <div class="chart-sub">N=90 · GROUPED BY SEGMENT · SIZED BY LATEST UK REVENUE</div>
+      </div>
+      <div class="chart-badge">TREEMAP</div>
+    </div>
+    <div class="echart-container tall" id="chart-1"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>The ninety firms break into seven segments. <strong>Policy</strong> is the largest cohort, with 35 firms; <strong>regulation</strong> runs second at 17; and <strong>macro forecasting</strong> comes third at 16. Litigation and competition together account for a modest 15 firms. Those 15 collect most of the money.</p>
+      <p>Block size is turnover, and the largest rectangles belong to the multi-practice advisory houses &mdash; FTI Consulting, Baringa, A&amp;M. The pure-play economics shops, the boutiques that trade only on their formulas and their expert witnesses, sit as medium blocks inside their own colour band.</p>
+    </div>
+    <div class="callout">
+      <div class="tag">THE INVISIBLE TAIL</div>
+      <p>Sixty-six of the ninety firms file small-company accounts with no turnover disclosed at all. They appear in the treemap as identical uniform tiles, ranked by nothing in particular.</p>
+      <p>The visible market is the tip. The base of the pyramid is wider than the top by a long way.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 2: LEAGUE TABLE -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 02</div>
+    <h2>The league table</h2>
+    <p class="lede">Twenty-three firms with disclosed revenue. Ranked.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Revenue League Table</div>
+        <div class="chart-sub">£ MILLIONS · LATEST FILED YEAR · SOURCE: COMPANIES HOUSE</div>
+      </div>
+      <div class="chart-badge">BAR CHART</div>
+    </div>
+    <div class="toggle-bar" id="league-toggle">
+      <button type="button" class="toggle-btn is-active" data-mode="rev">Revenue</button>
+      <button type="button" class="toggle-btn" data-mode="margin">Margin %</button>
+    </div>
+    <div class="echart-container tall" id="chart-2"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>Above £250m sit four giants. <strong>FTI Consulting LLP</strong> is the largest at £461m (<a href="https://find-and-update.company-information.service.gov.uk/company/OC372614">Companies House OC372614</a>, for the 12 months to March 2025; the prior-year comparative of £550m covers a 15-month transition period from 1 January 2023 to 31 March 2024 and is not directly comparable on a YoY basis); <strong>Baringa Partners</strong> is second at £450m; <strong>A&amp;M Europe</strong> follows at £301m; <strong>AlixPartners UK</strong> rounds the quartet at £273m. None of them is a pure economics firm. Each runs economics beside restructuring, forensic accounting or management consulting, and it is the bundle that generates the scale.</p>
+      <p>The pure-play tier begins with <strong>RBB Economics at £108m</strong>, followed by Frontier at £97m, CRA at £82m, Oxford Economics at £74m and Oxera at £71m.</p>
+    </div>
+    <div>
+      <p>Between £24m and £45m there runs a middle tier of American parents and European subsidiaries &mdash; NERA UK, Cornerstone, BRG, Brattle, Accuracy, AFRY, Flint Global &mdash; each reporting upward through a foreign head office. Below £20m the visible list thins to Analysis Group and Cambridge Econometrics, and then disappears entirely. Everyone else vanishes into a long tail that public filings cannot reach.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 3: SCATTER -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 03</div>
+    <h2>The margin spectrum</h2>
+    <p class="lede">From -2% to 56%. The same industry contains both extremes.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Operating Margin vs Revenue</div>
+        <div class="chart-sub">SCATTER · BUBBLE SIZE = OPERATING PROFIT</div>
+      </div>
+      <div class="chart-badge">SCATTER PLOT</div>
+    </div>
+    <div class="echart-container tall" id="chart-3"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p><strong>RBB sits by itself in the top right corner.</strong> A 56 per cent operating margin on £108m of turnover is a combination nobody else in the dataset gets near. The firms that match RBB on margin are a fraction of its size; the firms that match it on revenue carry margins that are half as wide.</p>
+      <p>A cluster of mid-sized names &mdash; Oxera, Baringa, A&amp;M Europe, A&amp;M Tax, Flint Global &mdash; runs along the 30 to 40 per cent band. These are the places where partner economics actually work: enough revenue to matter, enough margin to reward.</p>
+    </div>
+    <div>
+      <p><strong>Frontier Economics and Oxford Economics anchor the bottom.</strong> Frontier at £97m, 1.4 per cent margin. Oxford Economics at £74m, 2 per cent margin. The numbers look alarming until you read the ownership footnote.</p>
+      <p>Frontier is not under-earning. It is employee-owned, and it distributes its operating surplus through salaries rather than profit; the margin line is a residual by design. Brattle UK, alone among the twenty-three, actually lost money &mdash; £0.9m on £39m of revenue. Every other firm in the set finished the year in the black.</p>
+    </div>
+  </div>
+  <p style="grid-column: 1 / -1; font-size: 13px; color: #6e6e73; padding: 12px 16px; margin: 24px 40px 0; border-left: 2px solid #d2d2d7; background: #fafafa;"><em>A caveat on comparability.</em> The margins plotted here are as reported in each firm&rsquo;s filed accounts. For the LLPs in the set (RBB, Oxera, Baringa, FTI, A&amp;M, AlixPartners UK) operating profit is struck <em>before</em> any members&rsquo; remuneration charge, so the LLP-to-LLP comparison is like-for-like; the RBB 56.3% versus Oxera 38.3% spread is genuinely eighteen points on that basis. What differs is how each firm classifies what flows <em>below</em> operating profit: RBB &pound;0, Baringa &pound;0, Oxera &pound;8.3m as members&rsquo; remuneration. On a distributable-profit-over-turnover basis the comparison bifurcates: RBB 55.6%, Baringa 36.0% (each essentially equal to its operating margin because neither charges below-line rem), Oxera 26.5%. The RBB&ndash;Oxera gap widens on that basis from eighteen to roughly twenty-nine points. The Ltd companies (Frontier, Oxford Economics, Capital Economics, Brattle UK) report post-owner-remuneration margins, which is a different basis. Read the chart for where each firm routes value.</p>
+</section>
+
+<!-- CHAPTER 3B: HISTORICAL TRAJECTORY -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 03B</div>
+    <h2>The long view</h2>
+    <p class="lede">Revenue since each firm was born. Frontier 1999. Baringa 2000. RBB 2002.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Revenue since founding</div>
+        <div class="chart-sub">£ MILLIONS · ANNUAL TURNOVER · 1999 → 2025</div>
+      </div>
+      <div class="chart-badge">HISTORICAL LINE</div>
+    </div>
+    <div class="toggle-bar" id="history-toggle">
+      <button type="button" class="toggle-btn is-active" data-firm="rbb">RBB</button>
+      <button type="button" class="toggle-btn is-active" data-firm="baringa">Baringa</button>
+      <button type="button" class="toggle-btn" data-firm="frontier">Frontier</button>
+    </div>
+    <div class="echart-container" id="chart-history"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p><strong>RBB's first year was £2m, in 2003.</strong> The three founders walked out of NERA with a client list in their pockets, set up shop, and began booking work almost immediately. By 2010 the firm stood at around £21m on the approximation curve; the FY20 filed accounts show £59m; and then the line bends sharply upward, to £108m by FY25.</p>
+      <p><strong>Baringa started smaller and scaled faster.</strong> A management-consulting generalist from day one, it crossed £100m in the mid-2010s, £200m in 2021, and approaches £500m today with 178 partners signed onto the LLP register. The two firms chose opposite models and both models worked.</p>
+    </div>
+    <div>
+      <p><strong>Frontier is the oldest of the three and the quietest.</strong> It was founded in June 1999 by Simon Gaysford, Philip Burns, Dan Elliott, Zoltan Biro and Michael Webb &mdash; a founding board drawn from London Economics Ltd and the Bank of England, with Sarah Hogg as chair; it has grown steadily to £97m over twenty-six years; and it has remained employee-owned throughout. Partners and staff share equity, profit is a residual after salaries, and if you toggle Frontier on you see the straightest line in the industry.</p>
+      <p>The early-year figures here are approximations reconciled against each firm's own published histories. Every data point from FY21 onwards is read directly from Companies House.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 4: RBB vs BARINGA -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 04</div>
+    <h2>Two ways to grow</h2>
+    <p class="lede">RBB and Baringa, side by side, 2021 to 2025. And then the arithmetic underneath.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Revenue Growth: RBB vs Baringa</div>
+        <div class="chart-sub">£ MILLIONS · FY2021 → FY2025 · £/PARTNER OVERLAID</div>
+      </div>
+    </div>
+    <div class="echart-container" id="chart-4"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>Both firms advise competition authorities, regulators and governments; both are partner-owned London LLPs; both grew fast between 2021 and 2025. That is where the similarity ends.</p>
+      <p><strong>RBB Economics runs a concentrated partnership.</strong> The membership actually contracted, from 20 in FY2021 to 18 in FY2025, while revenue climbed from £61m to £108m. Profit per member rose from £2.02m to £3.34m &mdash; a 65 per cent increase spread across fewer people. Fewer owners, more each.</p>
+    </div>
+    <div>
+      <p><strong>Baringa Partners runs the mirror image.</strong> Its partnership expanded from 98 members to 178 as revenue rose from £202m to £450m, and the firm also distributes roughly £170m in salaries to its 1,800 non-partner staff. More owners, bigger pool, distributed wider.</p>
+      <p><strong>Frontier Economics takes the Baringa logic further still.</strong> It is employee-owned; the founders gave away their equity on day one in 1999; profit, again, is a residual after everyone is paid.</p>
+    </div>
+  </div>
+
+  <!-- Chart J · cost structure (from NOTE J in data-notes) -->
+  <div class="chart-wrap" style="margin-top:48px;">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Revenue split: staff · other costs · profit to members</div>
+        <div class="chart-sub">% OF REVENUE · TOP 10 FIRMS · FY24–25 · SOURCE: FILED ACCOUNTS</div>
+      </div>
+      <div class="chart-badge">COST STRUCTURE</div>
+    </div>
+    <div class="echart-container" id="chart-j"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>The two growth stories above are one layer of the thing. This chart is the arithmetic that sits underneath them &mdash; the question of where every pound of revenue ends up once the firm has paid its bills.</p>
+      <p><strong>RBB is the extreme.</strong> Fifty-six pence of every pound becomes profit to its eighteen LLP members; thirty-five pence pays staff; nine pence covers everything else, meaning rent, software, travel and professional indemnity. That is how a single partner ends up with £3.34m a year. A small, closed partnership taking a very large share of a medium-sized revenue base is the whole trick.</p>
+      <p><strong>Frontier is the mirror image.</strong> Ninety-two per cent of revenue is staff cost; one per cent shows up as profit to members, because every economist at Frontier is also an owner and the partners get paid through salaries, not distributions. The profit line, once again, is a residual by design.</p>
+    </div>
+    <div class="callout">
+      <div class="tag">THE DISPUTES MIDDLE</div>
+      <p>FTI Consulting, AlixPartners and A&amp;M Europe all land between 49 and 65 per cent staff cost and 19 to 39 per cent profit-to-members. They are large partnerships with deep pyramids under each partner, profitable by any normal standard but nowhere near the RBB extreme.</p>
+      <p><strong>CRA International sits at the bottom of the table</strong> on ten per cent profit-to-members. That is not inefficiency. CRA is a US subsidiary, and it remits most of its UK revenue upward to a Boston parent. A purely domestic LLP like RBB does not pay that cost.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 5: PE TIMELINE -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 05</div>
+    <h2>When the money arrived</h2>
+    <p class="lede">Private equity discovered economics consulting in 2014. It has been buying ever since.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Private Equity Deals in UK Economics Consulting</div>
+        <div class="chart-sub">2014 → 2025 · DEAL VALUE (WHERE DISCLOSED) · SOURCE: CH FILINGS + PRESS</div>
+      </div>
+      <div class="chart-badge">PE TIMELINE</div>
+    </div>
+    <div class="echart-container" id="chart-5"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>Before 2014 not a single UK economics consultancy had taken private equity money. Then <strong>LDC</strong>, the Lloyds-owned mid-market fund, bought a minority stake in Capital Economics at a <strong>£70m valuation</strong>; four years later <strong>Phoenix Equity Partners</strong> ran a full buyout at a <strong>£95m valuation</strong>; and LDC walked away having multiplied its money 2.5 times, a 43 per cent internal rate of return. The first cheque had worked.</p>
+    </div>
+    <div>
+      <p>In <strong>December 2025 Cinven bought control of Flint Global at roughly £190m</strong>, a reported 16 times EV/EBITDA. Ed Richards, the former Ofcom chief, and Sir Simon Fraser, the former permanent secretary at the Foreign Office, both remain on the cap table as shareholders. Stonehaven had already begun rolling up political-economic firms in 2024 and picked up Public First in March 2025. The cheques keep coming.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 6: SANKEY -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 06</div>
+    <h2>The debt map</h2>
+    <p class="lede">Fifty outstanding charges across the industry. Here is who banks whom.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Outstanding Secured Charges</div>
+        <div class="chart-sub">LENDERS → FIRMS · COMPANIES HOUSE CHARGES REGISTER</div>
+      </div>
+      <div class="chart-badge">SANKEY DIAGRAM</div>
+    </div>
+    <div class="echart-container" id="chart-6"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p><strong>HSBC UK Bank PLC banks the UK economics industry.</strong> It holds charges against Baringa Partners, Frontier Economics, Oxera Consulting, Cebr and Fideres Partners &mdash; five of the most visible names in the trade, all working off the same relationship manager somewhere in Canary Wharf.</p>
+      <p><strong>BRG UK uses PNC Bank</strong>, which is American. Its US parent arranged the UK facility through its US banking relationships, and the London subsidiary took what it was given.</p>
+    </div>
+    <div>
+      <p><strong>RBB Economics splits its charges</strong> between RBS Invoice Finance and Zurich Assurance. The Zurich charge is pension-linked.</p>
+      <p><strong>Capital Economics is the oddity.</strong> It is the only firm in the dataset whose charges point to Nordic Trustee, which represents bondholders rather than banks. The original Phoenix Equity Partners debt structure &mdash; charges in favour of <a href="https://find-and-update.company-information.service.gov.uk/company/02484735/charges">Glas Trust Corporation Limited</a>, registered between April and June 2018 &mdash; was satisfied in March 2026 and replaced by new charges in favour of <a href="https://find-and-update.company-information.service.gov.uk/company/02484735/charges">Ocorian Trustee (UK) Limited, trading as Nordic Trustee</a>, registered in November 2024 and January 2025. Refinancing, secondary sale, or some combination of the two &mdash; the PE ownership structure is evidently evolving.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 7: DIRECTOR SEAT MOVEMENTS -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 07</div>
+    <h2>The partnership gold rush</h2>
+    <p class="lede">New director and LLP-member appointments per year across the seven largest firms.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title" id="seats-title">Director &amp; LLP Member Appointments, 2015–2026</div>
+        <div class="chart-sub" id="seats-sub">NEW SEATS PER YEAR · SOURCE: CH OFFICER APPOINTMENTS FILINGS</div>
+      </div>
+      <div class="chart-badge">STACKED BAR</div>
+    </div>
+    <div class="toggle-bar" id="seats-toggle">
+      <button type="button" class="toggle-btn is-active" data-mode="appointments">Appointments</button>
+      <button type="button" class="toggle-btn" data-mode="departures">Departures</button>
+      <button type="button" class="toggle-btn" data-mode="net">Net</button>
+    </div>
+    <div class="echart-container tall" id="chart-7b"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p><strong>Between 2022 and 2024, something broke loose.</strong> From 2015 through to 2022, the seven largest UK economics and disputes firms between them filed roughly fifteen new director or LLP-member appointments a year. In 2024 that number jumped to thirty-nine; in 2025 it came in at thirty-seven. The rate had more than doubled in thirty months, and it has not come back down.</p>
+      <p><strong>Baringa led the charge, and A&amp;M ran second.</strong> Baringa alone added eleven new LLP members in 2024 and another eight in 2025 &mdash; the fastest partner-class expansion of any UK consultancy, full stop.</p>
+    </div>
+    <div class="callout">
+      <div class="tag">INFLOWS ARE NOT THE WHOLE STORY</div>
+      <p>The partnership is not merely growing &mdash; it is churning. Departures climbed in step with hires from 2022 onwards: internal promotions, retirements, moves to rivals, moves into new firms altogether. The net chart draws the difference. In most years the seven firms gained somewhere between five and fifteen partners on balance; in 2024, for the first time, the net number crossed twenty.</p>
+    </div>
+  </div>
+
+  <!-- Chart G · partner tenure (from NOTE G in data-notes) -->
+  <div class="chart-wrap" style="margin-top:48px;">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Average LLP-member tenure, by firm</div>
+        <div class="chart-sub">YEARS · ACTIVE MEMBERS ONLY · SOURCE: 1,138 CH OFFICER APPOINTMENTS</div>
+      </div>
+      <div class="chart-badge">WHO KEEPS THEIR PEOPLE</div>
+    </div>
+    <div class="echart-container" id="chart-g"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>Hiring is only half the story. The other half is retention &mdash; and if you measure the average tenure of LLP members still active at each firm today, the gap between top and bottom is startling.</p>
+      <p><strong>RBB and Frontier are the extremes.</strong> The long-tenured core at each firm has averaged 22 years on the partnership or directors' register at RBB and 18 at Frontier, as long as the firms themselves have existed. Both are closed shops where the founding cohort has stayed put and the partnership expands by slow promotion rather than lateral hire; Simon Bishop retired from RBB in April 2023 after twenty-one years, the exception that demonstrates how rare partner-level departures have been at either firm.</p>
+      <p><strong>Oxera, Cambridge Econometrics and Fideres sit in the middle tier</strong> at 9 to 12 years &mdash; still a long run by any industry standard, and all three are competition or niche-policy boutiques with tight partner classes.</p>
+    </div>
+    <div class="callout">
+      <div class="tag">THE CONVEYOR-BELT END</div>
+      <p><strong>AlixPartners UK averages 2.6 years.</strong> A&amp;M Europe is 5.3. FTI, taking in its Compass Lexecon subsidiary, is 5.2. These are firms with large partner classes where the profit-per-partner arithmetic depends on constant churn: promote quickly, distribute quickly, let the next cohort through.</p>
+      <p>The gold-rush chart above tells you who is hiring. This one tells you who they are replacing.</p>
+    </div>
+  </div>
+
+  <!-- Chart AGE · age-at-appointment (new: derived from officers_detail DOB) -->
+  <div class="chart-wrap" style="margin-top:48px;">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Age at appointment: when do they actually make partner?</div>
+        <div class="chart-sub">MEAN AGE AT APPOINTMENT · 2000–2026 · 1,130 DATED OFFICER RECORDS</div>
+      </div>
+      <div class="chart-badge">AGE AT APPOINTMENT</div>
+    </div>
+    <div class="echart-container tall" id="chart-age"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>Chapter 07 has asked who was hired and how long they stay. The last piece is how old they were on the day they walked through the door.</p>
+      <p><strong>The time trend is almost perfectly flat.</strong> Between 2000 and 2026 the mean age of a new director or LLP member in the UK economics consultancy market has hovered at <strong>forty-five to forty-seven years</strong>. The number barely stirs at the 2014 arrival of private equity or the 2024 gold rush. Partner-making has its own metabolism, and the metabolism is not responsive to either money or growth.</p>
+      <p><strong>But firm-level variation is enormous.</strong> RBB Economics promotes people at an average age of <strong>thirty-nine</strong>. Cornerstone Research does not hire anyone under <strong>forty-six</strong>. That is a sixteen-year spread across firms that sell into the same regulatory proceedings.</p>
+    </div>
+    <div class="callout">
+      <div class="tag">TWO PARADOXES</div>
+      <p><strong>RBB is the youngest big firm and the longest-tenured.</strong> The reason is 2002. When Ridyard, Bishop and Baker walked out of NERA with thirteen colleagues &mdash; a sixteen-economist founding cohort in all &mdash; they made themselves LLP members in their mid-thirties and have kept the partnership closed ever since. Young promotion plus long tenure is only possible when almost nobody leaves.</p>
+      <p><strong>AlixPartners is the oldest and the shortest-tenured.</strong> Opposite mechanism entirely: the firm does not promote from within but imports senior lateral hires in their late forties who stay two or three years before the next move. Cornerstone Research takes it further. Its minimum age at appointment in the whole dataset is <strong>46</strong>, because it hires only senior testifying experts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHAPTER 8: FOUNDER TREE -->
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 08</div>
+    <h2>The founder tree</h2>
+    <p class="lede">How the market was built, 2000 to 2025. Every founding event on one timeline.</p>
+  </div>
+  <div class="chart-wrap">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">The Spinout Timeline</div>
+        <div class="chart-sub">FOUNDING EVENTS · SPINOUTS · ACQUISITIONS · 2000-2025</div>
+      </div>
+      <div class="chart-badge">TIMELINE</div>
+    </div>
+    <div class="echart-container tall" id="chart-7"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p><strong>The 2011 cluster is not one story but two.</strong> LECG was a US firm that collapsed into bankruptcy in 2011; its London economists scattered to BRG and Compass Lexecon. Two years later, and entirely separately, John Fingleton &mdash; the former chief executive of the OFT &mdash; set up a boutique competition-policy advisory under his own name.</p>
+    </div>
+    <div class="callout">
+      <div class="tag">THE KEYSTONE TRIANGLE</div>
+      <p><strong>Keystone built a European office, and then watched three of its four senior hires walk out.</strong> By the end of 2025, Caffarra had decamped to UCL and CEPR, Calanchi had joined Econic Partners, and Stefan Hunt had signed on at AlixPartners (2 December 2025). Only Coscelli stayed.</p>
+    </div>
+  </div>
+
+  <!-- Chart H · officer network (from NOTE H in data-notes) -->
+  <div class="chart-wrap" style="margin-top:48px;">
+    <div class="chart-header">
+      <div>
+        <div class="chart-title">Firm &times; firm officer-overlap network</div>
+        <div class="chart-sub">EDGE WEIGHT = SHARED DIRECTORS / LLP MEMBERS 2000–2025 · FORCE LAYOUT</div>
+      </div>
+      <div class="chart-badge">COMPASS LEXECON AS HUB</div>
+    </div>
+    <div class="echart-container tall" id="chart-h"></div>
+  </div>
+  <div class="commentary">
+    <div>
+      <p>The timeline above shows events. This chart shows the structure those events left behind. Draw an edge between any two firms that have shared a director or LLP member at any point since 2000, and one node pulls everything else toward the centre of the graph.</p>
+      <p><strong>Compass Lexecon is the hub</strong> of the UK economics consultancy market, full stop. Every other firm is within one or two edges of it. The ribbon connecting Compass Lexecon to Econic Partners &mdash; the twenty-five economists who walked out together in February 2025 &mdash; is the single thickest edge in the entire dataset.</p>
+      <p><strong>The CMA sits in its own satellite orbit.</strong> It has exit edges running everywhere &mdash; to Keystone, Oxera, Frontier, AlixPartners &mdash; and almost no return edges. The regulator is a net exporter of talent. It is not a marketplace.</p>
+    </div>
+    <div class="callout">
+      <div class="tag">THE ISOLATED TWO</div>
+      <p><strong>Frontier and RBB are almost disconnected from the rest of the graph.</strong> Frontier has exactly one edge &mdash; Mike Walker joining as senior advisor from the CMA in January 2025. RBB has one &mdash; Benoît Durand joining from the Competition Commission in 2008. They are the only two firms in the dataset with fewer than two overlap edges, and both are partnerships that deliberately hold onto their people. The tenure chart in chapter 07 is the other way of looking at the same picture.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section class="final">
+  <h2>Eight thousand filings, ninety firms, one industry</h2>
+  <p>The entire UK economics consultancy market fits inside a single SQLite database that runs on a laptop. The laptop costs less than what an RBB partner earns in a morning.</p>
+  <div class="final-stats">
+    <div class="fs"><div class="num">90</div><div class="lbl">Firms tracked</div></div>
+    <div class="fs"><div class="num">£2bn+</div><div class="lbl">Combined revenue</div></div>
+    <div class="fs"><div class="num">8,110</div><div class="lbl">Filings read</div></div>
+    <div class="fs"><div class="num">1,100+</div><div class="lbl">Accounts PDFs</div></div>
+  </div>
+  <p>Every number in this story came from Companies House. No firm was contacted; no interview was conducted; no informant was cultivated. The data was already filed, already indexed, and already public in the registry at Cardiff. The financial picture of a &pound;2 billion industry turns out to be entirely reconstructable from statutory documents alone.</p>
+</section>
+
+<div class="footer">
+  <p>BUILT FROM PUBLIC FILINGS</p>
+  <p style="margin-top:16px;padding-top:16px;border-top:1px solid #d2d2d7;color:#1d1d1f;"><strong>Leath Al Obaidi</strong> &mdash; independent research on the UK economics consultancy industry.</p>
+  <p style="font-size:12px;opacity:.75;color:#6e6e73;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> &mdash; you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. Underlying Companies House data is &copy; Crown copyright, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3.0/">Open Government Licence v3.0</a>.</p>
+  <p style="font-size:12px;opacity:.75;color:#6e6e73;">Cite as: Al Obaidi, L. (2026). <em>UK Economics Consultancy: A Historical Series</em>. leathalobaidi.com</p>
+    <p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. The author holds no financial position in any firm discussed. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
+</div>
+
+<script>
+// ============================================================================
+// SHARED CONSTANTS — theme palette
+// ============================================================================
+const THEME_BG         = "#f5f5f7";
+const THEME_BG_ELEV    = "#ffffff";
+const THEME_BORDER     = "#d2d2d7";
+const THEME_TEXT       = "#1d1d1f";
+const THEME_TEXT_DIM   = "#6e6e73";
+const THEME_TEXT_MUTED = "#86868b";
+const THEME_ACCENT     = "#0071e3";
+const THEME_AXIS_GRID  = "#ededf2";
+
+const SEGMENT_COLORS = {
+  Competition: "#0071e3",
+  Litigation:  "#34c759",
+  Macro:       "#af52de",
+  Overlap:     "#ff9500",
+  Policy:      "#8e8e93",
+  Regulation:  "#5ac8fa",
+  Broad:       "#ff2d55"
+};
+
+const ANNOT_TITLE_FILL = "#1d1d1f";
+const ANNOT_LABEL_FILL = "#6e6e73";
+const ANNOT_STROKE     = "#0071e3";
+
+// ============================================================================
+// DATA
+// ============================================================================
+const FIRMS = [
+  {name:"FTI Consulting LLP",     cat:"Litigation",  rev:461, op:109, margin:23.6},
+  {name:"Baringa Partners LLP",   cat:"Broad",       rev:450, op:166, margin:36.8},
+  {name:"A&M Europe LLP",         cat:"Litigation",  rev:301, op:116, margin:38.6},
+  {name:"AlixPartners UK LLP",    cat:"Broad",       rev:273, op:53,  margin:19.3},
+  {name:"RBB Economics LLP",      cat:"Competition", rev:108, op:61,  margin:56.3},
+  {name:"Frontier Economics Ltd", cat:"Competition", rev:97,  op:1.4, margin:1.4},
+  {name:"CRA International UK",   cat:"Overlap",     rev:82,  op:8.3, margin:10.1},
+  {name:"Oxford Economics Ltd",   cat:"Macro",       rev:74,  op:1.5, margin:2.0},
+  {name:"A&M Tax LLP",            cat:"Litigation",  rev:72,  op:29,  margin:40.4},
+  {name:"Oxera Consulting LLP",   cat:"Competition", rev:71,  op:27,  margin:38.3},
+  {name:"EIU Ltd",                cat:"Macro",       rev:54,  op:4.1, margin:7.6},
+  {name:"AFRY Management",        cat:"Regulation",  rev:44,  op:6.1, margin:13.9},
+  {name:"BRG UK Ltd",             cat:"Litigation",  rev:42,  op:4.5, margin:10.7},
+  {name:"Brattle Group Ltd",      cat:"Overlap",     rev:39,  op:-0.9,margin:-2.3},
+  {name:"Cornerstone Research UK",cat:"Overlap",     rev:35,  op:4.0, margin:11.3},
+  {name:"Flint Global Ltd",       cat:"Regulation",  rev:31,  op:9.2, margin:30.0},
+  {name:"A&M Disputes LLP",       cat:"Litigation",  rev:30,  op:8.0, margin:27.1},
+  {name:"ICF Consulting",         cat:"Policy",      rev:28,  op:2.5, margin:9.1},
+  {name:"NERA UK Limited",        cat:"Overlap",     rev:25,  op:3.1, margin:12.4},
+  {name:"Accuracy UK Ltd",        cat:"Litigation",  rev:24,  op:4.8, margin:19.5},
+  {name:"Capital Economics",      cat:"Macro",       rev:22,  op:4.3, margin:19.8},
+  {name:"Analysis Group Ltd",     cat:"Overlap",     rev:13,  op:0.8, margin:6.0},
+  {name:"Cambridge Econometrics", cat:"Policy",      rev:5.4, op:0.04,margin:0.7}
+];
+const TAIL = {Competition:4, Litigation:2, Macro:13, Overlap:0, Policy:33, Regulation:15, Broad:0};
+
+const TIMESERIES = {
+  rbb: [
+    {y:"FY21", rev:60.7, ppm:2.02}, {y:"FY22", rev:62.9, ppm:2.06},
+    {y:"FY23", rev:75.0, ppm:2.40}, {y:"FY24", rev:82.0, ppm:2.41}, {y:"FY25", rev:108.4, ppm:3.34}
+  ],
+  baringa: [
+    {y:"FY21", rev:201.9, ppm:0.90}, {y:"FY22", rev:268.1, ppm:1.62},
+    {y:"FY23", rev:373.9, ppm:0.80}, {y:"FY24", rev:432.8, ppm:0.85}, {y:"FY25", rev:449.8, ppm:0.91}
+  ]
+};
+
+// Canonical list — matches data-repo/data/pe_deals.csv (15 UK-entity deals). Upstream US-parent deals
+// in AlixPartners Global and BRG LLC are excluded because the CSV scope is UK-registered entities.
+const PE_DEALS = [
+  {year:2014,   firm:"Capital Economics",  type:"Minority",      investor:"LDC (Lloyds)",            value:70,   desc:"LDC minority stake at £70m (Oct 2014)"},
+  {year:2015,   firm:"PA Consulting",      type:"Minority",      investor:"Carlyle",                 value:null, desc:"Carlyle acquires 51% stake at reported ~$1bn EV (Sep 2015); £116m cash distributed to employees"},
+  {year:2018,   firm:"Capital Economics",  type:"Buyout",        investor:"Phoenix Equity Partners", value:95,   desc:"Phoenix buyout. LDC exits at 2.5x / 43% IRR (Mar 2018)"},
+  {year:2019,   firm:"Simetrica-Jacobs",   type:"Acquisition",   investor:"Jacobs",                  value:null, desc:"Jacobs acquires Simetrica (Daniel Fujiwara wellbeing-economics firm); later moves to 100%"},
+  {year:2021.1, firm:"Oxford Analytica",   type:"Acquisition",   investor:"FiscalNote",              value:null, desc:"FiscalNote acquires Oxford Analytica (Feb 2021)"},
+  {year:2021.2, firm:"PA Consulting",      type:"Buyout",        investor:"Jacobs",                  value:1825, desc:"Jacobs acquires 65% majority for £1.825bn EV (Mar 2021); £248m distributed to employee benefit trust"},
+  {year:2021.8, firm:"Vivid Economics",    type:"Acqui-hire",    investor:"McKinsey",                value:null, desc:"130 economists absorbed into McKinsey Sustainability (Nov 2021)"},
+  {year:2023,   firm:"Continuum Economics",type:"Buyout",        investor:"LBO (4Cast+Roubini GE)",  value:null, desc:"4Cast + Roubini Global Economics LBO (Dec 2023)"},
+  {year:2024,   firm:"Stonehaven Group",   type:"Roll-up",       investor:"Stonehaven / SHGH",       value:null, desc:"Peter Lyburn rolls up political-economic firms"},
+  {year:2025.1, firm:"Econic Partners",    type:"Founding round",investor:"Goldman Sachs Alt.",      value:null, desc:"GS Alternatives + Willig/Ordover families back Econic launch (Feb 2025)"},
+  {year:2025.3, firm:"Oxford Analytica",   type:"Acquisition",   investor:"News Corp (via Dow Jones)",value:31,   desc:"News Corp acquires Oxford Analytica from FiscalNote for ~$40m ≈ £31m; announced March 2025 as Dow Jones-branded deal; completed 1 April 2025 per OA FY24 note 14"},
+  {year:2025.3, firm:"Public First",       type:"Acquisition",   investor:"Stonehaven",              value:null, desc:"Stonehaven acquires Public First (Mar 2025)"},
+  {year:2025.5, firm:"Oxford Economics",   type:"Acquisition",   investor:"Alpine Macro",            value:null, desc:"Oxford Economics buys majority stake in Alpine Macro (Jun 2025)"},
+  {year:2025.9, firm:"Flint Global",       type:"Buyout",        investor:"Cinven",                  value:190,  desc:"Cinven £190m majority buyout, ~16x EV/EBITDA (Dec 2025)"},
+  {year:2026,   firm:"PA Consulting",      type:"Buyout",        investor:"Jacobs",                  value:1291, desc:"Jacobs acquires remaining 35% for £1.291bn; implies £3.05bn 100% EV at 13x CY25 adjusted EBITDA (Mar 2026)"}
+];
+
+const CHARGES_SANKEY = {
+  nodes: [
+    {name:"HSBC UK Bank PLC"},{name:"PNC Bank (US)"},{name:"RBS Invoice Finance"},
+    {name:"Zurich Assurance"},{name:"Nordic Trustee (Bonds)"},{name:"NatWest"},
+    {name:"Baringa Partners"},{name:"Frontier Economics"},{name:"Oxera Consulting"},
+    {name:"Cebr"},{name:"Fideres Partners"},{name:"BRG UK"},
+    {name:"RBB Economics"},{name:"Capital Economics"}
+  ],
+  links: [
+    {source:"HSBC UK Bank PLC", target:"Baringa Partners", value:2},
+    {source:"HSBC UK Bank PLC", target:"Frontier Economics", value:3},
+    {source:"HSBC UK Bank PLC", target:"Oxera Consulting", value:1},
+    {source:"HSBC UK Bank PLC", target:"Cebr", value:2},
+    {source:"HSBC UK Bank PLC", target:"Fideres Partners", value:1},
+    {source:"NatWest", target:"Baringa Partners", value:1},
+    {source:"PNC Bank (US)", target:"BRG UK", value:5},
+    {source:"RBS Invoice Finance", target:"RBB Economics", value:2},
+    {source:"Zurich Assurance", target:"RBB Economics", value:2},
+    {source:"Nordic Trustee (Bonds)", target:"Capital Economics", value:2}
+  ]
+};
+
+const TREE = [
+  {y:2000,    name:"NERA UK incorporated",               color:'#8e8e93', desc:"UK office since 1980s.", lane: 1.0},
+  {y:2002,    name:"RBB Economics founded",              color:'#0071e3', desc:"Ridyard, Bishop, Baker + 16 leave NERA.", lane:-1.0},
+  {y:2006,    name:"Vivid Economics founded",            color:'#0071e3', desc:"Cameron Hepburn's climate boutique.", lane: 2.2},
+  {y:2008,    name:"Compass Lexecon merger",             color:'#ff2d55', desc:"FTI merges Compass + Lexecon.", lane: 1.0},
+  {y:2011,    name:"LECG bankruptcy",                    color:'#ff3b30', desc:"Alumni scatter to BRG and Compass Lexecon.", lane:-2.2},
+  {y:2012,    name:"BRG launches UK",                    color:'#34c759', desc:"Teece's second firm.", lane: 1.0},
+  {y:2013,    name:"Fingleton Ltd founded",              color:'#af52de', desc:"John Fingleton leaves OFT.", lane:-1.0},
+  {y:2015,    name:"Flint Global founded",               color:'#5ac8fa', desc:"Richards + Fraser found political advisory.", lane: 2.2},
+  {y:2020,    name:"Pragmatix Advisory",                 color:'#ff9500', desc:"Mark Pragnell leaves Cebr.", lane:-1.0},
+  {y:2021,    name:"McKinsey buys Vivid",                color:'#0071e3', desc:"130 economists absorbed (Mar 2021).", lane: 1.0},
+  {y:2021.9,  name:"Grant Thornton Economics launches",  color:'#34c759', desc:"Horn + Williams hired from A&M (Nov 2021).", lane: 2.2},
+  {y:2023,    name:"Keystone Europe built",              color:'#5ac8fa', desc:"Coscelli, Caffarra, Hunt, Calanchi — four senior hires in eight weeks.", lane:-1.0},
+  {y:2023.7,  name:"Caffarra leaves Keystone",           color:'#af52de', desc:"Moves to UCL + CEPR. No commercial firm.", lane: 2.2},
+  {y:2024,    name:"Compass Lexecon reshuffle",          color:'#ff2d55', desc:"Coppi/Dryden/Edwards-Warren become co-heads (Feb 2024).", lane: 1.0},
+  {y:2025,    name:"Econic Partners launches",           color:'#0071e3', desc:"Orszag + 25 walk from Compass Lexecon. Goldman Sachs backing (19 Feb 2025).", lane:-2.2},
+  {y:2025.15, name:"Calanchi → Econic",                  color:'#5ac8fa', desc:"Gianmarco Calanchi leaves Keystone for Econic London.", lane:-1.0},
+  {y:2025.3,  name:"Hunt → AlixPartners",                color:'#5ac8fa', desc:"Stefan Hunt joins AlixPartners as Partner/MD (2 Dec 2025).", lane: 1.0}
+];
+
+// ============================================================================
+// CHART DEFAULTS
+// ============================================================================
+const DEFAULTS = {
+  backgroundColor: 'transparent',
+  textStyle: { fontFamily: 'Inter, system-ui, sans-serif', color: THEME_TEXT },
+  tooltip: {
+    backgroundColor: "#ffffff",
+    borderColor: THEME_BORDER,
+    borderWidth: 1,
+    textStyle: { color: THEME_TEXT, fontFamily: 'Inter, sans-serif', fontSize: 12 },
+    padding: [10, 14],
+    extraCssText: 'border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,0.6);'
+  }
+};
+const AXIS_LABEL = { color: THEME_TEXT_DIM, fontFamily: 'JetBrains Mono', fontSize: 10 };
+const AXIS_LINE  = { lineStyle: { color: THEME_BORDER } };
+const SPLIT_LINE = { lineStyle: { color: THEME_AXIS_GRID } };
+
+// ============================================================================
+// CHART 1 — TREEMAP
+// ============================================================================
+const chart1 = echarts.init(document.getElementById('chart-1'));
+function renderTreemap() {
+  const segments = {};
+  FIRMS.forEach(f => {
+    if (!segments[f.cat]) segments[f.cat] = [];
+    segments[f.cat].push({
+      name: f.name, value: f.rev, rev: f.rev, margin: f.margin,
+      itemStyle: { color: SEGMENT_COLORS[f.cat], borderColor: THEME_BG_ELEV, borderWidth: 2 }
+    });
+  });
+  Object.entries(TAIL).forEach(([cat, n]) => {
+    if (!segments[cat]) segments[cat] = [];
+    for (let i = 0; i < n; i++) {
+      segments[cat].push({
+        name: 'Long-tail firm', value: 2, rev: null,
+        itemStyle: { color: "#d2d2d7", borderColor: THEME_BG, borderWidth: 1 }
+      });
+    }
+  });
+  const data = Object.entries(segments).map(([cat, children]) => ({
+    name: cat, children,
+    itemStyle: { color: SEGMENT_COLORS[cat] },
+    upperLabel: {
+      show: true, height: 30, color: '#ffffff',
+      fontFamily: 'Inter', fontWeight: 800, fontSize: 13, letterSpacing: 2,
+      formatter: p => p.name.toUpperCase(),
+      backgroundColor: 'rgba(0,0,0,0.45)',
+      padding: [7, 11]
+    }
+  }));
+  chart1.setOption({
+    ...DEFAULTS,
+    tooltip: {
+      ...DEFAULTS.tooltip,
+      formatter: p => {
+        if (p.data.rev) return `<b>${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">£${p.data.rev}m${p.data.margin!=null?' · '+p.data.margin+'% margin':''}</span>`;
+        if (p.data.children) return `<b>${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">${p.data.children.length} firms</span>`;
+        return `<b>${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">small-company accounts, revenue not disclosed</span>`;
+      }
+    },
+    series: [{
+      type: 'treemap', data,
+      width: '100%', height: '100%',
+      roam: false, nodeClick: false,
+      breadcrumb: { show: false },
+      leafDepth: 2,
+      levels: [
+        { itemStyle: { borderColor: THEME_BG_ELEV, borderWidth: 3, gapWidth: 3 } },
+        {
+          itemStyle: { borderColorSaturation: 0.5, gapWidth: 2, borderWidth: 2 },
+          upperLabel: {
+            show: true, height: 30, color: '#ffffff',
+            fontFamily: 'Inter', fontWeight: 800, fontSize: 13, letterSpacing: 2,
+            formatter: p => p.name.toUpperCase(),
+            backgroundColor: 'rgba(0,0,0,0.45)', padding: [7, 11]
+          }
+        },
+        { itemStyle: { borderColorSaturation: 0.7, gapWidth: 1 }, colorSaturation: [0.35, 0.6] }
+      ],
+      label: {
+        show: true,
+        padding: [8, 8, 8, 8],
+        overflow: 'none',
+        formatter: p => {
+          if (!p.data.rev) return '';
+          // suppress labels on tiles too small to render them cleanly
+          const w = p.treePathInfo ? null : null;
+          // ECharts provides p.rect? no — fall back to area heuristic from value
+          if (p.data.rev < 10) return '';
+          const rev = p.data.rev >= 100 ? Math.round(p.data.rev) : p.data.rev.toFixed(p.data.rev < 10 ? 1 : 0);
+          let clean = p.name.replace(' LLP','').replace(' Ltd','').replace(' Limited','').replace(' UK','');
+          if (clean.length > 12 && clean.includes(' ')) {
+            const parts = clean.split(' ');
+            const mid = Math.ceil(parts.length / 2);
+            clean = parts.slice(0, mid).join(' ') + '\n' + parts.slice(mid).join(' ');
+          }
+          return `{n|${clean}}\n{v|£${rev}m}`;
+        },
+        rich: {
+          n: {color: '#ffffff', fontSize: 11, fontWeight: 600, fontFamily: 'Inter', lineHeight: 14},
+          v: {color: '#ffffff', fontSize: 10, fontFamily: 'JetBrains Mono', fontWeight: 500, opacity: 0.85, lineHeight: 14}
+        }
+      },
+      animationDuration: 1000, animationEasing: 'cubicOut'
+    }]
+  });
+}
+renderTreemap();
+
+// ============================================================================
+// CHART 2 — LEAGUE TABLE
+// ============================================================================
+const chart2 = echarts.init(document.getElementById('chart-2'));
+function renderLeague(mode = 'rev') {
+  const key    = mode === 'margin' ? 'margin' : 'rev';
+  const sorted = [...FIRMS].sort((a,b) => (b[key] ?? -Infinity) - (a[key] ?? -Infinity));
+  const xMax   = mode === 'margin' ? 60 : 500;
+  const fmt    = mode === 'margin' ? '{value}%' : '£{value}m';
+  const valFmt = mode === 'margin' ? '{@value}%' : '£{@value}m';
+  chart2.setOption({
+    ...DEFAULTS,
+    grid: {top: 30, bottom: 40, left: 180, right: 90},
+    tooltip: {
+      ...DEFAULTS.tooltip,
+      formatter: p => `<b>${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">${p.data.cat} · £${p.data.rev}m · ${p.data.margin}% margin</span>`
+    },
+    xAxis: {
+      type: 'value', max: xMax,
+      axisLabel: { ...AXIS_LABEL, formatter: fmt },
+      axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+    },
+    yAxis: {
+      type: 'category',
+      data: sorted.map(d => d.name).reverse(),
+      axisLabel: { color: THEME_TEXT, fontSize: 11, fontWeight: 500, width: 170, overflow: 'truncate' },
+      axisLine: { show: false }, axisTick: { show: false }
+    },
+    series: [{
+      type: 'bar',
+      data: sorted.slice().reverse().map(d => ({
+        value: d[key], name: d.name, cat: d.cat, margin: d.margin, rev: d.rev,
+        itemStyle: { color: SEGMENT_COLORS[d.cat], opacity: 0.9, borderRadius: [0, 4, 4, 0] },
+        label: {
+          show: true, position: 'right', formatter: valFmt,
+          color: THEME_TEXT, fontFamily: 'JetBrains Mono', fontSize: 11, fontWeight: 600
+        }
+      })),
+      barWidth: '72%',
+      animationDuration: 600, animationEasing: 'cubicOut'
+    }]
+  }, {notMerge: true});
+}
+renderLeague('rev');
+
+// Inject colour-key legend below chart 2
+(() => {
+  const order = ['Broad','Competition','Litigation','Macro','Policy','Regulation','Overlap'];
+  const host = document.getElementById('chart-2');
+  if (!host || host.parentNode.querySelector('.segment-legend')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'segment-legend';
+  wrap.innerHTML = order.map(cat => {
+    const c = SEGMENT_COLORS[cat];
+    return `<span class="seg-item"><span class="seg-sw" style="background:${c}"></span><span class="seg-lbl" style="color:${c}">${cat}</span></span>`;
+  }).join('');
+  host.parentNode.insertBefore(wrap, host.nextSibling);
+})();
+
+document.querySelectorAll('#league-toggle .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#league-toggle .toggle-btn').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    renderLeague(btn.dataset.mode);
+  });
+});
+
+// ============================================================================
+// CHART 3 — SCATTER
+// ============================================================================
+const chart3 = echarts.init(document.getElementById('chart-3'));
+function renderScatter() {
+  const data = FIRMS.map(f => ({
+    name: f.name, value: [f.rev, f.margin], cat: f.cat, op: f.op,
+    itemStyle: { color: SEGMENT_COLORS[f.cat], opacity: 0.88, borderColor: '#ffffff', borderWidth: 0.5 },
+    symbolSize: Math.max(16, Math.sqrt(Math.abs(f.op || 1)) * 6.5)
+  }));
+  const ZONES = [
+    {value:[380,52], text:'BROAD · STRATEGY', color:'#ff2d55'},
+    {value:[140,58], text:'COMPETITION',       color:'#0071e3'},
+    {value:[320,50], text:'LITIGATION',        color:'#34c759'},
+    {value:[380,-6], text:'MACRO · POLICY',    color:'#af52de'}
+  ];
+  chart3.setOption({
+    ...DEFAULTS,
+    grid: {top: 40, bottom: 60, left: 70, right: 60},
+    tooltip: {
+      ...DEFAULTS.tooltip,
+      formatter: p => `<b>${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">Revenue £${p.value[0]}m · Margin ${p.value[1]}% · Op profit £${p.data.op}m</span>`
+    },
+    xAxis: {
+      type: 'log', logBase: 10, min: 1, max: 600,
+      name: 'Revenue (£m, log scale)', nameLocation: 'middle', nameGap: 36,
+      nameTextStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'JetBrains Mono'},
+      axisLabel: { ...AXIS_LABEL, formatter: v => '£'+v+'m' },
+      axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+    },
+    yAxis: {
+      type: 'value', name: 'Operating Margin (%)', nameLocation: 'middle', nameGap: 50,
+      nameTextStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'JetBrains Mono'},
+      axisLabel: { ...AXIS_LABEL, formatter: '{value}%' },
+      axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+    },
+    series: [
+      {
+        type: 'scatter', data, z: 10,
+        animationDuration: 1200,
+        markLine: { silent: true, symbol: 'none', lineStyle: {color:'#333', type:'dashed', width:1}, data: [{yAxis: 0}] },
+        label: { show: false },
+        emphasis: { label: { show: false }, scale: 1.25 }
+      }
+    ]
+  });
+}
+renderScatter();
+
+// Inject colour-key legend below chart 3 (same scheme as chart 2)
+(() => {
+  const order = ['Broad','Competition','Litigation','Macro','Policy','Regulation','Overlap'];
+  const host = document.getElementById('chart-3');
+  if (!host || host.parentNode.querySelector('.segment-legend')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'segment-legend';
+  wrap.innerHTML = order.map(cat => {
+    const c = SEGMENT_COLORS[cat];
+    return `<span class="seg-item"><span class="seg-sw" style="background:${c}"></span><span class="seg-lbl" style="color:${c}">${cat}</span></span>`;
+  }).join('');
+  host.parentNode.insertBefore(wrap, host.nextSibling);
+})();
+
+// ============================================================================
+// CHART 3B — HISTORICAL REVENUE SINCE FOUNDING (RBB / Baringa / Frontier)
+// ============================================================================
+const HISTORY_YEARS = Array.from({length: 27}, (_, i) => 1999 + i); // 1999..2025
+// Nulls mark "before the firm existed". FY21-FY25 values are from Companies House
+// filings; earlier figures are approximations reconciled from the firms' own
+// published histories.
+const HISTORY = {
+  rbb: {
+    label: 'RBB Economics',
+    color: '#0071e3',
+    founded: 2002,
+    // 1999 2000 2001 2002 2003 2004 2005 2006 2007 2008 2009 2010 2011 2012 2013 2014 2015 2016 2017 2018 2019 2020 2021 2022 2023 2024 2025
+    data: [null,null,null,0.5,2.0,4.5,7.0,10.5,13.0,16.0,18.5,21.0,24.5,28.0,31.5,34.5,37.0,40.5,44.5,48.0,52.0,56.5,60.7,62.9,75.0,82.0,108.4]
+  },
+  baringa: {
+    label: 'Baringa Partners',
+    color: '#ff2d55',
+    founded: 2000,
+    data: [null,0.8,2.5,5.0,8.0,11.0,14.0,18.0,23.0,28.0,32.0,38.0,46.0,56.0,68.0,82.0,98.0,118.0,140.0,160.0,180.0,192.0,201.9,268.1,373.9,432.8,449.8]
+  },
+  frontier: {
+    label: 'Frontier Economics',
+    color: '#34c759',
+    founded: 1999,
+    data: [1.5,3.0,5.0,7.0,9.5,12.0,14.5,17.0,19.5,22.0,25.0,28.0,32.0,36.0,40.0,44.0,48.0,52.5,57.0,62.0,67.0,72.0,76.0,81.0,86.0,92.0,97.0]
+  }
+};
+
+const chartHistory = echarts.init(document.getElementById('chart-history'));
+let historyState = {rbb: true, baringa: true, frontier: false};
+
+function renderHistory() {
+  const active = Object.entries(HISTORY).filter(([k]) => historyState[k]);
+  const series = active.map(([k, firm]) => ({
+    name: firm.label,
+    type: 'line',
+    data: firm.data,
+    smooth: true,
+    symbol: 'circle',
+    symbolSize: 6,
+    lineStyle: { color: firm.color, width: 3 },
+    itemStyle: { color: firm.color },
+    areaStyle: { color: firm.color, opacity: 0.06 },
+    connectNulls: false,
+    endLabel: {
+      show: true,
+      formatter: `{@[1]|£${firm.data[firm.data.length-1]}m  ${firm.label}}`,
+      color: firm.color,
+      fontSize: 11,
+      fontWeight: 700,
+      fontFamily: 'Inter',
+      offset: [8, 0]
+    },
+    z: 5
+  }));
+  chartHistory.setOption({
+    ...DEFAULTS,
+    grid: {top: 50, bottom: 60, left: 70, right: 180},
+    tooltip: {
+      ...DEFAULTS.tooltip,
+      trigger: 'axis',
+      axisPointer: {type: 'line', lineStyle: {color: '#c7c7cc', type: 'dashed'}},
+      formatter: params => {
+        const year = params[0].axisValue;
+        const rows = params
+          .filter(p => p.value != null)
+          .map(p => `<span style="color:${p.color}">■</span> ${p.seriesName}: <b>£${p.value}m</b>`)
+          .join('<br>');
+        return `<b>${year}</b><br>${rows || '<span style="color:'+THEME_TEXT_DIM+'">no firm trading</span>'}`;
+      }
+    },
+    legend: { show: false },
+    xAxis: {
+      type: 'category',
+      data: HISTORY_YEARS,
+      axisLabel: {color: THEME_TEXT_DIM, fontFamily: 'JetBrains Mono', fontSize: 11, interval: 2, formatter: v => String(v)},
+      axisLine: AXIS_LINE,
+      axisTick: {show: false}
+    },
+    yAxis: {
+      type: 'value',
+      name: 'Revenue (£m)',
+      nameTextStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'JetBrains Mono'},
+      axisLabel: {...AXIS_LABEL, formatter: '£{value}m'},
+      axisLine: AXIS_LINE,
+      splitLine: SPLIT_LINE,
+      max: 500
+    },
+    series
+  }, {notMerge: true});
+}
+renderHistory();
+
+document.querySelectorAll('#history-toggle .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const firm = btn.dataset.firm;
+    historyState[firm] = !historyState[firm];
+    // prevent turning all three off
+    if (!Object.values(historyState).some(Boolean)) {
+      historyState[firm] = true;
+      return;
+    }
+    btn.classList.toggle('is-active', historyState[firm]);
+    renderHistory();
+  });
+});
+
+// ============================================================================
+// CHART 4 — RBB vs BARINGA
+// ============================================================================
+const chart4 = echarts.init(document.getElementById('chart-4'));
+function renderGrowth() {
+  const years  = ["FY21","FY22","FY23","FY24","FY25"];
+  const rbbRev = TIMESERIES.rbb.map(d => d.rev);
+  const barRev = TIMESERIES.baringa.map(d => d.rev);
+  const rbbPpm = TIMESERIES.rbb.map(d => d.ppm);
+  const barPpm = TIMESERIES.baringa.map(d => d.ppm);
+  // V02 pattern from chart-variants/growth-line-variants.html: dual-axis, lines only.
+  chart4.setOption({
+    ...DEFAULTS,
+    grid: {top: 60, bottom: 60, left: 70, right: 90},
+    tooltip: { ...DEFAULTS.tooltip, trigger: 'axis', axisPointer: {type:'cross', lineStyle:{color:"#c7c7cc", type:"dashed"}} },
+    legend: { show: true, top: 10, left: 70, textStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'Inter'}, itemWidth: 14, itemHeight: 10, itemGap: 16, icon: 'circle' },
+    xAxis: { type: 'category', data: years, axisLabel: {color: THEME_TEXT, fontFamily: 'JetBrains Mono', fontSize: 11}, axisLine: AXIS_LINE },
+    yAxis: [
+      { type: 'value', name: 'Revenue £m', nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 10, fontFamily: 'JetBrains Mono'}, axisLabel: {...AXIS_LABEL, formatter:'£{value}m'}, axisLine: AXIS_LINE, splitLine: SPLIT_LINE },
+      { type: 'value', name: '£/partner',  nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 10, fontFamily: 'JetBrains Mono'}, axisLabel: {...AXIS_LABEL, formatter:'£{value}m'}, axisLine: AXIS_LINE, splitLine: {show: false} }
+    ],
+    series: [
+      { name:'RBB rev',       type:'line', yAxisIndex:0, data:rbbRev, lineStyle:{color:'#0071e3', width:3}, smooth:true, symbol:'circle', symbolSize:8, itemStyle:{color:'#0071e3'} },
+      { name:'Baringa rev',   type:'line', yAxisIndex:0, data:barRev, lineStyle:{color:'#ff2d55', width:3}, smooth:true, symbol:'circle', symbolSize:8, itemStyle:{color:'#ff2d55'} },
+      { name:'RBB £/p',       type:'line', yAxisIndex:1, data:rbbPpm, lineStyle:{color:'#0071e3', width:2, type:'dashed'}, smooth:true, symbol:'diamond', symbolSize:8, itemStyle:{color:'#0071e3'} },
+      { name:'Baringa £/p',   type:'line', yAxisIndex:1, data:barPpm, lineStyle:{color:'#ff2d55', width:2, type:'dashed'}, smooth:true, symbol:'diamond', symbolSize:8, itemStyle:{color:'#ff2d55'} }
+    ]
+  }, {notMerge: true});
+}
+renderGrowth();
+
+// ============================================================================
+// CHART 5 — PE DEALS
+// ============================================================================
+const chart5 = echarts.init(document.getElementById('chart-5'));
+function renderPE() {
+  const TYPE_COLORS = {'Minority':'#ff9500','Buyout':'#0071e3','Roll-up':'#af52de','Acquisition':'#ff2d55','Acqui-hire':'#5ac8fa'};
+  const UNDISCLOSED_Y = {
+    '2021-Oxford Analytica':25, '2021-Vivid Economics':100,
+    '2023-Continuum Economics':35, '2024-Stonehaven Group':60,
+    '2025-Public First':25, '2025-Oxford Economics':85
+  };
+  const data = PE_DEALS.map(d => {
+    const key = `${d.year}-${d.firm}`;
+    let labelPos = 'top';
+    let labelAlign, labelVAlign;
+    if (d.firm === 'Continuum Economics' || d.firm === 'Public First') labelPos = 'bottom';
+    else if (d.firm === 'BRG' && d.year === 2017) labelPos = 'bottom';
+    else if (d.firm === 'Oxford Analytica' && d.year === 2025) labelPos = 'top';
+    else if (d.firm === 'BRG' && d.year === 2025) { labelPos = [120, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Econic Partners' && d.year === 2025) { labelPos = [120, 60]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Stonehaven Group') { labelPos = [-140, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.year === 2025) labelPos = 'right';
+    return {
+      name: d.firm, value: [d.year, d.value || UNDISCLOSED_Y[key] || 30], deal: d,
+      itemStyle: { color: TYPE_COLORS[d.type] || '#0071e3', opacity: 0.9, borderColor: '#ffffff', borderWidth: 1.5, shadowColor: TYPE_COLORS[d.type] || '#0071e3', shadowBlur: 14 },
+      symbolSize: d.value ? Math.max(30, Math.sqrt(d.value) * 5.5) : 28,
+      label: {
+        show: true, position: labelPos, distance: 12,
+        align: labelAlign, verticalAlign: labelVAlign,
+        formatter: p => `{year|${p.data.deal.year}}\n{firm|${p.data.deal.firm}}\n{sub|${p.data.deal.type} · ${p.data.deal.investor}}${p.data.deal.value ? `\n{val|£${p.data.deal.value}m valuation}` : '\n{valund|value undisclosed}'}`,
+        rich: {
+          year: {color:'#0071e3', fontSize: 11, fontFamily: 'JetBrains Mono', fontWeight: 600, lineHeight: 14},
+          firm: {color:'#1d1d1f', fontSize: 13, fontFamily: 'Inter', fontWeight: 700, lineHeight: 18},
+          sub:  {color: THEME_TEXT_DIM, fontSize: 10, fontFamily: 'Inter', lineHeight: 13},
+          val:  {color:'#0071e3', fontSize: 10, fontFamily: 'JetBrains Mono', fontWeight: 600, lineHeight: 13},
+          valund:{color:'#5f5f5f', fontSize: 10, fontFamily: 'JetBrains Mono', lineHeight: 13, fontStyle: 'italic'}
+        }
+      }
+    };
+  });
+  chart5.setOption({
+    ...DEFAULTS,
+    grid: {top: 90, bottom: 70, left: 80, right: 90},
+    tooltip: { ...DEFAULTS.tooltip, formatter: p => `<b>${p.data.deal.year} — ${p.data.deal.firm}</b><br><span style="color:${THEME_TEXT_DIM}">${p.data.deal.type} by ${p.data.deal.investor}<br>${p.data.deal.desc}</span>` },
+    xAxis: { type:'value', min: 2013, max: 2027, interval: 1, name:'Year', nameLocation:'middle', nameGap:35, nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, axisLabel:{...AXIS_LABEL, fontSize: 11, formatter: v => String(Math.floor(v))}, axisLine: AXIS_LINE, splitLine: {lineStyle: {color: THEME_AXIS_GRID, type: 'dashed'}} },
+    yAxis: { type:'log', logBase: 10, name:'Deal value (£m, log)', nameLocation:'middle', nameGap:50, nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, min: 10, max: 300, axisLabel:{...AXIS_LABEL, formatter: v => '£'+v+'m'}, axisLine: AXIS_LINE, splitLine: SPLIT_LINE },
+    series: [{ type:'scatter', data, labelLayout: {hideOverlap: false, moveOverlap: 'shiftY', dy: -4}, labelLine: {show: true, length: 8, length2: 8, lineStyle: {color: '#8e8e93', width: 1}}, animationDuration: 1200, animationDelay: idx => idx * 200 }]
+  });
+}
+renderPE();
+
+// ============================================================================
+// CHART 6 — SANKEY
+// ============================================================================
+const chart6 = echarts.init(document.getElementById('chart-6'));
+function renderSankey() {
+  const nodes = CHARGES_SANKEY.nodes.map(n => ({
+    ...n,
+    itemStyle: { color: n.name.match(/HSBC|PNC|RBS|Zurich|Nordic|NatWest/) ? '#0071e3' : '#8e8e93' }
+  }));
+  chart6.setOption({
+    ...DEFAULTS,
+    tooltip: { ...DEFAULTS.tooltip, formatter: p => p.dataType === 'edge' ? `<b>${p.data.source}</b> → ${p.data.target}<br><span style="color:${THEME_TEXT_DIM}">${p.data.value} outstanding charge${p.data.value>1?'s':''}</span>` : `<b>${p.name}</b>` },
+    series: [{
+      type: 'sankey',
+      left: 20, right: 320, top: 20, bottom: 20,
+      data: nodes, links: CHARGES_SANKEY.links,
+      orient: 'horizontal', nodeAlign: 'justify',
+      nodeWidth: 16, nodeGap: 12, draggable: false,
+      emphasis: {focus: 'adjacency'},
+      label: {
+        color: THEME_TEXT, fontFamily: 'Inter', fontSize: 11, fontWeight: 500,
+        formatter: p => p.name.length > 18 ? p.name.slice(0, 17) + '…' : p.name
+      },
+      lineStyle: { color: 'gradient', opacity: 0.5, curveness: 0.5 },
+      animationDuration: 1200
+    }]
+  });
+}
+renderSankey();
+
+// ============================================================================
+// CHART 7B — DIRECTOR SEAT APPOINTMENTS
+// ============================================================================
+const chart7b = echarts.init(document.getElementById('chart-7b'));
+const SEATS_YEARS = ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026'];
+const SEATS_FIRMS_APPOINTMENTS = {
+  'Baringa Partners':      [0, 3, 1, 2, 4, 2, 5, 4, 4,11, 8, 0],
+  'AlixPartners UK':       [0, 2, 4, 7, 2, 6, 5, 4, 2, 4, 4, 3],
+  'FTI / CompLex':         [3, 0, 5, 1, 2, 1, 2, 4, 8, 5, 7, 6],
+  'A&M Europe':            [0, 1, 1, 5, 3, 1, 2, 2, 6, 7, 7, 2],
+  'A&M Tax':               [0, 0, 0, 2, 1, 1, 1, 1, 8, 7, 4, 1],
+  'Oxera Consulting':      [1, 0, 1, 0, 3, 1, 0, 0, 1, 4, 3, 2],
+  'Frontier Economics':    [0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 4, 0]
+};
+const SEATS_FIRMS_DEPARTURES = {
+  'Baringa Partners':      [0, 1, 0, 1, 2, 1, 2, 1, 3, 4, 3, 1],
+  'AlixPartners UK':       [1, 1, 2, 3, 2, 3, 2, 3, 1, 2, 3, 2],
+  'FTI / CompLex':         [1, 2, 2, 1, 1, 2, 1, 2, 4, 3, 5, 3],
+  'A&M Europe':            [0, 0, 1, 2, 1, 0, 1, 1, 2, 3, 3, 1],
+  'A&M Tax':               [0, 0, 0, 1, 0, 1, 0, 1, 2, 3, 2, 1],
+  'Oxera Consulting':      [0, 1, 0, 1, 1, 0, 1, 0, 0, 2, 1, 1],
+  'Frontier Economics':    [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 0]
+};
+const SEATS_MODES = {
+  appointments: {
+    title: 'Director & LLP Member Appointments, 2015–2026',
+    sub:   'NEW SEATS PER YEAR · SOURCE: CH OFFICER APPOINTMENTS FILINGS',
+    firms: SEATS_FIRMS_APPOINTMENTS,
+    yName: 'New seats per year',
+    yMax:  45,
+    opacity: 0.95,
+    tooltipLabel: 'new seats'
+  },
+  departures: {
+    title: 'Director & LLP Member Departures, 2015–2026',
+    sub:   'RESIGNATIONS PER YEAR · SOURCE: CH OFFICER TERMINATION FILINGS',
+    firms: SEATS_FIRMS_DEPARTURES,
+    yName: 'Departures per year',
+    yMax:  25,
+    opacity: 0.55,
+    tooltipLabel: 'departures'
+  }
+};
+
+function renderSeats(mode = 'appointments') {
+  document.getElementById('seats-title').textContent = (mode === 'net')
+    ? 'Net partner change, 2015–2026'
+    : SEATS_MODES[mode].title;
+  document.getElementById('seats-sub').textContent = (mode === 'net')
+    ? 'APPOINTMENTS MINUS DEPARTURES · AGGREGATED ACROSS THE SEVEN FIRMS'
+    : SEATS_MODES[mode].sub;
+  if (mode === 'net') return renderSeatsNet();
+
+  const cfg = SEATS_MODES[mode];
+  const years = SEATS_YEARS;
+  const firms = cfg.firms;
+  const colors = {
+    'Baringa Partners':'#ff2d55','AlixPartners UK':'#5ac8fa','FTI / CompLex':'#af52de',
+    'A&M Europe':'#34c759','A&M Tax':'#34c759','Oxera Consulting':'#ff9500','Frontier Economics':'#0071e3'
+  };
+  const series = Object.entries(firms).map(([name, data]) => ({
+    name, type: 'bar', stack: 'total', barWidth: '62%',
+    itemStyle: { color: colors[name], opacity: cfg.opacity, borderColor: THEME_BG_ELEV, borderWidth: 1 },
+    emphasis: { focus: 'series', itemStyle: { opacity: 1 } },
+    data
+  }));
+  // Year totals shown as a label on top of each stacked bar.
+  const totals = years.map((_, i) => Object.values(firms).reduce((s, arr) => s + arr[i], 0));
+  series.push({
+    name: 'Total',
+    type: 'bar',
+    stack: 'total',
+    data: totals.map(() => 0),
+    itemStyle: { color: 'transparent', borderColor: 'transparent' },
+    emphasis: { disabled: true },
+    tooltip: { show: false },
+    label: {
+      show: true,
+      position: 'top',
+      formatter: (p) => totals[p.dataIndex] > 0 ? String(totals[p.dataIndex]) : '',
+      color: THEME_TEXT,
+      fontFamily: 'Inter',
+      fontSize: 12,
+      fontWeight: 700
+    },
+    silent: true
+  });
+  chart7b.setOption({
+    ...DEFAULTS,
+    grid: {top: 60, bottom: 70, left: 70, right: 30},
+    tooltip: {
+      ...DEFAULTS.tooltip, trigger: 'axis', axisPointer: {type: 'shadow'},
+      formatter: params => {
+        const year = params[0].axisValue;
+        let total = 0;
+        const rows = params.filter(p => p.value > 0 && p.seriesName !== 'Total').map(p => { total += p.value; return `<span style="color:${p.color}">■</span> ${p.seriesName}: <b>${p.value}</b>`; }).join('<br>');
+        return `<b>${year}</b> — ${total} ${cfg.tooltipLabel}<br>${rows}`;
+      }
+    },
+    legend: { top: 6, left: 70, right: 0, data: Object.keys(firms), textStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'Inter'}, itemWidth: 12, itemHeight: 10, itemGap: 12, icon: 'rect' },
+    xAxis: { type: 'category', data: years, axisLabel: {color: THEME_TEXT_DIM, fontFamily: 'JetBrains Mono', fontSize: 11}, axisLine: AXIS_LINE, axisTick: {show: false} },
+    yAxis: { type: 'value', max: cfg.yMax, name: cfg.yName, nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, axisLabel: {...AXIS_LABEL, showMaxLabel: false}, axisLine: AXIS_LINE, splitLine: SPLIT_LINE },
+    series,
+    markLine: {
+      silent: true, symbol: 'none',
+      data: [{ xAxis: '2022', label: {show: true, formatter: 'CMA pipeline opens', color: '#0071e3', fontSize: 11, fontFamily: 'Inter', fontWeight: 600}, lineStyle: {color: '#0071e3', type: 'dashed', width: 1} }]
+    }
+  }, {notMerge: true});
+}
+
+function renderSeatsNet() {
+  const years = SEATS_YEARS;
+  const colors = {
+    'Baringa Partners':'#ff2d55','AlixPartners UK':'#5ac8fa','FTI / CompLex':'#af52de',
+    'A&M Europe':'#34c759','A&M Tax':'#34c759','Oxera Consulting':'#ff9500','Frontier Economics':'#0071e3'
+  };
+  // per-firm net array: appointments[i] - departures[i]
+  const perFirmNet = {};
+  Object.keys(SEATS_FIRMS_APPOINTMENTS).forEach(name => {
+    perFirmNet[name] = years.map((_, i) =>
+      SEATS_FIRMS_APPOINTMENTS[name][i] - (SEATS_FIRMS_DEPARTURES[name][i] || 0)
+    );
+  });
+  // ECharts handles mixed-sign stacks by splitting on zero: positive bars stack
+  // upward, negative bars stack downward. Use one stack group so they snap together.
+  const series = Object.entries(perFirmNet).map(([name, data]) => ({
+    name, type: 'bar', stack: 'net', barWidth: '62%',
+    itemStyle: { color: colors[name], borderColor: THEME_BG_ELEV, borderWidth: 1 },
+    emphasis: { focus: 'series', itemStyle: { opacity: 1 } },
+    data
+  }));
+  // Year totals (signed) drawn as labels. Use one label series per sign side.
+  const yearNet = years.map((_, i) =>
+    Object.values(perFirmNet).reduce((s, arr) => s + arr[i], 0)
+  );
+  series.push({
+    name: 'Year net',
+    type: 'line',
+    symbol: 'none',
+    data: yearNet,
+    lineStyle: { opacity: 0 },
+    z: 10,
+    label: {
+      show: true,
+      position: 'top',
+      formatter: p => (yearNet[p.dataIndex] >= 0 ? '+' : '') + yearNet[p.dataIndex],
+      color: THEME_TEXT,
+      fontFamily: 'Inter',
+      fontSize: 12,
+      fontWeight: 700
+    },
+    silent: true
+  });
+  chart7b.setOption({
+    ...DEFAULTS,
+    grid: {top: 60, bottom: 70, left: 70, right: 30},
+    tooltip: {
+      ...DEFAULTS.tooltip, trigger: 'axis', axisPointer: {type: 'shadow'},
+      formatter: params => {
+        const year = params[0].axisValue;
+        const idx = params[0].dataIndex;
+        const firmRows = params
+          .filter(p => p.seriesName !== 'Year net' && p.value !== 0)
+          .map(p => `<span style="color:${p.color}">■</span> ${p.seriesName}: <b style="color:${p.value>=0?'#34c759':'#ff2d55'}">${p.value>=0?'+':''}${p.value}</b>`)
+          .join('<br>');
+        return `<b>${year}</b> — net ${yearNet[idx]>=0?'+':''}${yearNet[idx]}<br>${firmRows}`;
+      }
+    },
+    legend: { top: 6, left: 70, right: 0, data: Object.keys(perFirmNet), textStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'Inter'}, itemWidth: 12, itemHeight: 10, itemGap: 12, icon: 'rect' },
+    xAxis: { type: 'category', data: years, axisLabel: {color: THEME_TEXT_DIM, fontFamily: 'JetBrains Mono', fontSize: 11}, axisLine: AXIS_LINE, axisTick: {show: false} },
+    yAxis: { type: 'value', name: 'Net change', nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, axisLabel: AXIS_LABEL, axisLine: AXIS_LINE, splitLine: SPLIT_LINE },
+    series,
+    markLine: {
+      silent: true, symbol: 'none',
+      data: [{ xAxis: '2022', label: {show: true, formatter: 'CMA pipeline opens', color: '#0071e3', fontSize: 11, fontFamily: 'Inter', fontWeight: 600}, lineStyle: {color: '#0071e3', type: 'dashed', width: 1} }]
+    }
+  }, {notMerge: true});
+}
+
+renderSeats('appointments');
+document.querySelectorAll('#seats-toggle .toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#seats-toggle .toggle-btn').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    renderSeats(btn.dataset.mode);
+  });
+});
+
+// ============================================================================
+// CHART 7 — FOUNDER TREE TIMELINE
+// ============================================================================
+const chart7 = echarts.init(document.getElementById('chart-7'));
+function renderTimeline() {
+  // explicit offsets per node to stop overlaps among the dense 2021/2023/2025 clusters
+  const LABEL_OFFSET = {
+    'NERA UK incorporated':              [0, -4],
+    'RBB Economics founded':             [0, 4],
+    'Vivid Economics founded':           [0, -4],
+    'Compass Lexecon merger':            [0, -4],
+    'LECG bankruptcy':                   [0, 8],
+    'BRG launches UK':                   [0, -4],
+    'Fingleton Ltd founded':             [0, 4],
+    'Flint Global founded':              [0, -4],
+    'Pragmatix Advisory':                [0, -22],          // now sits above its dot
+    'McKinsey buys Vivid':               [-24, 22],         // now sits below its dot
+    'Grant Thornton Economics launches': [18, -10],
+    'Keystone Europe built':             [-14, 4],
+    'Caffarra leaves Keystone':          [14, 8],           // below dot now
+    'Compass Lexecon reshuffle':         [-12, -4],
+    'Econic Partners launches':          [-20, 8],
+    'Calanchi → Econic':                 [14, -10],         // top of dot
+    'Hunt → AlixPartners':               [24, 8]            // below dot now
+  };
+  // some nodes need their side forced irrespective of their lane sign
+  const LABEL_POS = {
+    'Caffarra leaves Keystone': 'bottom', // was lane 2.2 → top by default
+    'Hunt → AlixPartners':      'bottom', // was lane 1.0 → top by default
+    'Calanchi → Econic':        'top',    // was lane -1.0 → bottom by default
+    'Pragmatix Advisory':       'top',    // was lane -1.0 → bottom by default
+    'McKinsey buys Vivid':      'bottom'  // was lane 1.0 → top by default
+  };
+  const nodes = TREE.map(e => ({
+    name: e.name, value: [e.y, e.lane], desc: e.desc,
+    itemStyle: { color: e.color, opacity: 0.95, borderColor: '#ffffff', borderWidth: 1.5, shadowColor: e.color, shadowBlur: 14 },
+    symbolSize: 20,
+    label: {
+      show: true, position: LABEL_POS[e.name] || (e.lane > 0 ? 'top' : 'bottom'), distance: 12,
+      offset: LABEL_OFFSET[e.name] || [0, 0],
+      formatter: p => `{year|${Math.floor(p.data.value[0])}}\n{name|${p.name}}`,
+      rich: {
+        year: {color:'#0071e3', fontSize: 11, fontFamily:'JetBrains Mono', fontWeight: 600, lineHeight: 14},
+        name: {color:'#1d1d1f', fontSize: 12, fontFamily:'Inter', fontWeight: 700, lineHeight: 16}
+      },
+      align: 'center'
+    }
+  }));
+  chart7.setOption({
+    ...DEFAULTS,
+    grid: {top: 80, bottom: 80, left: 60, right: 60},
+    tooltip: { ...DEFAULTS.tooltip, formatter: p => p.data && p.data.desc ? `<b>${Math.floor(p.data.value[0])} — ${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">${p.data.desc}</span>` : '' },
+    xAxis: { type: 'value', min: 1999, max: 2026.5, interval: 5, axisLabel: {...AXIS_LABEL, fontSize: 11, formatter: v => String(Math.floor(v))}, axisLine: AXIS_LINE, splitLine: {lineStyle: {color: THEME_AXIS_GRID, type: 'dashed'}} },
+    yAxis: { type: 'value', min: -2.8, max: 2.8, show: false },
+    series: [
+      { type: 'line', data: [[1999.5, 0], [2026, 0]], lineStyle: {color: THEME_BORDER, width: 2}, symbol: 'none', silent: true, z: 1 },
+      {
+        type: 'custom', silent: true, z: 2,
+        data: TREE.map(e => [e.y, e.lane]),
+        renderItem: (params, api) => {
+          const top = api.coord([api.value(0), api.value(1)]);
+          const base = api.coord([api.value(0), 0]);
+          return { type: 'line', shape: {x1: top[0], y1: top[1], x2: base[0], y2: base[1]}, style: {stroke: 'rgba(0,0,0,0.15)', lineWidth: 1, lineDash: [2,3]} };
+        }
+      },
+      {
+        type: 'lines', silent: true, z: 3, coordinateSystem: 'cartesian2d', polyline: false,
+        effect: { show: false },
+        lineStyle: { width: 2, type: 'dashed', opacity: 0.75, curveness: -0.35 },
+        symbol: ['none', 'arrow'], symbolSize: 12,
+        data: [
+          { coords: [[2006, 2.15], [2021, 1.05]], lineStyle: {color: '#0071e3', curveness: 0} },
+          { coords: [[2023, -1.0], [2025.3, 1.0]], lineStyle: {color: '#5ac8fa', curveness: 0.4} },
+          { coords: [[2023, -1.0], [2025.15, -1.0]], lineStyle: {color: '#5ac8fa', curveness: -0.35, opacity: 0.55} }
+        ]
+      },
+      {
+        type: 'scatter', silent: true, symbolSize: 0, z: 4,
+        data: [
+          { value: [2024.3, 0.15], label: {show:true, formatter:'← poached by AlixPartners', color:'#5ac8fa', fontSize:11, fontStyle:'italic', fontFamily:'Inter', fontWeight:600} }
+        ]
+      },
+      { type: 'scatter', data: nodes, animationDuration: 1200, animationDelay: idx => idx * 100, z: 5, labelLayout: {hideOverlap: false, moveOverlap: 'shiftX'} }
+    ]
+  }, {notMerge: true});
+}
+renderTimeline();
+
+// ============================================================================
+// CHART J — Cost structure stacked bar (from NOTE J)
+// ============================================================================
+const chartJ = echarts.init(document.getElementById('chart-j'));
+(function() {
+  const COST = [
+    {n: 'RBB Economics',      staff: 35, other: 9,  profit: 56},
+    {n: 'A&M Europe',         staff: 49, other: 12, profit: 39},
+    {n: 'Oxera',              staff: 48, other: 14, profit: 38},
+    {n: 'Baringa',            staff: 52, other: 11, profit: 37},
+    {n: 'Flint Global',       staff: 55, other: 15, profit: 30},
+    {n: 'FTI Consulting',     staff: 62, other: 14, profit: 24},
+    {n: 'Capital Economics',  staff: 55, other: 25, profit: 20},
+    {n: 'AlixPartners',       staff: 65, other: 16, profit: 19},
+    {n: 'CRA International',  staff: 76, other: 14, profit: 10},
+    {n: 'Frontier Economics', staff: 92, other: 7,  profit: 1}
+  ];
+  const firms = COST.map(d => d.n).reverse();
+  chartJ.setOption({
+    ...DEFAULTS,
+    grid: {left: 170, right: 60, top: 36, bottom: 32},
+    legend: {
+      top: 4, right: 8, itemWidth: 12, itemHeight: 10,
+      textStyle: {color: THEME_TEXT, fontFamily: 'Inter', fontSize: 11, fontWeight: 600}
+    },
+    tooltip: {
+      ...DEFAULTS.tooltip, trigger: 'axis', axisPointer: {type: 'shadow'},
+      formatter: p => {
+        const name = p[0].name;
+        const s = p[0].data, o = p[1].data, pr = p[2].data;
+        return `<b>${name}</b><br/>
+          <span style="color:#86868b">Staff: ${s}%</span><br/>
+          <span style="color:#c7c7cc">Other: ${o}%</span><br/>
+          <span style="color:#0071e3">Profit to members: ${pr}%</span>`;
+      }
+    },
+    xAxis: {
+      type: 'value', max: 100,
+      axisLabel: {...AXIS_LABEL, formatter: '{value}%'},
+      axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+    },
+    yAxis: {
+      type: 'category', data: firms,
+      axisLabel: {color: THEME_TEXT, fontFamily: 'Inter', fontSize: 12, fontWeight: 500},
+      axisLine: {show: false}, axisTick: {show: false}
+    },
+    series: [
+      { name: 'Staff cost', type: 'bar', stack: 'total',
+        data: COST.slice().reverse().map(d => d.staff),
+        itemStyle: {color: '#86868b', borderRadius: [3, 0, 0, 3]},
+        label: {show: true, position: 'inside', formatter: '{c}%', color: '#fff',
+                fontFamily: 'JetBrains Mono', fontSize: 10, fontWeight: 700}
+      },
+      { name: 'Other costs', type: 'bar', stack: 'total',
+        data: COST.slice().reverse().map(d => d.other),
+        itemStyle: {color: '#c7c7cc'},
+        label: {show: true, position: 'inside', formatter: '{c}%', color: '#1d1d1f',
+                fontFamily: 'JetBrains Mono', fontSize: 10, fontWeight: 700}
+      },
+      { name: 'Profit to members', type: 'bar', stack: 'total',
+        data: COST.slice().reverse().map(d => d.profit),
+        itemStyle: {color: '#0071e3', borderRadius: [0, 3, 3, 0]},
+        label: {show: true, position: 'inside', formatter: '{c}%', color: '#fff',
+                fontFamily: 'JetBrains Mono', fontSize: 10, fontWeight: 700}
+      }
+    ]
+  });
+})();
+
+// ============================================================================
+// CHART G — Partner tenure horizontal bar (from NOTE G)
+// ============================================================================
+const chartG = echarts.init(document.getElementById('chart-g'));
+(function() {
+  const TENURE = [
+    {firm: 'RBB Economics',          retention: 100, active: 13, tenure: 22.0},
+    {firm: 'Frontier Economics',     retention: 100, active: 7,  tenure: 18.0},
+    {firm: 'Oxera Consulting',       retention: 95,  active: 28, tenure: 12.0},
+    {firm: 'Cambridge Econometrics', retention: 90,  active: 5,  tenure: 10.5},
+    {firm: 'Fideres Partners',       retention: 88,  active: 5,  tenure: 9.0},
+    {firm: 'Baringa Partners',       retention: 86,  active: 47, tenure: 7.5},
+    {firm: 'Cornerstone Research',   retention: 80,  active: 6,  tenure: 6.0},
+    {firm: 'A&M Europe',             retention: 68,  active: 39, tenure: 5.3},
+    {firm: 'FTI Consulting',         retention: 72,  active: 51, tenure: 5.2},
+    {firm: 'AlixPartners UK',        retention: 54,  active: 44, tenure: 2.6}
+  ];
+  chartG.setOption({
+    ...DEFAULTS,
+    grid: {left: 200, right: 72, top: 14, bottom: 40},
+    tooltip: {
+      ...DEFAULTS.tooltip,
+      formatter: p => `<b>${p.name}</b><br/>
+        <span style="color:${THEME_TEXT_DIM}">${p.value} years average tenure<br/>${p.data.active} active members · ${p.data.retention}% retention</span>`
+    },
+    xAxis: {
+      type: 'value', name: 'Years', nameLocation: 'middle', nameGap: 26,
+      nameTextStyle: {color: THEME_TEXT_MUTED, fontFamily: 'Inter', fontSize: 11},
+      axisLabel: AXIS_LABEL, axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+    },
+    yAxis: {
+      type: 'category',
+      data: TENURE.map(d => d.firm).reverse(),
+      axisLabel: {color: THEME_TEXT, fontFamily: 'Inter', fontSize: 12, fontWeight: 500},
+      axisLine: {show: false}, axisTick: {show: false}
+    },
+    series: [{
+      type: 'bar', barWidth: '70%',
+      data: TENURE.slice().reverse().map(d => ({
+        value: d.tenure, name: d.firm, active: d.active, retention: d.retention,
+        itemStyle: {
+          color: d.retention >= 90 ? '#34c759' : d.retention >= 70 ? '#ff9500' : '#ff3b30',
+          borderRadius: [0, 3, 3, 0]
+        }
+      })),
+      label: {
+        show: true, position: 'right',
+        formatter: p => p.value + ' yrs',
+        color: THEME_TEXT, fontFamily: 'JetBrains Mono', fontSize: 11, fontWeight: 700
+      }
+    }]
+  });
+})();
+
+// ============================================================================
+// CHART H — Officer-overlap force graph (from NOTE H)
+// ============================================================================
+const chartH = echarts.init(document.getElementById('chart-h'));
+(function() {
+  const nodes = [
+    {name: 'Compass Lexecon', symbolSize: 46, category: 0, x: 0,    y: 0},
+    {name: 'FTI (UK)',        symbolSize: 30, category: 0, x: 80,   y: 40},
+    {name: 'CMA',             symbolSize: 34, category: 1, x: -180, y: -100},
+    {name: 'Keystone',        symbolSize: 28, category: 2, x: -120, y: 20},
+    {name: 'AlixPartners',    symbolSize: 28, category: 0, x: 60,   y: -120},
+    {name: 'Econic',          symbolSize: 28, category: 2, x: -60,  y: 120},
+    {name: 'A&M Europe',      symbolSize: 24, category: 0, x: 150,  y: -40},
+    {name: 'Oxera',           symbolSize: 24, category: 2, x: -100, y: -160},
+    {name: 'Frontier',        symbolSize: 22, category: 2, x: -220, y: 60},
+    {name: 'RBB',             symbolSize: 22, category: 2, x: 30,   y: 180},
+    {name: 'NERA',            symbolSize: 20, category: 0, x: 160,  y: 120},
+    {name: 'BRG',             symbolSize: 20, category: 0, x: 200,  y: 20},
+    {name: 'LECG (defunct)',  symbolSize: 18, category: 3, x: 220,  y: 80},
+    {name: 'Cebr',            symbolSize: 16, category: 2, x: 120,  y: 200},
+    {name: 'Pragmatix',       symbolSize: 16, category: 2, x: 60,   y: 240},
+    {name: 'Capital Econ',    symbolSize: 18, category: 2, x: 180,  y: 240}
+  ];
+  const links = [
+    {source: 'Compass Lexecon', target: 'Econic',          value: 15, lineStyle: {color: '#0071e3', width: 6}},
+    {source: 'NERA',            target: 'RBB',             value: 9,  lineStyle: {color: '#0071e3', width: 4}},
+    {source: 'LECG (defunct)',  target: 'Compass Lexecon', value: 6,  lineStyle: {color: '#8e8e93', width: 3}},
+    {source: 'LECG (defunct)',  target: 'BRG',             value: 5,  lineStyle: {color: '#8e8e93', width: 3}},
+    {source: 'CMA',             target: 'Keystone',        value: 6,  lineStyle: {color: '#0071e3', width: 3}},
+    {source: 'CMA',             target: 'Oxera',           value: 3,  lineStyle: {color: '#0071e3', width: 2}},
+    {source: 'CMA',             target: 'Frontier',        value: 3,  lineStyle: {color: '#0071e3', width: 2}},
+    {source: 'CMA',             target: 'AlixPartners',    value: 3,  lineStyle: {color: '#0071e3', width: 2}},
+    {source: 'CMA',             target: 'RBB',             value: 2,  lineStyle: {color: '#0071e3', width: 2}},
+    {source: 'Keystone',        target: 'AlixPartners',    value: 3,  lineStyle: {color: '#5856d6', width: 3}},
+    {source: 'Keystone',        target: 'Econic',          value: 3,  lineStyle: {color: '#5856d6', width: 3}},
+    {source: 'Compass Lexecon', target: 'Keystone',        value: 3,  lineStyle: {color: '#8e8e93', width: 2}},
+    {source: 'AlixPartners',    target: 'Compass Lexecon', value: 2,  lineStyle: {color: '#8e8e93', width: 2}},
+    {source: 'Cebr',            target: 'Pragmatix',       value: 3,  lineStyle: {color: '#8e8e93', width: 2}},
+    {source: 'Capital Econ',    target: 'Pragmatix',       value: 3,  lineStyle: {color: '#8e8e93', width: 2}},
+    {source: 'A&M Europe',      target: 'Compass Lexecon', value: 2,  lineStyle: {color: '#8e8e93', width: 2}}
+  ];
+  chartH.setOption({
+    ...DEFAULTS,
+    tooltip: {
+      ...DEFAULTS.tooltip,
+      formatter: p => p.dataType === 'edge'
+        ? `<b>${p.data.source} ↔ ${p.data.target}</b><br/><span style="color:${THEME_TEXT_DIM}">${p.data.value} shared officers</span>`
+        : `<b>${p.data.name}</b>`
+    },
+    legend: {
+      data: ['Large litigation firms', 'Regulator', 'Competition boutiques', 'Defunct'],
+      top: 8, textStyle: {color: THEME_TEXT, fontSize: 11, fontFamily: 'Inter', fontWeight: 600},
+      itemWidth: 12, itemHeight: 10
+    },
+    series: [{
+      type: 'graph',
+      layout: 'force',
+      force: {repulsion: 280, edgeLength: 100, gravity: 0.08, friction: 0.15},
+      categories: [
+        {name: 'Large litigation firms', itemStyle: {color: '#1d1d1f'}},
+        {name: 'Regulator',              itemStyle: {color: '#ff3b30'}},
+        {name: 'Competition boutiques',  itemStyle: {color: '#0071e3'}},
+        {name: 'Defunct',                itemStyle: {color: '#8e8e93'}}
+      ],
+      data: nodes,
+      links: links,
+      roam: true,
+      draggable: true,
+      label: {
+        show: true, position: 'right', fontSize: 11, fontWeight: 600,
+        color: THEME_TEXT, fontFamily: 'Inter'
+      },
+      lineStyle: {opacity: 0.6, curveness: 0.15},
+      emphasis: {focus: 'adjacency', lineStyle: {width: 5}, label: {fontSize: 13}}
+    }]
+  });
+})();
+
+// ============================================================================
+// CHART AGE — age at appointment by firm + overall time trend
+// Source: officers_detail.date_of_birth_year + appointed_on (n=1,130 dated records)
+// ============================================================================
+const chartAge = echarts.init(document.getElementById('chart-age'));
+(function() {
+  // Mean age-at-appointment by firm (n >= 15 records). Sorted ascending.
+  const BY_FIRM = [
+    {firm: 'RBB Economics',       age: 38.9, n: 27, cat: 'Competition'},
+    {firm: 'Baringa Partners',    age: 42.6, n: 99, cat: 'Broad'},
+    {firm: 'FTI Consulting',      age: 43.9, n: 98, cat: 'Litigation'},
+    {firm: 'Oxera Consulting',    age: 44.5, n: 54, cat: 'Competition'},
+    {firm: 'A&M Europe',          age: 45.9, n: 99, cat: 'Litigation'},
+    {firm: 'Capital Economics',   age: 46.1, n: 32, cat: 'Macro'},
+    {firm: 'NERA UK',             age: 47.1, n: 24, cat: 'Overlap'},
+    {firm: 'Brattle Group',       age: 47.1, n: 18, cat: 'Overlap'},
+    {firm: 'Frontier Economics',  age: 47.5, n: 30, cat: 'Competition'},
+    {firm: 'AlixPartners UK',     age: 48.4, n: 98, cat: 'Broad'},
+    {firm: 'CRA International',   age: 49.9, n: 17, cat: 'Overlap'},
+    {firm: 'Cornerstone Research',age: 54.9, n: 17, cat: 'Overlap'}
+  ];
+
+  // Time trend — mean age-at-appointment by year, all 1,130 records
+  const BY_YEAR = [
+    {y: 2000, age: 43.4, n: 21},  {y: 2001, age: 46.2, n: 23},
+    {y: 2002, age: 42.0, n: 10},  {y: 2003, age: 44.1, n: 15},
+    {y: 2004, age: 45.7, n: 13},  {y: 2005, age: 44.1, n: 18},
+    {y: 2006, age: 49.6, n: 14},  {y: 2007, age: 44.9, n: 15},
+    {y: 2008, age: 47.7, n: 14},  {y: 2009, age: 46.8, n: 24},
+    {y: 2010, age: 47.8, n: 20},  {y: 2011, age: 45.3, n: 43},
+    {y: 2012, age: 44.8, n: 35},  {y: 2013, age: 46.1, n: 42},
+    {y: 2014, age: 46.0, n: 62},  {y: 2015, age: 47.5, n: 35},
+    {y: 2016, age: 46.1, n: 34},  {y: 2017, age: 46.2, n: 46},
+    {y: 2018, age: 47.8, n: 57},  {y: 2019, age: 46.9, n: 50},
+    {y: 2020, age: 45.6, n: 45},  {y: 2021, age: 44.5, n: 66},
+    {y: 2022, age: 45.0, n: 61},  {y: 2023, age: 46.9, n: 74},
+    {y: 2024, age: 47.2, n: 83},  {y: 2025, age: 47.2, n: 105}
+  ];
+
+  const meanAll = 46.2; // grand mean across all 1,130 records
+
+  chartAge.setOption({
+    ...DEFAULTS,
+    tooltip: {
+      ...DEFAULTS.tooltip,
+      formatter: p => {
+        if (p.seriesName === 'By firm (2000–2026)') {
+          return `<b>${p.name}</b><br/><span style="color:${THEME_TEXT_DIM}">${p.value} years avg · ${p.data.n} appointments · ${p.data.cat}</span>`;
+        }
+        if (p.seriesName === 'Mean age by year') {
+          return `<b>${p.name}</b><br/><span style="color:${THEME_TEXT_DIM}">${p.value[1]} years avg · ${p.data.n} appointments</span>`;
+        }
+        return '';
+      }
+    },
+    grid: [
+      {left: 180, right: 60, top: 36,  bottom: '54%'},
+      {left: 60,  right: 60, top: '54%', bottom: 40}
+    ],
+    xAxis: [
+      {
+        gridIndex: 0, type: 'value', min: 34, max: 58,
+        axisLabel: {...AXIS_LABEL, formatter: '{value} yrs'},
+        axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+      },
+      {
+        gridIndex: 1, type: 'value', min: 2000, max: 2026,
+        axisLabel: {...AXIS_LABEL, formatter: '{value}', showMaxLabel: true},
+        axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+      }
+    ],
+    yAxis: [
+      {
+        gridIndex: 0, type: 'category',
+        data: BY_FIRM.slice().reverse().map(d => d.firm),
+        axisLabel: {color: THEME_TEXT, fontFamily: 'Inter', fontSize: 12, fontWeight: 500},
+        axisLine: {show: false}, axisTick: {show: false}
+      },
+      {
+        gridIndex: 1, type: 'value', min: 40, max: 52,
+        name: 'Mean age (yrs)', nameLocation: 'middle', nameGap: 40,
+        nameTextStyle: {color: THEME_TEXT_MUTED, fontFamily: 'Inter', fontSize: 11},
+        axisLabel: AXIS_LABEL, axisLine: AXIS_LINE, splitLine: SPLIT_LINE
+      }
+    ],
+    series: [
+      // Bar chart — by firm
+      {
+        name: 'By firm (2000–2026)',
+        type: 'bar', xAxisIndex: 0, yAxisIndex: 0,
+        barWidth: '70%',
+        data: BY_FIRM.slice().reverse().map(d => ({
+          value: d.age, name: d.firm, n: d.n, cat: d.cat,
+          itemStyle: {
+            color: SEGMENT_COLORS[d.cat] || '#8e8e93',
+            borderRadius: [0, 3, 3, 0]
+          }
+        })),
+        label: {
+          show: true, position: 'right',
+          formatter: p => p.value.toFixed(1),
+          color: THEME_TEXT, fontFamily: 'JetBrains Mono',
+          fontSize: 11, fontWeight: 700
+        },
+        markLine: {
+          silent: true,
+          symbol: 'none',
+          lineStyle: {color: THEME_TEXT_MUTED, type: 'dashed', width: 1},
+          label: {
+            formatter: `market mean ${meanAll}`,
+            position: 'end',
+            color: THEME_TEXT_MUTED,
+            fontFamily: 'JetBrains Mono', fontSize: 10
+          },
+          data: [{xAxis: meanAll}]
+        }
+      },
+      // Line chart — time trend
+      {
+        name: 'Mean age by year',
+        type: 'line', xAxisIndex: 1, yAxisIndex: 1,
+        smooth: true, symbol: 'circle', symbolSize: 6,
+        data: BY_YEAR.map(d => ({value: [d.y, d.age], n: d.n})),
+        itemStyle: {color: '#0071e3'},
+        lineStyle: {color: '#0071e3', width: 2.2},
+        areaStyle: {color: 'rgba(0,113,227,0.08)'},
+        markLine: {
+          silent: true,
+          symbol: 'none',
+          lineStyle: {color: '#ff3b30', type: 'dashed', width: 1},
+          label: {
+            formatter: 'market mean 46.2',
+            position: 'insideEndTop',
+            color: '#ff3b30',
+            fontFamily: 'JetBrains Mono', fontSize: 10, fontWeight: 600
+          },
+          data: [{yAxis: meanAll}]
+        },
+        markPoint: {
+          symbol: 'circle', symbolSize: 10,
+          itemStyle: {color: '#ff9500', borderColor: '#fff', borderWidth: 2},
+          label: {
+            formatter: '2021 dip (44.5)',
+            position: 'top',
+            color: '#ff9500',
+            fontFamily: 'Inter', fontSize: 10, fontWeight: 700
+          },
+          data: [{coord: [2021, 44.5]}]
+        }
+      }
+    ],
+    graphic: [
+      {
+        type: 'text', left: 180, top: 10,
+        style: {
+          text: 'By firm · sorted ascending',
+          fill: THEME_TEXT_MUTED,
+          font: '600 10px "JetBrains Mono", monospace'
+        }
+      },
+      {
+        type: 'text', left: 60, top: '50%',
+        style: {
+          text: 'Time trend · mean by year',
+          fill: THEME_TEXT_MUTED,
+          font: '600 10px "JetBrains Mono", monospace'
+        }
+      }
+    ]
+  });
+})();
+
+// ============================================================================
+// D3-ANNOTATION OVERLAYS
+// ============================================================================
+function annotateChart(chart, containerId, items) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const old = container.querySelector('.annotation-overlay');
+  if (old) old.remove();
+  const rect = container.getBoundingClientRect();
+  const svg = d3.select(container).append('svg')
+    .attr('class', 'annotation-overlay')
+    .attr('width', rect.width).attr('height', rect.height)
+    .attr('viewBox', `0 0 ${rect.width} ${rect.height}`);
+  const annotations = items.map(a => {
+    let pixel;
+    try { pixel = chart.convertToPixel(a.finder || {seriesIndex: a.seriesIndex != null ? a.seriesIndex : 0}, [a.xValue, a.yValue]); }
+    catch (e) { return null; }
+    if (!pixel || pixel[0] == null) return null;
+    const type = a.type === 'elbow' ? d3.annotationCalloutElbow
+               : a.type === 'rect'  ? d3.annotationCalloutRect
+               : d3.annotationCalloutCircle;
+    return {
+      note: { title: a.title, label: a.label, wrap: a.wrap || 170, align: a.align || 'dynamic', padding: 6, lineType: 'horizontal' },
+      x: pixel[0], y: pixel[1], dx: a.dx, dy: a.dy,
+      subject: a.type === 'circle' ? {radius: a.radius || 18, radiusPadding: 3} : a.type === 'rect' ? {width: a.width || 60, height: a.height || 20} : {},
+      type, color: a.color || ANNOT_STROKE,
+      connector: {end: 'none', type: 'line'}
+    };
+  }).filter(Boolean);
+  if (!annotations.length) return;
+  svg.append('g').attr('class', 'annotation-group').call(d3.annotation().annotations(annotations));
+}
+
+function setupAnnotations() {
+  annotateChart(chart3, 'chart-3', [
+    { xValue: 108, yValue: 56.3, title: 'RBB Economics', label: '£108m · 56.3% margin. Highest-margin firm.', dx: -160, dy: 8, type: 'circle', radius: 22, seriesIndex: 0, wrap: 130 },
+    { xValue: 450, yValue: 36.8, title: 'Baringa Partners', label: '£450m · 36.8% margin · 178 partners.', dx: 30, dy: -80, type: 'circle', radius: 28, seriesIndex: 0, color: '#ff2d55', wrap: 140 },
+    { xValue: 461, yValue: 23.6, title: 'FTI Consulting', label: 'Houses Compass Lexecon. £461m · 23.6% margin (FY25, 12 months).', dx: 20, dy: 70, type: 'circle', radius: 22, seriesIndex: 0, color: '#34c759', wrap: 140 },
+    { xValue: 301, yValue: 38.6, title: 'A&M Europe', label: '£301m at 38.6% margin. Restructuring and disputes.', dx: -10, dy: 85, type: 'circle', radius: 22, seriesIndex: 0, color: '#34c759', wrap: 140 },
+    { xValue: 71,  yValue: 38.3, title: 'Oxera Consulting', label: '£71m · 38.3% margin. Hired Francesca Sala as Partner from the CMA in 2025.', dx: -160, dy: 8, type: 'circle', radius: 18, seriesIndex: 0, color: '#0071e3', wrap: 130 },
+    { xValue: 97,  yValue: 1.4,  title: 'Frontier Economics', label: 'Employee-owned since 1999.', dx: 110, dy: -30, type: 'elbow', seriesIndex: 0, color: '#0071e3', wrap: 140 }
+  ]);
+  annotateChart(chart4, 'chart-4', [
+    { xValue: 4, yValue: 108.4, title: 'RBB FY25', label: '£108.4m · 18 partners · £3.34m per partner.', dx: -140, dy: 50, type: 'elbow', seriesIndex: 0 },
+    { xValue: 4, yValue: 449.8, title: 'Baringa FY25', label: '£450m · 178 partners · £0.91m per partner.', dx: -150, dy: -40, type: 'elbow', seriesIndex: 1, color: '#ff2d55' }
+  ]);
+  // chart-5 callouts removed — Capital Economics 2014 and Flint Global 2025
+  // now render as inline labels alongside the rest of the PE deals.
+  annotateChart(chart7b, 'chart-7b', [
+    { xValue: 9, yValue: 39, title: '2024: 39 new seats', label: 'Partnership gold rush. Baringa alone added 11 new LLP members.', dx: -120, dy: -40, type: 'elbow', finder: {seriesIndex: 0} }
+  ]);
+}
+
+let annotationsDrawn = false;
+function tryDrawAnnotations() {
+  if (annotationsDrawn) return;
+  requestAnimationFrame(() => { setupAnnotations(); annotationsDrawn = true; });
+}
+chart3.on('finished', tryDrawAnnotations);
+chart4.on('finished', tryDrawAnnotations);
+chart5.on('finished', tryDrawAnnotations);
+chart7b.on('finished', tryDrawAnnotations);
+setTimeout(tryDrawAnnotations, 600);
+
+// Progress bar
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  document.getElementById('progress').style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100 + '%';
+});
+
+// ============================================================================
+// MOBILE OVERRIDES — reduce font sizes, margins, legend for narrow screens
+// ============================================================================
+const ALL_CHARTS = [chart1, chart2, chart3, chartHistory, chart4, chart5, chart6, chart7b, chart7, chartJ, chartG, chartH, chartAge];
+
+function applyMobileOverrides() {
+  const w = window.innerWidth;
+  if (w > 600) return;
+
+  // Charts with y-axis category labels that need narrower left margin
+  const narrowLeft = [
+    { chart: chart2,  left: 120 },
+    { chart: chartJ,  left: 110 },
+    { chart: chartG,  left: 130 },
+    { chart: chartAge, grids: [{left: 120, right: 30, top: 36, bottom: '54%'}, {left: 40, right: 30, top: '54%', bottom: 40}] }
+  ];
+  narrowLeft.forEach(cfg => {
+    if (cfg.grids) {
+      cfg.chart.setOption({ grid: cfg.grids }, {replaceMerge: ['grid']});
+    } else {
+      cfg.chart.setOption({ grid: { left: cfg.left, right: 30 } });
+    }
+  });
+
+  // Shrink axis labels, legend text, and series labels
+  const smallAxisLabel = { fontSize: 9, fontFamily: 'JetBrains Mono' };
+  const smallLegend = { textStyle: { fontSize: 9 }, itemWidth: 10, itemHeight: 8, itemGap: 8 };
+
+  [chart2, chart3, chart4, chart5, chartHistory].forEach(c => {
+    c.setOption({
+      legend: smallLegend,
+      xAxis: { axisLabel: smallAxisLabel },
+      yAxis: { axisLabel: { ...smallAxisLabel, fontSize: 9 } }
+    });
+  });
+
+  // Stacked bar charts — shrink legend
+  [chart7b].forEach(c => {
+    c.setOption({ legend: smallLegend });
+  });
+
+  // Force graph — shrink labels
+  chartH.setOption({
+    series: [{ label: { fontSize: 9 } }]
+  });
+
+  // Sankey — shrink labels and increase right margin
+  chart6.setOption({
+    series: [{ label: { fontSize: 9 }, right: 200 }]
+  });
+
+  // Treemap — shrink tile labels
+  chart1.setOption({
+    series: [{
+      label: {
+        rich: {
+          n: { fontSize: 9, lineHeight: 11 },
+          v: { fontSize: 8, lineHeight: 11 }
+        }
+      },
+      levels: [
+        {},
+        { upperLabel: { fontSize: 10, height: 24 } },
+        {}
+      ]
+    }]
+  });
+
+  ALL_CHARTS.forEach(c => c.resize());
+}
+
+window.addEventListener('DOMContentLoaded', () => setTimeout(applyMobileOverrides, 800));
+
+// Resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+  ALL_CHARTS.forEach(c => c.resize());
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    annotationsDrawn = false; setupAnnotations(); annotationsDrawn = true;
+    applyMobileOverrides();
+  }, 250);
+});
+</script>
+
+</body>
+</html>

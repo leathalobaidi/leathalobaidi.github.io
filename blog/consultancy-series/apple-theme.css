@@ -1,0 +1,910 @@
+/* ============================================================================
+   Apple design system — shared across all parts of the series.
+   Provides a unified visual language: Source Serif 4 body text, Inter UI
+   elements, blue accent (#0071e3), fluid typography, and all shared components.
+
+   Load order: this file must be the LAST stylesheet in <head> so it wins
+   the cascade against each file's inline <style> block.
+   ============================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --at-bg:            #ffffff;
+  --at-bg-card:       #f5f5f7;
+  --at-bg-elev:       #ffffff;
+  --at-border:        #d2d2d7;
+  --at-border-bright: #86868b;
+  --at-text:          #1d1d1f;
+  --at-text-dim:      #6e6e73;
+  --at-text-muted:    #86868b;
+  --at-accent:        #0066cc;
+  --at-accent-bright: #0071e3;
+  --at-accent-dim:    #c7deff;
+}
+
+/* ---------------------------------------------------------------- reset */
+*, *::before, *::after { box-sizing: border-box !important; }
+
+/* ---------------------------------------------------------------- body base */
+html {
+  scroll-behavior: smooth !important;
+}
+body {
+  font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif !important;
+  background: var(--at-bg) !important;
+  color: var(--at-text) !important;
+  line-height: 1.75 !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-rendering: optimizeLegibility !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* ---------------------------------------------------------------- headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif !important;
+  color: var(--at-text) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.15 !important;
+}
+
+/* h1: styled header block — fluid, gradient text, accent bar above */
+h1 {
+  font-size: clamp(34px, 4.5vw, 48px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.12 !important;
+  margin: 0 0 14px !important;
+  padding-top: 20px !important;
+  border-top: 3px solid var(--at-accent-bright) !important;
+  background: linear-gradient(180deg, #1d1d1f 0%, #6e6e73 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+h2 {
+  font-size: clamp(24px, 3vw, 32px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.015em !important;
+  line-height: 1.2 !important;
+  margin: 56px 0 18px !important;
+  background: linear-gradient(180deg, #1d1d1f 0%, #6e6e73 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+h3 {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin: 36px 0 14px !important;
+  -webkit-text-fill-color: initial !important;
+  background: none !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Kill the gradient for h1/h2 only when an inline style sets color explicitly */
+h1[style*="color"], h2[style*="color"] {
+  -webkit-text-fill-color: initial !important;
+  background: none !important;
+}
+
+/* ---------------------------------------------------------------- paragraphs + inline */
+p {
+  font-size: 18px !important;
+  line-height: 1.75 !important;
+  color: var(--at-text) !important;
+  font-weight: 400 !important;
+  margin: 0 0 20px !important;
+}
+p strong, strong, b {
+  color: var(--at-text) !important;
+  font-weight: 600 !important;
+}
+em, i { font-style: italic !important; }
+a {
+  color: var(--at-accent-bright) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid rgba(0,113,227,0.3) !important;
+}
+a:hover {
+  color: var(--at-accent) !important;
+  border-bottom-color: var(--at-accent) !important;
+}
+
+ul, ol { margin: 0 0 20px 20px !important; }
+li { margin-bottom: 8px !important; line-height: 1.75 !important; color: var(--at-text) !important; }
+
+blockquote {
+  border-left: 3px solid var(--at-accent-bright) !important;
+  padding: 8px 0 8px 20px !important;
+  margin: 28px 0 !important;
+  color: var(--at-text-dim) !important;
+  font-style: italic !important;
+  background: rgba(0,113,227,0.04) !important;
+  border-radius: 0 8px 8px 0 !important;
+}
+
+code, pre {
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace !important;
+  font-size: 13px !important;
+}
+code {
+  background: var(--at-bg-card) !important;
+  padding: 2px 6px !important;
+  border-radius: 4px !important;
+  color: var(--at-text) !important;
+}
+pre {
+  background: #1d1d1f !important;
+  color: #d2d2d7 !important;
+  padding: 20px 22px !important;
+  border-radius: 8px !important;
+  overflow-x: auto !important;
+  margin: 24px 0 !important;
+  line-height: 1.6 !important;
+}
+pre code {
+  background: transparent !important;
+  color: inherit !important;
+  padding: 0 !important;
+}
+
+/* ---------------------------------------------------------------- subtitles / byline / pub-name */
+.subtitle, .sub, .lede {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: clamp(17px, 2vw, 20px) !important;
+  color: var(--at-text-dim) !important;
+  font-weight: 300 !important;
+  line-height: 1.5 !important;
+  font-style: normal !important;
+}
+.byline {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 13px !important;
+  color: var(--at-text-muted) !important;
+  margin-bottom: 40px !important;
+}
+.byline strong { color: var(--at-text) !important; }
+.pub-name {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  color: var(--at-accent-bright) !important;
+  text-align: left !important;
+  margin-bottom: 24px !important;
+  /* Break out of narrow prose containers so pub-name aligns with nav */
+  width: min(960px, calc(100vw - 32px)) !important;
+  max-width: none !important;
+  margin-left: calc((100% - min(960px, calc(100vw - 32px))) / 2) !important;
+  margin-right: calc((100% - min(960px, calc(100vw - 32px))) / 2) !important;
+}
+
+/* ---------------------------------------------------------------- series nav */
+.series-nav {
+  display: grid !important;
+  grid-template-columns: repeat(11, 1fr) !important;
+  gap: 8px !important;
+  margin: 0 0 32px 0 !important;
+  /* break-out: same formula as .pub-name */
+  width: min(960px, calc(100vw - 32px)) !important;
+  max-width: none !important;
+  margin-left: calc((100% - min(960px, calc(100vw - 32px))) / 2) !important;
+  margin-right: calc((100% - min(960px, calc(100vw - 32px))) / 2) !important;
+  padding: 12px !important;
+  background: var(--at-bg-card) !important;
+  border: 1px solid var(--at-border) !important;
+  border-radius: 10px !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  position: relative !important;
+  z-index: 10 !important;
+  box-sizing: border-box !important;
+}
+.series-nav a, .series-nav span {
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  padding: 8px 10px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  border-bottom: none !important;
+  min-width: 0 !important;
+  flex: unset !important;
+}
+.series-nav .current {
+  background: var(--at-text) !important;
+  color: #ffffff !important;
+  border: 1px solid var(--at-text) !important;
+}
+.series-nav a {
+  background: var(--at-bg-elev) !important;
+  color: var(--at-text) !important;
+  border: 1px solid var(--at-border) !important;
+}
+.series-nav a:hover {
+  border-color: var(--at-accent-bright) !important;
+  color: var(--at-accent-bright) !important;
+}
+
+/* Responsive: 6 cols on tablets, 4 cols on phones */
+@media (max-width: 840px) {
+  .series-nav { grid-template-columns: repeat(6, 1fr) !important; }
+}
+@media (max-width: 520px) {
+  .series-nav { grid-template-columns: repeat(4, 1fr) !important; }
+}
+
+/* ---------------------------------------------------------------- generic containers */
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ---------------------------------------------------------------- pull quotes */
+.pull-quote {
+  text-align: center !important;
+  padding: 32px 24px !important;
+  margin: 40px -20px !important;
+  background: var(--at-bg-card) !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--at-border) !important;
+}
+.pull-quote .number {
+  font-family: 'Inter', sans-serif !important;
+  font-size: clamp(40px, 6vw, 56px) !important;
+  font-weight: 800 !important;
+  color: var(--at-accent-bright) !important;
+  line-height: 1 !important;
+}
+.pull-quote .label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: var(--at-text-muted) !important;
+  margin-top: 6px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+/* ---------------------------------------------------------------- data tables */
+.data-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 24px 0 32px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+}
+.data-table th {
+  text-align: left !important;
+  padding: 10px 12px !important;
+  border-bottom: 2px solid var(--at-text) !important;
+  font-weight: 600 !important;
+  color: var(--at-text) !important;
+  font-size: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  background: transparent !important;
+}
+.data-table td {
+  padding: 10px 12px !important;
+  border-bottom: 1px solid var(--at-border) !important;
+  color: var(--at-text) !important;
+}
+.data-table tr:hover td { background: var(--at-bg-card) !important; }
+.data-table .num {
+  text-align: right !important;
+  font-variant-numeric: tabular-nums !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 13px !important;
+}
+.data-table .highlight {
+  background: var(--at-bg-card) !important;
+  font-weight: 600 !important;
+}
+.data-table .neg { color: #ff3b30 !important; }
+
+/* stage-table (methodology) */
+.stage-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin: 24px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+}
+.stage-table th, .stage-table td {
+  padding: 10px 12px !important;
+  border-bottom: 1px solid var(--at-border) !important;
+  text-align: left !important;
+  vertical-align: top !important;
+}
+.stage-table th {
+  background: var(--at-bg-card) !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  font-size: 11px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+.stage-table td.num { text-align: right !important; font-variant-numeric: tabular-nums !important; }
+
+/* deal table */
+.deal-table td.deal-val {
+  font-weight: 600 !important;
+  color: var(--at-text) !important;
+}
+
+/* ---------------------------------------------------------------- tables (generic) */
+table {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-size: 14px !important;
+  color: var(--at-text) !important;
+}
+table th {
+  background: var(--at-bg-card) !important;
+  color: var(--at-text) !important;
+  font-weight: 700 !important;
+  border-bottom: 1px solid var(--at-border) !important;
+}
+table td {
+  border-bottom: 1px solid #e5e5ea !important;
+  color: var(--at-text) !important;
+}
+table .num {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 13px !important;
+}
+
+/* ---------------------------------------------------------------- callout boxes */
+.callout {
+  background: #f0f9ff !important;
+  border-left: 4px solid var(--at-accent-bright) !important;
+  padding: 16px 20px !important;
+  margin: 28px 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  color: #1e40af !important;
+  line-height: 1.6 !important;
+}
+.callout strong { color: var(--at-accent-bright) !important; }
+
+/* ---------------------------------------------------------------- warning boxes */
+.warning {
+  background: #fef3c7 !important;
+  border-left: 4px solid #ff9500 !important;
+  padding: 16px 20px !important;
+  margin: 28px 0 !important;
+  border-radius: 0 8px 8px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  color: #78350f !important;
+  line-height: 1.6 !important;
+}
+
+/* ---------------------------------------------------------------- takeaways */
+.takeaways {
+  background: var(--at-bg-card) !important;
+  color: var(--at-text) !important;
+  border-radius: 12px !important;
+  padding: 28px !important;
+  margin: 40px 0 !important;
+  border: 1px solid var(--at-border) !important;
+}
+.takeaways h3 {
+  color: var(--at-accent-bright) !important;
+  margin-top: 0 !important;
+  font-size: 14px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  border-top: none !important;
+  padding-top: 0 !important;
+  -webkit-text-fill-color: initial !important;
+  background: none !important;
+}
+.takeaways ol {
+  margin: 0 !important;
+  padding-left: 20px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+}
+.takeaways li { margin-bottom: 12px !important; line-height: 1.5 !important; }
+
+/* ---------------------------------------------------------------- cliffhanger */
+.cliffhanger {
+  background: linear-gradient(135deg, var(--at-bg-card) 0%, #eef4ff 100%) !important;
+  border: 1px solid var(--at-accent-bright) !important;
+  border-radius: 12px !important;
+  padding: 28px !important;
+  margin: 40px 0 !important;
+}
+.cliffhanger .label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: var(--at-accent-bright) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 12px !important;
+}
+.cliffhanger h3 {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin: 0 0 12px !important;
+  border-top: none !important;
+  padding-top: 0 !important;
+  -webkit-text-fill-color: initial !important;
+  background: none !important;
+}
+.cliffhanger p {
+  font-size: 16px !important;
+  color: var(--at-text) !important;
+  margin-bottom: 16px !important;
+}
+.cliffhanger .cta {
+  display: inline-block !important;
+  background: var(--at-text) !important;
+  color: #fff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  padding: 10px 18px !important;
+  border-radius: 6px !important;
+  text-decoration: none !important;
+  border-bottom: none !important;
+}
+.cliffhanger .cta:hover {
+  background: var(--at-accent-bright) !important;
+}
+
+/* ---------------------------------------------------------------- chart boxes */
+.chart-box {
+  background: var(--at-bg-card) !important;
+  border: 1px solid var(--at-border) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  margin: 28px 0 !important;
+}
+.chart-box .title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin-bottom: 2px !important;
+}
+.chart-box .sub {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 10px !important;
+  color: var(--at-text-muted) !important;
+  margin-bottom: 12px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* chart containers (part5 bar charts) */
+.chart-container {
+  background: var(--at-bg-card) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin: 28px 0 !important;
+  border: 1px solid var(--at-border) !important;
+}
+.chart-title {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: var(--at-text) !important;
+  margin-bottom: 16px !important;
+}
+.bar-chart { display: flex !important; flex-direction: column !important; gap: 8px !important; }
+.bar-row {
+  display: flex !important; align-items: center !important; gap: 12px !important;
+  font-family: 'Inter', sans-serif !important; font-size: 13px !important;
+}
+.bar-label {
+  width: 140px !important; text-align: right !important; color: var(--at-text-muted) !important;
+  flex-shrink: 0 !important; font-size: 12px !important;
+}
+.bar-track {
+  flex: 1 !important; height: 28px !important; background: var(--at-border) !important;
+  border-radius: 4px !important; position: relative !important; overflow: hidden !important;
+}
+.bar-fill {
+  height: 100% !important; border-radius: 4px !important;
+  display: flex !important; align-items: center !important; padding-left: 8px !important;
+  font-size: 11px !important; font-weight: 600 !important; color: #fff !important;
+  min-width: 40px !important;
+}
+.bar-value {
+  font-size: 12px !important; color: var(--at-text) !important; font-weight: 600 !important;
+  width: 70px !important; text-align: right !important; flex-shrink: 0 !important;
+}
+
+/* ---------------------------------------------------------------- founder cards */
+.founder-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr 1fr !important;
+  gap: 12px !important;
+  margin: 28px 0 !important;
+}
+.founder-card {
+  background: var(--at-bg-card) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  border: 1px solid var(--at-border) !important;
+  font-family: 'Inter', sans-serif !important;
+}
+.founder-card .name {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin-bottom: 4px !important;
+}
+.founder-card .role {
+  font-size: 11px !important;
+  color: var(--at-accent-bright) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin-bottom: 8px !important;
+}
+.founder-card .bio {
+  font-size: 12px !important;
+  color: var(--at-text) !important;
+  line-height: 1.5 !important;
+}
+/* founder-card variant used in part3/part4 */
+.founder-card .firm {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin-bottom: 2px !important;
+}
+.founder-card .founded {
+  font-size: 12px !important;
+  color: var(--at-text-muted) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-bottom: 12px !important;
+}
+.founder-card .row {
+  font-size: 14px !important;
+  color: var(--at-text) !important;
+  margin-bottom: 6px !important;
+}
+.founder-card .tag {
+  display: inline-block !important;
+  background: var(--at-bg-card) !important;
+  color: var(--at-accent-bright) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 3px 8px !important;
+  border-radius: 4px !important;
+  margin-top: 8px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+/* fc- prefix variant (part3) */
+.founder-card .fc-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: var(--at-accent-bright) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.2px !important;
+  margin-bottom: 8px !important;
+}
+.founder-card .fc-name {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin-bottom: 4px !important;
+}
+.founder-card .fc-sub {
+  font-size: 13px !important;
+  color: var(--at-text-muted) !important;
+  margin-bottom: 14px !important;
+  font-style: italic !important;
+}
+.founder-card .fc-row {
+  display: flex !important;
+  gap: 14px !important;
+  margin-bottom: 6px !important;
+  font-size: 13px !important;
+  color: var(--at-text) !important;
+}
+.founder-card .fc-row strong {
+  min-width: 90px !important;
+  color: var(--at-text-muted) !important;
+  font-weight: 600 !important;
+}
+
+@media (max-width: 600px) {
+  .founder-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ---------------------------------------------------------------- comparison cards */
+.comparison {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+  margin: 28px 0 !important;
+}
+.comp-card {
+  background: var(--at-bg-card) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  border: 1px solid var(--at-border) !important;
+  text-align: center !important;
+}
+.comp-card .firm-name {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--at-text-muted) !important;
+  margin-bottom: 8px !important;
+}
+.comp-card .big-num {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 32px !important;
+  font-weight: 800 !important;
+  color: var(--at-text) !important;
+  line-height: 1 !important;
+}
+.comp-card .detail {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  color: var(--at-text-muted) !important;
+  margin-top: 4px !important;
+}
+.comp-card.orange {
+  border-color: var(--at-accent-bright) !important;
+  background: var(--at-bg-card) !important;
+}
+.comp-card.orange .big-num { color: var(--at-accent-bright) !important; }
+
+/* ---------------------------------------------------------------- segment cards */
+.segment-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 12px !important;
+  margin: 24px 0 !important;
+}
+.segment-card {
+  background: var(--at-bg-card) !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  border: 1px solid var(--at-border) !important;
+}
+.segment-card h4 {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  margin-bottom: 6px !important;
+  color: var(--at-text) !important;
+}
+.segment-card .count {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  color: var(--at-text-muted) !important;
+  margin-bottom: 8px !important;
+}
+.segment-card ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  color: var(--at-text) !important;
+  line-height: 1.7 !important;
+}
+.segment-card.wide { grid-column: 1 / -1 !important; }
+
+/* ---------------------------------------------------------------- scatter (LECG diagram, part3) */
+.scatter {
+  background: var(--at-bg-card) !important;
+  border: 1px solid var(--at-border) !important;
+  border-radius: 12px !important;
+  padding: 24px !important;
+  margin: 28px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+.scatter .root {
+  background: var(--at-text) !important;
+  color: #fff !important;
+  padding: 10px 14px !important;
+  border-radius: 6px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  display: inline-block !important;
+  margin-bottom: 16px !important;
+}
+.scatter .branch {
+  border-left: 2px solid var(--at-accent-bright) !important;
+  padding: 8px 0 8px 16px !important;
+  margin: 8px 0 8px 20px !important;
+}
+.scatter .branch-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin-bottom: 4px !important;
+}
+.scatter .branch-detail {
+  font-size: 12px !important;
+  color: var(--at-text-muted) !important;
+  line-height: 1.5 !important;
+}
+
+/* ---------------------------------------------------------------- timeline (part2) */
+.timeline {
+  border-left: 2px solid var(--at-border) !important;
+  padding-left: 20px !important;
+  margin: 28px 0 !important;
+}
+.timeline-event {
+  margin-bottom: 20px !important;
+  position: relative !important;
+}
+.timeline-event::before {
+  content: '' !important;
+  position: absolute !important;
+  left: -27px !important;
+  top: 6px !important;
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background: var(--at-accent-bright) !important;
+  border: 2px solid #fff !important;
+}
+.timeline-event .year {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: var(--at-accent-bright) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+.timeline-event .headline {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--at-text) !important;
+  margin: 2px 0 4px !important;
+}
+.timeline-event .detail {
+  font-size: 14px !important;
+  color: var(--at-text) !important;
+}
+
+/* ---------------------------------------------------------------- move cards (part6) */
+.move-card {
+  background: var(--at-bg-card) !important;
+  border-radius: 12px !important;
+  padding: 20px !important;
+  border: 1px solid var(--at-border) !important;
+  margin: 24px 0 !important;
+  font-family: 'Inter', sans-serif !important;
+}
+.move-card .who {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: var(--at-text) !important;
+  margin-bottom: 4px !important;
+}
+.move-card .journey {
+  font-size: 13px !important;
+  color: var(--at-text) !important;
+  line-height: 1.6 !important;
+}
+.move-card .journey .stop {
+  display: inline-block !important;
+  background: #fff !important;
+  padding: 3px 10px !important;
+  border: 1px solid var(--at-border) !important;
+  border-radius: 14px !important;
+  margin: 3px 4px 3px 0 !important;
+  font-weight: 500 !important;
+}
+.move-card .journey .stop.current {
+  background: var(--at-bg-card) !important;
+  border-color: var(--at-accent-bright) !important;
+  color: var(--at-accent) !important;
+}
+.move-card .arrow {
+  color: var(--at-accent-bright) !important;
+  font-weight: 800 !important;
+  padding: 0 2px !important;
+}
+.move-card .date {
+  font-size: 11px !important;
+  color: var(--at-text-muted) !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  margin-top: 6px !important;
+}
+
+/* ---------------------------------------------------------------- pyramid (part5) */
+.pyramid { margin: 28px 0 !important; }
+.pyramid-tier {
+  font-family: 'Inter', sans-serif !important;
+  padding: 14px 20px !important;
+  margin-bottom: 4px !important;
+  border-radius: 6px !important;
+  color: #fff !important;
+}
+.pyramid-tier .tier-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  opacity: 0.85 !important;
+  margin-bottom: 2px !important;
+}
+.pyramid-tier .tier-firms {
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+.pyramid-tier .tier-range {
+  font-size: 11px !important;
+  opacity: 0.7 !important;
+  margin-top: 2px !important;
+}
+
+/* ---------------------------------------------------------------- chord diagram (part7) */
+.chord-wrap {
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+svg.chord { width: 100% !important; max-width: 760px !important; height: 760px !important; }
+.chord-label {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  fill: var(--at-text) !important;
+}
+.chord-ribbon { transition: opacity 0.2s !important; }
+.chord-ribbon:hover { opacity: 1 !important; }
+
+/* ---------------------------------------------------------------- footer */
+.footer {
+  font-family: 'Inter', sans-serif !important;
+  font-size: 13px !important;
+  color: var(--at-text-muted) !important;
+  margin-top: 48px !important;
+  padding-top: 24px !important;
+  border-top: 1px solid var(--at-border) !important;
+}
+.footer a {
+  color: var(--at-text-muted) !important;
+  border-bottom-color: transparent !important;
+}
+.footer a:hover {
+  color: var(--at-accent-bright) !important;
+}
+.footer ul { padding-left: 20px !important; margin: 12px 0 !important; }
+.footer li { margin-bottom: 6px !important; }
+
+/* ---------------------------------------------------------------- misc */
+hr {
+  border: none !important;
+  border-top: 1px solid var(--at-border) !important;
+  margin: 48px 0 !important;
+}
+
+@media (max-width: 600px) {
+  .comparison { grid-template-columns: 1fr !important; }
+  .segment-grid { grid-template-columns: 1fr !important; }
+}

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Leath Al Obaidi">
+    <meta name="description" content="UK Economics Consultancy: A Historical Series. Eleven pieces on the £2 billion industry nobody writes about. Ninety firms, twenty-five years, every Companies House filing read.">
+    <meta property="og:title" content="UK Economics Consultancy: A Historical Series — Leath Al Obaidi">
+    <meta property="og:description" content="Eleven pieces on the £2 billion industry nobody writes about. Ninety firms, twenty-five years, every Companies House filing read.">
+    <meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Leath Al Obaidi">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="UK Economics Consultancy: A Historical Series">
+    <meta name="twitter:description" content="Eleven pieces on the £2 billion industry nobody writes about.">
+    <link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series">
+    <title>UK Economics Consultancy: A Historical Series — Leath Al Obaidi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #c45d3e;
+            --color-text: #2a2a2a;
+            --color-text-light: #666666;
+            --color-background: #fafafa;
+            --color-border: #e8e8e8;
+            --color-card-bg: #ffffff;
+            --color-section-bg: #f4f0ec;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --max-width: 760px;
+            --transition: all 0.3s ease;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        @media (max-width: 640px) { body { font-size: 15px; } }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+        a:hover { opacity: 0.75; border-bottom-color: var(--color-primary); }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--color-background);
+            z-index: 100;
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-md) 0;
+        }
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-family: var(--font-serif);
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .nav-brand:hover { color: var(--color-primary); }
+        .nav-links { display: flex; list-style: none; gap: var(--spacing-lg); }
+        .nav-links a { color: var(--color-text); border-bottom: none; font-size: 0.95rem; }
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-primary);
+            opacity: 1;
+        }
+        @media (max-width: 640px) { .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; } }
+
+        .page-header {
+            padding: var(--spacing-xl) 0 var(--spacing-md);
+        }
+        .eyebrow {
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--spacing-xs);
+        }
+        .page-header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: var(--spacing-sm);
+        }
+        .page-header .standfirst {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: var(--color-text-light);
+            max-width: 620px;
+        }
+
+        .intro {
+            padding: var(--spacing-md) 0 var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+        }
+        .intro p {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: var(--spacing-md);
+        }
+        .intro p:last-child { margin-bottom: 0; }
+
+        .series-section {
+            padding: var(--spacing-lg) 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .section-label {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .piece-card {
+            display: block;
+            padding: var(--spacing-md) 0;
+            border-top: 1px solid var(--color-border);
+            text-decoration: none;
+            color: inherit;
+        }
+        .piece-card:first-of-type { border-top: none; }
+        .piece-card:hover { opacity: 1; border-bottom-color: transparent; }
+        .piece-card:hover .piece-title { color: var(--color-primary); }
+
+        .piece-meta {
+            font-family: var(--font-sans);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.35rem;
+        }
+        .piece-title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+            color: var(--color-text);
+            transition: var(--transition);
+        }
+        .piece-excerpt {
+            color: var(--color-text-light);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .about {
+            padding: var(--spacing-lg) 0 var(--spacing-xl);
+            font-size: 0.9rem;
+            color: var(--color-text-light);
+            line-height: 1.7;
+        }
+        .about strong { color: var(--color-text); font-weight: 600; }
+
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;">Leath</a>
+            <ul class="nav-links">
+                <li><a href="/#notes">Notes</a></li>
+                <li><a href="/#listography">Listography</a></li>
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/blog" class="active">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <header class="page-header">
+            <div class="eyebrow">Series &middot; April 2026</div>
+            <h1>UK Economics Consultancy: A Historical Series</h1>
+            <p class="standfirst">Eleven pieces on the £2 billion industry nobody writes about. Ninety firms, twenty-five years, every Companies House filing read.</p>
+        </header>
+
+        <section class="intro">
+            <p>There are roughly ninety economics-consultancy firms in the United Kingdom. Together they collect more than &pound;2 billion in annual fees. They advise competition authorities, price regulators, government departments, law firms, and corporate clients on the most consequential economic decisions in Britain &mdash; CMA merger clearances, Ofwat and Ofgem price reviews, CAT damages awards, Treasury fiscal policy. Most of their work happens behind closed doors. Very little of it is written about.</p>
+            <p>This series traces the industry's history from 2000 to 2025. It is built on the filed Companies House accounts of every active firm in the market, on twenty-five years of <em>Global Competition Review</em> coverage, on press cuttings, obituaries, and firm histories. The dataset, the code, and the source PDFs are all open, and every claim in the prose traces to a primary source that a reader can check. Start anywhere.</p>
+        </section>
+
+        <section class="series-section">
+            <div class="section-label">Visual introductions</div>
+
+            <a href="part0.1-visual-story" class="piece-card">
+                <div class="piece-meta">Opening &middot; Visual</div>
+                <h2 class="piece-title">A Visual Story</h2>
+                <p class="piece-excerpt">Twelve charts, one market. The shape of UK economics consulting in 2025 &mdash; &pound;2 billion of fees, ninety firms, one fifty-six-per-cent profit margin at the top.</p>
+            </a>
+
+            <a href="part0.2-uk-and-global-map" class="piece-card">
+                <div class="piece-meta">Opening &middot; Maps</div>
+                <h2 class="piece-title">Where the Economists Actually Are</h2>
+                <p class="piece-excerpt">Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. Ninety firms pinned to postcodes, wired to a single filter panel.</p>
+            </a>
+        </section>
+
+        <section class="series-section">
+            <div class="section-label">The numbered history (seven parts)</div>
+
+            <a href="part1-who-was-here-in-2000" class="piece-card">
+                <div class="piece-meta">Part 1 &middot; 2000</div>
+                <h2 class="piece-title">Who Was Here in 2000</h2>
+                <p class="piece-excerpt">The year the UK economics-consultancy market did not yet exist in its modern shape. A portrait of the four firms, fifteen people, and three cases that seeded the industry.</p>
+            </a>
+
+            <a href="part2-founders-decade" class="piece-card">
+                <div class="piece-meta">Part 2 &middot; 2000&ndash;2010</div>
+                <h2 class="piece-title">The Founders' Decade</h2>
+                <p class="piece-excerpt">In January 2000, NERA ruled the UK economics market; by 2010, three defectors had built a rival that would eventually post the highest profit-per-partner in British professional services.</p>
+            </a>
+
+            <a href="part3-professionalisation" class="piece-card">
+                <div class="piece-meta">Part 3 &middot; 2010&ndash;2015</div>
+                <h2 class="piece-title">The Professionalisation &mdash; PE Arrives</h2>
+                <p class="piece-excerpt">LECG imploded, its European economists scattered across three doors, and a patient English private equity house concluded that a research boutique in the City was worth four times its revenues. The money had begun to arrive.</p>
+            </a>
+
+            <a href="part4-global-arms-race" class="piece-card">
+                <div class="piece-meta">Part 4 &middot; 2015&ndash;2020</div>
+                <h2 class="piece-title">The Global Arms Race</h2>
+                <p class="piece-excerpt">The Americans cross the Atlantic; private equity writes its first cheque into UK economics research; Brexit throws off a regulatory advisory boom; and one firm quietly posts the highest profit-per-partner in British professional services.</p>
+            </a>
+
+            <a href="part5-profit-machine" class="piece-card">
+                <div class="piece-meta">Part 5 &middot; 2020&ndash;2025</div>
+                <h2 class="piece-title">The Profit Machine</h2>
+                <p class="piece-excerpt">An eighteen-partner competition-economics firm on a single floor of 199 Bishopsgate booked the highest profit-per-partner of any UK professional-services LLP that files in full. McKinsey swallowed Vivid; Jacobs bought PA Consulting for &pound;3.05 billion; Goldman Sachs bankrolled a twenty-five-person walkout from Compass Lexecon.</p>
+            </a>
+
+            <a href="part6-the-cma-drain" class="piece-card">
+                <div class="piece-meta">Part 6 &middot; CMA &rarr; private sector</div>
+                <h2 class="piece-title">The CMA Drain</h2>
+                <p class="piece-excerpt">Five senior economists walked out of the CMA in three years; Stefan Hunt walked out twice. Here is where they went, and who paid to bring them in.</p>
+            </a>
+
+            <a href="part7-the-people-network" class="piece-card">
+                <div class="piece-meta">Part 7 &middot; Network</div>
+                <h2 class="piece-title">The People Network</h2>
+                <p class="piece-excerpt">One chart, every documented cross-firm move in the UK economics consultancy market 2000&ndash;2025. Who came from where. Who went where. A chord diagram mapping twenty-five years of churn.</p>
+            </a>
+        </section>
+
+        <section class="series-section">
+            <div class="section-label">Standalone deep-dive</div>
+
+            <a href="rbb-2m-to-108m" class="piece-card">
+                <div class="piece-meta">RBB Economics &middot; 2002&ndash;2025</div>
+                <h2 class="piece-title">&pound;2m to &pound;108m &mdash; Twenty-three years inside RBB Economics</h2>
+                <p class="piece-excerpt">Three economists walked out of NERA London in April 2002 and set up a competition-economics boutique from scratch. Twenty-three years later, the firm they built posts &pound;108m of revenue and &pound;3.34m per partner &mdash; the highest documented profit-per-partner in any UK professional-services LLP that files in full.</p>
+            </a>
+        </section>
+
+        <section class="series-section">
+            <div class="section-label">Methodology</div>
+
+            <a href="methodology-claude-code" class="piece-card">
+                <div class="piece-meta">How it was built</div>
+                <h2 class="piece-title">Claude Code for an Economist</h2>
+                <p class="piece-excerpt">How a single researcher, with no programming background, built a ninety-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for public release.</p>
+            </a>
+        </section>
+
+        <section class="about">
+            <p><strong>About the series.</strong> Written by Leath Al Obaidi in a private capacity. Independent research, not commissioned work. The dataset is a snapshot of the UK economics-consultancy market as of April 2026; the prose is narrative-led but every quantitative claim is grounded in a named primary source (mostly filed Companies House accounts, plus <em>Global Competition Review</em> coverage, press releases, and obituaries). Corrections welcome &mdash; contact via <a href="/">leathalobaidi.com</a>.</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; Leath Al Obaidi</p>
+        </div>
+    </footer>
+
+</body>
+</html>

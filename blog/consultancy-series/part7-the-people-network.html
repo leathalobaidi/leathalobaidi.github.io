@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The People Network: Who moves between which firms</title>
+<meta name="author" content="Leath Al Obaidi">
+<meta name="description" content="One chart, every documented cross-firm move in the UK economics consultancy market 2000–2025. Who came from where. Who went where. A chord diagram mapping twenty-five years of churn.">
+<link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/part7-the-people-network">
+<meta property="og:title" content="The People Network: Who moves between which firms">
+<meta property="og:description" content="One chart, every documented cross-firm move in the UK economics consultancy market 2000–2025. Who came from where. Who went where. A chord diagram mapping twenty-five years of churn.">
+<meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/part7-the-people-network">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leath Al Obaidi">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The People Network: Who moves between which firms">
+<meta name="twitter:description" content="One chart, every documented cross-firm move in the UK economics consultancy market 2000–2025. Who came from where. Who went where. A chord diagram mapping twenty-five years of churn.">
+
+<link rel="stylesheet" href="apple-theme.css">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<style>
+  /* Part 7: wider container for chord diagram; all other styles from apple-theme.css */
+  .container { max-width: 820px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* ── iPad (≤1024px) ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .container { padding: 32px 24px 60px; }
+  }
+
+  /* ── iPhone (≤600px) ─────────────────────────────────── */
+  @media (max-width: 600px) {
+    body { font-size: 16px; line-height: 1.6; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; }
+    h3 { font-size: 16px; }
+    .subtitle { font-size: 17px; }
+    .byline { font-size: 12px; }
+    .container { padding: 24px 16px 48px; max-width: 100%; }
+    .series-nav {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .series-nav a, .series-nav span { flex: 0 0 auto; }
+    .data-table { font-size: 12px; }
+    .data-table th { font-size: 10px; }
+    .takeaways { padding: 16px; font-size: 14px; }
+    .footer { padding: 32px 16px; font-size: 10px; }
+    .cliffhanger { padding: 20px 16px; }
+    .chart-box { padding: 12px; border-radius: 8px; }
+    .chart-box .title { font-size: 12px; }
+    .chart-box .sub { font-size: 9px; }
+    svg.chord { max-height: 400px; height: auto; }
+    .chord-label { font-size: 9px !important; }
+  }
+
+  /* ── iPhone SE (≤375px) ──────────────────────────────── */
+  @media (max-width: 375px) {
+    body { font-size: 15px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 20px; }
+    .data-table { font-size: 11px; }
+    svg.chord { max-height: 320px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
+
+  <div class="series-nav">
+    <a href="part0.1-visual-story.html">Visual</a>
+    <a href="part0.2-uk-and-global-map.html">Maps</a>
+    <a href="part1-who-was-here-in-2000.html">Part 1</a>
+    <a href="part2-founders-decade.html">Part 2</a>
+    <a href="part3-professionalisation.html">Part 3</a>
+    <a href="part4-global-arms-race.html">Part 4</a>
+    <a href="part5-profit-machine.html">Part 5</a>
+    <a href="part6-the-cma-drain.html">Part 6</a>
+    <span class="current">Part 7</span>
+    <a href="methodology-claude-code.html">Methodology</a>
+  </div>
+
+  <h1>The People Network</h1>
+  <p class="subtitle">One chart, every documented cross-firm move in the UK economics consultancy market 2000&ndash;2025. Who came from where. Who went where. A chord diagram mapping thirty-plus senior moves across a market where the same dozen firms exchange the same people.</p>
+  <p class="byline"><strong>Leath</strong> &middot; April 2026 &middot; 9 min read</p>
+
+  <h2>A village, not an industry</h2>
+
+  <p>Count the senior economists in British competition consultancy and the total comes to perhaps a thousand. Narrow the lens to the named partners whose moves surface in <a href="https://globalcompetitionreview.com">Global Competition Review</a> when they happen, and the population shrinks to a few hundred &mdash; a village, really, populated by the same dozen firms trading the same dozen people. That village has been in continuous motion for twenty-five years. The pattern of who ends up where is not random; it follows the gravitational pull of three or four dominant firms, the occasional regulator, and the intermittent breakaway that rewrites the map.</p>
+
+  <p>What follows is every documented cross-firm senior move that primary sources will attest to. Each arc is a single person's journey from one firm to another. The width of the arc tracks the seniority of the move &mdash; partners weighted more heavily than directors, directors more heavily than principal economists. Hover any arc to see the person and the year.</p>
+
+  <div class="chart-box">
+    <div class="title">Cross-firm moves in the UK economics consultancy market, 2000&ndash;2025</div>
+    <div class="sub">Chord diagram &middot; source: Companies House officer appointments + primary press</div>
+    <div class="chord-wrap">
+      <svg class="chord" id="chord"></svg>
+    </div>
+  </div>
+
+  <p>Five features of this chart deserve commentary before the numbers are discussed.</p>
+
+  <h3>1. The big ribbon between Compass Lexecon and Econic</h3>
+
+  <p>The fattest arc on the diagram connects Compass Lexecon to Econic Partners. In February 2025 twenty-five-plus economists walked out of Compass Lexecon to found Econic; the exiting cast included Jonathan Orszag, Mark Israel and Kirsten Edwards-Warren. Part 5 tells the story in detail. On the chord diagram it is the single largest movement of senior people the UK market has seen in any single event since the records begin &mdash; a ribbon so fat it tilts the whole chart.</p>
+
+  <h3>2. The Keystone build-and-drain</h3>
+
+  <p>Keystone sits near the top of the diagram with three arrows pointing <em>in</em> &mdash; Coscelli from the CMA, Hunt from the CMA, Calanchi from Compass Lexecon &mdash; and three arrows pointing <em>out</em>: Caffarra to UCL, Calanchi to Econic, Hunt to AlixPartners. In two and a half years Keystone assembled a European leadership team and then lost it. Only Coscelli remains.</p>
+
+  <h3>3. The CMA as a source node, not a destination</h3>
+
+  <p>The CMA has a cluster of arrows leaving it &mdash; to Keystone, Oxera, Frontier, AlixPartners &mdash; and essentially no arrows arriving. This is what Part 6 called the regulator-as-recruiter phenomenon: the CMA exports talent at the senior level and does not import it. The partners who left the CMA between 2022 and 2025 are not being replaced by partners joining the CMA from private consultancy. They are being replaced, if at all, by promoting junior case handlers from within. The flow is one-way.</p>
+
+  <h3>4. A surprising ribbon: AlixPartners to Compass Lexecon (Sangha, 2020)</h3>
+
+  <p>Rameet Sangha's 2020 move from AlixPartners, where she was a Director, to Compass Lexecon is one of the more interesting arcs on the chart, and interesting because it runs backward. It runs in the opposite direction to the 2024&ndash;25 AlixPartners build-out; the same firm that is now hiring ex-CMA economists to stand up a competition-economics practice was, five years ago, losing a senior director to Compass Lexecon. The AlixPartners economics practice of 2020 was a different creature from the AlixPartners economics practice of 2025. That is a real market-structure story: a firm exited a segment and re-entered five years later with an entirely different strategy &mdash; and a different set of people to execute it.</p>
+
+  <h3>5. Frontier Economics has almost no arrows</h3>
+
+  <p>Frontier is the cleanest node on the chart. Almost nobody arrives mid-career and almost nobody leaves. The 2025 hiring of Mike Walker, ex-CMA Chief Economist, is one of the few inbound arrows in an entire decade. This is the employee-ownership effect in working form: profit at Frontier goes to staff rather than a small partner class, and staff who are drawing their share of profit do not leave as often. The <a href="part5-profit-machine.html">Part 5 story</a> about Frontier looks quaintly unlike the stories told about Baringa or Compass Lexecon.</p>
+
+  <hr>
+
+  <h2>The top ten most-moved firms</h2>
+
+  <p>Rank the firms by the total number of arcs touching their node &mdash; inbound plus outbound &mdash; and the top ten of the UK market look like this:</p>
+
+  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
+  <table class="data-table">
+    <thead>
+      <tr><th>Rank</th><th>Firm</th><th class="num">Arcs in</th><th class="num">Arcs out</th><th class="num">Total</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>Compass Lexecon (FTI)</td><td class="num">6</td><td class="num">9</td><td class="num">15</td></tr>
+      <tr><td>2</td><td>AlixPartners UK</td><td class="num">5</td><td class="num">3</td><td class="num">8</td></tr>
+      <tr><td>3</td><td>Keystone Strategy</td><td class="num">4</td><td class="num">3</td><td class="num">7</td></tr>
+      <tr><td>4</td><td>CMA (regulator)</td><td class="num">0</td><td class="num">6</td><td class="num">6</td></tr>
+      <tr><td>5</td><td>NERA UK</td><td class="num">2</td><td class="num">4</td><td class="num">6</td></tr>
+      <tr><td>6</td><td>Econic Partners</td><td class="num">5</td><td class="num">0</td><td class="num">5</td></tr>
+      <tr><td>7</td><td>A&amp;M Europe</td><td class="num">3</td><td class="num">1</td><td class="num">4</td></tr>
+      <tr><td>8</td><td>Oxera Consulting</td><td class="num">3</td><td class="num">0</td><td class="num">3</td></tr>
+      <tr><td>9</td><td>RBB Economics</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+      <tr><td>10</td><td>Frontier Economics</td><td class="num">2</td><td class="num">0</td><td class="num">2</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <p>Three observations follow. The first is that Compass Lexecon is the hub of the network: it has the most in-arcs and the most out-arcs, and the economists of UK competition economics pass through Compass Lexecon more often than through any other firm. The second concerns RBB, which has the smallest footprint of any large firm on the diagram. In twenty-three years, only two documented senior moves touch it &mdash; Beno&icirc;t Durand from the Competition Commission in 2008, and Helder Vasconcelos more recently, both inbound. Nobody has walked out of RBB to found a rival. Nobody has been poached at the partner level. It is the lowest churn rate in the industry. Third: Frontier Economics sits just behind, with two arcs in twenty-seven years &mdash; the second-lowest-churn node on the chart.</p>
+
+  <p>The two firms with the strongest staff-retention profiles are also the two firms with the most distinctive economic models. RBB runs a small closed partnership; Frontier runs on employee ownership. Everyone else is somewhere in the middle: bigger, more open to lateral movement, more exposed to the Compass-Lexecon-style risk that a senior team walks out of the door together on a Friday and founds something new on Monday.</p>
+
+  <hr>
+
+  <h2>Four people to watch</h2>
+
+  <p>Four named individuals are disproportionately central to the network. Follow them through the chart and most of the story of the last five years explains itself.</p>
+
+  <h3>Stefan Hunt</h3>
+
+  <p>Hunt is the only person with three distinct arcs on the diagram: CMA to Keystone to AlixPartners, with a final destination as of December 2025 at <a href="https://find-and-update.company-information.service.gov.uk/officers/07oDguI2hqgxzwurJGLzWcljLR8/appointments">AlixPartners UK LLP</a>. He is the clearest evidence on record that a single senior economist can move three times in three years and have each move stand as a story in its own right. His case is the scaffolding on which Part 5 built its thesis.</p>
+
+  <h3>Gianmarco Calanchi</h3>
+
+  <p>Five nodes in his career trajectory: UK Department of Energy and Climate Change, then OFT / CMA, then Compass Lexecon, then <a href="https://www.keystone.ai/news-publications/gianmarco-calanchi-joins-keystone-europe">Keystone Europe</a>, and finally <a href="https://econicpartners.com/people/gianmarco-calanchi/">Econic Partners</a>. That is the longest trajectory any individual traces on the whole chart. If the porousness of the market needs one career to illustrate it, Calanchi's is the one.</p>
+
+  <h3>Jorge Padilla</h3>
+
+  <p>Padilla has two arcs, both institutional. The first runs from LECG to Compass Lexecon in 2011, when LECG went bankrupt and Padilla's European team transferred en bloc. The second runs inside Compass Lexecon itself, from partner to Chair in the 2024 reshuffle. Padilla is the economist who has held the European competition-economics centre of gravity across the single biggest firm failure in the market's history and the single biggest breakaway from it. Every other Compass Lexecon story in the last fifteen years has had to reckon with him.</p>
+
+  <h3>Kirsten Edwards-Warren</h3>
+
+  <p>Two arcs, one year apart. Edwards-Warren was named <a href="https://www.globenewswire.com/news-release/2024/02/15/2829868/33891/en/Compass-Lexecon-Announces-Executive-Leadership-Appointments.html">co-head of Compass Lexecon EMEA in February 2024</a>. She walked out a year later with Orszag and Israel to co-found Econic Partners, and she is the only <a href="https://find-and-update.company-information.service.gov.uk/company/16147541/officers">second statutory director</a> of Econic U.K. Limited alongside Orszag himself &mdash; a structural position that makes her the most visible Compass Lexecon departure in the 2025 exodus. The framing of Econic as a breakaway from Compass Lexecon rests, more than on anyone else's, on her name.</p>
+
+  <hr>
+
+  <div class="takeaways">
+    <h3>Key takeaways</h3>
+    <ol>
+      <li>Every documented senior move traceable in the UK economics-consultancy market between 2000 and 2025 fits on a single chord diagram; the market, by any honest measure, is a village rather than an industry.</li>
+      <li>Compass Lexecon is the hub of the network, holding the most inbound arcs, the most outbound arcs, and the single fattest ribbon on the chart &mdash; the one running to Econic Partners.</li>
+      <li>RBB Economics and Frontier Economics are the two lowest-churn nodes on the diagram; RBB's closed partnership and Frontier's employee ownership retain senior staff at rates no other firm matches.</li>
+      <li>The CMA has a cluster of outbound arcs and no inbound arcs at the senior level; it is a talent source, not a talent destination.</li>
+      <li>Four individuals &mdash; Hunt, Calanchi, Padilla and Edwards-Warren &mdash; appear on a disproportionate number of arcs, and tracing their careers does most of the work of explaining how the market has reorganised since 2020.</li>
+    </ol>
+  </div>
+
+  <div class="cliffhanger">
+    <div class="label">Final chapter</div>
+    <h3>Methodology: Claude Code for an Economist</h3>
+    <p>How this entire series was built in sixty hours using Claude Code, the Companies House API, and no prior programming experience. The full firm list, the tooling stack, what went wrong, and what other published research exists on this market.</p>
+    <a href="methodology-claude-code.html" class="cta">Read the Methodology &rarr;</a>
+  </div>
+
+  <div class="footer">
+    <p><strong>Sources:</strong> <a href="https://find-and-update.company-information.service.gov.uk">Companies House officer appointments</a> (1,138 rows in the project database) plus every primary-source press release referenced in Parts 1, 5, 6 and the RBB deep-dive. The chord diagram is built from thirty-plus documented moves; the figures are the tip of a larger iceberg (many intra-firm promotions and junior-economist moves are not captured).</p>
+    <p style="margin-top:16px;padding-top:16px;border-top:1px solid #d2d2d7;"><strong>Leath Al Obaidi</strong> &mdash; independent research on the UK economics consultancy industry.</p>
+    <p style="font-size:12px;opacity:.75;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> &mdash; you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. Underlying Companies House data is &copy; Crown copyright, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3.0/">Open Government Licence v3.0</a>.</p>
+    <p style="font-size:12px;opacity:.75;">Cite as: Al Obaidi, L. (2026). <em>UK Economics Consultancy: A Historical Series</em>. leathalobaidi.com</p>
+    <p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. The author holds no financial position in any firm discussed. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
+  </div>
+</div>
+
+<script>
+// ============================================================================
+// CHORD DIAGRAM — UK economics-consultancy cross-firm moves
+// ============================================================================
+// Nodes: firms (and the CMA as a source). Edges: documented senior moves.
+// Ribbon width is proportional to the number of moves between each pair.
+// ============================================================================
+
+const NODES = [
+  'NERA',
+  'RBB Economics',
+  'Compass Lexecon',
+  'LECG',
+  'BRG',
+  'Oxera',
+  'Frontier Economics',
+  'Capital Economics',
+  'Keystone',
+  'AlixPartners',
+  'A&M Europe',
+  'Econic Partners',
+  'Pantheon Macro',
+  'Cebr',
+  'Pragmatix',
+  'CMA',
+  'Grant Thornton'
+];
+
+// Documented senior moves: [from, to, weight]
+// Weight reflects seniority (partner = 3, director = 2, principal = 1)
+const MOVES = [
+  // The original RBB spinout (2002)
+  ['NERA', 'RBB Economics', 9],
+  // LECG 2011 collapse
+  ['LECG', 'Compass Lexecon', 6],
+  ['LECG', 'BRG', 5],
+  // Compass Lexecon → Econic exodus (2025)
+  ['Compass Lexecon', 'Econic Partners', 15],
+  // CMA outflow
+  ['CMA', 'Keystone', 6],        // Coscelli + Hunt
+  ['CMA', 'Oxera', 3],            // Sala
+  ['CMA', 'Frontier Economics', 3], // Walker
+  ['CMA', 'AlixPartners', 3],     // Bon
+  ['CMA', 'Compass Lexecon', 3],  // Calanchi (earlier CMA path)
+  // Keystone outflow
+  ['Keystone', 'AlixPartners', 3], // Stefan Hunt
+  ['Keystone', 'Econic Partners', 3], // Calanchi
+  // Compass Lexecon flows
+  ['Compass Lexecon', 'Keystone', 3], // Calanchi into Keystone
+  ['NERA', 'Compass Lexecon', 3],     // Sabry 2025 (though NY)
+  // Cebr / Pragmatix
+  ['Cebr', 'Pragmatix', 3],
+  ['Capital Economics', 'Pragmatix', 3],
+  // Capital Economics into Pantheon
+  ['Capital Economics', 'Pantheon Macro', 3],
+  // RBB inbound
+  ['CMA', 'RBB Economics', 2],        // Benoît Durand (ex-CC)
+  // AlixPartners → Compass Lexecon (Sangha 2020)
+  ['AlixPartners', 'Compass Lexecon', 2],
+  // A&M → Grant Thornton (Horn, Williams 2021 — founding partners of GT Economic Consulting)
+  ['A&M Europe', 'Grant Thornton', 3],
+  // AlixPartners inbound from KPMG-era (represented as from generic)
+  ['NERA', 'Oxera', 2]
+];
+
+// Build a square matrix for d3.chord
+const N = NODES.length;
+const matrix = Array.from({length: N}, () => Array(N).fill(0));
+const idx = Object.fromEntries(NODES.map((n, i) => [n, i]));
+MOVES.forEach(([from, to, w]) => {
+  matrix[idx[from]][idx[to]] += w;
+});
+
+// Render
+const svg = d3.select('#chord');
+const bbox = svg.node().getBoundingClientRect();
+const width = bbox.width || 760;
+const height = bbox.height || 760;
+const outerRadius = Math.min(width, height) * 0.5 - 100;
+const innerRadius = outerRadius - 16;
+
+svg.attr('viewBox', [-width/2, -height/2, width, height]);
+
+const chord = d3.chord()
+  .padAngle(0.06)
+  .sortSubgroups(d3.descending)
+  .sortChords(d3.descending);
+
+const arc = d3.arc()
+  .innerRadius(innerRadius)
+  .outerRadius(outerRadius);
+
+const ribbon = d3.ribbon()
+  .radius(innerRadius);
+
+const colorScale = d3.scaleOrdinal()
+  .domain(NODES)
+  .range([
+    '#8e8e93','#0071e3','#af52de','#9ca3af','#34c759','#ff9500',
+    '#ff3b30','#1d1d1f','#5856d6','#5856d6','#34c759','#ff3b30',
+    '#8e8e93','#1d1d1f','#34c759','#1d1d1f','#0071e3'
+  ]);
+
+const chords = chord(matrix);
+
+// Draw group arcs
+const group = svg.append('g')
+  .selectAll('g')
+  .data(chords.groups)
+  .enter().append('g');
+
+group.append('path')
+  .attr('fill', d => colorScale(NODES[d.index]))
+  .attr('stroke', '#fff')
+  .attr('stroke-width', 1.5)
+  .attr('d', arc)
+  .append('title')
+  .text(d => `${NODES[d.index]}\n${d.value} move-weight units`);
+
+// Labels around the outside
+group.append('text')
+  .each(d => { d.angle = (d.startAngle + d.endAngle) / 2; })
+  .attr('dy', '.35em')
+  .attr('class', 'chord-label')
+  .attr('transform', d =>
+    `rotate(${(d.angle * 180 / Math.PI - 90)}) ` +
+    `translate(${outerRadius + 10}) ` +
+    `${d.angle > Math.PI ? 'rotate(180)' : ''}`
+  )
+  .attr('text-anchor', d => d.angle > Math.PI ? 'end' : null)
+  .text(d => NODES[d.index]);
+
+// Ribbons
+svg.append('g')
+  .attr('fill-opacity', 0.65)
+  .selectAll('path')
+  .data(chords)
+  .enter().append('path')
+  .attr('class', 'chord-ribbon')
+  .attr('d', ribbon)
+  .attr('fill', d => colorScale(NODES[d.source.index]))
+  .attr('stroke', '#fff')
+  .attr('stroke-width', 0.5)
+  .append('title')
+  .text(d => `${NODES[d.source.index]} → ${NODES[d.target.index]}\nweight ${d.source.value}`);
+</script>
+
+</body>
+</html>
