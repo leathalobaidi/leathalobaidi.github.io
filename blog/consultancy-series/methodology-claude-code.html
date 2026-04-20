@@ -165,7 +165,8 @@
   <p>Before this series, only one dedicated estimate of the UK economics consultancy market had ever been published. <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr's March 2018 report</a> put the sector at &pound;1.53 billion in 2016/17, growing at 11.3% a year, across 108 UK firms employing around 7,100 people. No comparable study has appeared since. The table below shows what else is out there, and where the gaps sit.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <table class="data-table">
+  <div class="table-wrap">
+    <table class="data-table">
     <thead>
       <tr>
         <th>Source</th>
@@ -212,6 +213,7 @@
     </tbody>
   </table>
   </div>
+  </div>
 
   <p>Several obvious things are missing from that public record. The CMA does not publish data on its spending with external economics advisors. No private-equity or M&amp;A advisory report has specifically mapped the economics consulting sector. And no firm in the market &mdash; not RBB, not Frontier, not Oxera, not CRA &mdash; has ever published analysis of its own industry's structure. This series is, so far as a search of the public record can determine, the first publicly available supply-side map of the UK economics consultancy market since the Cebr report of 2018.</p>
 
@@ -236,7 +238,8 @@
   <p>The dataset contains ninety active firms across six categories (95 initially identified; three removed as non-core or dormant &mdash; Aqua Consultants, Entext Communications, Pareto; two further downgraded). Firms that appear on both the global network map and the UK office map are listed once. Category assignment reflects the firm's primary UK activity; several firms &mdash; particularly US-origin multi-practice outfits &mdash; could reasonably sit in more than one category.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <table class="data-table" style="font-size:13px;">
+  <div class="table-wrap">
+    <table class="data-table" style="font-size:13px;">
     <thead>
       <tr><th>Category</th><th>Firms</th></tr>
     </thead>
@@ -277,6 +280,7 @@
     </tbody>
   </table>
   </div>
+  </div>
 
   <p>The <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr March 2018 report</a> identified 108 UK firms using a similar Companies House methodology. The count of roughly 100 in this dataset is lower, likely reflecting firms dissolved between 2018 and 2025, minor scope differences in what counts as "economics consultancy", and firms filing under names the API search did not match. Seven firms in Cebr's count that are missing from this list &mdash; and vice versa &mdash; represent the margin of error in drawing the boundary of the sector.</p>
 
@@ -314,7 +318,8 @@
 
   <p>The complete inventory of what was used is set out below. Every component is either free or trivially cheap.</p>
 
-  <table class="stage-table">
+  <div class="table-wrap">
+    <table class="stage-table">
     <thead>
       <tr>
         <th>Tool</th>
@@ -360,6 +365,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 
   <p>No paid data subscriptions. No commercial databases. No proprietary research platforms. The entire stack is public infrastructure plus a Claude Code subscription.</p>
 
@@ -423,7 +429,8 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>Where the sixty hours actually went</h2>
 
-  <table class="stage-table">
+  <div class="table-wrap">
+    <table class="stage-table">
     <thead>
       <tr>
         <th>Phase</th>
@@ -478,6 +485,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
       </tr>
     </tbody>
   </table>
+  </div>
 
   <p>The single largest line item is financial extraction from PDFs &mdash; twelve hours of manual reading. This is the one part of the project that would be automated differently next time. PDF extraction with a model-based parser, letting Claude read the PDFs directly via the API, would cut that twelve hours to two. It was not used on the first pass because the model was not yet trusted to read account notes correctly. It would be trusted more now, having been seen to work.</p>
 

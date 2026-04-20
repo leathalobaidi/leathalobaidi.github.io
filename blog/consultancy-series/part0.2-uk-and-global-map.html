@@ -46,9 +46,17 @@
   }
   .side-col::-webkit-scrollbar { width: 6px; }
   .side-col::-webkit-scrollbar-thumb { background: #d2d2d7; border-radius: 3px; }
-  @media (max-width: 900px) {
-    .layout { grid-template-columns: 1fr; }
+  @media (max-width: 768px) {
+    .layout { grid-template-columns: 1fr; gap: 20px; }
     .side-col { position: relative; top: 0; max-height: none; overflow: visible; }
+    /* On tablet portrait & phone, collapse the filter panel into a <details>-style block
+       via CSS: stack it above the charts instead of beside them. */
+    .side-col .filter-panel { border-radius: 12px; }
+    /* Give filter pills a proper tap target on touch */
+    .tickbox { padding: 8px 12px; min-height: 32px; font-size: 12px; }
+    .filter-block input[type=range] { height: 28px; }
+    .filter-block select { padding: 10px 12px; font-size: 14px; min-height: 40px; }
+    .filter-panel h3 .reset-all { padding: 6px 10px; font-size: 10px; }
   }
 
   /* ── iPad (≤1024px) ──────────────────────────────────── */
@@ -130,9 +138,9 @@
     font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8e8e93;
     margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;
   }
-  .chart { width: 100%; height: 620px; }
-  #city-map { width: 100%; height: 560px; border-radius: 8px; border: 1px solid #d2d2d7; }
-  #uk-map { width: 100%; height: 560px; border-radius: 8px; border: 1px solid #d2d2d7; }
+  .chart { width: 100%; height: 620px; min-height: 320px; }
+  #city-map { width: 100%; height: 560px; min-height: 320px; border-radius: 8px; border: 1px solid #d2d2d7; }
+  #uk-map { width: 100%; height: 560px; min-height: 320px; border-radius: 8px; border: 1px solid #d2d2d7; }
   .uk-map-legend {
     background: #fff; padding: 8px 10px; border-radius: 6px;
     border: 1px solid #d2d2d7; font: 11px Inter, system-ui, sans-serif;
@@ -341,7 +349,8 @@
     </div>
 
     <div class="table-overflow">
-    <table class="data-table">
+    <div class="table-wrap">
+      <table class="data-table">
       <thead>
         <tr>
           <th>Rank</th><th>Firm</th><th class="num">Offices</th><th class="num">Edges</th><th class="num">Max overlap</th>
@@ -349,6 +358,7 @@
       </thead>
       <tbody id="rankTable"></tbody>
     </table>
+    </div>
     </div>
   </section>
 
@@ -667,13 +677,31 @@ function applyMobileOverrides() {
   });
   netChart.resize();
 }
-window.addEventListener('resize', () => { netChart.resize(); applyMobileOverrides(); });
+function handleLayoutResize() {
+  netChart.resize();
+  applyMobileOverrides();
+  // Leaflet needs invalidateSize() after the container dimensions change,
+  // otherwise tiles freeze in a grey state until the user pans.
+  if (typeof map !== 'undefined') map.invalidateSize();
+  if (window.__ukMap) window.__ukMap.invalidateSize();
+}
+window.addEventListener('resize', handleLayoutResize);
+window.addEventListener('orientationchange', () => setTimeout(handleLayoutResize, 300));
 document.addEventListener('DOMContentLoaded', () => { applyMobileOverrides(); });
 
 // ============================================================================
 // Leaflet map
 // ============================================================================
-const map = L.map('city-map', { center: [30, 5], zoom: 2, worldCopyJump: true, scrollWheelZoom: true });
+const map = L.map('city-map', {
+  center: [30, 5],
+  zoom: 2,
+  worldCopyJump: true,
+  // Disable scroll-wheel zoom on small screens so vertical page scrolling works.
+  scrollWheelZoom: window.innerWidth > 768,
+  touchZoom: true,
+  tap: true,
+  dragging: true,
+});
 L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
   attribution: '© OpenStreetMap · CARTO', subdomains: 'abcd', maxZoom: 10
 }).addTo(map);
@@ -1012,7 +1040,14 @@ setTimeout(() => map.invalidateSize(), 100);
     Regulation:  '#5ac8fa'
   };
 
-  const ukMap = L.map('uk-map').setView([53.0, -2.2], 6);
+  const ukMap = L.map('uk-map', {
+    scrollWheelZoom: window.innerWidth > 768,
+    touchZoom: true,
+    tap: true,
+    dragging: true,
+  }).setView([53.0, -2.2], window.innerWidth <= 480 ? 7 : 6);
+  // Expose so the global resize handler can call invalidateSize() on rotate.
+  window.__ukMap = ukMap;
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
     attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
     maxZoom: 19
