@@ -23,26 +23,12 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-  :root {
-    --bg:            #ffffff;
-    --bg-card:       #f5f5f7;
-    --bg-elev:       #ffffff;
-    --border:        #d2d2d7;
-    --border-bright: #86868b;
-    --text:          #1d1d1f;
-    --text-dim:      #6e6e73;
-    --text-muted:    #86868b;
-    --accent:        #0066cc;
-    --accent-bright: #0071e3;
-    --accent-dim:    #c7deff;
-  }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    background: var(--at-bg);
+    color: var(--at-text);
     line-height: 1.65;
     font-size: 17px;
     font-weight: 400;
@@ -52,7 +38,7 @@
 
   .progress-bar {
     position: fixed; top: 0; left: 0;
-    height: 3px; background: var(--accent-bright);
+    height: 3px; background: var(--at-accent-bright);
     z-index: 100; width: 0%;
     transition: width 0.1s linear;
   }
@@ -60,17 +46,17 @@
   .nav {
     position: fixed; top: 20px; right: 24px;
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-muted);
+    font-size: 11px; color: var(--at-text-muted);
     text-transform: uppercase; letter-spacing: 1.5px;
     z-index: 50;
     background: rgba(255,255,255,0.85);
     backdrop-filter: blur(10px);
     padding: 10px 16px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--at-border);
     border-radius: 6px;
   }
-  .nav .divider { color: var(--border); margin: 0 6px; }
-  .nav .current { color: var(--accent-bright); }
+  .nav .divider { color: var(--at-border); margin: 0 6px; }
+  .nav .current { color: var(--at-accent-bright); }
 
   /* HERO */
   .hero {
@@ -100,12 +86,12 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px; font-weight: 600;
     letter-spacing: 3px;
-    color: var(--accent-bright);
+    color: var(--at-accent-bright);
     text-transform: uppercase;
     margin-bottom: 36px;
     display: inline-block;
     padding: 8px 16px;
-    border: 1px solid var(--accent-dim);
+    border: 1px solid var(--at-accent-dim);
     border-radius: 4px;
     background: rgba(0,113,227,0.08);
   }
@@ -122,7 +108,7 @@
   }
   .hero .sub {
     font-size: clamp(17px, 2vw, 22px);
-    color: var(--text-dim);
+    color: var(--at-text-dim);
     max-width: 680px;
     margin: 0 auto 60px;
     font-weight: 300;
@@ -137,19 +123,19 @@
   .hero-stat .n {
     font-family: 'JetBrains Mono', monospace;
     font-size: 32px; font-weight: 600;
-    color: var(--accent-bright);
+    color: var(--at-accent-bright);
     line-height: 1;
   }
   .hero-stat .l {
     font-size: 10px;
-    color: var(--text-muted);
+    color: var(--at-text-muted);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-top: 8px;
   }
   .scroll-indicator {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--text-muted);
+    font-size: 11px; color: var(--at-text-muted);
     text-transform: uppercase; letter-spacing: 2px;
     animation: bob 2.4s ease-in-out infinite;
   }
@@ -166,7 +152,7 @@
   .intro p {
     font-size: 20px;
     margin-bottom: 28px;
-    color: var(--text);
+    color: var(--at-text);
     font-weight: 300;
     line-height: 1.55;
   }
@@ -175,7 +161,7 @@
     float: left;
     line-height: 72px;
     padding: 8px 14px 0 0;
-    color: var(--accent-bright);
+    color: var(--at-accent-bright);
     font-weight: 800;
     font-family: 'Inter', sans-serif;
   }
@@ -192,7 +178,7 @@
   }
   .chapter-header .num {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--accent-bright);
+    font-size: 11px; color: var(--at-accent-bright);
     letter-spacing: 3px; text-transform: uppercase;
     margin-bottom: 16px;
   }
@@ -207,7 +193,7 @@
     -webkit-text-fill-color: transparent;
   }
   .chapter-header .lede {
-    font-size: 19px; color: var(--text-dim);
+    font-size: 19px; color: var(--at-text-dim);
     margin-top: 20px;
     font-weight: 300;
     line-height: 1.5;
@@ -215,8 +201,8 @@
 
   /* CHART CARD */
   .chart-wrap {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
+    background: var(--at-bg-card);
+    border: 1px solid var(--at-border);
     border-radius: 14px;
     padding: 22px 28px 18px;
     box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,0,0,0.02) inset;
@@ -226,24 +212,24 @@
     display: flex; justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 14px; padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--at-border);
     flex-wrap: wrap; gap: 10px;
   }
   .chart-title {
     font-size: 15px; font-weight: 600;
-    color: var(--text);
+    color: var(--at-text);
     margin-bottom: 3px;
   }
   .chart-sub {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--text-muted);
+    font-size: 10px; color: var(--at-text-muted);
     text-transform: uppercase; letter-spacing: 1px;
   }
   .chart-badge {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--accent-bright);
+    font-size: 10px; color: var(--at-accent-bright);
     background: rgba(0,113,227,0.1);
-    border: 1px solid var(--accent-dim);
+    border: 1px solid var(--at-accent-dim);
     padding: 4px 10px; border-radius: 4px;
     text-transform: uppercase; letter-spacing: 1px;
     white-space: nowrap;
@@ -336,24 +322,24 @@
   .commentary p {
     font-size: 16px;
     line-height: 1.65;
-    color: var(--text-dim);
+    color: var(--at-text-dim);
     font-weight: 300;
   }
   .commentary p + p { margin-top: 14px; }
   .commentary strong { color: #1d1d1f; font-weight: 600; }
   .commentary .callout {
     background: rgba(0,113,227,0.06);
-    border-left: 3px solid var(--accent-bright);
+    border-left: 3px solid var(--at-accent-bright);
     padding: 18px 20px;
     border-radius: 0 8px 8px 0;
   }
   .commentary .callout .tag {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--accent-bright);
+    font-size: 10px; color: var(--at-accent-bright);
     text-transform: uppercase; letter-spacing: 1.5px;
     font-weight: 600; margin-bottom: 8px;
   }
-  .commentary .callout p { color: var(--text); }
+  .commentary .callout p { color: var(--at-text); }
 
   @media (max-width: 768px) {
     .commentary { grid-template-columns: 1fr; gap: 24px; }
@@ -384,7 +370,7 @@
     -webkit-text-fill-color: transparent;
   }
   .final p {
-    font-size: 19px; color: var(--text-dim);
+    font-size: 19px; color: var(--at-text-dim);
     margin-bottom: 24px;
     font-weight: 300;
     line-height: 1.55;
@@ -395,19 +381,19 @@
     gap: 20px;
     margin: 72px 0;
     padding: 48px 0;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--at-border);
+    border-bottom: 1px solid var(--at-border);
   }
   .final-stats .fs .num {
     font-family: 'JetBrains Mono', monospace;
     font-size: 40px; font-weight: 600;
-    color: var(--accent-bright);
+    color: var(--at-accent-bright);
     line-height: 1;
   }
   .final-stats .fs .lbl {
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
-    color: var(--text-muted);
+    color: var(--at-text-muted);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     margin-top: 10px;
@@ -417,13 +403,13 @@
     text-align: center;
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
-    color: var(--text-muted);
+    color: var(--at-text-muted);
     letter-spacing: 1px;
     max-width: 680px;
     margin: 0 auto;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--at-border);
   }
-  .footer a { color: var(--accent-bright); text-decoration: none; }
+  .footer a { color: var(--at-accent-bright); text-decoration: none; }
   @media (max-width: 768px) {
     .final-stats { grid-template-columns: repeat(2, 1fr); gap: 30px; }
   }
@@ -1372,6 +1358,7 @@ let historyState = {rbb: true, baringa: true, frontier: false};
 
 function renderHistory() {
   const active = Object.entries(HISTORY).filter(([k]) => historyState[k]);
+  const mobile = window.innerWidth <= 600;
   const series = active.map(([k, firm]) => ({
     name: firm.label,
     type: 'line',
@@ -1384,7 +1371,7 @@ function renderHistory() {
     areaStyle: { color: firm.color, opacity: 0.06 },
     connectNulls: false,
     endLabel: {
-      show: true,
+      show: !mobile,
       formatter: `{@[1]|£${firm.data[firm.data.length-1]}m  ${firm.label}}`,
       color: firm.color,
       fontSize: 11,
@@ -1396,7 +1383,7 @@ function renderHistory() {
   }));
   chartHistory.setOption({
     ...DEFAULTS,
-    grid: {top: 50, bottom: 60, left: 70, right: 180},
+    grid: mobile ? {top: 50, bottom: 60, left: 50, right: 20} : {top: 50, bottom: 60, left: 70, right: 180},
     tooltip: {
       ...DEFAULTS.tooltip,
       trigger: 'axis',
@@ -1909,7 +1896,7 @@ const chartJ = echarts.init(document.getElementById('chart-j'));
 const chartG = echarts.init(document.getElementById('chart-g'));
 (function() {
   const TENURE = [
-    {firm: 'RBB Economics',          retention: 100, active: 13, tenure: 22.0},
+    {firm: 'RBB Economics',          retention: 100, active: 18, tenure: 22.0},
     {firm: 'Frontier Economics',     retention: 100, active: 7,  tenure: 18.0},
     {firm: 'Oxera Consulting',       retention: 95,  active: 28, tenure: 12.0},
     {firm: 'Cambridge Econometrics', retention: 90,  active: 5,  tenure: 10.5},
@@ -2301,6 +2288,7 @@ function applyMobileOverrides() {
     }
   });
 
+
   // Shrink axis labels, legend text, and series labels
   const smallAxisLabel = { fontSize: 9, fontFamily: 'JetBrains Mono' };
   const smallLegend = { textStyle: { fontSize: 9 }, itemWidth: 10, itemHeight: 8, itemGap: 8 };
@@ -2357,6 +2345,7 @@ function handleResize() {
   clearTimeout(resizeTimer);
   resizeTimer = setTimeout(() => {
     annotationsDrawn = false; setupAnnotations(); annotationsDrawn = true;
+    renderHistory();
     applyMobileOverrides();
   }, 250);
 }

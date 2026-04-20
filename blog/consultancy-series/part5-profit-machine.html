@@ -513,39 +513,50 @@
     return '\u00a3' + v + 'm';
   }
 
-  const seriesByType = ['PE', 'Strategic', 'Acqui-hire'].map(function(t) {
-    return {
-      name: LABELS[t],
-      type: 'scatter',
-      symbolSize: function(d) {
-        if (d[5] === null) return 11;
-        return Math.min(34, Math.max(13, Math.sqrt(d[5]) * 0.9 + 10));
-      },
-      itemStyle: {
-        color: COLORS[t],
-        opacity: 0.88,
-        borderColor: '#fff',
-        borderWidth: 1.5
-      },
-      data: DEALS.filter(function(d) { return d.type === t; }).map(function(d) {
-        var y = d.value === null ? DISCLOSED_FLOOR : d.value;
-        return {
-          value: [d.year, y, d.firm, d.investor, d.stake, d.value],
-          label: {
-            show: true,
-            position: 'right',
-            distance: 6,
-            formatter: function(p) {
-              return p.value[2] + ' \u00b7 ' + fmtPlain(p.value[5]);
-            },
-            fontFamily: 'Inter',
-            fontSize: 10,
-            color: '#1d1d1f'
-          }
-        };
-      })
-    };
-  });
+  function isMobile() { return window.innerWidth <= 600; }
+
+  function buildSeries() {
+    var showLabels = !isMobile();
+    return ['PE', 'Strategic', 'Acqui-hire'].map(function(t) {
+      return {
+        name: LABELS[t],
+        type: 'scatter',
+        symbolSize: function(d) {
+          if (d[5] === null) return 11;
+          return Math.min(34, Math.max(13, Math.sqrt(d[5]) * 0.9 + 10));
+        },
+        itemStyle: {
+          color: COLORS[t],
+          opacity: 0.88,
+          borderColor: '#fff',
+          borderWidth: 1.5
+        },
+        data: DEALS.filter(function(d) { return d.type === t; }).map(function(d) {
+          var y = d.value === null ? DISCLOSED_FLOOR : d.value;
+          return {
+            value: [d.year, y, d.firm, d.investor, d.stake, d.value],
+            label: {
+              show: showLabels,
+              position: 'right',
+              distance: 6,
+              formatter: function(p) {
+                return p.value[2] + ' \u00b7 ' + fmtPlain(p.value[5]);
+              },
+              fontFamily: 'Inter',
+              fontSize: 10,
+              color: '#1d1d1f'
+            }
+          };
+        })
+      };
+    });
+  }
+
+  function gridFor() {
+    return isMobile()
+      ? { top: 40, bottom: 50, left: 52, right: 16 }
+      : { top: 44, bottom: 56, left: 72, right: 180 };
+  }
 
   function render() {
     var el = document.getElementById('chart-deals');
@@ -553,7 +564,7 @@
     var c = echarts.init(el);
     c.setOption({
       backgroundColor: 'transparent',
-      grid: { top: 44, bottom: 56, left: 72, right: 180 },
+      grid: gridFor(),
       tooltip: {
         trigger: 'item',
         backgroundColor: '#fff',
@@ -616,9 +627,16 @@
         axisLine: { lineStyle: { color: '#d2d2d7' } },
         splitLine: { lineStyle: { color: '#e5e5ea' } }
       },
-      series: seriesByType
+      series: buildSeries()
     });
-    window.addEventListener('resize', function() { c.resize(); });
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      c.resize();
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        c.setOption({ grid: gridFor(), series: buildSeries() });
+      }, 150);
+    });
   }
 
   if (document.readyState === 'loading') {
