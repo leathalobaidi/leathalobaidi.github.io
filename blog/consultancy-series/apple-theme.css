@@ -237,12 +237,25 @@ pre code {
   color: var(--at-accent-bright) !important;
 }
 
-/* Responsive: 6 cols on tablets, 4 cols on phones */
-@media (max-width: 840px) {
+/* Responsive: 6 cols on tablets, 3 cols on large phones, 2 cols on small phones */
+@media (max-width: 1024px) {
   .series-nav { grid-template-columns: repeat(6, 1fr) !important; }
 }
-@media (max-width: 520px) {
-  .series-nav { grid-template-columns: repeat(4, 1fr) !important; }
+@media (max-width: 768px) {
+  .series-nav { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; }
+  .series-nav a, .series-nav span {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    line-height: 1.25 !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+@media (max-width: 480px) {
+  .series-nav { grid-template-columns: repeat(2, 1fr) !important; }
+  .series-nav a, .series-nav span { font-size: 11px !important; padding: 6px 8px !important; }
 }
 
 /* ---------------------------------------------------------------- generic containers */
@@ -630,7 +643,7 @@ table .num {
   font-weight: 600 !important;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .founder-grid { grid-template-columns: 1fr !important; }
 }
 
@@ -904,7 +917,108 @@ hr {
   margin: 48px 0 !important;
 }
 
-@media (max-width: 600px) {
+/* ============================================================================
+   Consolidated responsiveness block.
+   Breakpoints: 1024 (tablet landscape) / 768 (tablet portrait) / 480 (phone) / 360 (small phone).
+   Goal: readable from 320px–1024px without horizontal scroll, preserving the
+   desktop look above 1024px.
+   ============================================================================ */
+
+/* Utility used to wrap wide tables so they scroll horizontally instead of
+   blowing out the page. Applied in HTML. */
+.table-wrap {
+  width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin: 24px 0 32px !important;
+  border-radius: 8px !important;
+}
+.table-wrap > table,
+.table-wrap > .data-table,
+.table-wrap > .stage-table { margin: 0 !important; min-width: 100% !important; }
+
+/* ---------- Tablet portrait (≤768px) ---------- */
+@media (max-width: 768px) {
+  body { font-size: clamp(16px, 4vw, 18px) !important; }
+  p { font-size: clamp(16px, 4vw, 18px) !important; line-height: 1.7 !important; }
+  .container { padding: 32px 20px 64px !important; }
+
   .comparison { grid-template-columns: 1fr !important; }
   .segment-grid { grid-template-columns: 1fr !important; }
+
+  .callout, .warning { padding: 14px 16px !important; font-size: 14px !important; }
+  .takeaways { padding: 20px !important; }
+  .cliffhanger { padding: 20px !important; }
+  .cliffhanger h3 { font-size: 20px !important; }
+
+  /* Tables: shrink a bit and let bar values reflow */
+  .data-table, .stage-table, table { font-size: 13px !important; }
+  .data-table th, .data-table td,
+  .stage-table th, .stage-table td { padding: 8px 10px !important; }
+
+  /* Chord diagram scales with viewport */
+  svg.chord { height: clamp(420px, 90vw, 760px) !important; }
+
+  /* Chart containers and pre blocks */
+  pre { padding: 14px 16px !important; font-size: 12px !important; }
+}
+
+/* ---------- Phone (≤480px) ---------- */
+@media (max-width: 480px) {
+  body { line-height: 1.65 !important; }
+  p { margin-bottom: 16px !important; }
+
+  .container { padding: 24px 16px 48px !important; }
+
+  /* Pull quote: kill negative margin that forced horizontal overflow */
+  .pull-quote { margin: 28px 0 !important; padding: 24px 16px !important; }
+
+  /* Bar charts: drop the 140px/70px fixed widths so the bar track stays usable */
+  .bar-row { gap: 8px !important; }
+  .bar-label {
+    width: auto !important;
+    max-width: 90px !important;
+    font-size: 11px !important;
+    white-space: normal !important;
+    line-height: 1.2 !important;
+  }
+  .bar-value {
+    width: auto !important;
+    min-width: 44px !important;
+    font-size: 11px !important;
+  }
+  .bar-track { height: 24px !important; }
+
+  /* Data tables get one more nudge smaller */
+  .data-table, .stage-table, table { font-size: 12px !important; }
+  .data-table th, .data-table td,
+  .stage-table th, .stage-table td { padding: 6px 8px !important; }
+  .data-table .num, table .num { font-size: 11px !important; }
+
+  /* Callouts / warnings: tighten further */
+  .callout, .warning { padding: 12px 14px !important; font-size: 13px !important; }
+  .takeaways { padding: 16px 18px !important; }
+  .takeaways ol { font-size: 14px !important; }
+  .cliffhanger { padding: 16px 18px !important; }
+
+  /* Chart box padding */
+  .chart-box, .chart-container, .scatter { padding: 16px !important; }
+
+  /* Pub-name / series-nav break-out formula works down to the edge; tighten padding */
+  .pub-name { width: min(960px, calc(100vw - 24px)) !important; }
+  .series-nav {
+    width: min(960px, calc(100vw - 24px)) !important;
+    padding: 10px !important;
+  }
+
+  /* Code blocks */
+  pre { padding: 12px 14px !important; font-size: 11px !important; }
+  code { font-size: 12px !important; }
+}
+
+/* ---------- Small phone (≤360px) ---------- */
+@media (max-width: 360px) {
+  .container { padding: 20px 12px 40px !important; }
+  .data-table, .stage-table, table { font-size: 11px !important; }
+  .bar-label { max-width: 70px !important; font-size: 10px !important; }
 }
