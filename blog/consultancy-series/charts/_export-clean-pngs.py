@@ -44,40 +44,16 @@ STRIP_ECHARTS = """
   if (!el) return false;
   var inst = echarts.getInstanceByDom(el);
   if (!inst) return false;
-  var opt = inst.getOption();
-
-  function killLabels(node){
-    if (!node || typeof node !== 'object') return;
-    if (Array.isArray(node)) { node.forEach(killLabels); return; }
-    for (var k in node){
-      if (k === 'label' || k === 'endLabel' || k === 'startLabel') {
-        if (node[k] && typeof node[k] === 'object') node[k].show = false;
-      } else if (k === 'markPoint' || k === 'markLine' || k === 'markArea') {
-        if (node[k]) node[k] = { data: [] };
-      } else if (k === 'labelLayout' || k === 'labelLine') {
-        // leave layout alone
-      } else if (typeof node[k] === 'object') {
-        killLabels(node[k]);
-      }
-    }
-  }
-
-  if (opt.series) killLabels(opt.series);
-  // Clear any standalone graphic annotations
-  if (opt.graphic) opt.graphic = [];
-  inst.setOption(opt, true);
+  // Keep labels, markPoints, markLines, and graphic annotations as-is —
+  // mobile screenshots should match the desktop reading experience.
+  // Just trigger a resize to make sure the chart has finished layout.
   inst.resize();
   return true;
 })('__ID__');
 """
 
 STRIP_CHORD = """
-(function(){
-  document.querySelectorAll('.chord-label, .chord text').forEach(function(n){
-    n.style.display = 'none';
-  });
-  return true;
-})();
+(function(){ return true; })();
 """
 
 
