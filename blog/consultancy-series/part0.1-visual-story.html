@@ -1067,24 +1067,31 @@ const CHARGES_SANKEY = {
   ]
 };
 
+// Event-type colour scheme:
+//   Founding / spinout : #34c759 (green)
+//   M&A / acquisition  : #0071e3 (blue)
+//   People move        : #af52de (purple)
+//   Restructuring      : #ff9500 (orange)
+//   Closure / bankruptcy: #ff3b30 (red)
+//   Pre-existing context: #8e8e93 (grey)
 const TREE = [
   {y:2000,    name:"NERA UK incorporated",               color:'#8e8e93', desc:"UK office since 1980s.", lane: 1.0},
-  {y:2002,    name:"RBB Economics founded",              color:'#0071e3', desc:"Ridyard, Bishop, Baker + 13 leave NERA.", lane:-1.0},
-  {y:2006,    name:"Vivid Economics founded",            color:'#0071e3', desc:"Cameron Hepburn's climate boutique.", lane: 2.2},
-  {y:2008,    name:"Compass Lexecon merger",             color:'#ff2d55', desc:"FTI merges Compass + Lexecon.", lane: 1.0},
+  {y:2002,    name:"RBB Economics founded",              color:'#34c759', desc:"Ridyard, Bishop, Baker + 13 leave NERA.", lane:-1.0},
+  {y:2006,    name:"Vivid Economics founded",            color:'#34c759', desc:"Cameron Hepburn's climate boutique.", lane: 2.2},
+  {y:2008,    name:"Compass Lexecon merger",             color:'#0071e3', desc:"FTI merges Compass + Lexecon.", lane: 1.0},
   {y:2011,    name:"LECG bankruptcy",                    color:'#ff3b30', desc:"Alumni scatter to BRG and Compass Lexecon.", lane:-2.2},
   {y:2012,    name:"BRG launches UK",                    color:'#34c759', desc:"Teece's second firm.", lane: 1.0},
-  {y:2013,    name:"Fingleton Ltd founded",              color:'#af52de', desc:"John Fingleton leaves OFT.", lane:-1.0},
-  {y:2015,    name:"Flint Global founded",               color:'#5ac8fa', desc:"Richards + Fraser found political advisory.", lane: 2.2},
-  {y:2020,    name:"Pragmatix Advisory",                 color:'#ff9500', desc:"Mark Pragnell leaves Cebr.", lane:-1.0},
+  {y:2013,    name:"Fingleton Ltd founded",              color:'#34c759', desc:"John Fingleton leaves OFT.", lane:-1.0},
+  {y:2015,    name:"Flint Global founded",               color:'#34c759', desc:"Richards + Fraser found political advisory.", lane: 2.2},
+  {y:2020,    name:"Pragmatix Advisory",                 color:'#34c759', desc:"Mark Pragnell leaves Cebr.", lane:-1.0},
   {y:2021,    name:"McKinsey buys Vivid",                color:'#0071e3', desc:"130 economists absorbed (Mar 2021).", lane: 1.0},
   {y:2021.9,  name:"Grant Thornton Economics launches",  color:'#34c759', desc:"Horn + Williams hired from A&M (Nov 2021).", lane: 2.2},
-  {y:2023,    name:"Keystone Europe built",              color:'#5ac8fa', desc:"Caffarra, Coscelli, Hunt — three senior hires in six months.", lane:-1.0},
+  {y:2023,    name:"Keystone Europe built",              color:'#ff9500', desc:"Caffarra, Coscelli, Hunt — three senior hires in six months.", lane:-1.0},
   {y:2023.7,  name:"Caffarra leaves Keystone",           color:'#af52de', desc:"Moves to UCL + CEPR. No commercial firm.", lane: 2.2},
-  {y:2024,    name:"Compass Lexecon reshuffle",          color:'#ff2d55', desc:"Coppi/Dryden/Edwards-Warren become co-heads (Feb 2024).", lane: 1.0},
-  {y:2025,    name:"Econic Partners launches",           color:'#0071e3', desc:"Orszag + 25 walk from Compass Lexecon. Goldman Sachs backing (19 Feb 2025).", lane:-2.2},
-  {y:2025.15, name:"Calanchi → Econic",                  color:'#5ac8fa', desc:"Gianmarco Calanchi leaves Keystone for Econic London.", lane:-1.0},
-  {y:2025.3,  name:"Hunt → AlixPartners",                color:'#5ac8fa', desc:"Stefan Hunt joins AlixPartners as Partner/MD (2 Dec 2025).", lane: 1.0}
+  {y:2024,    name:"Compass Lexecon reshuffle",          color:'#ff9500', desc:"Coppi/Dryden/Edwards-Warren become co-heads (Feb 2024).", lane: 1.0},
+  {y:2025,    name:"Econic Partners launches",           color:'#34c759', desc:"Orszag + 25 walk from Compass Lexecon. Goldman Sachs backing (19 Feb 2025).", lane:-2.2},
+  {y:2025.15, name:"Calanchi → Econic",                  color:'#af52de', desc:"Gianmarco Calanchi leaves Keystone for Econic London.", lane:-1.0},
+  {y:2025.3,  name:"Hunt → AlixPartners",                color:'#af52de', desc:"Stefan Hunt joins AlixPartners as Partner/MD (2 Dec 2025).", lane: 1.0}
 ];
 
 // ============================================================================
@@ -1848,6 +1855,26 @@ function renderTimeline() {
 }
 renderTimeline();
 
+// Inject event-type colour-key legend below chart 7 (Spinout Timeline)
+(() => {
+  const types = [
+    {label:'Founding / spinout', color:'#34c759', desc:'New firm launched — usually with senior people leaving an existing firm'},
+    {label:'M&A / acquisition',  color:'#0071e3', desc:'Acquisition or merger event'},
+    {label:'People move',        color:'#af52de', desc:'Senior individual moving between firms'},
+    {label:'Restructuring',      color:'#ff9500', desc:'Internal reshuffle or major team build-out'},
+    {label:'Closure',            color:'#ff3b30', desc:'Firm bankruptcy or wind-down'},
+    {label:'Pre-existing',       color:'#8e8e93', desc:'Long-standing firm shown for context'}
+  ];
+  const host = document.getElementById('chart-7');
+  if (!host || host.parentNode.querySelector('.timeline-legend')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'segment-legend timeline-legend';
+  wrap.innerHTML = types.map(t =>
+    `<span class="seg-item" title="${t.desc}"><span class="seg-sw" style="background:${t.color}"></span><span class="seg-lbl" style="color:${t.color}">${t.label}</span></span>`
+  ).join('');
+  host.parentNode.insertBefore(wrap, host.nextSibling);
+})();
+
 // ============================================================================
 // CHART J — Cost structure stacked bar (from NOTE J)
 // ============================================================================
@@ -2236,6 +2263,20 @@ const chartAge = echarts.init(document.getElementById('chart-age'));
       }
     ]
   });
+
+  // Inject category colour-key legend below chart-age. Only the categories
+  // that actually appear in the BY_FIRM dataset are shown (Policy and
+  // Regulation have no firms with n>=15 records here).
+  const present = ['Broad','Competition','Litigation','Macro','Overlap'];
+  const host = document.getElementById('chart-age');
+  if (!host || host.parentNode.querySelector('.age-legend')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'segment-legend age-legend';
+  wrap.innerHTML = present.map(cat => {
+    const c = SEGMENT_COLORS[cat];
+    return `<span class="seg-item"><span class="seg-sw" style="background:${c}"></span><span class="seg-lbl" style="color:${c}">${cat}</span></span>`;
+  }).join('');
+  host.parentNode.insertBefore(wrap, host.nextSibling);
 })();
 
 // ============================================================================
