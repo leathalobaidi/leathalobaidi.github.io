@@ -1668,7 +1668,7 @@ function renderSeats(mode = 'appointments') {
   });
   chart7b.setOption({
     ...DEFAULTS,
-    grid: {top: 60, bottom: 70, left: 70, right: 30},
+    grid: {top: 24, bottom: 100, left: 70, right: 30},
     tooltip: {
       ...DEFAULTS.tooltip, trigger: 'axis', axisPointer: {type: 'shadow'},
       formatter: params => {
@@ -1678,7 +1678,7 @@ function renderSeats(mode = 'appointments') {
         return `<b>${year}</b> — ${total} ${cfg.tooltipLabel}<br>${rows}`;
       }
     },
-    legend: { top: 6, left: 70, right: 0, data: Object.keys(firms), textStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'Inter'}, itemWidth: 12, itemHeight: 10, itemGap: 12, icon: 'rect' },
+    legend: { bottom: 6, left: 'center', data: Object.keys(firms), textStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'Inter'}, itemWidth: 12, itemHeight: 10, itemGap: 12, icon: 'rect' },
     xAxis: { type: 'category', data: years, axisLabel: {color: THEME_TEXT_DIM, fontFamily: 'JetBrains Mono', fontSize: 11}, axisLine: AXIS_LINE, axisTick: {show: false} },
     yAxis: { type: 'value', max: cfg.yMax, name: cfg.yName, nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, axisLabel: {...AXIS_LABEL, showMaxLabel: false}, axisLine: AXIS_LINE, splitLine: SPLIT_LINE },
     series,
@@ -1734,7 +1734,7 @@ function renderSeatsNet() {
   });
   chart7b.setOption({
     ...DEFAULTS,
-    grid: {top: 60, bottom: 70, left: 70, right: 30},
+    grid: {top: 24, bottom: 100, left: 70, right: 30},
     tooltip: {
       ...DEFAULTS.tooltip, trigger: 'axis', axisPointer: {type: 'shadow'},
       formatter: params => {
@@ -1747,7 +1747,7 @@ function renderSeatsNet() {
         return `<b>${year}</b> — net ${yearNet[idx]>=0?'+':''}${yearNet[idx]}<br>${firmRows}`;
       }
     },
-    legend: { top: 6, left: 70, right: 0, data: Object.keys(perFirmNet), textStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'Inter'}, itemWidth: 12, itemHeight: 10, itemGap: 12, icon: 'rect' },
+    legend: { bottom: 6, left: 'center', data: Object.keys(perFirmNet), textStyle: {color: THEME_TEXT_DIM, fontSize: 11, fontFamily: 'Inter'}, itemWidth: 12, itemHeight: 10, itemGap: 12, icon: 'rect' },
     xAxis: { type: 'category', data: years, axisLabel: {color: THEME_TEXT_DIM, fontFamily: 'JetBrains Mono', fontSize: 11}, axisLine: AXIS_LINE, axisTick: {show: false} },
     yAxis: { type: 'value', name: 'Net change', nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, axisLabel: AXIS_LABEL, axisLine: AXIS_LINE, splitLine: SPLIT_LINE },
     series,
