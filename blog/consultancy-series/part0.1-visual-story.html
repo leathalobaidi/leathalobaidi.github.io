@@ -1971,6 +1971,23 @@ const chartG = echarts.init(document.getElementById('chart-g'));
   });
 })();
 
+// Inject retention-rate colour-key legend below chart G
+(() => {
+  const tiers = [
+    {label:'High retention (≥90%)',   color:'#34c759', desc:'Closed-shop firms; slow promotion, low churn'},
+    {label:'Moderate (70–89%)',       color:'#ff9500', desc:'Middle ground; some lateral movement'},
+    {label:'Low retention (<70%)',    color:'#ff3b30', desc:'High-churn firms; profit-per-partner depends on rotation'}
+  ];
+  const host = document.getElementById('chart-g');
+  if (!host || host.parentNode.querySelector('.tenure-legend')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'segment-legend tenure-legend';
+  wrap.innerHTML = tiers.map(t =>
+    `<span class="seg-item" title="${t.desc}"><span class="seg-sw" style="background:${t.color}"></span><span class="seg-lbl" style="color:${t.color}">${t.label}</span></span>`
+  ).join('');
+  host.parentNode.insertBefore(wrap, host.nextSibling);
+})();
+
 // ============================================================================
 // CHART H — Officer-overlap force graph (from NOTE H)
 // ============================================================================
