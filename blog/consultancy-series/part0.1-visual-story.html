@@ -1488,10 +1488,10 @@ function renderPE() {
     else if (d.firm === 'Vivid Economics') { labelPos = [-60, -60]; labelAlign = 'right'; labelVAlign = 'bottom'; }
     // 2025-cluster: stack four labels in a column to the right, top→bottom:
     // Econic Partners (2025.1) → Oxford Analytica (2025.3) → Public First (2025.3) → Oxford Economics (2025.5)
-    else if (d.firm === 'Econic Partners')        { labelPos = [80, -180]; labelAlign = 'left'; labelVAlign = 'top'; }
-    else if (d.firm === 'Oxford Analytica' && d.year >= 2025) { labelPos = [60, -100]; labelAlign = 'left'; labelVAlign = 'top'; }
-    else if (d.firm === 'Public First')           { labelPos = [60, -20];  labelAlign = 'left'; labelVAlign = 'top'; }
-    else if (d.firm === 'Oxford Economics')       { labelPos = [40, 60];   labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Econic Partners')        { labelPos = [120, -180]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Oxford Analytica' && d.year >= 2025) { labelPos = [100, -100]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Public First')           { labelPos = [100, -20];  labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Oxford Economics')       { labelPos = [80, 60];    labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Stonehaven Group') { labelPos = [-140, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
     return {
       name: d.firm, value: [d.year, d.value || UNDISCLOSED_Y[key] || 30], deal: d,
