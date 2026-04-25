@@ -1483,12 +1483,15 @@ function renderPE() {
     const key = `${d.year}-${d.firm}`;
     let labelPos = 'top';
     let labelAlign, labelVAlign;
-    if (d.firm === 'Continuum Economics' || d.firm === 'Public First') labelPos = 'bottom';
+    if (d.firm === 'Continuum Economics') labelPos = 'bottom';
     else if (d.firm === 'Oxford Analytica' && d.year < 2022) { labelPos = [-90, 50]; labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Vivid Economics') { labelPos = [-60, -60]; labelAlign = 'right'; labelVAlign = 'bottom'; }
-    else if (d.firm === 'Oxford Analytica' && d.year >= 2025) { labelPos = [-110, 0]; labelAlign = 'right'; labelVAlign = 'middle'; }
-    else if (d.firm === 'Oxford Economics') { labelPos = [70, -50]; labelAlign = 'left'; labelVAlign = 'bottom'; }
-    else if (d.firm === 'Econic Partners') { labelPos = [120, 60]; labelAlign = 'left'; labelVAlign = 'top'; }
+    // 2025-cluster: stack four labels in a column to the right, top→bottom:
+    // Econic Partners (2025.1) → Oxford Analytica (2025.3) → Public First (2025.3) → Oxford Economics (2025.5)
+    else if (d.firm === 'Econic Partners')        { labelPos = [80, -180]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Oxford Analytica' && d.year >= 2025) { labelPos = [60, -100]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Public First')           { labelPos = [60, -20];  labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Oxford Economics')       { labelPos = [40, 60];   labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Stonehaven Group') { labelPos = [-140, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
     return {
       name: d.firm, value: [d.year, d.value || UNDISCLOSED_Y[key] || 30], deal: d,
@@ -1510,7 +1513,7 @@ function renderPE() {
   });
   chart5.setOption({
     ...DEFAULTS,
-    grid: {top: 90, bottom: 70, left: 80, right: 90},
+    grid: {top: 90, bottom: 70, left: 80, right: 200},
     tooltip: { ...DEFAULTS.tooltip, formatter: p => `<b>${p.data.deal.year} — ${p.data.deal.firm}</b><br><span style="color:${THEME_TEXT_DIM}">${p.data.deal.type} by ${p.data.deal.investor}<br>${p.data.deal.desc}</span>` },
     xAxis: { type:'value', min: 2013, max: 2027, interval: 1, name:'Year', nameLocation:'middle', nameGap:35, nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, axisLabel:{...AXIS_LABEL, fontSize: 11, formatter: v => String(Math.floor(v))}, axisLine: AXIS_LINE, splitLine: {lineStyle: {color: THEME_AXIS_GRID, type: 'dashed'}} },
     yAxis: { type:'log', logBase: 10, name:'Deal value (£m, log)', nameLocation:'middle', nameGap:50, nameTextStyle:{color: THEME_TEXT_DIM, fontSize: 11, fontFamily:'JetBrains Mono'}, min: 10, max: 300, axisLabel:{...AXIS_LABEL, formatter: v => '£'+v+'m'}, axisLine: AXIS_LINE, splitLine: SPLIT_LINE },
