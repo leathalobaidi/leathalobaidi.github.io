@@ -1022,3 +1022,80 @@ hr {
   .data-table, .stage-table, table { font-size: 11px !important; }
   .bar-label { max-width: 70px !important; font-size: 10px !important; }
 }
+
+/* ============================================================================
+   Laptop-only banner — shown only below 900px to nudge mobile readers to
+   open the post on a larger screen for the interactive charts.
+   ============================================================================ */
+.laptop-hint {
+  display: none;
+}
+@media (max-width: 900px) {
+  .laptop-hint {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 200 !important;
+    width: 100% !important;
+    background: #fef3c7 !important;
+    border-bottom: 1px solid #f59e0b !important;
+    color: #78350f !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    padding: 10px 14px !important;
+    text-align: center !important;
+  }
+  .laptop-hint .icon {
+    font-size: 14px !important;
+    flex-shrink: 0 !important;
+  }
+  .laptop-hint .dismiss {
+    background: transparent !important;
+    border: none !important;
+    color: #78350f !important;
+    font-size: 18px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+    padding: 0 4px !important;
+    margin-left: 8px !important;
+    flex-shrink: 0 !important;
+    border-bottom: none !important;
+  }
+  .laptop-hint.dismissed { display: none !important; }
+}
+
+/* ============================================================================
+   Mobile chart swap — interactive ECharts/Leaflet/D3 charts hidden below
+   768px; static PNG fallback shown instead. Chart container is wrapped in
+   .chart-wrap with the live chart and an `<img class="chart-mobile">` sibling.
+   ============================================================================ */
+.chart-wrap { position: relative !important; }
+.chart-wrap .chart-mobile {
+  display: none !important;
+  width: 100% !important;
+  height: auto !important;
+  border-radius: 8px !important;
+}
+@media (max-width: 768px) {
+  .chart-wrap .chart-live {
+    display: none !important;
+  }
+  .chart-wrap .chart-mobile {
+    display: block !important;
+  }
+  .chart-wrap .chart-mobile-caption {
+    display: block !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 11px !important;
+    color: var(--at-text-muted) !important;
+    margin-top: 8px !important;
+    text-align: center !important;
+    font-style: italic !important;
+  }
+}
+.chart-wrap .chart-mobile-caption { display: none; }

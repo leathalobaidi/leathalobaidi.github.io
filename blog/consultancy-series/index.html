@@ -204,8 +204,12 @@
     </style>
 </head>
 <body>
+<div class="laptop-hint" id="laptop-hint">
+  <span>This post has interactive charts &mdash; best read on a laptop.</span>
+  <button class="dismiss" onclick="this.parentElement.classList.add('dismissed')" aria-label="Dismiss">&times;</button>
+</div>
 
-    <nav>
+<nav>
         <div class="nav-container">
             <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;">Leath</a>
             <ul class="nav-links">

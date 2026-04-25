@@ -65,6 +65,10 @@
 </style>
 </head>
 <body>
+<div class="laptop-hint" id="laptop-hint">
+  <span>This post has interactive charts &mdash; best read on a laptop.</span>
+  <button class="dismiss" onclick="this.parentElement.classList.add('dismissed')" aria-label="Dismiss">&times;</button>
+</div>
 
 <div class="container">
   <div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
@@ -96,7 +100,7 @@
     <div class="title">Cross-firm moves in the UK economics consultancy market, 2000&ndash;2025</div>
     <div class="sub">Chord diagram &middot; source: Companies House officer appointments + primary press</div>
     <div class="chord-wrap">
-      <svg class="chord" id="chord"></svg>
+      <div class="chart-wrap"><svg class="chord chart-live" id="chord"></svg><img class="chart-mobile" src="charts/chord.png" alt="People-movement chord diagram" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
     </div>
   </div>
 

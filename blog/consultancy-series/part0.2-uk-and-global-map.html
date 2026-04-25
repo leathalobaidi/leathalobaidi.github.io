@@ -270,6 +270,11 @@
 </style>
 </head>
 <body>
+<div class="laptop-hint" id="laptop-hint">
+  <span>This post has interactive charts &mdash; best read on a laptop.</span>
+  <button class="dismiss" onclick="this.parentElement.classList.add('dismissed')" aria-label="Dismiss">&times;</button>
+</div>
+
 <div class="container">
   <div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
 
@@ -306,7 +311,7 @@
     <div class="chart-box">
       <div class="title">UK registered office addresses</div>
       <div class="meta">source: Companies House &middot; address filings &middot; 90-firm UK dataset</div>
-      <div id="uk-map"></div>
+      <div class="chart-wrap"><div class="chart-live" id="uk-map"></div><img class="chart-mobile" src="charts/uk-map.png" alt="UK economics consultancies map" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
     </div>
 
     <p><strong>Cluster 1: the Square Mile (EC2, EC3, EC4).</strong> Here live the litigation and disputes firms, a trove of expert-witness outfits packed into a few square blocks. FTI Consulting sits on Aldersgate Street. A&amp;M Europe, A&amp;M Tax and A&amp;M Disputes share 30 Old Bailey. Brattle Group occupies 100 Wood Street; CRA International, 8 Finsbury Circus; NERA, the St Botolph Building on Houndsditch; BRG UK, 8 Salisbury Square. All of it fits inside a ten-minute walk, and all of it orbits the Royal Courts of Justice and the Commercial Court. If your business is expert-witness testimony, you want to be a short cab ride from the bench &mdash; and nowhere on this map is the gravity quite so dense.</p>
@@ -341,7 +346,7 @@
     <div class="chart-box">
       <div class="title">Firm &times; firm office-overlap network</div>
       <div class="meta">edge thickness = number of shared cities &middot; node size = total offices &middot; source: 45-firm office directory</div>
-      <div class="chart" id="chart-network"></div>
+      <div class="chart-wrap"><div class="chart chart-live" id="chart-network"></div><img class="chart-mobile" src="charts/chart-network.png" alt="Cross-border network" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
     </div>
 
     <div class="callout amber">
@@ -375,7 +380,7 @@
     <div class="chart-box">
       <div class="title">Global office footprint</div>
       <div class="meta">source: carto basemap &middot; 45-firm office directory &middot; dashed arcs &amp; hollow dots = reach via parent network (EIU through The Economist Group)</div>
-      <div id="city-map"></div>
+      <div class="chart-wrap"><div class="chart-live" id="city-map"></div><img class="chart-mobile" src="charts/city-map.png" alt="London city map of consultancies" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
     </div>
 
     <p>The dashed lines and hollow dots on the map pick out one particular structural wrinkle. <strong>The Economist Intelligence Unit operates four branded offices of its own</strong> &mdash; London, New York, Hong Kong, Dubai &mdash; but <strong>services clients from a further twelve cities through the broader Economist Group network</strong>: Washington DC, Chicago, Los Angeles, Brussels, Frankfurt, Geneva, Paris, Johannesburg, Singapore, Tokyo, Shanghai, Mumbai. The network graph treats all sixteen cities as real presence for edge-counting, because that is how EIU sells reach to its clients; the map, more fastidious, distinguishes them so the reader can see at a glance which cities have an actual EIU desk and which are merely access through a parent.</p>

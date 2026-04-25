@@ -524,6 +524,10 @@
 </style>
 </head>
 <body>
+<div class="laptop-hint" id="laptop-hint">
+  <span>This post has interactive charts &mdash; best read on a laptop.</span>
+  <button class="dismiss" onclick="this.parentElement.classList.add('dismissed')" aria-label="Dismiss">&times;</button>
+</div>
 
 <div class="progress-bar" id="progress"></div>
 
@@ -580,7 +584,7 @@
       </div>
       <div class="chart-badge">TREEMAP</div>
     </div>
-    <div class="echart-container tall" id="chart-1"></div>
+    <div class="chart-wrap"><div class="echart-container tall chart-live" id="chart-1"></div><img class="chart-mobile" src="charts/chart-1.png" alt="Market structure overview" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -614,7 +618,7 @@
       <button type="button" class="toggle-btn is-active" data-mode="rev">Revenue</button>
       <button type="button" class="toggle-btn" data-mode="margin">Margin %</button>
     </div>
-    <div class="echart-container tall" id="chart-2"></div>
+    <div class="chart-wrap"><div class="echart-container tall chart-live" id="chart-2"></div><img class="chart-mobile" src="charts/chart-2.png" alt="Market segments by firm count" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -642,7 +646,7 @@
       </div>
       <div class="chart-badge">SCATTER PLOT</div>
     </div>
-    <div class="echart-container tall" id="chart-3"></div>
+    <div class="chart-wrap"><div class="echart-container tall chart-live" id="chart-3"></div><img class="chart-mobile" src="charts/chart-3.png" alt="Top firms by revenue" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -677,7 +681,7 @@
       <button type="button" class="toggle-btn is-active" data-firm="baringa">Baringa</button>
       <button type="button" class="toggle-btn" data-firm="frontier">Frontier</button>
     </div>
-    <div class="echart-container" id="chart-history"></div>
+    <div class="chart-wrap"><div class="echart-container chart-live" id="chart-history"></div><img class="chart-mobile" src="charts/chart-history.png" alt="Founding timeline" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -705,7 +709,7 @@
         <div class="chart-sub">£ MILLIONS · FY2021 → FY2025 · £/PARTNER OVERLAID</div>
       </div>
     </div>
-    <div class="echart-container" id="chart-4"></div>
+    <div class="chart-wrap"><div class="echart-container chart-live" id="chart-4"></div><img class="chart-mobile" src="charts/chart-4.png" alt="Operating margins by firm" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -727,7 +731,7 @@
       </div>
       <div class="chart-badge">COST STRUCTURE</div>
     </div>
-    <div class="echart-container" id="chart-j"></div>
+    <div class="chart-wrap"><div class="echart-container chart-live" id="chart-j"></div><img class="chart-mobile" src="charts/chart-j.png" alt="Junior to senior pipeline" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -758,7 +762,7 @@
       </div>
       <div class="chart-badge">PE TIMELINE</div>
     </div>
-    <div class="echart-container" id="chart-5"></div>
+    <div class="chart-wrap"><div class="echart-container chart-live" id="chart-5"></div><img class="chart-mobile" src="charts/chart-5.png" alt="Revenue vs margin scatter" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -785,7 +789,7 @@
       </div>
       <div class="chart-badge">SANKEY DIAGRAM</div>
     </div>
-    <div class="echart-container" id="chart-6"></div>
+    <div class="chart-wrap"><div class="echart-container chart-live" id="chart-6"></div><img class="chart-mobile" src="charts/chart-6.png" alt="Profit per partner ranking" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -819,7 +823,7 @@
       <button type="button" class="toggle-btn" data-mode="departures">Departures</button>
       <button type="button" class="toggle-btn" data-mode="net">Net</button>
     </div>
-    <div class="echart-container tall" id="chart-7b"></div>
+    <div class="chart-wrap"><div class="echart-container tall chart-live" id="chart-7b"></div><img class="chart-mobile" src="charts/chart-7b.png" alt="Net regulator drain" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -841,7 +845,7 @@
       </div>
       <div class="chart-badge">WHO KEEPS THEIR PEOPLE</div>
     </div>
-    <div class="echart-container" id="chart-g"></div>
+    <div class="chart-wrap"><div class="echart-container chart-live" id="chart-g"></div><img class="chart-mobile" src="charts/chart-g.png" alt="Geographic distribution" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -865,7 +869,7 @@
       </div>
       <div class="chart-badge">AGE AT APPOINTMENT</div>
     </div>
-    <div class="echart-container tall" id="chart-age"></div>
+    <div class="chart-wrap"><div class="echart-container tall chart-live" id="chart-age"></div><img class="chart-mobile" src="charts/chart-age.png" alt="Firm age distribution" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -896,7 +900,7 @@
       </div>
       <div class="chart-badge">TIMELINE</div>
     </div>
-    <div class="echart-container tall" id="chart-7"></div>
+    <div class="chart-wrap"><div class="echart-container tall chart-live" id="chart-7"></div><img class="chart-mobile" src="charts/chart-7.png" alt="Regulator-to-consultancy moves" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
@@ -917,7 +921,7 @@
       </div>
       <div class="chart-badge">COMPASS LEXECON AS HUB</div>
     </div>
-    <div class="echart-container tall" id="chart-h"></div>
+    <div class="chart-wrap"><div class="echart-container tall chart-live" id="chart-h"></div><img class="chart-mobile" src="charts/chart-h.png" alt="Headcount comparison" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
   </div>
   <div class="commentary">
     <div>
