@@ -1486,6 +1486,8 @@ function renderPE() {
     if (d.firm === 'Continuum Economics' || d.firm === 'Public First') labelPos = 'bottom';
     else if (d.firm === 'BRG' && d.year === 2017) labelPos = 'bottom';
     else if (d.firm === 'Oxford Analytica' && d.year === 2025) labelPos = 'top';
+    else if (d.firm === 'Oxford Analytica' && d.year < 2022) { labelPos = [-90, 50]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Vivid Economics') { labelPos = [-60, -60]; labelAlign = 'right'; labelVAlign = 'bottom'; }
     else if (d.firm === 'BRG' && d.year === 2025) { labelPos = [120, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Econic Partners' && d.year === 2025) { labelPos = [120, 60]; labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Stonehaven Group') { labelPos = [-140, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
