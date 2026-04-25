@@ -1484,14 +1484,12 @@ function renderPE() {
     let labelPos = 'top';
     let labelAlign, labelVAlign;
     if (d.firm === 'Continuum Economics' || d.firm === 'Public First') labelPos = 'bottom';
-    else if (d.firm === 'BRG' && d.year === 2017) labelPos = 'bottom';
-    else if (d.firm === 'Oxford Analytica' && d.year === 2025) labelPos = 'top';
     else if (d.firm === 'Oxford Analytica' && d.year < 2022) { labelPos = [-90, 50]; labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Vivid Economics') { labelPos = [-60, -60]; labelAlign = 'right'; labelVAlign = 'bottom'; }
-    else if (d.firm === 'BRG' && d.year === 2025) { labelPos = [120, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
-    else if (d.firm === 'Econic Partners' && d.year === 2025) { labelPos = [120, 60]; labelAlign = 'left'; labelVAlign = 'top'; }
+    else if (d.firm === 'Oxford Analytica' && d.year >= 2025) { labelPos = [-110, 0]; labelAlign = 'right'; labelVAlign = 'middle'; }
+    else if (d.firm === 'Oxford Economics') { labelPos = [70, -50]; labelAlign = 'left'; labelVAlign = 'bottom'; }
+    else if (d.firm === 'Econic Partners') { labelPos = [120, 60]; labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Stonehaven Group') { labelPos = [-140, -60]; labelAlign = 'left'; labelVAlign = 'top'; }
-    else if (d.year === 2025) labelPos = 'right';
     return {
       name: d.firm, value: [d.year, d.value || UNDISCLOSED_Y[key] || 30], deal: d,
       itemStyle: { color: TYPE_COLORS[d.type] || '#0071e3', opacity: 0.9, borderColor: '#ffffff', borderWidth: 1.5, shadowColor: TYPE_COLORS[d.type] || '#0071e3', shadowBlur: 14 },
