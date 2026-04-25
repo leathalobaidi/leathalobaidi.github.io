@@ -220,12 +220,12 @@
   .tickbox.off { opacity: 0.45; }
 
   /* Category pill colours */
-  .tickbox.cat-0 { color: #1d1d1f; background: #f2f2f4; }
-  .tickbox.cat-1 { color: #5856d6; background: #f0f0fa; }
-  .tickbox.cat-2 { color: #0071e3; background: #e8f3ff; }
-  .tickbox.cat-3 { color: #ff9500; background: #fff4e5; }
-  .tickbox.cat-4 { color: #ff3b30; background: #ffeae8; }
-  .tickbox.cat-5 { color: #00a693; background: #e5f7f4; }
+  .tickbox.cat-0 { color: #34c759; background: #e6f7eb; }  /* Litigation */
+  .tickbox.cat-1 { color: #ff9500; background: #fff4e5; }  /* Overlap */
+  .tickbox.cat-2 { color: #0071e3; background: #e8f3ff; }  /* Competition */
+  .tickbox.cat-3 { color: #8e8e93; background: #f2f2f4; }  /* Policy */
+  .tickbox.cat-4 { color: #ff2d55; background: #ffe5ec; }  /* Broad */
+  .tickbox.cat-5 { color: #af52de; background: #f5e9fb; }  /* Macro */
 
   .firm-group-header {
     width: 100%; font-size: 9px; font-weight: 700;
@@ -428,12 +428,12 @@
             <button class="small-btn" id="catReset">toggle all</button>
           </div>
           <div class="tickbox-list cats" id="catPills">
-            <div class="tickbox cat-0" data-cat="0">Litigation / disputes</div>
-            <div class="tickbox cat-1" data-cat="1">Comp + Lit overlap</div>
-            <div class="tickbox cat-2" data-cat="2">Competition boutiques</div>
-            <div class="tickbox cat-3" data-cat="3">Policy / think tanks</div>
-            <div class="tickbox cat-4" data-cat="4">Big 4 / broad</div>
-            <div class="tickbox cat-5" data-cat="5">Macro / forecasting</div>
+            <div class="tickbox cat-0" data-cat="0">Litigation</div>
+            <div class="tickbox cat-1" data-cat="1">Overlap</div>
+            <div class="tickbox cat-2" data-cat="2">Competition</div>
+            <div class="tickbox cat-3" data-cat="3">Policy</div>
+            <div class="tickbox cat-4" data-cat="4">Broad</div>
+            <div class="tickbox cat-5" data-cat="5">Macro</div>
           </div>
         </div>
 
@@ -525,8 +525,11 @@ const FIRMS = [
   { name:'Continuum Economics', cat:5, hq:'London', offices:['London','Princeton','Singapore'] }
 ];
 
-const CAT_NAMES = ['Litigation / disputes','Comp + Lit overlap','Competition boutiques','Policy / think tanks','Big 4 / broad','Macro / forecasting'];
-const CAT_COLORS = ['#1d1d1f','#5856d6','#0071e3','#ff9500','#ff3b30','#00a693'];
+// Category vocabulary aligned with part0.1 SEGMENT_COLORS canonical set.
+// Note: 'Regulation' (the 7th canonical category) is omitted here because no
+// firms in this dataset are categorised as Regulation.
+const CAT_NAMES = ['Litigation','Overlap','Competition','Policy','Broad','Macro'];
+const CAT_COLORS = ['#34c759','#ff9500','#0071e3','#8e8e93','#ff2d55','#af52de'];
 const NUM_CATS = CAT_COLORS.length;
 
 // ============================================================================
