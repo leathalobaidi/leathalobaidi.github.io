@@ -1473,7 +1473,7 @@ renderGrowth();
 // ============================================================================
 const chart5 = echarts.init(document.getElementById('chart-5'));
 function renderPE() {
-  const TYPE_COLORS = {'Minority':'#ff9500','Buyout':'#0071e3','Roll-up':'#af52de','Acquisition':'#ff2d55','Acqui-hire':'#5ac8fa'};
+  const TYPE_COLORS = {'Minority':'#ff9500','Buyout':'#0071e3','Roll-up':'#af52de','Acquisition':'#ff2d55','Acqui-hire':'#5ac8fa','Founding round':'#34c759'};
   const UNDISCLOSED_Y = {
     '2021-Oxford Analytica':25, '2021-Vivid Economics':100,
     '2023-Continuum Economics':35, '2024-Stonehaven Group':60,
@@ -1521,6 +1521,26 @@ function renderPE() {
   });
 }
 renderPE();
+
+// Inject deal-type colour-key legend below chart 5
+(() => {
+  const types = [
+    {label:'Buyout',     color:'#0071e3', desc:'PE / strategic full or majority acquisition'},
+    {label:'Minority',   color:'#ff9500', desc:'PE minority stake'},
+    {label:'Roll-up',    color:'#af52de', desc:'Platform consolidating multiple firms'},
+    {label:'Acquisition',color:'#ff2d55', desc:'Strategic / corporate acquisition'},
+    {label:'Acqui-hire', color:'#5ac8fa', desc:'Team + IP absorbed; corporate shell wound down'},
+    {label:'Founding round',color:'#34c759', desc:'Initial PE-backed launch funding'}
+  ];
+  const host = document.getElementById('chart-5');
+  if (!host || host.parentNode.querySelector('.pe-legend')) return;
+  const wrap = document.createElement('div');
+  wrap.className = 'segment-legend pe-legend';
+  wrap.innerHTML = types.map(t =>
+    `<span class="seg-item" title="${t.desc}"><span class="seg-sw" style="background:${t.color}"></span><span class="seg-lbl" style="color:${t.color}">${t.label}</span></span>`
+  ).join('');
+  host.parentNode.insertBefore(wrap, host.nextSibling);
+})();
 
 // ============================================================================
 // CHART 6 — SANKEY
