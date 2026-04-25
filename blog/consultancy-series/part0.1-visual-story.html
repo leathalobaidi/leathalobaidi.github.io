@@ -2333,6 +2333,10 @@ function setupAnnotations() {
   annotateChart(chart7b, 'chart-7b', [
     { xValue: 9, yValue: 39, title: '2024: 39 new seats', label: 'Partnership gold rush. Baringa alone added 11 new LLP members.', dx: -120, dy: -40, type: 'elbow', finder: {seriesIndex: 0} }
   ]);
+  annotateChart(chart7, 'chart-7', [
+    { xValue: 2002, yValue: -1.0, title: '2002 — RBB founded',   label: 'Ridyard, Bishop, Baker + 13 colleagues leave NERA. The founding cohort is mostly still on the partnership today.', dx: 0,    dy: 130, type: 'elbow', finder: {seriesIndex: 2}, wrap: 170 },
+    { xValue: 2025, yValue: -2.2, title: '2025 — Econic launches', label: 'Orszag + 25 walk from Compass Lexecon with Goldman Sachs backing. The largest senior-team move the market has seen.', dx: -260, dy: -130, type: 'elbow', finder: {seriesIndex: 2}, wrap: 190 }
+  ]);
 }
 
 let annotationsDrawn = false;
@@ -2343,6 +2347,7 @@ function tryDrawAnnotations() {
 chart3.on('finished', tryDrawAnnotations);
 chart4.on('finished', tryDrawAnnotations);
 chart5.on('finished', tryDrawAnnotations);
+chart7.on('finished', tryDrawAnnotations);
 chart7b.on('finished', tryDrawAnnotations);
 setTimeout(tryDrawAnnotations, 600);
 
