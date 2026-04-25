@@ -1483,7 +1483,7 @@ function renderPE() {
     const key = `${d.year}-${d.firm}`;
     let labelPos = 'top';
     let labelAlign, labelVAlign;
-    if (d.firm === 'Continuum Economics') labelPos = 'bottom';
+    if (d.firm === 'Continuum Economics') { labelPos = [0, 50]; labelAlign = 'center'; labelVAlign = 'top'; }
     else if (d.firm === 'Oxford Analytica' && d.year < 2022) { labelPos = [-90, 50]; labelAlign = 'left'; labelVAlign = 'top'; }
     else if (d.firm === 'Vivid Economics') { labelPos = [-60, -60]; labelAlign = 'right'; labelVAlign = 'bottom'; }
     // 2025-cluster: stack four labels in a column to the right, top→bottom:
