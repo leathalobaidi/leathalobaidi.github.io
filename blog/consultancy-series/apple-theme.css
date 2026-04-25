@@ -191,7 +191,7 @@ pre code {
 /* ---------------------------------------------------------------- series nav */
 .series-nav {
   display: grid !important;
-  grid-template-columns: repeat(10, 1fr) !important;
+  grid-template-columns: repeat(11, 1fr) !important;
   gap: 8px !important;
   margin: 0 0 32px 0 !important;
   /* break-out: same formula as .pub-name */
