@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Škoda UK Used — Marketcheck dashboard (v1)</title>
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  :root { --bg:#0e1116; --panel:#161a22; --panel2:#1f242e; --line:#2a313d; --fg:#e6e9ef; --muted:#8a93a3; --accent:#4ea1ff; --good:#3ddc84; --bad:#ff6b6b; --warn:#ffb84d; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', 'Inter', sans-serif; background:var(--bg); color:var(--fg); line-height:1.4; }
+  header { padding: 16px 20px; border-bottom: 1px solid var(--line); display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  header h1 { margin:0; font-size:18px; font-weight:600; }
+  header .sub { color:var(--muted); font-size:12px; }
+  main { display:grid; grid-template-columns: 320px 1fr; gap:0; min-height:calc(100vh - 53px); }
+  .filters { background:var(--panel); padding:14px 16px; border-right:1px solid var(--line); overflow-y:auto; max-height:calc(100vh - 53px); position:sticky; top:0; }
+  .filters h2 { font-size:11px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; margin: 14px 0 6px; }
+  .filters h2:first-of-type { margin-top:0; }
+  .filter-row { margin-bottom: 8px; }
+  .filter-row label { display:block; font-size:12px; color:var(--muted); margin-bottom:3px; }
+  .filter-row input[type=number], .filter-row select, .filter-row input[type=text] {
+    width:100%; padding:5px 8px; background:var(--panel2); color:var(--fg); border:1px solid var(--line); border-radius:4px; font-size:13px;
+  }
+  #f-model { font-size:14px; font-weight:600; padding:7px 8px; }
+  .filter-row .range { display:flex; gap:6px; }
+  .checkbox-list { display:flex; flex-direction:column; gap:3px; max-height:160px; overflow-y:auto; padding:6px 8px; background:var(--panel2); border:1px solid var(--line); border-radius:4px; }
+  .checkbox-list label { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--fg); cursor:pointer; margin:0; }
+  .checkbox-list input { margin:0; }
+  .actions { display:flex; gap:8px; margin-top:14px; }
+  .actions button { flex:1; padding:7px 10px; background:var(--panel2); color:var(--fg); border:1px solid var(--line); border-radius:4px; cursor:pointer; font-size:12px; }
+  .actions button:hover { background:#252b36; }
+  .content { padding: 14px 18px; overflow-x:auto; }
+  .stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:8px; margin-bottom:14px; }
+  .stat { background:var(--panel); padding:10px 12px; border-radius:6px; border:1px solid var(--line); }
+  .stat .lbl { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.4px; }
+  .stat .val { font-size:18px; font-weight:600; margin-top:2px; }
+  .stat .sub { font-size:11px; color:var(--muted); }
+  .axis-pickers { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:8px; align-items:end; }
+  .axis-pickers .pick { display:flex; flex-direction:column; gap:3px; font-size:12px; }
+  .axis-pickers select { padding:5px 8px; background:var(--panel2); color:var(--fg); border:1px solid var(--line); border-radius:4px; font-size:13px; min-width:120px; }
+  #plot { background:var(--panel); border:1px solid var(--line); border-radius:6px; height:520px; }
+  .panel { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:12px 14px; margin-top:14px; }
+  .panel h3 { margin:0 0 8px; font-size:13px; font-weight:600; display:flex; justify-content:space-between; align-items:center; }
+  .panel h3 .note { font-weight:400; color:var(--muted); font-size:11px; }
+  table { width:100%; border-collapse: collapse; font-size:12px; }
+  th, td { padding: 6px 8px; text-align:left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color:var(--muted); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:.4px; cursor:pointer; user-select:none; }
+  th:hover { color:var(--fg); }
+  td.num { text-align:right; font-variant-numeric: tabular-nums; }
+  td a { color:var(--accent); text-decoration:none; }
+  td a:hover { text-decoration:underline; }
+  .residual-good { color: var(--good); font-weight:600; }
+  .residual-bad  { color: var(--bad);  font-weight:600; }
+  .dom-warm   { color: var(--warn); font-weight:600; }
+  .dom-hot    { color: var(--bad);  font-weight:600; }
+  .scroll { max-height: 420px; overflow-y:auto; }
+  .pill { display:inline-block; padding:1px 6px; background:var(--panel2); border-radius:3px; font-size:10px; color:var(--muted); }
+  details.explainer { background:var(--panel); border:1px solid var(--line); border-radius:6px; padding:10px 14px; margin: 8px 0 14px; font-size:13px; }
+  details.explainer summary { cursor:pointer; color:var(--accent); font-weight:600; font-size:13px; list-style:none; }
+  details.explainer summary::-webkit-details-marker { display:none; }
+  details.explainer summary::before { content:'▸'; display:inline-block; margin-right:6px; transition: transform .15s; }
+  details.explainer[open] summary::before { transform: rotate(90deg); }
+  details.explainer .body { margin-top:10px; color:var(--fg); }
+  details.explainer .body p { margin: 0 0 8px; }
+  details.explainer .body ul { margin: 0 0 8px 18px; padding:0; }
+  details.explainer .body li { margin-bottom:3px; }
+  details.explainer .body code, details.explainer .body pre { background:var(--panel2); padding:2px 6px; border-radius:3px; font-size:12px; font-family: 'SF Mono', Menlo, monospace; }
+  details.explainer .body pre { padding: 8px 10px; overflow-x:auto; margin: 4px 0 8px; white-space: pre-wrap; }
+  .weight-grid { display:grid; grid-template-columns: 1fr; gap:4px; padding:8px 10px; background:var(--panel2); border:1px solid var(--line); border-radius:4px; }
+  .weight-grid label { font-size:12px; color:var(--muted); display:flex; justify-content:space-between; }
+  .weight-grid label span { color:var(--fg); font-variant-numeric: tabular-nums; }
+  .weight-grid input[type=range] { width:100%; accent-color: var(--accent); }
+  .weight-note { font-size:11px; color:var(--muted); margin-top:4px; }
+  .score-good { color: var(--good); font-weight:600; }
+  .bar { display:inline-block; height:6px; background:var(--accent); border-radius:2px; vertical-align:middle; margin-left:6px; }
+  #loading { padding:14px 18px; color:var(--muted); font-size:13px; }
+  .small-N { background: rgba(255,184,77,0.1); border-color: var(--warn); }
+  .footer-note { padding: 14px 18px; color:var(--muted); font-size:11px; border-top:1px solid var(--line); margin-top:30px; }
+  .footer-note a { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Škoda UK Used Cars <span style="color:var(--muted);font-weight:400;font-size:13px;">(v1 · Marketcheck data)</span></h1>
+  <span class="sub" id="header-sub">loading manifest…</span>
+</header>
+<main>
+  <aside class="filters">
+    <h2>Model</h2>
+    <div class="filter-row"><select id="f-model"></select></div>
+
+    <h2>Trim</h2>
+    <div id="f-trim" class="checkbox-list"></div>
+    <h2>Body</h2>
+    <div id="f-body" class="checkbox-list"></div>
+    <h2>Fuel</h2>
+    <div id="f-fuel" class="checkbox-list"></div>
+    <h2>Transmission</h2>
+    <div id="f-trans" class="checkbox-list"></div>
+    <h2>Price (£)</h2>
+    <div class="filter-row range">
+      <input type="number" id="f-price-min" placeholder="min">
+      <input type="number" id="f-price-max" placeholder="max">
+    </div>
+    <h2>Mileage</h2>
+    <div class="filter-row range">
+      <input type="number" id="f-miles-min" placeholder="min">
+      <input type="number" id="f-miles-max" placeholder="max">
+    </div>
+    <h2>Model year</h2>
+    <div class="filter-row range">
+      <input type="number" id="f-year-min" placeholder="min">
+      <input type="number" id="f-year-max" placeholder="max">
+    </div>
+    <h2>Dealer / city</h2>
+    <div class="filter-row"><input type="text" id="f-search" placeholder="contains…"></div>
+
+    <h2>Weighted preference <span style="text-transform:none;font-weight:400;color:var(--muted);">(higher = matters more)</span></h2>
+    <div class="weight-grid">
+      <label>Price <span id="w-price-out">60</span>%</label>
+      <input type="range" min="0" max="100" value="60" id="w-price">
+      <label>Mileage <span id="w-miles-out">20</span>%</label>
+      <input type="range" min="0" max="100" value="20" id="w-miles">
+      <label>Age <span id="w-age-out">20</span>%</label>
+      <input type="range" min="0" max="100" value="20" id="w-age">
+      <div class="weight-note" id="w-norm"></div>
+    </div>
+
+    <div class="actions">
+      <button id="reset-btn">Reset filters</button>
+      <button id="csv-btn">Download CSV</button>
+    </div>
+  </aside>
+  <section class="content">
+    <div class="stats" id="stats"></div>
+
+    <details class="explainer">
+      <summary>What's a residual? (and what's new in v1 vs the v2 Octavia tool)</summary>
+      <div class="body">
+        <p><strong>Residual = actual price − expected price.</strong></p>
+        <p>"Expected price" comes from a least-squares regression fitted on the <em>currently filtered</em> subset:</p>
+        <pre>expected_price = intercept
+                + b₁ × mileage
+                + b₂ × age_months
+                + Σ trim dummies
+                + Σ body dummies</pre>
+        <ul>
+          <li><span class="residual-good">Negative residual</span> → priced below what comparable miles/age cars in the same trim &amp; body sell for.</li>
+          <li><span class="residual-bad">Positive residual</span> → priced above what miles/age/trim/body would suggest.</li>
+        </ul>
+        <p><strong>Why dummies for trim &amp; body?</strong> The <a href="../skoda-octavia/v2.html" target="_blank">v2 Octavia tool</a> warned readers to "filter to a single trim &amp; body before reading residuals," because pooling SE and vRS into one regression makes vRS look overpriced. v1 fixes that: trim and body are absorbed into the regression as fixed effects, so the residual is always "cheaper or dearer than peers <em>holding trim and body constant</em>." You don't need to pre-filter.</p>
+        <p><strong>Worked example.</strong> An <span class="pill">Octavia · vRS · Estate</span>, 12-month-old, 10,000-mile, listed at £30,000. The regression on Octavia says a vRS Estate at those miles &amp; age "should" sell for £33,000. Residual = 30,000 − 33,000 = <span class="residual-good">−£3,000</span> — i.e. £3,000 cheaper than its vRS Estate peers.</p>
+        <p><strong>Negotiation signals (new in v1).</strong> Two extra panels show cars where the dealer is likely under pressure: <strong>longest-listed</strong> (high <code>days on market</code>) and <strong>biggest recent price drop</strong>. These come from the Marketcheck listing-tracker. A car listed 90+ days that has already dropped its price is a stronger negotiation candidate than one listed last week.</p>
+        <p><strong>Caveats.</strong> The regression ignores condition, options, colour, equipment, location bias, and dealer reputation. It doesn't observe what the buyer can see in person. The <em>weighted preference</em> score is a different metric — it ranks cars by how well they match your stated price/miles/age priorities, not by whether they're under-/over-priced relative to peers. The two can disagree, which is informative.</p>
+        <p><strong>Sample limits.</strong> Marketcheck's free tier caps each query at the 500 most-recently-seen listings per model. For models with more active inventory than that, this dashboard shows the freshest 500. Active inventory by model is shown in the <code>num_found</code> column of the model dropdown.</p>
+      </div>
+    </details>
+
+    <div class="axis-pickers">
+      <div class="pick">
+        <label>X axis</label>
+        <select id="x-axis">
+          <option value="miles" selected>Mileage</option>
+          <option value="ageMonths">Age (months)</option>
+          <option value="year">Model year</option>
+          <option value="price">Price</option>
+          <option value="residual">Value residual (£)</option>
+          <option value="pricePerMile">Price ÷ mile</option>
+          <option value="dom">Days on market</option>
+          <option value="weighted">Weighted score</option>
+          <option value="bhp">BHP</option>
+        </select>
+      </div>
+      <div class="pick">
+        <label>Y axis</label>
+        <select id="y-axis">
+          <option value="price" selected>Price</option>
+          <option value="miles">Mileage</option>
+          <option value="ageMonths">Age (months)</option>
+          <option value="residual">Value residual (£)</option>
+          <option value="pricePerMile">Price ÷ mile</option>
+          <option value="dom">Days on market</option>
+          <option value="weighted">Weighted score</option>
+          <option value="bhp">BHP</option>
+        </select>
+      </div>
+      <div class="pick">
+        <label>Z (colour)</label>
+        <select id="z-axis">
+          <option value="ageMonths" selected>Age (months)</option>
+          <option value="year">Model year</option>
+          <option value="miles">Mileage</option>
+          <option value="price">Price</option>
+          <option value="residual">Value residual (£)</option>
+          <option value="dom">Days on market</option>
+          <option value="weighted">Weighted score</option>
+          <option value="trim_norm">Trim (categorical)</option>
+          <option value="body">Body (categorical)</option>
+          <option value="fuel">Fuel (categorical)</option>
+          <option value="trans">Transmission (categorical)</option>
+        </select>
+      </div>
+      <div class="pick">
+        <label>Size</label>
+        <select id="size-axis">
+          <option value="" selected>(uniform)</option>
+          <option value="price">Price</option>
+          <option value="miles">Mileage</option>
+          <option value="ageMonths">Age (months)</option>
+          <option value="dom">Days on market</option>
+          <option value="residual_abs">|Residual|</option>
+        </select>
+      </div>
+      <div class="pick" style="flex:1;"></div>
+      <div class="pick">
+        <label>&nbsp;</label>
+        <label style="font-size:12px;color:var(--muted);"><input type="checkbox" id="show-fit"> show fitted line (X→Y)</label>
+      </div>
+    </div>
+
+    <div id="plot"></div>
+
+    <div class="panel">
+      <h3>Top 15 by weighted preference <span class="note" id="weighted-note">composite of normalised price/miles/age — adjust weights in the left panel</span></h3>
+      <div class="scroll"><table id="weighted-table"></table></div>
+    </div>
+    <div class="panel">
+      <h3>🤝 Negotiation signal — longest-listed cars <span class="note">days on market ≥ 60 · dealers most likely to drop price</span></h3>
+      <div class="scroll"><table id="long-dom-table"></table></div>
+    </div>
+    <div class="panel">
+      <h3>📉 Negotiation signal — biggest recent price drops <span class="note">price has already moved · dealer is motivated</span></h3>
+      <div class="scroll"><table id="price-drop-table"></table></div>
+    </div>
+    <div class="panel">
+      <h3>Top 15 best value <span class="note">most underpriced vs regression of price on miles + age + trim + body</span></h3>
+      <div class="scroll"><table id="best-table"></table></div>
+    </div>
+    <div class="panel">
+      <h3>Top 15 worst value <span class="note">most overpriced vs same regression</span></h3>
+      <div class="scroll"><table id="worst-table"></table></div>
+    </div>
+    <div class="panel">
+      <h3>All filtered cars <span class="note" id="all-count"></span></h3>
+      <div class="scroll"><table id="all-table"></table></div>
+    </div>
+    <div class="footer-note">
+      Data: <a href="https://developers.marketcheck.com/uk/" target="_blank">Marketcheck UK API</a>. Source folder: <code>~/skoda-uk-used-analysis/</code>. Pull script: <code>pull.py</code>. See also <a href="../skoda-octavia/v2.html">v2 Octavia tool</a> (the predecessor) and <a href="../skoda-octavia/v1.html">v1 Octavia tool</a>.
+    </div>
+  </section>
+</main>
+
+<script>
+const TODAY = new Date('2026-04-28');
+const MANIFEST_URL = 'data/manifest.json';
+const DATA_BASE = 'data/';
+
+let MANIFEST = null;
+let DATA = [];
+let CURRENT = [];
+let CURRENT_MODEL = null;
+
+// ---- helpers ----
+const fmtGBP = v => v == null ? '—' : '£' + Math.round(v).toLocaleString('en-GB');
+const fmtNum = v => v == null ? '—' : Number(v).toLocaleString('en-GB');
+const fmtSigned = v => v == null ? '—' : (v >= 0 ? '+' : '−') + '£' + Math.abs(Math.round(v)).toLocaleString('en-GB');
+const fmtPct = v => v == null ? '—' : (v*100).toFixed(1) + '%';
+
+// Strip engine/drivetrain/transmission tokens from Marketcheck's concatenated trim string.
+// Marketcheck UK concatenates everything in `trim`, e.g. "Se Tech Tsi Etc Mhev Sa" → SE Technology.
+function normalizeTrim(raw) {
+  if (!raw) return null;
+  // Engine/transmission/drivetrain tokens (incl. abbreviations like Sa=Semi-auto, Cr=Common Rail, Etc=e-TEC)
+  const drop = /\b(?:Tsi-d|Tsi|Tdi|Cr|Mhev|E-Tec|Etc|Phev|Iv|Hybrid|Semi-auto|Sa|S-a|Manual|Dsg|4x2|4x4|Auto|Cng|G-Tec|Gtec|Mpi|Scr|12v|16v|105ps-e|105ps|110ps|115ps|125ps|130ps|140ps|150ps|180ps|190ps|200ps|220ps|230ps|245ps|265ps|245|265)\b/gi;
+  let cleaned = raw.replace(drop, '').replace(/\s+/g, ' ').trim();
+  // Tech → Technology (abbreviation)
+  cleaned = cleaned.replace(/\bTech\b/gi, 'Technology');
+  if (!cleaned) return raw; // give up — keep raw
+
+  const k = cleaned.toLowerCase();
+  const map = {
+    'vrs': 'vRS',
+    'se': 'SE', 'se l': 'SE L', 'se l first edition': 'SE L First Edition',
+    'se technology': 'SE Technology', 'se drive': 'SE Drive',
+    'se plus': 'SE Plus', 'se first edition': 'SE First Edition',
+    'sportline': 'SportLine', 'sport line': 'SportLine',
+    'sportline plus': 'SportLine Plus', 'sport': 'Sport',
+    'monte carlo': 'Monte Carlo', 'laurin & klement': 'Laurin & Klement', 'l&k': 'L&K',
+    'edition': 'Edition', 'colour edition': 'Colour Edition',
+    's': 'S', 'scout': 'Scout', 'lounge': 'Lounge', 'classic': 'Classic',
+    'elegance': 'Elegance', 'ambition': 'Ambition', 'active': 'Active',
+    'race blue edition': 'Race Blue Edition', 'design edition': 'Design Edition',
+    '60 80 ecosuite': '60 80 EcoSuite', 'enyaq 80': 'Enyaq 80', 'enyaq 60': 'Enyaq 60',
+  };
+  if (map[k]) return map[k];
+  return cleaned.split(' ').map(w => w[0]?.toUpperCase() + w.slice(1).toLowerCase()).join(' ');
+}
+
+// ---- model dropdown init from manifest ----
+function populateModelDropdown(manifest) {
+  const sel = document.getElementById('f-model');
+  const ordered = Object.entries(manifest.models)
+    .sort((a, b) => b[1].count - a[1].count);
+  sel.innerHTML = ordered.map(([m, meta]) => {
+    const cap = meta.num_found > meta.count ? ` · capped from ${meta.num_found}` : '';
+    return `<option value="${m}">${m} (${meta.count}${cap})</option>`;
+  }).join('');
+  sel.value = 'Octavia';
+}
+
+async function loadModel(modelName) {
+  const meta = MANIFEST.models[modelName];
+  if (!meta) return;
+  document.getElementById('header-sub').textContent = `loading ${modelName}…`;
+  const res = await fetch(DATA_BASE + meta.file);
+  const arr = await res.json();
+  DATA = arr.map(d => {
+    let ageMonths = null;
+    if (d.reg_date) {
+      const reg = new Date(d.reg_date);
+      if (!isNaN(reg)) {
+        ageMonths = (TODAY - reg) / (1000 * 60 * 60 * 24 * 30.4375);
+        ageMonths = Math.round(ageMonths * 10) / 10;
+      }
+    }
+    if (ageMonths == null && d.year) {
+      ageMonths = Math.max(0, (TODAY.getFullYear() - d.year) * 12 + (TODAY.getMonth() + 1 - 6));
+    }
+    const trim_norm = normalizeTrim(d.trim);
+    const pricePerMile = (d.price && d.miles && d.miles > 0) ? d.price / d.miles : null;
+    return { ...d, ageMonths, trim_norm, pricePerMile };
+  });
+  CURRENT_MODEL = modelName;
+
+  const sourceLine = `${arr.length} cars • Marketcheck UK • sourced ${MANIFEST.sourced_date} • OLS price ~ miles + age + trim + body`;
+  const capNote = meta.num_found > meta.count ? ` · capped from ${meta.num_found} active listings (free-tier API limit)` : '';
+  document.getElementById('header-sub').textContent = sourceLine + capNote;
+
+  rebuildFilterUI();
+  update();
+}
+
+// ---- build filter UI ----
+function uniqueSorted(field) {
+  return [...new Set(DATA.map(d => d[field]).filter(v => v != null && v !== ''))].sort();
+}
+function buildCheckboxes(containerId, field) {
+  const opts = uniqueSorted(field);
+  const c = document.getElementById(containerId);
+  c.innerHTML = opts.map(v => `<label><input type="checkbox" value="${escapeAttr(v)}" checked data-field="${field}">${escapeHtml(v)}</label>`).join('');
+}
+function escapeAttr(s) { return String(s).replace(/"/g, '&quot;'); }
+function escapeHtml(s) { return String(s).replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+function rebuildFilterUI() {
+  buildCheckboxes('f-trim', 'trim_norm');
+  buildCheckboxes('f-body', 'body');
+  buildCheckboxes('f-fuel', 'fuel');
+  buildCheckboxes('f-trans', 'trans');
+
+  const priceVals = DATA.map(d => d.price).filter(v => v != null);
+  const milesVals = DATA.map(d => d.miles).filter(v => v != null);
+  const yearVals  = DATA.map(d => d.year).filter(v => v != null);
+  const setPh = (id, v) => document.getElementById(id).placeholder = v;
+  if (priceVals.length) { setPh('f-price-min', Math.min(...priceVals)); setPh('f-price-max', Math.max(...priceVals)); }
+  if (milesVals.length) { setPh('f-miles-min', Math.min(...milesVals)); setPh('f-miles-max', Math.max(...milesVals)); }
+  if (yearVals.length)  { setPh('f-year-min',  Math.min(...yearVals));  setPh('f-year-max',  Math.max(...yearVals)); }
+  // clear any user values on model change
+  document.querySelectorAll('.filters input[type=number]').forEach(i => i.value = '');
+  document.getElementById('f-search').value = '';
+
+  // re-attach listeners on the newly-built checkboxes
+  document.querySelectorAll('.checkbox-list input[type=checkbox]').forEach(el => {
+    el.removeEventListener('change', update);
+    el.addEventListener('change', update);
+  });
+}
+
+// ---- filter logic ----
+function getCheckedSet(containerId) {
+  return new Set([...document.querySelectorAll('#' + containerId + ' input:checked')].map(i => i.value));
+}
+function getNum(id) { const v = document.getElementById(id).value; return v === '' ? null : +v; }
+function applyFilters() {
+  const sets = {
+    trim_norm: getCheckedSet('f-trim'),
+    body: getCheckedSet('f-body'),
+    fuel: getCheckedSet('f-fuel'),
+    trans: getCheckedSet('f-trans'),
+  };
+  const pmin = getNum('f-price-min'), pmax = getNum('f-price-max');
+  const mmin = getNum('f-miles-min'), mmax = getNum('f-miles-max');
+  const ymin = getNum('f-year-min'),  ymax = getNum('f-year-max');
+  const q = document.getElementById('f-search').value.trim().toLowerCase();
+  return DATA.filter(d => {
+    if (d.trim_norm != null && !sets.trim_norm.has(d.trim_norm)) return false;
+    if (d.body != null && !sets.body.has(d.body)) return false;
+    if (d.fuel != null && !sets.fuel.has(d.fuel)) return false;
+    if (d.trans != null && !sets.trans.has(d.trans)) return false;
+    if (pmin != null && (d.price ?? -Infinity) < pmin) return false;
+    if (pmax != null && (d.price ??  Infinity) > pmax) return false;
+    if (mmin != null && (d.miles ?? -Infinity) < mmin) return false;
+    if (mmax != null && (d.miles ??  Infinity) > mmax) return false;
+    if (ymin != null && (d.year  ?? -Infinity) < ymin) return false;
+    if (ymax != null && (d.year  ??  Infinity) > ymax) return false;
+    if (q) {
+      const blob = ((d.dealer||'') + ' ' + (d.city||'') + ' ' + (d.postcode||'') + ' ' + (d.county||'')).toLowerCase();
+      if (!blob.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
+// ---- multi-variable OLS regression with trim & body dummies ----
+function regress(rows) {
+  const usable = rows.filter(d => d.price != null && d.miles != null && d.ageMonths != null);
+  const n = usable.length;
+  if (n < 10) return null;
+
+  const trimCounts = {}; for (const d of usable) if (d.trim_norm) trimCounts[d.trim_norm] = (trimCounts[d.trim_norm]||0) + 1;
+  const bodyCounts = {}; for (const d of usable) if (d.body) bodyCounts[d.body] = (bodyCounts[d.body]||0) + 1;
+  const trims = Object.keys(trimCounts);
+  const bodies = Object.keys(bodyCounts);
+  const refTrim = trims.reduce((a, b) => trimCounts[a] >= trimCounts[b] ? a : b, trims[0] || null);
+  const refBody = bodies.reduce((a, b) => bodyCounts[a] >= bodyCounts[b] ? a : b, bodies[0] || null);
+  // Only include dummies where we have at least 3 obs (avoid singular matrix from rare trims)
+  const trimDummies = trims.filter(t => t !== refTrim && trimCounts[t] >= 3).sort();
+  const bodyDummies = bodies.filter(b => b !== refBody && bodyCounts[b] >= 3).sort();
+
+  const buildRow = (d) => {
+    const r = [1, d.miles, d.ageMonths];
+    for (const t of trimDummies) r.push(d.trim_norm === t ? 1 : 0);
+    for (const b of bodyDummies) r.push(d.body === b ? 1 : 0);
+    return r;
+  };
+
+  const p = 3 + trimDummies.length + bodyDummies.length;
+  if (n < p + 5) return null; // need at least 5 dof
+
+  const XtX = Array.from({length: p}, () => new Array(p).fill(0));
+  const Xty = new Array(p).fill(0);
+  for (const d of usable) {
+    const xi = buildRow(d);
+    const yi = d.price;
+    for (let j = 0; j < p; j++) {
+      Xty[j] += xi[j] * yi;
+      for (let k = j; k < p; k++) XtX[j][k] += xi[j] * xi[k];
+    }
+  }
+  for (let j = 0; j < p; j++) for (let k = 0; k < j; k++) XtX[j][k] = XtX[k][j];
+
+  const beta = solveLinearSystem(XtX, Xty);
+  if (!beta) return null;
+
+  return {
+    beta, refTrim, refBody, trimDummies, bodyDummies, p, n,
+    fit: d => {
+      if (d.miles == null || d.ageMonths == null) return null;
+      const r = buildRow(d);
+      let s = 0;
+      for (let j = 0; j < p; j++) s += beta[j] * r[j];
+      return s;
+    }
+  };
+}
+
+function solveLinearSystem(A, b) {
+  const p = A.length;
+  const M = A.map((row, i) => [...row, b[i]]);
+  for (let i = 0; i < p; i++) {
+    let piv = i;
+    for (let k = i + 1; k < p; k++) if (Math.abs(M[k][i]) > Math.abs(M[piv][i])) piv = k;
+    if (Math.abs(M[piv][i]) < 1e-10) return null;
+    [M[i], M[piv]] = [M[piv], M[i]];
+    for (let k = i + 1; k < p; k++) {
+      const f = M[k][i] / M[i][i];
+      for (let j = i; j <= p; j++) M[k][j] -= f * M[i][j];
+    }
+  }
+  const x = new Array(p).fill(0);
+  for (let i = p - 1; i >= 0; i--) {
+    let s = M[i][p];
+    for (let j = i + 1; j < p; j++) s -= M[i][j] * x[j];
+    x[i] = s / M[i][i];
+  }
+  return x;
+}
+
+// ---- table rendering ----
+const TABLE_COLS = [
+  { key:'rank',     label:'#',          fmt:v=>v },
+  { key:'price',    label:'Price',      fmt:fmtGBP, num:true },
+  { key:'fitted',   label:'Expected',   fmt:fmtGBP, num:true },
+  { key:'residual', label:'Residual',   fmt:v=>{ if(v==null) return '—'; const s = fmtSigned(v); return `<span class="${v<0?'residual-good':'residual-bad'}">${s}</span>`; }, num:true, raw:true },
+  { key:'miles',    label:'Miles',      fmt:fmtNum, num:true },
+  { key:'year',     label:'Yr',         fmt:v=>v ?? '—' },
+  { key:'ageMonths',label:'Age mo',     fmt:v=>v?v.toFixed(1):'—', num:true },
+  { key:'trim_norm',label:'Trim' },
+  { key:'body',     label:'Body' },
+  { key:'engine',   label:'Engine' },
+  { key:'fuel',     label:'Fuel' },
+  { key:'trans',    label:'Trans' },
+  { key:'dom',      label:'DOM',        fmt:v=>{ if(v==null) return '—'; const cls = v >= 90 ? 'dom-hot' : v >= 60 ? 'dom-warm' : ''; return `<span class="${cls}">${v}</span>`; }, num:true, raw:true },
+  { key:'price_change_pct', label:'Δ%', fmt:v=>{ if(v==null) return '—'; const cls = v < 0 ? 'residual-good' : v > 0 ? 'residual-bad' : ''; return `<span class="${cls}">${(v).toFixed(1)}%</span>`; }, num:true, raw:true },
+  { key:'city',     label:'City' },
+  { key:'dealer',   label:'Dealer' },
+  { key:'vdp',      label:'Link', fmt:u=>u?`<a href="${u}" target="_blank">view</a>`:'', raw:true },
+];
+
+function renderTable(tableId, rows, withRank=true) {
+  const t = document.getElementById(tableId);
+  const cols = TABLE_COLS.filter(c => withRank || c.key !== 'rank');
+  const head = '<tr>' + cols.map(c => `<th>${c.label}</th>`).join('') + '</tr>';
+  const body = rows.map((r, i) => {
+    const rr = { ...r, rank: i + 1 };
+    return '<tr>' + cols.map(c => {
+      const v = rr[c.key];
+      const cls = c.num ? 'num' : '';
+      const html = c.fmt ? c.fmt(v) : (v ?? '');
+      return `<td class="${cls}">${html}</td>`;
+    }).join('') + '</tr>';
+  }).join('');
+  t.innerHTML = head + body;
+}
+
+function renderWeightedTable(tableId, rows) {
+  const t = document.getElementById(tableId);
+  const cols = [
+    { label:'#',       get:(_, i) => i + 1 },
+    { label:'Score',   get:r => r.weighted == null ? '—' : `<span class="score-good">${r.weighted.toFixed(1)}</span><span class="bar" style="width:${(r.weighted*0.6).toFixed(0)}px"></span>`, num:true },
+    { label:'Price',   get:r => fmtGBP(r.price), num:true },
+    { label:'Miles',   get:r => fmtNum(r.miles), num:true },
+    { label:'Age mo',  get:r => r.ageMonths == null ? '—' : r.ageMonths.toFixed(1), num:true },
+    { label:'Residual',get:r => r.residual == null ? '—' : `<span class="${r.residual<0?'residual-good':'residual-bad'}">${fmtSigned(r.residual)}</span>`, num:true },
+    { label:'Trim',    get:r => r.trim_norm || '' },
+    { label:'Body',    get:r => r.body || '' },
+    { label:'Engine',  get:r => r.engine || '' },
+    { label:'Yr',      get:r => r.year ?? '' },
+    { label:'DOM',     get:r => r.dom ?? '—', num:true },
+    { label:'City',    get:r => r.city || '' },
+    { label:'Dealer',  get:r => r.dealer || '' },
+    { label:'Link',    get:r => r.vdp ? `<a href="${r.vdp}" target="_blank">view</a>` : '' },
+  ];
+  const head = '<tr>' + cols.map(c => `<th>${c.label}</th>`).join('') + '</tr>';
+  const body = rows.map((r, i) => '<tr>' + cols.map(c => `<td class="${c.num?'num':''}">${c.get(r, i)}</td>`).join('') + '</tr>').join('');
+  t.innerHTML = head + body;
+}
+
+// ---- stats card row ----
+function renderStats(rows) {
+  const s = document.getElementById('stats');
+  if (!rows.length) { s.innerHTML = '<div class="stat"><div class="lbl">No matches</div></div>'; return; }
+  const prices = rows.map(d=>d.price).filter(Boolean);
+  const miles  = rows.map(d=>d.miles).filter(v=>v!=null);
+  const ages   = rows.map(d=>d.ageMonths).filter(v=>v!=null);
+  const doms   = rows.map(d=>d.dom).filter(v=>v!=null);
+  const drops  = rows.filter(d=>d.price_change_pct != null && d.price_change_pct < 0).length;
+  const mean = a => a.reduce((s,x)=>s+x,0)/a.length;
+  const med  = a => { const s=[...a].sort((x,y)=>x-y); const n=s.length; return n ? (n%2 ? s[(n-1)/2] : (s[n/2-1]+s[n/2])/2) : null; };
+  const cards = [
+    ['Cars', rows.length, ''],
+    ['Median price', fmtGBP(med(prices)), ''],
+    ['Min / Max price', `${fmtGBP(Math.min(...prices))} / ${fmtGBP(Math.max(...prices))}`, ''],
+    ['Median miles', fmtNum(Math.round(med(miles))), ''],
+    ['Median age', med(ages) != null ? med(ages).toFixed(1) + ' mo' : '—', ''],
+    ['Median DOM', doms.length ? Math.round(med(doms)) + ' days' : '—', ''],
+    ['Cars w/ price drop', `${drops}`, drops ? `${(drops/rows.length*100).toFixed(0)}% of subset` : ''],
+  ];
+  s.innerHTML = cards.map(([l,v,sub]) => `<div class="stat"><div class="lbl">${l}</div><div class="val">${v}</div><div class="sub">${sub||''}</div></div>`).join('');
+}
+
+// ---- plot rendering ----
+function renderPlot(rows, regResult) {
+  const xKey = document.getElementById('x-axis').value;
+  const yKey = document.getElementById('y-axis').value;
+  const zKey = document.getElementById('z-axis').value;
+  const sKey = document.getElementById('size-axis').value;
+  const showFit = document.getElementById('show-fit').checked;
+
+  const labelMap = {
+    miles:'Mileage', price:'Price (£)', ageMonths:'Age (months)', year:'Model year',
+    residual:'Value residual (£)', pricePerMile:'Price ÷ mile', residual_abs:'|Residual|',
+    weighted:'Weighted score (0–100)', dom:'Days on market', bhp:'BHP',
+    trim_norm:'Trim', body:'Body', fuel:'Fuel', trans:'Transmission',
+  };
+
+  const usable = rows.filter(d => d[xKey] != null && d[yKey] != null);
+  const isCategorical = ['trim_norm','body','fuel','trans'].includes(zKey);
+
+  const baseHover = d => `<b>${CURRENT_MODEL} · ${d.trim_norm || ''} · ${d.body || ''}</b><br>${d.engine || ''}<br>${fmtGBP(d.price)} · ${fmtNum(d.miles)} mi · ${d.year || ''} (${d.ageMonths?.toFixed?.(1) ?? '—'} mo)<br>Expected ${fmtGBP(d.fitted)} · Residual ${fmtSigned(d.residual)}<br>DOM ${d.dom ?? '—'} · Δ ${d.price_change_pct != null ? d.price_change_pct.toFixed(1)+'%' : '—'}<br>${d.city || ''} · ${d.dealer || ''}<extra></extra>`;
+
+  function sizeArr(rs) {
+    if (!sKey) return rs.map(_ => 8);
+    const vals = rs.map(d => sKey === 'residual_abs' ? Math.abs(d.residual ?? 0) : (d[sKey] ?? 0));
+    const mn = Math.min(...vals), mx = Math.max(...vals);
+    const range = mx - mn || 1;
+    return vals.map(v => 5 + 18 * (v - mn) / range);
+  }
+
+  let traces = [];
+  if (isCategorical) {
+    const cats = [...new Set(usable.map(d => d[zKey]))].filter(Boolean).sort();
+    cats.forEach((cat) => {
+      const subset = usable.filter(d => d[zKey] === cat);
+      traces.push({
+        type:'scattergl', mode:'markers', name: cat,
+        x: subset.map(d => d[xKey]),
+        y: subset.map(d => d[yKey]),
+        text: subset.map(baseHover),
+        hovertemplate: '%{text}',
+        customdata: subset.map(d => d.id),
+        marker: { size: sizeArr(subset), opacity: 0.85, line: { width: 0.5, color: '#0e1116' } },
+      });
+    });
+  } else {
+    const z = usable.map(d => d[zKey]);
+    traces.push({
+      type:'scattergl', mode:'markers',
+      x: usable.map(d => d[xKey]),
+      y: usable.map(d => d[yKey]),
+      text: usable.map(baseHover),
+      hovertemplate: '%{text}',
+      customdata: usable.map(d => d.id),
+      marker: {
+        size: sizeArr(usable),
+        color: z, colorscale: 'Viridis', showscale: true,
+        colorbar: { title: { text: labelMap[zKey] || zKey, font:{ color:'#e6e9ef'} }, tickfont:{ color:'#e6e9ef' }, outlinewidth:0 },
+        opacity: 0.9, line: { width: 0.5, color: '#0e1116' },
+      }
+    });
+  }
+
+  if (showFit && rows.length >= 5) {
+    const xs = usable.map(d => d[xKey]); const ys = usable.map(d => d[yKey]);
+    const n = xs.length;
+    const mx = xs.reduce((s,v)=>s+v,0)/n, my = ys.reduce((s,v)=>s+v,0)/n;
+    let num = 0, den = 0;
+    for (let i = 0; i < n; i++) { num += (xs[i]-mx)*(ys[i]-my); den += (xs[i]-mx)**2; }
+    if (den > 0) {
+      const slope = num/den, icpt = my - slope*mx;
+      const xlo = Math.min(...xs), xhi = Math.max(...xs);
+      traces.push({
+        type:'scatter', mode:'lines', name:'fit',
+        x:[xlo, xhi], y:[icpt+slope*xlo, icpt+slope*xhi],
+        line:{ color:'#ff9f43', width:2, dash:'dash' }, hoverinfo:'skip', showlegend:true,
+      });
+    }
+  }
+
+  const layout = {
+    paper_bgcolor:'#161a22', plot_bgcolor:'#161a22',
+    font:{ color:'#e6e9ef', size:12 },
+    margin:{ l:60, r:30, t:20, b:50 },
+    xaxis:{ title: labelMap[xKey] || xKey, gridcolor:'#2a313d', zerolinecolor:'#2a313d' },
+    yaxis:{ title: labelMap[yKey] || yKey, gridcolor:'#2a313d', zerolinecolor:'#2a313d' },
+    legend:{ bgcolor:'rgba(0,0,0,0)' },
+    hovermode:'closest',
+  };
+
+  Plotly.react('plot', traces, layout, { displaylogo:false, responsive:true });
+
+  document.getElementById('plot').on('plotly_click', e => {
+    const id = e.points[0].customdata;
+    const row = document.querySelector(`tr[data-id="${id}"]`);
+    if (row) row.scrollIntoView({ behavior:'smooth', block:'center' });
+  });
+}
+
+// ---- weighted preference ----
+function readWeights() {
+  const wp = +document.getElementById('w-price').value;
+  const wm = +document.getElementById('w-miles').value;
+  const wa = +document.getElementById('w-age').value;
+  document.getElementById('w-price-out').textContent = wp;
+  document.getElementById('w-miles-out').textContent = wm;
+  document.getElementById('w-age-out').textContent   = wa;
+  const sum = wp + wm + wa;
+  const norm = sum > 0 ? { p: wp/sum, m: wm/sum, a: wa/sum } : { p:0, m:0, a:0 };
+  document.getElementById('w-norm').textContent = sum === 0
+    ? 'all weights are zero — set at least one above zero'
+    : `normalised: price ${(norm.p*100).toFixed(0)}% · miles ${(norm.m*100).toFixed(0)}% · age ${(norm.a*100).toFixed(0)}%`;
+  return norm;
+}
+function applyWeightedScore(rows, w) {
+  const fields = ['price','miles','ageMonths'];
+  const stats = {};
+  for (const f of fields) {
+    const vals = rows.map(d => d[f]).filter(v => v != null);
+    stats[f] = vals.length ? { min: Math.min(...vals), max: Math.max(...vals) } : null;
+  }
+  rows.forEach(d => {
+    const norm = (f) => {
+      const s = stats[f];
+      if (!s || d[f] == null || s.max === s.min) return null;
+      return 1 - (d[f] - s.min) / (s.max - s.min);
+    };
+    const np = norm('price'), nm = norm('miles'), na = norm('ageMonths');
+    if (np == null || nm == null || na == null) {
+      d.weighted = null;
+    } else {
+      d.weighted = 100 * (w.p * np + w.m * nm + w.a * na);
+    }
+  });
+}
+
+// ---- main update ----
+function update() {
+  if (!DATA.length) return;
+  const filtered = applyFilters();
+  const reg = regress(filtered);
+  filtered.forEach(d => {
+    if (reg && d.miles != null && d.ageMonths != null && d.price != null) {
+      d.fitted   = reg.fit(d);
+      d.residual = d.price - d.fitted;
+    } else {
+      d.fitted = null; d.residual = null;
+    }
+  });
+  applyWeightedScore(filtered, readWeights());
+  CURRENT = filtered;
+
+  renderStats(filtered);
+  renderPlot(filtered, reg);
+
+  const withResid = filtered.filter(d => d.residual != null);
+  const best  = [...withResid].sort((a,b) => a.residual - b.residual).slice(0, 15);
+  const worst = [...withResid].sort((a,b) => b.residual - a.residual).slice(0, 15);
+  renderTable('best-table',  best);
+  renderTable('worst-table', worst);
+
+  // negotiation panels
+  const longDom = filtered.filter(d => d.dom != null && d.dom >= 60).sort((a,b) => b.dom - a.dom).slice(0, 15);
+  const drops   = filtered.filter(d => d.price_change_pct != null && d.price_change_pct < 0).sort((a,b) => a.price_change_pct - b.price_change_pct).slice(0, 15);
+  renderTable('long-dom-table', longDom);
+  renderTable('price-drop-table', drops);
+
+  const withW = filtered.filter(d => d.weighted != null);
+  const topW = [...withW].sort((a,b) => b.weighted - a.weighted).slice(0, 15);
+  renderWeightedTable('weighted-table', topW);
+
+  const sortedAll = [...filtered].sort((a,b) => (a.residual ?? Infinity) - (b.residual ?? Infinity));
+  renderTable('all-table', sortedAll);
+  document.getElementById('all-count').textContent = `${filtered.length} cars (sorted by best residual)`;
+  document.querySelectorAll('#all-table tr').forEach((tr, i) => { if (i > 0) tr.setAttribute('data-id', sortedAll[i-1].id); });
+
+  if (reg) {
+    const note = `OLS price ~ miles + age + ${reg.trimDummies.length} trim dummies (ref: ${reg.refTrim || '—'}) + ${reg.bodyDummies.length} body dummies (ref: ${reg.refBody || '—'}) · n=${reg.n}, p=${reg.p}`;
+    document.querySelectorAll('h3 .note').forEach(n => { if (n.textContent.includes('regression')) n.setAttribute('title', note); });
+  }
+}
+
+// ---- event wiring ----
+document.querySelectorAll('.filters input[type=number], .filters input[type=text], .filters input[type=range]').forEach(el => {
+  el.addEventListener('input', update);
+});
+document.querySelectorAll('.axis-pickers select, .axis-pickers input').forEach(el => {
+  el.addEventListener('change', update);
+});
+document.getElementById('f-model').addEventListener('change', e => loadModel(e.target.value));
+document.getElementById('reset-btn').addEventListener('click', () => {
+  document.querySelectorAll('.filters input[type=checkbox]').forEach(i => i.checked = true);
+  document.querySelectorAll('.filters input[type=number]').forEach(i => i.value = '');
+  document.getElementById('f-search').value = '';
+  update();
+});
+document.getElementById('csv-btn').addEventListener('click', () => {
+  const cols = ['rank','price','fitted','residual','miles','year','ageMonths','trim_norm','body','engine','fuel','trans','dom','price_change_pct','owners','city','dealer','postcode','vdp'];
+  const lines = [cols.join(',')];
+  CURRENT.forEach((d, i) => {
+    const row = { ...d, rank: i + 1 };
+    lines.push(cols.map(c => {
+      const v = row[c];
+      if (v == null) return '';
+      const s = String(v).replace(/"/g, '""');
+      return /[",\n]/.test(s) ? '"' + s + '"' : s;
+    }).join(','));
+  });
+  const blob = new Blob([lines.join('\n')], { type:'text/csv' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `skoda-uk-${CURRENT_MODEL ? CURRENT_MODEL.toLowerCase() : 'all'}-filtered.csv`;
+  a.click();
+});
+
+// ---- boot ----
+fetch(MANIFEST_URL)
+  .then(r => r.json())
+  .then(m => {
+    MANIFEST = m;
+    populateModelDropdown(m);
+    return loadModel('Octavia');
+  })
+  .catch(err => {
+    document.getElementById('header-sub').textContent = 'failed to load manifest: ' + err.message;
+  });
+</script>
+</body>
+</html>

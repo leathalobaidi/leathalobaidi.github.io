@@ -1,0 +1,68 @@
+{
+  "sourced_date": "2026-04-28",
+  "source": "Marketcheck UK API (api.marketcheck.com/v2)",
+  "make": "Skoda",
+  "models": {
+    "Octavia": {
+      "count": 500,
+      "num_found": 1950,
+      "file": "octavia.json"
+    },
+    "Fabia": {
+      "count": 500,
+      "num_found": 2584,
+      "file": "fabia.json"
+    },
+    "Kamiq": {
+      "count": 500,
+      "num_found": 1585,
+      "file": "kamiq.json"
+    },
+    "Karoq": {
+      "count": 500,
+      "num_found": 2060,
+      "file": "karoq.json"
+    },
+    "Kodiaq": {
+      "count": 500,
+      "num_found": 1530,
+      "file": "kodiaq.json"
+    },
+    "Scala": {
+      "count": 500,
+      "num_found": 661,
+      "file": "scala.json"
+    },
+    "Superb": {
+      "count": 500,
+      "num_found": 1101,
+      "file": "superb.json"
+    },
+    "Citigo": {
+      "count": 416,
+      "num_found": 416,
+      "file": "citigo.json"
+    },
+    "Yeti": {
+      "count": 484,
+      "num_found": 484,
+      "file": "yeti.json"
+    },
+    "Roomster": {
+      "count": 97,
+      "num_found": 97,
+      "file": "roomster.json"
+    },
+    "Enyaq": {
+      "count": 500,
+      "num_found": 640,
+      "file": "enyaq.json"
+    },
+    "Rapid": {
+      "count": 43,
+      "num_found": 43,
+      "file": "rapid.json"
+    }
+  },
+  "total": 5040
+}
