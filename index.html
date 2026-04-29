@@ -684,6 +684,7 @@
             <a href="#home" class="nav-brand">Leath</a>
             <ul class="nav-links">
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#fitness">Fitness</a></li>
                 <li><a href="/blog">Blog</a></li>
             </ul>
         </div>
@@ -706,7 +707,11 @@
             <div class="cards-grid">
                 <div class="card" onclick="document.getElementById(&#39;projects&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
                     <h3>Projects</h3>
-                    <p>Chrome extensions I've built — tools for the Financial Times, YouTube, and Letterboxd. All open-source on GitHub.</p>
+                    <p>Translations, Chrome extensions, and data dashboards — open-source experiments across the Financial Times, YouTube, Letterboxd, used-car markets, and Soviet textbooks.</p>
+                </div>
+                <div class="card" onclick="document.getElementById(&#39;fitness&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
+                    <h3>Fitness</h3>
+                    <p>Training plans I'm running for myself — strength (Bigger Leaner Stronger), cycling (Fred Whitton 2027), and running (London Marathon 2027).</p>
                 </div>
             </div>
 
@@ -752,6 +757,69 @@
                     <a href="projects/kiselev/" class="project-link">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                         Read the Translation
+                    </a>
+                </div>
+            </article>
+
+            <!-- Škoda Octavia — Value Analysis -->
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Škoda Octavia — UK Approved Used Stock</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-mit">Data</span>
+                        <span class="badge badge-v3">v2</span>
+                    </div>
+                </div>
+                <p class="project-description">An interactive value-for-money analysis of 499 used Škoda Octavias on sale at UK approved retailers. Two takes on the same dataset: a regression-residual ranking (v1) that flags cars priced below their predicted value, and a weighted-preference dashboard (v2) that lets you tune what matters — body, trim, fuel, gearbox, mileage, age, dealer location.</p>
+                <div class="project-features">
+                    <h3>Versions</h3>
+                    <ul class="feature-list">
+                        <li><strong>v1 — Regression residuals</strong> — ranks cars by how far their price sits below the predicted value</li>
+                        <li><strong>v2 — Weighted preference</strong> — tune your filters and weights interactively to find the best match</li>
+                    </ul>
+                </div>
+                <div class="project-tech">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Regression</span>
+                    <span class="tech-tag">Used cars</span>
+                    <span class="tech-tag">UK market</span>
+                </div>
+                <div class="project-links">
+                    <a href="projects/skoda-octavia/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Hub
+                    </a>
+                    <a href="projects/skoda-octavia/v1.html" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        v1
+                    </a>
+                    <a href="projects/skoda-octavia/v2.html" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        v2
+                    </a>
+                </div>
+            </article>
+
+            <!-- Škoda UK Used — Marketcheck dashboard -->
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Škoda UK Used — Marketcheck Dashboard</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-mit">Data</span>
+                        <span class="badge badge-v3">v1</span>
+                    </div>
+                </div>
+                <p class="project-description">A wider browser across the full Škoda UK used market, sourced from Marketcheck. Filter by model, trim, body, fuel, transmission, price, mileage, model year, and dealer/city — then layer on weighted preferences to surface what matters most.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Marketcheck</span>
+                    <span class="tech-tag">Used cars</span>
+                    <span class="tech-tag">UK market</span>
+                </div>
+                <div class="project-links">
+                    <a href="projects/skoda-uk-used/v1.html" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Dashboard (v1)
                     </a>
                 </div>
             </article>
@@ -892,6 +960,76 @@
                     <p>A reading community built around Stripe Press titles — 19 books on technology, economics, science, and civilisation, read across four seasonal quarters in 2026.</p>
                 </article>
             </div>
+        </section>
+
+        <!-- ==================== FITNESS ==================== -->
+        <section id="fitness" class="page-section">
+            <h1>Fitness</h1>
+            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-xl);">Training plans I'm running for myself — strength, cycling, and running. Each is a self-built dashboard with the full week-by-week schedule, rules, and zones.</p>
+
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Bigger Leaner Stronger</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-mit">Strength</span>
+                    </div>
+                </div>
+                <p class="project-description">A workout planner built around Mike Matthews' <em>Bigger Leaner Stronger</em> programme. Tracks progress across the five-day split, with sets, reps, and weight progression baked in.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Strength training</span>
+                    <span class="tech-tag">Progress tracking</span>
+                </div>
+                <div class="project-links">
+                    <a href="bls/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Planner
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Fred Whitton Challenge — 2027 Plan</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-chrome">Cycling</span>
+                        <span class="badge badge-v3">2027</span>
+                    </div>
+                </div>
+                <p class="project-description">A full training build-up for the Fred Whitton Challenge — 112 miles and ~12,000ft of climbing across the Lake District passes. Race day: 11 May 2027. Plan covers base, build, peak, and taper, with elevation, mileage, and TSS targets per session.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Cycling</span>
+                    <span class="tech-tag">Endurance</span>
+                    <span class="tech-tag">Lake District</span>
+                </div>
+                <div class="project-links">
+                    <a href="fwc/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Plan
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>London Marathon — 2027 Plan</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-chrome">Running</span>
+                        <span class="badge badge-v3">2027</span>
+                    </div>
+                </div>
+                <p class="project-description">A nine-week marathon training plan built around Zone 2 effort, walk-break intervals, and structured fuelling. Race day: Sunday 26 April 2027. Each session lists duration, distance, run-walk ratio, HR target, pace cue, and fuelling protocol.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Marathon</span>
+                    <span class="tech-tag">Zone 2</span>
+                    <span class="tech-tag">Heart rate training</span>
+                </div>
+                <div class="project-links">
+                    <a href="run/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Plan
+                    </a>
+                </div>
+            </article>
         </section>
 
 
