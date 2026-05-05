@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend</title>
 <meta name="author" content="Leath Al Obaidi">
-<meta name="description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an 11-piece Substack series, and prepared the entire dataset for GitHub release.">
+<meta name="description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into a 12-piece Substack series, and prepared the entire dataset for GitHub release.">
 <link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code">
 <meta property="og:title" content="Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend">
-<meta property="og:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an 11-piece Substack series, and prepared the entire dataset for GitHub release.">
+<meta property="og:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into a 12-piece Substack series, and prepared the entire dataset for GitHub release.">
 <meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Leath Al Obaidi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend">
-<meta name="twitter:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an 11-piece Substack series, and prepared the entire dataset for GitHub release.">
+<meta name="twitter:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into a 12-piece Substack series, and prepared the entire dataset for GitHub release.">
 
 <link rel="stylesheet" href="apple-theme.css">
 <style>
@@ -83,7 +83,7 @@
 
   <h1>Claude Code for an Economist</h1>
 
-  <p class="subtitle">How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an 11-piece Substack series (two visual introductions, seven numbered parts, one standalone RBB deep-dive, one methodology article), and prepared the entire dataset for GitHub release.</p>
+  <p class="subtitle">How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into a 12-piece Substack series (two visual introductions, seven numbered parts, one standalone RBB deep-dive, one hired-gun-economy companion piece, one methodology article), and prepared the entire dataset for GitHub release.</p>
 
   <p class="byline"><strong>Leath</strong> &middot; April 2026 &middot; 12 min read</p>
 
@@ -240,6 +240,12 @@
   <h3>The full firm list</h3>
 
   <p>The dataset contains 90 active firms across seven categories (95 initially identified; three removed as non-core or dormant, Aqua Consultants, Entext Communications, Pareto; two further downgraded). Firms that appear on both the global network map and the UK office map are listed once. Category assignment reflects the firm's primary UK activity; several firms, particularly US-origin multi-practice outfits, could reasonably sit in more than one category.</p>
+
+  <h3>A note on the two denominators</h3>
+
+  <p>Two firm-counts run through this series and they should be kept distinct. The <strong>curated universe is 90 firms</strong> &mdash; the public-facing catalogue of UK economics consultancies, used in headlines, treemaps and category counts. The <strong>Companies House-registered set is 81 firms</strong> &mdash; the rows in the <code>firms</code> table that hold a real CH number and file their own accounts. The 9-firm gap is made up of sub-practices and brand entities that file inside a parent: the in-house economics practices of <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong> (each a practice line inside a Big-Four / mid-tier UK LLP parent, with no separate CH filing); <strong>E.CA Economics (UK)</strong> (Berlin-headquartered, no separately registered UK arm); the <strong>Fraser of Allander Institute</strong> (an academic research institute at the University of Strathclyde); <strong>NEF Consulting</strong> (consulting arm of the New Economics Foundation charity, filed inside the parent); <strong>PA Consulting</strong> (the <em>Economics</em> practice; PA's group accounts roll up into Jacobs from March 2026); and <strong>Skylark Consulting Group</strong> (aviation-economics boutique, no current standalone UK CH match). A separate brand-of-parent entry &mdash; <strong>Compass Lexecon</strong>, the FTI Consulting economics brand &mdash; is carried in the database as a pointer to FTI Consulting LLP (CH OC372614) but is not a separate firm in the curated 90.</p>
+
+  <p><strong>Quantitative slices in this series &mdash; disclosed-turnover totals, ownership segmentation, small-company-exemption counts, league-table coverage &mdash; are computed against the 81 CH-registered firms and stated as such. Headline / catalogue counts (firms, charts, categories) use the 90.</strong> Where an earlier draft of any article used 90 as the denominator for a quantitative slice, it has been corrected; the band of estimates does not move materially but the arithmetic now reconciles.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <div class="table-wrap">
@@ -557,7 +563,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
   <div class="takeaways">
     <h3>Key takeaways</h3>
     <ol>
-      <li>A single 60-hour Claude Code project, run by one person with no prior programming, produced a 90-firm Companies House dataset and an 11-piece Substack series (seven numbered parts plus two visual introductions, one standalone deep-dive, and this methodology article). The same work done by hand would have taken considerably longer.</li>
+      <li>A single 60-hour Claude Code project, run by one person with no prior programming, produced a 90-firm Companies House dataset and a 12-piece Substack series (seven numbered parts plus two visual introductions, one standalone deep-dive, one hired-gun-economy companion piece, and this methodology article). The same work done by hand would have taken considerably longer.</li>
       <li>The biggest speed-up was the dispatch of four parallel research agents, each covering 22 firms. Total elapsed time: 12 minutes. Manual equivalent: two weeks.</li>
       <li>The most important architectural choice was SQLite as project database, rather than a spreadsheet. Corrections cost O(1), not O(n).</li>
       <li>Five errors made it into early drafts and were caught before publication. In every case the model had summarised across unrelated facts into a tidy narrative. The human's job is to notice when the story is too tidy.</li>
