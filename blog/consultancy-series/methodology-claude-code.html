@@ -99,7 +99,7 @@
     "I want to understand why a small UK economics consultancy in the City makes its partners more money than a Magic Circle law-firm partner."
   </blockquote>
 
-  <p>There was no list of firms. There was no database. There were no scripts. Python had been left untouched for seven years. What the researcher had, rather, was a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, a local SQLite binary, and a working hunch, unglamorous but stubborn, that the answer was hiding in the public filings of the UK's corporate registry, if anyone could be bothered to pull them all together. Ten days later a 90-firm dataset existed, eight Substack articles had been drafted, 42 charts had been rendered, and a <a href="#">public GitHub repository</a> stood ready for anyone to clone and replicate. The interactive work added up to roughly 60 hours. The same task done manually, downloading 9,644 filings, parsing the PDFs, building the financial time series, cross-referencing officer appointments, chasing the press trail across 90 firms, would have consumed considerably more, though no reporter has published a benchmark to say exactly how long.</p>
+  <p>There was no list of firms. There was no database. There were no scripts. Python had been left untouched for seven years. What the researcher had, rather, was a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, a local SQLite binary, and a working hunch, unglamorous but stubborn, that the answer was hiding in the public filings of the UK's corporate registry, if anyone could be bothered to pull them all together. Ten days later a 90-firm dataset existed, eight Substack articles had been drafted, 42 charts had been rendered, and a <a href="#">public GitHub repository</a> stood ready for anyone to clone and replicate. The interactive work added up to roughly 60 hours. The same task done manually, pulling 8,293 filing records, mapping 1,664 accounts PDFs, building the financial time series, cross-referencing officer appointments, chasing the press trail across 90 firms, would have consumed considerably more, though no reporter has published a benchmark to say exactly how long.</p>
 
   <p>What follows is the story of how that happened: what worked, what failed, what the tooling still cannot do, and what another economist or analyst might try next.</p>
 
@@ -239,13 +239,13 @@
 
   <h3>The full firm list</h3>
 
-  <p>The dataset contains 90 active firms across seven categories (95 initially identified; three removed as non-core or dormant, Aqua Consultants, Entext Communications, Pareto; two further downgraded). Firms that appear on both the global network map and the UK office map are listed once. Category assignment reflects the firm's primary UK activity; several firms, particularly US-origin multi-practice outfits, could reasonably sit in more than one category.</p>
+  <p>The dataset contains ninety active entries across seven categories, matching the canonical `data/firms.csv` export. Firms that appear on both the global network map and the UK office map are listed once. Category assignment reflects the firm's primary UK activity; several firms &mdash; particularly US-origin multi-practice outfits &mdash; could reasonably sit in more than one category.</p>
 
   <h3>A note on the two denominators</h3>
 
-  <p>Two firm-counts run through this series and they should be kept distinct. The <strong>curated universe is 90 firms</strong> &mdash; the public-facing catalogue of UK economics consultancies, used in headlines, treemaps and category counts. The <strong>Companies House-registered set is 87 firms</strong> &mdash; the rows in the <code>firms</code> table that hold a real CH number and file their own accounts. The gap is made up of sub-practices and brand entities that file inside a parent: the in-house economics practices of <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong> (each a practice line inside a Big-Four / mid-tier UK LLP parent, with no separate CH filing); <strong>E.CA Economics (UK)</strong> (Berlin-headquartered, no separately registered UK arm); the <strong>Fraser of Allander Institute</strong> (an academic research institute at the University of Strathclyde); <strong>NEF Consulting</strong> (consulting arm of the New Economics Foundation charity, filed inside the parent); <strong>PA Consulting</strong> (the <em>Economics</em> practice; PA's group accounts roll up into Jacobs from March 2026); and <strong>Skylark Consulting Group</strong> (aviation-economics boutique, no current standalone UK CH match). A separate brand-of-parent entry &mdash; <strong>Compass Lexecon</strong>, the FTI Consulting economics brand &mdash; is carried in the database as a pointer to FTI Consulting LLP (CH OC372614) but is not a separate firm in the curated 90.</p>
+  <p>Two firm-counts run through this series and they should be kept distinct. The <strong>curated universe is 90 firms</strong> &mdash; the public-facing catalogue of UK economics consultancies, used in headlines, treemaps and category counts. The public directory gives <strong>80 firms a direct Companies House number</strong>. The remaining ten are sub-practices, academic or charity arms, overseas branches, or parent-filed practices: <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong>; <strong>E.CA Economics (UK)</strong>; the <strong>Fraser of Allander Institute</strong>; <strong>NEF Consulting</strong>; <strong>PA Consulting</strong>; and <strong>Skylark Consulting Group</strong>. Separately, the working database carries <strong>87 internal firm rows</strong> for analytical continuity, including registered entities and a brand-of-parent pointer for <strong>Compass Lexecon</strong> to FTI Consulting LLP (CH OC372614). That internal row count is not the same thing as 87 public-catalogue firms with standalone CH filings.</p>
 
-  <p><strong>Quantitative slices in this series &mdash; disclosed-turnover totals, ownership segmentation, small-company-exemption counts, league-table coverage &mdash; are computed against the 87 CH-registered firms and stated as such. Headline / catalogue counts (firms, charts, categories) use the 90.</strong> Where an earlier draft of any article used 90 as the denominator for a quantitative slice, it has been corrected; the band of estimates does not move materially but the arithmetic now reconciles.</p>
+  <p><strong>Quantitative slices in this series &mdash; disclosed-turnover totals, ownership segmentation, small-company-exemption counts, league-table coverage &mdash; state their basis: the 90-row public catalogue, the 80 direct-CH public directory rows, or the 87-row internal tracking table.</strong> Where an earlier draft blurred those denominators, it has been corrected; the band of estimates does not move materially but the arithmetic now reconciles.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <div class="table-wrap">
@@ -255,36 +255,36 @@
     </thead>
     <tbody>
       <tr>
-        <td><strong>Competition boutiques</strong> (11)</td>
-        <td>CEPA, Copenhagen Economics, Credo, DotEcon, E.CA Economics, Europe Economics, Frontier Economics, Lear, Oxera, RBB Economics, WIK-Consult</td>
+        <td><strong>Competition</strong> (7)</td>
+        <td>E.CA Economics (UK), Econic Partners (UK), Fingleton Ltd, Frontier Economics Ltd, Keystone Strategy Ltd, Oxera Consulting LLP, RBB Economics LLP</td>
       </tr>
       <tr>
-        <td><strong>Competition + Litigation overlap</strong> (8)</td>
-        <td>Analysis Group, Bates White, Brattle Group, CRA, Cornerstone Research, Econic Partners, Keystone Strategy, NERA</td>
+        <td><strong>Competition + Litigation overlap</strong> (5)</td>
+        <td>Analysis Group Ltd, Brattle Group Ltd, CRA International UK, Cornerstone Research UK, NERA UK Limited</td>
       </tr>
       <tr>
-        <td><strong>Litigation / disputes</strong> (7)</td>
-        <td>Accuracy, Alvarez &amp; Marsal (3 UK entities), Ankura, BRG, Compass Lexecon (via FTI Consulting LLP), Fideres, Secretariat</td>
-      </tr>
-      <tr>
-        <td><strong>Policy / think tanks / climate</strong> (25)</td>
-        <td>Alma Economics, AMION Consulting, Analytically Driven, Aviation Economics, Belmana, BiGGAR Economics, Buttermere Consulting, Cambridge Econometrics, Connected Economics, Derrick Jones Economics, ECA Economics, Econance, EKOS Consulting, eftec, Flint Global, Head and Heart Economics, ICF, Kantar Public, London Economics, ODI Global, Public First, RAND Europe, Simetrica-Jacobs, SQW, Vivid Economics (in MVL)</td>
-      </tr>
-      <tr>
-        <td><strong>Big 4 / broad</strong> (12)</td>
-        <td>AFRY Management Consulting, AlixPartners, Baringa Partners, Castalia, Deloitte Economic Advisory, Economic Insight, Edgeworth Economics, EY-Parthenon, Fingleton, Grant Thornton, KPMG Economics, PwC Economics</td>
+        <td><strong>Litigation / disputes</strong> (8)</td>
+        <td>A&amp;M Disputes &amp; Investigations LLP, A&amp;M Europe LLP, A&amp;M Tax LLP, Accuracy UK Ltd, BRG UK Ltd, FTI Consulting LLP, Fideres Partners LLP, Secretariat International UK</td>
       </tr>
       <tr>
         <td><strong>Macro / forecasting</strong> (16)</td>
-        <td>Calverley Economic Advisors, Capital Economics, Cebr, Continuum Economics, Economic Perspectives, Economist Intelligence Unit, Fathom Financial Consulting, Independent Economics, LIVE Economics, Longview Economics, Lorenzo Codogno Macro Advisors, Macro Advisory Partners, Macro Hive, Oxford Analytica, Oxford Economics, Pantheon Macroeconomics</td>
+        <td>Calverley Economic Advisors, Capital Economics Ltd, Capital Economics Research Ltd, Cebr, Continuum Economics (4Cast), Economic Perspectives Ltd, Fathom Financial Consulting, Independent Economics LLP, Longview Economics Ltd, Lorenzo Codogno Macro Advisors, Macro Advisory Partners LLP, Macro Hive Ltd, Oxford Analytica Ltd, Oxford Economics Ltd, Pantheon Macroeconomics Ltd, The Economist Intelligence Unit Ltd</td>
       </tr>
       <tr>
-        <td><strong>Other / specialist</strong> (8)</td>
-        <td>Indepen Consulting (dissolved), MCC Economics, Plum Consulting, Pragmatix Advisory, Reckon, SAMI Consulting, Saltmarsh Economics, Steer Davies &amp; Gleave</td>
+        <td><strong>Policy / think tanks / climate</strong> (35)</td>
+        <td>AMION Consulting Ltd, Alma Economics Ltd, Analytically Driven Ltd, Aviation Economics Ltd, BiGGAR Economics Ltd, Buttermere Consulting Ltd, Cambridge Econometrics Ltd, Derrick Jones Economics Ltd, EKOS Consulting (UK) Ltd, Econance Ltd, Ecorys UK Ltd, Fraser of Allander Institute, Head and Heart Economics Ltd, ICF Consulting Services Ltd, LIVE Economics Ltd, London Economics Ltd, NEF Consulting, PA Consulting, Pragmatix Advisory Ltd, Public First Ltd, RSM Economics, SAMI Consulting Ltd, SQW Ltd, Saltmarsh Economics Ltd, Simetrica-Jacobs Ltd, Skylark Consulting Group, Steer Davies &amp; Gleave Ltd, Stephen Wells Consulting, Vivid Economics Ltd, Volterra Partners LLP, WPI Economics Ltd, Warwick Economics &amp; Development, Westbourne Research Services, York Aviation LLP, eftec</td>
+      </tr>
+      <tr>
+        <td><strong>Regulation</strong> (17)</td>
+        <td>AFRY Management Consulting, BDO Economic Consulting, Belmana Consultancy, CEPA (Cambridge Economic Policy Associates), Connected Economics Ltd, Deloitte Economic Consulting, DotEcon Ltd, ECA Economics Ltd, Economic Consulting Associates, Economic Insight Ltd, Flint Global Ltd, Grant Thornton Economics, Indepen Consulting Ltd, MCC Economics Ltd, Plum Consulting London LLP, PwC Economics, Reckon LLP</td>
+      </tr>
+      <tr>
+        <td><strong>Broad</strong> (2)</td>
+        <td>AlixPartners UK LLP, Baringa Partners LLP</td>
       </tr>
       <tr>
         <td colspan="2" style="font-size:12px;color:#8e8e93;border-top:2px solid #d2d2d7;padding-top:12px;">
-          <strong>Also excluded from this dataset:</strong> Bain &amp; Company, BCG, Kearney, Arthur D. Little, Roland Berger, BDO, RSM, and LSE Consulting, all ranked by <a href="https://www.consultancy.uk/rankings/top-consulting-firms-in-the-uk-by-area-of-expertise/economics">Consultancy.uk's economics rankings</a> but excluded here because economics is a supporting service rather than the core product. The same logic that excludes Arup excludes them. McKinsey appears in the series narrative as the acquirer of Vivid Economics but is not tracked as a firm in the dataset for the same reason.
+          <strong>Also excluded from this dataset:</strong> Bain &amp; Company, BCG, Kearney, Arthur D. Little, Roland Berger, KPMG Economics, EY-Parthenon, LSE Consulting, and Arup &mdash; all visible in rankings or public-sector economics work, but excluded here because economics is a supporting service rather than the core product, or because no separate UK economics-consultancy filing is tracked in the canonical directory. McKinsey appears in the series narrative as the acquirer of Vivid Economics but is not tracked as a firm in the dataset for the same reason.
         </td>
       </tr>
     </tbody>
@@ -582,7 +582,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
   <p>For any reader with access to a Companies House API key, a Claude Code subscription and a free weekend, the tools are now sufficient to build something nobody else has built yet. The markets that remain unmapped are the ones whose participants file boring accounts that nobody has ever bothered to read. Go find one.</p>
 
   <div class="footer">
-    <p><strong>The full dataset</strong> backing this series will be published on GitHub alongside the Substack first-post go-live; the repository URL will be inserted here on publication. 90 firms, 102 charges, 1,138 officer appointments, 9,644 historical filings, 15 dated private-equity and strategic-acquisition deals, 30 dated founder-timeline events. Dual-licensed under the Open Government Licence v3.0 (for the Companies House-derived data) and CC-BY-4.0 (for analysis, scripts and charts).</p>
+    <p><strong>The full dataset</strong> backing this series will be published on GitHub alongside the Substack first-post go-live; the repository URL will be inserted here on publication. 90 public-catalogue firms, 87 internal firm rows, 1,885 officer appointments, 8,293 historical filing records, 15 dated private-equity and strategic-acquisition deals, 30 dated founder-timeline events. Dual-licensed under the Open Government Licence v3.0 (for the Companies House-derived data) and CC-BY-4.0 (for analysis, scripts and charts).</p>
 
     <p><strong>Tools referenced in this article:</strong></p>
     <ul>
