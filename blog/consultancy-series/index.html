@@ -4,23 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Leath Al Obaidi">
-    <meta name="description" content="UK Economics Consultancy: A Historical Series. 12 pieces on the £2.49bn disclosed-revenue floor in a 90-firm curated universe, 25 years.">
+    <meta name="description" content="UK Economics Consultancy: A Historical Series. 12 pieces on the £2.48bn disclosed-revenue floor in a 90-firm curated universe, 25 years.">
     <meta property="og:title" content="UK Economics Consultancy: A Historical Series, Leath Al Obaidi">
-    <meta property="og:description" content="12 pieces on the £2.49bn disclosed-revenue floor in a 90-firm curated universe, 25 years.">
+    <meta property="og:description" content="12 pieces on the £2.48bn disclosed-revenue floor in a 90-firm curated universe, 25 years.">
     <meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Leath Al Obaidi">
-    <meta name="twitter:card" content="summary">
+    <meta property="og:image" content="https://leathalobaidi.com/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="UK Economics Consultancy: A Historical Series">
     <meta name="twitter:description" content="12 pieces on the £2.5bn industry nobody writes about.">
+    <meta name="twitter:image" content="https://leathalobaidi.com/og-image.png">
     <link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     <title>UK Economics Consultancy: A Historical Series, Leath Al Obaidi</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #c45d3e;
+            --color-primary: #9f442b;
             --color-text: #2a2a2a;
             --color-text-light: #666666;
             --color-background: #fafafa;
@@ -78,6 +81,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: var(--spacing-md);
         }
         .nav-brand {
             font-family: var(--font-serif);
@@ -88,14 +92,26 @@
             transition: var(--transition);
         }
         .nav-brand:hover { color: var(--color-primary); }
-        .nav-links { display: flex; list-style: none; gap: var(--spacing-lg); }
+        .nav-brand-short { display: none; }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-md);
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
         .nav-links a { color: var(--color-text); border-bottom: none; font-size: 0.95rem; }
         .nav-links a:hover, .nav-links a.active {
             color: var(--color-primary);
             border-bottom: 1px solid var(--color-primary);
             opacity: 1;
         }
-        @media (max-width: 640px) { .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; } }
+        @media (max-width: 640px) {
+            .nav-container { align-items: center; gap: 0.75rem; }
+            .nav-brand-full { display: none; }
+            .nav-brand-short { display: inline; }
+            .nav-links { gap: 0.75rem; font-size: 0.9rem; justify-content: flex-start; }
+        }
 
         .page-header {
             padding: var(--spacing-xl) 0 var(--spacing-md);
@@ -211,12 +227,12 @@
 
 <nav>
         <div class="nav-container">
-            <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;">Leath</a>
+            <a href="/" class="nav-brand" style="text-decoration:none;color:inherit;"><span class="nav-brand-full">Leath Al Obaidi</span><span class="nav-brand-short">Leath</span></a>
             <ul class="nav-links">
-                <li><a href="/#notes">Notes</a></li>
-                <li><a href="/#listography">Listography</a></li>
+                <li><a href="/#home">About</a></li>
+                <li><a href="/blog" class="active">Writing</a></li>
                 <li><a href="/#projects">Projects</a></li>
-                <li><a href="/blog" class="active">Blog</a></li>
+                <li><a href="/#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -226,12 +242,12 @@
         <header class="page-header">
             <div class="eyebrow">Series &middot; April 2026</div>
             <h1>UK Economics Consultancy: A Historical Series</h1>
-            <p class="standfirst">12 pieces on the UK economics consultancy industry. 90 firms in the curated universe; the latest disclosed turnover rows in the working database sum to &pound;2.49bn across 44 firms. 25 years, every filed account read.</p>
+            <p class="standfirst">12 pieces on the UK economics consultancy industry. 90 firms in the curated universe; the latest disclosed turnover rows in the working database sum to &pound;2.48bn across 44 firms. 25 years of filings and source notes.</p>
         </header>
 
         <section class="intro">
-            <p>There are roughly 90 economics-consultancy firms in the United Kingdom. The public directory gives 80 of them a direct Companies House number; the working database also carries registered, parent and brand rows for analytical continuity. Across the latest turnover disclosures in that database, 44 firms sum to &pound;2.49bn in the latest filed year (FX-adjusted) &mdash; an observed floor; Cebr&rsquo;s 2018 extrapolation puts the upper bound near &pound;3.6bn. They advise competition authorities, price regulators, government departments, law firms, and corporate clients on the most consequential economic decisions in Britain, CMA merger clearances, Ofwat and Ofgem price reviews, CAT damages awards, Treasury fiscal policy. Most of their work happens behind closed doors. Very little of it is written about.</p>
-            <p>This series traces the industry's history from 2000 to 2025. It is built on the filed Companies House accounts of every active firm in the market, on 25 years of <em>Global Competition Review</em> coverage, on press cuttings, obituaries, and firm histories. The dataset, the code, and the source PDFs are all open, and every claim in the prose traces to a primary source that a reader can check. Start anywhere.</p>
+            <p>There are roughly 90 economics-consultancy firms in the United Kingdom. The public directory gives 80 of them a direct Companies House number; the working database also carries registered, parent and brand rows for analytical continuity. Across the latest turnover disclosures in that database, 44 firms sum to &pound;2.48bn in the latest filed year (FX-adjusted) &mdash; an observed floor; Cebr&rsquo;s 2018 extrapolation puts the upper bound near &pound;3.6bn. They advise competition authorities, price regulators, government departments, law firms, and corporate clients on the most consequential economic decisions in Britain, CMA merger clearances, Ofwat and Ofgem price reviews, CAT damages awards, Treasury fiscal policy. Much of their work happens behind closed doors. Very little of it is written about.</p>
+            <p>This series traces the industry's history from 2000 to 2025. It is built on filed Companies House accounts and source rows for the active firms in the dataset, where separate accounts exist, plus 25 years of <em>Global Competition Review</em> coverage, press cuttings, obituaries, and firm histories. The dataset, the code, and the source PDFs are open, and the review workflow maps quantitative, dated, people, deal and source-dependent claims to named sources that a reader can check. Interpretation is labelled as interpretation. Start anywhere.</p>
         </section>
 
         <section class="series-section">
@@ -240,7 +256,7 @@
             <a href="part0.1-visual-story" class="piece-card">
                 <div class="piece-meta">Opening &middot; Visual</div>
                 <h2 class="piece-title">A Visual Story</h2>
-                <p class="piece-excerpt">12 charts, one market. The shape of UK economics consulting in 2025, &pound;2.49bn of disclosed fees (floor), 90 firms, one 56-per-cent profit margin at the top.</p>
+                <p class="piece-excerpt">8 charts, one market. The shape of UK economics consulting in 2025, &pound;2.48bn of disclosed revenue (floor), 90 firms, one 56-per-cent profit margin at the top.</p>
             </a>
 
             <a href="part0.2-uk-and-global-map" class="piece-card">
@@ -262,37 +278,37 @@
             <a href="part2-founders-decade" class="piece-card">
                 <div class="piece-meta">Part 2 &middot; 2000&ndash;2010</div>
                 <h2 class="piece-title">The Founders' Decade</h2>
-                <p class="piece-excerpt">In January 2000, NERA ruled the UK economics market; by 2010, three defectors had built a rival that would eventually post the highest profit-per-partner in British professional services.</p>
+                <p class="piece-excerpt">In January 2000, NERA was a central incumbent in the UK economics market; by 2010, three defectors had built a rival that would eventually post the highest profit-per-partner visible in this project's detailed-account LLP sample.</p>
             </a>
 
             <a href="part3-professionalisation" class="piece-card">
                 <div class="piece-meta">Part 3 &middot; 2010&ndash;2015</div>
                 <h2 class="piece-title">The Professionalisation, PE Arrives</h2>
-                <p class="piece-excerpt">LECG imploded, its European economists scattered across three doors, and a patient English private equity house concluded that a research boutique in the City was worth four times its revenues. The money had begun to arrive.</p>
+                <p class="piece-excerpt">LECG imploded, its European economists scattered across three doors, and a patient English private equity house backed a macro-research boutique at a reported four-times-revenue valuation. The money had begun to arrive.</p>
             </a>
 
             <a href="part4-global-arms-race" class="piece-card">
                 <div class="piece-meta">Part 4 &middot; 2015&ndash;2020</div>
                 <h2 class="piece-title">The Global Arms Race</h2>
-                <p class="piece-excerpt">The Americans cross the Atlantic; private equity writes its first cheque into UK economics research; Brexit throws off a regulatory advisory boom; and one firm quietly posts the highest profit-per-partner in British professional services.</p>
+                <p class="piece-excerpt">US-owned advisory groups expand in London; the project file's earliest private-equity cheque into UK economics research appears; Brexit throws off a regulatory advisory boom; and one firm quietly posts the highest profit-per-partner visible in this project's detailed-account LLP sample.</p>
             </a>
 
             <a href="part5-profit-machine" class="piece-card">
                 <div class="piece-meta">Part 5 &middot; 2020&ndash;2025</div>
                 <h2 class="piece-title">The Profit Machine</h2>
-                <p class="piece-excerpt">An 18-partner competition-economics firm on a single floor of 199 Bishopsgate booked the highest profit-per-partner of any UK professional-services LLP that files in full. McKinsey swallowed Vivid; Jacobs completed a seven-year roll-up of PA Consulting at an implied &pound;3.05 billion enterprise value; Goldman Sachs Alternatives financed a 25-plus Compass Lexecon breakaway.</p>
+                <p class="piece-excerpt">An 18-partner competition-economics firm on a single floor of 199 Bishopsgate booked the highest profit-per-partner visible in this project's detailed-account LLP sample. McKinsey, Jacobs, and Econic show three different buyer or financing routes: acqui-hire, full strategic ownership, and funded breakaway.</p>
             </a>
 
             <a href="part6-the-cma-drain" class="piece-card">
                 <div class="piece-meta">Part 6 &middot; CMA &rarr; private sector</div>
                 <h2 class="piece-title">The CMA Drain</h2>
-                <p class="piece-excerpt">Five senior economists walked out of the CMA in three years; Stefan Hunt walked out twice. Here is where they went, and who paid to bring them in.</p>
+                <p class="piece-excerpt">Five senior economists walked out of the CMA in three years; Stefan Hunt appears at three institutions. Here is where they went, and which platforms hired or financed the moves.</p>
             </a>
 
             <a href="part7-the-people-network" class="piece-card">
                 <div class="piece-meta">Part 7 &middot; Network</div>
                 <h2 class="piece-title">The People Network</h2>
-                <p class="piece-excerpt">One chart, every documented cross-firm move in the UK economics consultancy market 2000&ndash;2025. Who came from where. Who went where. A chord diagram mapping 25 years of churn.</p>
+                <p class="piece-excerpt">A sourced chord diagram of 30-plus documented senior cross-firm moves in the UK economics consultancy market, 2000&ndash;2025. Who came from where. Who went where. The visible senior-move layer, not every career move in the market.</p>
             </a>
         </section>
 
@@ -302,13 +318,13 @@
             <a href="rbb-2m-to-108m" class="piece-card">
                 <div class="piece-meta">RBB Economics &middot; 2002&ndash;2025</div>
                 <h2 class="piece-title">&pound;2m to &pound;108m, 23 years inside RBB Economics</h2>
-                <p class="piece-excerpt">Three economists walked out of NERA London in April 2002 and set up a competition-economics boutique from scratch. 23 years later, the firm they built posts &pound;108m of revenue and &pound;3.34m per partner, the highest documented profit-per-partner in any UK professional-services LLP that files in full.</p>
+                <p class="piece-excerpt">Three economists walked out of NERA London in April 2002 and set up a competition-economics boutique from scratch. 23 years later, the firm they built posts &pound;108m of revenue and &pound;3.34m per partner, the highest profit-per-partner visible in this project's detailed-account LLP sample.</p>
             </a>
 
             <a href="hired-gun-economy" class="piece-card">
                 <div class="piece-meta">FTI &ndash; Orszag &middot; 2023&ndash;2025</div>
                 <h2 class="piece-title">The hired-gun economy</h2>
-                <p class="piece-excerpt">Jonathan Orszag billed at &dollar;2,000 an hour. FTI paid &dollar;72m for his firm in 2006 and watched its market cap rise seven-fold. The next trading day after Econic launched, following FTI&rsquo;s results and guidance, the shares fell 14 per cent. A structural read of whether expert-witness economics belongs inside a listed conglomerate or inside a partnership, and what the British LLPs look like through that lens.</p>
+                <p class="piece-excerpt">Jonathan Orszag billed at &dollar;2,000 an hour. FTI's Lexecon and COMPASS acquisitions built the platform he later left; Econic then launched as a financed breakaway. A structural read of which ownership model best fits expert-witness economics, and what the British LLPs look like through that lens.</p>
             </a>
         </section>
 
@@ -323,7 +339,7 @@
         </section>
 
         <section class="about">
-            <p><strong>About the series.</strong> Written by Leath Al Obaidi in a private capacity. Independent research, not commissioned work. The dataset is a snapshot of the UK economics-consultancy market as of April 2026; the prose is narrative-led but every quantitative claim is grounded in a named primary source (mostly filed Companies House accounts, plus <em>Global Competition Review</em> coverage, press releases, and obituaries). Corrections welcome, contact via <a href="/">leathalobaidi.com</a>.</p>
+            <p><strong>About the series.</strong> Written by Leath Al Obaidi in a private capacity. Independent research, not commissioned work. The dataset is a snapshot of the UK economics-consultancy market as of April 2026; the prose is narrative-led, with quantitative claims grounded in named sources (mostly filed Companies House accounts, plus <em>Global Competition Review</em> coverage, press releases, and obituaries). Corrections welcome, contact via <a href="/">leathalobaidi.com</a>.</p>
         </section>
 
     </div>

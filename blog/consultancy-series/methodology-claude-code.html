@@ -99,13 +99,13 @@
     "I want to understand why a small UK economics consultancy in the City makes its partners more money than a Magic Circle law-firm partner."
   </blockquote>
 
-  <p>There was no list of firms. There was no database. There were no scripts. Python had been left untouched for seven years. What the researcher had, rather, was a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, a local SQLite binary, and a working hunch, unglamorous but stubborn, that the answer was hiding in the public filings of the UK's corporate registry, if anyone could be bothered to pull them all together. Ten days later a 90-firm dataset existed, eight Substack articles had been drafted, 42 charts had been rendered, and a <a href="#">public GitHub repository</a> stood ready for anyone to clone and replicate. The interactive work added up to roughly 60 hours. The same task done manually, pulling 8,293 filing records, mapping 1,664 accounts PDFs, building the financial time series, cross-referencing officer appointments, chasing the press trail across 90 firms, would have consumed considerably more, though no reporter has published a benchmark to say exactly how long.</p>
+  <p>There was no list of firms. There was no database. There were no scripts. Python had been left untouched for seven years. What the researcher had, rather, was a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, a local SQLite binary, and a working hunch, unglamorous but stubborn, that much of the answer was hiding in the public filings of the UK's corporate registry, if anyone could be bothered to pull them together. Ten days later a 90-firm dataset existed, the first Substack drafts had been written, dozens of chart variants had been rendered, and a <a href="#">public GitHub repository</a> stood ready for anyone to clone and replicate. The interactive work added up to roughly 60 hours. The same task done manually, pulling 8,293 filing records, mapping account PDFs, building the financial time series, cross-referencing officer appointments, and chasing the press trail across 90 firms, would have taken materially longer; no published benchmark is claimed here.</p>
 
   <p>What follows is the story of how that happened: what worked, what failed, what the tooling still cannot do, and what another economist or analyst might try next.</p>
 
   <div class="pull-quote">
     <div class="number">60 hours</div>
-    <div class="label">Total interactive time for a project that would have been three months of manual data-journalism work</div>
+    <div class="label">Approximate interactive time for a public-filings research build that would have taken materially longer by hand</div>
   </div>
 
   <hr>
@@ -116,7 +116,7 @@
 
   <h2>What Claude Code actually is</h2>
 
-  <p>First, a definition, because the word "Claude" is now hopelessly overloaded. <strong>Claude.ai</strong> is the chat product: open a browser, type at a model, receive prose back. It remembers the conversation but cannot touch the laptop it is running on. <strong>Claude Code</strong> is something different. It runs in a terminal on a Mac or PC; it has read-write access to the files in whichever directory it was launched from; it can read those files, write new ones, run shell commands, query APIs through <a href="https://modelcontextprotocol.io">Model Context Protocol</a> servers, and iterate on its own output. It is a local-first coding environment in which the model is the collaborator, not the interface. For a research project of this kind, Claude Code is the useful tool. Everything described below happened inside a single Claude Code session running against a folder on a Mac called <code>CH Econ Consultancy /</code>. The SQLite database, the Companies House API calls, the PDF downloads, the chart-rendering HTML, the Substack drafts, all of them lived in the same directory, and the model could touch any of them.</p>
+  <p>First, a definition, because this article distinguishes between <strong>Claude.ai</strong> and <strong>Claude Code</strong>. Claude.ai is the chat product: open a browser, type at a model, receive prose back. Claude Code is different. It runs in a terminal on a Mac or PC; with permission, it can read and write files in the working directory, run shell commands, query APIs through <a href="https://modelcontextprotocol.io">Model Context Protocol</a> servers, and iterate on its own output. In this project it functioned as a local coding collaborator rather than a chat window. Everything described below happened inside a Claude Code session running against a folder on a Mac called <code>CH Econ Consultancy /</code>. The SQLite database, the Companies House API calls, the PDF downloads, the chart-rendering HTML, and the Substack drafts lived in that project directory.</p>
 
   <hr>
 
@@ -129,15 +129,15 @@
   <p>Claude Code received the one-sentence prompt. In the 60 minutes that followed, it did the following.</p>
 
   <ol style="margin-left: 20px; margin-bottom: 24px;">
-    <li style="margin-bottom: 12px;"><strong>Searched the web for UK economics consultancies</strong> and returned a seed list of 20 firms. Nine of them were the expected names, Frontier, Oxera, RBB, Compass Lexecon, Capital Economics. 11 were firms the researcher had never heard of.</li>
-    <li style="margin-bottom: 12px;"><strong>Asked for scope clarification.</strong> Did the project mean pure-play competition boutiques only, or litigation houses too, or the macro research side as well? The answer: all three; and the 20-firm cap was waved off with "start with 90."</li>
+    <li style="margin-bottom: 12px;"><strong>Searched the web for UK economics consultancies</strong> and returned a seed list of 20 firms, including expected names such as Frontier, Oxera, RBB, Compass Lexecon and Capital Economics, plus less familiar candidates for review.</li>
+    <li style="margin-bottom: 12px;"><strong>Asked for scope clarification.</strong> Did the project mean pure-play competition boutiques, litigation houses too, or the macro research side as well? The answer became a combined scope covering those strands; the working scope expanded from a 20-firm seed list to a 90-firm public catalogue.</li>
     <li style="margin-bottom: 12px;"><strong>Looked up each firm at Companies House</strong> via the MCP server, pulling legal structure, incorporation date, registered address, officers, PSCs, charges, and the filing history.</li>
-    <li style="margin-bottom: 12px;"><strong>Downloaded PDFs</strong> of the latest three years of accounts for every firm with public filings, a little over a thousand files.</li>
+    <li style="margin-bottom: 12px;"><strong>Began downloading account PDFs</strong> for firms with public filings, starting with the latest years and later expanding into the historical filing series.</li>
     <li style="margin-bottom: 12px;"><strong>Extracted the key financials</strong> (turnover, operating profit, profit to members, partner count, staff headcount, highest-paid-member where disclosed) and wrote them into a SQLite database with a simple schema.</li>
     <li><strong>Built the first chart</strong>, a rough treemap of the market by revenue, and displayed it.</li>
   </ol>
 
-  <p>None of that would have been possible in the chat product alone. The chat product can describe how one might pull Companies House data. Claude Code actually pulled it, wrote it to a database, and plotted it, while the kettle boiled.</p>
+  <p>The important distinction is workflow, not magic. The chat product can describe how one might pull Companies House data. Claude Code could run the local scripts, write to the database, and render the first chart in the same working directory.</p>
 
   <hr>
 
@@ -145,13 +145,13 @@
   <!-- PARALLEL AGENTS -->
   <!-- ============================================ -->
 
-  <h2>The single biggest speed-up: parallel research agents</h2>
+  <h2>The largest workflow speed-up in this project: parallel research agents</h2>
 
-  <p>The Companies House data was the easy part. The hard part, the part that would have consumed weeks of manual labour, was chasing the press story behind each firm. Who founded Keystone Europe? When did Phoenix Equity Partners buy Capital Economics? What happened to Vivid Economics after McKinsey acquired it in 2021? The same questions, repeated across 90 firms, amount to a week of Google searches, of opening GCR and Bloomberg and Concurrences and PYMNTS, of taking notes, of pasting URLs into a working document. Done serially, it is the sort of task that turns a researcher into a typist.</p>
+  <p>The Companies House data was the easy part. The hard part was chasing the press story behind each firm. Who founded Keystone Europe? When did Phoenix Equity Partners buy Capital Economics? What happened to Vivid Economics after <a href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-acquires-vivid-economics-and-planetrics">McKinsey acquired it in 2021</a>? The same questions, repeated across 90 firms, meant many searches across GCR, Bloomberg, Concurrences, PYMNTS, FT, Reuters, consultancy.uk and firm press releases. Done serially, it is the sort of task that turns a researcher into a typist.</p>
 
-  <p>Claude Code can spawn sub-agents. Four prompts were written, one for each batch of 22 firms, and dispatched in parallel as background tasks. Each agent was given its 22 firms, told to search a specific list of publications, GCR, Concurrences, PYMNTS, Bloomberg, FT, Reuters, consultancy.uk, LinkedIn press releases, and instructed to find dated events: foundings, hires, departures, acquisitions, roll-ups. Every claim had to carry a URL. The output was to be structured Markdown written to <code>research/press_coverage/batch[N].md</code>. The four agents ran simultaneously. Total elapsed time from "dispatch" to "all four finished": roughly 12 minutes. The combined output was about four thousand lines of structured research with citations.</p>
+  <p>In this project, Claude Code was used to spawn sub-agents. Four prompts were written for four batches of firms and dispatched in parallel as background tasks. Each agent was given its batch, told to search a specific list of publications, GCR, Concurrences, PYMNTS, Bloomberg, FT, Reuters, consultancy.uk, LinkedIn press releases, and instructed to find dated events: foundings, hires, departures, acquisitions, roll-ups. Every claim had to carry a URL. The output was structured Markdown written to <code>research/press_coverage/batch[N].md</code>. The four agents ran simultaneously. Total elapsed time from dispatch to all four finished was roughly 12 minutes. The consolidated press-coverage file now runs to more than 1,300 lines of structured research with citations.</p>
 
-  <p>This is the part where the arithmetic of AI-assisted research actually bites. A human doing the same work would spend most of the day waiting for pages to load and then copy-pasting into a spreadsheet. Four agents in parallel compress that serially-bounded task into the time it takes to make lunch.</p>
+  <p>This is the part where the arithmetic of AI-assisted research actually bites. Four agents in parallel compress a serial search-and-note-taking task into a short review queue. The time saved is then spent checking the sources, not admiring the automation.</p>
 
   <div class="pull-quote">
     <div class="number">12 min</div>
@@ -166,7 +166,7 @@
 
   <h2>What the published record already contained</h2>
 
-  <p>Before this series, only one dedicated estimate of the UK economics consultancy market had ever been published. <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr's March 2018 report</a> put the sector at &pound;1.53 billion in 2016/17, growing at 11.3% a year, across 108 UK firms employing around 7,100 people. No comparable study has appeared since. The table below shows what else is out there, and where the gaps sit.</p>
+  <p>The project source search found one dedicated published estimate of the UK economics consultancy market. <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr's March 2018 report</a> put the sector at &pound;1.53 billion in 2016/17, growing at 11.3% a year, across 108 UK firms employing around 7,100 people. The project has not identified a comparable public update. The table below shows what else is out there, and where the gaps sit.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <div class="table-wrap">
@@ -182,7 +182,7 @@
       <tr>
         <td><a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr (March 2018)</a></td>
         <td>Dedicated UK economics consultancy market sizing: &pound;1.53bn, 108 firms, 7,100 employees</td>
-        <td>Yes, the only dedicated market-size estimate. No update since 2018</td>
+        <td>Dedicated market-size estimate used here; no newer Cebr update found in this source set</td>
       </tr>
       <tr>
         <td><a href="https://globalcompetitionreview.com/survey/gcr-100/26th-edition">GCR 100</a> (26th edition, 2026)</td>
@@ -219,9 +219,9 @@
   </div>
   </div>
 
-  <p>Several obvious things are missing from that public record. The CMA does not publish data on its spending with external economics advisors. No private-equity or M&amp;A advisory report has specifically mapped the economics consulting sector. And no firm in the market, not RBB, not Frontier, not Oxera, not CRA, has ever published analysis of its own industry's structure. This series is, so far as a search of the public record can determine, the first publicly available supply-side map of the UK economics consultancy market since the Cebr report of 2018.</p>
+  <p>Several obvious things are missing from that public record. The CMA does not publish data on its spending with external economics advisors. The project has not found a private-equity or M&amp;A advisory report specifically mapping the economics consulting sector, nor a firm-authored public analysis of the industry's structure. On that basis, this series is presented as a publicly available supply-side map of the UK economics consultancy market since the Cebr report of 2018.</p>
 
-  <p>One methodological footnote. Cebr found 108 firms in 2018; this series tracks between 90 and 95. The gap probably reflects three things in combination: firms dissolved between 2018 and 2025; scope differences in what counts as "economics consultancy", Cebr may have included policy and forecasting firms that this series classifies separately; and firms filing under names the Companies House API search did not match.</p>
+  <p>One methodological footnote. Cebr found 108 firms in 2018; this local public catalogue currently tracks 90. The gap probably reflects three things in combination: firms dissolved between 2018 and 2025; scope differences in what counts as "economics consultancy", Cebr may have included policy and forecasting firms that this series classifies separately; and firms filing under names the Companies House API search did not match.</p>
 
   <hr>
 
@@ -292,7 +292,7 @@
   </div>
   </div>
 
-  <p>The <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr March 2018 report</a> identified 108 UK firms using a similar Companies House methodology. The count of roughly 100 in this dataset is lower, likely reflecting firms dissolved between 2018 and 2025, minor scope differences in what counts as "economics consultancy", and firms filing under names the API search did not match. Seven firms in Cebr's count that are missing from this list, and vice versa, represent the margin of error in drawing the boundary of the sector.</p>
+  <p>The <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr March 2018 report</a> identified 108 UK firms using a similar Companies House methodology. The 90-firm public catalogue here is lower, likely reflecting firms dissolved between 2018 and 2025, minor scope differences in what counts as "economics consultancy", and firms filing under names the API search did not match. The difference between the Cebr list and this catalogue should be read as boundary uncertainty, not a precise statement that one list is correct and the other is wrong.</p>
 
   <h3>The BRG placement</h3>
 
@@ -304,7 +304,7 @@
 
   <p>The error surfaced only because a second research agent was dispatched to check three residual questions still nagging at the draft: what had actually happened to Caffarra after Keystone; what was the nature of the Faten Sabry hire at Compass Lexecon; and why had Mark Pragnell briefly re-appeared as a Cebr director in 2024. The Caffarra correction came back first. The draft was edited before publication.</p>
 
-  <p>The broader lesson is simple. <strong>Never trust a single research pass on any claim about a named individual.</strong> Always verify against the person's own public profile, their current LinkedIn headline, or an authoritative third-party listing. The cost of a wrong personnel claim in a Substack piece is a legal threat from the person named.</p>
+  <p>The broader lesson is simple. <strong>Do not rely on a single research pass for any claim about a named individual.</strong> Verify against the person's own public profile, their current LinkedIn headline, or an authoritative third-party listing. The cost of a wrong personnel claim in a public piece is reputational and potentially legal, so the standard has to be higher than "the first agent found it."</p>
 
   <h3>The Sabry misframing</h3>
 
@@ -326,7 +326,7 @@
 
   <h2>The tooling stack</h2>
 
-  <p>The complete inventory of what was used is set out below. Every component is either free or trivially cheap.</p>
+  <p>The complete inventory of what was used is set out below. The stack is mostly public infrastructure, open-source software and subscription tools already noted.</p>
 
   <div class="table-wrap">
     <table class="stage-table">
@@ -355,7 +355,7 @@
       </tr>
       <tr>
         <td><strong>SQLite</strong></td>
-        <td>Project database. Every fact lived here; every chart and article read from here.</td>
+        <td>Project database. Structured facts lived here; charts and articles read from it where possible.</td>
         <td>Free</td>
       </tr>
       <tr>
@@ -377,7 +377,7 @@
   </table>
   </div>
 
-  <p>No paid data subscriptions. No commercial databases. No proprietary research platforms. The entire stack is public infrastructure plus a Claude Code subscription.</p>
+  <p>No paid data subscriptions. No commercial databases. No proprietary research platforms. The working stack is public infrastructure plus a Claude Code subscription.</p>
 
   <hr>
 
@@ -387,7 +387,7 @@
 
   <h2>The single pattern that made the rest work: SQLite as project database</h2>
 
-  <p>The biggest architectural decision of the first hour was to put every fact into a SQLite database rather than a spreadsheet. It sounds obvious to a developer. It is not obvious to an economist. Most professional peers would have used Excel, copied the numbers into PowerPoint, and discovered three weeks later that three different versions of the same revenue figure were floating across three different decks. SQLite delivered one source of truth. Every correction, CEPA incorporated September 2000 not 1993, A&amp;M consolidated, BRG moved to Overlap, went into the database first; the Substack HTML read from the database; when the correction propagated, every chart using that fact re-rendered automatically the next time the page was opened. The cost of a correction was O(1), not O(n).</p>
+  <p>The key architectural decision of the first hour was to put structured facts into a SQLite database rather than keep them only in a spreadsheet. It sounds obvious to a developer. It is not obvious to an economist. SQLite gave the project one place to correct firm names, incorporation dates, categories and financial fields. Corrections such as CEPA incorporated September 2000 not 1993, A&amp;M consolidated, and BRG moved to Overlap went into the database first; the Substack HTML and chart files then read from the corrected source where possible. Corrections still required review, but they no longer depended on hunting through multiple copied tables.</p>
 
   <p>The schema is deliberately small. Ten tables, about 20 useful columns across them. Anyone can reproduce it:</p>
 
@@ -401,7 +401,7 @@ derived_metrics    (firm_id, metric, year, value)
 pe_deals           (year, firm, investor, deal_type, value, source_url)
 founder_timeline   (year, event, firm, people, description, source_url)</code></pre>
 
-  <p>Nothing in that schema is clever. What made it work was the rule that no fact was allowed to live outside it.</p>
+  <p>Nothing in that schema is clever. What made it work was the rule that structured facts should have a database home or an explicit source-note caveat.</p>
 
   <hr>
 
@@ -411,13 +411,13 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>Where the tooling is still not good enough: chart labels</h2>
 
-  <p>The single thing that consumed the most wasted hours was the problem of getting scatter-plot labels to sit next to their data points without overlapping each other. This sounds trivial. It is not. The operating-margin-versus-revenue scatter carries 24 firms; 16 of them cluster into a 400 &times; 200 pixel region in the lower-left quadrant; and <a href="https://echarts.apache.org">ECharts</a>' <code>labelLayout</code> with <code>hideOverlap: true</code> hid some of them, while adding <code>moveOverlap: 'shiftY'</code> moved some of them. Neither option actually solved the problem. The result looked like a traffic accident.</p>
+  <p>The most avoidable time sink was getting scatter-plot labels to sit next to their data points without overlapping each other. This sounds trivial. It is not. The operating-margin-versus-revenue scatter carries 24 firms; 16 of them cluster into a 400 &times; 200 pixel region in the lower-left quadrant; and <a href="https://echarts.apache.org">ECharts</a>' <code>labelLayout</code> with <code>hideOverlap: true</code> hid some of them, while adding <code>moveOverlap: 'shiftY'</code> moved some of them. Neither option actually solved the problem. The result was hard to read.</p>
 
   <p>The approaches tried, and the fate of each, ran as follows. ECharts' built-in label placement was insufficient for 16 overlapping points. Hiding labels for small bubbles while keeping them for big ones lost information. Alternating labels above and below the bubble helped a little. Layering d3-svg-annotation callouts as an SVG overlay on top of the ECharts canvas, driven by <code>chart.convertToPixel</code>, was the approach eventually shipped. labella.js force-based placement along the right edge of the chart worked for timelines; its verdict on scatter remained open. And inlining <a href="https://github.com/tinker10/D3-Labeler">D3-Labeler</a>'s simulated-annealing algorithm, roughly 90 lines of JavaScript, on top of a plain d3 scatter gave the best overall result.</p>
 
-  <p>The honest conclusion: <strong>no JavaScript chart library in 2026 handles the "show every data point with a label and no overlaps" problem as well as <a href="https://github.com/slowkow/ggrepel">ggrepel</a> handles it in R.</strong> For serious scatter-plot storytelling with more than 15 labelled points, render the final chart in R, not JavaScript. Or accept a hybrid: ECharts for the axes and data, d3 for the labels.</p>
+  <p>The honest conclusion: <strong>for this project, none of the JavaScript approaches I tried handled the "show every data point with a label and no overlaps" problem as cleanly as <a href="https://github.com/slowkow/ggrepel">ggrepel</a> handles it in R.</strong> For this project's dense scatter plots, R remained the cleaner final-rendering tool. Or accept a hybrid: ECharts for the axes and data, d3 for the labels.</p>
 
-  <p>Three chart idioms ended up shipping across the eight charts in the Substack. ECharts was used for axis-bound, tooltip-heavy work, the treemap, the bar, the sankey, the stacked bar. ECharts plus a d3-svg-annotation overlay was used for story charts with three to six highlighted points, such as the scatter and the PE deals. And a hand-tuned two-lane ECharts layout with curved arrows was used for the founder-tree timeline. Alongside these, a set of <a href="chart-variants/scatter-variants.html">15-variant gallery pages</a> were built for the scatter, the treemap and the PE timeline, one HTML file per chart, showing 15 rendering approaches on a white background, so that the chosen version could be picked from a parade of alternatives. The gallery is included in the companion GitHub repository.</p>
+  <p>Three chart idioms ended up shipping across the eight charts in the Substack. ECharts was used for axis-bound, tooltip-heavy work, the treemap, the bar, the sankey, the stacked bar. ECharts plus a d3-svg-annotation overlay was used for story charts with three to six highlighted points, such as the scatter and the PE deals. And a hand-tuned two-lane ECharts layout with curved arrows was used for the founder-tree timeline. Alongside these, 15-variant gallery pages were built for the scatter, the treemap and the PE timeline, one HTML file per chart, showing 15 rendering approaches on a white background. The final versions were selected from those alternatives. The gallery is included in the companion GitHub repository.</p>
 
   <hr>
 
@@ -429,7 +429,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <p>After the third draft of Part 6 (The CMA Drain), the prose was run through <a href="https://github.com/hardikpandya/stop-slop">stop-slop</a>, a small post-editor skill that strips the predictable patterns of AI writing. Stop-slop kills em-dashes, replaced with commas or full stops; it kills throat-clearing openers like "Here's the thing", "It turns out", and "The real X is"; it kills binary contrasts of the "Not X. Y." and "The answer isn't X. It's Y." variety; it kills false-agency constructions such as "the decision emerges" and "the market rewards"; it kills adverbs like "really", "simply", "actually", and "literally"; and it kills the narrator-from-a-distance voice that reaches for lines like "Nobody designed this".</p>
 
-  <p>The pre-stop-slop version was saved as <code>part6-the-cma-drain-v1.html</code> and the post-stop-slop version as <code>part6-the-cma-drain.html</code>, so that the two could be compared side by side. The difference is visible. The post-stop-slop version reads tighter and sounds less like an AI. It is also, in places, harsher, stop-slop strips the hedges and softening that make technical writing palatable. The version actually published is usually the v2 with a handful of v1 hedges restored by hand. For anyone using Claude Code to draft articles, stop-slop belongs in the workflow as a required second pass. The first draft is always slop. The edited draft is the one that ships.</p>
+  <p>The pre-stop-slop and post-stop-slop drafts were compared side by side before publication. The difference is visible. The post-stop-slop version reads tighter and sounds less like an AI. It is also, in places, harsher: stop-slop strips the hedges and softening that make technical writing palatable. The version actually published is usually the tighter draft with a handful of earlier hedges restored by hand. For anyone using Claude Code to draft articles, stop-slop belongs in the workflow as a required second pass. In this project the first draft was not publication-ready. The edited draft is the one that ships.</p>
 
   <hr>
 
@@ -462,7 +462,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
       <tr>
         <td>Financial extraction</td>
         <td class="num">12</td>
-        <td>Reading 1,100 PDFs, extracting turnover, profit, partner count. Mostly by hand because the PDFs vary in format.</td>
+        <td>Reading account PDFs, extracting turnover, profit, partner count. Mostly by hand because the PDFs vary in format.</td>
       </tr>
       <tr>
         <td>Parallel research agents</td>
@@ -497,7 +497,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
   </table>
   </div>
 
-  <p>The single largest line item is financial extraction from PDFs, 12 hours of manual reading. This is the one part of the project that would be automated differently next time. PDF extraction with a model-based parser, letting Claude read the PDFs directly via the API, would cut that 12 hours to two. It was not used on the first pass because the model was not yet trusted to read account notes correctly. It would be trusted more now, having been seen to work.</p>
+  <p>The largest line item is financial extraction from PDFs, 12 hours of manual reading. This is the one part of the project that would be automated differently next time. PDF extraction with a model-based parser, letting the model read the PDFs directly through an API, should reduce that line item, but the saving should be benchmarked rather than asserted. It was not used on the first pass because the model was not yet trusted to read account notes correctly. It would be trusted more now, having been seen to work on the manual-review gaps.</p>
 
   <hr>
 
@@ -511,7 +511,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h3>Primary interviews</h3>
 
-  <p>Claude Code cannot ring up John Vickers and ask him what happened in 2002. Every quotation in this series comes from a published source. A data journalist with Vickers's mobile number would produce a different piece. The shape of what the AI builds is always desk research, never fieldwork.</p>
+  <p>Claude Code cannot ring up John Vickers and ask him what happened in 2002. Every quotation in this series comes from a published source. A data journalist with Vickers's mobile number would produce a different piece. The shape of this project is desk research, not fieldwork.</p>
 
   <h3>Reading a room</h3>
 
@@ -519,15 +519,15 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h3>Legal risk</h3>
 
-  <p>Anything defamatory, anything about named individuals, anything that implies a firm is in trouble, it all has to be checked by a human. The model will cheerfully write "X firm is in financial difficulty" if the research agent turned up three press mentions of late filings. Late filings are not financial difficulty; late filings are often just administrative lag. Every personnel claim in this series was triple-sourced before publication, not because the model was wrong, but because no one could afford to be wrong about someone's career on the public record.</p>
+  <p>Anything defamatory, anything about named individuals, anything that implies a firm is in trouble, it all has to be checked by a human. The model can too easily write "X firm is in financial difficulty" if the research agent turned up three press mentions of late filings. Late filings are not financial difficulty; late filings are often just administrative lag. Personnel claims in this series were checked against the project people ledger and source files before publication, with named career-move claims cross-checked against multiple sources where available, because errors about someone's career on the public record would be unfair and hard to undo.</p>
 
   <h3>Deal structure</h3>
 
-  <p>The valuations in Part 6's PE table are reported figures. Cinven's &pound;190m for Flint Global is the Bloomberg number. The actual deal structure, ratchets, earn-outs, vendor loans, warranty caps, is not public and cannot be inferred from Companies House. A dealmaker reading the Substack will notice this and want more; fair enough. It is not the kind of question a public-data project can answer.</p>
+  <p>The valuations in Part 6's PE table are reported figures, not Companies House values. Flint Global is the clearest example: Cinven announced the majority investment, but the deal structure and valuation detail are press-reported rather than official. The actual deal structure, ratchets, earn-outs, vendor loans, warranty caps, is not public and cannot be inferred from Companies House.</p>
 
   <h3>Judgment</h3>
 
-  <p>The hardest thing the model cannot do is decide what the story is. It can find the facts, group them, and write competent prose about them. It cannot decide that the Stefan Hunt three-firm journey is a better opener for Part 6 than the Econic Partners launch, or that "the CMA drain" is a better framing than "partner pay in UK economics consulting". Those decisions came from the human, and they are the decisions that turn a database into an article.</p>
+  <p>The hardest thing to automate is deciding what the story is. The model can find facts, group them, and draft prose about them. It cannot own the editorial choice that the Stefan Hunt three-firm journey is a better opener for Part 6 than the Econic Partners launch, or that "the CMA drain" is a better framing than "partner pay in UK economics consulting". Those decisions came from the human, and they are the decisions that turn a database into an article.</p>
 
   <hr>
 
@@ -537,7 +537,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>What another economist should try next</h2>
 
-  <p>The single most useful move, for any reader who has got this far and is wondering whether they could do the same, is this: <strong>pick a small, well-bounded industry where every participant files public accounts, and build a replica database in a weekend.</strong> Water utilities. Energy traders. Football clubs. Drinks companies. Private schools. Care homes. Veterinary practices. Funeral services. Abattoirs. Every one of them is a 90-to-five-hundred-firm universe with public financials and a story that nobody has yet connected up.</p>
+  <p>The most useful move, for any reader who has got this far and is wondering whether they could do the same, is this: <strong>pick a small, well-bounded industry where most participants file public accounts, and build a replica database in a weekend.</strong> Water utilities. Energy traders. Football clubs. Drinks companies. Private schools. Care homes. Veterinary practices. Funeral services. Abattoirs. Many of them are 90-to-five-hundred-firm universes with public financials and stories that have not been connected up in one place.</p>
 
   <p>The recipe runs as follows.</p>
 
@@ -546,12 +546,12 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
     <li style="margin-bottom: 12px;"><strong>Install Claude Code.</strong> Desktop terminal, not the web app. Connect it to an Anthropic account.</li>
     <li style="margin-bottom: 12px;"><strong>Install the Companies House MCP server</strong> or a similar wrapper. Claude Code can then call CH endpoints directly.</li>
     <li style="margin-bottom: 12px;"><strong>Start with a seed list of 20 firms</strong>, and get Claude Code to expand it. Be ruthless about the definition of "in scope".</li>
-    <li style="margin-bottom: 12px;"><strong>Resolve every firm to a CH number.</strong> This is the anchor. Without it, nothing downstream works.</li>
+    <li style="margin-bottom: 12px;"><strong>Resolve every firm to a CH number where one exists.</strong> This is the anchor. Without it, the downstream financial and officer checks are much weaker.</li>
     <li style="margin-bottom: 12px;"><strong>Put everything in SQLite.</strong> Not Excel. Not a Google Sheet. SQLite.</li>
     <li style="margin-bottom: 12px;"><strong>Run parallel research agents</strong> for press coverage. Four at a time is the sweet spot. More than four and the ability to verify begins to go.</li>
-    <li style="margin-bottom: 12px;"><strong>Verify every dated personnel claim against a primary source before publishing.</strong> This is the only rule that really matters.</li>
+    <li style="margin-bottom: 12px;"><strong>Verify every dated personnel claim against a primary source before publishing.</strong> This is the most important publication rule in the workflow.</li>
     <li style="margin-bottom: 12px;"><strong>Publish the dataset on GitHub under OGL + CC-BY.</strong> Companies House data is public domain under the Open Government Licence. Republishing derivatives is allowed, and should be done.</li>
-    <li><strong>Write about the process.</strong> The methodology article is the one that will do well on LinkedIn. The industry article is the one that will build the niche audience.</li>
+    <li><strong>Write about the process.</strong> The methodology article shows the method to other economists. The industry article carries the substantive market analysis.</li>
   </ol>
 
   <hr>
@@ -563,13 +563,13 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
   <div class="takeaways">
     <h3>Key takeaways</h3>
     <ol>
-      <li>A single 60-hour Claude Code project, run by one person with no prior programming, produced a 90-firm Companies House dataset and a 12-piece Substack series (seven numbered parts plus two visual introductions, one standalone deep-dive, one hired-gun-economy companion piece, and this methodology article). The same work done by hand would have taken considerably longer.</li>
-      <li>The biggest speed-up was the dispatch of four parallel research agents, each covering 22 firms. Total elapsed time: 12 minutes. Manual equivalent: two weeks.</li>
-      <li>The most important architectural choice was SQLite as project database, rather than a spreadsheet. Corrections cost O(1), not O(n).</li>
-      <li>Five errors made it into early drafts and were caught before publication. In every case the model had summarised across unrelated facts into a tidy narrative. The human's job is to notice when the story is too tidy.</li>
-      <li>Label placement on crowded scatter plots remains unsolved in JavaScript. For ggrepel-quality labelling, the final chart belongs in R.</li>
+      <li>A single 60-hour Claude Code project, run by one person with no prior programming, produced a 90-firm Companies House dataset and a 12-article series (seven numbered parts plus two visual introductions, one standalone deep-dive, one hired-gun-economy companion piece, and this methodology article). The same work done by hand would have taken materially longer, but no precise manual benchmark is claimed.</li>
+      <li>The biggest speed-up was the dispatch of four parallel research agents across four firm batches. Total elapsed time was roughly 12 minutes; the time saved still had to be spent on verification.</li>
+      <li>The most important architectural choice was SQLite as project database, rather than a spreadsheet. Corrections went into one structured source first.</li>
+      <li>Five errors made it into early drafts and were caught before publication. In each case the model had summarised across unrelated facts into a tidy narrative. The human's job is to notice when the story is too tidy.</li>
+      <li>Label placement on crowded scatter plots remains difficult in JavaScript. For ggrepel-quality labelling, the final chart is better handled in R.</li>
       <li>Publish the dataset. Companies House data is reusable under the Open Government Licence v3.0. Republishing it on GitHub is credibility for free.</li>
-      <li>The model cannot do primary interviews, legal-risk assessment, deal-structure inference, or decide what the story is. The parts it cannot do are still the parts that matter most.</li>
+      <li>The model cannot do primary interviews, legal-risk assessment, deal-structure inference, or own the editorial judgment. Those remain human responsibilities.</li>
     </ol>
   </div>
 
@@ -577,9 +577,9 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>A final observation</h2>
 
-  <p>The researcher behind this project is not a developer. Python had been untouched for seven years when the prompt was first typed. Everything Claude Code did, it did while the work was described to it in plain English and corrected when it went wrong. The economist's skill that turned out to matter most was not coding. It was knowing which questions were worth asking, and which numbers to distrust. Claude Code replaced the three weeks of data cleaning that normally sit between a research question and a first chart. It did not replace the question. It did not replace the judgment. It did not replace the decision as to whether a story was interesting enough to publish. Those are still the researcher's to make.</p>
+  <p>The researcher behind this project is not a developer. Python had been untouched for seven years when the prompt was first typed. Everything Claude Code did, it did while the work was described to it in plain English and corrected when it went wrong. The economist's skill that turned out to matter most was not coding. It was knowing which questions were worth asking, and which numbers to distrust. Claude Code compressed the data-cleaning stage that normally sits between a research question and a first chart. It did not replace the question. It did not replace the judgment. It did not replace the decision as to whether a story was interesting enough to publish. Those are still the researcher's to make.</p>
 
-  <p>For any reader with access to a Companies House API key, a Claude Code subscription and a free weekend, the tools are now sufficient to build something nobody else has built yet. The markets that remain unmapped are the ones whose participants file boring accounts that nobody has ever bothered to read. Go find one.</p>
+  <p>For any reader with access to a Companies House API key, a Claude Code subscription and a free weekend, the tools are now sufficient to build a serious public-filings map of a neglected market. The markets that remain unmapped are often the ones whose participants file boring accounts that few outsiders have bothered to read. Go find one.</p>
 
   <div class="footer">
     <p><strong>The full dataset</strong> backing this series will be published on GitHub alongside the Substack first-post go-live; the repository URL will be inserted here on publication. 90 public-catalogue firms, 87 internal firm rows, 1,885 officer appointments, 8,293 historical filing records, 15 dated private-equity and strategic-acquisition deals, 30 dated founder-timeline events. Dual-licensed under the Open Government Licence v3.0 (for the Companies House-derived data) and CC-BY-4.0 (for analysis, scripts and charts).</p>
