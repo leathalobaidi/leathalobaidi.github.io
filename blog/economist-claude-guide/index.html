@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Claude for Applied Economists — a 100-page working script teaching data cleaning, scraping, econometrics, writing, Beamer, planning, skills, Git, and data safety with agentic coding tools.">
+<meta property="og:title" content="Claude for Applied Economists — A Working Script">
+<meta property="og:description" content="A complete, hands-on course teaching applied economists to use Claude for research workflows, writing, planning, reusable systems, version control, and safe handling of sensitive data.">
+<meta property="og:type" content="article">
+<link rel="canonical" href="https://leathalobaidi.com/blog/economist-claude-guide">
+<title>Claude for Applied Economists — A Working Script</title>
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --fg: #1f1d1a;
+    --muted: #6b6a66;
+    --border: #e8e5de;
+    --accent: #c2410c;
+    --accent-bg: #fff4ed;
+    --sidebar-bg: #f3f1ea;
+    --code-bg: #eeece4;
+    --link: #0b62c5;
+    --link-hover: #084793;
+    --done: #4b7d4a;
+    --table-head: #ede9df;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+  [data-theme="dark"] {
+    --bg: #1a1917;
+    --fg: #ece8e0;
+    --muted: #9b9892;
+    --border: #33312d;
+    --accent: #ff8a4d;
+    --accent-bg: #2a1e15;
+    --sidebar-bg: #22201d;
+    --code-bg: #2b2925;
+    --link: #79b8ff;
+    --link-hover: #a8d1ff;
+    --done: #7db27b;
+    --table-head: #2b2925;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--fg);
+    background: var(--bg);
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    min-height: 100vh;
+  }
+  aside.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    padding: 1.25rem 1rem 2rem 1.5rem;
+    font-family: var(--sans);
+    font-size: 14px;
+  }
+  aside.sidebar h1 {
+    font-family: var(--sans);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0.25rem 0 1rem 0;
+  }
+  aside.sidebar .controls {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  aside.sidebar button {
+    font: inherit;
+    background: transparent;
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: 0.35rem 0.7rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+  aside.sidebar button:hover {
+    background: var(--accent-bg);
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  aside.sidebar .progress-bar {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+  aside.sidebar .progress-fill {
+    height: 100%;
+    background: var(--done);
+    transition: width 0.3s;
+  }
+  aside.sidebar .progress-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+  aside.sidebar nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  aside.sidebar nav a {
+    display: block;
+    padding: 0.32rem 0.6rem;
+    border-radius: 5px;
+    color: var(--fg);
+    text-decoration: none;
+    border-left: 2px solid transparent;
+    transition: all 0.15s;
+  }
+  aside.sidebar nav a:hover {
+    background: var(--accent-bg);
+    color: var(--accent);
+  }
+  aside.sidebar nav a.active {
+    background: var(--accent-bg);
+    border-left-color: var(--accent);
+    color: var(--accent);
+    font-weight: 600;
+  }
+  aside.sidebar nav .h2 { font-weight: 600; margin-top: 0.6rem; }
+  aside.sidebar nav .h3 { font-weight: 400; padding-left: 1.2rem; font-size: 13px; color: var(--muted); }
+  aside.sidebar nav .h3.active { color: var(--accent); }
+  aside.sidebar nav .done::after {
+    content: "✓";
+    color: var(--done);
+    float: right;
+    font-weight: 700;
+  }
+
+  main {
+    padding: 2.5rem 3rem 4rem 3rem;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  main h1 {
+    font-family: var(--sans);
+    font-size: 2.1rem;
+    line-height: 1.15;
+    margin-top: 2.2rem;
+    margin-bottom: 0.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--border);
+    font-weight: 800;
+    letter-spacing: -0.01em;
+  }
+  main h1:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  main h2 {
+    font-family: var(--sans);
+    font-size: 1.55rem;
+    line-height: 1.2;
+    margin-top: 2rem;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  main h3 {
+    font-family: var(--sans);
+    font-size: 1.2rem;
+    margin-top: 1.6rem;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+  }
+  main h4 {
+    font-family: var(--sans);
+    font-size: 1rem;
+    margin-top: 1.3rem;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  main p { margin: 0.5rem 0 0.9rem 0; }
+  main a { color: var(--link); }
+  main a:hover { color: var(--link-hover); }
+  main strong { font-weight: 700; color: var(--fg); }
+  main em { color: var(--fg); }
+
+  main code {
+    font-family: var(--mono);
+    font-size: 0.88em;
+    background: var(--code-bg);
+    padding: 0.12rem 0.38rem;
+    border-radius: 4px;
+  }
+  main pre {
+    background: var(--code-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.86rem;
+    line-height: 1.5;
+    border: 1px solid var(--border);
+  }
+  main pre code { background: transparent; padding: 0; }
+
+  main blockquote {
+    border-left: 3px solid var(--accent);
+    margin: 1rem 0;
+    padding: 0.3rem 0 0.3rem 1.1rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.4rem 0;
+    font-size: 0.92em;
+    font-family: var(--sans);
+  }
+  main th, main td {
+    padding: 0.55rem 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  main th {
+    background: var(--table-head);
+    font-weight: 600;
+  }
+  main tr:hover td { background: var(--accent-bg); }
+
+  main hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  main ul, main ol {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 1rem 0;
+  }
+  main li { margin: 0.25rem 0; }
+
+  main ul.task-list {
+    list-style: none;
+    padding-left: 0.2rem;
+  }
+  main ul.task-list li {
+    padding: 0.3rem 0.5rem;
+    border-radius: 5px;
+    transition: background 0.2s;
+  }
+  main ul.task-list li:has(input:checked) {
+    background: color-mix(in srgb, var(--done) 9%, transparent);
+    text-decoration: line-through;
+    color: var(--muted);
+  }
+  main ul.task-list label {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  main ul.task-list input[type=checkbox] {
+    margin-top: 0.35rem;
+    accent-color: var(--accent);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .anchor-offset { scroll-margin-top: 1.5rem; }
+
+  .callout {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    background: var(--accent-bg);
+    border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+    margin: 1.2rem 0;
+    font-size: 0.97em;
+  }
+  .callout p:first-child { margin-top: 0; }
+  .callout p:last-child { margin-bottom: 0; }
+  .callout.warn { border-left-color: #b4520a; }
+  .callout .tag {
+    font-family: var(--sans);
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .dialogue {
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 1.2rem 0;
+  }
+  .dialogue .turn {
+    padding: 0.7rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .dialogue .turn:last-child { border-bottom: none; }
+  .dialogue .you { background: var(--bg); }
+  .dialogue .claude { background: var(--code-bg); }
+  .dialogue .who {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+  .dialogue .you .who { color: var(--accent); }
+
+  .pagecount {
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    color: var(--muted);
+    border: 1px dashed var(--border);
+    border-radius: 5px;
+    padding: 0.15rem 0.5rem;
+    display: inline-block;
+    margin-bottom: 0.6rem;
+  }
+
+  @media (max-width: 900px) {
+    body { grid-template-columns: 1fr; }
+    aside.sidebar { position: static; height: auto; max-height: none; border-right: none; border-bottom: 1px solid var(--border); }
+    main { padding: 1.75rem 1.25rem 3rem 1.25rem; }
+  }
+  @media print {
+    body { display: block; }
+    aside.sidebar { display: none; }
+    main { max-width: none; padding: 0; }
+    main h1 { page-break-before: always; }
+    main h1:first-of-type { page-break-before: auto; }
+  }
+  ::selection { background: var(--accent); color: #fff; }
+</style>
+</head>
+<body>
+<aside class="sidebar">
+  <h1>The Script</h1>
+  <div class="controls">
+    <button id="themeToggle" title="Toggle light/dark">🌓 Theme</button>
+    <button id="resetProgress" title="Reset progress">Reset</button>
+    <button id="printBtn" title="Print">Print</button>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="progress-label" id="progressLabel">0 / 0 checked</div>
+  <nav id="toc"></nav>
+</aside>
+<main id="content">
+
+<h1 id="title">Claude for Applied Economists</h1>
+<p style="font-family:var(--sans);font-size:1.05rem;color:var(--muted);margin-top:0;">A working script — roughly one hundred pages — that takes a working economist from <em>"I have a messy folder of CSVs and a deadline"</em> to <em>"I delegate the boring 80% and keep the judgment."</em></p>
+
+<p>This is a <strong>script</strong>, not a reference manual. It is meant to be read front to back, at a desk, with a terminal open. Every chapter has things to type, dialogues to imitate, and exercises with an answer you can check. The voice is deliberately plain: I am talking to an applied economist — someone who knows their <code>reghdfe</code> from their <code>ivreghdfe</code>, who has fought a panel into shape at midnight, and who has never been paid to be a software engineer and does not intend to start now.</p>
+
+<p>The promise of the script is narrow and honest. Agentic coding tools will not write your paper or have your ideas. They <em>will</em> collapse the time between an idea and a first result from days to minutes, and they will do it in whatever language you already use — Stata, R, Python, Julia, or a pile of shell scripts held together by hope. The skill you are learning is not "prompting." It is <strong>delegation under uncertainty</strong>: deciding what to hand off, how to specify it, how to check it, and where to keep your hands firmly on the wheel.</p>
+
+<div class="callout">
+<span class="tag">How to read this</span>
+<p>Each chapter opens with a page marker like <span class="pagecount">pp. 12–24 · ~25 min</span> so you can pace yourself. Tick the checkboxes as you go; progress is saved in your browser. Code blocks are written to be copied. The grey/orange boxes labelled <strong>You</strong> and <strong>Claude</strong> are transcripts of real-shaped sessions — read them as scripts you can perform, not magic incantations.</p>
+</div>
+
+<h2 id="who-this-is-for">Who this is for, and what you will be able to do</h2>
+
+<p>This script assumes you are an applied microeconomist, macroeconomist, or empirical researcher in a related field (finance, public health, political economy). You have a laptop, data you are allowed to touch, and at least one project that is behind schedule. You do not need to know what a "context window" is, what Git is for, or what an "MCP server" does. You will by the end.</p>
+
+<p>When you finish the script you will be able to:</p>
+
+<ul>
+<li>Hand Claude a directory of raw downloads and get back a clean, documented, reproducible panel — and know how to verify it is correct.</li>
+<li>Scrape a website or pull an API (BLS, FRED, Companies House, Eurostat) without writing the scraper yourself, while staying on the right side of terms of service.</li>
+<li>Go from a cleaned dataset to a publication-quality regression table and a robustness appendix in one sitting.</li>
+<li>Draft referee responses, tighten prose in your own voice, and produce a Beamer deck with a non-trivial TikZ figure in minutes.</li>
+<li>Decide <em>before</em> you delegate whether a task needs a written plan, and write one that survives a fresh context window.</li>
+<li>Build a reusable "skill" — a regression-table skill, a referee-response skill — that you and your coauthors invoke by name forever after.</li>
+<li>Use Git as a safety net without memorizing Git, so that no agent and no late-night mistake can destroy three weeks of work.</li>
+<li>Set permissions so the tool physically cannot delete your data, and work safely with confidential, IRB-restricted, or enclave-bound datasets.</li>
+</ul>
+
+<p>That is the whole syllabus. Six substantive parts, a setup chapter, and a capstone. Let us begin where every honest course begins: with the boring setup that everyone wants to skip and no one should.</p>
+
+<hr/>
+
+<h1 id="part-0">Part 0 — Setup, and the Mental Model</h1>
+<span class="pagecount">pp. 1–14 · ~40 min · do this once</span>
+
+<p>Two things have to happen before any of the fun. You have to install the tool, and you have to build a correct mental model of what it is. The second matters more than the first. Most economists who bounce off agentic coding do so not because they could not install it but because they carried over a wrong intuition — either "it is autocomplete" (too small) or "it is a colleague who knows my project" (too generous). Neither is right. Spend the forty minutes.</p>
+
+<h2 id="what-this-actually-is">Lesson 0.1 — What this actually is, in economist terms</h2>
+
+<p>Think of Claude Code as a <strong>very fast research assistant who has read essentially all public code and documentation, has no memory between sessions, cannot see your screen, and will do exactly what you literally asked — including the dumb literal thing — but who can run code, read files, and check its own output if you tell it to.</strong> Hold that sentence in your head; everything in this script is a corollary of it.</p>
+
+<p>Unpack it the way you would unpack an identification assumption:</p>
+
+<ul>
+<li><strong>"Very fast"</strong> — a task that is ninety minutes of fiddly <code>reshape</code> and <code>merge</code> for you is ninety seconds for it. This is the entire economic case. Your time is the scarce input; this lowers its shadow price on routine work.</li>
+<li><strong>"Has read essentially all public code"</strong> — it knows Stata syntax, the <code>fixest</code> package, <code>pandas</code> idioms, BeautifulSoup, regex, LaTeX, TikZ. You do not have to teach it the language. You have to teach it <em>your problem</em>.</li>
+<li><strong>"No memory between sessions"</strong> — close the terminal and it forgets everything except what you wrote down in files. This is why Part 3 (planning) and the <code>CLAUDE.md</code> file exist. Memory is something you engineer, not something you get.</li>
+<li><strong>"Cannot see your screen"</strong> — it does not know your variable means a percentage, that <code>wage2</code> is the deflated one, or that the 1998 wave is unreliable. Unstated context is unavailable context.</li>
+<li><strong>"Will do the dumb literal thing"</strong> — ask it to "remove outliers" and it may drop the 1% tails of every variable, including your treatment dummy. The judgment is yours; the typing is its.</li>
+<li><strong>"Can run code and check itself"</strong> — this is the superpower most people never switch on. An assistant that can execute <code>summarize</code> after a merge and read the result can catch its own mistakes — <em>if you build verification into the request.</em></li>
+</ul>
+
+<div class="callout warn">
+<span class="tag">The one law</span>
+<p><strong>You own the judgment; you delegate the typing.</strong> Every good practice in this script is a way of keeping that line bright. Every disaster you will read about is someone letting the line blur.</p>
+</div>
+
+<h3 id="the-agent-loop">The agent loop (one diagram in words)</h3>
+
+<p>Internally the tool runs a loop: it reads your request and the relevant files, decides on an action (run a command, edit a file, search), takes the action, reads the result, and repeats until it believes the task is done. You do not manage the loop. But you should picture it, because two facts fall out of it:</p>
+
+<ol>
+<li><strong>It works from what it can see.</strong> If the relevant fact is in your head and not in a file or your message, the loop never encounters it. Hence: state the non-obvious.</li>
+<li><strong>It stops when <em>it</em> thinks it is done, not when <em>you</em> are satisfied.</strong> "Done" for the loop means "no error and the request looks addressed." "Done" for you means "correct and defensible in a seminar." Closing that gap is your job, and the script returns to it constantly.</li>
+</ol>
+
+<h2 id="installation">Lesson 0.2 — Installation and your first project folder</h2>
+
+<p>Installation specifics change; the official instructions live at the Claude Code documentation site and you should follow whatever is current there. The shape, however, is stable, and the shape is what you need to understand:</p>
+
+<ul>
+<li>Claude Code is a <strong>command-line program</strong>. You run it from a terminal, sitting "inside" a folder — your project. It can see and act on files in that folder and its subfolders, and nothing else by default. That boundary is your first and best safety feature; respect it.</li>
+<li>You start it by opening a terminal, <code>cd</code>-ing into your project, and launching it. You then talk to it in plain English. It proposes actions; depending on your permission settings it either asks before each one or runs within limits you set (all of Part 6).</li>
+<li>There is also a web/desktop entry point, but the discipline is identical: it operates on a project, in a working directory, with a permission policy.</li>
+</ul>
+
+<p><strong>Set up a clean sandbox project now.</strong> Do not point the tool at your dissertation folder on day one. Make a scratch directory with a copy — never the original — of some non-sensitive data:</p>
+
+<pre><code>mkdir ~/claude-sandbox
+cd ~/claude-sandbox
+# copy in a NON-confidential, throwaway dataset — a copy, never the original
+cp ~/Downloads/some_public_extract.csv ./data_raw.csv</code></pre>
+
+<div class="callout">
+<span class="tag">Why a copy, always</span>
+<p>This is not paranoia, it is the cheapest insurance you will ever buy. The original file, untouched, on disk, is a perfect backup that no agent can corrupt because the agent never sees it. We will make this rigorous in Part 6, but the habit starts on page one: <strong>the tool works on copies; the originals are read-only and elsewhere.</strong></p>
+</div>
+
+<h2 id="first-session">Lesson 0.3 — Your first session: a ten-minute win</h2>
+
+<p>Open the tool in <code>~/claude-sandbox</code>. Here is the script. Type the <strong>You</strong> lines; the <strong>Claude</strong> lines show the shape of what comes back so you know whether you are on track.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Look at data_raw.csv. Don't change anything yet. Tell me: how many rows and columns, what each column appears to be, the share of missing values per column, and anything that looks wrong (duplicate IDs, impossible values, mixed types in a column). Show me the commands you ran.</div>
+<div class="turn claude"><span class="who">Claude</span>(Loads the file, runs a profiling pass, reports: 48,213 rows, 11 columns; <code>hourly_wage</code> has 311 negative values and 4 entries above 99999; <code>state</code> mixes "CA" and "California"; <code>person_id</code> has 27 duplicates; <code>year</code> stored as text. Lists the exact commands used.)</div>
+<div class="turn you"><span class="who">You</span>Good. Don't fix anything. Write what you found to a plain-text file called FINDINGS.md, one bullet per issue, each with the column name and a one-line description. Then stop.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes FINDINGS.md and stops.)</div>
+</div>
+
+<p>That is a complete, useful, <em>safe</em> first session, and it teaches the three habits the whole script rests on:</p>
+
+<ol>
+<li><strong>Look before you leap.</strong> "Don't change anything yet" is the single most valuable phrase you will learn. A profiling pass costs you nothing and tells you whether the tool even understands the data the way you do.</li>
+<li><strong>Make it show its work.</strong> "Show me the commands you ran" converts a black box into something you can audit. You are an empiricist; demand the equivalent of a do-file.</li>
+<li><strong>Externalize memory.</strong> Writing findings to <code>FINDINGS.md</code> means the knowledge survives the session. Next week, in a fresh context with no memory, that file is still there.</li>
+</ol>
+
+<h2 id="claude-md">Lesson 0.4 — CLAUDE.md: the one file that gives the tool a memory</h2>
+
+<p>Because there is no memory between sessions, you create memory by putting durable facts in a file the tool reads automatically: <code>CLAUDE.md</code> in your project root. Treat it as the README you would write for a new RA on their first morning — the things that are true about the project no matter what task is in front of them.</p>
+
+<p>Ask the tool to draft it, then edit it by hand:</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Create a CLAUDE.md for this project. Include: this is a research project, not production software; the analysis language is Stata (do-files in /do, never edit files in /data_raw, treat them as read-only); the canonical dataset after cleaning is data/analysis.dta; key conventions (real wages are wage_r, deflated to 2015 USD; the 1998 wave is known-unreliable and excluded). Keep it under one page. Plain, declarative sentences.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes a concise CLAUDE.md with those rules as short imperative bullets.)</div>
+</div>
+
+<p>A good economist's <code>CLAUDE.md</code> usually contains: the language and why; the directory layout and which directories are read-only; the name of the canonical dataset; variable conventions that are not obvious from names; known data problems and the decisions made about them; and how to run the pipeline end to end. It should <em>not</em> contain task-specific instructions ("now add a control for tenure") — those go in the conversation. The test: would this still be true and useful in six months? If yes, it belongs in <code>CLAUDE.md</code>.</p>
+
+<div class="callout">
+<span class="tag">Exercise 0</span>
+<p>In your sandbox: (a) run the profiling dialogue above on any throwaway dataset; (b) have it write <code>FINDINGS.md</code>; (c) draft and then hand-edit a <code>CLAUDE.md</code> with at least three project-specific conventions; (d) close the terminal, reopen it, and ask <em>"What do you know about this project?"</em> — confirm it recovers the conventions from <code>CLAUDE.md</code> and nothing from the lost session. That contrast <em>is</em> the lesson.</p>
+</div>
+
+<hr/>
+
+<h1 id="part-1">Part 1 — Research Workflows: Cleaning, Scraping, Econometrics</h1>
+<span class="pagecount">pp. 15–40 · ~3 hrs across several sittings</span>
+
+<p>This is the part that pays for the whole script in week one. The claim from the chapter outline is exact: the data cleaning, scraping, and econometric work that "used to take days or weeks" now takes minutes. The catch — and this part is mostly about the catch — is that <em>wrong</em> results also arrive in minutes, and they arrive looking confident. The discipline of this part is: go fast, then verify like the result is going into a top-five submission, because it is.</p>
+
+<h2 id="cleaning">Lesson 1.1 — Data cleaning in your language</h2>
+
+<p>The tool is language-agnostic. The workflow below is shown in Stata, R, and Python so you can use whatever you already use. Nothing here requires you to switch languages, and you should not switch languages to please a tool.</p>
+
+<h3 id="cleaning-the-shape">The shape of a cleaning request</h3>
+
+<p>A good cleaning request has four parts: the input, the transformations, the output, and <strong>the checks</strong>. Most economists write the first three and skip the fourth. The fourth is what separates this from a disaster.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Write a Stata do-file <code>do/01_clean.do</code> that reads <code>data_raw/cps.csv</code> and produces <code>data/analysis.dta</code>. Steps: keep ages 25–64; drop the 1998 wave (known unreliable, see CLAUDE.md); recode <code>state</code> to consistent two-letter codes; deflate <code>wage</code> to 2015 USD using <code>data_raw/cpi.csv</code>, call it <code>wage_r</code>; drop <code>wage_r</code> ≤ 0 or &gt; 500. After cleaning, the do-file must: assert there are no duplicate <code>person_id</code> × <code>year</code>; <code>summarize</code> and <code>tab year</code>; and write the N at each step to <code>logs/01_clean.log</code> so I can see exactly how many rows each filter dropped. Do not delete anything from data_raw.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes the do-file with <code>assert</code> statements and a step-by-step row-count log; runs it; reports the N at each stage and flags that the state recode left 134 unmatched values like "Calif.")</div>
+<div class="turn you"><span class="who">You</span>Show me the 134 unmatched state values and the row counts before and after each filter.</div>
+</div>
+
+<p>Notice the structure. The "drop N rows" log is a <strong>cleaning waterfall</strong> — the same table you would put in an online appendix. By asking for it as part of the job, you get the audit trail for free and you catch the moment a filter drops 40% of the sample when you expected 4%.</p>
+
+<h4 id="cleaning-r">The same job in R</h4>
+<pre><code># You: "Same as above but in R, writing data/analysis.rds, using the
+# tidyverse, and put the row-count waterfall in logs/01_clean.txt.
+# Use a single pipe and stopifnot() for the assertions."
+#
+# Claude produces something like:
+clean &lt;- raw |&gt;
+  filter(age &gt;= 25, age &lt;= 64, year != 1998) |&gt;
+  mutate(state = recode_states(state),
+         wage_r = wage / cpi * cpi_2015) |&gt;
+  filter(wage_r &gt; 0, wage_r &lt;= 500)
+stopifnot(!any(duplicated(clean[, c("person_id","year")])))</code></pre>
+
+<h4 id="cleaning-py">The same job in Python</h4>
+<pre><code># You: "Same again in Python with pandas, writing data/analysis.parquet.
+# Log the row count after every filter with logging, and assert
+# uniqueness on ['person_id','year'] with a clear message."
+#
+# The point is not the code — it is that you specified the CHECKS,
+# so the assertion and the waterfall are in every language version.</code></pre>
+
+<div class="callout warn">
+<span class="tag">The cleaning trap</span>
+<p>"Remove outliers," "fix the dates," "handle missing values," "clean it up" — these are <em>not specifications</em>, they are wishes. The tool will pick a reasonable-looking interpretation and apply it silently to every column. Always say <em>which</em> variable, <em>which</em> rule, and <em>what the expected effect on N is</em>. If you do not know the expected effect on N, that is a sign you should be looking at the data, not delegating yet.</p>
+</div>
+
+<h3 id="cleaning-verify">Verifying a clean you did not write</h3>
+
+<p>You did not type the do-file, so you must audit it as if a first-year RA wrote it — because, in effect, one did. A reliable five-minute audit:</p>
+
+<ul>
+<li><strong>Read the waterfall.</strong> Does every filter drop a plausible number of rows? A surprise is a bug until proven otherwise.</li>
+<li><strong>Spot-check five rows by hand.</strong> "Show me <code>person_id</code> 4471 in the raw file and in the cleaned file, side by side, and explain every difference." If you cannot reconcile one person, you do not understand the cleaning.</li>
+<li><strong>Check the joins.</strong> Merges are where silent disaster lives. "After the CPI merge, how many rows had no CPI match, and what years were they?" An unmatched year means a wrong deflator means every real-wage result is wrong.</li>
+<li><strong>Re-run from scratch.</strong> Delete <code>data/analysis.dta</code>, run only the do-file, confirm it regenerates byte-for-identical. Reproducibility is not a virtue you add later; it is a property you verify now.</li>
+</ul>
+
+<h2 id="reshape-merge">Lesson 1.2 — Reshaping, merging, and building panels</h2>
+
+<p>Panel construction is the canonical "ninety minutes to ninety seconds" task, and also the canonical place to get burned. The instruction that matters is to make the <em>relational logic</em> explicit, because the tool cannot see your data model — it can only see your columns.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>I have three files: <code>firms.csv</code> (one row per firm, columns firm_id, sic, founded), <code>finance.csv</code> (firm_id, year, revenue, employees — one row per firm-year), and <code>deals.csv</code> (deal_id, acquirer_id, target_id, year). Build a firm-year panel keyed on firm_id × year, 2000–2024, balanced on the calendar but unbalanced on existence (a firm only appears from its founded year). Carry firm-level attributes onto every firm-year. From deals, create <code>made_acquisition</code> (1 if the firm was an acquirer that year) and <code>was_acquired</code> (1 the year it was a target). Before writing output, report: the merge match rates, how many firm-years have revenue missing, and whether any firm appears before its founded year.</div>
+<div class="turn claude"><span class="who">Claude</span>(Builds the panel, reports a 1:m and m:1 merge diagnostic table, flags 9 firms with finance rows predating <code>founded</code> — a real data problem you now get to adjudicate.)</div>
+</div>
+
+<p>The flagged firms are the whole point. The tool did not "fix" them — you told it to <em>report</em>, not <em>repair</em>. Now you, the economist, decide: bad founding dates? subsidiaries reusing IDs? You make the call and tell it the rule. That division — machine reports anomalies, human makes the structural call — is the template for every merge you will ever delegate.</p>
+
+<div class="callout">
+<span class="tag">Merge discipline</span>
+<p>For every merge, always ask for the match-rate table (matched, master-only, using-only) <em>before</em> accepting the result. In Stata that is the <code>_merge</code> tabulation; in R/pandas it is an indicator on the join. A merge you have not tabulated is a merge you have not done.</p>
+</div>
+
+<h2 id="scraping">Lesson 1.3 — Scraping and APIs without writing the scraper</h2>
+
+<p>Pulling data from BLS, FRED, Eurostat, the World Bank, SEC EDGAR, or Companies House, or scraping a public table off a webpage, is now a stating-what-you-want exercise. Two responsibilities stay entirely yours and the tool will not raise them for you: <strong>legality/terms of service</strong> and <strong>politeness</strong> (rate limits, caching, identifying your requests). State them yourself, every time.</p>
+
+<h3 id="scraping-api">Official APIs first</h3>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Write a Python script <code>src/pull_fred.py</code> that downloads these FRED series — UNRATE, CPIAUCSL, GDPC1 — using the FRED API. Read the API key from the environment variable <code>FRED_API_KEY</code>; never hardcode it. Cache each raw JSON response to <code>data_raw/fred/&lt;series&gt;.json</code> and only re-download if the cache is older than 24h. Then build a tidy long CSV <code>data/fred_long.csv</code> with columns series, date, value. Print the date range and row count per series.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes the script with env-var key handling, on-disk caching, a polite single-threaded pull, and a summary table.)</div>
+</div>
+
+<p>Three instructions in there are non-negotiable and you must supply them because the tool will not: <strong>key from environment, never hardcoded</strong> (Part 6); <strong>cache raw responses</strong> (so a re-run does not re-hammer the API and so you have the immutable raw pull for your appendix); and <strong>raw layer separate from tidy layer</strong> (so cleaning bugs never force a re-download).</p>
+
+<h3 id="scraping-web">Scraping a web page</h3>
+
+<div class="callout warn">
+<span class="tag">Your call, not the tool's</span>
+<p>Before any scrape you state: is this permitted by the site's terms and <code>robots.txt</code>? Is there an official API or bulk download you should use instead? Are you adding a delay between requests and a descriptive User-Agent so you are not hammering someone's server anonymously? The tool will happily write an aggressive scraper if you ask for one. Do not ask for one. "Scrape politely: one request every 3 seconds, cache every page to disk, identify the request, and stop and ask me if you hit a CAPTCHA or a block" is the standing instruction.</p>
+</div>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>First check: fetch <code>https://example.gov/statistics/robots.txt</code> and the page's terms, and tell me whether scraping the tables at <code>/statistics/regional</code> is permitted. Do not scrape anything yet.</div>
+<div class="turn claude"><span class="who">Claude</span>(Fetches robots.txt and terms, summarizes what is and isn't allowed, recommends the bulk CSV endpoint it found instead of scraping.)</div>
+<div class="turn you"><span class="who">You</span>Good — use the bulk CSV endpoint. Download it to <code>data_raw/regional.csv</code>, don't parse it yet, just confirm the size and first 5 lines.</div>
+</div>
+
+<p>The lesson generalizes: <strong>the first scraping request should never scrape.</strong> It should investigate permission and look for the boring official download that makes scraping unnecessary. Nine times in ten there is one, and the tool will find it faster than you would.</p>
+
+<h2 id="pipelines">Lesson 1.4 — Reproducible pipelines</h2>
+
+<p>You now have cleaning, merging, and pulling scripts. Tie them into one command so that "reproduce the paper" is a single line and so a coauthor (or Reviewer 2, or you in eighteen months) can regenerate everything from raw inputs.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Create a Makefile so that <code>make all</code> runs, in order: pull_fred.py, then 01_clean.do, then 02_panel.do, then 03_analysis.do, then builds tables/main.tex. Each target depends on its inputs so unchanged steps are skipped. Add <code>make clean</code> that deletes everything in data/ and tables/ but NEVER touches data_raw/. Add a one-paragraph "How to reproduce" to the README pointing at <code>make all</code>.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes a dependency-correct Makefile, a guarded <code>clean</code> target that explicitly excludes data_raw, and the README paragraph.)</div>
+</div>
+
+<p>Read the <code>clean</code> target with your own eyes before you ever run it. <code>make clean</code> deleting your raw data because a wildcard was too greedy is a genuine way to lose a project. This is also the first place the script and Part 6 (Safety) touch: a destructive command is exactly the kind of thing you read line by line and run once in a sandbox before trusting.</p>
+
+<h2 id="econometrics">Lesson 1.5 — Econometric analysis and tables</h2>
+
+<p>From a clean panel to results is the highest-leverage delegation in the script, and the one where your judgment is least substitutable. The tool knows the syntax of every estimator. It does not know whether the estimator answers your question. You keep that entirely.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Using data/analysis.dta, estimate the effect of <code>minwage</code> on <code>log_emp</code> with a two-way fixed-effects model: state and year FE, clustered SE at the state level, weighted by <code>pop</code>. Use reghdfe. Then a second spec adding <code>controls</code> (the macro defined in CLAUDE.md). Then an event-study version around <code>treat_year</code>, leads and lags −5 to +5, omitting −1. Export all three to <code>tables/main.tex</code> with esttab — booktabs, 3 decimals, stars 0.10/0.05/0.01, and a note line stating the FE and clustering. Do not interpret the results; just show me the table and the exact commands.</div>
+<div class="turn claude"><span class="who">Claude</span>(Runs the three specifications, exports the LaTeX table, prints the commands. Does not editorialize.)</div>
+</div>
+
+<p>"Do not interpret the results; just show me the table and the exact commands." Say this every time. You do not want a language model's opinion about your coefficient; you want the number and the code that produced it, so that the interpretation is yours and is defensible. The model is a faster Stata, not a coauthor.</p>
+
+<div class="callout warn">
+<span class="tag">Econometric pitfalls the tool will not flag</span>
+<p>It will cheerfully run a regression that is identified by an assumption you would never defend. It does not know your treatment is endogenous, that your "control" is a bad control (a post-treatment collider), that clustering should be at the level of treatment assignment, that your event study has a never-treated/already-treated problem better handled by a modern estimator, or that weights change the estimand. <strong>Every identification and specification decision is yours.</strong> Use it to <em>execute</em> the design you can defend in a seminar, never to <em>choose</em> it for you.</p>
+</div>
+
+<h3 id="robustness">Robustness as a single delegated batch</h3>
+
+<p>Robustness tables are pure delegation gold: tedious, mechanical, and you know exactly what you want. Specify the grid; let it grind.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Take the main spec and produce a robustness appendix as <code>tables/robust.tex</code>: (1) drop California; (2) drop 2008–2010; (3) cluster two-way state and year; (4) winsorize log_emp at 1/99; (5) unweighted; (6) add state-specific linear trends. One column each, same outcome, same coefficient of interest highlighted. Below the table, a short text file <code>tables/robust_notes.txt</code> listing in plain words what each column changes versus the main spec. Don't tell me whether it's "robust" — I'll judge.</div>
+<div class="turn claude"><span class="who">Claude</span>(Produces the six-column table and the plain-language notes file, no editorializing.)</div>
+</div>
+
+<h2 id="debugging">Lesson 1.6 — Debugging your own code</h2>
+
+<p>You can also point it at code you wrote that is broken. The effective pattern is not "fix this" — it is "diagnose, hypothesize, then fix the smallest thing."</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span><code>03_analysis.do</code> errors at line 47 with "conformability error." Don't fix it yet. Explain what is happening at line 47, what state the data is in at that point (run the do-file up to line 46 and describe the matrix dimensions), and give me the two most likely causes ranked by probability.</div>
+<div class="turn claude"><span class="who">Claude</span>(Runs up to the failure, inspects dimensions, explains the mismatch, ranks causes: most likely a collinear dummy dropped by reghdfe changing the matrix; second, a missing-value pattern.)</div>
+<div class="turn you"><span class="who">You</span>Cause 1 is right. Fix only that, change nothing else, and show me the diff.</div>
+</div>
+
+<p>"Don't fix it yet — diagnose first" prevents the single most common failure mode: the tool rewriting half your working code to make one error disappear, introducing three subtler errors you will not notice until the referee does. <strong>Diagnose, confirm the diagnosis yourself, then authorize the smallest possible fix, then read the diff.</strong> That sentence is most of what debugging-by-delegation is.</p>
+
+<div class="callout">
+<span class="tag">Worked example — raw download to regression table, end to end</span>
+<p>Do this in your sandbox as the Part 1 capstone. (1) Pull a public series from FRED with the caching script. (2) Pull or load a second public dataset. (3) Clean each with a logged waterfall. (4) Merge into a panel with a reported match rate. (5) Run a two-way FE spec plus a six-column robustness table. (6) Wire all of it into <code>make all</code>. (7) Delete every generated file and run <code>make all</code> once — it must rebuild everything from raw with no manual steps. The deliverable is not the table. The deliverable is that step 7 works.</p>
+</div>
+
+<div class="callout">
+<span class="tag">Exercises — Part 1</span>
+<p><strong>1A.</strong> Take a messy CSV. Get a profiling pass and a written <code>FINDINGS.md</code> with no changes made. <br/>
+<strong>1B.</strong> Write a logged cleaning script in your language with at least one <code>assert</code>/<code>stopifnot</code> and a row-count waterfall; then reconcile one observation by hand from raw to clean.<br/>
+<strong>1C.</strong> Build a three-file panel and produce the merge match-rate table; identify and adjudicate at least one flagged anomaly.<br/>
+<strong>1D.</strong> Pull one official API with on-disk caching and a key read from the environment.<br/>
+<strong>1E.</strong> Produce a main FE table and a robustness appendix where you specified every column; write the one-paragraph defense of your identification that the tool could <em>not</em> have written for you.</p>
+</div>
+
+<hr/>
+
+<h1 id="part-2">Part 2 — Writing with AI, and Beamer</h1>
+<span class="pagecount">pp. 41–58 · ~2.5 hrs</span>
+
+<p>Coding is half of empirical work. The other half is writing and thinking — the introduction that frames the contribution, the referee response that saves the paper, the slide deck that has to land in a job talk. The chapter outline puts it precisely: the goal is to write <em>in your voice</em>, to accelerate referee responses, and to generate beautiful Beamer decks with complex TikZ figures in seconds. The danger is equally precise and you must internalize it before you touch the tool: <strong>a language model writing your prose with no constraint produces fluent, confident, generic text — and generic confident text is exactly what gets a paper rejected.</strong> Everything in this part is about keeping the thinking yours while delegating the typing, the formatting, and the mechanical revision.</p>
+
+<h2 id="your-voice">Lesson 2.1 — Writing in your voice</h2>
+
+<p>The default register of an unconstrained model is bland consultant-English: hedged, list-happy, fond of "moreover" and "it is important to note." That is not your voice and it is not a good academic voice. You fix this not by asking nicely for "good writing" but by <strong>giving it your actual writing as the specification.</strong></p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Read <code>writing/sample_intro.tex</code> and <code>writing/sample_referee.tex</code> — these are two things I wrote and am happy with. Describe my style back to me in ten concrete bullets: sentence length, how I use the first person, whether I hedge, how I open paragraphs, punctuation habits, vocabulary I avoid. Don't write anything yet.</div>
+<div class="turn claude"><span class="who">Claude</span>(Returns ten specific observations: short declarative openers, "we" only for joint work, no rhetorical questions, em-dashes for asides, never "moreover," prefers active voice, etc.)</div>
+<div class="turn you"><span class="who">You</span>That's accurate. Save it as <code>writing/STYLE.md</code> as a set of imperative rules ("Open paragraphs with a claim, not a transition"). From now on, when I ask you to draft prose, follow STYLE.md and never use the words on the avoid list.</div>
+</div>
+
+<p>You have just built a reusable style specification — the writing analogue of <code>CLAUDE.md</code>. Reference <code>writing/STYLE.md</code> in every drafting request. It is the difference between text that sounds like everyone and text that sounds like you, and it is the single highest-return ten minutes in this part.</p>
+
+<div class="callout warn">
+<span class="tag">The line you do not cross</span>
+<p>The model drafts; you decide what is true. It must never invent a citation, a number, a mechanism, or a result. The standing instruction in every writing session is: <em>"If you do not have the source for a factual claim, write <code>[CITE?]</code> and a one-line note about what is needed — never fabricate a reference or a statistic."</em> A hallucinated citation in a submitted paper is a career problem, not a typo. You catch it by making the model flag its own uncertainty rather than paper over it.</p>
+</div>
+
+<h2 id="drafting">Lesson 2.2 — Drafting, tightening, and editing</h2>
+
+<p>The model is far better at <strong>transforming text you have already thought through</strong> than at generating thought. So generate the thought yourself — even badly — and delegate the transformation.</p>
+
+<h4 id="the-brain-dump">The brain-dump method</h4>
+<p>Talk or type the argument out, ugly and unstructured, in your own words. Then:</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Below is a messy brain-dump of my contribution paragraph. Do not add any ideas, do not add any claims, do not look anything up. Only: reorder for logical flow, cut repetition, and apply STYLE.md. Keep every factual claim exactly as I stated it; if a claim is vague, leave a <code>[SHARPEN?]</code> marker rather than guessing what I meant. [paste 300 ugly words]</div>
+<div class="turn claude"><span class="who">Claude</span>(Returns a tightened ~180-word paragraph in your style, with two <code>[SHARPEN?]</code> markers where your thinking was genuinely unfinished.)</div>
+</div>
+
+<p>The <code>[SHARPEN?]</code> markers are the feature, not the friction. They point exactly at the places where <em>you</em> have not finished thinking — which no model can do for you. Editing-by-delegation is most valuable when it surfaces the holes in your argument instead of smoothing them over.</p>
+
+<h4 id="tightening">Tightening on command</h4>
+<p>Concrete, measurable editing instructions work; vague ones produce vague edits.</p>
+<ul>
+<li>"Cut this 240-word paragraph to under 120 words. Remove hedging. Keep every numeric claim. Do not merge it with the next paragraph."</li>
+<li>"This abstract is 210 words; the journal limit is 150. Cut to 148 without losing the result or the contribution sentence. Show me what you removed."</li>
+<li>"Find every sentence over 40 words and offer a shorter rewrite, side by side. Change nothing else."</li>
+</ul>
+
+<h2 id="referees">Lesson 2.3 — Responding to referees</h2>
+
+<p>The referee response is where this part earns its keep. The work is high-stakes, emotionally taxing, and largely mechanical scaffolding around a few real intellectual decisions. Delegate the scaffolding; keep the decisions.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Here are the three referee reports (<code>referee_1.txt</code>, <code>2</code>, <code>3</code>) and our paper. Do NOT write responses yet. Produce a table: every distinct point each referee raised, one row each, columns = referee, point (paraphrased), type (data / identification / framing / typo), and your guess at severity (blocking / major / minor). Group points that overlap across referees.</div>
+<div class="turn claude"><span class="who">Claude</span>(Returns a deduplicated, triaged table of ~22 points across three referees, overlaps merged.)</div>
+<div class="turn you"><span class="who">You</span>Good triage. For the minor and typo rows only, draft the response-letter entries now, in my voice per STYLE.md, in the standard "We thank the referee… We have done X (see p. N)" form, with a <code>[TODO p.?]</code> where I must fill the page number. Leave every identification point blank — I will write those myself.</div>
+</div>
+
+<p>This is the canonical division of labour for the whole script, stated in its sharpest form. The <strong>triage</strong> (mechanical, the model is good and fast at it) is delegated. The <strong>minor responses</strong> (formulaic) are delegated with placeholders. The <strong>identification responses</strong> — the ones that decide whether the paper survives — you write yourself, because that is the part that is actually your job and the part a model cannot do without inventing. Use the saved hours on those.</p>
+
+<div class="callout">
+<span class="tag">Reusable: the referee-response skill</span>
+<p>Notice that this triage-then-draft workflow is identical for every paper you will ever submit. That is the definition of something that should become a reusable <em>skill</em> — exactly what Part 4 builds. Keep this lesson in mind; you will turn it into a one-word command.</p>
+</div>
+
+<h2 id="beamer">Lesson 2.4 — Beamer decks and TikZ figures</h2>
+
+<p>Beamer and TikZ are the perfect delegation target: the output is mechanically verifiable (it either compiles and looks right or it does not), the syntax is fiddly and universal, and your judgment is about <em>content and emphasis</em>, not about whether you remembered the <code>\node[draw,circle]</code> incantation.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Create <code>slides/talk.tex</code>, a Beamer deck, metropolis theme, 16:9. Structure: title; one-sentence motivation slide; the research question as a single slide with one display equation; data slide (bullet the three sources from CLAUDE.md); identification slide; a results slide that <code>\includegraphics</code> the figure <code>figures/event_study.pdf</code>; one robustness slide; a one-line takeaway. No paragraphs anywhere — telegraphic bullets only. Compile it with latexmk and fix any errors until it builds clean. Show me the PDF page count and the log.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes the deck, compiles, fixes a missing-package error, reports "11 pages, builds clean.")</div>
+</div>
+
+<p>"Compile it and fix errors until it builds clean" is the instruction that turns LaTeX from a time sink into a non-event. You are not asking the model to be right about LaTeX; you are asking it to <em>iterate against the compiler</em> until the compiler is satisfied — verification it can do without you.</p>
+
+<h3 id="tikz">A non-trivial TikZ figure from a description</h3>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>In <code>figures/dag.tex</code>, standalone TikZ, draw the DAG for my identification: nodes Z (instrument), D (treatment), Y (outcome), U (unobserved confounder, dashed). Arrows Z→D, D→Y, U→D, U→Y. U and its arrows in grey and dashed. Lay it out left-to-right, U above. Compile to PDF, show me, and iterate until the U node sits centred above D and Y with no arrow crossings.</div>
+<div class="turn claude"><span class="who">Claude</span>(Produces the DAG, compiles, adjusts node positions over two iterations until the layout is clean, shows the PDF.)</div>
+</div>
+
+<div class="callout warn">
+<span class="tag">You still read every slide</span>
+<p>The deck compiling does not mean the deck is right. The model will happily put a confident, wrong sentence on your identification slide. <strong>Read every slide of a delegated deck before it leaves your laptop</strong> exactly as you read every line of a delegated do-file. The compiler checks syntax; only you check whether the claim on slide 7 is one you will defend when a hand goes up.</p>
+</div>
+
+<div class="callout">
+<span class="tag">Worked example — referee response in one sitting</span>
+<p>Take a real (or past) set of referee reports. Produce the triaged table; delegate the minor/typo letter entries with placeholders; write the two or three identification responses entirely yourself; have the model assemble the full response letter in your STYLE.md voice with every placeholder clearly marked; then do a final read where your only job is to confirm no fabricated citation, no overclaim, and no point silently dropped from the triage table.</p>
+</div>
+
+<div class="callout">
+<span class="tag">Exercises — Part 2</span>
+<p><strong>2A.</strong> Build <code>writing/STYLE.md</code> from two samples of your own writing; then have a paragraph drafted with and without it and articulate, in writing, the difference.<br/>
+<strong>2B.</strong> Brain-dump a contribution paragraph and tighten it via the <code>[SHARPEN?]</code> method; resolve every marker yourself.<br/>
+<strong>2C.</strong> Triage a real referee report into the table; classify which rows you would <em>never</em> delegate and why.<br/>
+<strong>2D.</strong> Produce a compiling Beamer deck and one non-trivial TikZ figure from a verbal description; log how many compile iterations it took.</p>
+</div>
+
+<hr/>
+
+<h1 id="part-3">Part 3 — Research Judgment: Planning Before Delegation</h1>
+<span class="pagecount">pp. 59–72 · ~2 hrs</span>
+
+<p>This is the most intellectually important part of the script and the one with the least typing. The chapter outline frames it exactly: a common practice in agentic coding is to write a plan before doing the work, primarily to preserve the context window — and the real skill is knowing <em>when this is worth doing</em> and how to do it well. Planning is not bureaucracy. It is the mechanism by which you keep the judgment while delegating the labour, and it is the antidote to the structural weakness from Part 0: <em>no memory between sessions, stops when it thinks it is done.</em></p>
+
+<h2 id="when-to-plan">Lesson 3.1 — When planning is worth it (and when it is overhead)</h2>
+
+<p>Not everything needs a plan. Forcing a plan onto a thirty-second task is its own kind of waste. Use this decision rule, which is just expected-cost reasoning you already do instinctively for RA tasks:</p>
+
+<table>
+<thead><tr><th>Plan first when…</th><th>Just do it when…</th></tr></thead>
+<tbody>
+<tr><td>The task touches many files or several pipeline stages</td><td>It is one file, one well-scoped change</td></tr>
+<tr><td>A wrong approach is expensive to unwind (schema, panel structure, identification)</td><td>A wrong approach is cheap to throw away</td></tr>
+<tr><td>It will outlive one context window / one sitting</td><td>It finishes in one short session</td></tr>
+<tr><td>A coauthor or future-you must understand the choices</td><td>It is throwaway exploration you will not keep</td></tr>
+<tr><td>You are not yet sure the task is even well-posed</td><td>The task is mechanical and unambiguous</td></tr>
+</tbody>
+</table>
+
+<p>The deep reason the left column wins is the Part 0 law restated: the loop "stops when it thinks it is done." On a large or ambiguous task, the model's notion of done and yours diverge badly. A plan is a contract that re-aligns them <em>before</em> any irreversible work happens — and crucially, before the cost of being wrong has been paid.</p>
+
+<h2 id="context-cost">Lesson 3.2 — The cost of context, and why plans are written to a file</h2>
+
+<p>The model has a finite working memory (the "context window"). A long, exploratory session fills it with dead ends, abandoned attempts, and noise. As it fills, quality degrades — the model loses the thread exactly as a tired RA would at hour nine. Planning fights this two ways: it does the expensive thinking <em>once</em>, while context is clean; and it writes the conclusion to a <strong>file</strong>, so the plan survives into a fresh session where the model is sharp again.</p>
+
+<div class="callout">
+<span class="tag">The core move</span>
+<p><strong>Think in one session, write the plan to <code>PLAN.md</code>, then execute from <code>PLAN.md</code> in a new session.</strong> The fresh session reads the plan as if a careful colleague left clear instructions — because one did. This is the single most important technique in the script for non-trivial work, and it is the practical reason "no memory between sessions" is a manageable constraint rather than a fatal one.</p>
+</div>
+
+<h2 id="writing-a-plan">Lesson 3.3 — Writing a plan that survives a fresh context</h2>
+
+<p>Use plan mode (or simply: "Do not change anything. Investigate, then propose a plan."). A plan good enough to execute from cold has six parts:</p>
+
+<ol>
+<li><strong>Goal</strong> — one sentence, in terms of the research output, not the code.</li>
+<li><strong>Inputs and the data model</strong> — exact files, keys, the relational logic the model cannot see.</li>
+<li><strong>Steps</strong> — ordered, each producing a checkable artifact.</li>
+<li><strong>Checks</strong> — for each step, how we will know it is correct (the match rate, the assertion, the expected N).</li>
+<li><strong>Decisions already made</strong> — the identification choices, sample restrictions, conventions that are <em>yours</em> and not up for the model to revisit.</li>
+<li><strong>Out of scope / do not touch</strong> — explicitly, including <code>data_raw/</code>.</li>
+</ol>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Do not write or change anything. Investigate the three input files and CLAUDE.md, then propose a <code>PLAN.md</code> to build the firm-year panel and run the event study, using the six-part structure: goal, inputs/data model, ordered steps, per-step checks, decisions already made (I'll fill these), out-of-scope. Mark anywhere you are guessing about my data with <code>[CONFIRM]</code>.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes a draft PLAN.md with several <code>[CONFIRM]</code> markers on data-model assumptions.)</div>
+<div class="turn you"><span class="who">You</span>(Edit the plan by hand: resolve every [CONFIRM], fill the "decisions already made" section with my identification choices, sharpen step 4's check.) Now open a fresh session.</div>
+<div class="turn you"><span class="who">You</span>(new session) Read PLAN.md and CLAUDE.md. Execute steps 1–3 only. After each step run its stated check and show me the result before continuing. Do not start step 4.</div>
+</div>
+
+<p>"Execute steps 1–3 only… do not start step 4" is deliberate. You are converting the model's open-ended loop into a series of small, checkpointed delegations, each with a verification gate <em>you</em> control. The plan made the work legible; the step-gating keeps the judgment yours throughout execution rather than only at the end.</p>
+
+<h2 id="knowing-its-wrong">Lesson 3.4 — Knowing when the model is wrong</h2>
+
+<p>Planning surfaces wrongness early, but you still need the instinct. The model is most dangerous when it is <strong>confidently plausible</strong>. Calibrate your suspicion by domain:</p>
+
+<table>
+<thead><tr><th>Trust more (verify lightly)</th><th>Trust less (verify hard, or do it yourself)</th></tr></thead>
+<tbody>
+<tr><td>Syntax of a known command/package</td><td>Whether that command answers your question</td></tr>
+<tr><td>Mechanical reshape/merge it then tabulates</td><td>Which estimator is appropriate for your design</td></tr>
+<tr><td>LaTeX/TikZ that compiles and you can see</td><td>Whether a control is a good or bad control</td></tr>
+<tr><td>Refactoring code with a test that passes</td><td>Any causal/economic interpretation</td></tr>
+<tr><td>Pulling a documented API</td><td>A factual claim or citation in prose</td></tr>
+</tbody>
+</table>
+
+<p>The pattern: <strong>trust it on the verifiable and mechanical; distrust it on the inferential and the unverifiable.</strong> The right column is, not coincidentally, the list of things that constitute economic expertise. The tool does not erode the value of that expertise — it concentrates your day onto it.</p>
+
+<div class="callout">
+<span class="tag">Exercises — Part 3</span>
+<p><strong>3A.</strong> For three real tasks from your current project, apply the decision rule and justify plan vs. just-do in one sentence each.<br/>
+<strong>3B.</strong> Produce a six-part <code>PLAN.md</code> for a multi-stage task; resolve every <code>[CONFIRM]</code>; execute it from a fresh session with step-gating.<br/>
+<strong>3C.</strong> Deliberately give an underspecified instruction, watch where the model's "done" diverges from yours, and rewrite the instruction so the divergence disappears. Write down the general rule you extracted.</p>
+</div>
+
+<hr/>
+
+<h1 id="part-4">Part 4 — Reusable Systems: Skills, MCPs, Subagents</h1>
+<span class="pagecount">pp. 73–86 · ~2 hrs</span>
+
+<p>The chapter outline calls skills "the foundational agentic coding topic of greatest use to economists," and that is right for one reason: research is <em>repetition</em>. You build the same regression table, run the same referee triage, produce the same summary-stats panel, every project, for years. A skill turns a workflow you have already perfected into a one-word command that you and your coauthors invoke forever after. Subagents let you fan that work out in parallel; MCP servers connect the tool to your data sources. Together they convert one-off cleverness into durable infrastructure.</p>
+
+<h2 id="what-is-a-skill">Lesson 4.1 — What a skill is, and using one</h2>
+
+<p>A skill is a named, reusable instruction package: a folder with a description of when to use it and step-by-step guidance the tool follows when you invoke it. You trigger it by name (typically <code>/name</code>). Think of it as a do-file for <em>process</em> rather than for data — a codified standard operating procedure. Installing a skill is just placing its folder where the tool looks for skills; from then on it is available in every session in that project.</p>
+
+<h2 id="build-a-skill">Lesson 4.2 — Build your own: a regression-table skill</h2>
+
+<p>You will get more from one skill you built for your own workflow than from fifty generic ones. Build the regression-table skill, because every empirical economist needs it and it makes the abstraction concrete.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Create a skill called <code>regtable</code>. Its job: given a dataset, an outcome, a treatment, optional controls, and an FE/cluster spec, produce a publication-quality LaTeX table. Encode my house style as fixed rules: reghdfe; booktabs via esttab; 3 decimals; stars 0.10/0.05/0.01; a note line stating FE and clustering; always also print N and within-R²; ALWAYS run and show <code>summarize</code> on the estimation sample first; NEVER interpret coefficients. Write the skill so that invoking <code>/regtable</code> asks me for any of those inputs I didn't supply. Put it in the skills folder and show me the skill definition.</div>
+<div class="turn claude"><span class="who">Claude</span>(Writes the skill: a description of when to use it plus the encoded procedure and house-style rules; confirms where it was installed.)</div>
+<div class="turn you"><span class="who">You</span>/regtable — dataset data/analysis.dta, outcome log_emp, treatment minwage, controls $controls, state and year FE, cluster state.</div>
+<div class="turn claude"><span class="who">Claude</span>(Follows the skill: prints the sample summarize, runs the spec, exports the styled table, does not interpret.)</div>
+</div>
+
+<p>What you have actually built is a <strong>codified standard</strong>. Your house regression-table style is now executable and consistent across every paper, every coauthor, every RA — and it embeds your safety rule ("always summarize the sample first, never interpret"). That is the real payoff: skills are how you make your <em>judgment</em> reusable, not just your code. Good starter skills for an economist: <code>regtable</code>, <code>summstats</code>, <code>referee-triage</code> (from Part 2), <code>clean-waterfall</code> (the logged-cleaning pattern from Part 1), <code>beamer-deck</code>, <code>repro-check</code> (delete generated files and rebuild from raw).</p>
+
+<h2 id="mcps">Lesson 4.3 — MCP servers: connecting the tool to data sources</h2>
+
+<p>An MCP server is a connector that gives the tool a structured, governed channel to a system — a database, a data vendor's API, a documentation source — instead of you exporting CSVs by hand. For economists the common cases are: a connector to a statistical-data API so series can be pulled by name with provenance; a connector to a SQL warehouse so the tool can query (read-only, by your design) rather than you round-tripping extracts; a connector to a documentation source so it cites real docs rather than recalling them imperfectly.</p>
+
+<div class="callout warn">
+<span class="tag">MCP is a permission surface</span>
+<p>An MCP server is a door into a system, so it is governed by the same discipline as Part 6. Prefer <strong>read-only</strong> connectors for data sources. Know exactly what each connected server can see and do before you connect it. A connector to your confidential warehouse with write access is a connector that can corrupt your confidential warehouse. Treat connecting an MCP server as a security decision, because it is one.</p>
+</div>
+
+<h2 id="subagents">Lesson 4.4 — Subagents for parallel research</h2>
+
+<p>A subagent is a fresh, isolated worker the main session dispatches to do a self-contained job and report back a summary. The two economist use-cases are <strong>parallelism</strong> (independent jobs at once) and <strong>context hygiene</strong> (a noisy search happens in the subagent and only the clean answer returns to your main session — directly the Part 3 context-cost concern).</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Run four robustness checks as parallel subagents, each on a copy of the analysis, each returning only a one-paragraph summary plus the LaTeX for its column: (1) drop CA; (2) drop 2008–2010; (3) two-way clustering; (4) state trends. Don't dump their full logs into this session — just the four summaries and the four table columns.</div>
+<div class="turn claude"><span class="who">Claude</span>(Dispatches four subagents, returns four tight summaries and four table columns; the noisy execution stayed out of the main context.)</div>
+</div>
+
+<p>This is Part 1's robustness batch and Part 3's context discipline combining: the slow, log-heavy work is fanned out and isolated, while your main session stays clean and sharp for the decisions only you make.</p>
+
+<div class="callout">
+<span class="tag">Exercises — Part 4</span>
+<p><strong>4A.</strong> Build and use a <code>regtable</code> skill that encodes your house style and at least one safety rule.<br/>
+<strong>4B.</strong> Convert the Part 2 referee triage into a <code>referee-triage</code> skill and run it on a real report.<br/>
+<strong>4C.</strong> Describe one MCP connector that would help your project and write the read-only/least-privilege rule you would impose on it.<br/>
+<strong>4D.</strong> Run a four-way robustness batch as parallel subagents returning summaries only; compare the main-session context cleanliness against doing it inline.</p>
+</div>
+
+<hr/>
+
+<h1 id="part-5">Part 5 — Version Control: Git, Branches, Collaboration</h1>
+<span class="pagecount">pp. 87–96 · ~1.5 hrs</span>
+
+<p>The chapter outline states the stakes bluntly: agentic coding shifts Git "from an optional nuisance to an absolute necessity." Here is why, with no hand-waving. You are now authorizing a fast agent to modify many files quickly. Without version control, a wrong delegation silently overwrites three weeks of work and there is no undo. With version control, every state of your project is a place you can instantly return to, and "the agent broke something" becomes a thirty-second recovery instead of a catastrophe. You do not need to <em>love</em> Git. You need it to be your seatbelt, and you can let the tool operate most of it.</p>
+
+<h2 id="why-git-now">Lesson 5.1 — Why Git is now non-negotiable</h2>
+
+<p>Three properties of agentic work make Git mandatory rather than optional:</p>
+<ul>
+<li><strong>Speed of change.</strong> The agent can touch twenty files before you finish your coffee. Frequent commits are restore points between those bursts.</li>
+<li><strong>Delegated edits you did not type.</strong> A commit is the clean diff you review to see <em>exactly</em> what the agent changed — your audit log. "Show me the diff" (Part 1's debugging rule) only works if there is a committed baseline to diff against.</li>
+<li><strong>Fearless experiments.</strong> A branch lets you try a risky reanalysis knowing the main line is untouched and one command away.</li>
+</ul>
+
+<h2 id="git-without-memorizing">Lesson 5.2 — Git without memorizing Git</h2>
+
+<p>You can drive Git through the tool in plain English while keeping the dangerous parts under your own hand. The everyday loop:</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Before we start: is this a git repo? If not, initialise one, and write a <code>.gitignore</code> that excludes <code>data_raw/</code>, anything in <code>data/</code> over 50MB, <code>*.log</code>, and <code>.env</code>. Then make an initial commit of the code and config only. Show me what is staged before you commit — I want to see no data files in the list.</div>
+<div class="turn claude"><span class="who">Claude</span>(Initialises the repo, writes <code>.gitignore</code>, stages code/config, shows the staged file list for approval, commits after you confirm.)</div>
+<div class="turn you"><span class="who">You</span>(after a working change) Commit this with a clear message describing what changed and why. Show me the diff first.</div>
+</div>
+
+<div class="callout warn">
+<span class="tag">Read the staged list every time</span>
+<p>"Show me what is staged before you commit" is the Part 6 habit applied to Git. It is how a 14GB confidential extract or a <code>.env</code> full of API keys <em>does not</em> end up committed (and, if you ever push, published). Committing data is one of the few genuinely hard-to-fully-undo mistakes in this script — history is sticky. The thirty-second review prevents it entirely.</p>
+</div>
+
+<h2 id="branches">Lesson 5.3 — Branches: fearless experiments</h2>
+
+<p>A branch is a parallel universe of your project. Use one for anything you are not sure about — a referee's demanded reanalysis, a different identification strategy, a risky refactor. If it works, keep it; if it does not, abandon it and the main line never knew.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Create a branch <code>r2-alt-identification</code> and switch to it. On it, redo the analysis with the instrument the referee suggested. The main branch must stay exactly as it is. When you're done, summarise the difference in the headline coefficient between this branch and main — don't merge anything.</div>
+<div class="turn claude"><span class="who">Claude</span>(Creates and switches to the branch, runs the alternative, reports the coefficient delta versus main, merges nothing.)</div>
+</div>
+
+<p>You can now show your coauthor both results and decide together, with neither version overwriting the other. That is the entire emotional case for branches: they make consequential experiments cheap and reversible, which is exactly the property the rest of this script keeps insisting on.</p>
+
+<h2 id="collaboration">Lesson 5.4 — Collaboration and recovery</h2>
+
+<p>With coauthors, the same tool can explain state and resolve conflicts in plain English: <em>"A coauthor pushed changes; pull them and tell me in plain words what they changed and whether it conflicts with my uncommitted work — do not overwrite anything of mine."</em> And recovery — the reason the seatbelt exists:</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>The last change broke the panel build and I haven't committed since this morning's good commit. Show me the difference between now and that commit. I want to discard today's changes to <code>02_panel.do</code> only — nothing else — and get back to the working version of just that file. Confirm what you'll do before doing it.</div>
+<div class="turn claude"><span class="who">Claude</span>(Shows the diff, states exactly the single-file restore it will perform, waits for your confirmation, then restores only that file.)</div>
+</div>
+
+<div class="callout warn">
+<span class="tag">Destructive Git stays under your hand</span>
+<p>History-rewriting and discard operations (force-push, hard reset, discarding uncommitted work, deleting branches) are the few truly destructive moves here. The rule for the whole script applies in its strongest form: the tool may <em>propose</em> and <em>explain</em> these, but it states exactly what will happen and waits for your explicit confirmation, and you never authorize a force-push to a shared branch on reflex. Frequent commits make you almost never need these anyway — which is the point.</p>
+</div>
+
+<div class="callout">
+<span class="tag">Exercises — Part 5</span>
+<p><strong>5A.</strong> Initialise a repo with a <code>.gitignore</code> that provably excludes raw/large/secret files; verify by inspecting the staged list.<br/>
+<strong>5B.</strong> Do a small change → review diff → commit loop three times with messages that explain <em>why</em>.<br/>
+<strong>5C.</strong> Run a risky reanalysis on a branch, report the coefficient delta versus main, and abandon the branch cleanly.<br/>
+<strong>5D.</strong> Deliberately "break" a file with uncommitted changes and recover just that file to its last good commit, with a confirmation gate.</p>
+</div>
+
+<hr/>
+
+<h1 id="part-6">Part 6 — Safety: Permissions and Sensitive Data</h1>
+<span class="pagecount">pp. 97–110 · ~2 hrs · the part you do not skip</span>
+
+<p>The chapter outline is exact: set up permissions so the tool <em>cannot</em> accidentally delete your data, and adopt real strategies for sensitive or restricted data. This part is last because it presumes everything before it, and first in importance because economists work with data they are legally and ethically responsible for — IRB-restricted, DUA-bound, confidential firm or administrative microdata. A leaked or destroyed restricted dataset is not a bug; it is a breach. Read this part twice.</p>
+
+<h2 id="permission-model">Lesson 6.1 — The permission model</h2>
+
+<p>The tool runs under a permission policy you set. The spectrum runs from "ask me before every action" (slow, maximally safe) through "auto-allow a named safe set, ask for the rest" (the sweet spot for most research work) to "broadly autonomous" (appropriate only in a disposable sandbox with no real data). Two structural facts make this manageable:</p>
+<ul>
+<li><strong>The working directory is a boundary.</strong> By default the tool acts within the project folder. Keeping confidential originals <em>outside</em> the project the tool runs in is itself a control — possibly the strongest one you have.</li>
+<li><strong>Permissions are configurable per project.</strong> Your sandbox can be permissive; your project sitting next to confidential microdata is locked down. Match the policy to the blast radius.</li>
+</ul>
+
+<div class="callout">
+<span class="tag">Recommended posture for a real research project</span>
+<p>Auto-allow read-only and clearly safe actions (reading files, running read-only analysis, building tables). <strong>Require explicit confirmation for every deletion, every overwrite of an input, every command containing <code>rm</code> / <code>git reset --hard</code> / <code>git push</code> / a force flag, and every network send.</strong> Never run in a broadly-autonomous mode in any directory that can reach real data.</p>
+</div>
+
+<h2 id="protecting-data">Lesson 6.2 — Making it physically unable to delete your data</h2>
+
+<p>Permissions are layer one. The robust protections are structural, and you have already been practising them since page one of this script:</p>
+<ol>
+<li><strong>Originals are read-only and outside the project.</strong> What the agent never sees, it can never destroy. The project gets a <em>copy</em>; the source of truth lives elsewhere, ideally on a path the project does not even reference.</li>
+<li><strong>Operating-system read-only permissions on raw data.</strong> Set <code>data_raw/</code> read-only at the filesystem level (e.g. <code>chmod -R a-w data_raw</code>). Now even a correctly-formed delete command fails. Belt and braces.</li>
+<li><strong>Git is the time machine.</strong> Everything not gitignored has a history (Part 5). Frequent commits make destruction recoverable.</li>
+<li><strong>An untouched backup that the workflow never references.</strong> A copy on separate storage that no script and no agent path points at. The backup you cannot reach from the project is the backup that survives the project.</li>
+</ol>
+
+<div class="callout warn">
+<span class="tag">The destructive-command rule</span>
+<p>When the tool proposes anything that deletes or overwrites (an <code>rm</code>, a <code>make clean</code>, a hard reset, a script that opens a file for writing over an input), you do three things, every time, no exceptions: <strong>read the exact command</strong>; <strong>confirm it cannot touch <code>data_raw/</code> or anything irreplaceable</strong>; <strong>run it once in a sandbox first if you are unsure.</strong> "It probably won't delete anything important" is not a risk assessment. The whole reason the originals are read-only and elsewhere is so that the day you are wrong about this is a non-event.</p>
+</div>
+
+<h2 id="sensitive-data">Lesson 6.3 — Sensitive, restricted, and enclave data</h2>
+
+<p>This is the part with legal weight. Categories and the rule for each:</p>
+
+<table>
+<thead><tr><th>Data type</th><th>Working rule</th></tr></thead>
+<tbody>
+<tr><td>Public / open</td><td>Normal workflow; still keep originals read-only.</td></tr>
+<tr><td>Confidential but locally held (licensed firm/admin data under a DUA)</td><td>Tool may run <em>locally</em> on it. <strong>No network sends of the data or its contents.</strong> No raw observations pasted into prompts. Verify your configuration does not transmit file contents externally before you begin; if you cannot verify that, do not use the tool on this data.</td></tr>
+<tr><td>IRB-restricted human-subjects data</td><td>Whatever your protocol says, full stop. If the protocol does not explicitly permit this class of tool touching the data, the answer is no until it is amended. The tool does not override your IRB.</td></tr>
+<tr><td>Secure-enclave data (e.g. Census FSRDC and equivalents)</td><td>Governed entirely by the enclave's rules. You almost certainly cannot run an external tool against enclave data. Do not attempt to move enclave data out to use the tool — that is the violation, not a workaround.</td></tr>
+</tbody>
+</table>
+
+<div class="callout warn">
+<span class="tag">Two rules that are never bent</span>
+<p><strong>(1) Never paste confidential microdata — even a few rows — into a prompt.</strong> Work on the structure, the schema, the code; never the restricted observations themselves. Give the tool a tiny <em>synthetic</em> fixture with the same column names and types and let it write code against that.<br/>
+<strong>(2) The data-use agreement / IRB protocol / enclave rules are the specification, and they outrank any instruction in this script.</strong> If a technique here conflicts with your DUA, the DUA wins, every time, without exception.</p>
+</div>
+
+<h3 id="synthetic-fixture">The synthetic-fixture pattern</h3>
+<p>This is how you get the full speed of the tool with zero exposure of restricted data. You never show it the real data; you show it a fake with the same shape.</p>
+
+<div class="dialogue">
+<div class="turn you"><span class="who">You</span>Here is the schema of a confidential dataset (column names, types, value ranges — NO real rows). Generate a 500-row synthetic CSV <code>data_fixture/fake.csv</code> matching this schema. Write and fully test the cleaning and analysis code against the fixture only. I will run the finished, reviewed code against the real data myself, locally, with the tool offline. Do not ever ask to see the real data.</div>
+<div class="turn claude"><span class="who">Claude</span>(Generates the synthetic fixture, develops and tests all code against it, never requests the real data.)</div>
+</div>
+
+<p>You get the speed; the restricted data never enters a prompt, never crosses the network, never leaves the room. This single pattern reconciles "minutes instead of weeks" with "I am legally responsible for this data." Make it your default for anything non-public.</p>
+
+<h2 id="secrets">Lesson 6.4 — Secrets, keys, and .gitignore</h2>
+
+<p>API keys, database passwords, signed data-download URLs: keep them in environment variables or an untracked secrets file, <em>never</em> in code, prompts, or commits. This closes the loop with Parts 1 and 5 — every API script in Part 1 read its key from the environment for exactly this reason.</p>
+<ul>
+<li>Secrets live in <code>.env</code> (or your OS keychain). <code>.env</code> is in <code>.gitignore</code> from the first commit.</li>
+<li>Code reads <code>os.environ[...]</code> / <code>Sys.getenv(...)</code> — never a literal.</li>
+<li>Standing instruction: <em>"Never hardcode a credential; never print one to a log; never include one in a commit. If you need a secret, read it from the environment and tell me which variable you expect."</em></li>
+<li>Before any push, the staged-list review (Part 5) is also your last secret check.</li>
+</ul>
+
+<h2 id="safety-checklist">Lesson 6.5 — The safety checklist</h2>
+
+<p>Pin this. Run it at the start of any project that touches data you would be unhappy to lose or leak.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"> Originals are copied; the project works on copies; the source of truth is read-only and outside the project.</label></li>
+<li><label><input type="checkbox"> <code>data_raw/</code> is filesystem read-only (<code>chmod -R a-w</code>).</label></li>
+<li><label><input type="checkbox"> An untouched backup exists on separate storage that no script or agent path references.</label></li>
+<li><label><input type="checkbox"> Git is initialised; <code>.gitignore</code> excludes raw data, large files, and <code>.env</code>; I have eyeballed the staged list.</label></li>
+<li><label><input type="checkbox"> Permission policy: read-only auto-allowed; deletions/overwrites/network/force-ops require my explicit confirmation; no autonomous mode near real data.</label></li>
+<li><label><input type="checkbox"> Data classified (public / confidential-local / IRB / enclave) and the matching rule written into <code>CLAUDE.md</code>.</label></li>
+<li><label><input type="checkbox"> For non-public data: a synthetic fixture exists; code is developed against the fixture; real runs are local with no external transmission.</label></li>
+<li><label><input type="checkbox"> No secret is in any file Git tracks; credentials are read from the environment only.</label></li>
+<li><label><input type="checkbox"> I have re-read my DUA / IRB / enclave rules and confirmed nothing in my workflow violates them.</label></li>
+</ul>
+
+<div class="callout">
+<span class="tag">Exercises — Part 6</span>
+<p><strong>6A.</strong> Configure a real-project permission posture and demonstrate the tool asking before a deletion.<br/>
+<strong>6B.</strong> Make <code>data_raw/</code> filesystem read-only and confirm a delete command fails against it.<br/>
+<strong>6C.</strong> Take a (real or invented) restricted schema, generate a synthetic fixture, develop working code entirely against it, and write the <code>CLAUDE.md</code> data-handling rule for that project.<br/>
+<strong>6D.</strong> Run the full Lesson 6.5 checklist against your actual current project and fix every unchecked box before your next session.</p>
+</div>
+
+<hr/>
+
+<h1 id="capstone">Capstone — The Whole Script in One Project</h1>
+<span class="pagecount">pp. 111–116 · a weekend</span>
+
+<p>One project that exercises every part. Pick a real research question you can answer with public data.</p>
+<ol>
+<li><strong>Safety first (Part 6):</strong> set up the project with read-only originals, <code>.gitignore</code>, permission posture, and a <code>CLAUDE.md</code> data-handling rule — <em>before</em> writing any code.</li>
+<li><strong>Version control (Part 5):</strong> initialise Git; commit the empty scaffold.</li>
+<li><strong>Plan (Part 3):</strong> write a six-part <code>PLAN.md</code>; resolve every <code>[CONFIRM]</code>; fill "decisions already made" with your own identification choices.</li>
+<li><strong>Workflows (Part 1):</strong> from a fresh session, execute the plan with step-gating — pull (cached), clean (logged waterfall), panel (reported match rate), main + robustness tables. Commit after each green step.</li>
+<li><strong>Reusable systems (Part 4):</strong> build and use a <code>regtable</code> skill; run the robustness batch as parallel subagents.</li>
+<li><strong>Writing (Part 2):</strong> build <code>STYLE.md</code>; draft the results section by the brain-dump + <code>[SHARPEN?]</code> method; produce a compiling Beamer deck with one TikZ figure.</li>
+<li><strong>Prove reproducibility:</strong> delete every generated file; <code>make all</code> rebuilds everything from raw with no manual step. <em>This passing is the capstone.</em></li>
+<li><strong>Final judgement pass (all parts):</strong> read every diff, every table, every slide, every prose claim. Confirm there is no fabricated citation, no undefended identification, no point silently dropped, no secret committed, no restricted data exposed. Sign off only when you would defend all of it in a seminar.</li>
+</ol>
+
+<hr/>
+
+<h1 id="appendix-a">Appendix A — Prompt Patterns Cheat Sheet</h1>
+
+<table>
+<thead><tr><th>Situation</th><th>Say this</th></tr></thead>
+<tbody>
+<tr><td>Starting on unknown data</td><td>"Don't change anything yet. Profile it and report; write findings to a file; then stop."</td></tr>
+<tr><td>Any transformation</td><td>State the input, the rule per variable, the output, <em>and the check</em> (assertion + expected effect on N).</td></tr>
+<tr><td>Any merge</td><td>"Report the match-rate table before accepting; flag, don't fix, anomalies."</td></tr>
+<tr><td>Any API/scrape</td><td>"Check terms/robots first; prefer the official bulk download; cache raw to disk; key from env; be polite; stop if blocked."</td></tr>
+<tr><td>Econometrics</td><td>"Run exactly this spec; show the commands; do not interpret the results."</td></tr>
+<tr><td>Debugging</td><td>"Don't fix it yet. Diagnose, rank causes; I'll confirm; then smallest fix; show the diff."</td></tr>
+<tr><td>Prose</td><td>"Follow STYLE.md. Add no ideas or claims. Mark <code>[CITE?]</code>/<code>[SHARPEN?]</code> instead of inventing."</td></tr>
+<tr><td>Big/ambiguous task</td><td>"Don't change anything. Investigate and propose a six-part PLAN.md; mark guesses <code>[CONFIRM]</code>."</td></tr>
+<tr><td>Execution</td><td>"Execute steps 1–N only; run each step's check and show me before continuing."</td></tr>
+<tr><td>Anything destructive</td><td>"State exactly what will happen and wait for my explicit confirmation. Confirm it cannot touch data_raw."</td></tr>
+<tr><td>Restricted data</td><td>"Here is the schema, no real rows. Build a synthetic fixture and develop against that only."</td></tr>
+</tbody>
+</table>
+
+<h1 id="appendix-b">Appendix B — Language Quick Recipes</h1>
+<p>The same delegated task, three languages, to prove language-agnosticism. In every case <em>you supply the check</em>; only the syntax differs.</p>
+<ul>
+<li><strong>Stata:</strong> "…after cleaning, <code>assert</code> no dup <code>id year</code>; <code>tab year</code>; write step Ns to a log."</li>
+<li><strong>R:</strong> "…<code>stopifnot(!any(duplicated(...)))</code>; <code>count(year)</code>; write the waterfall to a txt."</li>
+<li><strong>Python:</strong> "…<code>assert df.duplicated(['id','year']).sum()==0</code>; log row count after each filter."</li>
+</ul>
+
+<h1 id="appendix-c">Appendix C — Glossary</h1>
+<table>
+<tbody>
+<tr><td><strong>Context window</strong></td><td>The tool's finite working memory for one session. Fills with noise; degrades. Why we plan and write to files.</td></tr>
+<tr><td><strong>CLAUDE.md</strong></td><td>Project file auto-read each session; durable, project-wide facts and conventions. Engineered memory.</td></tr>
+<tr><td><strong>Plan mode / PLAN.md</strong></td><td>Investigate-and-propose-without-acting; the plan written to a file so it survives a fresh session.</td></tr>
+<tr><td><strong>Skill</strong></td><td>A named, reusable codified procedure (e.g. <code>/regtable</code>) — your judgment made repeatable.</td></tr>
+<tr><td><strong>MCP server</strong></td><td>A governed connector to an external system (DB, data API, docs). A permission surface; prefer read-only.</td></tr>
+<tr><td><strong>Subagent</strong></td><td>An isolated fresh worker for a self-contained job; used for parallelism and context hygiene.</td></tr>
+<tr><td><strong>Synthetic fixture</strong></td><td>Fake data matching a restricted dataset's schema; lets you develop code without exposing real data.</td></tr>
+<tr><td><strong>Waterfall</strong></td><td>The logged row-count-after-each-filter table; your cleaning audit trail and appendix exhibit.</td></tr>
+</tbody>
+</table>
+
+<h1 id="appendix-d">Appendix D — A Four-Week Schedule</h1>
+<ul class="task-list">
+<li><label><input type="checkbox"> <strong>Week 1:</strong> Part 0 + Part 1. Daily: one real cleaning/merge task from a live project, with a logged waterfall and a hand-reconciled observation.</label></li>
+<li><label><input type="checkbox"> <strong>Week 2:</strong> Part 2 + Part 3. Build <code>STYLE.md</code> and a <code>PLAN.md</code> for a real task; execute it step-gated from a fresh session.</label></li>
+<li><label><input type="checkbox"> <strong>Week 3:</strong> Part 4 + Part 5. Build two skills you will actually reuse; put your live project under Git with a clean <code>.gitignore</code>.</label></li>
+<li><label><input type="checkbox"> <strong>Week 4:</strong> Part 6 + Capstone. Run the safety checklist against your real project; complete the capstone over the final weekend.</label></li>
+</ul>
+
+<hr/>
+
+<h1 id="closing">Closing — The Skill You Actually Learned</h1>
+<p>Nothing in these hundred-odd pages was about prompting tricks. The through-line, stated once more because it is the only thing worth remembering: <strong>you delegate the typing, the formatting, the mechanical search, the boilerplate, and the fiddly syntax; you keep — entirely and without apology — the identification, the interpretation, the data-handling responsibility, the destructive decisions, and the final judgement.</strong> The tool collapses the cost of the first list to near zero. That does not make the second list less valuable. It makes it the entire job. Go and use the hours you just got back on the work only an economist can do.</p>
+
+</main>
+<script>
+(() => {
+  const content = document.getElementById('content');
+  const toc = document.getElementById('toc');
+  const progressFill = document.getElementById('progressFill');
+  const progressLabel = document.getElementById('progressLabel');
+  const STORAGE_KEY = 'econ-claude-progress-v1';
+  const THEME_KEY = 'econ-claude-theme-v1';
+
+  const applyTheme = (t) => document.documentElement.setAttribute('data-theme', t);
+  const savedTheme = localStorage.getItem(THEME_KEY)
+    || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  applyTheme(savedTheme);
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    localStorage.setItem(THEME_KEY, next);
+    applyTheme(next);
+  });
+
+  document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+  const checkboxes = [...content.querySelectorAll('ul.task-list input[type=checkbox]')];
+  checkboxes.forEach((cb, i) => {
+    const text = (cb.closest('label')?.textContent || '').trim().slice(0, 80);
+    cb.dataset.cbId = `cb-${i}-${text.replace(/[^a-z0-9]/gi, '').slice(0, 40)}`;
+  });
+  const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+  checkboxes.forEach(cb => { if (saved[cb.dataset.cbId]) cb.checked = true; });
+
+  const updateProgress = () => {
+    const total = checkboxes.length;
+    const done = checkboxes.filter(cb => cb.checked).length;
+    const pct = total ? (done / total) * 100 : 0;
+    progressFill.style.width = pct + '%';
+    progressLabel.textContent = `${done} / ${total} checked (${pct.toFixed(0)}%)`;
+  };
+  const saveProgress = () => {
+    const state = {};
+    checkboxes.forEach(cb => { if (cb.checked) state[cb.dataset.cbId] = true; });
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  };
+  checkboxes.forEach(cb => cb.addEventListener('change', () => { saveProgress(); updateProgress(); }));
+  updateProgress();
+
+  document.getElementById('resetProgress').addEventListener('click', () => {
+    if (!confirm('Reset all checkbox progress?')) return;
+    localStorage.removeItem(STORAGE_KEY);
+    checkboxes.forEach(cb => cb.checked = false);
+    updateProgress();
+  });
+
+  const headings = [...content.querySelectorAll('h1, h2')];
+  const tocItems = [];
+  headings.forEach((h, i) => {
+    if (!h.id) h.id = 'h-' + i + '-' + h.textContent.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40);
+    h.classList.add('anchor-offset');
+    const li = document.createElement('li');
+    const a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent;
+    a.className = h.tagName === 'H1' ? 'h2' : 'h3';
+    a.dataset.targetId = h.id;
+    li.appendChild(a);
+    const ul = document.createElement('ul');
+    ul.appendChild(li);
+    toc.appendChild(ul);
+    tocItems.push({ heading: h, link: a });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const link = toc.querySelector(`a[data-target-id="${entry.target.id}"]`);
+      if (!link) return;
+      if (entry.isIntersecting) {
+        toc.querySelectorAll('a.active').forEach(a => a.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -80% 0px', threshold: 0 });
+  headings.forEach(h => observer.observe(h));
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.matches('input, textarea')) return;
+    if (e.key !== 'j' && e.key !== 'k') return;
+    const active = toc.querySelector('a.active');
+    const idx = tocItems.findIndex(t => t.link === active);
+    let nextIdx = e.key === 'j' ? idx + 1 : idx - 1;
+    nextIdx = Math.max(0, Math.min(tocItems.length - 1, nextIdx));
+    tocItems[nextIdx].heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+})();
+</script>
+</body>
+</html>
