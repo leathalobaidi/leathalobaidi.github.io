@@ -140,7 +140,7 @@
     </thead>
     <tbody>
       <tr><td>1</td><td>Compass Lexecon (FTI)</td><td class="num">14</td><td class="num">18</td><td class="num">32</td></tr>
-      <tr><td>2</td><td>CMA (regulator)</td><td class="num">0</td><td class="num">20</td><td class="num">20</td></tr>
+      <tr><td>2</td><td>CMA (regulator)</td><td class="num">0</td><td class="num">18</td><td class="num">18</td></tr>
       <tr><td>3</td><td>Econic Partners</td><td class="num">18</td><td class="num">0</td><td class="num">18</td></tr>
       <tr><td>4</td><td>Keystone Strategy</td><td class="num">9</td><td class="num">6</td><td class="num">15</td></tr>
       <tr><td>5</td><td>NERA UK</td><td class="num">0</td><td class="num">14</td><td class="num">14</td></tr>
@@ -234,7 +234,8 @@ const NODES = [
   'Cebr',
   'Pragmatix',
   'CMA',
-  'Grant Thornton'
+  'Grant Thornton',
+  'European Commission'
 ];
 
 // Documented senior moves: [from, to, weight]
@@ -265,7 +266,7 @@ const MOVES = [
   // Capital Economics into Pantheon
   ['Capital Economics', 'Pantheon Macro', 3],
   // RBB inbound
-  ['CMA', 'RBB Economics', 2],        // Benoît Durand (senior hire from the European Commission's competition side, 2008)
+  ['European Commission', 'RBB Economics', 2], // Benoît Durand (senior hire from the European Commission's competition side / DG COMP, 2008)
   // AlixPartners → Compass Lexecon (Sangha 2020)
   ['AlixPartners', 'Compass Lexecon', 2],
   // A&M → Grant Thornton (Horn, Williams 2021, founding partners of GT Economic Consulting)
