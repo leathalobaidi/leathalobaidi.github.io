@@ -955,19 +955,6 @@
   border: 0.5px solid var(--ft-border-strong); border-radius: 14px;
   padding: 22px 22px 18px;
 }
-@media (prefers-color-scheme: dark) {
-  .ftecon {
-    --ft-bg: #232321; --ft-text: #F1EFE8; --ft-text2: #B4B2A9; --ft-text3: #888780;
-    --ft-border: rgba(241,239,232,0.15); --ft-border-strong: rgba(241,239,232,0.30);
-    --ft-teal-fill: #085041; --ft-teal-text: #9FE1CB;
-    --ft-blue-fill: #0C447C; --ft-blue-text: #B5D4F4;
-    --ft-purple-fill: #3C3489; --ft-purple-text: #CECBF6;
-    --ft-gray-fill: #444441; --ft-gray-text: #D3D1C7;
-    --ft-green-fill: #27500A; --ft-green-text: #C0DD97;
-    --ft-red-fill: #791F1F; --ft-red-text: #F7C1C1;
-    --ft-amber-fill: #633806; --ft-amber-text: #FAC775;
-  }
-}
 .ftecon .ft-eh { font-size: 16px; font-weight: 600; margin: 24px 0 6px; color: var(--ft-text); letter-spacing: -0.005em; }
 .ftecon .ft-eh:first-child { margin-top: 0; }
 .ftecon .ft-elede { color: var(--ft-text2); font-size: 14px; line-height: 1.55; margin: 0 0 14px; }
@@ -1035,7 +1022,7 @@
         <svg id="ftecon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
         <span id="ftecon-label">Play</span>
       </button>
-      <input type="range" id="ftecon-slider" min="1980" max="2026" value="1980" step="1" aria-label="Year">
+      <input type="range" id="ftecon-slider" min="1980" max="2026" value="2026" step="1" aria-label="Year">
       <div class="ft-year" id="ftecon-year">1980</div>
     </div>
     <div class="ft-legend">
@@ -1264,16 +1251,7 @@
     f.addEventListener('mouseleave', hideTips);
     f.addEventListener('click', function(e) { showTip(e, f); setTimeout(hideTips, 4500); });
   });
-  update(1980);
-  var started = false;
-  if (typeof IntersectionObserver === 'function') {
-    var obs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting && !started) { started = true; setTimeout(play, 600); obs.disconnect(); }
-      });
-    }, { threshold: 0.3 });
-    obs.observe(root.querySelector('.ft-viz'));
-  } else { setTimeout(play, 800); }
+  update(2026);
 })();
 </script>
 
