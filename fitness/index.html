@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Unlisted page: reachable by direct URL, kept out of search engines and not linked from the main site. -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Personal training plans — strength, cycling, and running — built by Leath Al Obaidi.">
+    <title>Fitness — Leath Al Obaidi</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #c45d3e;
+            --color-text: #2a2a2a;
+            --color-text-light: #666666;
+            --color-background: #fafafa;
+            --color-border: #e8e8e8;
+            --color-card-bg: #ffffff;
+            --color-callout-bg: #fef4f1;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --max-width: 680px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        @media (max-width: 640px) {
+            body { font-size: 15px; }
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: 2.5rem; margin-top: 0; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.3rem; }
+        p { margin-bottom: var(--spacing-md); }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            opacity: 0.75;
+            border-bottom-color: var(--color-primary);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: var(--color-background);
+            z-index: 100;
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-md) 0;
+        }
+
+        .nav-container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-text);
+            text-decoration: none;
+            border-bottom: none;
+            cursor: pointer;
+        }
+
+        .nav-brand:hover { color: var(--color-primary); }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            color: var(--color-text);
+            border-bottom: none;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--color-primary);
+            border-bottom: 1px solid var(--color-primary);
+            opacity: 1;
+        }
+
+        @media (max-width: 640px) {
+            .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; }
+        }
+
+        /* Page Section */
+        .page-section {
+            padding-top: var(--spacing-xl);
+            padding-bottom: var(--spacing-xl);
+        }
+
+        /* Project / plan cards */
+        .project-card {
+            background-color: var(--color-card-bg);
+            border: 1px solid var(--color-border);
+            border-radius: 4px; padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg); transition: var(--transition);
+        }
+
+        .project-card:hover {
+            border-color: var(--color-primary);
+            box-shadow: 0 2px 12px rgba(196, 93, 62, 0.08);
+        }
+
+        .project-header {
+            display: flex; align-items: flex-start;
+            justify-content: space-between; gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+        }
+
+        .project-header h2 { margin: 0; font-size: 1.5rem; }
+
+        .project-badges { display: flex; gap: var(--spacing-xs); flex-shrink: 0; flex-wrap: wrap; }
+
+        .badge {
+            display: inline-block; font-size: 0.75rem; font-weight: 600;
+            padding: 0.25rem 0.6rem; border-radius: 3px; letter-spacing: 0.02em; white-space: nowrap;
+        }
+
+        .badge-chrome { background-color: #e8f5e9; color: #2e7d32; }
+        .badge-mit { background-color: #fff8e1; color: #f57f17; }
+        .badge-v3 { background-color: #e3f2fd; color: #1565c0; }
+
+        .project-description { color: var(--color-text); line-height: 1.8; margin-bottom: var(--spacing-md); }
+
+        .project-tech { display: flex; gap: var(--spacing-xs); flex-wrap: wrap; margin-bottom: var(--spacing-md); }
+
+        .tech-tag {
+            font-size: 0.8rem; padding: 0.2rem 0.5rem;
+            background-color: #f5f5f5; border: 1px solid var(--color-border);
+            border-radius: 3px; color: var(--color-text-light);
+        }
+
+        .project-links {
+            display: flex; gap: var(--spacing-md); flex-wrap: wrap;
+            padding-top: var(--spacing-md); border-top: 1px solid var(--color-border);
+        }
+
+        .project-link {
+            display: inline-flex; align-items: center;
+            gap: 0.4rem; font-size: 0.9rem; font-weight: 600;
+        }
+
+        .project-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            color: var(--color-text-light);
+            font-size: 0.9rem;
+            margin-top: var(--spacing-xl);
+        }
+
+        .footer-content {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .footer-social {
+            display: flex; justify-content: center;
+            gap: var(--spacing-md); margin-top: var(--spacing-md);
+        }
+
+        .footer-social a { color: var(--color-text-light); font-size: 0.85rem; }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.8rem; }
+            h2 { font-size: 1.4rem; }
+            h3 { font-size: 1.1rem; }
+            .container { padding: 0 var(--spacing-sm); }
+            .nav-container { padding: 0 var(--spacing-sm); }
+            .project-header { flex-direction: column; }
+            .project-links { flex-direction: column; gap: var(--spacing-sm); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Leath</a>
+            <ul class="nav-links">
+                <li><a href="/#projects">Projects</a></li>
+                <li><a href="/blog">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <section class="page-section">
+            <h1>Fitness</h1>
+            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-xl);">Training plans I'm running for myself — strength, cycling, and running. Each is a self-built dashboard with the full week-by-week schedule, rules, and zones. This page is unlisted: reachable by direct link, but not part of the main site.</p>
+
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Bigger Leaner Stronger</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-mit">Strength</span>
+                    </div>
+                </div>
+                <p class="project-description">A workout planner built around Mike Matthews' <em>Bigger Leaner Stronger</em> programme. Tracks progress across the five-day split, with sets, reps, and weight progression baked in.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Strength training</span>
+                    <span class="tech-tag">Progress tracking</span>
+                </div>
+                <div class="project-links">
+                    <a href="../bls/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Planner
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Fred Whitton Challenge — 2027 Plan</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-chrome">Cycling</span>
+                        <span class="badge badge-v3">2027</span>
+                    </div>
+                </div>
+                <p class="project-description">A full training build-up for the Fred Whitton Challenge — 112 miles and ~12,000ft of climbing across the Lake District passes. Race day: Sunday 9 May 2027. Plan covers base, build, peak, and taper, with elevation, mileage, and TSS targets per session.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Cycling</span>
+                    <span class="tech-tag">Endurance</span>
+                    <span class="tech-tag">Lake District</span>
+                </div>
+                <div class="project-links">
+                    <a href="../fwc/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Plan
+                    </a>
+                </div>
+            </article>
+
+            <article class="project-card">
+                <div class="project-header">
+                    <h2>Summer Base — 13-Week Running Plan</h2>
+                    <div class="project-badges">
+                        <span class="badge badge-chrome">Running</span>
+                        <span class="badge badge-v3">2026</span>
+                    </div>
+                </div>
+                <p class="project-description">A 13-week aerobic base programme built around Zone 2 effort, walk-break intervals, and integrated strength work. Runs from 29 April to 26 July 2026. Each session lists duration, distance, run-walk ratio, HR target, pace cue, and fuelling protocol — building from a 50-minute long run to 130 minutes by the final Sunday.</p>
+                <div class="project-tech">
+                    <span class="tech-tag">Marathon</span>
+                    <span class="tech-tag">Zone 2</span>
+                    <span class="tech-tag">Heart rate training</span>
+                </div>
+                <div class="project-links">
+                    <a href="../run/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Plan (v1)
+                    </a>
+                    <a href="../run2/" class="project-link">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        Open Plan (v2 — expanded)
+                    </a>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://leathalobaidi.substack.com/">Substack</a>
+                <a href="https://linkedin.com/in/leath-al-obaidi/">LinkedIn</a>
+                <a href="https://x.com/pluckup_courage">X</a>
+                <a href="https://github.com/leathalobaidi">GitHub</a>
+            </div>
+            <p style="margin-top:var(--spacing-md);">&copy; 2026 Leath Al Obaidi</p>
+        </div>
+    </footer>
+
+</body></html>
