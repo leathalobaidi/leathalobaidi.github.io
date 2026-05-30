@@ -1129,7 +1129,9 @@
       </svg>
       <div class="ft-tip" id="ftecon-tip"></div>
     </div>
+  </figure>
 
+  <figure class="ftecon" id="ftecon-own" style="margin-top: 32px;">
     <figcaption class="ft-eh">Corporate ownership: how FTI, LECG and the Lexecons fit together</figcaption>
     <p class="ft-elede">Several of the firms above are subsidiaries or successors of larger groups. Lexecon Inc (Chicago) and COMPASS were merged by FTI to form Compass Lexecon in 2008. LECG was the largest casualty: liquidated in 2011, with David Teece spinning out Berkeley Research Group the year before, and Jorge Padilla's European competition team joining Compass Lexecon as part of the dissolution.</p>
     <div class="ft-legend">
@@ -1205,9 +1207,9 @@
   var cursor2 = document.getElementById('ftecon-cursor2');
   var tip1 = document.getElementById('ftecon-tip');
   var tip2 = document.getElementById('ftecon-tip2');
-  var firms = root.querySelectorAll('.firm');
-  var events = root.querySelectorAll('.event');
-  var lineages = root.querySelectorAll('.lineage');
+  var firms = document.querySelectorAll('#ftecon .firm, #ftecon-own .firm');
+  var events = document.querySelectorAll('#ftecon .event, #ftecon-own .event');
+  var lineages = document.querySelectorAll('#ftecon .lineage, #ftecon-own .lineage');
   function yearToX(y) { return 25 + (y - 1980) * 13.7; }
   function update(year) {
     yearDisplay.textContent = year;
