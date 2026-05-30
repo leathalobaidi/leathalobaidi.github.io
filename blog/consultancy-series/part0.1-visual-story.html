@@ -690,7 +690,7 @@
       <p><strong>Baringa started smaller and scaled faster.</strong> A management-consulting generalist from day one, it crossed £100m in the mid-2010s, £200m in 2021, and approaches £500m today with 178 partners signed onto the LLP register. In the filed-account series, the two firms therefore show two different working models rather than one common template.</p>
     </div>
     <div>
-      <p><strong>Frontier is the oldest of the three and the quietest.</strong> <a href="https://find-and-update.company-information.service.gov.uk/company/03752719">Companies House records Frontier Economics Ltd as incorporated on 15 April 1999</a>; the project founder file records Simon Gaysford and Daniel Elliott, both former directors of London Economics Ltd, in the launch cohort. <a href="https://find-and-update.company-information.service.gov.uk/company/03752719/officers">Frontier's officer filings</a> then show Philip Burns joining the board in September 1999, Sarah Hogg (Baroness Hogg) as chair later in 1999, Michael Webb in January 2000, and Zoltan Biro by April 2000; the filed-account series runs to £97m over 26 years; and <a href="https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i7811-wanting-to-be-different-how-we-created-frontier/">Frontier's own history describes the firm as employee-owned throughout</a>. Partners and staff share equity, profit is a residual after salaries, and if you toggle Frontier on you see the straightest line in the industry.</p>
+      <p><strong>Frontier is the oldest of the three and the quietest.</strong> <a href="https://find-and-update.company-information.service.gov.uk/company/03752719">Companies House records Frontier Economics Ltd as incorporated on 15 April 1999</a>; the project founder file records Simon Gaysford and Daniel Elliott, both former directors of London Economics Ltd, in the launch cohort. <a href="https://find-and-update.company-information.service.gov.uk/company/03752719/officers">Frontier's officer filings</a> then show Philip Burns joining the board in September 1999, Michael Webb in January 2000, and Zoltan Biro by April 2000; the filed-account series runs to £97m over 26 years; and <a href="https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i7811-wanting-to-be-different-how-we-created-frontier/">Frontier's own history describes the firm as employee-owned throughout</a>. Partners and staff share equity, profit is a residual after salaries, and if you toggle Frontier on you see the straightest line in the industry.</p>
       <p>The early-year figures here are approximations reconciled against each firm's own published histories. The FY21-onwards data points are read from Companies House filings.</p>
     </div>
   </div>
@@ -938,6 +938,344 @@
     </div>
   </div>
 </section>
+
+<!-- ====== CHAPTER 9: ECON FAMILY TREE 1980-2026 + OWNERSHIP CHAIN (self-contained, namespaced .ftecon) ====== -->
+<style>
+.ftecon {
+  --ft-bg: #FFFFFF; --ft-text: #1F1F1C; --ft-text2: #5F5E5A; --ft-text3: #888780;
+  --ft-border: rgba(31,31,28,0.12); --ft-border-strong: rgba(31,31,28,0.25);
+  --ft-teal-fill: #E1F5EE; --ft-teal-text: #085041;
+  --ft-blue-fill: #E6F1FB; --ft-blue-text: #0C447C;
+  --ft-purple-fill: #EEEDFE; --ft-purple-text: #3C3489;
+  --ft-gray-fill: #F1EFE8; --ft-gray-text: #444441;
+  --ft-green-fill: #EAF3DE; --ft-green-text: #27500A;
+  --ft-red-fill: #FCEBEB; --ft-red-text: #791F1F;
+  --ft-amber-fill: #FAEEDA; --ft-amber-text: #633806;
+  background: var(--ft-bg);
+  border: 0.5px solid var(--ft-border-strong); border-radius: 14px;
+  padding: 22px 22px 18px;
+}
+@media (prefers-color-scheme: dark) {
+  .ftecon {
+    --ft-bg: #232321; --ft-text: #F1EFE8; --ft-text2: #B4B2A9; --ft-text3: #888780;
+    --ft-border: rgba(241,239,232,0.15); --ft-border-strong: rgba(241,239,232,0.30);
+    --ft-teal-fill: #085041; --ft-teal-text: #9FE1CB;
+    --ft-blue-fill: #0C447C; --ft-blue-text: #B5D4F4;
+    --ft-purple-fill: #3C3489; --ft-purple-text: #CECBF6;
+    --ft-gray-fill: #444441; --ft-gray-text: #D3D1C7;
+    --ft-green-fill: #27500A; --ft-green-text: #C0DD97;
+    --ft-red-fill: #791F1F; --ft-red-text: #F7C1C1;
+    --ft-amber-fill: #633806; --ft-amber-text: #FAC775;
+  }
+}
+.ftecon .ft-eh { font-size: 16px; font-weight: 600; margin: 24px 0 6px; color: var(--ft-text); letter-spacing: -0.005em; }
+.ftecon .ft-eh:first-child { margin-top: 0; }
+.ftecon .ft-elede { color: var(--ft-text2); font-size: 14px; line-height: 1.55; margin: 0 0 14px; }
+.ftecon .ft-controls { display: flex; align-items: center; gap: 12px; margin: 0 0 10px; }
+.ftecon button.ft-play { display: inline-flex; align-items: center; gap: 6px; background: var(--ft-bg); color: var(--ft-text); border: 0.5px solid var(--ft-border-strong); border-radius: 8px; padding: 7px 13px; font: inherit; font-size: 13px; cursor: pointer; }
+.ftecon button.ft-play svg { width: 13px; height: 13px; fill: currentColor; }
+.ftecon input[type=range] { flex: 1; height: 24px; -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer; }
+.ftecon input[type=range]::-webkit-slider-runnable-track { height: 4px; background: var(--ft-border); border-radius: 2px; }
+.ftecon input[type=range]::-moz-range-track { height: 4px; background: var(--ft-border); border-radius: 2px; }
+.ftecon input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--ft-text); border-radius: 50%; margin-top: -7px; border: none; }
+.ftecon input[type=range]::-moz-range-thumb { width: 18px; height: 18px; background: var(--ft-text); border-radius: 50%; border: none; }
+.ftecon .ft-year { font-size: 20px; font-weight: 600; min-width: 56px; font-variant-numeric: tabular-nums; text-align: right; color: var(--ft-text); }
+.ftecon .ft-legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 14px; font-size: 12px; color: var(--ft-text2); }
+.ftecon .ft-li { display: inline-flex; align-items: center; gap: 6px; }
+.ftecon .ft-sw { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+.ftecon .ft-viz { width: 100%; height: auto; display: block; margin-bottom: 0.5rem; }
+.ftecon .firm { transition: opacity 0.5s ease; cursor: pointer; }
+.ftecon .firm[data-on="0"] { opacity: 0.10; }
+.ftecon .firm[data-on="1"] { opacity: 1; }
+.ftecon .event { transition: opacity 0.4s ease; }
+.ftecon .event[data-on="0"] { opacity: 0; }
+.ftecon .event[data-on="1"] { opacity: 1; }
+.ftecon .lineage { fill: none; stroke-width: 1.4; stroke: var(--ft-text2); transition: opacity 0.5s ease; }
+.ftecon .lineage[data-on="0"] { opacity: 0; }
+.ftecon .lineage[data-on="1"] { opacity: 0.75; }
+.ftecon .cursor-line { stroke: var(--ft-text); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.4; }
+.ftecon .axis-label { fill: var(--ft-text2); font-size: 11px; }
+.ftecon .event-line { stroke: var(--ft-text3); stroke-width: 0.6; stroke-dasharray: 2 3; opacity: 0.5; }
+.ftecon .event-label { fill: var(--ft-text2); font-size: 10px; }
+.ftecon .firm-text { font-size: 12px; pointer-events: none; }
+.ftecon .firm-text.small { font-size: 11px; }
+.ftecon .firm-text.teal { fill: var(--ft-teal-text); }
+.ftecon .firm-text.blue { fill: var(--ft-blue-text); }
+.ftecon .firm-text.purple { fill: var(--ft-purple-text); }
+.ftecon .firm-text.gray { fill: var(--ft-gray-text); }
+.ftecon .firm-text.green { fill: var(--ft-green-text); }
+.ftecon .firm-text.red { fill: var(--ft-red-text); }
+.ftecon .firm-text.amber { fill: var(--ft-amber-text); }
+.ftecon rect.teal { fill: var(--ft-teal-fill); }
+.ftecon rect.blue { fill: var(--ft-blue-fill); }
+.ftecon rect.purple { fill: var(--ft-purple-fill); }
+.ftecon rect.gray { fill: var(--ft-gray-fill); }
+.ftecon rect.green { fill: var(--ft-green-fill); }
+.ftecon rect.red { fill: var(--ft-red-fill); }
+.ftecon rect.amber { fill: var(--ft-amber-fill); }
+.ftecon .ft-tip { position: absolute; background: var(--ft-bg); border: 0.5px solid var(--ft-border-strong); border-radius: 8px; padding: 10px 12px; font-size: 13px; color: var(--ft-text); max-width: 280px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.10); z-index: 10; line-height: 1.45; }
+.ftecon .ft-tip.show { opacity: 1; }
+.ftecon .ft-tip-name { font-weight: 600; margin-bottom: 4px; }
+.ftecon .ft-tip-meta { color: var(--ft-text2); font-size: 12px; }
+.ftecon .ft-vc { position: relative; }
+.ftecon .ft-note { font-size: 12px; color: var(--ft-text3); margin: 14px 0 0; padding-top: 12px; border-top: 0.5px solid var(--ft-border); line-height: 1.5; }
+.ftecon .ft-note a { color: var(--ft-text2); }
+</style>
+<section class="chapter">
+  <div class="chapter-header">
+    <div class="num">CHAPTER 09</div>
+    <h2>The competition-economics family tree</h2>
+    <p class="lede">The microeconomics-and-regulation lineage, traced firm by firm from 1980, then the corporate ownership chain that ties FTI, LECG and the two Lexecons together. Both charts are reconciled to Companies House and to each firm's own published history.</p>
+  </div>
+  <figure class="ftecon" id="ftecon">
+    <figcaption class="ft-eh">UK economic consultancy: a family tree, 1980&ndash;2026</figcaption>
+    <p class="ft-elede">Press play, or drag the slider, to watch the industry grow. Vertical dotted lines mark major regulation; curved arrows show people moving from one firm to start or join another.</p>
+    <div class="ft-controls">
+      <button class="ft-play" id="ftecon-play" type="button" aria-label="Play timeline">
+        <svg id="ftecon-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <span id="ftecon-label">Play</span>
+      </button>
+      <input type="range" id="ftecon-slider" min="1980" max="2026" value="1980" step="1" aria-label="Year">
+      <div class="ft-year" id="ftecon-year">1980</div>
+    </div>
+    <div class="ft-legend">
+      <span class="ft-li"><span class="ft-sw" style="background:#1D9E75"></span>UK-grown employee-owned</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#378ADD"></span>US firm in London</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#7F77DD"></span>Strategic / regulatory</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#888780"></span>Specialist</span>
+    </div>
+    <div class="ft-vc">
+      <svg class="ft-viz" viewBox="0 0 680 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline of UK economic consultancy firms from 1980 to 2026">
+        <defs>
+          <marker id="ftecon-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="currentColor" opacity="0.85"/>
+          </marker>
+        </defs>
+        <text class="axis-label" x="25" y="14">1980</text>
+        <text class="axis-label" x="162" y="14">1990</text>
+        <text class="axis-label" x="299" y="14">2000</text>
+        <text class="axis-label" x="436" y="14">2010</text>
+        <text class="axis-label" x="573" y="14">2020</text>
+        <line x1="25" y1="80" x2="660" y2="80" stroke="var(--ft-border)" stroke-width="0.5"/>
+        <g class="event" data-year="1984">
+          <line class="event-line" x1="79.8" y1="22" x2="79.8" y2="540"/>
+          <text class="event-label" x="83" y="36">BT privatised 1984</text>
+        </g>
+        <g class="event" data-year="1998">
+          <line class="event-line" x1="271.6" y1="22" x2="271.6" y2="540"/>
+          <text class="event-label" x="190" y="56">Competition Act 1998</text>
+        </g>
+        <g class="event" data-year="2002">
+          <line class="event-line" x1="326.4" y1="22" x2="326.4" y2="540"/>
+          <text class="event-label" x="330" y="36">Enterprise Act 2002</text>
+        </g>
+        <g class="event" data-year="2014">
+          <line class="event-line" x1="490.8" y1="22" x2="490.8" y2="540"/>
+          <text class="event-label" x="494" y="56">CMA formed 2014</text>
+        </g>
+        <g class="event" data-year="2024">
+          <line class="event-line" x1="627.8" y1="22" x2="627.8" y2="540"/>
+          <text class="event-label" x="555" y="36">DMCC Act 2024</text>
+        </g>
+        <line id="ftecon-cursor" class="cursor-line" x1="25" y1="22" x2="25" y2="540"/>
+        <g class="firm" data-founded="1982" data-firm="Oxera" data-meta="Founded 1982 in Oxford as Oxford Economic Research Associates. Employee-owned partnership; an early sibling to NERA's London office, born of the Thatcher privatisations.">
+          <rect class="teal" x="52.4" y="95" width="603" height="22" rx="3"/>
+          <text class="firm-text teal" x="59" y="111">Oxera</text>
+        </g>
+        <g class="firm" data-founded="1983" data-firm="NERA London" data-meta="NERA was founded in New York in 1961 by Jules Joskow and Irwin Stelzer; its London office emerged in the early 1980s, timed to the UK privatisation programme. Owned by Marsh &amp; McLennan. (The UK legal entity NERA UK Ltd was not incorporated until 17 April 2000.)">
+          <rect class="blue" x="66.1" y="127" width="589" height="22" rx="3"/>
+          <text class="firm-text blue" x="73" y="143">NERA London</text>
+        </g>
+        <g class="firm" data-founded="1986" data-firm="London Economics" data-meta="Founded 1986 by John Kay, then Director of the IFS. Seeded much of the next generation, including Frontier Economics in 1999.">
+          <rect class="teal" x="107.2" y="159" width="548" height="22" rx="3"/>
+          <text class="firm-text teal" x="114" y="175">London Economics</text>
+        </g>
+        <g class="firm" data-founded="1991" data-firm="Lexecon Ltd (London)" data-meta="Founded 1991 in London by Bill Bishop. Acquired by Charles River Associates in May 2005. Always legally distinct from the Chicago Lexecon Inc — CRA's 2005 release stated the firms were not affiliated.">
+          <rect class="blue" x="175.7" y="191" width="192" height="22" rx="3"/>
+          <text class="firm-text blue small" x="182" y="207">Lexecon Ltd (1991-2005)</text>
+        </g>
+        <g class="firm" data-founded="1997" data-firm="Brattle London" data-meta="The Brattle Group's first non-US office, opened in London in 1997.">
+          <rect class="blue" x="257.9" y="223" width="397" height="22" rx="3"/>
+          <text class="firm-text blue" x="264" y="239">Brattle London</text>
+        </g>
+        <g class="firm" data-founded="1999" data-firm="Frontier Economics" data-meta="Incorporated at Companies House on 15 April 1999 by Simon Gaysford and Daniel Elliott, two former directors of London Economics, joined on the board by Philip Burns (Sep 1999), Michael Webb (Jan 2000) and Zoltan Biro (Apr 2000). Employee-owned from the start.">
+          <rect class="teal" x="285.3" y="255" width="370" height="22" rx="3"/>
+          <text class="firm-text teal" x="292" y="271">Frontier Economics</text>
+        </g>
+        <g class="firm" data-founded="2000" data-firm="CRA London" data-meta="Charles River Associates opened its London office in August 2000. Acquired Lexecon Ltd in May 2005.">
+          <rect class="blue" x="299" y="287" width="356" height="22" rx="3"/>
+          <text class="firm-text blue" x="306" y="303">CRA London</text>
+        </g>
+        <g class="firm" data-founded="2002" data-firm="RBB Economics" data-meta="Founded 2002 by Derek Ridyard, Simon Bishop and Simon Baker, all formerly of NERA. Adrian Majumdar joined from the OFT in 2004; Benoit Durand became managing partner on 1 April 2025.">
+          <rect class="teal" x="326.4" y="319" width="329" height="22" rx="3"/>
+          <text class="firm-text teal" x="333" y="335">RBB Economics</text>
+        </g>
+        <g class="firm" data-founded="2011" data-firm="Compass Lexecon UK" data-meta="Compass Lexecon was formed in January 2008 as an FTI subsidiary. It established its London presence in 2011 via the LECG European competition team led by Jorge Padilla.">
+          <rect class="blue" x="449.7" y="351" width="205" height="22" rx="3"/>
+          <text class="firm-text blue" x="456" y="367">Compass Lexecon</text>
+        </g>
+        <g class="firm" data-founded="2013" data-firm="Aurora Energy Research" data-meta="Founded 2013 in Oxford by Dieter Helm and John Feddersen.">
+          <rect class="gray" x="477.1" y="383" width="178" height="22" rx="3"/>
+          <text class="firm-text gray" x="484" y="399">Aurora Energy</text>
+        </g>
+        <g class="firm" data-founded="2013" data-firm="Fingleton Associates" data-meta="Founded 2013 by John Fingleton, former Chief Executive of the OFT.">
+          <rect class="purple" x="477.1" y="415" width="178" height="22" rx="3"/>
+          <text class="firm-text purple" x="484" y="431">Fingleton</text>
+        </g>
+        <g class="firm" data-founded="2014" data-firm="Cornerstone London" data-meta="Cornerstone Research was founded in 1989; London became its first international office in 2014.">
+          <rect class="blue" x="490.8" y="447" width="164" height="22" rx="3"/>
+          <text class="firm-text blue" x="497" y="463">Cornerstone</text>
+        </g>
+        <g class="firm" data-founded="2015" data-firm="Flint Global" data-meta="Founded 2015 by Simon Fraser, Ed Richards and Sir Andrew Cahn. Strategic and regulatory advisory.">
+          <rect class="purple" x="504.5" y="479" width="151" height="22" rx="3"/>
+          <text class="firm-text purple" x="511" y="495">Flint Global</text>
+        </g>
+        <g class="firm" data-founded="2022" data-firm="Keystone London" data-meta="Keystone Strategy was founded in 2003 in Boston (US) and has been owned by Accenture since 2020. Its London competition-economics outpost was built from 2022; Cristina Caffarra and Andrea Coscelli were among the senior figures recruited, though Caffarra left within about a year.">
+          <rect class="purple" x="600.4" y="511" width="55" height="22" rx="3"/>
+          <text class="firm-text purple small" x="606" y="527">Keystone</text>
+        </g>
+        <path class="lineage" data-year="1999" d="M 285.3 181 C 297 195 297 240 285.3 245 L 285.3 255" marker-end="url(#ftecon-arr)"/>
+        <path class="lineage" data-year="2002" d="M 326.4 149 C 341 175 341 290 326.4 309 L 326.4 319" marker-end="url(#ftecon-arr)"/>
+        <path class="lineage" data-year="2005" d="M 367.5 213 C 380 230 380 272 367.5 277 L 367.5 287" marker-end="url(#ftecon-arr)"/>
+        <path class="lineage" data-year="2013" d="M 477.1 117 C 492 175 492 350 477.1 373 L 477.1 383" marker-end="url(#ftecon-arr)"/>
+        <path class="lineage" data-year="2022" d="M 600.4 309 C 615 360 615 470 600.4 501 L 600.4 511" marker-end="url(#ftecon-arr)"/>
+      </svg>
+      <div class="ft-tip" id="ftecon-tip"></div>
+    </div>
+
+    <figcaption class="ft-eh">Corporate ownership: how FTI, LECG and the Lexecons fit together</figcaption>
+    <p class="ft-elede">Several of the firms above are subsidiaries or successors of larger groups. Lexecon Inc (Chicago) and COMPASS were merged by FTI to form Compass Lexecon in 2008. LECG was the largest casualty: liquidated in 2011, with David Teece spinning out Berkeley Research Group the year before, and Jorge Padilla's European competition team joining Compass Lexecon as part of the dissolution.</p>
+    <div class="ft-legend">
+      <span class="ft-li"><span class="ft-sw" style="background:#639922"></span>Operating today</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#BA7517"></span>Brand absorbed</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#E24B4A"></span>Liquidated</span>
+    </div>
+    <div class="ft-vc">
+      <svg class="ft-viz" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Corporate ownership timeline showing FTI, LECG, Lexecon and related entities">
+        <defs>
+          <marker id="ftecon-arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="currentColor" opacity="0.85"/>
+          </marker>
+        </defs>
+        <text class="axis-label" x="25" y="14">1980</text>
+        <text class="axis-label" x="162" y="14">1990</text>
+        <text class="axis-label" x="299" y="14">2000</text>
+        <text class="axis-label" x="436" y="14">2010</text>
+        <text class="axis-label" x="573" y="14">2020</text>
+        <line x1="25" y1="35" x2="660" y2="35" stroke="var(--ft-border)" stroke-width="0.5"/>
+        <line id="ftecon-cursor2" class="cursor-line" x1="25" y1="22" x2="25" y2="280"/>
+        <g class="firm" data-founded="1980" data-firm="Lexecon Inc (Chicago)" data-meta="Founded 1977 in Chicago by Richard Posner, William Landes and Andrew Rosenfield, joined shortly after by Daniel Fischel and Dennis Carlton. Acquired by Nextera in 1997, then by FTI in 2003. Merged with COMPASS in January 2008 to form Compass Lexecon.">
+          <rect class="amber" x="25" y="50" width="383.6" height="22" rx="3"/>
+          <text class="firm-text amber" x="32" y="66">Lexecon Inc (Chicago, 1977-2008)</text>
+        </g>
+        <g class="firm" data-founded="1982" data-firm="FTI Consulting" data-meta="Founded 1982 as Forensic Technologies International in Annapolis, MD. Acquired Lexecon Inc from Nextera in late 2003, and COMPASS in 2006. Parent of Compass Lexecon; now in 31 countries with over 7,700 staff.">
+          <rect class="green" x="52.4" y="82" width="603" height="22" rx="3"/>
+          <text class="firm-text green" x="59" y="98">FTI Consulting (parent)</text>
+        </g>
+        <g class="firm" data-founded="1988" data-firm="LECG" data-meta="Law and Economics Consulting Group, founded March 1988 by UC Berkeley faculty including David Teece and Richard Gilbert. IPO December 1997. Acquired by Navigant in 1998, MBO from Navigant in 2000, merged with SMART in 2009. Liquidated 2011.">
+          <rect class="red" x="134.6" y="114" width="315" height="22" rx="3"/>
+          <text class="firm-text red" x="141" y="130">LECG (1988-2011)</text>
+        </g>
+        <g class="firm" data-founded="1991" data-firm="Lexecon Ltd (London)" data-meta="Founded 1991 in London by Bill Bishop. Acquired by CRA International in May 2005. Always legally distinct from Lexecon Inc — CRA's 2005 press release stated explicitly that the firms were not affiliated.">
+          <rect class="amber" x="175.7" y="146" width="192" height="22" rx="3"/>
+          <text class="firm-text amber small" x="182" y="162">Lexecon Ltd (UK, 1991-2005)</text>
+        </g>
+        <g class="firm" data-founded="2003" data-firm="COMPASS" data-meta="Competition Policy Associates (COMPASS), founded 2003 in Washington DC by Margaret Guerin-Calvert, Janusz Ordover, Jonathan and Peter Orszag, and Bobby Willig. Acquired by FTI in 2006. Merged with Lexecon Inc to form Compass Lexecon in January 2008.">
+          <rect class="amber" x="340.1" y="178" width="68.5" height="22" rx="3"/>
+          <text class="firm-text amber small" x="346" y="194">COMPASS</text>
+        </g>
+        <g class="firm" data-founded="2008" data-firm="Compass Lexecon" data-meta="Formed January 2008 by FTI through the merger of Lexecon Inc and COMPASS. Acquired LECG's European competition team (led by Jorge Padilla) in 2011, establishing offices in London, Brussels, Paris and Madrid. Remains an FTI subsidiary.">
+          <rect class="green" x="408.6" y="210" width="247" height="22" rx="3"/>
+          <text class="firm-text green" x="415" y="226">Compass Lexecon (FTI subsidiary)</text>
+        </g>
+        <g class="firm" data-founded="2010" data-firm="BRG (Berkeley Research Group)" data-meta="Founded February 2010 in Emeryville, California by David Teece (LECG co-founder) and John 'Tri' MacDonald, ahead of LECG's 2011 liquidation. Now over 1,200 staff across 40+ offices, including London.">
+          <rect class="green" x="436" y="242" width="219" height="22" rx="3"/>
+          <text class="firm-text green" x="443" y="258">BRG (Berkeley Research Group)</text>
+        </g>
+        <path class="lineage" data-year="2003" d="M 340.1 72 C 350 78 350 78 340.1 82" marker-end="url(#ftecon-arr2)"/>
+        <path class="lineage" data-year="2008" d="M 408.6 72 C 425 130 425 195 408.6 210" marker-end="url(#ftecon-arr2)"/>
+        <path class="lineage" data-year="2008" d="M 408.6 200 L 408.6 210" marker-end="url(#ftecon-arr2)"/>
+        <path class="lineage" data-year="2010" d="M 436 136 C 460 175 460 220 436 242" marker-end="url(#ftecon-arr2)"/>
+        <path class="lineage" data-year="2011" d="M 449.7 136 C 472 160 472 200 449.7 210" marker-end="url(#ftecon-arr2)"/>
+      </svg>
+      <div class="ft-tip" id="ftecon-tip2"></div>
+    </div>
+    <p class="ft-note">Curved arrows on the first chart mark people moves between firms; on the second they mark corporate acquisitions and the LECG dissolution. Founding dates are reconciled to Companies House and to each firm's own history. Keystone Strategy is a US firm (founded 2003, Accenture-owned since 2020); the bar marks its London competition-economics build from 2022, not a UK founding.</p>
+  </figure>
+</section>
+
+<!-- ====== END CHAPTER 9 ====== -->
+<script>
+(function() {
+  var root = document.getElementById('ftecon');
+  if (!root) return;
+  var slider = document.getElementById('ftecon-slider');
+  var yearDisplay = document.getElementById('ftecon-year');
+  var playBtn = document.getElementById('ftecon-play');
+  var playLabel = document.getElementById('ftecon-label');
+  var playIcon = document.getElementById('ftecon-icon');
+  var cursor1 = document.getElementById('ftecon-cursor');
+  var cursor2 = document.getElementById('ftecon-cursor2');
+  var tip1 = document.getElementById('ftecon-tip');
+  var tip2 = document.getElementById('ftecon-tip2');
+  var firms = root.querySelectorAll('.firm');
+  var events = root.querySelectorAll('.event');
+  var lineages = root.querySelectorAll('.lineage');
+  function yearToX(y) { return 25 + (y - 1980) * 13.7; }
+  function update(year) {
+    yearDisplay.textContent = year;
+    var x = yearToX(year).toFixed(1);
+    cursor1.setAttribute('x1', x); cursor1.setAttribute('x2', x);
+    cursor2.setAttribute('x1', x); cursor2.setAttribute('x2', x);
+    firms.forEach(function(f) { f.dataset.on = year >= parseInt(f.dataset.founded) ? '1' : '0'; });
+    events.forEach(function(e) { e.dataset.on = year >= parseInt(e.dataset.year) ? '1' : '0'; });
+    lineages.forEach(function(l) { l.dataset.on = year >= parseInt(l.dataset.year) ? '1' : '0'; });
+  }
+  var playing = false, timer = null;
+  function setPlayUI(on) {
+    playLabel.textContent = on ? 'Pause' : 'Play';
+    playIcon.innerHTML = on ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>' : '<path d="M8 5v14l11-7z"/>';
+  }
+  function play() {
+    if (parseInt(slider.value) >= 2026) { slider.value = 1980; update(1980); }
+    playing = true; setPlayUI(true);
+    timer = setInterval(function() {
+      var v = parseInt(slider.value);
+      if (v >= 2026) { pause(); return; }
+      v += 1; slider.value = v; update(v);
+    }, 220);
+  }
+  function pause() { playing = false; setPlayUI(false); if (timer) clearInterval(timer); }
+  slider.addEventListener('input', function() { if (playing) pause(); update(parseInt(slider.value)); });
+  playBtn.addEventListener('click', function() { if (playing) pause(); else play(); });
+  function showTip(e, el) {
+    var container = el.closest('.ft-vc');
+    var tip = container.querySelector('.ft-tip');
+    tip.innerHTML = '<div class="ft-tip-name">' + el.dataset.firm + '</div><div class="ft-tip-meta">' + el.dataset.meta + '</div>';
+    var rect = container.getBoundingClientRect();
+    var x = e.clientX - rect.left + 12, y = e.clientY - rect.top + 12;
+    var maxX = rect.width - 300; if (x > maxX) x = maxX;
+    tip.style.left = x + 'px'; tip.style.top = y + 'px'; tip.classList.add('show');
+  }
+  function hideTips() { tip1.classList.remove('show'); tip2.classList.remove('show'); }
+  firms.forEach(function(f) {
+    f.addEventListener('mouseenter', function(e) { showTip(e, f); });
+    f.addEventListener('mousemove', function(e) { showTip(e, f); });
+    f.addEventListener('mouseleave', hideTips);
+    f.addEventListener('click', function(e) { showTip(e, f); setTimeout(hideTips, 4500); });
+  });
+  update(1980);
+  var started = false;
+  if (typeof IntersectionObserver === 'function') {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !started) { started = true; setTimeout(play, 600); obs.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(root.querySelector('.ft-viz'));
+  } else { setTimeout(play, 800); }
+})();
+</script>
 
 <!-- FINAL -->
 <section class="final">

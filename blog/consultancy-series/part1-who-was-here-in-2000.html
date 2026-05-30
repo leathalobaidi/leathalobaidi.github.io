@@ -112,9 +112,273 @@
 
   <hr>
 
+  <!-- ====== MACRO FAMILY TREE 1938-2026 (self-contained, namespaced .ftmac) ====== -->
+  <style>
+  .ftmac {
+    --ft-bg: #FFFFFF; --ft-text: #1F1F1C; --ft-text2: #5F5E5A; --ft-text3: #888780;
+    --ft-border: rgba(31,31,28,0.12); --ft-border-strong: rgba(31,31,28,0.25);
+    --ft-teal-fill: #E1F5EE; --ft-teal-text: #085041;
+    --ft-blue-fill: #E6F1FB; --ft-blue-text: #0C447C;
+    --ft-purple-fill: #EEEDFE; --ft-purple-text: #3C3489;
+    --ft-gray-fill: #F1EFE8; --ft-gray-text: #444441;
+    background: var(--ft-bg);
+    border: 0.5px solid var(--ft-border-strong); border-radius: 14px;
+    padding: 22px 22px 18px; margin: 32px 0;
+  }
+  @media (prefers-color-scheme: dark) {
+    .ftmac {
+      --ft-bg: #232321; --ft-text: #F1EFE8; --ft-text2: #B4B2A9; --ft-text3: #888780;
+      --ft-border: rgba(241,239,232,0.15); --ft-border-strong: rgba(241,239,232,0.30);
+      --ft-teal-fill: #085041; --ft-teal-text: #9FE1CB;
+      --ft-blue-fill: #0C447C; --ft-blue-text: #B5D4F4;
+      --ft-purple-fill: #3C3489; --ft-purple-text: #CECBF6;
+      --ft-gray-fill: #444441; --ft-gray-text: #D3D1C7;
+    }
+  }
+  .ftmac .ft-h { font-size: 18px; font-weight: 600; margin: 0 0 6px; color: var(--ft-text); letter-spacing: -0.01em; }
+  .ftmac .ft-lede { color: var(--ft-text2); font-size: 14px; line-height: 1.55; margin: 0 0 16px; }
+  .ftmac .ft-controls { display: flex; align-items: center; gap: 12px; margin: 0 0 10px; }
+  .ftmac button.ft-play { display: inline-flex; align-items: center; gap: 6px; background: var(--ft-bg); color: var(--ft-text); border: 0.5px solid var(--ft-border-strong); border-radius: 8px; padding: 7px 13px; font: inherit; font-size: 13px; cursor: pointer; }
+  .ftmac button.ft-play svg { width: 13px; height: 13px; fill: currentColor; }
+  .ftmac input[type=range] { flex: 1; height: 24px; -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer; }
+  .ftmac input[type=range]::-webkit-slider-runnable-track { height: 4px; background: var(--ft-border); border-radius: 2px; }
+  .ftmac input[type=range]::-moz-range-track { height: 4px; background: var(--ft-border); border-radius: 2px; }
+  .ftmac input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 18px; height: 18px; background: var(--ft-text); border-radius: 50%; margin-top: -7px; border: none; }
+  .ftmac input[type=range]::-moz-range-thumb { width: 18px; height: 18px; background: var(--ft-text); border-radius: 50%; border: none; }
+  .ftmac .ft-year { font-size: 20px; font-weight: 600; min-width: 56px; font-variant-numeric: tabular-nums; text-align: right; color: var(--ft-text); }
+  .ftmac .ft-legend { display: flex; flex-wrap: wrap; gap: 14px; margin: 0 0 14px; font-size: 12px; color: var(--ft-text2); }
+  .ftmac .ft-li { display: inline-flex; align-items: center; gap: 6px; }
+  .ftmac .ft-sw { width: 11px; height: 11px; border-radius: 2px; display: inline-block; }
+  .ftmac .ft-viz { width: 100%; height: auto; display: block; }
+  .ftmac .firm { transition: opacity 0.5s ease; cursor: pointer; }
+  .ftmac .firm[data-on="0"] { opacity: 0.10; }
+  .ftmac .firm[data-on="1"] { opacity: 1; }
+  .ftmac .event { transition: opacity 0.4s ease; }
+  .ftmac .event[data-on="0"] { opacity: 0; }
+  .ftmac .event[data-on="1"] { opacity: 1; }
+  .ftmac .lineage { fill: none; stroke-width: 1.4; stroke: var(--ft-text2); transition: opacity 0.5s ease; }
+  .ftmac .lineage[data-on="0"] { opacity: 0; }
+  .ftmac .lineage[data-on="1"] { opacity: 0.75; }
+  .ftmac .cursor-line { stroke: var(--ft-text); stroke-width: 1; stroke-dasharray: 2 3; opacity: 0.4; }
+  .ftmac .axis-label { fill: var(--ft-text2); font-size: 11px; }
+  .ftmac .event-line { stroke: var(--ft-text3); stroke-width: 0.6; stroke-dasharray: 2 3; opacity: 0.5; }
+  .ftmac .event-label { fill: var(--ft-text2); font-size: 10px; }
+  .ftmac .firm-text { font-size: 12px; pointer-events: none; }
+  .ftmac .firm-text.small { font-size: 11px; }
+  .ftmac .firm-text.teal { fill: var(--ft-teal-text); }
+  .ftmac .firm-text.blue { fill: var(--ft-blue-text); }
+  .ftmac .firm-text.purple { fill: var(--ft-purple-text); }
+  .ftmac .firm-text.gray { fill: var(--ft-gray-text); }
+  .ftmac rect.teal { fill: var(--ft-teal-fill); }
+  .ftmac rect.blue { fill: var(--ft-blue-fill); }
+  .ftmac rect.purple { fill: var(--ft-purple-fill); }
+  .ftmac rect.gray { fill: var(--ft-gray-fill); }
+  .ftmac .ft-tip { position: absolute; background: var(--ft-bg); border: 0.5px solid var(--ft-border-strong); border-radius: 8px; padding: 10px 12px; font-size: 13px; color: var(--ft-text); max-width: 300px; pointer-events: none; opacity: 0; transition: opacity 0.15s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.10); z-index: 10; line-height: 1.45; }
+  .ftmac .ft-tip.show { opacity: 1; }
+  .ftmac .ft-tip-name { font-weight: 600; margin-bottom: 4px; }
+  .ftmac .ft-tip-meta { color: var(--ft-text2); font-size: 12px; }
+  .ftmac .ft-vc { position: relative; }
+  .ftmac .ft-note { font-size: 12px; color: var(--ft-text3); margin: 14px 0 0; padding-top: 12px; border-top: 0.5px solid var(--ft-border); line-height: 1.5; }
+  .ftmac .ft-note a { color: var(--ft-text2); }
+  </style>
+  <figure class="ftmac" id="ftmac">
+    <figcaption class="ft-h">UK macroeconomic consultancy: a family tree, 1938&ndash;2026</figcaption>
+    <p class="ft-lede">Press play, or drag the slider, to watch the macro-forecasting lineage grow firm by firm. Vertical dotted lines mark the events that shaped each wave: the 1976 IMF crisis, the 1981 Howe Budget and the 364-economists letter, ERM exit in 1992, Bank of England independence in 1997, the 2008 financial crisis, the OBR in 2010, and the 2016 Brexit vote. Hover or tap any bar to see who founded it.</p>
+    <div class="ft-controls">
+      <button class="ft-play" id="ftmac-play" type="button" aria-label="Play timeline">
+        <svg id="ftmac-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        <span id="ftmac-label">Play</span>
+      </button>
+      <input type="range" id="ftmac-slider" min="1938" max="2026" value="1938" step="1" aria-label="Year">
+      <div class="ft-year" id="ftmac-year">1938</div>
+    </div>
+    <div class="ft-legend">
+      <span class="ft-li"><span class="ft-sw" style="background:#888780"></span>Independent research institute</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#7F77DD"></span>Academic forecasting group</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#1D9E75"></span>Commercial consultancy</span>
+      <span class="ft-li"><span class="ft-sw" style="background:#378ADD"></span>Acquired / corporate-owned</span>
+    </div>
+    <div class="ft-vc">
+      <svg class="ft-viz" viewBox="0 0 680 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Timeline of UK macroeconomic consultancy firms from 1938 to 2026">
+        <defs>
+          <marker id="ftmac-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="currentColor" opacity="0.85"/>
+          </marker>
+        </defs>
+        <text class="axis-label" x="40" y="14">1940</text>
+        <text class="axis-label" x="112" y="14">1950</text>
+        <text class="axis-label" x="185" y="14">1960</text>
+        <text class="axis-label" x="258" y="14">1970</text>
+        <text class="axis-label" x="330" y="14">1980</text>
+        <text class="axis-label" x="403" y="14">1990</text>
+        <text class="axis-label" x="476" y="14">2000</text>
+        <text class="axis-label" x="549" y="14">2010</text>
+        <text class="axis-label" x="621" y="14">2020</text>
+        <line x1="25" y1="70" x2="660" y2="70" stroke="var(--ft-border)" stroke-width="0.5"/>
+        <g class="event" data-year="1976">
+          <line class="event-line" x1="301.3" y1="22" x2="301.3" y2="555"/>
+          <text class="event-label" x="225" y="36">IMF crisis 1976</text>
+        </g>
+        <g class="event" data-year="1981">
+          <line class="event-line" x1="337.7" y1="22" x2="337.7" y2="555"/>
+          <text class="event-label" x="341" y="56">364 economists letter 1981</text>
+        </g>
+        <g class="event" data-year="1992">
+          <line class="event-line" x1="417.7" y1="22" x2="417.7" y2="555"/>
+          <text class="event-label" x="338" y="36">ERM exit 1992</text>
+        </g>
+        <g class="event" data-year="1997">
+          <line class="event-line" x1="453.9" y1="22" x2="453.9" y2="555"/>
+          <text class="event-label" x="457" y="56">BoE independence 1997</text>
+        </g>
+        <g class="event" data-year="2008">
+          <line class="event-line" x1="534.0" y1="22" x2="534.0" y2="555"/>
+          <text class="event-label" x="479" y="36">Lehman / GFC 2008</text>
+        </g>
+        <g class="event" data-year="2010">
+          <line class="event-line" x1="548.6" y1="22" x2="548.6" y2="555"/>
+          <text class="event-label" x="551" y="56">OBR 2010</text>
+        </g>
+        <g class="event" data-year="2016">
+          <line class="event-line" x1="592.2" y1="22" x2="592.2" y2="555"/>
+          <text class="event-label" x="540" y="36">Brexit vote 2016</text>
+        </g>
+        <line id="ftmac-cursor" class="cursor-line" x1="25" y1="22" x2="25" y2="560"/>
+        <g class="firm" data-founded="1938" data-firm="NIESR" data-meta="National Institute of Economic and Social Research. Founded 2 June 1938 with funding from the Rockefeller Foundation, the Pilgrim Trust, the Leverhulme Trust and the Halley Stewart Trust. John Maynard Keynes and William Beveridge were among the founding figures. Britain's longest-established independent economic research institute; the NiGEM global model has been published since 1987.">
+          <rect class="gray" x="25" y="80" width="640" height="22" rx="3"/>
+          <text class="firm-text gray" x="32" y="96">NIESR (1938-)</text>
+        </g>
+        <g class="firm" data-founded="1966" data-firm="LBS Centre for Economic Forecasting" data-meta="The Centre for Economic Forecasting at London Business School, built around Sir James Ball after he joined LBS in 1964. With Lawrence Klein at the University of Pennsylvania, Ball developed an early computerised UK macro model. Terry Burns left for HM Treasury as Chief Economic Adviser in 1981; Sir Alan Budd was Director through the 1980s. The Centre wound down in the late 1990s.">
+          <rect class="purple" x="228.6" y="112" width="240.0" height="22" rx="3"/>
+          <text class="firm-text purple small" x="235" y="128">LBS Centre for Economic Forecasting (~1966-1999)</text>
+        </g>
+        <g class="firm" data-founded="1969" data-firm="Institute for Fiscal Studies (IFS)" data-meta="Incorporated 21 May 1969 by four City professionals — Will Hopper, Bob Buist, Nils Taube and John Chown — frustrated by the lack of independent expertise on tax policy. John Kay was Director from 1979 before leaving to found London Economics in 1986. Robert Chote was Director 2002-2010, then chaired the new OBR. Helen Miller was appointed Director in 2025.">
+          <rect class="gray" x="250.4" y="144" width="414.6" height="22" rx="3"/>
+          <text class="firm-text gray" x="257" y="160">Institute for Fiscal Studies (1969-)</text>
+        </g>
+        <g class="firm" data-founded="1974" data-firm="Henley Centre for Forecasting" data-meta="Incorporated 29 October 1974 by James Morrell with academics at Henley Management College. Co-founders included Paul Ormerod, who would later launch Volterra Partners in 1998. The Henley Centre was acquired by WPP in the 1990s and now sits within the Kantar Group.">
+          <rect class="purple" x="286.8" y="176" width="378.2" height="22" rx="3"/>
+          <text class="firm-text purple small" x="293" y="192">Henley Centre (1974-, sold to WPP 1990s)</text>
+        </g>
+        <g class="firm" data-founded="1976" data-firm="Liverpool Research Group in Macroeconomics" data-meta="Founded 1976 by Patrick Minford at the University of Liverpool. Built the 'Liverpool Model' — the first operational rational-expectations model of any national economy, used for forecasting from March 1980. The academic counterweight to NIESR during the Battle of the Models. Minford was one of HM Treasury's 'Six Wise Men' 1993-1996; he moved to Cardiff in 1997.">
+          <rect class="purple" x="301.3" y="208" width="152.6" height="22" rx="3"/>
+          <text class="firm-text purple small" x="308" y="224">Liverpool Macro Group (1976-1997)</text>
+        </g>
+        <g class="firm" data-founded="1981" data-firm="Oxford Economics" data-meta="Founded 1981 in Oxford by John Walker as Oxford Economic Forecasting, distributing its Global Economic Model on floppy disks. Adrian Cooper joined in 1994 and was CEO for over 25 years; Innes McFee became CEO in December 2024. Now over 750 staff in 22 offices worldwide.">
+          <rect class="teal" x="337.7" y="240" width="327.3" height="22" rx="3"/>
+          <text class="firm-text teal" x="344" y="256">Oxford Economics (1981-)</text>
+        </g>
+        <g class="firm" data-founded="1985" data-firm="Cambridge Econometrics" data-meta="Incorporated 28 May 1985 as a spin-off from the University of Cambridge, taking forward the work of the Cambridge Growth Project founded by Nobel laureate Sir Richard Stone. Co-founded by Terry Barker. Now majority-owned by the educational charity the Cambridge Trust for New Thinking in Economics; specialises in the E3ME energy-environment-economy model.">
+          <rect class="teal" x="366.8" y="272" width="298.2" height="22" rx="3"/>
+          <text class="firm-text teal" x="373" y="288">Cambridge Econometrics (1985-)</text>
+        </g>
+        <g class="firm" data-founded="1989" data-firm="Lombard Street Research / TS Lombard" data-meta="Founded 1989 by Tim Congdon, the UK's leading exponent of monetarism. Charles Dumas joined in 1998 and became Chief Economist in 2005. Merged with Trusted Sources in 2016 to form TS Lombard; acquired by GlobalData in 2022.">
+          <rect class="blue" x="395.9" y="304" width="269.1" height="22" rx="3"/>
+          <text class="firm-text blue small" x="402" y="320">Lombard Street Research / TS Lombard (1989-)</text>
+        </g>
+        <g class="firm" data-founded="1991" data-firm="Cebr" data-meta="The Centre for Economics and Business Research, founded 1991 by Douglas McWilliams and incorporated at Companies House on 18 March 1991. McWilliams had been Chief Economic Adviser to the CBI from 1988 to 1992. Best known for the annual World Economic League Table and the ASDA Income Tracker. Nina Skero became CEO on 1 October 2019.">
+          <rect class="teal" x="410.5" y="336" width="254.5" height="22" rx="3"/>
+          <text class="firm-text teal" x="417" y="352">Cebr (1991-)</text>
+        </g>
+        <g class="firm" data-founded="1998" data-firm="Volterra Partners" data-meta="Founded 1998 by Bridget Rosewell and Paul Ormerod, both former NIESR forecasters; Ormerod had also co-founded the Henley Centre in the 1970s. Rosewell was Chief Economic Adviser to the Greater London Authority from 2002 to 2012. Specialises in transport, infrastructure and agglomeration economics.">
+          <rect class="teal" x="461.3" y="368" width="203.7" height="22" rx="3"/>
+          <text class="firm-text teal" x="468" y="384">Volterra Partners (1998-)</text>
+        </g>
+        <g class="firm" data-founded="1999" data-firm="Capital Economics" data-meta="Founded 1999 by Roger Bootle, formerly Group Chief Economist of HSBC and one of Chancellor Kenneth Clarke's 'Wise Men'. In 2012 a Capital Economics team won the £250,000 Wolfson Prize. Now describes itself as Europe's largest independent macroeconomics consultancy.">
+          <rect class="teal" x="468.6" y="400" width="196.4" height="22" rx="3"/>
+          <text class="firm-text teal" x="475" y="416">Capital Economics (1999-)</text>
+        </g>
+        <g class="firm" data-founded="2003" data-firm="Fathom Consulting" data-meta="Founded 2003 by Danny Gabay, a former Bank of England economist. Shamik Dhar and Andrew Brigden joined from the Bank; Erik Britton joined as Director in 2007 (now Managing Director and CEO). The firm warned clients ahead of the 2008 collapse.">
+          <rect class="teal" x="497.7" y="432" width="167.3" height="22" rx="3"/>
+          <text class="firm-text teal" x="504" y="448">Fathom Consulting (2003-)</text>
+        </g>
+        <g class="firm" data-founded="2009" data-firm="Llewellyn Consulting / Independent Economics" data-meta="Founded 2009 by Dr John Llewellyn and Preston J. Llewellyn after the collapse of Lehman Brothers. John spent nearly 20 years at the OECD in Paris before joining Lehman as Global Chief Economist in 1995. The firm has since been renamed Independent Economics.">
+          <rect class="teal" x="541.3" y="464" width="123.7" height="22" rx="3"/>
+          <text class="firm-text teal small" x="548" y="480">Llewellyn Consulting (2009-)</text>
+        </g>
+        <g class="firm" data-founded="2012" data-firm="Pantheon Macroeconomics" data-meta="Founded 2012 by Ian Shepherdson, formerly Chief UK and then Chief US Economist for HSBC. Two-time winner of the Wall Street Journal's US forecasting competition. Samuel Tombs led UK research from 2015; Rob Wood joined as Chief UK Economist in 2024. Offices in Newcastle, New York and London.">
+          <rect class="teal" x="563.1" y="496" width="101.9" height="22" rx="3"/>
+          <text class="firm-text teal small" x="570" y="512">Pantheon Macro (2012-)</text>
+        </g>
+        <path class="lineage" data-year="1998" d="M 25 102 C 50 200 460 250 461.3 368" marker-end="url(#ftmac-arr)"/>
+        <path class="lineage" data-year="1986" d="M 250.4 166 C 270 180 270 240 285.3 248" marker-end="url(#ftmac-arr)"/>
+      </svg>
+      <div class="ft-tip" id="ftmac-tip"></div>
+    </div>
+    <p class="ft-note">The two faint arrows show key personal moves: NIESR to Volterra in 1998 (Ormerod and Rosewell), and IFS to London Economics in 1986 (John Kay). Founding dates are reconciled to Companies House and to each institute's own history; Cebr is dated to its 18 March 1991 incorporation. Sources are listed at the foot of this article.</p>
+  </figure>
+  <script>
+  (function() {
+    var root = document.getElementById('ftmac');
+    if (!root) return;
+    var slider = document.getElementById('ftmac-slider');
+    var yearDisplay = document.getElementById('ftmac-year');
+    var playBtn = document.getElementById('ftmac-play');
+    var playLabel = document.getElementById('ftmac-label');
+    var playIcon = document.getElementById('ftmac-icon');
+    var cursor1 = document.getElementById('ftmac-cursor');
+    var tip = document.getElementById('ftmac-tip');
+    var firms = root.querySelectorAll('.firm');
+    var events = root.querySelectorAll('.event');
+    var lineages = root.querySelectorAll('.lineage');
+    function yearToX(y) { return 25 + (y - 1938) * (640 / 88); }
+    function update(year) {
+      yearDisplay.textContent = year;
+      var x = yearToX(year).toFixed(1);
+      cursor1.setAttribute('x1', x); cursor1.setAttribute('x2', x);
+      firms.forEach(function(f) { f.dataset.on = year >= parseInt(f.dataset.founded) ? '1' : '0'; });
+      events.forEach(function(e) { e.dataset.on = year >= parseInt(e.dataset.year) ? '1' : '0'; });
+      lineages.forEach(function(l) { l.dataset.on = year >= parseInt(l.dataset.year) ? '1' : '0'; });
+    }
+    var playing = false, timer = null;
+    function setPlayUI(on) {
+      playLabel.textContent = on ? 'Pause' : 'Play';
+      playIcon.innerHTML = on ? '<path d="M6 5h4v14H6zM14 5h4v14h-4z"/>' : '<path d="M8 5v14l11-7z"/>';
+    }
+    function play() {
+      if (parseInt(slider.value) >= 2026) { slider.value = 1938; update(1938); }
+      playing = true; setPlayUI(true);
+      timer = setInterval(function() {
+        var v = parseInt(slider.value);
+        if (v >= 2026) { pause(); return; }
+        v += 1; slider.value = v; update(v);
+      }, 140);
+    }
+    function pause() { playing = false; setPlayUI(false); if (timer) clearInterval(timer); }
+    slider.addEventListener('input', function() { if (playing) pause(); update(parseInt(slider.value)); });
+    playBtn.addEventListener('click', function() { if (playing) pause(); else play(); });
+    function showTip(e, el) {
+      tip.innerHTML = '<div class="ft-tip-name">' + el.dataset.firm + '</div><div class="ft-tip-meta">' + el.dataset.meta + '</div>';
+      var container = root.querySelector('.ft-vc');
+      var rect = container.getBoundingClientRect();
+      var x = e.clientX - rect.left + 12, y = e.clientY - rect.top + 12;
+      var maxX = rect.width - 320; if (x > maxX) x = maxX;
+      tip.style.left = x + 'px'; tip.style.top = y + 'px'; tip.classList.add('show');
+    }
+    function hideTip() { tip.classList.remove('show'); }
+    firms.forEach(function(f) {
+      f.addEventListener('mouseenter', function(e) { showTip(e, f); });
+      f.addEventListener('mousemove', function(e) { showTip(e, f); });
+      f.addEventListener('mouseleave', hideTip);
+      f.addEventListener('click', function(e) { showTip(e, f); setTimeout(hideTip, 5000); });
+    });
+    update(1938);
+    var started = false;
+    if (typeof IntersectionObserver === 'function') {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !started) { started = true; setTimeout(play, 600); obs.disconnect(); }
+        });
+      }, { threshold: 0.3 });
+      obs.observe(root.querySelector('.ft-viz'));
+    } else { setTimeout(play, 800); }
+  })();
+  </script>
+  <!-- ====== END MACRO FAMILY TREE ====== -->
+
   <h2>1 January 2000</h2>
 
-  <p>It is the first morning of the new century, and the small world of UK competition economics is asleep in Holborn and Oxford. Derek Ridyard has been at NERA for <a href="https://www.gov.uk/government/people/derek-ridyard">13 years</a>, running the European competition practice from a Marsh &amp; McLennan office in London. He stayed until <a href="https://web.archive.org/web/20260504082126/https://globalcompetitionreview.com/article/top-economics-trio-leave-nera-in-the-lurch">April 2002</a>, when he co-founded RBB Economics with Simon Bishop and Simon Baker. John Bridgeman is in his <a href="https://www.lgcplus.com/archive/new-director-general-of-fair-trading-02-10-2000/">fifth year</a> as Director General of the Office of Fair Trading; John Vickers, currently Chief Economist at the Bank of England, is set to succeed him on 1 October. Derek Morris is in his <a href="https://en.wikipedia.org/wiki/Derek_Morris_(academic)">second year</a> as Chairman of the Competition Commission, having moved across from the chair of its predecessor, the Monopolies and Mergers Commission. A few miles away, Sarah Hogg, as non-executive chair, presides over an <a href="https://find-and-update.company-information.service.gov.uk/company/03752719">eight-month-old</a> firm called <a href="https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i7811-wanting-to-be-different-how-we-created-frontier/">Frontier Economics</a>, <a href="https://find-and-update.company-information.service.gov.uk/company/03752719/filing-history">founded by</a> Z Biro, P J Burns, D M Elliott, S Gaysford and M G Webb, around 20 consultants strong and in search of a first full year of revenue. Colin Mayer, the <a href="https://www.sbs.ox.ac.uk/about-us/people/colin-mayer-cbe">Peter Moores Professor</a> at what would <a href="https://en.wikipedia.org/wiki/Sa%C3%AFd_Business_School">become Saïd Business School in 1996</a> (he joined the predecessor Oxford School of Management Studies in 1994), is formally still attached to <a href="https://www.oxera.com/about-us/">Oxera</a>, the small Oxford boutique <a href="https://www.oxera.com/about-us/">founded in 1982</a> to feed off the privatisation programme. Eight months from now, in <a href="https://crainternationalinc.gcs-web.com/news-releases/news-release-details/charles-river-associates-announces-opening-london-office">August 2000</a>, Charles River Associates opened its first London office with around 15 staff, led by three new vice presidents: Christopher Doyle on telecommunications, media and e-business; Robert Laslett on financial services; and Michael Walker on competition policy. Walker, a Lexecon and British Telecom alumnus, had just co-authored <em>The Economics of EU Competition Law</em> with Simon Bishop, the NERA partner who followed Ridyard out the door 18 months later to co-found RBB; the book went through three editions and became a recurring reference for EU competition economics. In the project sources, the visible senior layer is still small.</p>
+  <p>It is the first morning of the new century, and the small world of UK competition economics is asleep in Holborn and Oxford. Derek Ridyard has been at NERA for <a href="https://www.gov.uk/government/people/derek-ridyard">13 years</a>, running the European competition practice from a Marsh &amp; McLennan office in London. He stayed until <a href="https://web.archive.org/web/20260504082126/https://globalcompetitionreview.com/article/top-economics-trio-leave-nera-in-the-lurch">April 2002</a>, when he co-founded RBB Economics with Simon Bishop and Simon Baker. John Bridgeman is in his <a href="https://www.lgcplus.com/archive/new-director-general-of-fair-trading-02-10-2000/">fifth year</a> as Director General of the Office of Fair Trading; John Vickers, currently Chief Economist at the Bank of England, is set to succeed him on 1 October. Derek Morris is in his <a href="https://en.wikipedia.org/wiki/Derek_Morris_(academic)">second year</a> as Chairman of the Competition Commission, having moved across from the chair of its predecessor, the Monopolies and Mergers Commission. A few miles away, an <a href="https://find-and-update.company-information.service.gov.uk/company/03752719">eight-month-old</a> firm called <a href="https://www.frontier-economics.com/uk/en/news-and-insights/articles/article-i7811-wanting-to-be-different-how-we-created-frontier/">Frontier Economics</a>, <a href="https://find-and-update.company-information.service.gov.uk/company/03752719/filing-history">founded by</a> Z Biro, P J Burns, D M Elliott, S Gaysford and M G Webb, is around 20 consultants strong and in search of a first full year of revenue. Colin Mayer, the <a href="https://www.sbs.ox.ac.uk/about-us/people/colin-mayer-cbe">Peter Moores Professor</a> at what would <a href="https://en.wikipedia.org/wiki/Sa%C3%AFd_Business_School">become Saïd Business School in 1996</a> (he joined the predecessor Oxford School of Management Studies in 1994), is formally still attached to <a href="https://www.oxera.com/about-us/">Oxera</a>, the small Oxford boutique <a href="https://www.oxera.com/about-us/">founded in 1982</a> to feed off the privatisation programme. Eight months from now, in <a href="https://crainternationalinc.gcs-web.com/news-releases/news-release-details/charles-river-associates-announces-opening-london-office">August 2000</a>, Charles River Associates opened its first London office with around 15 staff, led by three new vice presidents: Christopher Doyle on telecommunications, media and e-business; Robert Laslett on financial services; and Michael Walker on competition policy. Walker, a Lexecon and British Telecom alumnus, had just co-authored <em>The Economics of EU Competition Law</em> with Simon Bishop, the NERA partner who followed Ridyard out the door 18 months later to co-found RBB; the book went through three editions and became a recurring reference for EU competition economics. In the project sources, the visible senior layer is still small.</p>
 
   <p>Compass Lexecon does not exist. Nor does the Competition and Markets Authority. Nor Ofcom. Nor Berkeley Research Group. Nor Keystone Europe. Nor AlixPartners' London economics practice. Nor <a href="https://crainternationalinc.gcs-web.com/news-releases/news-release-details/charles-river-associates-announces-opening-london-office">Charles River Associates' London office</a>. RBB Economics is still <a href="https://web.archive.org/web/20260504082126/https://globalcompetitionreview.com/article/top-economics-trio-leave-nera-in-the-lurch">27 months</a> away. Capital Economics is around a year old, <a href="https://find-and-update.company-information.service.gov.uk/company/02484735">renamed at Companies House on 13 January 1999</a> by a former HSBC chief economist named <a href="https://www.capitaleconomics.com/who-we-are/our-people/roger-bootle">Roger Bootle</a>, who is at this point its <a href="https://find-and-update.company-information.service.gov.uk/company/02484735/filing-history">sole director</a>; the business is essentially Bootle himself, deriving income from speeches, articles and presentations to a short list of subscribers, on its way to <a href="https://find-and-update.company-information.service.gov.uk/company/02484735/filing-history">&pound;265,908</a> of turnover for the year ending 30 April 2000.</p>
 
@@ -219,7 +483,7 @@
 
   <h2>What the 2000 cohort looks like now</h2>
 
-  <p>Of the 15 named individuals in this piece, where are they in 2026?</p>
+  <p>Of the 14 named individuals in this piece, where are they in 2026?</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
   <div class="table-wrap">
@@ -266,11 +530,6 @@
         <td>Colin Mayer</td>
         <td>Oxera founder, at Saïd Business School</td>
         <td>Emeritus Professor, Saïd Business School, Oxford; Member, UK Competition Appeal Tribunal</td>
-      </tr>
-      <tr>
-        <td>Sarah Hogg</td>
-        <td>Chair, Frontier Economics</td>
-        <td>Baroness Hogg, chair of Frontier Economics 1999&ndash;2013; former chair of Financial Reporting Council 2010&ndash;2014</td>
       </tr>
       <tr>
         <td>Jorge Padilla</td>
@@ -333,7 +592,7 @@
       <li>Three of the four established names in this source-set snapshot were foreign-owned: NERA sat inside Marsh &amp; McLennan, Lexecon inside Nextera (soon FTI), LECG was US-headquartered (it would not list on NASDAQ until <a href="https://www.sec.gov/Archives/edgar/data/1192305/000104746903036375/a2118977zs-1a.htm">November 2003</a>). Oxera was the domestic independent in that group.</li>
       <li>The regulator landscape was fragmented across the OFT, the Competition Commission, Oftel, Ofwat, the Office of the Rail Regulator and the joint Ofgas/OFFER office that the Utilities Act 2000 would shortly put on a statutory footing as <a href="https://www.instituteforgovernment.org.uk/explainer/ofgem">Ofgem</a>. The CMA would not exist for another 14 years.</li>
       <li>The RBB breakaway from NERA in April 2002 gives this series its clearest early spinout template: a small senior team, 13 juniors, a 16-economist founding cohort in all, and a brand not tied to one founder's surname.</li>
-      <li>Of the 15 named people in the 2000 cohort table, four are still operationally active in this market in 2026; most of the founding generation has retired, moved into part-time advisory roles, or died.</li>
+      <li>Of the 14 named people in the 2000 cohort table, four are still operationally active in this market in 2026; most of the founding generation has retired, moved into part-time advisory roles, or died.</li>
       <li>Three European antitrust matters, Airtours, Microsoft, and BA/Virgin loyalty rebates, help explain the evidence-heavy demand that the post-2000 boutiques were founded to meet.</li>
     </ol>
   </div>
