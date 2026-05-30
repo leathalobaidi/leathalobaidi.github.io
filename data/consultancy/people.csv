@@ -1,0 +1,20 @@
+person_id,full_name,known_as,title,notes,source_id
+john_kay,Sir John Anderson Kay,John Kay,Economist,"LBS professor from 1986; established London Economics same year. Executive chairman of LE 1986-1996.",src_johnkay_about
+nick_morris,Nick Morris,Nick Morris,Economist,"Co-founder of London Economics with John Kay per Wikipedia (secondary). To be verified by direct contact.",src_wikipedia_john_kay
+jules_joskow,Jules Joskow,,Economist,"Co-founder of NERA, 10 April 1961.",src_nera_history
+irwin_stelzer,Irwin Stelzer,,Economist,"Co-founder of NERA, 10 April 1961.",src_nera_history
+alfred_kahn,Alfred E. Kahn,,Economist,"Adviser at NERA's founding; later 'father of airline deregulation.'",src_nera_history
+colin_mayer,Colin Mayer CBE,Colin Mayer,Professor,"Chairman of Oxera 1986-2010.",src_oxera_about
+roger_bootle,Roger Bootle,,Economist,"Founder of Capital Economics (1999). HSBC Group Chief Economist 1989-1998.",src_capeco_bootle
+simon_gaysford,Simon Gaysford,,Economist,"Co-founder of Frontier Economics (June 1999). Former director of London Economics Ltd.",src_frontier_founding
+daniel_elliott,Daniel Elliott,Dan Elliott,Economist,"Co-founder of Frontier Economics (June 1999). Former director of London Economics Ltd.",src_frontier_about
+philip_burns,Philip Burns,,Economist,"Frontier Economics original board (September 1999).",src_frontier_about
+michael_webb,Michael Webb,,Economist,"Frontier Economics board, January 2000.",src_frontier_about
+zoltan_biro,Zoltan Biro,,Economist,"Frontier Economics board, April 2000.",src_frontier_about
+sarah_hogg,Sarah Hogg,Baroness Hogg,Chair,"Former head of John Major's No.10 Policy Unit. Chair of Frontier from December 1999 to 2013. Became Viscountess Hailsham 2001 on death of father-in-law.",src_frontier_about
+derek_ridyard,Derek Ridyard,,Economist,"Lancashire-born; 15 years at NERA before walking out April 2002 to co-found RBB. Previously 5 years at UK Government Economic Service.",src_gcr_nera_2002
+simon_bishop,Simon Bishop,,Economist,"NERA London until April 2002. Co-author with Michael Walker of 'The Economics of EC Competition Law.' Co-founder of RBB.",src_gcr_nera_2002
+simon_baker,Simon Baker,,Economist,"Co-founder of RBB, April 2002, ex-NERA London.",src_gcr_nera_2002
+michael_walker,Michael Walker,,Economist,"Ex-British Telecom regulatory team. Co-author of 'The Economics of EC Competition Law' with Simon Bishop. Joined CRA in August 2000 to launch CRA London competition practice.",src_cra_pr_london
+christopher_doyle,Christopher Doyle,,Economist,"Joined CRA London as vice president, August 2000. Background in Cambridge and LBS telecoms.",src_cra_pr_london
+robert_laslett,Robert Laslett,,Economist,"Joined CRA London as vice president, August 2000. Background in financial services.",src_cra_pr_london

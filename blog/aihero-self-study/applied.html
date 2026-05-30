@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Hero, Applied: building a source of truth for the consultancy series</title>
+<meta name="author" content="Leath Al Obaidi">
+<meta name="description" content="The AI Hero self-study syllabus, turned into a step-by-step playbook and worked against one project: a canonical database for the UK economics consultancy series, with people and firms as the two primary tables.">
+<link rel="canonical" href="https://leathalobaidi.com/blog/aihero-self-study/applied">
+<meta property="og:title" content="AI Hero, Applied: building a source of truth for the consultancy series">
+<meta property="og:description" content="The AI Hero syllabus turned into a 7-phase playbook and worked end-to-end on the consultancy-series database.">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Leath Al Obaidi">
+<link rel="stylesheet" href="../consultancy-series/apple-theme.css">
+<style>
+  .container { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+  .pub-name { font-family: 'Inter', sans-serif; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--at-text-dim); margin-bottom: 10px; }
+  .subtitle { font-size: 22px; line-height: 1.4; color: var(--at-text-dim); margin: 0 0 32px; font-style: italic; }
+  .byline { font-family: 'Inter', sans-serif; font-size: 13px; color: var(--at-text-muted); margin-bottom: 36px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  .phase {
+    border-top: 3px solid var(--at-accent-bright);
+    padding: 28px 24px;
+    margin: 36px 0;
+    background: var(--at-bg-card);
+    border-radius: 12px;
+  }
+  .phase .tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--at-accent);
+    margin-bottom: 6px;
+  }
+  .phase h2 { margin-top: 0 !important; }
+  .phase .ph-goal {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: var(--at-text-dim);
+    margin: 0 0 18px;
+  }
+  .phase .ph-do {
+    background: var(--at-bg);
+    border: 1px solid var(--at-border);
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+  .phase .ph-do h3 {
+    margin: 0 0 8px !important;
+    font-size: 14px !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--at-text-dim);
+  }
+  .phase ol, .phase ul { padding-left: 22px; }
+  .phase li { margin: 6px 0; }
+
+  .callout-applied {
+    border-left: 3px solid var(--at-accent-bright);
+    background: var(--at-bg-card);
+    padding: 18px 22px;
+    margin: 18px 0;
+    border-radius: 0 10px 10px 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+  }
+  .callout-applied strong { color: var(--at-accent); }
+
+  code, pre { font-family: 'JetBrains Mono', Menlo, monospace; }
+  code { background: var(--at-bg-card); padding: 1px 6px; border-radius: 4px; font-size: 14px; }
+  pre {
+    background: #1d1d1f;
+    color: #f5f5f7;
+    padding: 18px 22px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .tldr {
+    background: var(--at-bg-card);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 24px 0 40px;
+  }
+  .tldr h3 {
+    margin-top: 0 !important;
+    font-size: 13px !important;
+    font-family: 'Inter', sans-serif !important;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--at-text-dim);
+  }
+
+  .next-step {
+    background: linear-gradient(180deg, #0071e3 0%, #0066cc 100%);
+    color: #fff;
+    padding: 28px 32px;
+    border-radius: 14px;
+    margin: 40px 0;
+  }
+  .next-step h2 {
+    color: #fff !important;
+    background: none !important;
+    -webkit-text-fill-color: #fff !important;
+    margin: 0 0 12px !important;
+  }
+  .next-step p, .next-step li { color: #fff !important; }
+  .next-step a { color: #fff !important; text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    body { font-size: 16px; line-height: 1.6; }
+    h1 { font-size: 28px; }
+    h2 { font-size: 22px; }
+    .container { padding: 24px 16px 48px; }
+    .phase { padding: 20px 16px; }
+    pre { font-size: 12px; padding: 14px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="pub-name">Leath Al Obaidi &middot; AI Hero, Applied</div>
+
+  <h1>AI Hero, Applied</h1>
+
+  <p class="subtitle">Matt Pocock's self-study syllabus is a learning document. This is the doing document &mdash; the seven phases turned into numbered steps and worked against one project: a canonical database for the consultancy series, with people and firms as the two primary tables.</p>
+
+  <div class="byline">By Leath Al Obaidi &middot; May 2026</div>
+
+  <div class="tldr">
+    <h3>tl;dr</h3>
+    <p>The consultancy series at <code>blog/consultancy-series/</code> is a 9-part narrative built on Companies House filings, press cuttings and GCR archives. A reviewer (Mike) flagged that several facts are wrong &mdash; including the founding date and founders of London Economics &mdash; and that the underlying sourcing isn't strong enough. The fix is structural, not editorial: the prose should be a <em>view</em> over a database, not the source of truth itself. This page applies Matt Pocock's 7-phase AI Hero playbook to that build, step by step. By the end of it you have a <code>data/consultancy/</code> folder with five CSVs, a script that diffs the HTML against them, and an eval harness that catches the next mistake before a reviewer does.</p>
+  </div>
+
+  <p>The original AI Hero post lives at <a href="index.html">index.html</a> in this folder. It is 13,500 lines of study notes, organised around Matt Pocock's seven phases of AI development. The phases work, but the document is shaped to <em>teach</em> them, not to <em>execute</em> them. This page reshapes them into a checklist and uses one ongoing project &mdash; the consultancy database &mdash; as the worked example throughout. Anywhere you see "<strong>Applied:</strong>" below, that's the consultancy project. Anywhere you don't, the step generalises to any other AI project you want to run the same way.</p>
+
+  <hr>
+
+  <!-- ============================================== PHASE 1 -->
+  <div class="phase">
+    <div class="tag">Phase 1</div>
+    <h2>The Idea</h2>
+    <p class="ph-goal">Goal: name the thing you are building, the user who needs it, and the one outcome that defines success. One paragraph. No more.</p>
+
+    <div class="ph-do">
+      <h3>Do</h3>
+      <ol>
+        <li>Write a one-sentence description of the project.</li>
+        <li>Name the single user (you, a colleague, a customer cohort).</li>
+        <li>Name the one outcome that defines success &mdash; a measurable change in behaviour, accuracy, or cost.</li>
+        <li>Write the smallest version of the idea that still delivers that outcome. Cut everything else.</li>
+      </ol>
+    </div>
+
+    <div class="callout-applied">
+      <strong>Applied.</strong> <em>Idea:</em> a canonical database for every firm and person in the UK economics consultancy market, against which the existing blog series can be fact-checked and from which future parts can be generated. <em>User:</em> me, plus any reviewer (Mike, future readers) who wants to verify a claim. <em>Success:</em> every dated factual claim in <code>blog/consultancy-series/*.html</code> traces to a row in <code>data/consultancy/events.csv</code>, and a script that diffs the two flags every disagreement. <em>Smallest version:</em> five CSVs (firms, people, events, affiliations, sources), seeded with only the facts already verified in this branch, plus a corrections file.</p>
+    </div>
+  </div>
+
+  <!-- ============================================== PHASE 2 -->
+  <div class="phase">
+    <div class="tag">Phase 2</div>
+    <h2>Research</h2>
+    <p class="ph-goal">Goal: know what already exists, what the canonical sources are, and which of those sources are reliable. Skip this only if you already know the answers.</p>
+
+    <div class="ph-do">
+      <h3>Do</h3>
+      <ol>
+        <li>List the canonical data sources for your domain. For each, note: cost, reliability, refresh rate, machine-readability.</li>
+        <li>List the secondary sources you would use to corroborate. Mark which are journalism, which are commentary, which are aggregators.</li>
+        <li>For every source you plan to lean on heavily, name one specific past failure (where it was wrong) so you know its failure mode.</li>
+      </ol>
+    </div>
+
+    <div class="callout-applied">
+      <strong>Applied.</strong> Canonical sources for the consultancy series: <strong>Companies House</strong> (free, authoritative for UK entities, machine-readable PDFs, but says nothing about trading names or founders before incorporation); <strong>firms' own About pages</strong> (authoritative on founding dates, but inconsistent and often missing); <strong>founders' personal sites and Wikipedia</strong> (good for personal history, weak on legal entity dates). Secondary: <strong>GCR</strong> (lots of coverage, but Mike's central complaint is "GCR is not a reliable source" &mdash; he is largely right: it reports rankings, not entity history); <strong>FT</strong>, <strong>consultancy.uk</strong>, <strong>PRNewswire</strong>. Known failure mode: every party tells the founding story differently and conflates "trading start" with "Companies House incorporation". The London Economics row in the existing blog is exactly that conflation.</p>
+    </div>
+  </div>
+
+  <!-- ============================================== PHASE 3 -->
+  <div class="phase">
+    <div class="tag">Phase 3</div>
+    <h2>Prototyping</h2>
+    <p class="ph-goal">Goal: build the crappiest end-to-end version that proves the loop closes. Avoid premature schema, premature evals, premature UI.</p>
+
+    <div class="ph-do">
+      <h3>Do</h3>
+      <ol>
+        <li>Pick the smallest input set that still exercises the full system.</li>
+        <li>Build the end-to-end loop on it: input &rarr; transform &rarr; output. Hard-code anything you can.</li>
+        <li>Show the output to one real user immediately. Do not pretty it up first.</li>
+      </ol>
+    </div>
+
+    <div class="callout-applied">
+      <strong>Applied.</strong> Smallest input set: the five firms Mike's review actually touched &mdash; London Economics, CRA, Frontier, NERA, RBB &mdash; with the people directly named in their founding events. End-to-end loop: hand-write the CSV rows, hand-write the diff against the existing HTML, output a corrections file (<a href="../../data/consultancy/corrections.md"><code>data/consultancy/corrections.md</code></a>). The first reader is Mike: the corrections file is the first thing he sees, because it's the artefact he asked for.</p>
+    </div>
+  </div>
+
+  <!-- ============================================== PHASE 4 -->
+  <div class="phase">
+    <div class="tag">Phase 4</div>
+    <h2>PRD</h2>
+    <p class="ph-goal">Goal: a single document a stranger could pick up tomorrow and execute. Schema, behaviour, non-goals, edge cases. Live document, not a deliverable.</p>
+
+    <div class="ph-do">
+      <h3>Do</h3>
+      <ol>
+        <li>Write the schema explicitly: tables, primary keys, foreign keys, allowed values.</li>
+        <li>Write the non-goals. What this system does <em>not</em> do is half the document.</li>
+        <li>Write the edge cases you have already identified. List them by name, not "we'll handle errors gracefully".</li>
+        <li>Commit it next to the code (<code>data/consultancy/README.md</code> in this case). Update it inline as you change the schema.</li>
+      </ol>
+    </div>
+
+    <div class="callout-applied">
+      <strong>Applied.</strong> The PRD is <a href="../../data/consultancy/README.md"><code>data/consultancy/README.md</code></a>. Five tables: <code>firms.csv</code>, <code>people.csv</code>, <code>events.csv</code>, <code>affiliations.csv</code>, <code>sources.csv</code>. Composite key on <code>affiliations</code> is <code>(person_id, firm_id, start_date)</code>. Each firm with multiple Companies House entities under one trading name gets a parent row and child <code>__ch_NNNNNNNN</code> rows &mdash; that's the structural fix for the "London Economics was founded in 1986 but the current CH entity dates to October 2000" problem. Non-goals: the database does not store narrative voice, opinion, or the prose itself. Edge cases listed by name: trading name vs CH entity (London Economics), spin-out lineage (Frontier from LE), partial-precision dates (year-only vs month-only), unconfirmed claims (Nick Morris co-founder), and partner walkouts where the new firm pre-dates its own legal incorporation (RBB).</p>
+    </div>
+  </div>
+
+  <!-- ============================================== PHASE 5 -->
+  <div class="phase">
+    <div class="tag">Phase 5</div>
+    <h2>Implementation plan (kanban)</h2>
+    <p class="ph-goal">Goal: chop the PRD into pieces small enough to do in one sitting. Each piece is a ticket, each ticket is a commit.</p>
+
+    <div class="ph-do">
+      <h3>Do</h3>
+      <ol>
+        <li>For each row in the PRD, write one ticket. Title = imperative verb. Body = acceptance criteria.</li>
+        <li>Mark tickets blocked vs unblocked. Do unblocked ones first.</li>
+        <li>Limit work-in-progress to two tickets at a time.</li>
+      </ol>
+    </div>
+
+    <div class="callout-applied">
+      <strong>Applied &mdash; current backlog.</strong>
+      <ol>
+        <li><strong>Done.</strong> Seed <code>firms.csv</code>, <code>people.csv</code>, <code>events.csv</code>, <code>affiliations.csv</code>, <code>sources.csv</code> with the facts Mike's review exposed (London Economics, CRA, Frontier, NERA, RBB, Capital Economics, Oxera, FTI/Lexecon/COMPASS).</li>
+        <li><strong>Done.</strong> Write <code>data/consultancy/corrections.md</code> &mdash; the immediate artefact for the reviewer.</li>
+        <li><strong>Blocked on user.</strong> Drop <code>~/Downloads/ch Econ consultancy</code> into <code>data/consultancy/raw/</code> and push. This is the desktop file that contains the broader population the blog cites.</li>
+        <li><strong>Next.</strong> Write <code>scripts/check_blog.py</code> &mdash; loads the CSVs, walks <code>blog/consultancy-series/*.html</code>, regenerates <code>corrections.md</code> on each run.</li>
+        <li><strong>Next.</strong> Apply the five edits in <code>corrections.md</code> (C-001 through C-005) to the HTML in one commit. Run the script. Verify the corrections file goes to zero open items.</li>
+        <li><strong>Later.</strong> Replace at least the London Economics row with an interview-sourced claim (talk to Kay, Morris, or someone who was at LE in 1986&ndash;1988), and mark the source row <code>type=interview</code>. This is the answer to Mike's "you need to actually talk to the people involved".</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- ============================================== PHASE 6 -->
+  <div class="phase">
+    <div class="tag">Phase 6</div>
+    <h2>Execution</h2>
+    <p class="ph-goal">Goal: do the tickets. Cleanly, in order, in committed commits.</p>
+
+    <div class="ph-do">
+      <h3>Do</h3>
+      <ol>
+        <li>Take the top ticket. Write code, write tests, commit.</li>
+        <li>Push frequently. Use a feature branch.</li>
+        <li>When you discover a missing requirement, edit the PRD <em>first</em>, then write the code. Not the other way round.</li>
+      </ol>
+    </div>
+
+    <div class="ph-do">
+      <h3>The check-blog script (sketch)</h3>
+      <p>What the next ticket looks like in code. Real implementation lands once <code>~/Downloads/ch Econ consultancy</code> is in the repo, because the script's evals need rows to test against.</p>
+      <pre># scripts/check_blog.py — sketch
+import csv, re, pathlib, json
+
+DATA = pathlib.Path("data/consultancy")
+BLOG = pathlib.Path("blog/consultancy-series")
+
+firms  = list(csv.DictReader((DATA / "firms.csv").open()))
+events = list(csv.DictReader((DATA / "events.csv").open()))
+
+# index founded-year by firm
+founded_year = {
+    e["firm_id"]: e["date"][:4]
+    for e in events
+    if e["type"] == "founded"
+}
+
+YEAR_RE = re.compile(r"\b(19|20)\d{2}\b")
+
+diffs = []
+for html in BLOG.glob("*.html"):
+    text = html.read_text()
+    for firm in firms:
+        name = firm["name"]
+        truth = founded_year.get(firm["firm_id"])
+        if not truth:
+            continue
+        # find every paragraph that mentions the firm and a year
+        for m in re.finditer(re.escape(name), text):
+            window = text[max(0, m.start()-200):m.end()+200]
+            years = YEAR_RE.findall(window)
+            if years and truth not in years:
+                line_no = text.count("\n", 0, m.start()) + 1
+                diffs.append({
+                    "file":   str(html.relative_to(".")),
+                    "line":   line_no,
+                    "firm":   firm["firm_id"],
+                    "truth":  truth,
+                    "found":  list(set(years)),
+                    "window": window.strip()[:240],
+                })
+
+pathlib.Path("data/consultancy/blog_diffs.json").write_text(
+    json.dumps(diffs, indent=2)
+)
+print(f"{len(diffs)} candidate diffs written")</pre>
+    </div>
+
+    <div class="callout-applied">
+      <strong>Applied.</strong> The script will be intentionally noisy in v1 &mdash; "Frontier mentioned near 1999, 2000, 2003" will look like a near-miss because year-windowing is crude. That's fine: v1 finds candidates, you triage by hand. v2 (later) tightens to founding-context patterns ("founded in", "launched in", "established in"). Don't build v2 until v1 has caught a real bug that v2 would have caught earlier &mdash; that's the eval criterion for justifying the work.</p>
+    </div>
+  </div>
+
+  <!-- ============================================== PHASE 7 -->
+  <div class="phase">
+    <div class="tag">Phase 7</div>
+    <h2>Quality assurance &mdash; the evals</h2>
+    <p class="ph-goal">Goal: have a fixed set of cases that prove the system is doing what you said it would. Run them on every change. Don't ship without them.</p>
+
+    <div class="ph-do">
+      <h3>Do</h3>
+      <ol>
+        <li>Pick three to five concrete cases. Real ones, not synthetic.</li>
+        <li>For each, write the expected output. Commit it as part of the eval.</li>
+        <li>Run the evals automatically &mdash; pre-commit hook, CI, or `npm test`. Failing evals block merging.</li>
+        <li>When you find a bug in production, add it to the eval set <em>before</em> you fix it.</li>
+      </ol>
+    </div>
+
+    <div class="callout-applied">
+      <strong>Applied &mdash; the eval set for the database.</strong>
+      <ol>
+        <li><strong>London Economics founding.</strong> Input: blog mentions LE near a year. Expected: only 1986 passes; 2000, 1980s, "late 1980s", "2000" all flagged. This is the eval Mike just ran by skim, automated.</li>
+        <li><strong>CRA London opening.</strong> Input: blog mentions CRA + London + year. Expected: 14 August 2000 passes; "Oct 2000" flagged. This is the eval that catches Mike's <em>own</em> mistake about CRA &mdash; useful for the next reviewer.</li>
+        <li><strong>Frontier launch month.</strong> Input: blog mentions Frontier + 1999. Expected: "June 1999" passes; "May 1999" flagged (unless the source row distinguishes incorporated-May / launched-June, in which case both pass).</li>
+        <li><strong>Founder attribution.</strong> Input: blog text mentions a firm in a "founded by X and Y" pattern. Expected: <code>affiliations.csv</code> for that firm at <code>start_date = founded date</code> must include all named people.</li>
+        <li><strong>Source coverage.</strong> Input: every event in <code>events.csv</code>. Expected: every row has a non-empty <code>source_id</code> that resolves in <code>sources.csv</code>. No anonymous facts.</li>
+      </ol>
+      <p>The evals run as a single Python script. Output: pass/fail count, and on fail, the same lines the diff script produces. The pre-commit hook is one line: <code>python scripts/check_blog.py &amp;&amp; python scripts/eval.py</code>.</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>The doing list, all in one place</h2>
+  <p>Strip out the phase headings and what's left is a checklist. Print this; cross items off; that's the project.</p>
+
+  <ol>
+    <li>Write the one-paragraph idea + success criterion. Commit as <code>data/consultancy/README.md</code> §1.</li>
+    <li>List canonical and secondary sources. Commit as <code>sources.csv</code>.</li>
+    <li>Hand-seed the five CSVs for the smallest input set. <em>(done in this branch)</em></li>
+    <li>Hand-write the corrections file against the existing prose. <em>(done in this branch)</em></li>
+    <li>Drop the desktop file <code>~/Downloads/ch Econ consultancy</code> into <code>data/consultancy/raw/</code> and push.</li>
+    <li>Write the import script that maps that file's columns to the CSV schema.</li>
+    <li>Write <code>scripts/check_blog.py</code> v1. Triage its output by hand.</li>
+    <li>Apply C-001 through C-005 to <code>blog/consultancy-series/*.html</code> in one commit.</li>
+    <li>Write <code>scripts/eval.py</code> with the five eval cases above. Wire it to a pre-commit hook.</li>
+    <li>Interview at least one person on the London Economics or NERA-era story. Add the <code>source_id</code> with <code>type=interview</code>.</li>
+    <li>Backfill the rest of the population: every firm currently in the blog gets a row, every named person gets a row, every dated event gets a row.</li>
+    <li>Add a small static site generator: <code>scripts/render_blog.py</code> reads the CSVs and re-emits the consultancy-series HTML with the canonical numbers. The prose stays in templates; the data lives in the CSVs.</li>
+  </ol>
+
+  <hr>
+
+  <!-- ============================================== NEXT STEP -->
+  <div class="next-step">
+    <h2>The next step is yours</h2>
+    <p>Steps 1&ndash;4 are already in the <code>claude/review-blog-series-DY2VF</code> branch. Step 5 is the blocker. On your Mac:</p>
+    <pre style="background: rgba(0,0,0,0.25); color: #fff;">cp ~/Downloads/ch\ Econ\ consultancy ~/leathalobaidi.github.io/data/consultancy/raw/
+cd ~/leathalobaidi.github.io
+git add data/consultancy/raw
+git commit -m "add desktop source-of-truth file"
+git push origin claude/review-blog-series-DY2VF</pre>
+    <p>Once that's in I can do steps 6, 7, 9, and most of 11 in one go.</p>
+  </div>
+
+  <hr>
+
+  <h2>Footnotes on Matt Pocock's syllabus that I dropped here</h2>
+
+  <p>The 13,500-line AI Hero document covers more than the seven phases. It also covers tokens, context windows, the Vercel AI SDK, MCP servers, evals, security, and a long tail of Claude Code skills. Most of those don't apply to a CSV-and-Python project; they apply once the database starts powering a model. The ones that <em>will</em> apply, in order of when you hit them:</p>
+
+  <ul>
+    <li><strong>Structured outputs</strong> (Vercel AI SDK / generateObject). When you eventually use an LLM to extract events from press cuttings into <code>events.csv</code>, this is the right primitive: define the schema in code, get back a typed object, fail loudly if it doesn't validate.</li>
+    <li><strong>Tool calling.</strong> Once <code>events.csv</code> is non-trivial, a "research agent" with one tool &mdash; <code>add_event(firm_id, date, type, source_url)</code> &mdash; is more useful than free-text generation. The tool's validation logic <em>is</em> the schema.</li>
+    <li><strong>Evals.</strong> Already addressed in Phase 7 above. The crucial AI Hero point is that evals come <em>before</em> shipping, not after, and that fixed eval cases beat generic "looks good" reviews.</li>
+    <li><strong>MCP.</strong> Eventually, expose <code>data/consultancy/</code> as an MCP server. Then any AI you work with (Claude, Cursor, ChatGPT) can answer "when was London Economics founded?" from the canonical source. That removes the entire class of hallucinated-fact errors that produced the original London Economics row.</li>
+    <li><strong>Claude Code skills.</strong> Two specific ones are useful here. A <code>/check-blog</code> skill that runs the diff script and shows the report inline. A <code>/grill-me</code> skill (Matt's name, not mine) that role-plays an industry old hand and stress-tests every fact in a draft before publication &mdash; this is the cheap synthetic version of the Mike call, and it should run on every draft before a human ever sees it.</li>
+  </ul>
+
+  <p>Everything else in the AI Hero post &mdash; tokens, context windows, sampling, the seventeen techniques &mdash; is useful background. Read it when it's relevant to the next ticket, not before.</p>
+
+  <hr style="margin-top: 56px;">
+
+  <p style="font-family: 'Inter', sans-serif; font-size: 13px; color: var(--at-text-muted); margin-top: 32px;">
+    Companion files in this repo:
+    <a href="../../data/consultancy/README.md"><code>data/consultancy/README.md</code></a> &middot;
+    <a href="../../data/consultancy/corrections.md"><code>data/consultancy/corrections.md</code></a> &middot;
+    <a href="../consultancy-series/"><code>blog/consultancy-series/</code></a>
+  </p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+firm_id,name,founded_year,founded_country,trading_status,parent_firm_id,companies_house_no,notes,source_id
+london_economics,London Economics,1986,UK,active,,,"The consulting firm John Kay describes in his own About page as 'established' in 1986 alongside taking the LBS chair. Distinct from any later Companies House entity bearing the name.",src_johnkay_about
+london_economics__ch_04083204,London Economics Limited (CH 04083204),2000,UK,active,london_economics,04083204,"Current trading entity. Incorporated 4 Oct 2000 as HAMSARD 2219 LIMITED (shelf company); renamed NEW LONDON ECONOMICS LIMITED 17 Nov 2000; renamed LONDON ECONOMICS LIMITED 22 Sep 2004. Carries the LE trading name, not its founding date.",src_ch_04083204
+nera,NERA Economic Consulting,1961,US,active,marsh_mclennan,,"Founded 10 April 1961 in New York by Jules Joskow and Irwin Stelzer, advised by Alfred E. Kahn.",src_nera_history
+marsh_mclennan,Marsh & McLennan,1905,US,active,,,"Acquired NERA in 1983.",src_nera_history
+frontier,Frontier Economics,1999,UK,active,,,"Launched June 1999 by Simon Gaysford and Daniel Elliott; original board added Burns, Webb, Biro; Sarah Hogg chair from December 1999. Employee-owned since founding.",src_frontier_about
+oxera,Oxera,1982,UK,active,,,"Founded 1982 as spin-out from University of Oxford economics department. Management buy-out in 2003.",src_oxera_about
+capital_economics,Capital Economics,1999,UK,active,,,"Founded July 1999 by Roger Bootle, ex-HSBC Group Chief Economist (HSBC 1989-1998).",src_capeco_bootle
+rbb,RBB Economics,2002,UK,active,,,"Founded April 2002 in London by Derek Ridyard, Simon Bishop, Simon Baker after walking out of NERA London with 13 colleagues. Named after founders' initials. Current LLP OC315356 incorporated 26 Sep 2005.",src_gcr_nera_2002
+cra,Charles River Associates,1965,US,active,,,"Parent firm CRA Inc. CRA London office opened with press release dated 14 August 2000.",src_cra_pr_london
+lexecon,Lexecon,1977,US,active,fti,,"Founded in Chicago; long-standing London affiliate from 1980. Acquired by FTI Consulting in December 2003 for ~$130m.",src_ft_fti_lexecon
+compass,Competition Policy Associates (COMPASS),2003,US,acquired,fti,,"Founded 2003 by five former DOJ Antitrust Division senior economists incl. Janusz Ordover, Robert Willig, Margaret Guerin-Calvert, the Orszag brothers. Acquired by FTI 2006 for $72m.",src_ft_fti_lexecon
+compass_lexecon,Compass Lexecon,2008,US,active,fti,,"Formed January 2008 by FTI combining Lexecon and COMPASS into a single LLC.",src_ft_fti_lexecon
+fti,FTI Consulting,1982,US,active,,,"Publicly-listed advisory group; consolidated Lexecon and COMPASS into Compass Lexecon.",src_ft_fti_lexecon
+ldc,LDC,1981,UK,active,,,"Lloyds Banking Group's mid-market PE arm. Took minority stake in Capital Economics October 2014.",src_ldc_capeco

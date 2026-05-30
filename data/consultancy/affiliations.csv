@@ -1,0 +1,25 @@
+person_id,firm_id,role,start_date,end_date,notes,source_id
+john_kay,london_economics,Founder & Executive Chairman,1986,1996,"Per Kay's own about page.",src_johnkay_about
+nick_morris,london_economics,Co-founder,1986,,"Per secondary sources; to be confirmed.",src_wikipedia_john_kay
+jules_joskow,nera,Co-founder,1961-04-10,,"NERA founding.",src_nera_history
+irwin_stelzer,nera,Co-founder,1961-04-10,,"NERA founding.",src_nera_history
+colin_mayer,oxera,Chairman,1986,2010,,src_oxera_about
+roger_bootle,capital_economics,Founder,1999-07,,"Founded firm.",src_capeco_bootle
+simon_gaysford,london_economics,Director,,1999-06,"Left to co-found Frontier.",src_frontier_founding
+simon_gaysford,frontier,Co-founder & Executive Director,1999-06,,"Still on board.",src_frontier_about
+daniel_elliott,london_economics,Director,,1999-06,"Left to co-found Frontier.",src_frontier_about
+daniel_elliott,frontier,Co-founder,1999-06,,,src_frontier_about
+philip_burns,frontier,Board director,1999-09,,,src_frontier_about
+sarah_hogg,frontier,Chair,1999-12,2013,,src_frontier_about
+michael_webb,frontier,Board director,2000-01,,,src_frontier_about
+zoltan_biro,frontier,Board director,2000-04,,,src_frontier_about
+derek_ridyard,nera,Senior economist,,2002-04,"15 years before walkout.",src_gcr_nera_2002
+derek_ridyard,rbb,Co-founder,2002-04,,,src_gcr_nera_2002
+simon_bishop,nera,Senior economist,,2002-04,,src_gcr_nera_2002
+simon_bishop,rbb,Co-founder,2002-04,,,src_gcr_nera_2002
+simon_baker,nera,Senior economist,,2002-04,,src_gcr_nera_2002
+simon_baker,rbb,Co-founder,2002-04,,,src_gcr_nera_2002
+michael_walker,lexecon,Head of London affiliate,,2000-08,"Left to launch CRA London.",src_cra_pr_london
+michael_walker,cra,Vice President, London — Competition,2000-08-14,,,src_cra_pr_london
+christopher_doyle,cra,Vice President, London — Telecoms/Media,2000-08-14,,,src_cra_pr_london
+robert_laslett,cra,Vice President, London — Financial Services,2000-08-14,,,src_cra_pr_london

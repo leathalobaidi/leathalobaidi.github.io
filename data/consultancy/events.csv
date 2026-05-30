@@ -1,0 +1,23 @@
+event_id,date,date_precision,type,firm_id,counterparty_firm_id,person_ids,location,value_usd_m,notes,source_id
+evt_le_founded,1986,year,founded,london_economics,,john_kay;nick_morris,UK,,"John Kay's own about page: 'establish a consulting company, London Economics' alongside taking the LBS chair in 1986. Co-founder Nick Morris attribution from secondary source.",src_johnkay_about
+evt_le_ch_inc,2000-10-04,day,incorporated,london_economics__ch_04083204,,,UK,,"CH 04083204 incorporated as HAMSARD 2219 LIMITED (shelf company).",src_ch_04083204
+evt_le_ch_rename1,2000-11-17,day,renamed,london_economics__ch_04083204,,,UK,,"Renamed NEW LONDON ECONOMICS LIMITED.",src_ch_04083204
+evt_le_ch_rename2,2004-09-22,day,renamed,london_economics__ch_04083204,,,UK,,"Renamed LONDON ECONOMICS LIMITED — present trading name.",src_ch_04083204
+evt_nera_founded,1961-04-10,day,founded,nera,,jules_joskow;irwin_stelzer,US,,"NYC and DC offices, 17 staff. Advised by Alfred E. Kahn.",src_nera_history
+evt_nera_acq,1983,year,acquired_by,nera,marsh_mclennan,,US,,"Marsh & McLennan acquires NERA.",src_nera_history
+evt_oxera_founded,1982,year,founded,oxera,,,UK,,"Spin-out from University of Oxford economics department.",src_oxera_about
+evt_oxera_mayer_chair,1986,year,key_hire,oxera,,colin_mayer,UK,,"Colin Mayer becomes chairman of Oxera (through 2010).",src_oxera_about
+evt_oxera_mbo,2003,year,mbo,oxera,,,UK,,"Management buy-out led by Helen Jenkins and Luis Correia da Silva.",src_oxera_about
+evt_frontier_founded,1999-06,month,founded,frontier,,simon_gaysford;daniel_elliott,UK,,"Per Frontier's own About: 'Frontier Economics Ltd was formed in June 1999.' Companies House incorporation may predate (some blog text says May); the firm dates itself to June.",src_frontier_about
+evt_frontier_burns,1999-09,month,key_hire,frontier,,philip_burns,UK,,"Philip Burns joins board.",src_frontier_about
+evt_frontier_hogg,1999-12,month,key_hire,frontier,,sarah_hogg,UK,,"Sarah Hogg becomes chair.",src_frontier_about
+evt_frontier_webb,2000-01,month,key_hire,frontier,,michael_webb,UK,,"Michael Webb joins board.",src_frontier_about
+evt_frontier_biro,2000-04,month,key_hire,frontier,,zoltan_biro,UK,,"Zoltan Biro joins board.",src_frontier_about
+evt_capeco_founded,1999-07,month,founded,capital_economics,,roger_bootle,UK,,"Founded July 1999 by Roger Bootle, ex-HSBC chief economist.",src_capeco_bootle
+evt_capeco_ldc,2014-10,month,pe_investment,capital_economics,ldc,,UK,,"LDC takes minority stake. First PE investment in a UK economics consultancy.",src_ldc_capeco
+evt_cra_london,2000-08-14,day,office_opened,cra,,michael_walker;christopher_doyle;robert_laslett,UK,,"CRA press release announces 'official opening' of London office: ~15 staff, three VPs, three practices (financial services, telecoms/media, competition).",src_cra_pr_london
+evt_rbb_founded,2002-04,month,founded,rbb,nera,derek_ridyard;simon_bishop;simon_baker,UK,,"16-economist walkout from NERA London including Andrea Lofaro.",src_gcr_nera_2002
+evt_rbb_llp_inc,2005-09-26,day,incorporated,rbb,,,UK,,"RBB Economics LLP OC315356 incorporated three-and-a-half years after the firm began trading.",src_ch_oc315356
+evt_fti_lexecon,2003-12,month,acquired,fti,lexecon,,US,130,"FTI acquires Lexecon for ~$130m cash.",src_ft_fti_lexecon
+evt_fti_compass,2006,year,acquired,fti,compass,,US,72,"FTI acquires Competition Policy Associates for $72m cash + FTI stock.",src_ft_fti_lexecon
+evt_compass_lexecon_formed,2008-01,month,founded,compass_lexecon,,,US,,"FTI merges Lexecon + COMPASS into Compass Lexecon LLC.",src_ft_fti_lexecon
