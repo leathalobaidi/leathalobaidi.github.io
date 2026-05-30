@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Economics consultancies · Network + Map dashboard</title>
 <meta name="author" content="Leath Al Obaidi">
-<meta name="description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. 91 firms pinned to postcodes, wired to a single filter panel.">
+<meta name="description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. A ~90-firm dataset, ~80 pinned to postcodes, wired to a single filter panel.">
 <link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/part0.2-uk-and-global-map">
 <meta property="og:title" content="Economics consultancies · Network + Map dashboard">
-<meta property="og:description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. 91 firms pinned to postcodes, wired to a single filter panel.">
+<meta property="og:description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. A ~90-firm dataset, ~80 pinned to postcodes, wired to a single filter panel.">
 <meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/part0.2-uk-and-global-map">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Leath Al Obaidi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Economics consultancies · Network + Map dashboard">
-<meta name="twitter:description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. 91 firms pinned to postcodes, wired to a single filter panel.">
+<meta name="twitter:description" content="Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. A ~90-firm dataset, ~80 pinned to postcodes, wired to a single filter panel.">
 
 <link rel="stylesheet" href="apple-theme.css">
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
@@ -292,8 +292,8 @@
   </div>
 
   <h1>Where the economists actually are</h1>
-  <p class="subtitle">Begin in Britain; then step back for the world. Three interactive maps and one force-directed graph, 91 firms in total, wired to a single filter panel.</p>
-  <p class="byline"><strong>Interactive dashboard</strong> &middot; UK registered-office map (91 firms) &middot; global office overlap network &amp; world map (45 firms) &middot; source: Companies House filings + each firm's published office list, Jan 2026</p>
+  <p class="subtitle">Begin in Britain; then step back for the world. Three interactive maps and one force-directed graph drawn from the same ~90-firm catalogue, wired to a single filter panel.</p>
+  <p class="byline"><strong>Interactive dashboard</strong> &middot; UK registered-office map (80 offices pinned) &middot; global office overlap network &amp; world map (45 firms) &middot; source: Companies House filings + each firm's published office list, Jan 2026</p>
 
   <div class="layout">
   <div class="main-col">
@@ -304,13 +304,13 @@
   <section class="section" id="note-uk">
     <div class="note-num">NOTE I · UK MAP</div>
     <h2>The UK map: where the firms actually are</h2>
-    <p class="sub">Available registered office addresses from the 91-firm UK dataset, pinned to an interactive UK map. 53 firms in London, 27 elsewhere in the UK, eleven without a separately filed registered-office address.</p>
+    <p class="sub">Available registered office addresses from the UK dataset, pinned to an interactive UK map: 80 office rows that plot, 53 in London and 27 elsewhere in the UK, plus eleven entities with no separately filed registered-office address. <span class="scoping">A scoping note: the canonical catalogue used across this series is ~90 active firms; the 80 plotted rows here include a few separately registered brand entities sharing one address (the three A&amp;M LLPs, Capital Economics' two companies, the two ECA names) and one dissolved firm, Vivid Economics, retained for continuity, so the map plots slightly fewer distinct active firms than the headline catalogue, while the eleven non-plotting entities sit in the dataset but never appear on this registered-office map.</span></p>
 
     <p>Most of the industry sits in London, but some of it is elsewhere. Plot the available registered offices and two things come into focus at once: the tight London clusters that form the core of the market, and a thinner scattering of firms working out of Oxford, Cambridge, Edinburgh, and a handful of regional towns. The London map is not one cluster but four, and the four clusters do not overlap so much as they face different clients through different doors; each postcode has its own logic. The logic is partly geographical. Walk the streets and you can often read the business model from the building.</p>
 
     <div class="chart-box">
       <div class="title">UK registered office addresses</div>
-      <div class="meta">source: Companies House &middot; address filings &middot; 91-firm UK dataset</div>
+      <div class="meta">source: Companies House &middot; address filings &middot; ~90-firm UK catalogue, 80 office rows plotted</div>
       <div class="chart-wrap"><div class="chart-live" id="uk-map"></div><img class="chart-mobile" src="charts/uk-map.png" alt="UK economics consultancies map" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
     </div>
 
@@ -949,7 +949,7 @@ render();
 setTimeout(() => map.invalidateSize(), 100);
 
 // ============================================================================
-// UK map · NOTE I · 91-firm UK registered-office dataset (lifted from part0.2)
+// UK map · NOTE I · ~90-firm UK registered-office catalogue, 80 office rows plotted + 11 non-plotting entities (lifted from part0.2)
 // ============================================================================
 (function() {
   const UK_OFFICES = [
