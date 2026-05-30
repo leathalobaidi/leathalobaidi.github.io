@@ -642,25 +642,26 @@
     </footer>
 
     <script>
-        // Active nav link on scroll
+        // Highlight the active nav link as you scroll (rAF-throttled)
         const sections = document.querySelectorAll('.page-section');
         const navLinks = document.querySelectorAll('.nav-links a');
+        let ticking = false;
 
-        window.addEventListener('scroll', () => {
+        function updateActiveLink() {
             let current = 'home';
             sections.forEach(section => {
-                const top = section.offsetTop - 80;
-                if (window.scrollY >= top) {
-                    current = section.getAttribute('id');
-                }
+                if (window.scrollY >= section.offsetTop - 80) current = section.id;
             });
             navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
             });
-        });
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) { requestAnimationFrame(updateActiveLink); ticking = true; }
+        }, { passive: true });
+        updateActiveLink();
     </script>
 
 
