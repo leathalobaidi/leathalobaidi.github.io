@@ -2,28 +2,21 @@
 <html lang="en"><head><meta charset="UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal site of Leath Al Obaidi: economist, regulatory finance professional, writer, vibeResearcher, and builder of useful tools.">
-    <meta property="og:title" content="Leath Al Obaidi — Economist, Writer &amp; Builder">
-    <meta property="og:description" content="Personal site of Leath Al Obaidi: economist, regulatory finance professional, writer, vibeResearcher, and builder of useful tools.">
+    <meta name="description" content="Personal site of Leath Al Obaidi. Economist working in regulatory finance. Projects, works in progress, and writing on economics, business, and ideas.">
+    <meta property="og:title" content="Leath Al Obaidi — Economist &amp; Writer">
+    <meta property="og:description" content="Personal site of Leath Al Obaidi. Economist working in regulatory finance. Projects, works in progress, and writing on economics, business, and ideas.">
     <meta property="og:url" content="https://leathalobaidi.com">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://leathalobaidi.com/og-image.png">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card" content="summary">
     <meta name="twitter:site" content="@pluckup_courage">
-    <meta name="twitter:title" content="Leath Al Obaidi — Economist, Writer &amp; Builder">
-    <meta name="twitter:description" content="Economist, regulatory finance professional, writer, vibeResearcher, and builder of useful tools.">
-    <meta name="twitter:image" content="https://leathalobaidi.com/og-image.png">
     <link rel="canonical" href="https://leathalobaidi.com/">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <title>Leath Al Obaidi — Economist, Writer &amp; Builder</title>
+    <title>Leath Al Obaidi — Economist &amp; Writer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com/">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-primary: #9f442b;
-            --color-primary-soft: #f7e9e3;
-            --color-primary-rgb: 159, 68, 43;
+            --color-primary: #c45d3e;
             --color-text: #2a2a2a;
             --color-text-light: #666666;
             --color-background: #fafafa;
@@ -105,7 +98,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: var(--spacing-md);
         }
 
         .nav-brand {
@@ -119,14 +111,11 @@
         }
 
         .nav-brand:hover { color: var(--color-primary); }
-        .nav-brand-short { display: none; }
 
         .nav-links {
             display: flex;
             list-style: none;
-            gap: var(--spacing-md);
-            flex-wrap: wrap;
-            justify-content: flex-end;
+            gap: var(--spacing-lg);
         }
 
         .nav-links a {
@@ -143,10 +132,7 @@
         }
 
         @media (max-width: 640px) {
-            .nav-container { align-items: center; gap: 0.75rem; }
-            .nav-brand-full { display: none; }
-            .nav-brand-short { display: inline; }
-            .nav-links { gap: 0.75rem; font-size: 0.9rem; justify-content: flex-start; }
+            .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; }
         }
 
         /* Page Section */
@@ -158,27 +144,12 @@
 
         .page-section:last-of-type { border-bottom: none; }
 
-        /* Section Divider Title */
-        .section-divider {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--color-text-light);
-            margin-bottom: var(--spacing-lg);
-            font-weight: 600;
-            font-family: var(--font-sans);
-        }
-
         /* ===== HOME ===== */
-        .hero {
-            margin-bottom: var(--spacing-lg);
-            padding: var(--spacing-sm) 0;
-        }
+        .hero { margin-bottom: var(--spacing-xl); }
 
         .hero-name {
-            font-size: 2.35rem;
-            line-height: 1.14;
-            margin-bottom: var(--spacing-md);
+            font-size: 2.2rem;
+            margin-bottom: var(--spacing-xs);
         }
 
         .hero-name strong {
@@ -196,40 +167,6 @@
 
         .hero-bio { color: var(--color-text); line-height: 1.8; }
         .hero-bio p { margin-bottom: var(--spacing-lg); }
-
-        .hero-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-lg);
-        }
-
-        .credential-strip {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: var(--spacing-sm);
-            margin: var(--spacing-xl) 0;
-        }
-
-        .credential {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 4px;
-            padding: var(--spacing-md);
-        }
-
-        .credential strong {
-            display: block;
-            color: var(--color-text);
-            font-size: 0.95rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .credential span {
-            color: var(--color-text-light);
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
 
         .explore-heading {
             font-size: 0.85rem;
@@ -258,282 +195,11 @@
 
         .card:hover {
             border-color: var(--color-primary);
-            box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.08);
-            opacity: 1;
+            box-shadow: 0 2px 8px rgba(196, 93, 62, 0.08);
         }
 
         .card h3 { margin-top: 0; color: var(--color-text); }
         .card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
-
-        .card-meta {
-            display: block;
-            color: var(--color-primary);
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .publications-list, .roles-list { list-style: none; }
-
-        .publications-list li, .roles-list li {
-            margin-bottom: var(--spacing-md);
-            padding-bottom: var(--spacing-md);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .publications-list li:last-child, .roles-list li:last-child {
-            border-bottom: none; margin-bottom: 0; padding-bottom: 0;
-        }
-
-        .publication-title, .role-title {
-            font-weight: 600; color: var(--color-text);
-            display: block; margin-bottom: var(--spacing-xs);
-        }
-
-        .publication-year, .role-org {
-            color: var(--color-text-light); font-size: 0.9rem;
-        }
-
-        .section-intro {
-            color: var(--color-text-light);
-            margin-bottom: var(--spacing-lg);
-            font-size: 0.95rem;
-        }
-
-        .newsletter-callout {
-            background-color: var(--color-callout-bg);
-            border: 1px solid #f5ddd4;
-            padding: var(--spacing-lg);
-            border-radius: 4px;
-            margin-bottom: var(--spacing-xl);
-            text-align: center;
-        }
-
-        .newsletter-callout p { color: var(--color-text); margin-bottom: var(--spacing-lg); line-height: 1.8; }
-
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: var(--color-primary);
-            color: #ffffff;
-            border-radius: 4px;
-            font-weight: 600;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-
-        .btn:hover {
-            opacity: 0.85;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.18);
-            border-bottom: none;
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--color-primary);
-            border: 1px solid var(--color-primary);
-        }
-
-        .btn-secondary:hover { background-color: var(--color-callout-bg); }
-
-        .buttons-row {
-            display: flex; gap: var(--spacing-md);
-            justify-content: center; flex-wrap: wrap;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .social-link {
-            display: block; padding: var(--spacing-md);
-            border: 1px solid var(--color-border);
-            border-radius: 4px; transition: var(--transition);
-            text-decoration: none; color: inherit;
-        }
-
-        .social-link:hover { border-color: var(--color-primary); background-color: var(--color-callout-bg); opacity: 1; }
-        .social-platform { font-weight: 600; color: var(--color-text); display: block; margin-bottom: var(--spacing-xs); }
-        .social-description { color: var(--color-text-light); font-size: 0.85rem; }
-
-        .contact-section {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            padding: var(--spacing-lg);
-            border-radius: 4px;
-            text-align: center;
-        }
-
-        .contact-section p { color: var(--color-text-light); line-height: 1.8; margin-bottom: var(--spacing-lg); }
-
-        /* ===== NOTES ===== */
-        .recently-added { margin-bottom: var(--spacing-xl); }
-
-        .notes-section-title {
-            font-family: var(--font-serif);
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: var(--spacing-sm);
-            color: var(--color-text);
-        }
-
-        .recent-notes-list { display: flex; flex-direction: column; gap: var(--spacing-sm); }
-
-        .recent-note {
-            background-color: #fff; border-left: 3px solid var(--color-primary);
-            padding: var(--spacing-sm); border-radius: 4px;
-            display: flex; justify-content: space-between; align-items: flex-start;
-            transition: background-color 0.2s ease;
-        }
-
-        .recent-note:hover { background-color: #fdf8f5; }
-        .recent-note-content { flex: 1; }
-        .recent-note-title { font-weight: 500; margin-bottom: 0.25rem; color: var(--color-text); }
-
-        .recent-note-meta {
-            display: flex; gap: 0.5rem;
-            font-size: 0.85rem; color: #999;
-        }
-
-        .new-badge {
-            display: inline-block; background-color: var(--color-primary); color: white;
-            font-size: 0.7rem; font-weight: 700; padding: 0.25rem 0.5rem;
-            border-radius: 3px; text-transform: uppercase; white-space: nowrap;
-            margin-left: auto;
-        }
-
-        .search-container { margin-bottom: var(--spacing-lg); }
-
-        #search-input {
-            width: 100%; padding: 0.875rem 1rem;
-            font-family: var(--font-sans); font-size: 1rem;
-            border: 1px solid #d4d0c8; border-radius: 6px;
-            background-color: #fff; color: var(--color-text);
-            transition: border-color 0.2s ease;
-        }
-
-        #search-input::placeholder { color: #999; }
-        #search-input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 3px rgba(196, 93, 62, 0.1); }
-
-        .filters-container {
-            position: sticky; top: 60px;
-            background-color: var(--color-background);
-            padding: var(--spacing-sm) 0;
-            margin-bottom: var(--spacing-lg);
-            border-bottom: 1px solid var(--color-border);
-            z-index: 90;
-        }
-
-        .filter-label {
-            font-size: 0.85rem; font-weight: 500; color: var(--color-text-light);
-            margin-bottom: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
-        }
-
-        .filter-pills { display: flex; flex-wrap: wrap; gap: 0.75rem; }
-
-        .filter-pill {
-            padding: 0.5rem 1rem; border: 1px solid #d4d0c8;
-            background-color: #fff; color: var(--color-text);
-            border-radius: 20px; font-size: 0.9rem; font-weight: 500;
-            cursor: pointer; transition: all 0.2s ease; white-space: nowrap;
-            font-family: var(--font-sans);
-        }
-
-        .filter-pill:hover { border-color: var(--color-primary); }
-        .filter-pill.active { background-color: var(--color-primary); color: white; border-color: var(--color-primary); }
-
-        .notes-count { font-size: 0.9rem; color: #999; margin-bottom: var(--spacing-md); }
-
-        .notes-list { display: flex; flex-direction: column; gap: var(--spacing-md); }
-
-        .note-item {
-            background-color: #fff; padding: 1.25rem; border-radius: 6px;
-            border: 1px solid var(--color-border); transition: all 0.2s ease;
-        }
-
-        .note-item:hover { border-color: var(--color-primary); background-color: #fdf8f5; }
-        .note-item.hidden { display: none; }
-
-        .note-title {
-            font-family: var(--font-serif); font-size: 1.1rem;
-            font-weight: 600; margin-bottom: 0.5rem; color: var(--color-text);
-        }
-
-        .note-title a { color: var(--color-text); border-bottom: 2px solid transparent; }
-        .note-title a:hover { border-bottom-color: var(--color-primary); opacity: 1; }
-
-        .note-meta {
-            display: flex; flex-wrap: wrap; gap: 0.75rem;
-            align-items: center; font-size: 0.85rem;
-        }
-
-        .note-category { color: var(--color-text-light); font-weight: 500; }
-
-        .note-label {
-            display: inline-block; font-size: 0.75rem; font-weight: 600;
-            padding: 0.35rem 0.65rem; border-radius: 4px;
-            text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap;
-        }
-
-        .label-book-review { background-color: #e8d5c4; color: #6b4423; }
-        .label-reading-notes { background-color: #d4e5f7; color: #1a4d7a; }
-        .label-original-essay { background-color: #e6d9f0; color: #5a3366; }
-        .label-summary { background-color: #d4f0e8; color: #1a5a45; }
-        .label-analysis { background-color: #f0e6d9; color: #6b5a3e; }
-        .note-date { color: #999; margin-left: auto; white-space: nowrap; }
-
-        .empty-state { text-align: center; padding: var(--spacing-xl) var(--spacing-md); color: #999; }
-
-        /* ===== LISTOGRAPHY ===== */
-        .stats-bar {
-            display: flex; justify-content: center; gap: 20px;
-            padding: 20px; background-color: #fff;
-            border: 1px solid var(--color-border); border-radius: 4px;
-            margin-bottom: var(--spacing-xl);
-            font-size: 13px; color: var(--color-text-light); font-weight: 500;
-        }
-
-        .stats-bar span { display: flex; align-items: center; }
-
-        .stats-bar span:not(:last-child)::after {
-            content: ''; display: inline-block; width: 1px; height: 16px;
-            background-color: var(--color-border); margin-left: 20px;
-        }
-
-        .list-card { margin-bottom: 45px; }
-        .list-header { margin-bottom: 20px; }
-
-        .list-title {
-            font-family: var(--font-serif); font-size: 1.5rem;
-            font-weight: 600; color: var(--color-text); margin-bottom: 8px;
-            margin-top: 0;
-        }
-
-        .list-count { font-size: 13px; color: #999; font-weight: 500; }
-        .list-items { list-style: none; }
-
-        .list-item { padding: 18px 0; border-bottom: 1px solid var(--color-border); }
-        .list-item:last-child { border-bottom: none; }
-
-        .item-title {
-            font-weight: 600; color: var(--color-text);
-            margin-bottom: 8px; display: flex; gap: 8px; align-items: flex-start;
-        }
-
-        .item-title a { color: var(--color-primary); font-weight: 600; }
-        .item-title a:hover { text-decoration: underline; }
-        .item-bullet { color: var(--color-primary); font-weight: 600; flex-shrink: 0; }
-        .item-annotation { font-size: 14px; color: var(--color-text-light); line-height: 1.6; }
-        .placeholder-items { color: #999; font-size: 14px; font-style: italic; padding: 18px 0; }
 
         /* ===== PROJECTS ===== */
         .project-card {
@@ -564,16 +230,10 @@
         }
 
         .badge-chrome { background-color: #e8f5e9; color: #2e7d32; }
-        .badge-mit { background-color: #fff8e1; color: #8a4b00; }
+        .badge-mit { background-color: #fff8e1; color: #f57f17; }
         .badge-v3 { background-color: #e3f2fd; color: #1565c0; }
 
         .project-description { color: var(--color-text); line-height: 1.8; margin-bottom: var(--spacing-md); }
-
-        .project-outcome {
-            color: var(--color-primary);
-            font-weight: 600;
-            margin-bottom: var(--spacing-sm);
-        }
 
         .project-features { margin-bottom: var(--spacing-lg); }
 
@@ -632,7 +292,7 @@
             margin-bottom: var(--spacing-md); transition: var(--transition);
         }
 
-        .wip-card:hover { border-left-color: var(--color-primary); box-shadow: 0 2px 8px rgba(var(--color-primary-rgb), 0.06); }
+        .wip-card:hover { border-left-color: var(--color-primary); box-shadow: 0 2px 8px rgba(196, 93, 62, 0.06); }
         .wip-card h3 { margin-top: 0; margin-bottom: var(--spacing-xs); font-size: 1.2rem; }
 
         .wip-card .wip-type {
@@ -640,73 +300,11 @@
             padding: 0.15rem 0.5rem; border-radius: 3px; margin-bottom: var(--spacing-sm);
         }
 
-        .type-podcast { background-color: #e8f5e9; color: #2e7d32; }
         .type-community { background-color: #e3f2fd; color: #1565c0; }
-        .type-writing { background-color: #fce4ec; color: #c62828; }
-        .type-app { background-color: #f3e5f5; color: #6a1b9a; }
-        .type-sport { background-color: #fff3e0; color: #e65100; }
-        .type-org { background-color: #e0f2f1; color: #00695c; }
 
         .wip-card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
-        .wip-card a.wip-link { display: inline-block; margin-top: var(--spacing-sm); font-size: 0.9rem; }
 
         .wip-divider { border: none; border-top: 1px solid var(--color-border); margin: var(--spacing-xl) 0; }
-
-        .built-with {
-            background-color: var(--color-callout-bg);
-            border: 1px solid #f5ddd4;
-            padding: var(--spacing-lg); border-radius: 4px;
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .built-with h2 { margin-top: 0; font-size: 1.3rem; }
-        .built-with p { color: var(--color-text); line-height: 1.8; margin-bottom: 0; }
-
-        /* ===== ABOUT ===== */
-        .story-section { margin-bottom: var(--spacing-lg); }
-        .story-section p { margin-bottom: var(--spacing-md); line-height: 1.8; }
-        .story-section p:last-child { margin-bottom: 0; }
-
-        .now-section {
-            background-color: #f5f5f3; padding: var(--spacing-lg);
-            border-radius: 8px; margin: var(--spacing-xl) 0;
-        }
-
-        .now-section h2 { margin-top: 0; }
-
-        .now-section .updated {
-            font-size: 0.9rem; color: #7a7a78;
-            font-style: italic; margin-bottom: var(--spacing-md);
-        }
-
-        .now-section ul { list-style: none; padding: 0; }
-
-        .now-section li {
-            padding: 0.75rem 0; padding-left: 1.5rem;
-            position: relative; color: var(--color-text);
-        }
-
-        .now-section li::before {
-            content: '\2014'; position: absolute; left: 0;
-            color: var(--color-primary); font-weight: 600;
-        }
-
-        .about-contact-section {
-            margin: var(--spacing-xl) 0; padding: var(--spacing-lg);
-            background-color: #f5f5f3; border-radius: 8px; text-align: center;
-        }
-
-        .about-contact-section p { margin-bottom: var(--spacing-md); }
-
-        .button-group { display: flex; gap: var(--spacing-sm); justify-content: center; flex-wrap: wrap; }
-
-        .contact-links {
-            display: flex;
-            gap: var(--spacing-sm);
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-top: var(--spacing-md);
-        }
 
         /* Footer */
         footer {
@@ -738,21 +336,9 @@
             h3 { font-size: 1.1rem; }
             .container { padding: 0 var(--spacing-sm); }
             .nav-container { padding: 0 var(--spacing-sm); }
-            .hero-name { font-size: 1.9rem; }
-            .hero-actions { flex-direction: column; }
-            .credential-strip { grid-template-columns: 1fr; }
             .cards-grid { grid-template-columns: 1fr; }
-            .social-grid { grid-template-columns: repeat(2, 1fr); }
-            .buttons-row, .button-group { flex-direction: column; align-items: stretch; }
-            .btn { text-align: center; width: 100%; }
             .project-header { flex-direction: column; }
             .project-links { flex-direction: column; gap: var(--spacing-sm); }
-            .stats-bar { flex-direction: column; gap: 12px; }
-            .stats-bar span:not(:last-child)::after { display: none; }
-            .recent-note { flex-direction: column; gap: 0.5rem; }
-            .new-badge { margin-left: 0; margin-top: 0.5rem; }
-            .filter-pills { gap: 0.5rem; }
-            .filter-pill { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -761,12 +347,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#home" class="nav-brand"><span class="nav-brand-full">Leath Al Obaidi</span><span class="nav-brand-short">Leath</span></a>
+            <a href="#home" class="nav-brand">Leath</a>
             <ul class="nav-links">
-                <li><a href="#home">About</a></li>
-                <li><a href="#writing">Writing</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/blog">Blog</a></li>
             </ul>
         </div>
     </nav>
@@ -776,71 +360,37 @@
         <!-- ==================== HOME ==================== -->
         <section id="home" class="page-section">
             <div class="hero">
-                <h1 class="hero-name">Hi, I'm Leath, this is my personal site: I'm an economist, regulatory finance professional, writer, vibeResearcher and builder of useful tools.</h1>
+                <h1 class="hero-name">Hello, I'm <strong>Leath</strong></h1>
+                <p class="hero-pronunciation">/leɪθ/ — rhymes with faith</p>
                 <div class="hero-bio">
                     <p>I'm an economist working in regulatory finance at Smart DCC, the company running Britain's smart meter data network. Previously, I spent six years at the British Business Bank, where I helped secure over £1bn in government funding and led programmes that supported over a million businesses during the pandemic. I also serve as a Non-Executive Director at Wenta, a social enterprise supporting small businesses, and sit on the Council of the Society of Professional Economists.</p>
-                    <p>I grew up between Iraq and Austria, studied economics in Vienna and Nottingham, and now live in London. I'm interested in economics, regulation, business, language, history, and philosophy.</p>
-                </div>
-                <div class="hero-actions">
-                    <a href="#writing" class="btn">Read Writing</a>
-                    <a href="#projects" class="btn btn-secondary">View Projects</a>
-                    <a href="https://linkedin.com/in/leath-al-obaidi/" class="btn btn-secondary">Connect on LinkedIn</a>
+                    <p>I grew up in Austria, studied economics in Vienna and Nottingham, and now live in London. This site is where I share what I'm reading, thinking about, and working on. I'm interested in economics, regulation, business, language, history, and philosophy.</p>
                 </div>
             </div>
 
-            <div class="credential-strip" aria-label="Professional highlights">
-                <div class="credential">
-                    <strong>Regulatory finance</strong>
-                    <span>Working at Smart DCC, the company running Britain's smart meter data network.</span>
-                </div>
-                <div class="credential">
-                    <strong>Public finance</strong>
-                    <span>Former British Business Bank economist; helped secure over £1bn in government funding.</span>
-                </div>
-                <div class="credential">
-                    <strong>Governance</strong>
-                    <span>Non-Executive Director at Wenta, a social enterprise supporting small businesses.</span>
-                </div>
-                <div class="credential">
-                    <strong>Economics profession</strong>
-                    <span>Council member of the Society of Professional Economists.</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== WRITING ==================== -->
-        <section id="writing" class="page-section">
-            <p class="section-divider">Writing</p>
-            <h1>Selected Writing</h1>
-            <p class="section-intro">Essays and research notes on economics, business, competition, technology, and ideas.</p>
-
+            <p class="explore-heading">Explore</p>
             <div class="cards-grid">
-                <a href="/blog/consultancy-series" class="card">
-                    <span class="card-meta">Data-driven history</span>
-                    <h3>UK Economics Consultancy</h3>
-                    <p>Eleven pieces on the £2 billion industry nobody writes about: ninety firms, twenty-five years, every Companies House filing read.</p>
-                </a>
-                <a href="/blog/competition-and-rivalry" class="card">
-                    <span class="card-meta">Essay</span>
-                    <h3>Competition and Rivalry</h3>
-                    <p>From Peter Thiel to Girard: an essay on competition across sport, philosophy, economics, and everyday life.</p>
-                </a>
-                <a href="/blog/aihero-self-study" class="card">
-                    <span class="card-meta">Syllabus</span>
-                    <h3>AI Hero Self-Study</h3>
-                    <p>A self-paced curriculum for engineers learning AI-assisted development workflows and agentic coding habits.</p>
-                </a>
+                <div class="card" onclick="document.getElementById(&#39;projects&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
+                    <h3>Projects</h3>
+                    <p>Translations, Chrome extensions, and data dashboards — open-source experiments across the Financial Times, YouTube, Letterboxd, used-car markets, and Soviet textbooks.</p>
+                </div>
             </div>
 
-            <div class="buttons-row">
-                <a href="/blog" class="btn btn-secondary">All Writing</a>
-            </div>
+            <h2>Latest Writing</h2>
+            <a href="/blog/competition-and-rivalry" style="display:block;padding:var(--spacing-lg);border:1px solid var(--color-border);border-radius:4px;margin-bottom:var(--spacing-xl);text-decoration:none;color:inherit;transition:all 0.3s ease;" onmouseover="this.style.borderColor='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-border)'">
+                <h3 style="margin-top:0;color:var(--color-text);">Competition and Rivalry</h3>
+                <p style="color:var(--color-text-light);font-family:var(--font-serif);font-style:italic;margin-bottom:0.5rem;">The fire that never sleeps &mdash; and the question of whether we should let it burn</p>
+                <p style="color:var(--color-text-light);font-size:0.9rem;margin-bottom:0;">From Peter Thiel's contrarian take on monopolies to Girard's mimetic desire &mdash; an essay on competition across sport, philosophy, economics, and everyday life.</p>
+            </a>
+
+
+
         </section>
 
         <!-- ==================== PROJECTS ==================== -->
         <section id="projects" class="page-section">
             <h1>Projects</h1>
-            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-xl);">Useful tools, translations, dashboards, and small software experiments. Most are open-source on GitHub.</p>
+            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-xl);">Things I've built — translations, Chrome extensions, and tools. All open-source on GitHub.</p>
 
             <!-- Kiselev's Arithmetic -->
             <article class="project-card">
@@ -850,7 +400,6 @@
                         <span class="badge badge-mit">Translation</span>
                     </div>
                 </div>
-                <p class="project-outcome">A complete public English edition of a classic Soviet mathematics textbook.</p>
                 <p class="project-description">A complete English digitisation of A.P. Kiselev's <em>Arithmetic</em> (1938 edition) — the standard Soviet mathematics textbook used across Russia for decades. Translated from Russian and formatted as a navigable web document with sidebar table of contents.</p>
                 <div class="project-features">
                     <h3>Contents</h3>
@@ -882,7 +431,6 @@
                         <span class="badge badge-v3">v2</span>
                     </div>
                 </div>
-                <p class="project-outcome">An interactive valuation dashboard over 499 approved used cars.</p>
                 <p class="project-description">An interactive value-for-money analysis of 499 used Škoda Octavias on sale at UK approved retailers. Two takes on the same dataset: a regression-residual ranking (v1) that flags cars priced below their predicted value, and a weighted-preference dashboard (v2) that lets you tune what matters — body, trim, fuel, gearbox, mileage, age, dealer location.</p>
                 <div class="project-features">
                     <h3>Versions</h3>
@@ -922,7 +470,6 @@
                         <span class="badge badge-v3">v1</span>
                     </div>
                 </div>
-                <p class="project-outcome">A broader market browser for comparing listings across the UK used Škoda market.</p>
                 <p class="project-description">A wider browser across the full Škoda UK used market, sourced from Marketcheck. Filter by model, trim, body, fuel, transmission, price, mileage, model year, and dealer/city — then layer on weighted preferences to surface what matters most.</p>
                 <div class="project-tech">
                     <span class="tech-tag">JavaScript</span>
@@ -1055,110 +602,12 @@
                 <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);line-height:1.8;">Things I'm actively building, writing, or training for. Some are close to launch, others are still taking shape.</p>
 
                 <article class="wip-card">
-                    <h3>InfraMosaic</h3>
-                    <span class="wip-type type-podcast">Podcast</span>
-                    <p>A podcast about energy infrastructure, the energy transition, and the people building it. Currently in pre-production — studio scouted, equipment researched.</p>
-                    <a href="https://www.inframosaic.com/" class="wip-link">inframosaic.com</a>
-                </article>
-
-                <article class="wip-card">
-                    <h3>Substack Newsletter</h3>
-                    <span class="wip-type type-writing">Writing</span>
-                    <p>My newsletter on economics, books, and ideas. Drafts in the queue on economic paradoxes, barriers to growth in developed nations, and UK institutional decline.</p>
-                    <a href="https://leathalobaidi.substack.com/" class="wip-link">leathalobaidi.substack.com</a>
-                </article>
-
-                <article class="wip-card">
                     <h3>Stripe Press Book Club</h3>
                     <span class="wip-type type-community">Community</span>
                     <p>A reading community built around Stripe Press titles — 19 books on technology, economics, science, and civilisation, read across four seasonal quarters in 2026.</p>
                 </article>
             </div>
         </section>
-
-        <!-- ==================== FITNESS ==================== -->
-        <section id="fitness" class="page-section">
-            <h1>Personal Dashboards</h1>
-            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-xl);">Training dashboards and planning tools I built for myself. They sit here because useful tools do not always begin as professional projects.</p>
-
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>Bigger Leaner Stronger</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-mit">Strength</span>
-                    </div>
-                </div>
-                <p class="project-description">A workout planner built around Mike Matthews' <em>Bigger Leaner Stronger</em> programme. Tracks progress across the five-day split, with sets, reps, and weight progression baked in.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Strength training</span>
-                    <span class="tech-tag">Progress tracking</span>
-                </div>
-                <div class="project-links">
-                    <a href="bls/" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open Planner
-                    </a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>Fred Whitton Challenge — 2027 Plan</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-chrome">Cycling</span>
-                        <span class="badge badge-v3">2027</span>
-                    </div>
-                </div>
-                <p class="project-description">A full training build-up for the Fred Whitton Challenge — 112 miles and ~12,000ft of climbing across the Lake District passes. Race day: Sunday 9 May 2027. Plan covers base, build, peak, and taper, with elevation, mileage, and TSS targets per session.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Cycling</span>
-                    <span class="tech-tag">Endurance</span>
-                    <span class="tech-tag">Lake District</span>
-                </div>
-                <div class="project-links">
-                    <a href="fwc/" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open Plan
-                    </a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>Summer Base — 13-Week Running Plan</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-chrome">Running</span>
-                        <span class="badge badge-v3">2026</span>
-                    </div>
-                </div>
-                <p class="project-description">A 13-week aerobic base programme built around Zone 2 effort, walk-break intervals, and integrated strength work. Runs from 29 April to 26 July 2026. Each session lists duration, distance, run-walk ratio, HR target, pace cue, and fuelling protocol — building from a 50-minute long run to 130 minutes by the final Sunday.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">Marathon</span>
-                    <span class="tech-tag">Zone 2</span>
-                    <span class="tech-tag">Heart rate training</span>
-                </div>
-                <div class="project-links">
-                    <a href="run/" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open Plan
-                    </a>
-                </div>
-            </article>
-        </section>
-
-        <!-- ==================== CONTACT ==================== -->
-        <section id="contact" class="page-section">
-            <div class="contact-section">
-                <h1>Contact</h1>
-                <p>For professional conversations, writing, projects, or useful-tool rabbit holes, LinkedIn is usually the best place to reach me.</p>
-                <div class="contact-links">
-                    <a href="https://linkedin.com/in/leath-al-obaidi/" class="btn">LinkedIn</a>
-                    <a href="https://github.com/leathalobaidi" class="btn btn-secondary">GitHub</a>
-                    <a href="https://leathalobaidi.substack.com/" class="btn btn-secondary">Substack</a>
-                </div>
-            </div>
-        </section>
-
 
     </div>
 
@@ -1176,25 +625,26 @@
     </footer>
 
     <script>
-        // Active nav link on scroll
+        // Highlight the active nav link as you scroll (rAF-throttled)
         const sections = document.querySelectorAll('.page-section');
         const navLinks = document.querySelectorAll('.nav-links a');
+        let ticking = false;
 
-        window.addEventListener('scroll', () => {
+        function updateActiveLink() {
             let current = 'home';
             sections.forEach(section => {
-                const top = section.offsetTop - 80;
-                if (window.scrollY >= top) {
-                    current = section.getAttribute('id');
-                }
+                if (window.scrollY >= section.offsetTop - 80) current = section.id;
             });
             navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
             });
-        });
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) { requestAnimationFrame(updateActiveLink); ticking = true; }
+        }, { passive: true });
+        updateActiveLink();
     </script>
 
 
