@@ -1,0 +1,103 @@
+{
+  "nodes": [
+    {
+      "id": "export_clean_pngs_py",
+      "label": "_export-clean-pngs.py",
+      "file_type": "code",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L1"
+    },
+    {
+      "id": "charts_export_clean_pngs_export_one",
+      "label": "export_one()",
+      "file_type": "code",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L60"
+    },
+    {
+      "id": "charts_export_clean_pngs_main",
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L85"
+    },
+    {
+      "id": "charts_export_clean_pngs_rationale_1",
+      "label": "Re-export each interactive chart in the consultancy-series as a clean PNG (annot",
+      "file_type": "rationale",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L1"
+    }
+  ],
+  "edges": [
+    {
+      "source": "export_clean_pngs_py",
+      "target": "asyncio",
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "export_clean_pngs_py",
+      "target": "pathlib",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "export_clean_pngs_py",
+      "target": "playwright_async_api",
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "export_clean_pngs_py",
+      "target": "charts_export_clean_pngs_export_one",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "export_clean_pngs_py",
+      "target": "charts_export_clean_pngs_main",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "charts_export_clean_pngs_main",
+      "target": "charts_export_clean_pngs_export_one",
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L95",
+      "weight": 1.0
+    },
+    {
+      "source": "charts_export_clean_pngs_rationale_1",
+      "target": "export_clean_pngs_py",
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "_export-clean-pngs.py",
+      "source_location": "L1",
+      "weight": 1.0
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

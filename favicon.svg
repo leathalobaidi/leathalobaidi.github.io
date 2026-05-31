@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Leath Al Obaidi monogram">
+  <rect width="64" height="64" rx="12" fill="#fafafa"/>
+  <rect x="4" y="4" width="56" height="56" rx="10" fill="#ffffff" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Georgia, serif" font-size="25" font-weight="700" fill="#9f442b">LA</text>
+</svg>

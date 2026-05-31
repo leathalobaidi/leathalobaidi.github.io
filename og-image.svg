@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Leath Al Obaidi personal site preview">
+  <rect width="1200" height="630" fill="#fafafa"/>
+  <rect x="72" y="72" width="1056" height="486" rx="24" fill="#ffffff" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="120" y="178" font-family="Georgia, serif" font-size="68" font-weight="700" fill="#2a2a2a">Leath Al Obaidi</text>
+  <text x="120" y="256" font-family="Arial, sans-serif" font-size="34" font-weight="700" fill="#9f442b">Economist. Regulatory finance professional. Writer. Builder.</text>
+  <text x="120" y="336" font-family="Arial, sans-serif" font-size="30" fill="#2a2a2a">Personal site for writing, projects, research notes,</text>
+  <text x="120" y="382" font-family="Arial, sans-serif" font-size="30" fill="#2a2a2a">and useful analytical tools.</text>
+  <line x1="120" y1="452" x2="1080" y2="452" stroke="#e8e8e8" stroke-width="2"/>
+  <text x="120" y="512" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#666666">leathalobaidi.com</text>
+  <circle cx="1010" cy="176" r="56" fill="#f7e9e3"/>
+  <text x="1010" y="196" text-anchor="middle" font-family="Georgia, serif" font-size="46" font-weight="700" fill="#9f442b">LA</text>
+</svg>
