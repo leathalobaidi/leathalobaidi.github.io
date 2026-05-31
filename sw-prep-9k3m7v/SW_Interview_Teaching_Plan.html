@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S&amp;W Interview Teaching Plan — Schellion Horn, 4 June 2026</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --ink: #1a1a1a;
+    --mute: #5a5a5a;
+    --line: #d8d3c4;
+    --accent: #b54300;     /* S&W-ish warm */
+    --hi: #fff6df;
+    --warn: #fff0f0;
+    --warnline: #d18a8a;
+    --good: #eef7ee;
+    --goodline: #88b88c;
+    --rule: #efeae0;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--ink); margin: 0; padding: 0;
+    font-family: "Iowan Old Style","Charter","Source Serif Pro",Georgia,serif;
+    font-size: 17px; line-height: 1.55;
+  }
+  .wrap { max-width: 940px; margin: 0 auto; padding: 56px 36px 96px; }
+  header.h1 { border-bottom: 4px solid var(--ink); padding-bottom: 16px; margin-bottom: 28px; }
+  header.h1 .kicker { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+  header.h1 h1 { font-size: 38px; line-height: 1.1; margin: 6px 0 8px; letter-spacing: -.01em; }
+  header.h1 .sub { color: var(--mute); font-style: italic; font-size: 17px; }
+  h2 { font-size: 22px; margin: 44px 0 10px; padding-bottom: 4px; border-bottom: 1px solid var(--line); }
+  h3 { font-size: 17px; margin: 22px 0 6px; text-transform: uppercase; letter-spacing: .06em; font-family: ui-monospace,SFMono-Regular,Menlo,monospace; color: var(--accent); }
+  h4 { font-size: 15px; margin: 14px 0 4px; }
+  ul, ol { padding-left: 22px; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+  p { margin: 8px 0; }
+  blockquote { border-left: 3px solid var(--accent); margin: 12px 0; padding: 4px 14px; color: #333; background: var(--hi); font-style: italic; }
+  .note { background: var(--hi); border: 1px solid var(--line); padding: 12px 14px; margin: 10px 0; border-radius: 4px; }
+  .warn { background: var(--warn); border: 1px solid var(--warnline); padding: 12px 14px; margin: 10px 0; border-radius: 4px; }
+  .good { background: var(--good); border: 1px solid var(--goodline); padding: 12px 14px; margin: 10px 0; border-radius: 4px; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top; text-align: left; }
+  th { background: #f5efe2; font-weight: 700; }
+  .card { border: 1px solid var(--line); padding: 16px 18px; border-radius: 6px; margin: 10px 0 16px; background: #fcfaf4; }
+  .card h4 { margin-top: 0; color: var(--accent); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+  .mono { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 13px; }
+  .pill { display: inline-block; font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border: 1px solid var(--accent); color: var(--accent); border-radius: 999px; }
+  .toc { background: #fafafa; border: 1px solid var(--line); padding: 12px 18px; border-radius: 4px; margin: 0 0 28px; font-size: 15px; }
+  .toc ol { columns: 2; column-gap: 30px; margin: 0; padding-left: 18px; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+  hr.thin { border: none; border-top: 1px solid var(--rule); margin: 26px 0; }
+  details { border: 1px solid var(--line); padding: 8px 14px; border-radius: 4px; margin: 8px 0; background: #fcfaf4; }
+  summary { cursor: pointer; font-weight: 600; }
+  .qa { margin: 10px 0 14px; }
+  .qa .q { font-weight: 700; }
+  .qa .a { margin-top: 4px; color: #333; }
+  .small { font-size: 13px; color: var(--mute); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="h1">
+  <div class="kicker">Interview Teaching Plan &nbsp;·&nbsp; Prepared 24 May 2026</div>
+  <h1>S&amp;W Economic Advisory — Stage 1 with Schellion Horn</h1>
+  <div class="sub">Thursday 4 June 2026 · 12:00 (1 hr) · 60 London Wall, London EC2M 5SJ · On-site</div>
+</header>
+
+<div class="warn">
+  <strong>Date correction.</strong> You said "4 July" in chat — the SmartRecruiters invite from Clint Kasosera and your reply both confirm <strong>Thursday 4 June 2026, 12:00</strong>. Plan and diary against that date.
+</div>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#interviewer">Interviewer profile — Schellion</a></li>
+    <li><a href="#firm">S&amp;W &amp; the Apax thesis</a></li>
+    <li><a href="#format">Interview format &amp; Kez's playbook</a></li>
+    <li><a href="#three">The three set questions</a></li>
+    <li><a href="#pitch">Your "Tell me about you" — drilled</a></li>
+    <li><a href="#why">Why S&amp;W / why a start-up</a></li>
+    <li><a href="#next">What you want to do next</a></li>
+    <li><a href="#services">Service lines — 6 teaching cards</a></li>
+    <li><a href="#insights">Schellion's 3 published insights</a></li>
+    <li><a href="#questions">Smart questions to ask her</a></li>
+    <li><a href="#anchors">Conversational anchors (LinkedIn)</a></li>
+    <li><a href="#landmines">Landmines &amp; what to avoid</a></li>
+    <li><a href="#schedule">10-day prep schedule</a></li>
+  </ol>
+</div>
+
+<!-- 1 -->
+<h2 id="interviewer">1 · Interviewer profile — who you are meeting</h2>
+<div class="card">
+  <h4>Schellion Horn — Partner, Head of Economics, S&amp;W</h4>
+  <ul>
+    <li><strong>25 years</strong> on competition, regulation and policy. Big Four → NHS (National Urgent &amp; Emergency Care Programme Director, then Healthy London Partnership) → A&amp;M → Grant Thornton (founding partner of GT economics, Nov 2021) → S&amp;W (started <strong>5 May 2026</strong>).</li>
+    <li><strong>Personality (per Kez):</strong> rare extrovert economist, bubbly, talks fast, can speak "for Britain". Expect her to give 10 min of context on the firm before you say anything substantive. <em>Listen first.</em></li>
+    <li><strong>Public roles:</strong> Armed Forces Pay Review Body (1 Apr 2026); Upper Tribunal Tax &amp; Chancery Chamber (Trade Remedies Authority appeals); Royal Economic Society inclusivity champion; regular BBC Radio 5 Live contributor.</li>
+    <li><strong>Her vision (from "Sticking with economics" piece, 5 May 2026):</strong> economics as the "glue" joining S&amp;W's accounting, valuations, restructuring and sustainability practices to solve multidisciplinary problems. She loves building teams and setting up businesses (did this at Healthy London Partnership).</li>
+    <li><strong>Why she left GT:</strong> not aligned with the Cinven business plan. Believes S&amp;W is past the PE cost-cutting phase and into the investment cycle. (She told you this on LinkedIn — <em>off the record, do not quote</em>.)</li>
+  </ul>
+</div>
+
+<div class="note">
+  <strong>You already have a warm channel with her.</strong> She read your blog series, gave you two corrections, offered an FT journalist introduction (Elleshiva Kissen), and explicitly said "no need to change your article" about S&amp;W. She has <em>not</em> seen your application — Jonathan is leading the recruitment. So your interview is fresh on the merits, but the existing relationship is a positive frame, not a substitute for the interview.
+</div>
+
+<!-- 2 -->
+<h2 id="firm">2 · S&amp;W &amp; the Apax thesis — what is being built</h2>
+<table>
+  <tr><th>What</th><th>Detail</th></tr>
+  <tr><td>Legal entity</td><td>S&amp;W Partners LLP (Reg. No. OC 369631), ICAEW-regulated. Formerly Evelyn Partners Professional Services.</td></tr>
+  <tr><td>PE owner</td><td><strong>Apax</strong> — already invested for several years, so cost-cutting cycle is done and they are now in the investment cycle (Schellion's words).</td></tr>
+  <tr><td>Economic advisory office</td><td>London Wall (60 London Wall, EC2M 5SJ). Same address as your interview.</td></tr>
+  <tr><td>Partners on the page</td><td><strong>Jonathan Gillham</strong> (ex-HKA, joined ~early March 2026 per Schellion's "8 weeks ago" message of 30 Apr) and <strong>Schellion Horn</strong> (started 5 May 2026).</td></tr>
+  <tr><td>Stated sectors (per Kez)</td><td>Utilities, infrastructure, financial services. Plus broader micro work.</td></tr>
+  <tr><td>Stated work mix (per Kez)</td><td>Regulatory economics, competition, broader micro — for the next 2 years at least.</td></tr>
+  <tr><td>Strategic differentiation</td><td>Multidisciplinary integration with S&amp;W accounting/valuation/restructuring teams; PE-backed multi-year horizon to invest in tech &amp; AI (vs Big Four conflict-laden model and partner-led firms that distribute profit annually); a deliberate push into <strong>high-value disputes work</strong> like Econic targets.</td></tr>
+  <tr><td>Named clients in materials</td><td>Ofwat, Ofgem, PSR, FCA, Ofcom, CAA, BT, Vodafone, National Grid, Heathrow Airport, the UK water companies.</td></tr>
+  <tr><td>Named matters</td><td>Interchange, Trucks, Granville damages; PR24 (advising Ofwat); broadband cos on Ofcom market access review; FCA motor finance; consumer duty compliance; subsidy control challenges at the CAT.</td></tr>
+</table>
+
+<div class="good">
+  <strong>What this means for you.</strong> They are building, not back-filling. A senior-manager joiner who has actually written price control submissions and is genuinely literate in regulatory finance is rare on the open market. Lean into the build-from-scratch energy.
+</div>
+
+<!-- 3 -->
+<h2 id="format">3 · Interview format — Kez's playbook</h2>
+<ul>
+  <li><strong>This is Stage 1 of 3.</strong> Stage 2 = take-home case study (1 hr, sent home, no pass/fail unless disaster). Stage 3 = on-site with Jonathan Gillham.</li>
+  <li><strong>Format:</strong> conversational, <em>not</em> bish-bash-bosh competency. Schellion will spend the first ~10 minutes giving you her pitch on the firm, vision, journey. <strong>Listen.</strong> Don't interrupt. Take a few notes by hand.</li>
+  <li><strong>She'll then ask 3 set questions</strong> (next section). Each one short, then she will riff.</li>
+  <li><strong>Have your own questions ready</strong>, but expect that she will already have answered most of them in the opening.</li>
+  <li><strong>Grade:</strong> "kind of senior manager grade" — open to flex either way. Don't anchor yourself low.</li>
+  <li><strong>Bring:</strong> a paper notepad, pen, 2 printed CVs (yours), water, mints. No laptop needed.</li>
+</ul>
+
+<!-- 4 -->
+<h2 id="three">4 · The three set questions — and the architecture of your answers</h2>
+
+<div class="card" id="pitch">
+  <h4>Q1 — "Tell me about you."</h4>
+  <p class="small">≤ 5 minutes. Three-act structure: <strong>This is me · This is what I've done · This is why it's relevant to what you're building.</strong></p>
+
+  <h3>Drilled pitch (rehearse this out loud, time yourself, then strip it back)</h3>
+
+  <p><em>Act 1 — This is me (30 sec).</em></p>
+  <p>"I'm a senior UK economist with about ten years across regulated infrastructure, government-backed SME finance, and energy regulation. MSc Economics, Nottingham, distinction on dissertation; Government Economic Service associate. I sit on the Society of Professional Economists Council, and I'm a Non-Executive Director at Wenta, a small-business growth charity."</p>
+
+  <p><em>Act 2 — This is what I've done (3 min, three chapters).</em></p>
+  <ol>
+    <li><strong>Ofgem (2015–2018):</strong> started in enforcement, including a Chapter II Competition Act case against SSE. Authored the gain &amp; detriment penalty handbook. Then moved into Markets and Networks, co-authored two chapters of the 2017 State of the Market Report (security of supply, energy market competition), and drove behavioural-insights implementation across 200+ policies, advising on ROAMEF and CBA in Impact Assessments. That's where I learnt UK regulatory economics from the inside.</li>
+    <li><strong>British Business Bank (2018–2024):</strong> led the £825m Start Up Loan programme economics, authored four annual <em>Small Business Finance Market</em> reports and the UK Private Debt research report, applied causal-inference and impact-evaluation methods to a £multi-billion intervention. That gave me the financial services and policy-evaluation muscle — exactly the Green Book/Magenta Book/Aqua Book toolkit S&amp;W uses.</li>
+    <li><strong>Smart DCC (Mar 2024–present):</strong> Senior Regulatory Finance Manager in the CFO Finance Team for the GB smart-metering monopoly. Three signature wins. First, I rebuilt the Baseline Margin model from scratch after Ofgem rejected my predecessor's submission — secured the highest BMA in DCC history, which determines about a third of Capita's annual profit. Second, I rebuilt the Penalty Interest Tracker after Ofgem tightened the variance band from 110% to 105% of Allowed Revenue, drove a £55.1m cash repatriation to customers, and avoided any penalty trigger. Third, I led the team that automated the Charging Statement against a c.£720m annual Allowed Revenue base, cut planning cycle time by 40%, and caught £500k+ of errors. I also authored DCC's Finance chapter for the RY23/24 and RY24/25 price control submissions — zero disallowances. So I've actually written price control submissions, not just modelled them."</li>
+  </ol>
+
+  <p><em>Act 3 — Why this is relevant to you (1 min).</em></p>
+  <p>"Three reasons it could fit what you're building. <strong>One</strong>, sector fit — utilities, infrastructure, financial services is exactly your remit and my career has touched all three. <strong>Two</strong>, work-type fit — regulatory economics, regulatory finance, competition-adjacent — I've done it from both the regulator side at Ofgem and the regulated side at DCC, so I understand both sides of the table. <strong>Three</strong>, build-the-thing fit — the bit I'm most excited about isn't joining a stable mature practice, it's joining something at the start of its journey where the team I help shape becomes the practice. I'm not allergic to the unglamorous early-stage work that comes with that."</p>
+
+  <p class="small">Total ~5 min when read at conversational pace. Trim Act 2 first if you over-run.</p>
+</div>
+
+<div class="card" id="why">
+  <h4>Q2 — "Why are you interested in us, and why a small start-up?"</h4>
+  <p class="small">≤ 90 seconds. Short, conviction, no sales mode.</p>
+
+  <p>"Three things, briefly. <strong>First</strong>, the journey. S&amp;W economics is week six. I'd rather help shape what 'good' looks like than inherit it. The early hires set the culture and the standards, and I want to be one of them. <strong>Second</strong>, the model. PE-backed but past the cost-cutting phase — Apax has had time, the runway is for investment, not retrenchment. Multidisciplinary integration with the wider firm's accounting, valuation, restructuring and sustainability practices is a genuine differentiator — that 'glue' framing is unusual, and it matters for the complex matters that don't sit cleanly inside one discipline. <strong>Third</strong>, the team. Jonathan from HKA is a serious disputes hire, you're a serious head of practice hire, and the public signal — Ofwat PR24, Ofcom market access, FCA motor finance, the CAT subsidy work — says the partnership has already chosen the work it wants. I'd rather be in a team that knows what it's targeting than one searching for a niche."</p>
+</div>
+
+<div class="card" id="next">
+  <h4>Q3 — "What do you actually want to do next? What's next for you?"</h4>
+  <p class="small">≤ 90 seconds. Kez flagged this one specifically — nobody asks it. Don't give the cog-in-the-machine answer. Be honest.</p>
+
+  <p>"Three things, ranked by importance to me. <strong>One</strong>, become a recognised regulatory economist in the market — not just internally. That means published work, named appearances on price control reviews, expert reports under my name, eventually a route to expert-witness status. I've been a chapter author at DCC, but it has been a quiet authorship. I want my name on the work. <strong>Two</strong>, learn at speed. I want to come into a team that has serious technical strength — econometrics, expert-witness practice, competition damages — so I'm in earshot of work that stretches me. The DCC role gave me end-to-end regulatory finance ownership, but it didn't give me econometric depth or CAT-grade competition matters. I want both. <strong>Three</strong>, build the bench. I've led mixed teams of consultants and internal staff at DCC, I've governed at Wenta as an NED for seven years, I genuinely enjoy growing more junior economists. If the senior-manager seat involves mentoring and shaping recruitment, that's a feature for me, not a tax. And being honest about a 5-year horizon — I'd want a credible path to partner-track if the practice grows the way the public signal says it will."</p>
+</div>
+
+<!-- 5 -->
+<h2 id="services">5 · S&amp;W's six economic advisory service lines — teaching cards</h2>
+<p>Memorise the headline of each. Know one example client or matter for each. If she opens with a service line in her monologue, you should be able to nod and ask an informed follow-up.</p>
+
+<div class="card">
+  <h4>1. Competition services</h4>
+  <p><strong>Headline:</strong> independent economic analysis on competition and antitrust — subsidy control, mergers, market investigations, competition damages, expert witness.</p>
+  <p><strong>Named matters:</strong> Interchange, Trucks, Granville damages; subsidy control challenges before the CAT; CMA investigations into consumer, digital and financial services markets.</p>
+  <p><strong>Stages they cover:</strong> early risk assessment → formal investigations → litigation → appeals.</p>
+</div>
+
+<div class="card">
+  <h4>2. Disputes &amp; litigation</h4>
+  <p><strong>Headline:</strong> independent and advisory experts for commercial, regulatory and competition disputes.</p>
+  <p><strong>Capabilities:</strong> damages &amp; quantum, causation analysis, counterfactual modelling, bankruptcy &amp; insolvency, expert witness reports, oral evidence at courts, tribunals and arbitration. Methodologies must withstand cross-examination.</p>
+  <p><strong>Strategic note:</strong> this is the area Jonathan (ex-HKA) and the Apax thesis are pushing into — Econic-style high-value disputes are explicitly named as the target.</p>
+</div>
+
+<div class="card">
+  <h4>3. Regulatory economics &amp; policy</h4>
+  <p><strong>Headline:</strong> price controls, regulatory design, incentive frameworks, regulatory impact assessments.</p>
+  <p><strong>Toolkit named on site:</strong> Green Book, Aqua Book, Magenta Book. You know all three from BBB and DCC.</p>
+  <p><strong>Recent matters:</strong> Ofwat PR24; broadband cos on Ofcom's market access review; FCA motor finance; consumer duty compliance; government interventions defended at CMA and CAT.</p>
+  <p><strong>Your hook:</strong> "I've written the regulated-entity side of submissions Ofgem reads, for the data-network monopoly under SMCL." That sentence puts you instantly in their world.</p>
+</div>
+
+<div class="card">
+  <h4>4. Regulatory &amp; competition finance</h4>
+  <p><strong>Headline:</strong> profitability assessments, regulatory financial statements, cost of capital, financeability, RAB calculations, regulatory cost modelling, independent assurance.</p>
+  <p><strong>Clients on the page:</strong> Ofwat, Ofgem, PSR, FCA, Ofcom, CAA, BT, Vodafone, National Grid, Heathrow, UK water cos.</p>
+  <p><strong>Your hook:</strong> this is the closest match to your DCC day job. BMA, Charging Statement, PI Tracker, Allowed Revenue, Penalty regime, RY23/24 + RY24/25 chapters. Be ready to translate DCC's regime into RIIO/PR24 language so it lands.</p>
+</div>
+
+<div class="card">
+  <h4>5. Economics of strategy</h4>
+  <p><strong>Headline:</strong> pricing strategy, marketing-effectiveness assessment, investment appraisal, market entry/exit, business-model assessment in competitive and regulated environments.</p>
+  <p><strong>Your hook (lighter):</strong> the 4G reinvestment programme scenario modelling and Unitary Charge design — first-mover-disadvantage solved through tariff design.</p>
+</div>
+
+<div class="card">
+  <h4>6. Economic valuation &amp; inference</h4>
+  <p><strong>Headline:</strong> rigorous econometric &amp; quantitative techniques — DiD, IV, regression discontinuity, synthetic control, structural demand, panel data, time series, discrete choice.</p>
+  <p><strong>Use cases:</strong> competition litigation, regulatory appeals, impact assessments, damages claims.</p>
+  <p><strong>Your hook:</strong> Stata/R/Python stack, causal-inference toolkit listed first in your CV's "core expertise" — and your Anthropic Fellowship proposal is a Wenta RCT. Be careful — this is Jonathan's deep technical lane. Signal taste, don't oversell depth.</p>
+</div>
+
+<!-- 6 -->
+<h2 id="insights">6 · Schellion's three published S&amp;W insights — read these end-to-end</h2>
+<p>She wrote (or co-authored) all three. Expect her to mention at least one. Be able to summarise the argument in 30 seconds and have one informed reaction to each.</p>
+
+<details open>
+  <summary>A · UK Subsidy Control — economic reasoning comes to the fore</summary>
+  <ul>
+    <li><strong>Argument:</strong> the CMA Subsidy Advice Unit has now reviewed 100+ schemes; its updated August 2025 guidance demands more analytical clarity, an explicit link between policy objective and economic mechanism, and a structured assessment of distortive effects.</li>
+    <li><strong>Framework:</strong> CMO test (Commercial Market Operator counterfactual) + Schedule 1 principles assessment (policy objective, incentive effects, competition/investment impact, balancing exercise).</li>
+    <li><strong>What's changing:</strong> assessments must consider indirect impacts, dynamic responses (entry/exit/investment displacement), and broader market-structure implications. Policy justification and economic reasoning developed <em>in parallel</em>, not sequentially.</li>
+    <li><strong>Your reaction (rehearse one):</strong> "The 'parallel, not sequential' framing maps onto what I see in regulatory finance — submissions land badly when the economics is bolted on at the end. DCC has had similar feedback on Charging Methodology language."</li>
+  </ul>
+</details>
+
+<details open>
+  <summary>B · Political and geopolitical risk in the cost of capital</summary>
+  <ul>
+    <li><strong>Argument:</strong> CAPM-based WACCs are largely silent on political and geopolitical risk, yet utilities are <em>more</em> exposed than the market because price controls are themselves a policy instrument.</li>
+    <li><strong>Distinction:</strong> systematic risk (war, sanctions, trade regimes) vs idiosyncratic risk (UK-specific net zero timelines, windfall taxes, vendor bans, statutory duty shifts).</li>
+    <li><strong>Recommendation:</strong> don't add a UK political-risk premium on top of ERP — that double-counts and introduces subjectivity. Instead: <em>(i)</em> let systematic risk flow through Rf and ERP honestly; <em>(ii)</em> reflect sector-specific exposure in beta only where clearly systematic; <em>(iii)</em> handle idiosyncratic risk via cash-flow mechanisms and regulatory design, not WACC loadings.</li>
+    <li><strong>Your reaction (rehearse one):</strong> "The 'cash-flow vs WACC' split is exactly the conversation DCC has been having about whether 4G geopolitical-supply-chain risk belongs in the Allowed Revenue cost stack or in the cost of capital. Your framing gives the regulator a defensible doctrine, which is what we've been missing."</li>
+  </ul>
+</details>
+
+<details open>
+  <summary>C · Why UK regulators need to rethink efficiency modelling</summary>
+  <ul>
+    <li><strong>Argument:</strong> OLS/COLS/SFA/DEA benchmarking rests on assumptions that no longer hold — firm homogeneity, stable technology, short-term cost minimisation, sufficient data. With only 10 water companies, 6 DNO groups, a handful of airports, inference is fragile.</li>
+    <li><strong>Recommendation:</strong> next-generation efficiency modelling should integrate economics, engineering, and risk. Use scenario-based benchmarking (demand, climate, technology, risk scenarios) rather than single deterministic models. Risk-adjusted cost assessment; long-term value over single-period optimisation.</li>
+    <li><strong>Quote to remember:</strong> "Efficiency modelling is becoming more multidimensional, with greater emphasis on engineering evidence, long-term value and risk-adjusted cost assessment."</li>
+    <li><strong>Your reaction (rehearse one):</strong> "This lands on DCC too — we have a sample size of one. The Charging Methodology process leans heavily on engineering judgement because there's no peer group to benchmark against. Your framework gives that judgement a defensible structure, rather than treating it as the second-best to econometrics."</li>
+  </ul>
+</details>
+
+<!-- 7 -->
+<h2 id="questions">7 · Questions to have ready for her</h2>
+<p>Aim for 4–6 strong ones. She will pre-empt some; the goal is to have a stock you can pull from based on what she said in her opening.</p>
+
+<ol>
+  <li><strong>Differentiation.</strong> "What's the one or two-sentence pitch you'd give a GC choosing between S&amp;W, Frontier, CRA, and Compass Lexecon? Where is S&amp;W's wedge?"</li>
+  <li><strong>The Apax thesis.</strong> "You said S&amp;W is past the cost-cutting phase and into the investment cycle. What does that mean practically — tech, AI, acquisitions, headcount? And what's the partner-promise on the multi-year horizon vs single-year P&amp;L pressure?"</li>
+  <li><strong>The disputes push.</strong> "Jonathan came from HKA. Econic is the explicit target. What does the high-value disputes book look like at maturity — share of revenue, sector split, expert-witness panel?"</li>
+  <li><strong>Sector growth order.</strong> "Utilities, infrastructure, financial services — which one are you investing into first, and is there a sector you're <em>not</em> chasing for now?"</li>
+  <li><strong>The org shape.</strong> "Twelve months out, what does the team underneath the two partners look like — directors, senior managers, associates? Where would a senior-manager-grade hire sit and what would success look like at twelve months?"</li>
+  <li><strong>Multidisciplinary in practice.</strong> "The 'glue' framing in your launch piece is striking. Have you got a live mandate that's actually crossing economics + valuation + restructuring? I'd love to hear what that workflow looks like in real life."</li>
+  <li><strong>Public-appointment portfolios.</strong> "You hold AFPRB and Upper Tribunal appointments alongside the partner seat. Is portfolio-building something you actively encourage for senior team members, or is it a partner-only thing?"</li>
+  <li><strong>Personal soft-close.</strong> "What does the next 4–6 weeks look like — case study brief, format, sector? Anything in particular you'd like me to bring to the second-round with Jonathan?"</li>
+</ol>
+
+<!-- 8 -->
+<h2 id="anchors">8 · Conversational anchors — what is already in your shared history</h2>
+<p>Schellion's LinkedIn message contained genuine information you can refer back to. Don't quote — but you can <em>allude</em>.</p>
+<ul>
+  <li><strong>Your consultancy series.</strong> She read it, called it "really interesting and well written", offered an FT introduction (Elleshiva Kissen). It is fine — natural even — to thank her at the top of the interview for the corrections and to flag that you have implemented them.</li>
+  <li><strong>The Cinven/GT/Flint/New Mountain narrative.</strong> She said it. You know it. <strong>You cannot use it.</strong> If she brings it up, listen and engage; do not surface it yourself.</li>
+  <li><strong>"PE was supposed to fund long-term investment but mostly comes in and cuts costs."</strong> This is her thesis. If she raises it, you can mirror it back gently — "the appeal of S&amp;W being past the cost-cutting cycle is exactly the point you made on LinkedIn." That is not a leak, that is engaged listening.</li>
+  <li><strong>Common ground.</strong> Wenta NED + Mind Treasurer + SPE Council = governance and pro-bono pattern. She has trustee/NED roles too. Mention it briefly in Act 1; do not labour it.</li>
+</ul>
+
+<!-- 9 -->
+<h2 id="landmines">9 · Landmines &amp; what to avoid</h2>
+<div class="warn">
+  <ul>
+    <li><strong>Never link Smart DCC to your private research.</strong> The consultancy series, the Anthropic Fellowship, the 96-firm database — these are <em>your independent research projects, kept fully separate from your employer.</em> If she asks about Smart DCC connections, that is the line.</li>
+    <li><strong>Do not quote her on GT/Cinven.</strong> She explicitly said off-the-record. Treat that as a vault.</li>
+    <li><strong>Do not over-anchor on grade.</strong> Kez said "senior manager grade, open-minded". Don't volunteer level expectations — let them shape the conversation. If she asks: "I'd be guided by you on the level — what matters more to me is the work mix and the trajectory."</li>
+    <li><strong>Do not slip into sales mode on the "tell me about you".</strong> Kez's specific warning. Five minutes hard cap. Practise with a stopwatch.</li>
+    <li><strong>Do not interrupt her opening monologue.</strong> She talks fast and a lot. Let her finish. Notes on paper, not the laptop.</li>
+    <li><strong>Do not bluff econometrics.</strong> Jonathan is the practising econometrician at partner level; Schellion respects depth. Better to say "I want to deepen this with you" than to overclaim. Anthropic Fellowship + RCT design is a credible <em>taste</em> signal, not a deep-tooling claim.</li>
+    <li><strong>Do not undersell DCC.</strong> A regulated-monopoly Senior Reg Finance Manager who has written price-control chapters and run a £55m repatriation is a serious credential for this firm. Lean in.</li>
+  </ul>
+</div>
+
+<!-- 10 -->
+<h2 id="schedule">10 · 11-day prep schedule (today → 4 June)</h2>
+<table>
+  <tr><th>Day</th><th>Date</th><th>Block</th></tr>
+  <tr><td>Sat</td><td>24 May</td><td>Read this plan end-to-end. Read all 10 S&amp;W pages on the firm's site. Note any phrasing you want to mirror back.</td></tr>
+  <tr><td>Sun</td><td>25 May</td><td>Read the 3 Schellion insights in full. Write your one-line reaction to each in your own words.</td></tr>
+  <tr><td>Mon</td><td>26 May</td><td>Read Jonathan Gillham's S&amp;W bio + HKA background. Look up Interchange, Trucks and Granville cases — one paragraph each.</td></tr>
+  <tr><td>Tue</td><td>27 May</td><td>Draft your "Tell me about you" pitch on paper. Read aloud, time it. Trim to 5 min.</td></tr>
+  <tr><td>Wed</td><td>28 May</td><td>Draft "Why S&amp;W / why start-up" — trim to 90 sec.</td></tr>
+  <tr><td>Thu</td><td>29 May</td><td>Draft "What's next for you" — trim to 90 sec. Re-read your CV cover-to-cover so you have ammunition for any follow-up.</td></tr>
+  <tr><td>Fri</td><td>30 May</td><td>Listen to a Schellion BBC Radio 5 Live appearance to internalise her register and pace. Write your 6-question shortlist for her.</td></tr>
+  <tr><td>Sat</td><td>31 May</td><td>Full mock interview — record yourself answering the 3 set questions back-to-back. Watch back. Cut filler.</td></tr>
+  <tr><td>Sun</td><td>1 Jun</td><td>Light review only. Walk away from it. Sleep.</td></tr>
+  <tr><td>Mon</td><td>2 Jun</td><td>Re-read 3 Schellion insights one more time. Print: your CV (2 copies), this plan, your 6 questions, the SmartRecruiters email with date/time/address.</td></tr>
+  <tr><td>Tue</td><td>3 Jun</td><td>Logistics: outfit, route to 60 London Wall (Liverpool Street / Moorgate), shoes, paper notepad &amp; two pens, breath mints, water bottle.</td></tr>
+  <tr><td>Wed</td><td>4 Jun</td><td><strong>Interview day.</strong> Coffee at 10:30. 30-min walk before. Arrive at 60 London Wall reception by 11:45. Phone on silent. Hand on the door at 12:00 sharp.</td></tr>
+</table>
+
+<hr class="thin">
+<p class="small">Prepared from: SW Group economic-advisory pages (10 URLs), Schellion's "Sticking with economics" partner piece (5 May 2026), SmartRecruiters invite of 18 May 2026, Schellion's LinkedIn messages 29–30 April 2026, your career-ops CV (May 2026), and Kez Rothwell's recruiter-call transcript. All material is on your machine and indexed; nothing here relies on memory.</p>
+
+</div>
+</body>
+</html>

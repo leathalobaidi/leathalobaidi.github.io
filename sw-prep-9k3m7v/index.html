@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Unlisted page: reachable by direct URL, kept out of search engines and not linked from the main site. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Private interview-prep vault.">
+  <title>Prep vault — Leath Al Obaidi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #c45d3e;
+      --color-text: #2a2a2a;
+      --color-text-light: #666666;
+      --color-background: #fafafa;
+      --color-border: #e8e8e8;
+      --color-card-bg: #ffffff;
+      --color-callout-bg: #fef4f1;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --max-width: 720px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-background);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--color-text-light); margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 2.4rem;
+      line-height: 1.15;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+    .lede {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-text-light);
+      font-size: 1.15rem;
+      margin-bottom: 2.5rem;
+    }
+    .callout {
+      background: var(--color-callout-bg);
+      border-left: 3px solid var(--color-primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 4px 4px 0;
+      margin: 0 0 2.5rem;
+      font-size: 0.95rem;
+    }
+    .callout strong { color: var(--color-primary); }
+    .meta {
+      font-family: var(--font-sans);
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.8rem 0;
+      margin-bottom: 2.5rem;
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .meta span strong { color: var(--color-text); font-weight: 600; }
+    h2 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.4rem;
+      margin: 2.5rem 0 1rem;
+      letter-spacing: -0.005em;
+    }
+    .cards { display: grid; gap: 1rem; margin: 0 0 2rem; }
+    a.card {
+      display: block;
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.4rem;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    a.card:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(196, 93, 62, 0.08);
+    }
+    .card-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1rem; margin-bottom: 0.35rem;
+    }
+    .card-title {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--color-text);
+    }
+    .card-tag {
+      font-family: var(--font-sans);
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-primary);
+      white-space: nowrap;
+    }
+    .card-desc {
+      font-family: var(--font-sans);
+      font-size: 0.94rem;
+      color: var(--color-text-light);
+      line-height: 1.55;
+    }
+    .order {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 0 0 2rem;
+    }
+    .order ol { padding-left: 1.4rem; font-size: 0.95rem; }
+    .order li { margin: 0.45rem 0; color: var(--color-text); }
+    .order li em { color: var(--color-text-light); font-style: normal; font-size: 0.88rem; display: block; margin-top: 2px; }
+    footer.foot {
+      margin-top: 3.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+    footer.foot a { color: var(--color-text); }
+    @media (max-width: 520px) {
+      h1 { font-size: 1.9rem; }
+      .wrap { padding: 2.5rem 1.2rem 4rem; }
+      .meta { gap: 0.8rem; font-size: 0.82rem; }
+      .card-head { flex-direction: column; gap: 0.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <div class="kicker">Private · Unlisted · Not indexed</div>
+    <h1>Interview prep vault</h1>
+    <p class="lede">Four documents to take into the S&amp;W run — open from anywhere.</p>
+
+    <div class="callout">
+      <strong>This page is unlisted.</strong> Only people with the exact URL can reach it. No links point to it from leathalobaidi.com, and search engines are told not to index it. Bookmark the URL — there is no way to find this page from the main site.
+    </div>
+
+    <div class="meta">
+      <span><strong>Interview</strong> · Thursday 4 June 2026, 12:00</span>
+      <span><strong>Location</strong> · 60 London Wall, EC2M 5SJ</span>
+      <span><strong>Stage 1 with</strong> · Schellion Horn</span>
+    </div>
+
+    <h2>The four documents</h2>
+    <div class="cards">
+
+      <a class="card" href="SW_Interview_Teaching_Plan.html">
+        <div class="card-head">
+          <div class="card-title">Interview Teaching Plan</div>
+          <div class="card-tag">How to answer</div>
+        </div>
+        <div class="card-desc">Three set questions with drilled answers, six service-line cards, eight questions to ask Schellion, landmines, and the 11-day prep schedule.</div>
+      </a>
+
+      <a class="card" href="SW_Learning_Refresher.html">
+        <div class="card-head">
+          <div class="card-title">Learning Refresher</div>
+          <div class="card-tag">What to know</div>
+        </div>
+        <div class="card-desc">Part A maps your CV onto S&amp;W's service lines. Part B is ten study cards covering price controls, WACC, efficiency modelling, competition, subsidy control, treasury appraisal, causal inference — and 25 flash-card facts to drill.</div>
+      </a>
+
+      <a class="card" href="SW_Idiot_Guide_AD_Level.html">
+        <div class="card-head">
+          <div class="card-title">Idiot Guide — AD level</div>
+          <div class="card-tag">Depth, first principles</div>
+        </div>
+        <div class="card-desc">Sixteen chapters built from the ground up. Why regulation exists, the building-blocks formula worked, WACC built from scratch, financeability, totex, competition damages with worked DiD, a subsidy walkthrough, expert-witness practice, the consulting vocabulary decoder, DCC-to-consulting translation, a mock case study, and how to sound like an Associate Director.</div>
+      </a>
+
+      <a class="card" href="SW_Partner_Perception_Brief.html">
+        <div class="card-head">
+          <div class="card-title">Partner Perception Brief</div>
+          <div class="card-tag">How the market reads them</div>
+        </div>
+        <div class="card-desc">Side-by-side reads of Schellion Horn and Jonathan Gillham — credentials, specialisms, public appointments, peer-and-press signals, and what the yin/yang pairing means for Stage 1 versus Stage 3.</div>
+      </a>
+
+    </div>
+
+    <h2>Read order</h2>
+    <div class="order">
+      <ol>
+        <li><strong>Idiot Guide</strong> — cover-to-cover this weekend.
+          <em>If short on time: chapters 1, 3, 4, 13 and 16.</em>
+        </li>
+        <li><strong>Learning Refresher</strong> — drill section B10 (the 25 flash-card facts) on the Wednesday-morning Tube.</li>
+        <li><strong>Partner Perception Brief</strong> — read the night before each stage.</li>
+        <li><strong>Interview Teaching Plan</strong> — read morning of, especially the "Say this" pitch boxes.</li>
+      </ol>
+    </div>
+
+    <footer class="foot">
+      <p>Prepared 24 May 2026. All four documents live in <span style="font-family: ui-monospace, Menlo, monospace; font-size: 0.85em; background: #efe8d8; padding: 1px 5px; border-radius: 3px;">~/Downloads/CV Applications/Kas Rothwell - Economics Director/</span> locally. This vault is a copy for online access. Keep the URL private.</p>
+    </footer>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,886 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Idiot Guide to S&amp;W-Level Subject-Matter Expertise</title>
+<style>
+  :root {
+    --bg: #fffdf8;
+    --ink: #1a1a1a;
+    --mute: #5a5a5a;
+    --line: #d8d3c4;
+    --accent: #1f5a3d;
+    --accent2: #b54300;
+    --hi: #f0f7f2;
+    --hi2: #fff6df;
+    --rule: #efeae0;
+    --code: #f5efe2;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--ink); margin: 0; padding: 0;
+    font-family: "Iowan Old Style","Charter","Source Serif Pro",Georgia,serif;
+    font-size: 17px; line-height: 1.6;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 56px 36px 96px; }
+  header.h1 { border-bottom: 5px double var(--ink); padding-bottom: 20px; margin-bottom: 28px; }
+  header.h1 .kicker { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+  header.h1 h1 { font-size: 40px; line-height: 1.05; margin: 6px 0 8px; letter-spacing: -.015em; }
+  header.h1 .sub { color: var(--mute); font-style: italic; font-size: 18px; }
+  h2 { font-size: 26px; margin: 56px 0 14px; padding: 10px 0 8px; border-top: 4px solid var(--ink); border-bottom: 1px solid var(--line); }
+  h2 .num { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 14px; color: var(--accent); margin-right: 10px; letter-spacing: .05em; }
+  h3 { font-size: 19px; margin: 26px 0 8px; color: var(--accent); }
+  h4 { font-size: 16px; margin: 16px 0 4px; }
+  ul, ol { padding-left: 22px; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+  p { margin: 10px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14.5px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top; text-align: left; }
+  th { background: #efe8d8; font-weight: 700; }
+  .card { border: 1px solid var(--line); padding: 14px 18px; border-radius: 6px; margin: 12px 0; background: #fcfaf4; }
+  .ex { background: var(--hi); border: 1px solid #b8d4c3; padding: 14px 18px; border-radius: 4px; margin: 14px 0; }
+  .ex h4 { margin-top: 0; color: var(--accent); }
+  .vocab { background: #fdf1e3; border-left: 4px solid var(--accent2); padding: 12px 16px; margin: 14px 0; border-radius: 0 4px 4px 0; }
+  .vocab h4 { color: var(--accent2); margin: 0 0 6px; }
+  .formula { background: var(--code); border-left: 3px solid var(--accent); font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 14px; padding: 10px 14px; margin: 10px 0; }
+  .quiz { background: #fff6df; border: 1px solid #d9c47a; padding: 14px 18px; margin: 18px 0; border-radius: 4px; }
+  .quiz h4 { margin: 0 0 6px; color: #735300; }
+  .saythis { background: #eef4fa; border-left: 4px solid #2a6bb0; padding: 10px 14px; margin: 12px 0; font-family: "Iowan Old Style",Georgia,serif; }
+  .saythis::before { content: "Say this →"; font-family: ui-monospace,Menlo,monospace; font-size: 11px; letter-spacing: .08em; color: #2a6bb0; display: block; margin-bottom: 4px; }
+  blockquote { border-left: 3px solid var(--accent2); margin: 12px 0; padding: 4px 14px; color: #333; background: var(--hi2); font-style: italic; }
+  .mono { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 13px; background: var(--code); padding: 1px 5px; border-radius: 3px; }
+  .pill { display: inline-block; font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; padding: 2px 8px; border: 1px solid var(--accent); color: var(--accent); border-radius: 999px; margin-right: 4px; }
+  .toc { background: #fafafa; border: 1px solid var(--line); padding: 14px 20px; border-radius: 4px; margin: 0 0 32px; font-size: 15px; }
+  .toc ol { columns: 2; column-gap: 30px; margin: 0; padding-left: 18px; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+  hr.thin { border: none; border-top: 1px solid var(--rule); margin: 28px 0; }
+  .small { font-size: 13px; color: var(--mute); }
+  .twocol { columns: 2; column-gap: 28px; }
+  @media (max-width: 720px) { .twocol { columns: 1; } .toc ol { columns: 1; } }
+  .twocol li { break-inside: avoid; }
+  .intro { font-size: 18px; line-height: 1.6; padding: 14px 18px; background: #fcfaf4; border-left: 4px solid var(--ink); border-radius: 0 4px 4px 0; }
+  details { border: 1px solid var(--line); padding: 8px 14px; border-radius: 4px; margin: 8px 0; background: #fcfaf4; }
+  summary { cursor: pointer; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="h1">
+  <div class="kicker">Idiot Guide &nbsp;·&nbsp; Ground-up subject-matter brief &nbsp;·&nbsp; 24 May 2026</div>
+  <h1>How to hold your own at Associate Director level</h1>
+  <div class="sub">Everything the S&amp;W partnership assumes you already know — taught from scratch, in 16 chapters, with worked numbers</div>
+</header>
+
+<div class="intro">
+<p><strong>How to use this.</strong> You already know more than you think. The gap between you and an Associate Director at S&amp;W is not raw IQ or analytical ability — it is <em>vocabulary, sequence, and reflex</em>. They have done forty price-control submissions and you have done two. They know which paragraph of Ofwat PR24 final determinations to cite without looking it up. They have a rehearsed way of saying "I would want to test that assumption" that lands as competence rather than hedging.</p>
+
+<p>This guide closes that gap in four ways:</p>
+<ol>
+  <li><strong>First principles</strong> — why does this regime exist at all? If you understand why, you can derive what.</li>
+  <li><strong>Worked numerical examples</strong> — every key concept has at least one example with real numbers so the mechanics live in your fingers, not just in flashcards.</li>
+  <li><strong>Vocabulary decoders</strong> — the consulting-and-regulation industry has its own shorthand. Each chapter has a "<em>what they actually mean</em>" box.</li>
+  <li><strong>"Say this" boxes</strong> — exact phrasing an AD would use, so you can borrow the cadence until it is yours.</li>
+</ol>
+
+<p><strong>Read order:</strong> Chapters 1–7 are core regulatory economics. 8–10 are competition / subsidy. 11–12 are courtroom-craft. 13–16 are the polish — vocabulary, translation from DCC, a mock case study, and how to <em>sound</em> like an AD. If you only have one evening, read Chapters 1, 3, 4, 13 and 16.</p>
+</div>
+
+<div class="toc">
+  <strong>Contents — sixteen chapters</strong>
+  <ol>
+    <li><a href="#c1">Why regulation exists at all</a></li>
+    <li><a href="#c2">Forty years of UK price regulation</a></li>
+    <li><a href="#c3">The building blocks of an allowed revenue</a></li>
+    <li><a href="#c4">Cost of capital, worked from scratch</a></li>
+    <li><a href="#c5">Financeability — when WACC is right but the lights go out</a></li>
+    <li><a href="#c6">Totex, frontier shift, and benchmarking</a></li>
+    <li><a href="#c7">Outputs, incentives, sharing factors, RoRE</a></li>
+    <li><a href="#c8">Competition economics — Harberger to SSNIP</a></li>
+    <li><a href="#c9">Damages — how a quantum economist actually thinks</a></li>
+    <li><a href="#c10">Subsidy Control — a hypothetical, walked through</a></li>
+    <li><a href="#c11">Expert witness — what a report actually looks like</a></li>
+    <li><a href="#c12">Causal inference toolkit, the AD-level version</a></li>
+    <li><a href="#c13">The consulting vocabulary decoder</a></li>
+    <li><a href="#c14">DCC → consulting translation table</a></li>
+    <li><a href="#c15">Mock take-home case study, structured</a></li>
+    <li><a href="#c16">How to sound like an Associate Director</a></li>
+  </ol>
+</div>
+
+<!-- ===================== CHAPTER 1 ===================== -->
+<h2 id="c1"><span class="num">CH 1</span>Why regulation exists at all</h2>
+
+<p>Start with the puzzle. If competitive markets are so good at producing welfare, why does the UK have an entire industry of regulators — Ofgem, Ofwat, Ofcom, CAA, FCA, PSR, ORR — telling firms what to charge? Two reasons, and only two.</p>
+
+<h3>Reason 1 — Natural monopoly</h3>
+<p>Some industries have such large fixed costs (laying water pipes across an entire region) and such low marginal costs (one extra drop through the pipe) that one firm can serve the market at lower cost than two. The duplication problem: do you really want a second set of water pipes? A second smart-meter network? A second set of high-voltage transmission lines? The economic answer is no — but a single firm then has market power and will set monopoly prices.</p>
+
+<div class="ex">
+  <h4>The natural-monopoly trade-off (the only diagram you ever need)</h4>
+  <p>A natural-monopoly cost curve has high fixed costs (F) and constant low marginal cost (c). Average cost = F/Q + c, which is always falling. The "right" production level on the demand curve sets P = MC = c. That sounds efficient until you realise the firm makes a loss of F at that price. So someone has to make a choice:</p>
+  <ul>
+    <li><strong>Marginal-cost pricing + subsidy</strong> — pricing right, taxpayer pays F. Welfare-best but politically expensive.</li>
+    <li><strong>Average-cost pricing (the regulator's default)</strong> — price covers cost including a normal return. Some deadweight loss, but break-even. <em>This is what every UK regulator actually does.</em></li>
+    <li><strong>Multi-part tariffs</strong> — fixed charge for connection (covers F) + per-unit charge at marginal cost. Energy and telecoms use this routinely.</li>
+  </ul>
+</div>
+
+<h3>Reason 2 — Market failures other than monopoly</h3>
+<p>Externalities (pollution, carbon, network effects), information asymmetries (consumer-duty in retail finance), public goods (national grid security), and behavioural failures (overconfidence, inertia in switching). All justify intervention; not all justify price control.</p>
+
+<h3>Three ways regulators have historically solved the natural-monopoly problem</h3>
+<table>
+  <tr><th>Approach</th><th>How</th><th>Problem</th></tr>
+  <tr><td><strong>Public ownership</strong></td><td>State owns it (UK pre-1980s)</td><td>Soft budgets, political capture, no efficiency pressure</td></tr>
+  <tr><td><strong>Rate-of-return regulation</strong> (US)</td><td>Allow firm to recover costs + an agreed return on assets</td><td><em>Averch–Johnson effect</em> — firms over-capitalise because more assets → more allowed return</td></tr>
+  <tr><td><strong>Price-cap regulation</strong> (UK Littlechild, 1983)</td><td>Set a price ceiling for 5 years (RPI − X), let firm keep efficiency gains</td><td>X-factor is guesswork at first; outputs can decay</td></tr>
+</table>
+
+<p>The modern UK system (RIIO, PR-style) is a hybrid: revenue cap + totex + outputs + incentive payments + sharing of over- and underspend. We will build it brick by brick in Chapter 3.</p>
+
+<div class="vocab">
+  <h4>What they actually mean</h4>
+  <ul>
+    <li><strong>Natural monopoly</strong> — fixed costs are so high that one firm is cheaper than two. Not the same as "monopoly".</li>
+    <li><strong>Allocative efficiency</strong> — output level where the value to the marginal buyer = marginal cost.</li>
+    <li><strong>Productive efficiency</strong> — producing each unit at the lowest possible cost.</li>
+    <li><strong>X-inefficiency</strong> — slack inside a monopoly that competitive pressure would have driven out.</li>
+    <li><strong>Deadweight loss</strong> — the welfare that is destroyed when prices are above marginal cost; the Harberger triangle.</li>
+    <li><strong>Regulatory contract</strong> — the implicit deal between regulator and firm: firm commits to invest, regulator commits to allow recovery + a fair return.</li>
+  </ul>
+</div>
+
+<div class="saythis">
+"The basic problem any UK utility regulator is solving is allocative efficiency at average cost — you can't sustain marginal-cost pricing without a subsidy, so the question becomes: what is the lowest-cost, lowest-distortion way to set average prices that still incentivises efficiency and investment?"
+</div>
+
+<!-- ===================== CHAPTER 2 ===================== -->
+<h2 id="c2"><span class="num">CH 2</span>Forty years of UK price regulation, in one chapter</h2>
+
+<p>You don't need to memorise dates, but you need the <em>shape of the arc</em> — because Schellion and Jonathan will mention regimes by name and assume you know what came before and after.</p>
+
+<h3>1980s — The Littlechild revolution</h3>
+<p>Stephen Littlechild's 1983 paper proposed RPI−X for the privatising telecoms sector: regulator sets a price cap that falls by X% per year in real terms, firm keeps any efficiency saving inside the period. The bet: efficiency pressure replaces competition. The shape carried over to gas (1986), water (1989), and electricity (1990).</p>
+
+<h3>1990s — The maturing toolkit</h3>
+<p>Regulators learnt that you can't just set X and walk away. Sliding scales, output measures, quality penalties emerge. Cost-of-capital methodology gets more formal. Beginning of the WACC industry.</p>
+
+<h3>2000s — Towards totex and outputs</h3>
+<p>The opex/capex split was gameable: firms could classify spend as capex to get it into the RAB and earn a return on it. Ofgem's Distribution Price Control Review 5 (DPCR5, 2010) starts to move toward totex.</p>
+
+<h3>2013 — RIIO-1 launches</h3>
+<p><strong>R</strong>evenue = <strong>I</strong>ncentives + <strong>I</strong>nnovation + <strong>O</strong>utputs. Ofgem's flagship framework for energy networks (gas distribution, transmission, electricity transmission and distribution). 8-year price-control period. Totex. Information Quality Incentive (IQI) — pay firms to submit honest business plans by paying more for plans the regulator's own benchmarking confirms.</p>
+
+<h3>2014 — Ofwat PR14</h3>
+<p>Water adopts totex. Outcome Delivery Incentives (ODIs) — financial rewards or penalties on a basket of customer outcomes (leakage, supply interruptions, water quality).</p>
+
+<h3>2019 — Ofwat PR19</h3>
+<p>First control with explicit financeability cross-check at the centre. Cost of capital lowered. Triggered the CMA appeal (next bullet).</p>
+
+<h3>2021 — The CMA water appeals</h3>
+<p>Anglian, Bristol, Northumbrian and Yorkshire referred PR19 to the CMA. The CMA raised the allowed cost of capital and reweighted aspects of the financeability test. Set the template for current cost-of-capital debate.</p>
+
+<h3>2021 — RIIO-2</h3>
+<p>Ofgem's 5-year framework for energy networks (gas distribution + transmission + electricity transmission + electricity distribution at ED2). Aggressive cut to cost of equity drew appeals to the CMA in 2021 and again from Cadent and others.</p>
+
+<h3>2022 — Subsidy Control Act</h3>
+<p>Post-Brexit, UK replaces EU State Aid with the Subsidy Control Act 2022 (live 4 January 2023). New regime; CMA Subsidy Advice Unit set up. Less prescriptive than State Aid, more economic-reasoning driven (see Chapter 10).</p>
+
+<h3>December 2024 — PR24 final determinations</h3>
+<p>Ofwat's 5-year water control (2025–2030). Real CPIH WACC c.3.7%. Multiple water companies reference to the CMA again.</p>
+
+<h3>2025–26 — RIIO-3 consultations</h3>
+<p>Ofgem's 5-year framework for 2026–31. Sector pressure for higher cost of equity given gilt-rate environment. Schellion's "geopolitical risk in WACC" piece is squarely in this debate.</p>
+
+<div class="vocab">
+  <h4>What they actually mean</h4>
+  <ul>
+    <li><strong>RPI−X</strong> — Original Littlechild price-cap formula; cap rises by RPI inflation minus an X% efficiency factor.</li>
+    <li><strong>PR-something / DPCR-something / RIIO-something</strong> — sequential price-control reviews. PR24 = Ofwat's 8th. RIIO-3 = Ofgem's third RIIO.</li>
+    <li><strong>Periodic review</strong> — the formal multi-year process every regulator runs (2–4 years of consultation, business-plan submission, draft determination, final determination).</li>
+    <li><strong>Final determination</strong> — the binding output of the periodic review. After it, companies have a window to appeal to the CMA.</li>
+    <li><strong>"The CMA case"</strong> — almost always means an appeal of a regulator's final determination, not a CMA-originated investigation.</li>
+  </ul>
+</div>
+
+<div class="saythis">
+"My mental model of UK price regulation is 'Littlechild plus four corrections' — RPI−X gave us the price cap, the 2000s gave us outputs and quality measures, the 2010s gave us totex and IQI, and the 2020s gave us a serious financeability cross-check. The next correction is probably about long-run risk and resilience, which is where Schellion's published thinking points."
+</div>
+
+<!-- ===================== CHAPTER 3 ===================== -->
+<h2 id="c3"><span class="num">CH 3</span>The building-blocks model — your single most important concept</h2>
+
+<p>Every UK price control comes down to one equation. Memorise it. If you wake up at 4 a.m. you should be able to write it from cold.</p>
+
+<div class="formula">Allowed Revenue<sub>t</sub>
+= Return on RAB<sub>t</sub>
++ Depreciation<sub>t</sub>
++ Allowed Opex<sub>t</sub>
++ Tax allowance<sub>t</sub>
++ Pass-through costs<sub>t</sub>
+± Incentive adjustments<sub>t</sub>
+± Reconciliations from prior periods</div>
+
+<p>Each term is a "building block". The regulator sets each one separately, sums them, and that is the company's allowed revenue for the year.</p>
+
+<h3>Worked example — fictional water company "Anyshire"</h3>
+<div class="ex">
+  <h4>The numbers</h4>
+  <ul>
+    <li>Opening RAB at start of Year 1: <strong>£10,000m</strong></li>
+    <li>Allowed real WACC (vanilla): <strong>4.0%</strong></li>
+    <li>Average asset life: 30 years → straight-line depreciation rate = <strong>3.33%</strong></li>
+    <li>Allowed totex for Year 1: <strong>£1,500m</strong> (split: capex £700m, opex £800m)</li>
+    <li>Capitalisation rate (% of totex going into RAB rather than opex): <strong>50%</strong> — so £750m goes to capex roll into RAB, £750m goes to opex</li>
+    <li>Tax allowance: <strong>£60m</strong></li>
+    <li>Pass-through costs (rates, licence fees): <strong>£100m</strong></li>
+  </ul>
+
+  <h4>Building Year 1 allowed revenue</h4>
+  <table>
+    <tr><th>Block</th><th>Calculation</th><th>£m</th></tr>
+    <tr><td>Return on RAB</td><td>£10,000m × 4.0%</td><td>400</td></tr>
+    <tr><td>Depreciation</td><td>£10,000m × 3.33%</td><td>333</td></tr>
+    <tr><td>Allowed opex (50% of totex)</td><td>£1,500m × 50%</td><td>750</td></tr>
+    <tr><td>Tax allowance</td><td>given</td><td>60</td></tr>
+    <tr><td>Pass-through</td><td>given</td><td>100</td></tr>
+    <tr><th>Allowed revenue Y1</th><th></th><th>1,643</th></tr>
+  </table>
+
+  <h4>How the RAB rolls forward to Year 2</h4>
+  <div class="formula">RAB<sub>end of Y1</sub> = RAB<sub>start</sub> + capex added − depreciation
+= 10,000 + 750 − 333 = <strong>10,417</strong></div>
+  <p>Year 2 starts with RAB £10,417m. Return on RAB = £10,417m × 4% = £417m. The asset base compounds in real terms by the gap between capex and depreciation — that is why utility firms grow their regulated balance sheets steadily.</p>
+</div>
+
+<h3>Why every term matters strategically</h3>
+<ul>
+  <li><strong>Return on RAB</strong> is usually the biggest line. The WACC negotiation dominates the periodic review.</li>
+  <li><strong>Depreciation</strong> is set by useful-life assumptions, which the regulator can lengthen (lower depreciation, smaller short-term bills, slower cash return).</li>
+  <li><strong>Allowed opex</strong> comes out of the totex challenge and benchmarking (Chapter 6).</li>
+  <li><strong>Capitalisation rate</strong> is unglamorous but huge — a 5pp shift in cap rate moves cash and earnings around the period.</li>
+  <li><strong>Pass-through</strong> takes uncontrollable cost off the table — companies fight to get items reclassified as pass-through.</li>
+  <li><strong>Incentive adjustments</strong> are where outputs (Chapter 7) actually bite revenue.</li>
+</ul>
+
+<div class="vocab">
+  <h4>What they actually mean</h4>
+  <ul>
+    <li><strong>RAB</strong> — Regulatory Asset Base. The investor's claim on the regulated entity, in real terms. Indexed to CPIH (mostly) — used to be RPI.</li>
+    <li><strong>RAB roll</strong> — the annual update of opening to closing RAB.</li>
+    <li><strong>Totex</strong> — totex = capex + opex. Treated as a single pot.</li>
+    <li><strong>Capitalisation rate</strong> — share of totex that flows into RAB vs straight to revenue as opex.</li>
+    <li><strong>Pass-through</strong> — costs the regulator excludes from efficiency challenge, recovered £-for-£.</li>
+    <li><strong>True-up / reconciliation</strong> — end-of-period adjustment when actual differs from forecast (e.g. inflation, tax, sharing of cost variance).</li>
+  </ul>
+</div>
+
+<div class="saythis">
+"The building blocks model is the universal language of UK price regulation — Ofwat, Ofgem and Ofcom all use a version of it. The interesting questions are never the formula; they are the inputs. Who sets the capitalisation rate? What's the useful-life assumption underpinning depreciation? Is this cost legitimately pass-through? That is where the value gets created and lost."
+</div>
+
+<!-- ===================== CHAPTER 4 ===================== -->
+<h2 id="c4"><span class="num">CH 4</span>Cost of capital, worked from scratch</h2>
+
+<p>The cost of capital determines the "return on RAB" block. It is also the most contested number in any periodic review. We will build a UK utility WACC from the ground up in seven steps.</p>
+
+<h3>The two equations</h3>
+<div class="formula">Re = Rf + βe × ERP &nbsp;&nbsp; (cost of equity, CAPM)</div>
+<div class="formula">WACC<sub>vanilla</sub> = g × Rd + (1 − g) × Re &nbsp;&nbsp; (no tax shield)</div>
+<div class="formula">WACC<sub>post-tax</sub> = g × Rd × (1 − T) + (1 − g) × Re</div>
+
+<p>UK regulators tend to express WACC <em>vanilla</em> and add an explicit tax allowance as a separate building block rather than embed the tax shield. Get used to the term <strong>vanilla WACC</strong>.</p>
+
+<h3>Step-by-step build, fictional utility "Anyshire"</h3>
+
+<div class="ex">
+<h4>Step 1 — Risk-free rate (Rf)</h4>
+<p>UK approach = use index-linked gilt (ILG) yields, averaged over a defensible window. Typical 10–20-year ILG real yield, trailing 1-year and trailing 5-year averages. Let's use <strong>Rf = 1.5% real (CPIH-deflated)</strong>.</p>
+
+<h4>Step 2 — Total Market Return (TMR) approach</h4>
+<p>UK regulators do not estimate ERP directly. They estimate <em>Total Market Returns</em> (long-run UK equity market real returns) and back out ERP. The standard reference is the DMS (Dimson–Marsh–Staunton) dataset, with recent updates from the Bank of England and Ofgem-commissioned reviews. Defensible range: <strong>TMR 6.0–7.0% real</strong>. Take <strong>TMR = 6.5%</strong>.</p>
+<div class="formula">ERP = TMR − Rf = 6.5% − 1.5% = 5.0%</div>
+
+<h4>Step 3 — Asset beta</h4>
+<p>This is the unlevered measure of business risk relative to the market. For UK regulated utilities, asset betas typically land in the range 0.30–0.45. Use <strong>βa = 0.40</strong>. Source: comparator listed regulated firms, with leverage adjustments.</p>
+
+<h4>Step 4 — Notional gearing (g)</h4>
+<p>The regulator does NOT use the company's actual gearing — it uses a <em>notional</em> efficient capital structure. UK utility norm: <strong>g = 60%</strong> (debt as share of RAB).</p>
+
+<h4>Step 5 — Equity beta (lever up)</h4>
+<p>Re-lever the asset beta to the notional gearing using the standard Modigliani–Miller relationship (with a small allowance for debt beta):</p>
+<div class="formula">βe = βa + (βa − βd) × g / (1 − g)
+&nbsp;&nbsp;&nbsp;&nbsp;= 0.40 + (0.40 − 0.05) × 60 / 40
+&nbsp;&nbsp;&nbsp;&nbsp;= 0.40 + 0.35 × 1.5
+&nbsp;&nbsp;&nbsp;&nbsp;= <strong>0.925</strong></div>
+
+<h4>Step 6 — Cost of equity</h4>
+<div class="formula">Re = Rf + βe × ERP = 1.5% + 0.925 × 5.0% = 1.5% + 4.63% = <strong>6.13% real</strong></div>
+
+<h4>Step 7 — Cost of debt</h4>
+<p>UK practice splits debt into <em>embedded</em> (already issued, fixed coupons rolling off over time) and <em>new</em> (forward issuance, indexed to a benchmark like iBoxx). The allowed Rd is a weighted average. Use <strong>Rd = 3.0% real</strong> (debt premium of 150bps over Rf).</p>
+
+<h4>Final WACC</h4>
+<div class="formula">WACC<sub>vanilla</sub> = 0.6 × 3.0% + 0.4 × 6.13% = 1.80% + 2.45% = <strong>4.25% real CPIH</strong></div>
+</div>
+
+<h3>Sensitivity — what moves the answer?</h3>
+<table>
+  <tr><th>Lever</th><th>Move</th><th>Δ WACC</th><th>£m on £10bn RAB</th></tr>
+  <tr><td>TMR</td><td>+50bp (6.5→7.0%)</td><td>+18bp</td><td>+£18m revenue/year</td></tr>
+  <tr><td>Asset beta</td><td>+0.05 (0.40→0.45)</td><td>+10bp</td><td>+£10m/year</td></tr>
+  <tr><td>Notional gearing</td><td>−5pp (60→55%)</td><td>+9bp</td><td>+£9m/year</td></tr>
+  <tr><td>Cost of debt</td><td>+25bp</td><td>+15bp</td><td>+£15m/year</td></tr>
+</table>
+
+<p>This is why every parameter is fought over in submissions. A 10bp move on a £10bn RAB is £10m per year, £50m over a 5-year period. For Severn Trent or United Utilities the numbers run into hundreds of millions.</p>
+
+<h3>The geopolitical-risk overlay (Schellion's view)</h3>
+<p>From her published piece, the question becomes: does the UK WACC adequately capture political risk? Her answer has three layers:</p>
+<ol>
+  <li><strong>Systematic risk</strong> (war, sanctions, trade regimes) — already in Rf and ERP if they're measured honestly. <em>Don't add a separate country premium.</em></li>
+  <li><strong>Sector beta loading</strong> — only if the risk is clearly correlated with the market (e.g. energy networks' exposure to global commodity prices).</li>
+  <li><strong>Idiosyncratic UK political risk</strong> (windfall taxes, net-zero timeline shifts) — handle via <em>cash-flow mechanisms</em> and regulatory design, not by inflating the WACC.</li>
+</ol>
+
+<div class="vocab">
+  <h4>What they actually mean</h4>
+  <ul>
+    <li><strong>Vanilla WACC</strong> — pre-tax WACC without the tax shield baked in.</li>
+    <li><strong>Notional capital structure</strong> — the regulator's hypothetical efficient firm, not the actual company.</li>
+    <li><strong>TMR approach</strong> — UK convention of estimating Total Market Returns rather than ERP directly.</li>
+    <li><strong>Embedded vs new debt</strong> — historic vs forward debt; allowed cost of debt is a weighted average.</li>
+    <li><strong>Re-levering</strong> — adjusting asset beta to equity beta for the assumed gearing.</li>
+    <li><strong>iBoxx</strong> — the standard UK benchmark for utility debt costs.</li>
+  </ul>
+</div>
+
+<div class="saythis">
+"For a UK regulated utility, the WACC build is mechanical once you've fixed the parameters — Rf, TMR, asset beta, notional gearing, debt cost. The argument lives entirely in parameter choice. The CMA appeals in 2021 turned almost entirely on the asset beta and the TMR; PR24 will turn on the same parameters plus the financeability cross-check."
+</div>
+
+<!-- ===================== CHAPTER 5 ===================== -->
+<h2 id="c5"><span class="num">CH 5</span>Financeability — when WACC is right but the lights still go out</h2>
+
+<p>A WACC can pass every theoretical test and still leave a company unable to maintain investment-grade credit ratings. That is the financeability problem. Modern UK regulators do an explicit <em>financeability cross-check</em> after setting the building blocks.</p>
+
+<h3>The four ratios that matter</h3>
+<table>
+  <tr><th>Ratio</th><th>What it measures</th><th>Investment-grade threshold (BBB)</th></tr>
+  <tr><td><strong>AICR</strong> (Adjusted Interest Cover)</td><td>FFO + interest, divided by interest. Cash flow available to pay interest, including a non-cash adjustment.</td><td>≥ 1.3–1.5×</td></tr>
+  <tr><td><strong>FFO / Net debt</strong></td><td>Funds From Operations as % of net debt. The "leverage" ratio for utilities.</td><td>≥ 7–9%</td></tr>
+  <tr><td><strong>Gearing</strong></td><td>Net debt / RAB</td><td>≤ 70%</td></tr>
+  <tr><td><strong>RCF / Net debt</strong></td><td>Retained Cash Flow (FFO − dividends) / Net debt</td><td>≥ 5–7%</td></tr>
+</table>
+
+<h3>How the cross-check works in practice</h3>
+<ol>
+  <li>Regulator builds the allowed revenue (Chapter 3).</li>
+  <li>Builds a notional financial model — opening RAB, allowed revenue, costs, interest on notional debt, dividends.</li>
+  <li>Computes the four ratios across the price-control period.</li>
+  <li>If ratios fall below BBB thresholds, the regulator can adjust by:
+    <ul>
+      <li>Slowing depreciation (lengthening asset lives) — more cash later, less now;</li>
+      <li>Pay-as-you-go (PAYG) rate adjustments — capitalisation rate flex;</li>
+      <li>Capital expenditure smoothing;</li>
+      <li>(Less commonly) a small uplift to allowed return.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3>Why this matters in 2026</h3>
+<p>Thames Water's near-collapse is the live example. The PR19 / PR24 financeability tests are now under more scrutiny than the WACC itself. If you can speak to financeability fluently, you stand out.</p>
+
+<div class="saythis">
+"Financeability is the bridge between economic regulation and corporate finance. The right WACC is necessary but not sufficient — a regulator that delivers a theoretically defensible return but breaches investment-grade ratios is failing its own statutory duty of allowing the company to finance its functions. Thames is the cautionary tale."
+</div>
+
+<!-- ===================== CHAPTER 6 ===================== -->
+<h2 id="c6"><span class="num">CH 6</span>Totex, frontier shift, and benchmarking</h2>
+
+<p>How does the regulator decide what level of totex to allow? Through a combination of econometric benchmarking against peers, frontier-shift assumptions for productivity, and engineering judgement for company-specific drivers.</p>
+
+<h3>The standard recipe</h3>
+<ol>
+  <li><strong>Collect cost data</strong> from all comparable firms (10 water companies, 6 DNO groups, etc.).</li>
+  <li><strong>Identify cost drivers</strong> — variables that legitimately explain cost variation (network length, customer numbers, peak demand, density).</li>
+  <li><strong>Estimate a regression</strong> — OLS or COLS — of cost on drivers.</li>
+  <li><strong>Set the frontier</strong> — typically the most efficient firm in the sample, or upper-quartile.</li>
+  <li><strong>Allow catch-up</strong> — give inefficient firms time to close the gap (e.g. catch up 0.5%/year for 5 years).</li>
+  <li><strong>Apply frontier shift</strong> — best firm is expected to keep improving (~1%/year).</li>
+  <li><strong>Top-down adjustments</strong> — real price effects (RPEs), special factors.</li>
+</ol>
+
+<h3>The methods, with their party trick and their flaw</h3>
+<table>
+  <tr><th>Method</th><th>Party trick</th><th>Flaw</th></tr>
+  <tr><td><strong>OLS</strong></td><td>Familiar, transparent, easy to challenge</td><td>Treats all deviation from the line as inefficiency, including noise</td></tr>
+  <tr><td><strong>COLS</strong> (Corrected OLS)</td><td>Shifts the OLS line down to the most efficient firm — bounded efficiency interpretation</td><td>Outlier-sensitive; can be over-aggressive</td></tr>
+  <tr><td><strong>SFA</strong> (Stochastic Frontier)</td><td>Separates inefficiency from noise statistically using a composed error term</td><td>Strong distributional assumptions (half-normal inefficiency); small samples make MLE unstable</td></tr>
+  <tr><td><strong>DEA</strong> (Data Envelopment Analysis)</td><td>Non-parametric; doesn't need a functional form; handles multiple outputs</td><td>No statistical inference; deterministic; outlier-sensitive</td></tr>
+</table>
+
+<h3>Frontier shift vs catch-up — keep these straight</h3>
+<ul>
+  <li><strong>Frontier shift</strong> = how much the <em>best</em> firm is expected to improve productivity year-on-year. Industry-wide.</li>
+  <li><strong>Catch-up</strong> = how much an <em>inefficient</em> firm is expected to close the gap to the frontier. Firm-specific.</li>
+</ul>
+<p>Both are subtracted from totex allowances. A firm at the frontier with 1% frontier shift gets 1% less allowance each year in real terms. A firm 10% behind the frontier with 5-year catch-up at 2%/year compounds — its totex allowance is 1% × 5 + 2% × 5 = 15% lower in year 5 than year 1 (in real terms).</p>
+
+<h3>Schellion's critique — re-stated as her remedy</h3>
+<p>Her published piece argues the four assumptions of traditional benchmarking are all under stress (firms aren't homogeneous, technology isn't stable, short-term optimisation misses long-run value, samples are too small). Her remedy is a three-layer framework:</p>
+<ol>
+  <li><strong>Scenario-based benchmarking</strong> — multiple efficient-cost trajectories under different demand / climate / risk assumptions.</li>
+  <li><strong>Engineering evidence</strong> — bottom-up cost assessment by sector engineers, alongside top-down econometric benchmarking.</li>
+  <li><strong>Risk-adjusted cost assessment</strong> — long-term value rather than current-period minimisation.</li>
+</ol>
+
+<div class="saythis">
+"The orthodox totex toolkit was built for stable demand and incremental productivity. With small samples — n=10 water companies — every specification choice is consequential, and the inference is fragile. Schellion's framing of scenario plus engineering plus risk-adjusted is, I think, where the next generation of efficiency modelling has to go. The honest version is that we should be less confident about a single point estimate of allowed totex than we have been historically."
+</div>
+
+<!-- ===================== CHAPTER 7 ===================== -->
+<h2 id="c7"><span class="num">CH 7</span>Outputs, incentives, sharing factors, RoRE</h2>
+
+<p>Allowed revenue is not the end of the story. Companies also gain or lose money against incentive mechanisms. The headline measure of the package is RoRE.</p>
+
+<h3>RoRE — Return on Regulatory Equity</h3>
+<p>The notional equity return after all incentives, expressed as a percentage range. A typical UK package might offer:</p>
+<ul>
+  <li><strong>Base allowed return on equity:</strong> 6.13% (from Chapter 4)</li>
+  <li><strong>RoRE range from totex sharing:</strong> ±1.5%</li>
+  <li><strong>RoRE range from ODIs / output incentives:</strong> ±2.0%</li>
+  <li><strong>RoRE range from financing performance:</strong> ±0.5%</li>
+  <li><strong>Total RoRE range:</strong> approx 2% to 10%</li>
+</ul>
+
+<h3>Sharing factors</h3>
+<p>If a company over- or underspends versus its totex allowance, the variance is shared with customers via the next price control. A 50/50 sharing factor splits the £100m underspend evenly. A 75/25 sharing factor (more company, less customer) sharpens the incentive but transfers more risk to the firm.</p>
+
+<h3>ODIs — Outcome Delivery Incentives</h3>
+<p>Used most in Ofwat's water control. A basket of customer-facing measures with reward/penalty bands:</p>
+<ul>
+  <li>Leakage performance</li>
+  <li>Per-capita consumption</li>
+  <li>Supply interruptions</li>
+  <li>Pollution incidents</li>
+  <li>Customer satisfaction (C-MeX, D-MeX)</li>
+</ul>
+
+<h3>IQI — Information Quality Incentive</h3>
+<p>An Ofgem device. Companies submit business plans; the regulator does its own benchmarking; companies whose plan is closer to the regulator's view get a higher allowance. The mechanism design pays for honest reporting.</p>
+
+<div class="vocab">
+  <h4>What they actually mean</h4>
+  <ul>
+    <li><strong>RoRE</strong> — Return on Regulatory Equity. The "what could an investor actually earn" measure.</li>
+    <li><strong>Sharing factor</strong> — how cost variance is split between firm and customer.</li>
+    <li><strong>ODI</strong> — Outcome Delivery Incentive. Reward or penalty on a defined customer-facing KPI.</li>
+    <li><strong>IQI</strong> — Information Quality Incentive. Pays firms to submit honest plans.</li>
+    <li><strong>Penalty cap / collar</strong> — maximum upside or downside on a given mechanism.</li>
+  </ul>
+</div>
+
+<!-- ===================== CHAPTER 8 ===================== -->
+<h2 id="c8"><span class="num">CH 8</span>Competition economics — Harberger to SSNIP</h2>
+
+<p>Competition economics is the discipline of identifying when markets fail to deliver welfare and what to do about it. UK practice maps onto two statutory frameworks (Competition Act 1998 and Enterprise Act 2002) and one set of analytical tools (market definition, SSNIP, SLC).</p>
+
+<h3>The five core questions a competition economist asks</h3>
+<ol>
+  <li><strong>What is the relevant market?</strong> (product + geographic)</li>
+  <li><strong>Is the market concentrated?</strong> (HHI, market shares)</li>
+  <li><strong>Are there barriers to entry?</strong> (sunk costs, switching costs, regulation)</li>
+  <li><strong>Is conduct harming competition?</strong> (price effects, foreclosure, exclusion)</li>
+  <li><strong>What is the counterfactual?</strong> (what would have happened absent the conduct)</li>
+</ol>
+
+<h3>Market definition — the SSNIP test</h3>
+<p>SSNIP = Small but Significant Non-transitory Increase in Price. Take a candidate market. Ask: would a hypothetical monopolist raising price 5–10% find that profitable, or would enough customers switch out (substitute) to defeat it? If they switch out, the market is too narrow — expand it to include the substitutes.</p>
+
+<div class="ex">
+<h4>Cellophane fallacy</h4>
+<p>The classic SSNIP trap. If a firm is already pricing above competitive level (because it already has market power), then by the time you do the SSNIP test, customers are already on the verge of switching — so a 5% rise looks unprofitable, suggesting a broader market. That logic <em>defines away</em> the very monopoly you're trying to detect. Named after the US v Du Pont (Cellophane) case, 1956.</p>
+</div>
+
+<h3>Merger control — the SLC test</h3>
+<p>Substantial Lessening of Competition. CMA Phase 1 (40 working days) screens for SLC concerns. If found, Phase 2 (up to 24 weeks) does a deep investigation. SLC is a higher bar than the EU's "significant impediment to effective competition" but in practice the analytical machinery is similar.</p>
+
+<h3>Anti-competitive agreements (Chapter I / Article 101)</h3>
+<p>Horizontal: cartels (price-fixing, market-sharing, bid-rigging). Vertical: resale price maintenance, exclusive distribution. The Block Exemption Regulations carve out routine vertical arrangements.</p>
+
+<h3>Abuse of dominance (Chapter II / Article 102)</h3>
+<p>Conduct types: excessive pricing, predatory pricing, margin squeeze, refusal to supply, exclusivity rebates, tying, self-preferencing (digital markets). Dominance is presumed at &gt;50% market share, indicative at 40–50%, less likely below.</p>
+
+<h3>Market investigations (Enterprise Act Part 4)</h3>
+<p>The CMA can investigate a market even absent specific anti-competitive conduct if it suspects features of the market prevent, restrict or distort competition. Recent examples: card-acquiring, cloud services, mobile ecosystems, public-cloud market study.</p>
+
+<div class="vocab">
+  <h4>What they actually mean</h4>
+  <ul>
+    <li><strong>HHI</strong> — Herfindahl-Hirschman Index. Sum of squared market shares × 10,000. &gt;2,500 = concentrated; &gt;1,500 = moderately concentrated.</li>
+    <li><strong>Concerted practice</strong> — informal coordination short of an explicit agreement.</li>
+    <li><strong>Counterfactual</strong> — the world without the alleged conduct.</li>
+    <li><strong>Foreclosure</strong> — denying rivals access to inputs / customers / scale.</li>
+    <li><strong>Pass-on</strong> — degree to which an overcharge is passed downstream from direct purchasers to indirect purchasers.</li>
+    <li><strong>Follow-on damages</strong> — civil claim that piggybacks on a regulator's prior infringement finding.</li>
+  </ul>
+</div>
+
+<!-- ===================== CHAPTER 9 ===================== -->
+<h2 id="c9"><span class="num">CH 9</span>Damages — how a quantum economist actually thinks</h2>
+
+<p>Damages quantification is the bridge between competition economics and forensic accounting. The economist's job is to construct a defensible counterfactual price (or volume, or margin) and quantify the difference between the actual and the counterfactual.</p>
+
+<h3>The five-step damages workflow</h3>
+<ol>
+  <li><strong>Define the infringement</strong> — what conduct, what period, what products, what geography.</li>
+  <li><strong>Define the counterfactual</strong> — what would prices/volumes/margins have been absent the conduct.</li>
+  <li><strong>Pick a methodology</strong> — comparator-based, before-and-after, structural, financial-performance, or a combination.</li>
+  <li><strong>Quantify the overcharge</strong> — per unit, then aggregated by claimant purchases.</li>
+  <li><strong>Apply pass-on</strong> — how much of the overcharge did the direct purchaser pass down to its customers? Defence's argument.</li>
+</ol>
+
+<h3>Worked example — fictional "Granville-style" steel cartel</h3>
+<div class="ex">
+  <h4>Setup</h4>
+  <ul>
+    <li><strong>Infringement:</strong> 5 steel producers fixed prices on flat-rolled steel from 2010 to 2018.</li>
+    <li><strong>Claimant:</strong> automotive manufacturer that bought £400m of flat-rolled steel during the period.</li>
+    <li><strong>Comparator:</strong> non-cartelised galvanised steel sold by the same producers.</li>
+  </ul>
+
+  <h4>Methodology — Difference-in-Differences</h4>
+  <p>Compare the price evolution of flat-rolled steel (treated) vs galvanised steel (control), pre-cartel (2005–2009) and during-cartel (2010–2018).</p>
+  <table>
+    <tr><th></th><th>Pre-cartel avg</th><th>During-cartel avg</th><th>Δ</th></tr>
+    <tr><td>Flat-rolled (treated)</td><td>£800/t</td><td>£950/t</td><td>+£150</td></tr>
+    <tr><td>Galvanised (control)</td><td>£900/t</td><td>£980/t</td><td>+£80</td></tr>
+    <tr><th>Difference-in-differences</th><th></th><th></th><th><strong>£70/t overcharge</strong></th></tr>
+  </table>
+  <p>Aggregate overcharge = £70 × claimant's tonnage in the period. Apply interest from date of each transaction. Then defendants will argue pass-on: the auto manufacturer raised car prices, so part of the overcharge was passed to consumers.</p>
+
+  <h4>The key vulnerabilities to test</h4>
+  <ul>
+    <li><strong>Parallel trends</strong> — did flat-rolled and galvanised prices move in parallel pre-cartel? Plot it. If not, DiD is biased.</li>
+    <li><strong>Selection of comparator</strong> — is galvanised genuinely uncontaminated by the cartel?</li>
+    <li><strong>Pass-on</strong> — how price-elastic was auto demand? What were margins doing?</li>
+    <li><strong>Volume effect</strong> — did the cartel suppress total purchases, not just raise prices?</li>
+  </ul>
+</div>
+
+<h3>The methodologies in one paragraph each</h3>
+<ul>
+  <li><strong>Yardstick / comparator-based</strong> — pick a clean market (geographic or product) untouched by the conduct; estimate counterfactual prices from that.</li>
+  <li><strong>Before-and-after</strong> — compare prices in the infringement period to a pre/post clean period in the same market.</li>
+  <li><strong>Structural / simulation</strong> — build a demand model (BLP, AIDS), calibrate to non-cartel period, simulate cartel-period prices under competitive conduct.</li>
+  <li><strong>Cost-based</strong> — build a but-for cost stack + competitive margin.</li>
+  <li><strong>Financial-performance</strong> — compare claimant's actual profitability to a but-for profitability under counterfactual prices.</li>
+</ul>
+
+<div class="saythis">
+"In any damages case, the choice of methodology is constrained by data — what comparators exist, how long the clean periods are, whether structural demand can be identified. The defensible answer usually triangulates two methods. The single-method expert is the easiest to discredit in cross-examination."
+</div>
+
+<!-- ===================== CHAPTER 10 ===================== -->
+<h2 id="c10"><span class="num">CH 10</span>Subsidy Control — walk a real proposal through</h2>
+
+<p>The Subsidy Control Act 2022 replaced State Aid post-Brexit. The regime is more flexible and more economic-reasoning driven, with the CMA Subsidy Advice Unit (SAU) as the analytical centre.</p>
+
+<h3>The hypothetical</h3>
+<div class="ex">
+  <h4>The proposal</h4>
+  <p>The UK government wants to grant <strong>£100m</strong> to a chip manufacturer to build a fabrication plant in Wales. The plant would create 1,500 direct jobs, secure semiconductor supply chains, and produce chips for defence and automotive sectors.</p>
+
+  <h4>Step 1 — Is it a subsidy at all? (Section 2 of the Act)</h4>
+  <table>
+    <tr><th>Limb</th><th>Test</th><th>Hypothetical</th></tr>
+    <tr><td>Public authority</td><td>Is the giver a public authority?</td><td>Yes (HMG)</td></tr>
+    <tr><td>Economic advantage</td><td>Does the recipient get a benefit it wouldn't get from a commercial operator?</td><td>Yes — £100m grant</td></tr>
+    <tr><td>Specific</td><td>Targeted at one enterprise / one sector?</td><td>Yes (one company)</td></tr>
+    <tr><td>Effect on competition / investment</td><td>Could it distort competition with UK trading partners?</td><td>Plausibly yes (global chip market)</td></tr>
+  </table>
+  <p>All four limbs satisfied. <strong>It is a subsidy.</strong></p>
+
+  <h4>Step 1a — The CMO test (key economic test)</h4>
+  <p>Would a hypothetical Commercial Market Operator (CMO) — a rational, profit-maximising private investor — have provided the same financing on the same terms? If yes, no subsidy; if no, subsidy.</p>
+  <p>In this case, the answer is clearly no — a CMO would not give a £100m grant with no equity stake or return on capital. <strong>CMO test confirms subsidy.</strong></p>
+
+  <h4>Step 2 — Is it a "subsidy of particular interest" (SSoPI)?</h4>
+  <p>Yes — over £10m threshold, in a sensitive sector (semiconductors), with cross-border implications. Triggers mandatory referral to the CMA SAU.</p>
+
+  <h4>Step 3 — Schedule 1 principles assessment</h4>
+  <p>Seven principles, applied in order:</p>
+  <ol>
+    <li><strong>Specific policy objective</strong> — secure UK semiconductor supply chain; address market failure (under-investment in strategic resilience due to externalities and global capital allocation).</li>
+    <li><strong>Proportionate &amp; necessary</strong> — is £100m the minimum needed? Could a smaller subsidy or a loan have done the job?</li>
+    <li><strong>Designed to bring about a change</strong> — would the chip plant have been built absent the subsidy? Counterfactual analysis required.</li>
+    <li><strong>Costs not normally funded by enterprise</strong> — public-good element (resilience) means private benefits don't capture full social value.</li>
+    <li><strong>Minimum amount</strong> — calibrated to the funding gap, not gold-plated.</li>
+    <li><strong>Minimised negative effects</strong> on competition and investment in the UK.</li>
+    <li><strong>Beneficial effects outweigh negative</strong> — balancing exercise. Welfare/employment/strategic benefits vs displaced investment elsewhere in the UK.</li>
+  </ol>
+
+  <h4>Step 4 — The CMA SAU's updated focus (Aug 2025 guidance — Schellion's piece)</h4>
+  <ul>
+    <li>Clearer articulation of market failure — exactly which failure are we addressing?</li>
+    <li>Explicit link policy objective ↔ economic mechanism — how does the subsidy fix the failure?</li>
+    <li>Structured assessment of distortive effects, including indirect impacts and dynamic responses (entry, exit, investment displacement).</li>
+    <li>Broader market-structure implications — what does this do to the UK chip-making landscape over time?</li>
+  </ul>
+</div>
+
+<div class="saythis">
+"Subsidy Control under the 2022 Act is much more an economic-reasoning exercise than State Aid ever was. The CMA SAU's August 2025 guidance demands that public authorities articulate market failure first, then design the intervention to address that specific failure, with a counterfactual that proves additionality. The structured Schedule 1 principles are now expected to be parallel rather than sequential — economic reasoning has to be in the proposal from day one, not bolted on at the end."
+</div>
+
+<!-- ===================== CHAPTER 11 ===================== -->
+<h2 id="c11"><span class="num">CH 11</span>Expert witness — what a report actually looks like</h2>
+
+<p>If S&amp;W's disputes practice is the target growth area, you will at some point be supporting an expert witness — and within a couple of years could be one. Here is how the role is structured.</p>
+
+<h3>The legal framework</h3>
+<ul>
+  <li><strong>CPR Part 35 &amp; Practice Direction 35</strong> — primary duty is to the court, overriding the duty to the instructing party.</li>
+  <li><strong>Civil Justice Council (CJC) Protocol</strong> — best-practice protocol on instruction of experts.</li>
+  <li><strong>Daubert / Frye</strong> (US analogues, not directly UK but cited) — admissibility standards.</li>
+  <li><strong>CPR 35.10</strong> — required declarations: "I confirm that I have made clear which facts and matters are within my own knowledge and which are not. Those that are within my own knowledge I confirm to be true."</li>
+</ul>
+
+<h3>The shape of an expert report</h3>
+<ol>
+  <li><strong>Statement of instructions</strong> — what the expert was asked to do.</li>
+  <li><strong>Qualifications &amp; experience</strong> — credentials.</li>
+  <li><strong>Independence declaration</strong> — CPR Part 35 statement.</li>
+  <li><strong>Materials reviewed</strong> — every document, every dataset.</li>
+  <li><strong>Assumptions</strong> — every assumption flagged, with reasoning.</li>
+  <li><strong>Factual background</strong> — the matter, the parties, the conduct alleged.</li>
+  <li><strong>Methodology</strong> — chosen methods, why, what alternatives were considered.</li>
+  <li><strong>Analysis</strong> — the work itself.</li>
+  <li><strong>Conclusions</strong> — clearly framed, with sensitivities.</li>
+  <li><strong>Appendices</strong> — data, model outputs, robustness checks.</li>
+  <li><strong>Declaration of truth</strong>.</li>
+</ol>
+
+<h3>Cross-examination — the four lines of attack</h3>
+<ol>
+  <li><strong>Bias</strong> — are you really independent? Have you worked for this party before? How much of your firm's revenue comes from them?</li>
+  <li><strong>Method choice</strong> — why this method? Why not the alternative? Sensitivity?</li>
+  <li><strong>Data quality</strong> — did you stress-test the inputs? What's the robustness to alternative data sources?</li>
+  <li><strong>Assumptions</strong> — every assumption you made is a line of attack.</li>
+</ol>
+
+<h3>Hot-tubbing — concurrent evidence</h3>
+<p>Both experts in the witness box at the same time. Judge or counsel asks one expert a question; the other can immediately respond. Forces direct technical engagement and exposes weakness fast. Used increasingly in the CAT and Commercial Court.</p>
+
+<div class="saythis">
+"The expert-witness practice puts a brutal premium on intellectual honesty. The questions you do not answer in your report will be the questions you are asked in cross-examination. The discipline is to write the weakness in yourself before opposing counsel does."
+</div>
+
+<!-- ===================== CHAPTER 12 ===================== -->
+<h2 id="c12"><span class="num">CH 12</span>Causal inference toolkit — AD-level fluency</h2>
+
+<p>You need to be able to name the right method for the right question, explain its identification assumption in one sentence, and flag what kills it.</p>
+
+<h3>The cheat-sheet</h3>
+<table>
+  <tr><th>Method</th><th>One-sentence identification</th><th>Killed by</th><th>Use case</th></tr>
+  <tr><td><strong>RCT</strong></td><td>Random assignment makes treatment uncorrelated with potential outcomes.</td><td>Imperfect compliance; spillovers.</td><td>Programme evaluation where ethics &amp; logistics permit.</td></tr>
+  <tr><td><strong>DiD</strong></td><td>Treated and control would have followed parallel trends absent treatment.</td><td>Pre-trends diverging; selection into treatment correlated with shocks.</td><td>Policy that hits some units and not others at a known date.</td></tr>
+  <tr><td><strong>IV</strong></td><td>Instrument affects the outcome only through the endogenous regressor.</td><td>Weak instruments; exclusion-restriction violations.</td><td>Endogenous treatment / price (e.g. demand estimation).</td></tr>
+  <tr><td><strong>RDD</strong></td><td>Units just above &amp; just below a threshold are similar except for treatment.</td><td>Manipulation around the cutoff; bandwidth-sensitivity.</td><td>Eligibility thresholds, scoring rules.</td></tr>
+  <tr><td><strong>Synthetic control</strong></td><td>A weighted comparator from a donor pool can mimic the treated unit pre-treatment.</td><td>Bad pre-treatment fit; placebo tests fail.</td><td>Single-unit interventions (one region, one cartel).</td></tr>
+  <tr><td><strong>Matching / PSM</strong></td><td>After matching on observables, treatment is as-if random within strata.</td><td>Unobservable confounders.</td><td>Treatment-effect estimation with cross-section.</td></tr>
+  <tr><td><strong>Fixed effects</strong></td><td>Within-unit variation removes time-invariant unobservables.</td><td>Time-varying confounders; reverse causality.</td><td>Panel data with repeated observations.</td></tr>
+  <tr><td><strong>Structural demand (BLP)</strong></td><td>Behavioural model identifies preference parameters from market shares + prices.</td><td>Identification fragility; functional-form choices; computational burden.</td><td>Merger simulation, but-for pricing.</td></tr>
+</table>
+
+<h3>The four placebo / robustness checks you should always run</h3>
+<ol>
+  <li><strong>Placebo treatment</strong> — apply the model to a date / unit where there was no treatment. Should find no effect.</li>
+  <li><strong>Permutation / randomisation test</strong> — randomly reassign treatment many times; how often do you get an effect as large as the actual?</li>
+  <li><strong>Alternative specifications</strong> — same question, different functional form. Does the answer survive?</li>
+  <li><strong>Sample-restriction</strong> — drop outliers, one comparator at a time. Robustness.</li>
+</ol>
+
+<div class="saythis">
+"At AD level the question isn't which method to use, it's which two methods to triangulate with. Single-method estimates die in cross-examination. The defensible answer is usually DiD plus a structural check, or synthetic control plus a comparator-based sense check."
+</div>
+
+<!-- ===================== CHAPTER 13 ===================== -->
+<h2 id="c13"><span class="num">CH 13</span>The consulting vocabulary decoder</h2>
+
+<p>Consulting language is its own register. If you can use the right phrase in the right place, you signal seven years of experience in five seconds.</p>
+
+<table>
+  <tr><th>If you hear / want to say</th><th>What it means</th></tr>
+  <tr><td><strong>"Notional company"</strong></td><td>The regulator's hypothetical efficient firm. Not the actual company.</td></tr>
+  <tr><td><strong>"Going forward"</strong></td><td>After this point. (Use sparingly — overused.)</td></tr>
+  <tr><td><strong>"At the margin"</strong></td><td>For the last unit added; small perturbations.</td></tr>
+  <tr><td><strong>"All else equal" / "ceteris paribus"</strong></td><td>Holding other variables constant.</td></tr>
+  <tr><td><strong>"Triangulate"</strong></td><td>Combine two or three methods to reach a single answer.</td></tr>
+  <tr><td><strong>"Sense check"</strong></td><td>Rough plausibility test, not a formal model.</td></tr>
+  <tr><td><strong>"Bottom-up vs top-down"</strong></td><td>Engineering build-up vs aggregate regression / benchmark.</td></tr>
+  <tr><td><strong>"Cost stack"</strong></td><td>Itemised cost breakdown.</td></tr>
+  <tr><td><strong>"Headroom"</strong></td><td>Margin between current position and a constraint (usually credit metrics).</td></tr>
+  <tr><td><strong>"Defensible"</strong></td><td>Survives cross-examination by a hostile regulator/court.</td></tr>
+  <tr><td><strong>"Robust"</strong></td><td>Insensitive to specification choices.</td></tr>
+  <tr><td><strong>"In the round"</strong></td><td>Considering all dimensions together. (Watch for over-use.)</td></tr>
+  <tr><td><strong>"On a notional basis"</strong></td><td>Using the regulator's assumed capital structure, not the company's actual.</td></tr>
+  <tr><td><strong>"Outturn"</strong></td><td>Actual realised value (as opposed to forecast).</td></tr>
+  <tr><td><strong>"Stretching"</strong> (an assumption / target)</td><td>Ambitious. Often a euphemism for "very hard to hit".</td></tr>
+  <tr><td><strong>"Conservative"</strong></td><td>Cautious, leans towards lower / less risky number.</td></tr>
+  <tr><td><strong>"De minimis"</strong></td><td>Too small to be material.</td></tr>
+  <tr><td><strong>"Materiality"</strong></td><td>Is the number big enough to change the conclusion?</td></tr>
+  <tr><td><strong>"In the wash"</strong></td><td>Will net out across the period.</td></tr>
+  <tr><td><strong>"True-up"</strong></td><td>End-of-period reconciliation against forecast.</td></tr>
+  <tr><td><strong>"Pass-through"</strong></td><td>Cost not subject to efficiency challenge; recovered £-for-£.</td></tr>
+  <tr><td><strong>"Smoothing"</strong></td><td>Spreading a cost or charge across years to avoid bill shock.</td></tr>
+  <tr><td><strong>"PAYG ratio" / "capitalisation rate"</strong></td><td>Share of totex flowing into RAB vs straight to opex.</td></tr>
+  <tr><td><strong>"Allowed return"</strong></td><td>The regulator-set return, not the realised return.</td></tr>
+  <tr><td><strong>"Building blocks"</strong></td><td>The components of allowed revenue (see Ch 3).</td></tr>
+  <tr><td><strong>"Final determination"</strong></td><td>The binding output of a periodic review.</td></tr>
+  <tr><td><strong>"Draft determination"</strong></td><td>The penultimate consultation document — fight starts here.</td></tr>
+</table>
+
+<!-- ===================== CHAPTER 14 ===================== -->
+<h2 id="c14"><span class="num">CH 14</span>DCC → consulting translation table</h2>
+
+<p>You have done a lot. The trick is to translate it into the language Schellion and Jonathan use without sounding like you're reaching. Every left-hand column is a real thing you've done at DCC; the right-hand column is how to land it in their language.</p>
+
+<table>
+  <tr><th>What you did at DCC</th><th>What S&amp;W calls that</th></tr>
+  <tr><td>Charging Statement</td><td>Annual price-control submission with allowed-revenue building blocks</td></tr>
+  <tr><td>Allowed Revenue (c.£720–£827m)</td><td>Allowed revenue under a vertically-integrated regulated monopoly</td></tr>
+  <tr><td>Baseline Margin (BMA) rebuild</td><td>Profitability assessment / fair-rate-of-return for the operator under SMCL</td></tr>
+  <tr><td>Penalty Interest Tracker</td><td>Variance reconciliation mechanism with a regulator-set sharing factor / band</td></tr>
+  <tr><td>105% / 110% variance band</td><td>Sharing factor / penalty collar</td></tr>
+  <tr><td>£55.1m cash repatriation</td><td>Customer reconciliation following variance breach analysis</td></tr>
+  <tr><td>RY24/25 outcome 95% of Allowed Revenue (£33.4m undercharge)</td><td>Forecast-to-outturn variance</td></tr>
+  <tr><td>Finance chapter authorship</td><td>Authored the financial submission of a regulated entity's periodic price-control filing</td></tr>
+  <tr><td>40% planning cycle reduction</td><td>Model architecture redesign producing Aqua Book-compliant separation of inputs / computation / outputs</td></tr>
+  <tr><td>£500k+ errors caught</td><td>Aqua Book QA — analytical assurance findings</td></tr>
+  <tr><td>4G reinvestment programme</td><td>Scenario-based investment appraisal with tariff design</td></tr>
+  <tr><td>Unitary Charge mechanism (4G rollout)</td><td>Cost-recovery mechanism designed to eliminate first-mover disadvantage</td></tr>
+  <tr><td>Out-of-region comms hub charging methodology</td><td>Site-specific cost recovery / network-extension cost allocation</td></tr>
+  <tr><td>VMO2 £250k/month proposal</td><td>Counterparty's proposed price reference / negotiated tariff</td></tr>
+  <tr><td>SMCL → DCC1 → DCC2 transition</td><td>Sectoral licence renewal &amp; service-provider transition</td></tr>
+  <tr><td>Ofgem rejection of predecessor's BMA submission</td><td>Regulatory non-acceptance citing transparency / methodological gaps</td></tr>
+  <tr><td>17-person coordination across Finance / IT / People / consultants</td><td>Cross-functional submission programme</td></tr>
+  <tr><td>Zero Finance-chapter disallowances</td><td>Submission accepted in full at first determination</td></tr>
+  <tr><td>NED at Wenta</td><td>Governance experience over a regulated charity / social-impact entity</td></tr>
+  <tr><td>BBB Start Up Loans £825m programme economics</td><td>Programme-level evaluation of a government-backed financial intervention</td></tr>
+  <tr><td>Ofgem Chapter II SSE case</td><td>Abuse-of-dominance investigation under the Competition Act 1998</td></tr>
+  <tr><td>Gain &amp; Detriment penalty handbook</td><td>Quantification methodology — directly analogous to damages workflow</td></tr>
+</table>
+
+<div class="saythis">
+"At DCC I've effectively been an in-house regulatory economist for a single regulated entity, doing the work that S&amp;W's regulatory and competition finance team does for multiple clients. The shapes are the same — allowed revenue, building blocks, variance mechanisms, financeability — the difference is that I've been on the regulated-entity side of the table rather than the advisor side. That's an asset, not a gap."
+</div>
+
+<!-- ===================== CHAPTER 15 ===================== -->
+<h2 id="c15"><span class="num">CH 15</span>Mock take-home case study — how to structure an answer</h2>
+
+<p>You will not pass or fail Stage 2 on whether you got the "right" number. You will pass or fail on whether you structured the question, articulated the trade-offs, and produced something that survives scrutiny. Below is a representative prompt and a structural answer.</p>
+
+<div class="ex">
+<h4>Mock prompt</h4>
+<blockquote>"A UK water company has appealed Ofwat's PR24 final determination on the basis that the allowed WACC of 3.7% real does not adequately reflect the political and geopolitical risk environment that has prevailed since 2022. The company argues for a 100bp uplift. As S&amp;W, advise the CMA's panel on (a) the economic case for and against the uplift, (b) how the WACC framework could best reflect such risks, and (c) what evidence would change your view. You have one hour."</blockquote>
+
+<h4>Suggested structure (60 minutes)</h4>
+<ol>
+  <li><strong>Frame the question (5 min).</strong> Restate. Identify three sub-questions: is the risk real, is it captured in current WACC, and if not where should it sit.</li>
+  <li><strong>Establish the framework (10 min).</strong> CAPM, TMR approach, asset beta, gearing. Set out what each component is silent vs vocal on.</li>
+  <li><strong>Diagnose the gap (10 min).</strong> Schellion's three layers — systematic in Rf/ERP, sector-systematic in beta, idiosyncratic in cash-flow mechanisms. Map the water company's claimed risks onto these three.</li>
+  <li><strong>Evaluate the 100bp claim (15 min).</strong>
+    <ul>
+      <li>How much of the 100bp is double-counting risk already in higher Rf and higher TMR?</li>
+      <li>How much could be supported by a higher water-sector asset beta given recent regulatory volatility?</li>
+      <li>How much is genuinely idiosyncratic — better handled outside the WACC?</li>
+    </ul>
+  </li>
+  <li><strong>Recommendation (10 min).</strong> Likely answer: support a small uplift through honest reflection in Rf and ERP (perhaps 20–40bp of the claimed 100bp), evaluate a modest beta loading (perhaps 10–20bp more), reject the residual 40–70bp as belonging to cash-flow mechanisms (e.g. uncertainty mechanisms, RPE indexation, regulatory commitments).</li>
+  <li><strong>Sensitivities and what would change your mind (10 min).</strong> If TMR data is updated to show structurally higher returns — uplift larger. If sector beta evidence is weak — uplift smaller. If government commits to a stable regulatory framework — idiosyncratic risk falls.</li>
+</ol>
+
+<h4>What makes the answer AD-level rather than associate-level</h4>
+<ul>
+  <li>Frames the question into sub-questions before doing maths.</li>
+  <li>References the regulator's framework explicitly.</li>
+  <li>Cites Schellion's own published view (without overdoing it).</li>
+  <li>Quantifies — even with notional numbers — rather than just describing.</li>
+  <li>Identifies what evidence would <em>change</em> the conclusion.</li>
+  <li>Honest about uncertainty.</li>
+</ul>
+</div>
+
+<!-- ===================== CHAPTER 16 ===================== -->
+<h2 id="c16"><span class="num">CH 16</span>How to sound like an Associate Director</h2>
+
+<p>This is the final polish. It's not what you know; it's how you say what you know. Borrow these moves until they become yours.</p>
+
+<h3>The seven moves of an AD</h3>
+<ol>
+  <li><strong>Lead with structure.</strong> "There are three issues at stake — let me take them in turn." Never lead with the conclusion before the framing.</li>
+  <li><strong>Bound your claims.</strong> "Subject to data limitations, my expectation would be…" "Without doing the modelling I can't be certain, but the direction of travel is…" An AD never says "definitely" without earning it.</li>
+  <li><strong>Cite the source.</strong> "Ofwat's PR24 final determinations, in the cost-of-capital appendix, set out…" Not "I think Ofwat said…"</li>
+  <li><strong>Speak in trade-offs, not advocacy.</strong> "There's a tension between X and Y; the regulator has to choose where to land." Never sound like the company's lobbyist.</li>
+  <li><strong>Push back politely.</strong> "I'd want to test that assumption before signing off." "That feels like it deserves a sensitivity rather than a point estimate." This is how an AD disagrees with a partner without losing the room.</li>
+  <li><strong>Say "I don't know" cleanly.</strong> "I don't know the answer to that off the top of my head. I'd want to look at the PR24 financeability appendix before answering." Honesty is signal, not weakness.</li>
+  <li><strong>Use the two-clause structure.</strong> "Yes, but" or "On balance, X, although Y" — never just "yes" or just "no". The two-clause structure is the audible signature of a senior economist.</li>
+</ol>
+
+<h3>The five tells of an associate / manager (avoid)</h3>
+<ol>
+  <li>Leading with detail before framing the question.</li>
+  <li>Citing a textbook concept without applying it to the case.</li>
+  <li>Saying "I think" three times in two minutes.</li>
+  <li>Pretending to know a specific number you don't know.</li>
+  <li>Refusing to commit to a direction of travel because of uncertainty.</li>
+</ol>
+
+<h3>The four-line opener you can use in any interview answer</h3>
+<div class="card">
+  <ol>
+    <li><strong>Restate the question</strong> — "The question, as I understand it, is whether X."</li>
+    <li><strong>Frame the issues</strong> — "There are three things to weigh up: A, B, C."</li>
+    <li><strong>Take a view</strong> — "On balance, my answer would be Y, with the qualification that…"</li>
+    <li><strong>Flag what would change your view</strong> — "I would revise that if evidence Z were stronger."</li>
+  </ol>
+</div>
+
+<div class="saythis">
+"What separates an AD from a senior manager is not the answer — it's the architecture of the answer. They restate the question so you know they heard it. They frame the issues before defending a position. They commit to a view that is bounded by what they don't know. And they tell you, unprompted, what evidence would change their mind. That last move is what makes them sound like an expert rather than an advocate."
+</div>
+
+<!-- ===================== CLOSING ===================== -->
+<h2 id="close"><span class="num">END</span>Closing — the one-paragraph self-assessment</h2>
+
+<p>You don't need to know everything in this guide perfectly. You need to know the <em>shape</em> of all of it, and to have three or four areas where you can go genuinely deep — building blocks, WACC, your DCC stories, and Schellion's three published views. The interview is a conversation, not an exam. Schellion will lead. Your job is to land precise, well-structured contributions every five minutes that make her think: <em>this one can hold his own.</em></p>
+
+<p>You can do this. You have done harder. Smart DCC's regulatory finance stack is, when translated, exactly the work S&amp;W does — and you have been running it end-to-end for two years.</p>
+
+<div class="quiz">
+  <h4>If you can do these 10 things on 3 June you are ready</h4>
+  <ol>
+    <li>Write the building-blocks formula from cold.</li>
+    <li>Walk through a WACC build with rough numbers (Rf 1.5, TMR 6.5, asset beta 0.4, gearing 60%, Rd 3%).</li>
+    <li>Name the four financeability ratios and roughly the BBB thresholds.</li>
+    <li>Explain frontier shift vs catch-up in one sentence each.</li>
+    <li>Name three damages quantification methodologies and one identification weakness of each.</li>
+    <li>Walk a hypothetical subsidy through the CMO test and Schedule 1 principles.</li>
+    <li>Name your three DCC signature wins and translate each into S&amp;W language.</li>
+    <li>Summarise Schellion's three published insights in 30 seconds each.</li>
+    <li>Have the four-line opener (restate / frame / view / what-would-change-mind) memorised.</li>
+    <li>Have eight questions for Schellion in your back pocket from the teaching plan.</li>
+  </ol>
+</div>
+
+<hr class="thin">
+<p class="small">Companion documents: <a href="SW_Interview_Teaching_Plan.html">teaching plan</a> · <a href="SW_Learning_Refresher.html">learning refresher</a>. This idiot guide is the depth layer — read once cover-to-cover, then keep open as a glossary while you drill the other two.</p>
+
+</div>
+</body>
+</html>
