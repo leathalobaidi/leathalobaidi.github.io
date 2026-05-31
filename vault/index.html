@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Vault — Leath Al Obaidi</title>
+<style>
+  :root{
+    --bg:#fafafa; --panel:#fff; --ink:#2a2a2a; --muted:#666; --line:#e8e8e8;
+    --accent:#9f442b; --accent-soft:#fef4f1; --maxw:680px;
+    --serif:'Newsreader',Georgia,serif;
+    --sans:'DM Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;font-size:16px;
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px}
+  .wrap{width:100%;max-width:var(--maxw)}
+  h1{font-family:var(--serif);font-size:2rem;font-weight:600;margin-bottom:6px}
+  .sub{color:var(--muted);font-size:.95rem;margin-bottom:28px}
+  /* gate */
+  .gate{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:28px;text-align:center;margin-top:10px}
+  .gate p{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+  .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  input[type=password]{flex:1;min-width:200px;padding:.75rem 1rem;font-family:var(--sans);font-size:1rem;
+    border:1px solid #d4d0c8;border-radius:6px;background:#fff;color:var(--ink)}
+  input[type=password]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(159,68,43,.1)}
+  button{padding:.75rem 1.4rem;background:var(--accent);color:#fff;border:none;border-radius:6px;
+    font-weight:600;font-size:.95rem;cursor:pointer;transition:opacity .2s}
+  button:hover{opacity:.88}
+  button:disabled{opacity:.5;cursor:default}
+  .err{color:var(--accent);font-size:.88rem;margin-top:14px;min-height:1.2em;font-weight:600}
+  /* content */
+  #content{display:none}
+  .group{margin-top:30px}
+  .group h2{font-family:var(--serif);font-size:1.15rem;font-weight:600;margin-bottom:12px;
+    padding-bottom:8px;border-bottom:1px solid var(--line)}
+  .links{list-style:none;display:flex;flex-direction:column;gap:2px}
+  .links li a{display:block;padding:9px 12px;border-radius:6px;color:var(--ink);
+    text-decoration:none;font-size:.95rem;transition:background .15s,color .15s;white-space:pre-wrap}
+  .links li a:hover{background:var(--accent-soft);color:var(--accent)}
+  .links li a .u{color:var(--muted);font-size:.78rem;display:block;margin-top:1px}
+  .topbar{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .lock{background:none;border:1px solid var(--line);color:var(--muted);padding:.4rem .8rem;font-size:.82rem;font-weight:500}
+  .lock:hover{opacity:1;border-color:var(--accent);color:var(--accent)}
+  footer{margin-top:40px;color:var(--muted);font-size:.82rem;text-align:center}
+  @media(max-width:480px){h1{font-size:1.6rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div>
+      <h1>The Vault</h1>
+      <p class="sub">A private index of everything on the site.</p>
+    </div>
+  </div>
+
+  <!-- password gate -->
+  <div class="gate" id="gate">
+    <p>Enter the password to reveal the links.</p>
+    <form class="row" id="form" autocomplete="off">
+      <input type="password" id="pw" placeholder="Password" aria-label="Password" autofocus>
+      <button type="submit" id="btn">Unlock</button>
+    </form>
+    <div class="err" id="err"></div>
+  </div>
+
+  <!-- decrypted content -->
+  <div id="content"></div>
+
+  <footer>Links are encrypted — nothing is visible until the correct password is entered in your browser.</footer>
+</div>
+
+<script>
+// AES-GCM encrypted payload (password-derived key, PBKDF2 150k / SHA-256).
+// The link list is NOT in this file in readable form — only ciphertext.
+const ENC = {
+  iter: 150000,
+  salt: "gbx7LxpFBsrTUL6EQQNSsg==",
+  iv:   "35u+T2E6L63TceKY",
+  ct:   "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"
+};
+
+const $ = s => document.querySelector(s);
+const b64ToBytes = b => Uint8Array.from(atob(b), c => c.charCodeAt(0));
+
+async function unlock(pw){
+  const enc = new TextEncoder();
+  const salt = b64ToBytes(ENC.salt), iv = b64ToBytes(ENC.iv), ct = b64ToBytes(ENC.ct);
+  const baseKey = await crypto.subtle.importKey("raw", enc.encode(pw), "PBKDF2", false, ["deriveKey"]);
+  const key = await crypto.subtle.deriveKey(
+    {name:"PBKDF2", salt, iterations:ENC.iter, hash:"SHA-256"},
+    baseKey, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+  const buf = await crypto.subtle.decrypt({name:"AES-GCM", iv}, key, ct); // throws if wrong pw
+  return JSON.parse(new TextDecoder().decode(buf));
+}
+
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function render(data){
+  const c = $("#content");
+  let html = '<div class="topbar" style="margin-top:6px"><span class="sub">Unlocked ✓</span>'
+    + '<button class="lock" id="relock">Lock</button></div>';
+  for(const g of data.groups){
+    html += '<div class="group"><h2>'+esc(g.name)+'</h2><ul class="links">';
+    for(const [label,url] of g.items){
+      html += '<li><a href="'+esc(url)+'">'+esc(label)
+        +'<span class="u">'+esc(url)+'</span></a></li>';
+    }
+    html += '</ul></div>';
+  }
+  c.innerHTML = html;
+  $("#gate").style.display = "none";
+  c.style.display = "block";
+  $("#relock").addEventListener("click", ()=>location.reload());
+}
+
+$("#form").addEventListener("submit", async e=>{
+  e.preventDefault();
+  const pw = $("#pw").value;
+  const err = $("#err"), btn = $("#btn");
+  err.textContent = ""; btn.disabled = true; btn.textContent = "Unlocking…";
+  try{
+    const data = await unlock(pw);
+    render(data);
+  }catch(_){
+    err.textContent = "Wrong password — try again.";
+    btn.disabled = false; btn.textContent = "Unlock";
+    $("#pw").select();
+  }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Professional Preview — Leath Al Obaidi</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ink: #222222;
+            --muted: #666666;
+            --paper: #fbfaf8;
+            --panel: #ffffff;
+            --line: #e4dfd8;
+            --accent: #9f442b;
+            --accent-soft: #f4e5df;
+            --green: #244f3a;
+            --blue: #234963;
+            --font-serif: "Newsreader", Georgia, serif;
+            --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--font-sans);
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .wrap {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(251, 250, 248, 0.95);
+            border-bottom: 1px solid var(--line);
+            backdrop-filter: blur(14px);
+        }
+
+        .topbar-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 74px;
+            gap: 24px;
+        }
+
+        .brand {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .nav {
+            display: flex;
+            gap: 22px;
+            color: var(--muted);
+            font-size: 0.94rem;
+            font-weight: 600;
+        }
+
+        .nav a:hover { color: var(--accent); }
+
+        .hero {
+            padding: 76px 0 54px;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .eyebrow {
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            max-width: 900px;
+            font-family: var(--font-serif);
+            font-size: clamp(2.35rem, 5vw, 4.7rem);
+            font-weight: 600;
+            letter-spacing: 0;
+            line-height: 0.98;
+            margin-bottom: 28px;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.75fr);
+            gap: 34px;
+            align-items: start;
+            margin-top: 34px;
+        }
+
+        .bio {
+            max-width: 690px;
+            color: #303030;
+            font-size: 1.04rem;
+        }
+
+        .bio p + p { margin-top: 18px; }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 46px;
+            padding: 0 18px;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .button.primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .profile-panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .profile-panel img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .profile-panel-body {
+            padding: 22px;
+        }
+
+        .profile-panel-body h2 {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .profile-panel-body p {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            padding: 34px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .metric {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            min-height: 132px;
+            padding: 20px;
+        }
+
+        .metric strong {
+            display: block;
+            color: var(--accent);
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .metric span {
+            color: var(--muted);
+            font-size: 0.94rem;
+        }
+
+        .section {
+            padding: 54px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .section h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1.1;
+        }
+
+        .section-header p {
+            max-width: 420px;
+            color: var(--muted);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+
+        .card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 24px;
+            min-height: 230px;
+        }
+
+        .card .tag {
+            color: var(--accent);
+            display: block;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.32rem;
+            line-height: 1.2;
+            margin-bottom: 14px;
+        }
+
+        .card p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .project-list {
+            display: grid;
+            gap: 14px;
+        }
+
+        .project {
+            display: grid;
+            grid-template-columns: 180px minmax(0, 1fr) auto;
+            gap: 24px;
+            align-items: center;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 22px;
+        }
+
+        .project-type {
+            color: var(--accent);
+            font-size: 0.78rem;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .project h3 {
+            font-family: var(--font-serif);
+            font-size: 1.32rem;
+            margin-bottom: 4px;
+        }
+
+        .project p {
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        .contact {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 24px;
+            align-items: center;
+            background: var(--ink);
+            color: white;
+            border-radius: 6px;
+            padding: 34px;
+        }
+
+        .contact h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .contact p {
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 620px;
+        }
+
+        .contact .button {
+            border-color: white;
+            color: white;
+        }
+
+        footer {
+            color: var(--muted);
+            font-size: 0.9rem;
+            padding: 34px 0;
+        }
+
+        @media (max-width: 840px) {
+            .intro-grid,
+            .metrics,
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-panel { max-width: 520px; }
+
+            .project {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .section-header,
+            .contact {
+                display: block;
+            }
+
+            .contact .button { margin-top: 22px; }
+        }
+
+        @media (max-width: 560px) {
+            .wrap { padding: 0 16px; }
+            .topbar-inner { min-height: 70px; }
+            .brand { font-size: 1.05rem; }
+            .nav { gap: 13px; font-size: 0.9rem; }
+            .nav a:nth-child(4) { display: none; }
+            .hero { padding: 54px 0 40px; }
+            .hero h1 { font-size: 2.18rem; }
+            .actions { display: grid; }
+            .button { width: 100%; }
+            .metric { min-height: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="wrap topbar-inner">
+            <a href="/" class="brand">Leath Al Obaidi</a>
+            <nav class="nav" aria-label="Preview navigation">
+                <a href="#writing">Writing</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+                <a href="/">Current Site</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="wrap">
+                <p class="eyebrow">Professional preview</p>
+                <h1>Hi, I'm Leath, this is my personal site: I'm an economist, regulatory finance professional, writer, vibeResearcher and builder of useful tools.</h1>
+
+                <div class="intro-grid">
+                    <div>
+                        <div class="bio">
+                            <p>I'm an economist working in regulatory finance at Smart DCC, the company running Britain's smart meter data network. Previously, I spent six years at the British Business Bank, where I helped secure over &pound;1bn in government funding and led programmes that supported over a million businesses during the pandemic.</p>
+                            <p>I also serve as a Non-Executive Director at Wenta, sit on the Council of the Society of Professional Economists, and use this site to share writing, research notes, and tools.</p>
+                        </div>
+                        <div class="actions">
+                            <a href="#writing" class="button primary">Read Writing</a>
+                            <a href="#projects" class="button">View Projects</a>
+                            <a href="https://linkedin.com/in/leath-al-obaidi/" class="button">LinkedIn</a>
+                        </div>
+                    </div>
+
+                    <aside class="profile-panel" aria-label="Preview card">
+                        <img src="/og-image.png" alt="Leath Al Obaidi site preview image">
+                        <div class="profile-panel-body">
+                            <h2>Economics, regulation, tools, and ideas.</h2>
+                            <p>A more editorial, professional version of the site that keeps the personal voice but makes the credibility signals easier to scan.</p>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <div class="wrap">
+            <section class="metrics" aria-label="Professional highlights">
+                <div class="metric">
+                    <strong>&pound;1bn+</strong>
+                    <span>Government funding helped secure at the British Business Bank.</span>
+                </div>
+                <div class="metric">
+                    <strong>1m+</strong>
+                    <span>Businesses supported through pandemic-era programmes.</span>
+                </div>
+                <div class="metric">
+                    <strong>NED</strong>
+                    <span>Non-Executive Director at Wenta, supporting small businesses.</span>
+                </div>
+                <div class="metric">
+                    <strong>SPE</strong>
+                    <span>Council member of the Society of Professional Economists.</span>
+                </div>
+            </section>
+
+            <section id="writing" class="section">
+                <div class="section-header">
+                    <h2>Selected Writing</h2>
+                    <p>Longer essays and research notes, with the more professional pieces brought forward first.</p>
+                </div>
+                <div class="cards">
+                    <a href="/blog/consultancy-series" class="card">
+                        <span class="tag">Research series</span>
+                        <h3>UK Economics Consultancy</h3>
+                        <p>A data-driven history of the UK economics consultancy market across ninety firms and twenty-five years.</p>
+                    </a>
+                    <a href="/blog/competition-and-rivalry" class="card">
+                        <span class="tag">Essay</span>
+                        <h3>Competition and Rivalry</h3>
+                        <p>An essay on ambition, mimetic desire, sport, economics, and the question of what it means to win.</p>
+                    </a>
+                    <a href="/blog/aihero-self-study" class="card">
+                        <span class="tag">Syllabus</span>
+                        <h3>AI Hero Self-Study</h3>
+                        <p>A practical curriculum for engineers learning AI-assisted development and agentic coding workflows.</p>
+                    </a>
+                </div>
+            </section>
+
+            <section id="projects" class="section">
+                <div class="section-header">
+                    <h2>Useful Tools</h2>
+                    <p>Projects framed by outcome first, so visitors understand the value before the implementation details.</p>
+                </div>
+                <div class="project-list">
+                    <a href="/projects/skoda-octavia/" class="project">
+                        <span class="project-type">Data dashboard</span>
+                        <div>
+                            <h3>Skoda Octavia Value Analysis</h3>
+                            <p>Interactive valuation dashboard over 499 approved used cars, with regression and weighted preference views.</p>
+                        </div>
+                        <span class="project-link">Open</span>
+                    </a>
+                    <a href="/projects/kiselev/" class="project">
+                        <span class="project-type">Translation</span>
+                        <div>
+                            <h3>Kiselev's Arithmetic</h3>
+                            <p>A complete public English edition of a classic Soviet mathematics textbook.</p>
+                        </div>
+                        <span class="project-link">Read</span>
+                    </a>
+                    <a href="https://github.com/leathalobaidi/ft-expand-comments" class="project">
+                        <span class="project-type">Chrome extension</span>
+                        <div>
+                            <h3>FT Expand All Comments</h3>
+                            <p>A small browser extension that restores a cleaner Financial Times comment-reading workflow.</p>
+                        </div>
+                        <span class="project-link">GitHub</span>
+                    </a>
+                </div>
+            </section>
+
+            <section id="contact" class="section">
+                <div class="contact">
+                    <div>
+                        <h2>Contact</h2>
+                        <p>For professional conversations, writing, projects, or useful-tool rabbit holes, LinkedIn is the simplest place to reach me.</p>
+                    </div>
+                    <a href="https://linkedin.com/in/leath-al-obaidi/" class="button">Connect on LinkedIn</a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">Preview page only. Current live-style homepage remains at <a href="/">/</a>.</div>
+    </footer>
+</body>
+</html>
