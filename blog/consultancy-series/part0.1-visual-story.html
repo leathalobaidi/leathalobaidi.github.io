@@ -1404,7 +1404,7 @@ const CHARGES_SANKEY = {
 const TREE = [
   {y:2000,    name:"NERA UK incorporated",               color:'#8e8e93', desc:"UK office since 1980s.", lane: 1.0},
   {y:2002,    name:"RBB Economics founded",              color:'#34c759', desc:"Ridyard, Bishop, Baker + 13 leave NERA.", lane:-1.0},
-  {y:2006,    name:"Vivid Economics founded",            color:'#34c759', desc:"Co-founded by Robin Smale and Cameron Hepburn; bought by McKinsey 2021.", lane: 2.2},
+  {y:2006,    name:"Vivid Economics founded",            color:'#34c759', desc:"Co-founded by Robin Smale and Cameron Hepburn; bought by McKinsey 2021. <a href='https://www.consultancy.uk/news/27193/mckinsey-acquires-sustainability-consultancy-vivid-economics' target='_blank' rel='noopener' style='color:#0071e3;text-decoration:underline'>Source</a>", lane: 2.2},
   {y:2008,    name:"Compass Lexecon merger",             color:'#0071e3', desc:"FTI merges Compass + Lexecon.", lane: 1.0},
   {y:2011,    name:"LECG bankruptcy",                    color:'#ff3b30', desc:"Alumni scatter to BRG and Compass Lexecon.", lane:-2.2},
   {y:2010,    name:"BRG launches UK",                    color:'#34c759', desc:"Teece's second firm.", lane: 1.0},
@@ -2145,7 +2145,7 @@ function renderTimeline() {
   chart7.setOption({
     ...DEFAULTS,
     grid: {top: 80, bottom: 80, left: 60, right: 60},
-    tooltip: { ...DEFAULTS.tooltip, formatter: p => p.data && p.data.desc ? `<b>${Math.floor(p.data.value[0])}, ${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">${p.data.desc}</span>` : '' },
+    tooltip: { ...DEFAULTS.tooltip, enterable: true, hideDelay: 200, formatter: p => p.data && p.data.desc ? `<b>${Math.floor(p.data.value[0])}, ${p.name}</b><br><span style="color:${THEME_TEXT_DIM}">${p.data.desc}</span>` : '' },
     xAxis: { type: 'value', min: 1999, max: 2026.5, interval: 5, axisLabel: {...AXIS_LABEL, fontSize: 11, formatter: v => String(Math.floor(v))}, axisLine: AXIS_LINE, splitLine: {lineStyle: {color: THEME_AXIS_GRID, type: 'dashed'}} },
     yAxis: { type: 'value', min: -2.8, max: 2.8, show: false },
     series: [
