@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>23. How Smart People Are Using Claude Code Skills to Automate Anything — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=5AfSB0sWihw" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 23 · Simon Scrapes</div>
+    <h1>How Smart People Are Using Claude Code Skills to Automate Anything</h1>
+    <div class="meta">
+      <span><b>13:24</b> runtime</span>
+      <span><b>39K</b> views</span>
+      <span>Published 15 Mar 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=5AfSB0sWihw" target="_blank" rel="noopener">youtu.be/5AfSB0sWihw</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/5AfSB0sWihw"
+    title="How Smart People Are Using Claude Code Skills to Automate Anything" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">The step up from "I have a few skills installed" to "I have a system that runs itself" — Simon shows how shared context, a feedback loop, self-maintenance, and skill chaining turn individual Claude Code skills into an agentic operating system.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon opens by diagnosing the most common mistake: people build isolated skills rather than connecting them. He then walks through four layers of what he calls an "Agentic OS" — a shared brand-context folder that every skill reads from; a context folder that accumulates session memory, preferences, and per-skill feedback (learnings.md); a self-maintenance heartbeat that keeps CLAUDE.md and skill registries in sync automatically; and finally skill chaining, where skills pass outputs to each other as inputs to execute full workflows. He closes with two paths to get started: build from scratch or download the ready-made community repo.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Your research workflow already has the same layers Simon is describing: a fixed methodology (the skill), a project context that needs to persist across sessions (shared brand context → your 96-firm schema and AQuA rules), per-firm feedback that should accumulate (learnings.md → QA flags per company), and downstream tasks that depend on upstream outputs (extraction → verification → Substack draft). This episode shows exactly how to wire those layers together so Claude Code does the routine legwork continuously, not one prompt at a time.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Skills</span>
+    <span class="chip">Shared context</span>
+    <span class="chip">Skill chaining</span>
+    <span class="chip">Learnings loop</span>
+    <span class="chip">Heartbeat / self-maintenance</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Agentic OS (community)</span>
+    <span class="chip">Memory tool</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The problem: skills used one at a time</h2>
+
+    <p>Most people are using Claude Code skills completely wrong. They build one skill for copy, another for research, and maybe another for social media, and then wonder why they're still doing most of the work themselves. But the people getting most out of Claude Code aren't using skills one at a time. They're connecting them together into systems — systems where one skill builds your brand context, another researches trends, another is writing the content from that knowledge, and then another runs everything automatically on a schedule. At that point, Claude isn't just helping with tasks; it's running entire parts of your business.</p>
+
+    <p>Simon has spent hundreds of hours inside Claude Code building and testing this approach, studying Anthropic's frameworks, experimenting with community builds like OpenClaw, and building 20-plus production skills that now run his marketing, strategy, operations, and all creative assets. What that turned into is something much bigger than a collection of skills: an agentic operating system — a system that knows your brand, runs real business tasks across departments, improves from your feedback, and maintains itself automatically. In this episode he breaks down every layer so you can either build your own or grab his and start running from today.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A skill in Claude Code is a <code>SKILL.md</code> file (with YAML frontmatter containing <code>name</code> and <code>description</code>) plus optional bundled reference files and scripts. It packages a reusable workflow that Claude invokes by name. The key scaling property is <em>progressive disclosure</em>: only the name and description sit in context until the skill is actually invoked — then the full body loads. This means you can have dozens of skills registered without them eating your context window until they're needed.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>You already have isolated skills doing real work — firm-profile extraction, AQuA QA checks, Substack draft generation — but they're each fired independently. Simon's point is that the gap between "collection of skills" and "system" is exactly the gap between running each of your 96 companies manually one by one and having an orchestration layer that pulls a company name, runs extraction, passes the result to verification, and appends a row to your master ledger without you supervising each step. The architecture Simon is about to describe is the architecture you want for that.</p></aside>
+
+    <h2>Anatomy of a well-built skill</h2>
+
+    <p>Let's start by talking about building skills in the right way, because once you understand this structure everything else starts to fall into place. A skill is literally just a folder made up of two things. The first is the step-by-step instructions — the process documentation — and that is in the <code>skill.md</code>. The second, the bit that actually makes your process yours, is the deep knowledge that supports it: the references, the assets, and the scripts that support those step-by-step instructions. You can think of those like your brand voice or example outputs that you'd put into a traditional LLM prompt. Ultimately, it's the context in these deep knowledge files — the reference files — that make the process yours.</p>
+
+    <p>Here's the thing most people don't realise about skills you download or import from somewhere else, like a skills marketplace: they're designed to be generic on purpose. When you grab a skill from GitHub or a skills marketplace, it's never plug and play. It always needs you to fill in the gaps with your own business knowledge. You can use them without that, but you're going to get poor quality or generic outputs. As a real example: Simon's marketing copywriting skill points to brand-context reference files in the <code>skill.md</code> — "go read the voice, go read the ICP about our customers, also read the samples of good outputs." All of that lives in a shared brand-context folder, and every single skill can access it when it needs it. When the skill runs it's not guessing how Simon sounds or who he's writing for — it already knows, pulling from real files.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md &amp; reference files</span>
+    <p><code>CLAUDE.md</code> is the primary memory file Claude Code auto-loads into context at the start of every session. It is hierarchical: a user-global <code>~/.claude/CLAUDE.md</code> applies everywhere; a per-project <code>./CLAUDE.md</code> overrides or extends it. Skills typically point to additional reference files rather than embedding everything in <code>CLAUDE.md</code>, keeping each file short and allowing progressive loading — only the reference a skill actually needs is read when it needs it.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The reference-file pattern solves a real pain point in your consultancy database work: your AQuA QA rules, the 96-firm schema, and the list of companies still needing accounts extraction are three distinct pieces of context that should live in three separate reference files, not jammed into one monolithic <code>CLAUDE.md</code>. Your extraction skill reads the schema; your verification skill reads the QA rules; your progress-tracking skill reads the firm list. Each skill loads only what it needs, and all three stay in sync because they're reading from the same source files on disk.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Skills marketplace" is not a formal Anthropic product at the time of this recording; it refers to community repositories (GitHub, Simon's own community). Skills you download are starting points, not finished tools — always treat them as templates requiring domain-specific reference files before they produce useful outputs.</p></aside>
+
+    <h2>Layer 1 — shared brand context</h2>
+
+    <p>The first layer of the operating system is the shared brand-context folder. The Agentic OS does something really smart here: you type <code>start here</code>, and the system does the rest. It asks you a series of questions about your business, your audience, how you want to sound, what makes you different. Behind the scenes it doesn't just save your answers — it runs dedicated skills that analyse what you've told it and build proper structured files from your responses. Those files get fed into all the skills going forwards. It's a one-and-done approach.</p>
+
+    <p>Three foundation skills do the heavy lifting: one for brand-voice extraction, one for positioning, and one for your ideal customer profile. These aren't just boilerplate templates — they're skills that actually interview you, process what you say, and output real, detailed brand documents that feed in as deep knowledge. When it's done, you've got a full brand foundation in your brand-context folder: a voice profile so every skill knows how you sound; positioning so it knows your market angle; an ICP so it knows exactly who you're talking to with every piece of comms; samples and examples from your real content — your gold-standard stuff; and finally an assets file with your links, handles, and visual brand references. These are saved as readable markdown files you can open, edit, and tweak. But the important thing is every single skill in the system reads from these same files. Your copywriting skill, your content repurposing, your UGC scripts, your trending research — all pulling from the same source of truth, one shared folder.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Shared context folder</span>
+    <p>The "shared brand-context folder" is a design pattern, not a built-in Claude Code feature. The idea is to maintain a single directory of markdown reference files (voice profile, ICP, positioning, samples, assets) that every skill's <code>SKILL.md</code> points to by path. Because Claude Code can read any file you reference, all skills stay consistent without duplicating content. The equivalent official mechanism is <code>CLAUDE.md</code> plus project-level reference files; the shared-folder pattern is a community convention layered on top.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For your Substack economics-consultancy series, "brand context" translates directly to methodology context: a <code>method.md</code> capturing your data-collection approach (Companies House filings, OpenAlex cross-checks, AQuA QA rules), a <code>schema.md</code> defining the 96-firm database structure, and a <code>voice.md</code> capturing your Mallaby-inflected analytical register. Every skill — extraction, verification, Substack draft, salary-survey QA — reads from those same files. You define the method once; no skill re-interprets it from scratch each time.</p></aside>
+
+    <h2>Layer 2 — the context folder and the learnings loop</h2>
+
+    <p>Knowing your brand is static — it's a snapshot. The second layer is what makes the system actually feel alive, because the system doesn't just know your brand, it learns how you work too. Most AI setups are frozen in time: you build them and they stay exactly as they are. Building an Agentic OS is different, because you want it to have that second layer alongside the brand context. That's a context folder inspired by how OpenCog actually manages its memory and manages its functions around the user. This is what turns your skill collection into something that genuinely starts to understand you.</p>
+
+    <p>Inside the context folder: first, a <code>soul.md</code> file — the agent's identity, how it behaves, how it communicates, what it's prioritising. Then a <code>user.md</code> about you: your preferences, your working style, how you like things structured. When you tell the system you prefer concise bullet points over long paragraphs, it's going to always remember that and save that in your preferences — and every skill reads this too. Then <code>memory.md</code> for long-term business knowledge, plus short-term daily memory files inside a memory folder: a log of what it worked on yesterday, what it produced last week, what's in progress right now. So when you start a new session you're not starting cold — you have continuity, you can pick up where things left off.</p>
+
+    <p>The part Simon thinks is most powerful is <code>learnings.md</code> — the system's long-term feedback memory. After a major deliverable, skills will solicit your feedback: was the research useful? Was the newsletter too long? Whatever your feedback is gets logged under that skill's section. At the end of the day those learnings get taken and used to update the <code>skill.md</code> files themselves. The skill is actually learning and maintaining its own instructions. Next time the skill runs, it reads its own learnings first. Finally, no repeating yourself; no having the same conversation twice.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Memory tool vs CLAUDE.md vs learnings files</span>
+    <p>Claude Code has a formal <strong>Memory tool</strong> — a persistent, file-backed store the model writes to autonomously across sessions. This is distinct from the human-curated <code>CLAUDE.md</code>. Simon's <code>learnings.md</code> pattern is a community convention that sits on top: a structured markdown file that skills explicitly read at the start of each run and write to at the end, guided by skill-specific feedback prompts. The three mechanisms complement each other: <code>CLAUDE.md</code> carries stable instructions; the Memory tool carries spontaneous observations; <code>learnings.md</code> carries your deliberate quality feedback.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The learnings loop is the most directly useful thing in this episode for your work. Your 25-year SPE salary-survey compilation accumulates QA knowledge over time — you know the 2014 series break, you know the Hirst/Jim duplication, you know the Consulting/Consultancy mismatch. Today that knowledge lives in your head and in ad hoc notes. A <code>learnings.md</code> per skill (one for the series-compilation skill, one for the CH accounts extraction skill, one for the Substack draft skill) means those hard-won flags persist across sessions and automatically inform the skill's behaviour the next time it runs — without you having to repeat them in a prompt.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Pattern for a research-project <code>learnings.md</code> entry:</p>
+    <p><code>## extraction-skill learnings</code></p>
+    <p><code>- 2026-05: Atkins flag — check for Atkins Global vs Atkins Ltd; CH returns both, only the trading entity counts for turnover.</code></p>
+    <p><code>- 2026-05: Headcount field is often missing for LLPs; fall back to average employee note if present.</code></p></aside>
+
+    <h2>Layer 3 — self-maintenance: heartbeat and wrap-up</h2>
+
+    <p>As the system grows, things start to change: you add new skills, remove skills, connect new tools. In most setups that means you're manually updating docs, making sure nothing's broken. The Agentic OS should handle all of that itself. The way Simon has built it is: every time a new session starts, the system runs what he calls a <em>heartbeat</em> — familiar to anyone who has seen OpenClaw's setup. It scans the skills folder and compares what's actually on disk against what's documented in your <code>CLAUDE.md</code> and README file. If you've added a new skill folder since the last session, it adapts: registers the new skill, updates the context matrix, adds a section in your <code>learnings.md</code>. You don't have to touch anything. Every time you start a session it's going to learn exactly what you've added or taken away from the system — and this extends to MCP servers too, not just skills.</p>
+
+    <p>The really clever part is what happens when you build a new skill. A common problem with skills is installing too many and having overlapping ones. So before the system creates anything, it should read every installed skill's frontmatter, mapping overlaps and checking for dependencies, so the new skill fits cleanly into the existing ecosystem instead of duplicating what's already there. And at the end of the session the same sync needs to run again — that's done through a <em>wrap-up</em> skill: a checklist that reviews deliverables created, collects feedback, fixes skills, updates learnings, and finally commits all the work. At the end of the session you just say "close session" or "wrap things up" and it triggers that full sync. The system starts to reach a point where you never have to update a registry file again — it maintains itself so you can focus on using it, not babysitting static docs.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Hooks and session events</span>
+    <p>Claude Code's <strong>hooks</strong> are shell commands the harness runs automatically on events — <code>SessionStart</code>, <code>Stop</code>, <code>PreToolUse</code>, <code>PostToolUse</code> — configured in <code>settings.json</code>. They're deterministic: the model cannot skip them. Simon's "heartbeat" pattern (scan skills folder on session start, update CLAUDE.md registry) is a natural fit for a <code>SessionStart</code> hook. The "wrap-up skill" is a complementary end-of-session trigger. Using hooks means the self-maintenance layer runs reliably without relying on you remembering to invoke it.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The heartbeat/wrap-up pattern is exactly what your consultancy-research repo needs at scale. As you add new CH-extraction skills, new Substack format skills, or new MCP server connections (Companies House API, OpenAlex), a session-start hook that scans the skills folder and regenerates your <code>CLAUDE.md</code> skills registry takes 10 seconds and prevents the "I added a skill last week and Claude doesn't know about it" failure mode. The wrap-up skill is the equivalent of your end-of-sprint handoff note — it records what was extracted, what passed QA, and what's outstanding, so the next session starts with a clean state rather than guessing from partial context.</p></aside>
+
+    <h2>Layer 4 — skill chaining: turning a collection into a system</h2>
+
+    <p>We've got a shared brand context, a learning system, and even self-maintenance. But the real power isn't in any single individual skill — it's in what happens when the skills start to work together. This is the level that turns a collection of skills into an actual operating system. Individually each skill is powerful, but when they share context, feed into each other's process, and operate as one connected system, they become actual workflows.</p>
+
+    <p>In the Agentic OS, foundation skills run first and build the shared context: brand voice, ICP, and positioning, working together to build that brand-context folder. Then execution skills handle copywriting, UGC scripts, videos, images. Strategy skills handle trending research to feed into content pipelines. All of these are organised by category and interlink between those categories. And Simon is starting to build out ops or cron jobs to create workflows from these skills using Claude Code's latest features.</p>
+
+    <p>The real power is when you start to chain skills together. A trending-research skill could go out and find what's getting engagement on Reddit and X this week, produce a research brief, and save that to the project's folder. A content-repurposing skill might go out and find the latest YouTube video, create a newsletter from it, and bring in the trending research to hit multiple angles — using a humaniser tool to make the content sound less AI-generated and a YouTube transcription tool along the way. All of these working together in unison as a workflow. And when you install one of these skills, it understands the dependencies and installs the relevant sub-skills that it depends on.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill chaining</span>
+    <p>Skill chaining is a <em>usage pattern</em>, not a named Claude Code feature. It means writing a skill (or a slash command) that explicitly invokes other skills in sequence, passing the output of one as the input of the next — typically by writing intermediate results to shared files that downstream skills read. The mechanism is just file I/O: skill A writes <code>research-brief.md</code>; skill B reads <code>research-brief.md</code> as a reference. Claude Code's task (subagent) tool can run skills in parallel with isolated context windows; the results then feed back to the orchestrating skill.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon mentions "cron jobs" and "ops" using Claude Code's latest features — this likely refers to Claude Code's scheduled-task or hook capabilities, which are still evolving. Check the current Anthropic docs before assuming a specific cron syntax is stable. The community approach of using n8n (a separate open-source workflow tool) as an external scheduler to trigger Claude Code runs via webhook is an alternative that doesn't depend on Claude Code's own scheduling feature.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Your Substack economics-consultancy pipeline already has the structure of a skill chain: (1) a research skill that pulls CH filings and OpenAlex citations for a firm; (2) a verification skill that applies your AQuA QA rules and flags anomalies; (3) a draft skill that writes the Substack post in your voice using the verified data. Right now you're running these manually in sequence. Wiring them as a chain — research skill writes <code>firm-data.md</code>, verification skill reads it and writes <code>firm-verified.md</code>, draft skill reads the verified file — means you can trigger the whole pipeline for one firm with a single command and review only the final draft.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>A minimal chain trigger in a slash command:</p>
+    <p><code>/extract-firm Atkins</code> → writes <code>firms/atkins/raw.md</code></p>
+    <p><code>/verify-firm Atkins</code> → reads raw, writes <code>firms/atkins/verified.md</code></p>
+    <p><code>/draft-profile Atkins</code> → reads verified, writes <code>firms/atkins/draft.md</code></p>
+    <p>Or wrap all three in an orchestrator skill: <code>/firm-pipeline Atkins</code>.</p></aside>
+
+    <h2>Getting started — build or download</h2>
+
+    <p>So if we zoom out on what's happening here: the brand-context folder tells skills who you are and who you serve. The context folder tells skills how you work, what's happened recently, and what you've liked and disliked. That's a system that understands your business, and it's getting sharper every time you use it. Think of brand context as a snapshot, and the context folder as the ongoing relationship you have as you work with the tool. Together they're why the system feels like it actually knows you.</p>
+
+    <p>There are two paths from here. Everything Simon has shown you can be set up from scratch using Claude Code — exactly how he built it over weeks and months. Start with a brand context: run through the foundational skills that capture voice, that capture ideal customer profile, that question the user. Then start to build out your execution skills — trending research, content, copywriting flows. Then add the learnings loop so that each skill's learnings feed back into its own <code>skill.md</code>. That way works, and you will learn a massive amount doing it.</p>
+
+    <p>Or — the second path — you can just download it. The full Agentic OS: every skill, every reference, the brand-context system, the learnings loop, the self-maintenance, the heartbeat — all of it is available inside Simon's community, linked in the video description. Join, download the repo, run the <code>start here</code> command, and by the end of the day you've got a full working business OS personalised to your brand, ready to add or remove skills from. All of the skills are built in a consistent format, and every time you add a new skill it will reformat it into a clean, readable format that feeds into the system. Skills on their own are powerful, but connected together with shared brand context, a learning system that remembers your feedback, self-maintenance that keeps everything in sync, and skills that actually chain together as one workflow — that's when it becomes something else entirely.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Agentic OS" and "Agentico OS" are Simon's community branding for an opinionated assembly of Claude Code primitives (CLAUDE.md + skills + subagents + hooks + memory). They are not Anthropic products. The underlying primitives (skills, CLAUDE.md, hooks, the Memory tool) are official; Simon's folder structure and naming conventions are his own. You get more leverage building on the official primitives directly than importing a black box whose conventions you haven't internalised.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The "build from scratch" path is better for your use case than downloading Simon's marketing OS. His system is designed for content production; yours is designed for economic research and regulatory analysis. The principles transfer exactly — shared context folder → your methodology files; learnings loop → your per-skill QA flags; heartbeat → session-start registry sync; skill chaining → your extraction → verification → draft pipeline — but the actual skills need to be yours. Starting from scratch with Simon's framework in mind but your own domain knowledge in the reference files is the right approach. You already have the hardest part: the domain expertise that makes the reference files non-generic.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Build a shared-context folder for your consultancy-research repo.</b> Create a <code>context/</code> directory containing <code>schema.md</code> (the 96-firm database structure), <code>method.md</code> (your AQuA QA rules and data-collection approach), and <code>voice.md</code> (the analytical register you use in Substack posts). Update each of your existing extraction and drafting skills to reference these files by path. Confirm that a fresh session can answer "what's the turnover field definition?" by reading <code>schema.md</code> — without you repeating it in the prompt.</li>
+      <li><b>Wire a learnings.md entry for your SPE salary-survey skill.</b> After the next compilation pass, run: "log a learnings entry for the salary-survey skill noting the 2014 series break, the Consulting/Consultancy mismatch, and any new flags from this year." Verify the entry appears in <code>learnings.md</code> under a <code>## salary-survey-skill</code> heading, then check that the next run of the skill reads it back before starting.</li>
+      <li><b>Chain three skills for a single firm profile.</b> Write (or adapt) three slash commands: <code>/extract-firm</code>, <code>/verify-firm</code>, <code>/draft-profile</code>. Each reads the previous skill's output file. Run the chain end-to-end for one firm from your 96-firm database. Measure how much your review time drops compared to the current one-prompt-at-a-time approach — that delta is the value of the chain.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Skill</dt><dd>A <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus optional reference files and scripts. Claude Code loads only the name+description into context until the skill is invoked; then the full body loads. The primary reusable-workflow primitive.</dd>
+      <dt>Progressive disclosure</dt><dd>The property that only a skill's name and description occupy context until invocation. Means you can register dozens of skills without bloating the context window.</dd>
+      <dt>Shared context folder</dt><dd>A community design pattern: a single directory of markdown reference files (voice, ICP, schema, methodology) that every skill reads from by path. Keeps all skills consistent without duplicating content. Not a named Claude Code feature — it's a convention layered on CLAUDE.md and reference files.</dd>
+      <dt>Learnings loop / learnings.md</dt><dd>A community pattern where each skill maintains a <code>learnings.md</code> file it reads at start and writes to at end, logging user feedback. The skill's behaviour improves across sessions without the user repeating feedback manually.</dd>
+      <dt>Heartbeat</dt><dd>A session-start routine (often wired to a Claude Code SessionStart hook) that scans the skills folder, compares it against the CLAUDE.md registry, and self-updates any differences. Keeps skill documentation in sync automatically.</dd>
+      <dt>Wrap-up skill</dt><dd>A session-end skill that reviews deliverables, collects feedback, fixes skill files, updates learnings, and commits work. The end-of-session mirror to the heartbeat.</dd>
+      <dt>Skill chaining</dt><dd>A usage pattern where one skill writes an output file that a downstream skill reads as its input — effectively a pipeline. Not a named Claude Code feature; implemented via file I/O between skills.</dd>
+      <dt>Agentic OS / Agentico OS</dt><dd>Simon's community branding for an opinionated assembly of Claude Code primitives (CLAUDE.md + skills + hooks + memory) into a structured personal system. Useful framing; not an Anthropic product.</dd>
+      <dt>ICP (Ideal Customer Profile)</dt><dd>A reference document describing the target audience. In Simon's setup, a foundation skill interviews you and writes this as a structured markdown file that all content skills read. Equivalent in research context: your "intended reader" profile for Substack posts or board papers.</dd>
+      <dt>Hooks</dt><dd>Shell commands Claude Code runs automatically on session events (SessionStart, Stop, PreToolUse, PostToolUse), configured in settings.json. Deterministic — the model cannot skip them. The right mechanism for the heartbeat and wrap-up patterns.</dd>
+      <dt>Memory tool</dt><dd>Claude Code's built-in persistent, file-backed store the model writes to autonomously across sessions. Distinct from the human-curated CLAUDE.md and from Simon's community learnings.md pattern — all three complement each other.</dd>
+      <dt>OpenClaw</dt><dd>A community framework/setup referenced by Simon as inspiration for the heartbeat pattern. Not an Anthropic product; a third-party opinionated Claude Code configuration. Treat as community tooling whose specifics change.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-22-every-level-of-claude-code-skills-in-27-mins.html"><span class="dir">← Previous</span>Every Level of Claude Code Skills in 27 mins</a>
+    <a class="next" href="ep-24-build-self-improving-claude-code-skills-the-results-are-craz.html"><span class="dir">Next →</span>Build Self-Improving Claude Code Skills. The Results Are Crazy.</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=5AfSB0sWihw" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

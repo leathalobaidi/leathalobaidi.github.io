@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>21. The Easiest Way to Get Ahead With Claude Code — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=p37qo3oLai8" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 21 · Simon Scrapes</div>
+    <h1>The Easiest Way to Get Ahead With Claude Code</h1>
+    <div class="meta">
+      <span><b>13:39</b> runtime</span>
+      <span><b>35K</b> views</span>
+      <span>Published 21 Mar 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=p37qo3oLai8" target="_blank" rel="noopener">youtu.be/p37qo3oLai8</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/p37qo3oLai8"
+    title="The Easiest Way to Get Ahead With Claude Code" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Four patterns — lean context, a shared business brain, skill handoffs, and a self-learning loop — are the difference between Claude Code that degrades after 30 minutes and a system that compounds in quality over weeks.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon diagnoses the "80% problem": Claude Code delivers decent results in isolation but drifts, forgets context, and repeats mistakes when skills are combined or sessions run long. He then presents four interlocking patterns that fix it: (1) treat context like milk — fresh and condensed; (2) build one shared "business brain" file every skill references; (3) wire skills to hand off outputs to each other rather than relying on the user as middleman; and (4) capture learnings in a per-skill <code>learnings.md</code> so the system self-corrects over time.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Every pattern maps directly onto how Leath's research pipeline already works: keeping CLAUDE.md lean is just AQuA's "minimum necessary documentation" principle applied to prompts; a shared business brain is the master schema/codebook that anchors every Companies House extraction run; skill handoffs are the multi-stage pipeline from raw CH filing → extracted numbers → Substack draft; and the self-learning loop is the QA feedback cycle his audited master workbook already enforces on the salary survey.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Context rot</span>
+    <span class="chip">Context window</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Skills</span>
+    <span class="chip">Skill chaining</span>
+    <span class="chip">/compact</span>
+    <span class="chip">/clear</span>
+    <span class="chip">Self-learning loop</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The 80% problem — why most Claude Code setups stall</h2>
+
+    <p>I've spent over 200 hours now inside of Claude Code, not just building one-off skills or running quick prompts, but designing full systems that run entire parts of my business. And here's what I've realized. There's this idea called the 80% problem. AI gets you most of the way there, but that last 20% is where everything falls apart. The outputs start drifting, it forgets your context, and it starts making the same mistakes again and again. And as a result, you end up spending more time fixing it than doing the work for yourself in the first place.</p>
+
+    <p>And I see this constantly with Claude Code. People building skills, getting decent results, and then hitting the same wall. And it turns out there are four patterns that almost completely fix it. They're simple, and once you see them, everything else is going to click. So, in this video, I'll show you what they are and how to start using them right away.</p>
+
+    <p>So here's what's happening right now with most people using Claude Code. They're discovering skills, they build one for writing content, maybe another for research, maybe something for outreach, and each one works fine on its own, but the problem is none of them talk to each other. And worse, most of them are built incorrectly. Think about it like this. Imagine you run a business, and every single morning you hire a brand new employee. They've never met you, they don't know your brand, they don't know your audience, they don't know what you did yesterday, and you have to explain everything from scratch every single time.</p>
+
+    <p>I know it sounds like a silly analogy, but that's effectively what most people are doing with Claude Code right now. Every conversation and skill file starts from zero. Your content skill doesn't know what your outreach skill wrote last week, your research skill doesn't know what topics you've already covered. There's no shared memory, there's no shared standards, no shared anything. And so, you end up spending half your time just re-explaining context, pasting in brand guidelines, reminding Claude what tone of voice to use, correcting the same mistakes over and over.</p>
+
+    <p>This might feel familiar, and that's the 80% problem in action. And don't get me wrong, Claude Code is incredibly powerful, but without the right system around it, you're going to be stuck fixing that last 20% forever. You've probably got skills that work individually, but without these four patterns, you are still the bottleneck holding everything together. So let's fix that.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A skill in Claude Code is a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus any bundled reference files. The key property is <em>progressive disclosure</em>: only the name and description sit in context by default; the body only loads when the skill is actually invoked. This means you can have dozens of skills registered without flooding the context window — until you call one. The flip side is that if the skill body itself is enormous (850–1,100 lines as Simon describes), loading several at once still overwhelms the window.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This "starts from zero every time" problem is exactly what Leath hits when each CH extraction session requires him to re-paste the 96-firm schema, the AQuA outlier rules, and the per-firm research brief. The fix is structural: define those artefacts once as shared reference files, then have every skill point to them by path at the relevant step. The extraction skill loads the schema, the QA skill loads the AQuA rules, the Substack-draft skill loads the positioning brief — none of them carry the full context permanently.</p></aside>
+
+    <h2>Pattern 1 — Context is milk: keep it fresh and condensed</h2>
+
+    <p>We're going to start with the most fundamental pattern. There's a saying that's been going around the Claude Code community, and I absolutely love it because it's spot-on. AI context is like milk — it's best served fresh and condensed. And this is the pattern that underpins everything. The number one reason people get bad outputs from Claude Code is not bad prompts, it's not bad skills, it's context pollution.</p>
+
+    <p>Your context window is not unlimited, it's finite, and everything Claude is holding in memory at any given moment — your instructions, your skill.md files, your conversation history, the outputs it's just generated — all of that is competing for the same limited space. And when that space fills up with stale information, like your failed attempts, your errors, your old corrections, or irrelevant details, Claude is going to get progressively worse. It's drifting from your instructions, it's starting to slow down, and it's not because it's broken, it's because you've overwhelmed it. This is what people call context rot.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context rot</span>
+    <p>Context rot is the gradual degradation of Claude's output quality as a session fills up with stale or irrelevant material — failed attempts, error messages, old corrections, repeated tool outputs. The model doesn't "forget" in a human sense; it just has to find the relevant signal inside an increasingly noisy window, and it gets worse at this as the window fills. Crucially, a large context window is not a defence: a 200k-token window filled with noise is still worse than a 50k-token window with clean, relevant content.</p></aside>
+
+    <p>And almost everyone is doing this without even realizing, because it happens quicker than you think. Just because a context window of a model is large, it doesn't mean we can fill it and still expect the same performance.</p>
+
+    <p>There's a really popular Reddit post called "I was wrong about agent skills and how I refactored them." And the story is so common that I had to share it. This developer started building skills the day they dropped, and within two weeks he had a Claude first skill at 1,131 lines, a UI skill at 850 lines, and a Next.js skill at 900 lines. And every time Claude activated multiple related skills, the context window he was using just exploded. Loading five to seven skills was like loading 5,000 to 7,000 lines into the context window, flooding it immediately. Naturally, he was getting slow outputs, drifting instructions, and Claude flat-out ignoring parts of his skill files that were necessary.</p>
+
+    <p>So here's the principle. In everything you do with Claude Code, you want the right context at the right time, and nothing more. And this applies everywhere — it's not just skills. In your skill.md files, keep them under 200 lines. The skill.md should be just a table of contents, not an encyclopedia. All of the deeper knowledge should sit inside the reference files, and Claude pulls them in only when it needs them, bit by bit, not all at once. So each time Claude Code hits a process step — step two, let's say, on a skill.md file — it's able to just load in the most relevant context and all of the relevant reference files, and then unload it before it hits step three.</p>
+
+    <p>And in your CLAUDE.md, it's the same principle. Keep it lean, point to your reference files for the detailed stuff. And if your CLAUDE.md is 2,000 lines, Claude is ignoring half of it because the important rules are probably just getting lost in the noise.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md</span>
+    <p>CLAUDE.md is a plain markdown file that Claude Code auto-loads into context at the start of every session. It's hierarchical: a user-global <code>~/.claude/CLAUDE.md</code> applies everywhere; a per-project <code>./CLAUDE.md</code> applies to that repository. It's the primary way to give Claude persistent project rules, conventions, and memory — but only the human curates it. Simon's point stands: a 2,000-line CLAUDE.md is self-defeating. The file should state principles and point to reference files, not contain them.</p></aside>
+
+    <p>Then, even in your conversations, you should be using the <code>/clear</code> command between unrelated tasks, always. And when a conversation's running long, make sure to compact it too, using the <code>/compact</code> command. Don't wait until Claude auto-compacts it, because by that point, you've already been operating in degraded output mode for ages. Compact it proactively to keep it fresh.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Between unrelated tasks: <code>/clear</code> — wipes the conversation, starts a blank session.<br>
+    Mid-session when output quality dips: <code>/compact keep the schema, the AQuA rules, and which firms still need accounts pulled</code> — pass specific instructions so the compaction summary preserves what matters.</p></aside>
+
+    <p>And if you really want to level this up, use planning frameworks. I use something called GSD, or the Get Shit Done framework, which basically breaks down complex tasks into phases. Each phase gets a clean context — you plan in one session, you execute in another, you review in a third — and each one starts fresh with just the context it needs for that specific phase, keeping it narrow.</p>
+
+    <p>And I'm even going to give one bonus tip for power users here. If you want to compress your context even further, you can use Mermaid diagrams instead of text. A few hundred tokens of Mermaid syntax — basically process diagrams — can convey what would take thousands of tokens in written descriptions. And LLMs can actually parse structured diagrams more efficiently than paragraphs. So the format of your context matters just as much as the content itself.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · GSD (Get Shit Done)</span>
+    <p>GSD is a community-built framework (not an official Anthropic feature) that imposes a discuss → plan → execute → verify lifecycle on Claude Code sessions, persisting state in markdown files and loading only the relevant phase documents into context at each step. Simon uses it here as an example of how to achieve "phase isolation" — each phase starts with a clean context scoped to its specific task. The install string is <code>npx sketch-it-done cccc</code>. Treat this as community tooling; specifics may change.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"GSD" and "Agentic Operating System" are creator/community branding, not official Claude Code or Anthropic product names. The underlying ideas — phase isolation, lean CLAUDE.md, reference files — are general best practice. Don't confuse the framework name with the concept it instantiates.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The phase-isolation discipline is just the AQuA lifecycle applied to prompts: you wouldn't run your model and your QA in the same notebook cell; don't run your research and your drafting in the same Claude session. For the CH extraction pipeline specifically: one session scopes the run (which firms, what period, what fields), another executes the CH MCP calls and extracts numbers, a third reviews anomalies and updates the master workbook. Each session gets a <code>/compact</code> handoff summary, not the raw tool-call log. The Mermaid tip is worth stealing for the salary-survey QA protocol — a 20-node flow diagram of the year-on-year consistency checks will fit in a fraction of the tokens a prose description costs.</p></aside>
+
+    <h2>Pattern 2 — One business brain: shared context every skill inherits</h2>
+
+    <p>So now that you understand the foundation — keep context lean, keep it fresh, keep it relevant — here's the next question. If every skill should be lean, how does Claude actually know about your business? How do you put enough context in there? How does it know your voice, your audience, your standards without having to re-explain every single time? Well, that brings us onto pattern two.</p>
+
+    <p>Instead of each skill carrying its own business context, or worse, you pasting it in manually every single time, you create one single source of truth that every skill can access. Shared brand context — or what I call your business brain. And this is where pattern one and pattern two work together in sync. Because your business brain follows the same rule, fresh and condensed — you're not building a 2,000-line brand bible. You're building a tight, focused shared context file, or set of files. You'll have your tone of voice, your audience, your ICP, your positioning, your standards. Fifty lines to 100 maximum, and that's it as a profile.</p>
+
+    <p>And then, every single skill you build just references that foundation at the right point — brings it in at the right process step, like we mentioned. So when your content skill writes a LinkedIn post, it already knows your voice and brings it in at the right time. And when your research skill pulls data, it already knows what topics matter to your business. And when your outreach skill drafts a message, it already knows your positioning.</p>
+
+    <p>You can literally set this up once, and every skill inherits all of the context at the right time automatically. No more copy-pasting, no more correcting the same tone-of-voice issues, and no more re-explaining who your audience is for the hundredth time. And because it's lean, because it follows pattern one, it doesn't bloat the context window. This is the difference between onboarding that new employee every single day versus someone who's been working on your team for a year. They already know the brand, they know your standards, and the output quality as a result is going to jump immediately because the foundation is already there.</p>
+
+    <p>So, pattern two is one business brain. You set it up once, and Claude never forgets who you are again.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Shared reference files</span>
+    <p>In Claude Code, "shared reference files" are ordinary markdown or text files that multiple skill.md files reference by path. When a skill step calls for them, Claude reads them in on demand. This isn't a formal Claude Code feature name — it's a usage pattern. The key insight is that by keeping the reference file short (&lt;100 lines) and having every skill point to the same file, you get DRY (don't-repeat-yourself) context management: one update propagates to all skills instantly.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Your "business brain" equivalent is a <code>research-context.md</code> file — say 80 lines — containing: the canonical definition of your 96-firm universe (SIC codes, size cut-offs, exclusions), the standard field list for CH extraction (turnover, operating profit, headcount, year-end date), your Substack series positioning (what angle differentiates it from standard sector reporting), and the AQuA quality gate thresholds. Every skill — <code>ch-accounts-extractor</code>, <code>substack-draft</code>, <code>pe-mapper</code>, <code>salary-survey-qa</code> — references this file at step 1. When your universe definition changes, you edit one file, not seven skills.</p></aside>
+
+    <h2>Pattern 3 — Skill collaboration: hand off work, stop being the middleman</h2>
+
+    <p>Okay, so now every skill shares the same brain. They know your brand, they know your standards, and they're lean. But here's the thing — they're still operating in isolation. Your marketing skill produces content, your strategy skill produces analysis and research, but they have no idea what each other is doing. And in real business, that's not how things work. Which brings us on to pattern three.</p>
+
+    <p>Pattern three is the pattern that takes you from having a collection of isolated tools to having something that actually feels like a team operating together. It's based on a really simple idea: skills should be able to hand off to each other. And right now, most people are running one skill, getting the output, then manually taking that output and pasting it into the next skill, or asking Claude to do the same. You run your research skill, copy the results, ask Claude to take that research, and then run your content skill, copy that output, put it into your repurposing skill, and so on. But what if your skills could actually just talk to each other directly?</p>
+
+    <p>For example, you run a content strategy skill — it produces a plan with topics, distribution channels, the angles you want to cover. And then in your content creation skill, it's able to pick that up automatically and execute against that plan. Each piece of content already knows the strategic context, the audience, the voice to use, because it's got all of that from the skill that came before it. And then your repurposing skill takes that content and adapts it for all of the different platforms, and it doesn't need you to explain the context again, because it inherited everything else from the chain before that. Effectively, workflows between skills.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill chaining</span>
+    <p>Skill chaining is a usage pattern (not an official named feature) where one skill's output file becomes the input for a subsequent skill. In practice, skill A writes a structured output to a known file path (e.g. <code>output/research-brief.md</code>), and skill B's first step reads that file. The result is a pipeline: the user invokes skill A, then skill B, without manually copying anything. Each skill still runs in its own invocation context; the handoff is mediated by files on disk, not by a shared in-memory state. Simon is not describing subagent orchestration here — this is sequential, file-mediated chaining.</p></aside>
+
+    <p>And here's what connects this back to pattern one so well. Each skill that runs in a chain can operate in its own context space. Your research skill can go deep for thousands of tokens of data, do all of the heavy lifting, and then hand back a clean condensed summary to the next skill. The next skill's context stays fresh and it's not polluted at all by all that raw research data. And this is extra important for founders, because you wear every single hat — you run content, sales, operations, strategy, and there is massive overlap between all of those, so they should never live in isolation. Your marketing strategy should inform your content, your content performance should feed back into your strategy, and your operations should support both. When skills collaborate, one skill's output becomes another skill's input, and you stop being the bottleneck moving information around.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is exactly the pipeline Leath needs for the consultancy database. Stage 1: a <code>ch-scope</code> skill reads the 96-firm list and writes a <code>work-queue.md</code> — company numbers, filing URLs, fields to extract, priority order. Stage 2: a <code>ch-extract</code> skill reads <code>work-queue.md</code> row by row, calls the Companies House MCP, downloads the accounts PDF, extracts turnover/operating profit/headcount, and appends a clean row to <code>extracted-rows.csv</code>. Stage 3: a <code>substack-draft</code> skill reads <code>extracted-rows.csv</code> plus <code>research-context.md</code> and drafts the firm profile. Each skill hands a compact artefact to the next — no raw CH API dumps pollute the drafting context. The SPE salary survey maps identically: <code>ingest</code> → <code>qa-outliers</code> → <code>chart-pack</code> → <code>publish-draft</code>, each writing a clean handoff file.</p></aside>
+
+    <h2>Pattern 4 — Self-learning: every mistake becomes a rule</h2>
+
+    <p>So now that your skills share the same brain and can hand off work to each other, there's already a massive upgrade from what you had before. But here's what's still missing. The system is still static. It doesn't get better over time. It makes the same quality of output on day one as it does day 30. And that's pattern four. And honestly, this is the one that blows people's minds. This is the pattern I didn't even know was possible until I started building it myself. And it changes everything about how you think about skills.</p>
+
+    <p>So Boris Cherny, the guy who actually created Claude Code at Anthropic, shared his entire workflow earlier this year, and it went viral. Developers were actually losing their minds over it. And the most interesting part wasn't the fancy stuff. It was one simple practice. At Anthropic, every team member maintains their own CLAUDE.md file in their codebase. And here's the rule: anytime Claude makes a mistake, they don't just fix the mistake. They add the correction to CLAUDE.md so Claude knows not to do it next time. During code reviews, they literally tag Claude and ask it to update its own instructions. The longer you work with that kind of system, the smarter it gets, because you've effectively built a self-correcting loop.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md as a living rule-set</span>
+    <p>Boris Cherny is the creator of Claude Code at Anthropic. His practice of using CLAUDE.md as a living correction log — adding a rule every time Claude makes a mistake — is a genuine, widely-cited workflow. It's not magic: it's just disciplined prompt engineering persisted to a file. The compounding effect is real: a CLAUDE.md that accretes precise, experience-derived rules outperforms a verbose one written upfront, because every rule is grounded in an actual failure mode you've observed.</p></aside>
+
+    <p>And this is exactly what self-learning means for skills. Every time a skill runs and produces something great, the system captures what worked, and when something falls flat, those learnings get fed back into the next run, so the next run is even better. And I'm not talking about anything complicated here. This is so simple in practice. It's basically a learnings file — we can call it <code>learnings.md</code>. It says: "Here's what worked, here's what didn't work, and here's what to do differently next time." And you can segregate that on a per-skill basis.</p>
+
+    <p>The compounding effect is massive here because over the course of a week, two weeks, a month, the system has run hundreds of tasks, you've given it a bunch of feedback, and it's absorbed all of those learnings. Your content is getting tighter, your skills are getting better, your research is getting more targeted, and it's not because you're manually tweaking things. The system is able to tune itself.</p>
+
+    <p>In my own business, we even go one level further by using an additional wrap-up skill that runs at the end of every session to make sure all learnings are captured and any associated files inside that skill.md and the CLAUDE.md are in sync. You can actually grab that full system — the Agentic Operating System, and everything we've spoken about today — from my community linked in the description below. It takes about 10 minutes to set this all up.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Agentic Operating System" is Simon's community branding for his specific assembly of CLAUDE.md + shared reference files + skill chains + learnings.md. It's a useful framing but not an Anthropic product or official term. The underlying practices are sound; the particular folder structures and skill names in his community package may differ from what you build independently, and will evolve over time.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The per-skill <code>learnings.md</code> is the Claude Code analogue of an AQuA model log — the living record of what the model got wrong, what corrections were applied, and what assumptions were revised. For the salary survey, a <code>salary-survey-qa/learnings.md</code> might accumulate entries like: "2024 run: three respondents reported gross rather than net salary — add a filter for values &gt;99th percentile of prior year" or "2023 Consulting/Consultancy label mismatch caused 12 duplicate rows — canonical mapping now in reference-context.md." Over time this becomes your institutional memory, survives session boundaries, and doesn't require you to be present to catch the same mistake twice. The wrap-up skill idea is worth stealing directly: end every CH extraction session by running a skill that appends any QA flags from that run to <code>ch-extract/learnings.md</code>.</p></aside>
+
+    <h2>Putting it all together — the four-pattern stack</h2>
+
+    <p>So effectively, what we're doing here with pattern four is self-learning. Every mistake that Claude makes becomes a rule, and your system gets smarter while you sleep. And of course, you have to clean that up over time and make sure that you're not bloating context — but you've got a self-learning system here.</p>
+
+    <p>So let's now zoom out, because when you put all four of these patterns together, you've basically solved that 80% problem we spoke about at the start.</p>
+
+    <p><strong>Context is milk</strong> means you only feed Claude what it needs when it needs it — fresh, condensed context that doesn't bloat the window. <strong>One business brain</strong> means every skill knows who you are — shared context that's lean enough to load without polluting the context window. <strong>Skill collaboration</strong> means they hand off work to each other without you being the middleman, and again, that keeps the context clean. And <strong>self-learning</strong> means the whole thing is improving over time without too much manual input.</p>
+
+    <p>When you stack all four together, you've basically built yourself a business operating system — an Agentic Operating System. And it's the difference between just having a set of tools that you can use and having an actual team that's going to run and operate without you. Which leaves us only with one question. How do you actually build this logic and what does it all look like when it's running day-to-day? Well, check out the next video to find out.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The four-pattern stack maps cleanly onto the consultancy research system: Pattern 1 (lean context) — each extraction session scopes to one or two firms, not the whole 96-firm universe in one shot. Pattern 2 (business brain) — a single <code>research-context.md</code> holds the field list, universe definition, and AQuA thresholds. Pattern 3 (skill handoffs) — scope → extract → qa → draft → publish is a five-stage pipeline where each stage writes a compact output to disk. Pattern 4 (self-learning) — every extraction anomaly and every QA flag gets appended to the relevant skill's <code>learnings.md</code> at session end. After a month of running this, the extraction skill will be materially more accurate on edge cases (pension accounting, dormant entities, multi-brand holding structures) because those failures are now rules, not memories.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li>Create a <code>research-context.md</code> (max 80 lines) that defines your 96-firm universe, the standard CH extraction fields, and your AQuA quality thresholds. Then update one of your existing extraction skills so its step 1 reads this file by path rather than embedding the schema inline. Verify the skill still produces correct output for a firm you've previously extracted.</li>
+      <li>Build a two-skill chain for the salary survey: skill A (<code>spe-ingest</code>) reads the raw submission CSV and writes a clean <code>parsed-submissions.csv</code> with normalised column names; skill B (<code>spe-qa</code>) reads <code>parsed-submissions.csv</code>, runs your year-on-year outlier checks, and writes a <code>qa-flags.md</code>. Run them sequentially using <code>/clear</code> between invocations to keep contexts isolated. Compare the cleanliness of Claude's QA output against a single-session approach.</li>
+      <li>Add a wrap-up skill to the CH extraction pipeline. After each extraction session, run it to append any new anomalies, corrections, or edge cases encountered to <code>ch-extract/learnings.md</code>. After five firms, read the file: you should see a growing set of rules (e.g. "Baringa uses a non-standard year-end — adjust period alignment") that make subsequent runs more accurate without any re-prompting.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>80% problem</dt><dd>Simon's label for the pattern where AI delivers most of what you want but the remaining 20% requires constant manual correction — a symptom of missing system architecture around Claude Code, not a model limitation.</dd>
+      <dt>Context pollution / context rot</dt><dd>The accumulation of stale, redundant, or irrelevant material in the context window that degrades output quality. Happens faster than most users expect. Fixed by <code>/clear</code>, <code>/compact</code>, and lean skill design.</dd>
+      <dt>Context window</dt><dd>The finite buffer of tokens (instructions + conversation + tool outputs) that Claude can "see" at once. Larger windows help but don't solve context rot — signal-to-noise ratio matters more than raw size.</dd>
+      <dt>CLAUDE.md</dt><dd>Auto-loaded memory file that gives Claude persistent project rules across sessions. Should be lean and pointer-based, not a 2,000-line encyclopedia. Boris Cherny's practice: add a rule every time Claude makes a mistake.</dd>
+      <dt>Skills (skill.md)</dt><dd>Reusable workflow packages: a SKILL.md with name/description frontmatter plus reference files. Body only loads on invocation (progressive disclosure). Keep under 200 lines; put detailed knowledge in reference files.</dd>
+      <dt>Business brain (shared reference files)</dt><dd>Simon's term for a set of short shared context files (tone, audience, standards) that every skill imports at the relevant step, rather than each skill carrying its own copy. The DRY principle applied to prompts.</dd>
+      <dt>Skill chaining</dt><dd>A usage pattern where skill A writes a structured output file and skill B reads it as input, creating a file-mediated pipeline. Each skill runs in its own context; handoffs are compact artefacts, not raw session state.</dd>
+      <dt>learnings.md</dt><dd>Simon's per-skill feedback file: a running log of what worked, what didn't, and what rules to apply next time. The self-learning mechanism. Equivalent to an AQuA model log for Claude Code skills.</dd>
+      <dt>/clear</dt><dd>Slash command that wipes the current conversation and starts a fresh session. Use between unrelated tasks to prevent context pollution.</dd>
+      <dt>/compact</dt><dd>Slash command that compresses the conversation history to a model-written summary, freeing context space. Can be invoked proactively with guidance on what to preserve, rather than waiting for auto-compaction.</dd>
+      <dt>GSD (Get Shit Done)</dt><dd>Community framework (not official Anthropic) that imposes a discuss → plan → execute → verify lifecycle, with each phase in a separate session context. Simon cites it as an example of phase isolation. Installed via <code>npx sketch-it-done cccc</code>.</dd>
+      <dt>Agentic Operating System</dt><dd>Simon's community branding for his opinionated assembly of the four patterns into a deployable system. Not an Anthropic product; the underlying pattern stack is sound, the specific implementation is his community's tooling.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-20-200-hours-of-claude-code-lessons-in-14-minutes-for-business-.html"><span class="dir">← Previous</span>200+ Hours of Claude Code Lessons in 14 Minutes (for business owners)</a>
+    <a class="next" href="ep-22-every-level-of-claude-code-skills-in-27-mins.html"><span class="dir">Next →</span>Every Level of Claude Code Skills in 27 mins</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=p37qo3oLai8" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

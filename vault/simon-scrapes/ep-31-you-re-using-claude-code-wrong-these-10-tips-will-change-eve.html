@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>31. You're using Claude Code Wrong - These 10 Tips Will Change Everything — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=V9atNrDjnZs" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 31 · Simon Scrapes</div>
+    <h1>You're using Claude Code Wrong - These 10 Tips Will Change Everything</h1>
+    <div class="meta">
+      <span><b>20:26</b> runtime</span>
+      <span><b>22K</b> views</span>
+      <span>Published 13 Feb 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=V9atNrDjnZs" target="_blank" rel="noopener">youtu.be/V9atNrDjnZs</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/V9atNrDjnZs"
+    title="You're using Claude Code Wrong - These 10 Tips Will Change Everything" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Most people use Claude Code as a better autocomplete — these ten techniques show how to wire agent teams, skills, hooks, slash commands, and research workarounds into compounding workflows that do things isolated tricks never could.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon works through ten Claude Code techniques in ascending complexity: agent teams (when to use them and when not to), the distinction between hooks, skills, and slash commands, keeping CLAUDE.md lean, plugins as distributable bundles, recovering lost context from previous sessions, a Gemini CLI research workaround for blocked sites, a "last 30 days" trend-research skill, built-in slash commands for context management and usage tracking, clipboard-native output formatting, and a fact-verification workflow.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Every tip has a direct parallel in Leath's workflows: agent teams map to parallelising Companies House account extraction across many firms; skills and hooks are the engine for a repeatable salary-survey QA pipeline; the lean CLAUDE.md principle applies directly to keeping his 96-firm research project's context clean. The research workarounds and fact-check table are immediately usable for Substack drafts that need sourced numbers rather than hallucinated statistics.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Agent teams</span>
+    <span class="chip">Hooks</span>
+    <span class="chip">Skills</span>
+    <span class="chip">Slash commands</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Plugins</span>
+    <span class="chip">Gemini CLI workaround</span>
+    <span class="chip">Fact verification</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>Tip 1 — Agent teams: when they compound, when they just cost more</h2>
+
+    <p>If you're using Claude Code the way that most people do, you're leaving a huge amount on the table. It's not because the tool itself is limited, but because of how you're approaching it. Most tutorials show isolated tricks, and what they don't show you is how those techniques can compound when used together. In this video, I'm walking you through ten Claude Code techniques that build on each other, starting with changes that immediately improve your results and ending with workflows even experienced users have never used.</p>
+
+    <p>Let's start with the newly released agent teams. Most people are either running one Claude Code session or starting to use subagents — that's fine for simple tasks, but if you're working on more complex projects it's not good enough anymore. Agent teams let multiple Claude instances work in parallel and talk to each other. Before agent teams were released, people tended towards using subagents with a delegation architecture: a main parent agent delegates to individual subagents. Say we have a content writer as our main agent and we want help from a researcher and a content reviewer — those would be specialist subagents with delegated tasks that pass their outputs back to the main agent. The problem as you expand the scope of this project is that more subagents feeding into this main agent creates a communication bottleneck. Those subagents aren't able to communicate to each other; everything must be processed by the main agent.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Subagents / Agent teams</span>
+    <p>Subagents are Claude Code processes spawned via the Task (Agent) tool, each with their own isolated context window and tool set; only their final summary returns to the main agent. <strong>Agent teams</strong> extend this with a <em>shared task list</em> and direct peer-to-peer communication between agents — so agents can coordinate without routing every message through the orchestrator. This reduces orchestrator bottleneck for deeply collaborative tasks. The feature is configured by adding a line to <code>settings.json</code> and running <code>claude update</code> to get the latest version.</p>
+    </aside>
+
+    <p>In contrast to the new architecture, with Claude Code agent teams we have a main agent that can still talk to those teammates or subagents, but the key differences are: they have a shared task list so each teammate can contribute and pull from it, and they can talk to each other directly — knowing exactly what's going on through collaboration with other teammates, the shared task list, and the main orchestrator. This comes at higher cost because more agent-to-agent conversations means higher token usage. So there are only certain use cases where I'd recommend it.</p>
+
+    <p>The tip is actually all about where <em>not</em> to use agent teams. From non-development use cases, there aren't many places I'd start using this. The first area where I would not use it is creating an agent team that researches and writes social media posts for LinkedIn and X, with three agents: a researcher, a reviewer, and a writer. The reason is the scope is really limited — you're just writing say five to ten social media posts, something that can probably be done with a single task. At best you have three agents that don't need to cross-collaborate: the researcher doesn't need to talk to the reviewer; both just need to pass information back to the main agent (the writer). So it's totally overkill for that use case.</p>
+
+    <p>Where agent teams really start to shine is when you have more complex projects where cross-collaboration is critical. In the same content-creation flow, you could drop a YouTube transcript into a project folder and have Teammate 1 write a long-form SEO-optimised blog article, Teammate 2 write a LinkedIn carousel script focusing on hooks, and Teammate 3 write an email newsletter version. What you want is for there to be no contradicting hooks or information across the three outputs — so you actually need collaboration between teammates: "what angle are you working on so I don't duplicate it?" Where it really shines is when you're building complex apps — say a Next.js app with Stripe — where you have three distinct agent layers: an API layer, a front-end layer, and a testing agent. The API and front-end agents constantly need to talk to the testing agent so it can spin up their own tests. In the subagent format that becomes a bottleneck; with a shared task list and peer collaboration it becomes much more effective, though still more expensive. By the way, with agent teams you can bypass the main agent entirely: navigate to a specific teammate using Shift+Up/Down on your keyboard and give tasks directly to that agent.</p>
+
+    <p>My summary: don't start with agent teams. Start simple, graduate to subagents, and only reach for agent teams when the complexity and collaboration requirements genuinely demand it.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The "bottleneck test" Simon describes maps directly to Leath's Companies House extraction pipeline. Pulling accounts for 96 consultancy firms one at a time is a classic single-agent bottleneck. A two-agent team — one agent fetching and parsing PDF accounts, a second simultaneously cross-checking the extracted turnover figures against prior-year entries in the SQLite database for consistency — would flag discrepancies in parallel without routing every comparison through a master agent. But for a simpler task like drafting a single Substack post per firm, a lone subagent is cheaper and sufficient. Apply the "do agents actually need to talk to each other?" test before spinning up a team.</p>
+    </aside>
+
+    <h2>Tip 2 — Hooks, skills, and slash commands: the simplest way to keep them straight</h2>
+
+    <p>Tips two, three, and four all get confused constantly: hooks, skills, and slash commands. Here's a simple way to remember them.</p>
+
+    <p><strong>Slash commands</strong> live in the <code>.claude/commands/</code> folder — one markdown file per command. Think of it as "you press a button and an action is taken because you told it to take that action." So you might have a <code>/linkedin-post</code> command where the markdown file says "write three LinkedIn post variations" and you pass your arguments in. You run it by typing <code>/linkedin-post</code> and then adding your topic — say "MCPs" — and it writes three LinkedIn post variations about MCPs. When it starts running you'll see it begins to use certain skills automatically.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Slash commands</span>
+    <p>Slash commands are <code>/name</code> shortcuts stored as markdown files in <code>.claude/commands/</code>. Custom ones let you package a repeatable prompt into a single keystroke. Unlike skills, you explicitly invoke them — you press the button. They can accept arguments appended after the command name. They are simpler than skills: one file, user-triggered, no automatic inference about when to activate.</p>
+    </aside>
+
+    <p>This brings us to <strong>skills</strong>. Unlike slash commands — where you're telling Claude to act at a specific time by pressing a button — Claude understands from the <em>description</em> of the skill when to use it. Skills can be more comprehensive, and Claude decides when to invoke them rather than you explicitly telling it. For example, inside your Claude skills you might have a brand voice skill with examples for different platforms (LinkedIn, X, Instagram), a banned-words list, and a <code>SKILL.md</code> that includes a description telling Claude to always use the brand voice guidelines every time it writes social media content. That's how it knows to use that skill without being told explicitly. You back that up by putting a line in your CLAUDE.md: "every time you write content, make sure to use these skills." But actually, Claude would know from the skill description alone — without the CLAUDE.md line — to use that skill. Skills are more comprehensive: you can give more context than a command's single file allows, and they're invoked automatically.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A skill is a <code>SKILL.md</code> file with a name, description, and optional supporting files (examples, reference data, scripts). Claude reads the description at the start of a session and infers when the skill should be activated — it doesn't need to be explicitly triggered. The key scaling property is <em>progressive disclosure</em>: only the name and description are loaded into context upfront; the full body is fetched only when the skill is actually invoked, keeping the context window lean.</p>
+    </aside>
+
+    <p><strong>Hooks</strong> are completely different. Hooks don't require any LLM tokens at all — they're for things that can be done programmatically without AI. For example, in a content pipeline you might have a banned-word checker added to <code>settings.json</code>: any time output drafts are added to a specific file, check them for banned words and report whether any were found. In the full content pipeline: you run <code>/linkedin-post</code> to write about MCPs, Claude automatically uses the brand voice skill, and then the hooks check for banned words in the background. They work together as a three-part system.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Hooks</span>
+    <p>Hooks are shell commands the Claude Code harness executes automatically on lifecycle events — <code>PreToolUse</code>, <code>PostToolUse</code>, <code>SessionStart</code>, <code>Stop</code>, etc. — configured in <code>settings.json</code>. They run deterministically, outside the LLM loop, so they consume zero tokens and cannot be bypassed by the model. Typical uses: running a linter after every file edit, blocking dangerous commands, auto-formatting output, writing a changelog entry. They complement skills and slash commands but operate at a different layer.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Map the three primitives to Leath's SPE salary-survey workflow. A <em>slash command</em> <code>/run-aqua-checks</code> triggers the full AQuA-style QA pass on a year's submission on demand. A <em>skill</em> <code>salary-survey-outlier-detector</code> is described as "use this whenever reviewing salary data rows" — so it activates automatically when Claude encounters the annual Excel export. A <em>hook</em> on <code>PostToolUse</code> runs a Python script that checks every file written to the <code>Publish_2026/</code> folder for PII fields (names, emails) and logs any found — zero tokens, deterministic, always fires. Three tools, three jobs; none steps on the others.</p>
+    </aside>
+
+    <h2>Tip 3 — CLAUDE.md: point, don't dump</h2>
+
+    <p>The one tip I'll give you for CLAUDE.md files is: <em>point, don't dump</em>. Most people dump their entire brand guide, content pillars, brand voice, audience research, and example posts into their CLAUDE.md file. Do not do that. Keep CLAUDE.md lean and point to where the detail lives; don't dump the detail itself. The recommendation is 20 to 30 lines in your CLAUDE.md — this is loaded into context every time you have a conversation with Claude. So you want to include only the relevant framing context and then point to the other bits it will need to know at certain times. If it's writing content, it knows to look in <code>skills/humanizer</code> to understand how it should write, and the same for brand voice. Claude can read those files only when it needs them, so you get a clean, scannable CLAUDE.md that doesn't eat up your context window by passing in too much information every time.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md</span>
+    <p>CLAUDE.md is the primary persistent-instructions file auto-loaded into every Claude Code session's context. It is hierarchical: a user-global one at <code>~/.claude/CLAUDE.md</code> applies everywhere; a per-project one at <code>./CLAUDE.md</code> applies to that project. Because it loads every time, its size directly affects how much context window is consumed before any work starts. Simon's "20–30 lines" guideline is a practical way to keep this overhead low while relying on skills and referenced files for the detail.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For the 96-firm consultancy research project, a bloated CLAUDE.md that contains the full data-collection protocol, all 96 firm names, and the SQLite schema will silently eat context on every session — including sessions where Leath is just writing a Substack draft. Instead: keep CLAUDE.md to ~25 lines that say "see <code>skills/companies-house-extractor</code> for account-pull protocol" and "see <code>docs/db-schema.md</code> for table definitions." Claude loads those only when the relevant work starts. The same logic applies to the SPE survey master workbook: don't embed the data dictionary in CLAUDE.md; point to it.</p>
+    </aside>
+
+    <h2>Tip 4 — Plugins: one install, the whole workflow</h2>
+
+    <p>So we have skills, hooks, and slash commands. But what if you want to share a collection of those with someone else, or install someone else's setup? This is where plugins come in. They're not additional to those three — they're how you <em>distribute</em> them or install them on your own system. A plugin is simply a package of skills, commands, hooks, and potentially agents that you can install in one go. So you go to the Claude plugin marketplace, add a certain plugin with two commands, and you've literally got all of their commands, skills, and hooks in one step.</p>
+
+    <p>An example: someone has a Reddit research plugin. It includes a skill that teaches Claude how to analyse Reddit threads, a Reddit research command that triggers deep research, and a hook that automatically summarises the findings into a markdown file. Instead of installing three things individually, you run two commands on the plugin and get the whole workflow straight away. Think of it as a packaged collection of skills, hooks, commands, and agents — install once, get the whole workflow. One caveat: the ecosystem for plugins is still very developer-focused, but the concept is powerful and hopefully there will be less dev-focused plugins coming to Claude Code over time.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Plugins</span>
+    <p>Plugins are distributable bundles — a zip or repo — that package skills, slash commands, hooks, and optionally agents into a single installable unit. They use Claude Code's plugin marketplace (or a direct URL install) and are the distribution mechanism that lets creators share complete workflows rather than individual files. The underlying components (skills, commands, hooks) are exactly what Simon described in Tip 2; plugins just give them a packaging and installation layer.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>If Leath were to package his Companies House research workflow — the accounts-downloader skill, the <code>/ch-deep-dive</code> slash command that extracts revenue and headcount into a CSV row, and the hook that runs a duplicate-company-number check — as a plugin, he could re-install the entire setup in a new project directory with two commands. More practically, he can look for community plugins that already do parts of this (Companies House API wrappers, PDF-extraction skills) rather than building from scratch. The plugin ecosystem is thin right now for economics tooling, but monitoring it is worth the ten minutes a month.</p>
+    </aside>
+
+    <h2>Tip 5 — Recovering lost context: reading your own session history</h2>
+
+    <p>Tip five will help you search and bring back up context that you've lost from previous conversations. You can load up Claude Code and ask something like: "What have we spoken about in the last week in all my projects? Give me a summary." This history lives in the Claude projects global file. Running that, you should get a summary of exactly what's been spoken about, and then you're asked if you want to pick up on any of those conversation topics. You can search this manually by running a command-line query, but honestly, just ask Claude Code to do it for you because it's much quicker.</p>
+
+    <p>Three of our last six projects had activity — the other three had no recent conversations. Claude gives a breakdown of all the different projects, the number of sessions, and a general summary of each session and what came out of it. You can then dig into details: "Tell me more about the agent teams we created in the Claude Code demo folder when we explored agent teams" — and it will restore that history. This is really useful for bringing back up context or continuing a conversation that was previously closed.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is directly useful for Leath's multi-week Companies House research sprints. If a deep-dive into, say, Oxera's filed accounts was interrupted and closed three days ago, asking Claude Code "what did we establish about Oxera in the last fortnight?" will surface the key numbers extracted and the questions left open — without having to reopen the old session manually or re-read notes. Similarly, if a salary-survey outlier discussion was cut short, this restores exactly where the reasoning stopped. Treat this as a zero-cost session-resumption tool for any research project that spans multiple days.</p>
+    </aside>
+
+    <h2>Tip 6 — Research workarounds: Gemini CLI as a fallback for blocked sites</h2>
+
+    <p>Tip six is all about research workarounds. Claude Code infamously can't access every site — if you want data from things like Reddit, some news sites, or paywalled content, it will be blocked. Whenever you try, you'll get "Claude Code is unable to fetch from Reddit" and then it will do some web searches around the topic, but won't pull specific details from Reddit or X. This tip comes from YK in his 45 Claude Code tips — there are some brilliant ideas in there — and one of them is this research workaround: get Claude to install the Gemini command-line interface as a fallback. If it can't search Reddit, Gemini has broader web access.</p>
+
+    <p>The approach: install the Gemini CLI, then add a Reddit fetch skill. Inside the skills folder, create a <code>reddit-fetch</code> skill with a <code>SKILL.md</code> that says: "When asked to fetch content from Reddit or other blocked sites like X, start a team session, use the Gemini CLI to give it a prompt like 'Gemini, go and fetch and summarise' with the URLs, capture the output, and return the results." It's a workaround to get information from Reddit or other sites you set up for it, by accessing through Gemini — which has broader web search than Claude Code.</p>
+
+    <p>After installing the Gemini CLI and restarting the instance so the skill registers, asking it to fetch a random Reddit thread from the artificial intelligence subreddit, it returned the top posts including the number of points, the number of comments, and a summary of the content from that thread. I'll be honest — it struggled a bit on the specific thread and instead summarised generalised information. But the next tip takes this much further.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The Gemini CLI workaround is a community technique, not an Anthropic feature. Its reliability depends on Gemini's own access policies, which may change. For structured data (Companies House filings, ONS releases, academic paywalls) the better route is an MCP server that wraps the official API — that's deterministic and doesn't rely on a third-party CLI's web scraping tolerance. Use the Gemini workaround for informal community sources (Reddit, X threads) where no API exists.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For Leath's consultancy-market research, blocked sites matter: Reddit's consulting subreddits have salary benchmarks and client reputation signals that don't appear in formal filings. The Gemini CLI workaround could surface that discussion layer where the Companies House MCP can't reach. More practically: use the Gemini CLI skill for intelligence-gathering (what are practitioners saying about PA Consulting's recent redundancies?) and keep the Companies House MCP for the hard financial numbers. They complement rather than duplicate each other.</p>
+    </aside>
+
+    <h2>Tip 7 — "Last 30 days" trend research: 30 minutes of reading in 30 seconds</h2>
+
+    <p>This next tip — 30 days of research in 30 seconds — is a game-changer if you want trending-topic research. Whether you want to understand the latest prompting techniques, what's trending and what the community is saying about a particular topic, there's a skill called "last 30 days" that can scan Reddit and X for discussions in the last 30 days, synthesise the patterns, and deliver either copy-paste prompts or comprehensive research. Credit to a GitHub repo that gives more info about how it's actually used. You need to add your OpenAI API keys and your xAI API keys. Then you use it via a slash command: <code>/last-30-days</code>, followed by the topic.</p>
+
+    <p>Topics could be: prompting techniques for ChatGPT, legal questions for iOS app mockups in Figma, what are the best rap songs right now, what LinkedIn hooks are working right now. The key difference from the Gemini workaround is that this skill can access <em>specific</em> Reddit and Twitter threads and summarise that information succinctly — so you don't hit the same paywalls. The GitHub repo gives examples of where it's used and what the outputs look like.</p>
+
+    <p>Running three queries in parallel: SaaS landing page mockups for Nano Banana (a visual AI tool), the latest Claude Code news, and AI automation YouTube content that's working right now. For the Nano Banana prompts, it came back with a key finding I did not know: JSON structured prompts actually dominate — the highest-performing prompts are always in JSON format with nested properties like visual style, preservation constraints, and image prompts. Plain text prompts get less traction. The community has converged on this format. "Reality first system prompt" is the hot technique, forcing photorealistic editorial documentary quality. It researched six threads, saw 240 upvotes, 23 posts on X, and 30 pages on the web — and gave that insight in 2 minutes 17 seconds.</p>
+
+    <p>The Claude Code news query surfaced: Opus 4.6 launched on 5 February; Claude Code now accounts for 4% of all public GitHub commits; Claude Code for marketing went viral (Savannah Feder's launch post hit 14K likes). The AI automation YouTube query found: AI plus history is the breakout niche, with new channels pulling 100K–800K views using hyperrealistic AI visuals and long-form storytelling. This is genuinely useful — you're getting synthesised community intelligence from actual threads, not generic search summaries.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p><code>/last-30-days prompting techniques for Claude Code</code><br>
+    Required: OpenAI API key + xAI API key configured. Research takes 2–8 minutes. Returns structured findings with source counts (threads, upvotes, posts on X, web pages) per claim.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For the Substack series on UK economics consultancies, the "last 30 days" skill could research "what is the consulting market saying about economic advisory work in 2026" across Reddit and X — surfacing practitioner sentiment that doesn't appear in filed accounts. More specifically: before writing a deep-dive on, say, Frontier Economics or CEPA, run <code>/last-30-days CEPA economics consultancy UK</code> to pull any recent coverage, criticism, or news that might not have hit the formal press. The output gives you quotable community signals and source counts, both of which Leath can independently verify before citing. Treat it as a first-pass intelligence layer, not a primary source.</p>
+    </aside>
+
+    <h2>Tip 8 — Built-in slash commands: /clear, /usage, /stats</h2>
+
+    <p>Tip eight is about built-in commands, again highlighted by YK. These are super useful and you'll use them fairly frequently. The first is <code>/clear</code>: it clears up the conversation history and frees up your context by compressing the context window so you start fresh. The second is <code>/usage</code>: you can see your plan's usage limit. In the current session we've used 15% of our Opus 4.6 usage limit; current week we've used 2%, so there's plenty left on the Max plan. Running <code>/stats</code> gives usage over time — 201 sessions, a longest session of 1 day 21 hours, and a fun comparison: "You've used the same number of tokens as the book Moby Dick" or "You've used 24 more tokens than War and Peace."</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Built-in slash commands</span>
+    <p><code>/clear</code>, <code>/usage</code>, and <code>/stats</code> are native Claude Code commands (not custom markdown files). <code>/clear</code> compresses/discards conversation history to free context — useful when a session has drifted far from its original task. <code>/usage</code> shows current session and weekly token consumption against the plan limit. <code>/stats</code> shows cumulative session history. These are distinct from custom slash commands you write yourself in <code>.claude/commands/</code>.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p><code>/clear</code> is particularly valuable mid-session when Leath has finished one phase of a Companies House extraction — say, pulling all figures for five firms — and is moving to a different task like drafting a Substack post. Rather than carrying all the extraction detail forward into the writing session (wasting context and risking the model anchoring on irrelevant extracted numbers), a <code>/clear</code> resets cleanly. Use <code>/usage</code> before starting a large batch task (e.g., 20-firm account extraction in one session) to confirm there's headroom — running out of tokens mid-batch means incomplete data and messy restarts.</p>
+    </aside>
+
+    <h2>Tip 9 — Getting output into the format you actually want</h2>
+
+    <p>Tip nine is all about getting output into the format you want when you're working between apps. Say you're creating LinkedIn posts using Claude Code and you don't have your MCP connected to LinkedIn. Tell Claude Code to copy it directly to your clipboard — you don't need to go into the file itself or anything else. Just say "add a LinkedIn post to my clipboard."</p>
+
+    <p>You all know the pain when you're copying between Claude and LinkedIn and the formatting is lost: bullets disappear, emojis don't appear, bold doesn't appear. When you use this function, you can: one, ask it to write in LinkedIn native format with no markdown headers, just emoji bullets with examples showing the intended style; and two, ask it to copy directly to your clipboard. It copies to clipboard, you take it to LinkedIn, paste it in, and — with three variations in this example — the formatting of bullets and arrows is maintained throughout. It makes it much simpler to work between different platforms.</p>
+
+    <p>A trick alongside this: copy it directly into a Notion page, which then enables the conversion to be done really easily. If you're not working in LinkedIn native format, always post it into a new Notion page first — it maintains markdown formatting and Notion supposedly converts to the output format of whatever platform you're using when you copy from it. This doesn't work great for LinkedIn, hence asking for LinkedIn native format directly. The key point: you can get Claude Code to copy directly to your clipboard with no effort at all.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The clipboard output tip extends beyond social media. Leath writes HTML deliverables — AQuA reports, salary-survey summaries — and frequently needs to move table data from a Claude Code session into an Excel sheet or a Notion database. Telling Claude "format this as a tab-separated table and copy to clipboard" means one paste into Excel with columns already aligned, rather than manually reformatting. Similarly, for the Substack series: rather than exporting a draft markdown file and then reformatting in the Substack editor, ask Claude to produce the post body in Substack-compatible plain text (no markdown headers, em-dashes for emphasis) and copy to clipboard — direct paste, no editor friction.</p>
+    </aside>
+
+    <h2>Tip 10 — Fact verification: a table of what Claude can and can't confirm</h2>
+
+    <p>Tip ten addresses something we've all come across: Claude confidently writing a statistic or claim without actually verifying it. The quick fix is to tell it: "Double-check every claim and statistic, and make a table of what you could and couldn't verify, including the source."</p>
+
+    <p>In the demo: a bunch of LinkedIn post variations about MCPs with facts in them — each post using different facts so they don't feel repetitive. Saying "double check every claim and statistic, make a table of what you could verify" produced a markdown fact-check table listing every claim across all three versions, with source, verification status, and confidence. The results were instructive: "MCP launched November 2024" — verified. "Downloads 100K to 8 million in five months" — unverified (no primary source, no methodology cited, single blog post; not proof enough). Several claims came back "cannot verify." Even asking it to do that once, it went out, found a single point of validation, and called it a fact — and then the table immediately exposed that. The output: remove claims 5, 6, 7; soften claims 2 and 3; or swap for official numbers. So even one pass of verification produces a structured, actionable audit of the facts in a draft.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Verification workflow</span>
+    <p>This is a usage pattern, not a named Claude Code feature. The mechanic is: after generating a draft with factual claims, pass the draft back with an instruction to verify each claim independently and produce a structured table. Claude will web-search each claim and report its confidence level. The table format (claim | source | verdict) makes the output immediately actionable. It doesn't eliminate hallucination, but it surfaces the weakest claims explicitly rather than leaving them buried in confident-sounding prose.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is the single most important tip for Leath's Substack series. Posts about UK economics consultancies routinely include revenue figures, PE deal values, headcount numbers, and market-share claims — all of which can be wrong if sourced from secondary reports rather than the actual Companies House filings. Making this verification step part of the standard workflow: after drafting any Substack post, pass it to Claude with "double-check every revenue figure, deal size, and ownership claim; show me a table with source and confidence." Claims backed only by a single blog post get flagged for replacement with the CH filing number. This is structurally equivalent to the AQuA review gate: nothing ships until the evidence table clears.</p>
+    </aside>
+
+    <h2>Wrapping up</h2>
+
+    <p>That rounds up the ten tips for using Claude Code more effectively. These are going to be absolutely fundamental for different workflows, and they're designed to compound — agent teams sit on top of the slash command / skill / hook foundation; the research workarounds feed into the fact-verification step; the lean CLAUDE.md unlocks clean context for everything else. If you want to check out a deeper dive into Claude Code, check out the next video.</p>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><strong>CLAUDE.md audit:</strong> Open your consultancy-research project CLAUDE.md and count the lines. If it's over 30 lines, refactor: move the data-collection protocol to a <code>skills/ch-extractor/SKILL.md</code>, the db schema to <code>docs/db-schema.md</code>, and leave only pointer lines in CLAUDE.md. Run a session before and after and compare context usage with <code>/usage</code>.</li>
+      <li><strong>Fact-verification gate:</strong> Take any Substack draft that contains revenue figures or market-share claims for a UK economics consultancy. Pass it to Claude Code with: "Double-check every revenue figure and ownership claim. Produce a markdown table: claim | primary source URL | verdict (verified / unverified / contested)." For every unverified row, replace with the actual Companies House filing number or remove the claim.</li>
+      <li><strong>Three-primitive pipeline:</strong> Build a minimal salary-survey QA pipeline: (a) a slash command <code>/run-aqua</code> that triggers the full AQuA outlier-check pass; (b) a skill <code>salary-outlier-detector</code> described as "use whenever reviewing salary data" so it activates automatically; (c) a hook on <code>PostToolUse</code> that runs a Python PII-check script on any file written to <code>Publish_2026/</code>. Wire all three, run a test submission, and confirm each fires in the right order.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Agent teams</dt><dd>Multiple Claude Code instances that share a task list and can communicate directly with each other, not just through a central orchestrator. Useful when agents genuinely need to coordinate outputs; overkill when tasks are sequential or non-overlapping.</dd>
+      <dt>Subagent</dt><dd>A Claude Code process spawned via the Task (Agent) tool with its own isolated context window; only the final summary returns to the main agent. The building block before agent teams.</dd>
+      <dt>Slash command</dt><dd>A user-triggered shortcut (<code>/name</code>) stored as a markdown file in <code>.claude/commands/</code>. You explicitly invoke it; Claude doesn't decide on its own when to use it.</dd>
+      <dt>Skill</dt><dd>A <code>SKILL.md</code> file with a description that tells Claude when to activate it automatically. Progressive disclosure: only name and description load into context by default; the full body loads on invocation. More powerful and context-efficient than slash commands for recurring workflows.</dd>
+      <dt>Hook</dt><dd>A shell command configured in <code>settings.json</code> that runs automatically on Claude Code lifecycle events (e.g., after a file edit, at session start). Uses zero LLM tokens; deterministic; cannot be skipped by the model. Ideal for linting, PII checks, banned-word scans.</dd>
+      <dt>Plugin</dt><dd>A distributable bundle of skills, commands, hooks, and optionally agents. The packaging and installation layer that lets creators share complete workflows in one install step.</dd>
+      <dt>CLAUDE.md</dt><dd>The primary persistent-instructions file auto-loaded into every Claude Code session. Hierarchical (global and per-project). Keep it lean (20–30 lines); point to skills and docs rather than embedding detail directly.</dd>
+      <dt>Gemini CLI workaround</dt><dd>A community technique (not an Anthropic feature) that installs the Gemini command-line interface and wraps it in a Claude Code skill, enabling access to Reddit and other sites Claude Code itself cannot fetch from directly.</dd>
+      <dt>Last 30 days skill</dt><dd>A community-built slash command + skill that uses OpenAI and xAI API keys to scan Reddit and X for discussions on a given topic over the past 30 days and synthesise them into structured findings with source counts.</dd>
+      <dt>/clear</dt><dd>Native Claude Code built-in that compresses/discards conversation history to free context window space. Useful when switching tasks mid-session.</dd>
+      <dt>Fact-verification table</dt><dd>A workflow pattern — not a named feature — where you ask Claude to verify each claim in a draft and produce a structured table (claim | source | verdict). Surfaces hallucinated or weakly-sourced statistics before they appear in published output.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-30-has-claude-code-just-killed-n8n.html"><span class="dir">← Previous</span>Has Claude Code Just Killed N8N?</a>
+    <a class="next" href="ep-32-how-to-use-claude-code-agent-teams-in-13-mins-opus-4-6.html"><span class="dir">Next →</span>How to Use Claude Code Agent Teams in 13 Mins (Opus 4.6)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=V9atNrDjnZs" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

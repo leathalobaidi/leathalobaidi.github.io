@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>08. Agentic AI Systems, Clearly Explained — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=kwRTUw8pb2c" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 08 · Simon Scrapes</div>
+    <h1>Agentic AI Systems, Clearly Explained</h1>
+    <div class="meta">
+      <span><b>12:42</b> runtime</span>
+      <span><b>28K</b> views</span>
+      <span>Published 9 May 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=kwRTUw8pb2c" target="_blank" rel="noopener">youtu.be/kwRTUw8pb2c</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/kwRTUw8pb2c"
+    title="Agentic AI Systems, Clearly Explained" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">A clean four-level ladder — chatbot → AI workflow → agentic workflow → agentic AI system — that explains exactly where Claude Code sits, and what you have to add before it can run a real operation on your behalf.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon uses a single running example — content repurposing from a YouTube video — to show what the AI does at each of four levels of capability. Level 1 is a chatbot: you paste, it replies, nothing executes. Level 2 is an AI workflow (n8n/Zapier): the pipeline fires automatically but always follows the same fixed steps. Level 3 is an agentic workflow: the model chooses its own execution path inside a <em>harness</em> (Claude Code, Codex, Cursor) given only a goal. Level 4 is a full agentic AI system: multiple specialised skills, shared memory, MCP connections to external tools, and a deliberate human-in-the-loop review gate. Simon closes by demystifying the whole stack — it's files in folders, not magic code.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Most of your current Claude usage sits at level 1 or 2: you paste in a CH filing or a salary-survey tab and get a one-shot response, or you run a fixed scraping script. Understanding the four-level model tells you exactly what is missing at each step — and why upgrading to level 3 (agentic, goal-directed runs in a harness) and then level 4 (skills + memory + MCP + review gate) is the right architecture for sustained, QA-backed analytical work at the scale your 96-firm database and 25-year survey series demand.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Four levels of AI</span>
+    <span class="chip">Agentic workflows</span>
+    <span class="chip">Harness</span>
+    <span class="chip">Skills</span>
+    <span class="chip">Memory</span>
+    <span class="chip">MCP</span>
+    <span class="chip">Human in the loop</span>
+    <span class="chip">ReAct loop</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>Why "agents" has become a buzzword</h2>
+    <p>I can't hear another word about agents. This is the next big step forward, a full coding agent. Every single software company in the world needs an agentic system. Agents — it's almost sort of a buzzword, right? Like everybody you talk to now is building agents. Agentic coding experience can do a complicated coding agentic thing. Codex is another sort of agent app. What is an agent? Agentic harness.</p>
+    <p>All right. Most explanations of agentic AI systems are either too technical or too basic. So this one's meant for people like me. You're not a developer, you use ChatGPT or Claude every single day. You probably opened Claude Code or co-work once or twice and weren't quite sure what to do with it. And you want to actually understand how this all fits together without reading a single line of code. Now, we're going to walk through four levels: chatbots, AI workflows, agentic workflows, and agentic AI systems. Each one gives the AI more autonomy, more capability, and at each one the wrapper around the AI gets more sophisticated, too. And all of those intimidating terms you see everywhere — harness engineering, skills, memory systems, MCPs — they are a lot simpler than you think. And we'll knock them down to plain English as we go along.</p>
+    <p>So I'm going to use one example across all four levels so you can feel the difference at each level in the work that you need to do. And that's going to be content repurposing. So we're going to take a YouTube video and turn it into social posts, newsletters, short-form clips, the whole lot. So let's see how that looks at each level and where you can get more time back.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · The four-level model</span>
+    <p>Simon's four levels are a teaching structure, not official Anthropic terminology, but the underlying concepts are real. Each level increases the AI's autonomy: at level 1 the human does everything except the actual text generation; at level 4 the system decides, executes, and quality-checks, with the human showing up only at defined review points. The key variable is <em>who decides the execution path</em>.</p></aside>
+
+    <h2>Level 1 — chatbots (static context, passive)</h2>
+    <p>So level one is all about chatbots — ChatGPT, Claude, Gemini. This is the one you're probably familiar with, but there are a few things you need to understand that are key to the higher levels. So here's what content repurposing looks like at level one. I finish a recording of a YouTube video like this one. I'll find a transcript. I'm going to open Claude on the web and I say, "Write me a LinkedIn post about this." And Claude's going to come back, it's going to write something. It's fine, it reads like a LinkedIn post with a ton of emojis, but it doesn't sound like me, it doesn't know my audience, it doesn't know that last month my carousels outperformed my text posts, and it definitely doesn't know what I posted last week. So it might repeat the same angle that I already used.</p>
+    <p>Now if I wanted it to do better, I'd have to paste in my voice guidelines, my audience notes, my recent post history, and I could do that all manually. But obviously I'm simplifying a bit. Claude and GPT have projects, Gemini has gems, and you can actually store static context there. But ultimately that's what it is. It's static context. So there are two things you need to remember about chatbots. One, they don't know your business — none of your brand, your audience, the content history of your last few posts. And two, they're passive. They wait for you to prompt them. They don't go and do anything on their own. So at level one, the chatbot is there giving you advice, but it's not executing. So keep that in mind.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is the mode you're in when you paste a Companies House filing into Claude's web interface and ask "extract turnover, operating profit and headcount." It works, but it's fully manual: you paste, it responds, you copy the numbers into your 96-firm spreadsheet, repeat 96 times. The static-context ceiling is real — Claude doesn't remember last week's filing format quirks, doesn't know your schema, and doesn't accumulate anything about the sector across sessions. Level 1 is fine for a one-off; it's a bottleneck at scale.</p></aside>
+
+    <h2>Level 2 — AI workflows (automated but rigid)</h2>
+    <p>Now level two was all the rave in 2025 — AI workflows. So think n8n, Zapier, and make.com. Everyone was talking about this, including me, in 2025. And here's what content repurposing looks like at level two. So I build out an n8n workflow, and every time I publish a new YouTube video, the workflow is going to fire automatically. Step one is going to pull the transcript, step two is going to send that to Claude through the AI node with my voice guidelines hardcoded into the prompt. Step three, Claude is going to come back with a draft LinkedIn post, and step four, the workflow is going to drop it into my scheduling tool, so I can just review the draft. And for somebody who has come from just working with ChatGPT or Claude, this is going to feel like magic. So you can get it to work on repeat using the same steps every single time.</p>
+    <p>So I've gone from manually pasting my transcript into a chat window to having a draft appear in my scheduler without lifting a finger. Here is the limitation, though. The workflow can't think. If my best performing posts this month have been carousels and not text posts, the workflow doesn't know that. It's got my static prompt templates that I put in there three or four months ago. I can, of course, go and update that manually, but it's not automatically adapting. How about if the video topic doesn't even suit LinkedIn at all, and would be better as a Twitter thread? The workflow can't make that judgment call because it's just running through the same steps in the same order regardless. It's not like having an employee who can do the thinking. And ultimately, if the output's not good enough, I'm going to go back in and rewrite the prompt myself. So at level two, the AI is doing some of the work, but it's not making decisions. It's just following our exact step-by-step guide. And those are the steps that you've defined for it.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · AI workflow (level 2)</span>
+    <p>An AI workflow is a fixed pipeline — built in tools like n8n, Zapier, or make.com — where the AI fills in specific steps but the overall execution path is hard-coded by the builder. The trigger fires, the steps run in the defined order, and the result lands somewhere. There is no reasoning about whether the path suits the current situation. It's deterministic automation with an AI node, not an intelligent system.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A level-2 equivalent in your research would be a Python script that, for each company number in a list, calls the Companies House API, downloads the filing, runs a regex to pull turnover, and writes to a CSV — every time, in the same order, with the same regex. Reliable for companies whose filings follow your expected format; brittle the moment a filing uses a different table structure or reports in £000s. The script can't decide to switch extraction method mid-loop. That judgment call is exactly what level 3 unlocks.</p></aside>
+
+    <h2>Level 3 — agentic workflows and the harness</h2>
+    <p>Now the next part is the most important concept in this entire video. The difference between an AI workflow and an agentic workflow at level three is <em>who decides the execution path</em>. So at level two, you've defined the steps. At level three, the model does, and you're free to do some of the task while it's actually making those decisions. But before we move on to that, YouTube tells me that 97% of you watching this video right now haven't subscribed to the channel. So do me a quick favour and hit the subscribe button below if you've made it this far.</p>
+    <p>So level three then is agentic workflows. And here's what content repurposing looks like at level three. I open Claude Code and say "turn this week's video into content for LinkedIn, Twitter, and my newsletter." And Claude Code is going to actually just go and figure it all out. So it pulls the transcript. It reads my brand voice file. It's going to look at the video topic and decide which moments in that transcript of the video work best for each platform based on different viral trend indicators. It's going to draft a LinkedIn carousel because the topic suits visual storytelling. It might write an X thread because there's a strong contrarian angle and X loves contrarian. It's then going to run all of those through my style guide, through my brand voice, and rewrite ones that don't pass the criteria. Everything is then saved for me to review. So I didn't write those steps. The model decided them based on the goal that I gave it.</p>
+    <p>And quite frankly, this is what it would look like if we did this kind of workflow inside n8n. It would have that infinite loop logic, and it would be a mess to maintain — trust me, I'm talking from experience in building these. And the technical name for this agent loop is actually ReAct. So it's reason and act. The model reasons about what to do, acts on it, observes the result, and iterates until it's done. So finally we can start getting our time back because the model's not only doing the work, it's also now doing the thinking.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · ReAct loop</span>
+    <p>ReAct (Reason + Act) is the inference pattern underlying most agentic systems. The model (1) <em>reasons</em> about what step to take next, (2) <em>acts</em> by calling a tool or writing output, (3) <em>observes</em> the result, then repeats until the goal is met or a stop condition fires. Claude Code implements this loop — every time it runs a bash command and reads the output before deciding what to do next, that's ReAct in action.</p></aside>
+
+    <p>Now the tools at this level are things like Claude Code, OpenAI's Codex, and Cursor. And what they all have in common is they're what's called a harness. So a harness is the infrastructure that surrounds the model to make it more reliable, controllable, and deployable for actual business use cases. It's what turns thinking into doing. So without a harness, you've got a chatbot in a browser tab. With a harness, the model can read your files, run commands, call other tools, and check its own work. There are lots of other things that you can add onto a harness, but you can't add them onto a chatbot — and we'll come back to that later. So Claude Code is actually just a harness. Codex is a harness. Cursor is a harness. Different products, but the exact same idea. They wrap around the model and give it the ability to act on your computer, with your files, using your tools.</p>
+    <p>So at level three, you've got a single agent running in a harness, working toward one goal, and it's powerful. And this is good enough for most people, but it does top out — one agent with one goal in one terminal session. It doesn't remember what it learned last week. It doesn't know which of my posts are performing best at the moment. And if I want it to also extract video clips, build carousels, generate some ad copy maybe, and schedule everything, I'd have to run each task separately and re-explain some of the context every time.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Harness</span>
+    <p>A harness is the scaffolding that surrounds an LLM to give it agency: file-system access, the ability to run shell commands, tool calls (including MCP servers), and a loop for iterating on its own output. Claude Code is Anthropic's harness. Without one, the model is purely reactive to text input. With one, it can read a file, edit it, run a test, observe the failure, edit again — all in one autonomous run. The harness is what makes "agentic" mean something concrete.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Running Claude Code against your 96-firm research folder is a level-3 upgrade from pasting into the web UI. You give it a goal — "pull the latest filed accounts for each company in firms.csv, extract turnover and operating profit, write results to accounts_extracted.csv, flag any where you couldn't find a clear figure" — and it decides whether to use the Companies House MCP, download a PDF, parse it with a Python snippet, or ask you to clarify. That goal-directed flexibility is exactly what brittle n8n pipelines can't offer for filings with non-standard layouts.</p></aside>
+
+    <h2>Level 4 — agentic AI systems (skills, memory, MCPs, human in the loop)</h2>
+    <p>So if level three is one agent on one task, then level four is a coordinated team running your operations. So this is all about agentic AI systems. And here is what content repurposing looks like at level four. So I trigger one command by just describing what I want, and the full content engine runs from one YouTube video. So there's going to be a skill in the background that extracts the best clips from the video for short-form content and ranks them on different criteria. There's going to be another one that builds platform-specific carousels with the right dimensions, the visual aesthetics that are going to match my brand, and copy for each different platform. Another instance is going to draft the weekly newsletter from key takeaways. Another is going to generate ad copy from the angles that have performed best in the past. And finally, everything's going to come together and be queued into my scheduling tool.</p>
+    <p>So each skill on its own has its own instructions, its own quality bar, its own output format. And the system as it goes through is going to load my brand context in at the right time, and only the sections or context references that are actually needed at that point. It's then able to actually go and check its own work, flag anything that needs me, and handle the rest autonomously by itself. So you can think of this instead as: instead of one agent doing one job, you've got a system running an entire content operation on your behalf.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>In Claude Code, a skill is a <code>SKILL.md</code> file with a YAML frontmatter block (<code>name</code>, <code>description</code>) plus the actual instructions and any bundled reference files. Skills use <em>progressive disclosure</em>: only the name and description sit in context at all times. The full body only loads when the skill is actually invoked. This is the key scaling property — you can have dozens of skills without bloating the context window, because the system loads only the one it needs at that moment.</p></aside>
+
+    <p>So the jump then from level three to level four is what people are actually calling harness engineering. And the building blocks are simpler than they sound. So you've got skills, which are just folders of instructions for specific tasks — like how to write a LinkedIn carousel, how to extract short-form clips from a long-form transcript, how to draft a newsletter in my voice. And the agent is going to load the right skill only when it needs it, and the right reference examples only when it needs it, too. So it's not going to bloat your context or cost you a bunch of tokens.</p>
+    <p>Then we connect up to our tools with MCPs, or Model Context Protocol. So the scheduling platform, the analytics dashboard, maybe your CRM. MCP is just a standard for plugging things into our Claude Code harness. We've got one of the most important concepts: memory. So the system carries context between sessions. So it knows which post performed best last month. It remembers which newsletter subject lines got the highest open rates. It builds on what it's learned instead of starting from zero every time. And memory can literally be as simple as a markdown file that the system is going to read and update. Or you can go more complex with a sophisticated database that connects across all your different LLMs and tools.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · MCP (Model Context Protocol)</span>
+    <p>MCP is an open standard that lets an agent call external tools and data sources — databases, APIs, file stores — without hard-coding the integration into the harness itself. An MCP <em>server</em> exposes a set of named tools (e.g. <code>search_companies</code>, <code>get_filing</code>) that Claude can call exactly like it calls built-in tools. The Companies House MCP, the Gmail MCP, and the Notion MCP you already use are all examples. MCP is what separates a powerful single-file assistant from a system that can reach across your entire operational stack.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Memory</span>
+    <p>Claude Code's memory comes in two forms. The first is <code>CLAUDE.md</code> — a file you maintain that is automatically loaded into context each session, giving the model persistent project instructions and facts. The second is the Memory tool, a newer capability where the model itself writes structured facts to a file across sessions. Simon's point that "memory can literally be a markdown file" is accurate — <code>CLAUDE.md</code> is exactly that. For a level-4 system, memory lets the agent accumulate learned context (what worked, what failed) rather than starting cold every run.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A level-4 build for your consultancy research would have: a <code>ch-accounts-extractor</code> skill with instructions for parsing CH filings and handling £000s/£m unit ambiguity; a <code>financial-ratio-analyst</code> skill that computes margins and flags PE-ownership signals; a <code>substack-drafter</code> skill that writes a firm profile in your editorial voice; a <code>CLAUDE.md</code> memory holding your 96-firm schema, current extraction progress, and any company-specific quirks already noted; plus the Companies House MCP for API access. Trigger one command and the system decides which skills to chain, loads only the relevant context per step, and surfaces anything that needs your judgment before it writes to the master database. That's not fiction — it's the natural endpoint of the architecture Simon is describing.</p></aside>
+
+    <h2>Human in the loop — the design principle that makes it work</h2>
+    <p>So almost sounds too good to be true, and you're probably thinking, "So this thing is just going to run on its own and do all my work. I'm going to need no employees." Well, no, not exactly. By design, we've got human in the loop. So "set it and forget it" is not a design principle that we've got here. The systems that actually work — and I've seen work in the real world — have a human review built in at the right places. So when you're designing these systems, you have to be deliberate about where you sit in the loop, or where somebody who's engaging with the system is going to get feedback or give feedback in the loop. And usually that's in either the input stage or the output stage, where we're doing a quality review so that we can make sure it's good before it goes live.</p>
+    <p>So in my content system, for example, the AI does all the heavy lifting. It's going to draft, check, and format as per my rules, but nothing's going to get published without me seeing it first. I want to make sure that it meets my human criteria before publishing. I've not yet come across a system that's powerful enough and knows me well enough to get past this human-in-the-loop stage. We can get 95% of the way there with this agentic AI system.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The human-in-the-loop principle maps directly to your AQuA standard. In AQuA-compliant model QA, an independent reviewer signs off before a model output becomes a decision input — the model doesn't self-certify. Your level-4 research system should work the same way: the <code>ch-accounts-extractor</code> skill extracts, flags, and writes a draft row; you review that row before it's committed to the master 96-firm database. That review gate is also where you catch the systematic errors that matter most — unit scaling mistakes, entity mismatches, a Keystone-vs-Keystone namesake confusion. Design the gate in from day one; don't bolt it on after you've already trusted 96 rows.</p></aside>
+
+    <h2>The tools at level 4 — and why it's just files in folders</h2>
+    <p>So the tools at this level are not things like Claude Code out of the box anymore. They're things like the agentic operating system, which is what I'm building inside my own community, and OpenClaw or Hermes. So OpenClaw is the open-source personal agent that has absolutely skyrocketed this year. Both are taking the exact same approach: build a richer system of files on top of the base agent so it can handle actual real complexity and feed context at the right time, with a human in the seat with a bit of control too.</p>
+    <p>And here's the bit that nobody actually mentions — the bit where you can probably at this point breathe a sigh of relief. It's not as complicated as it sounds. Because underneath all this, it's just files in folders. So the fancy terminology is pretty much just a front, and what's really happening is we're giving the model access to the right file in the right folder at the right time. That is simply it. So a skill, for example, is just a markdown file. The brand voice, the quality rules, the memory — all readable and editable directly in your files. So organising something like this is actually closer to building a Notion workspace than it is to writing code, which means this isn't just for developers. And the audience for agentic AI systems is actually business owners, knowledge workers, people who want their operation to actually run on AI without learning to code.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"The agentic operating system," "OpenClaw," and "Hermes" are <em>community and creator terms</em>, not official Anthropic products. They describe opinionated assemblies of CLAUDE.md + skills + subagents + commands into a structured personal system. The underlying building blocks — skills, CLAUDE.md, MCP servers, subagents, hooks — are real official Claude Code features. The wrapper frameworks are third-party or community tooling whose specifics change quickly. Build on the official primitives; treat the framework names as pointers to ideas, not stable APIs.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>"It's just files in folders" is the most liberating reframe in this episode. Your 96-firm research system already <em>is</em> files in folders — a <code>CLAUDE.md</code> at the project root, a <code>skills/</code> directory with markdown files for each extraction or analysis task, a <code>memory/</code> file that records extraction progress and company-specific notes, and an <code>mcps/</code> config that wires in the Companies House and Notion servers. You don't need to learn a new programming language. You need to get deliberate about folder structure and which markdown file carries which instruction. That's organisation, not engineering — and it's well within your existing working style.</p></aside>
+
+    <h2>The four levels — summary</h2>
+    <p>So to wrap up, we've got four levels. Level one is chatbots. You're going to paste something in, get text back, but it's all advice and no action. Then we hit AI workflows — you're building out a pipeline in an automation tool, and the AI is going to fill in some of the gaps, but it's going to follow the same steps in the same order every time. We want it to be a little bit more autonomous in level three, where we hand it off to an agentic workflow. So you're basically giving it a goal, and the agent is going to determine the steps with your context. And that's when we wrap it in a harness, like Claude Code. But if you really want to achieve production-grade results — things that are going to run 95% without you — then you need to develop agentic AI systems, where you've got multiple skills, a shared memory, coordinated by the system with you in the loop exactly where it counts. And we've distilled this to just folders and files on top of something like Claude Code and Codex. So if you found this helpful, you might want to learn how to build your own level-four agentic AI system. So we'll show you how we made ours in the next video.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Map your own work to the four levels right now. Your one-off CH filings in the browser: level 1. Your Python scraping scripts: level 2 (fixed steps, no judgment). Your Claude Code sessions where you give it a goal and it figures out the extraction path: level 3. What's missing for level 4: skills for each distinct task type (extraction, ratio analysis, drafting), a <code>CLAUDE.md</code> memory that accumulates inter-session knowledge about the 96 firms, MCP connections to Companies House and your Notion database, and a deliberate review gate before anything writes to the master ledger. The gap between where you are and level 4 is a folder structure and about five markdown files — not a software engineering project.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Identify your current level per task.</b> Take three recurring research tasks — e.g. CH filing extraction, year-on-year salary-survey consistency check, Substack firm-profile draft — and classify each as level 1, 2, or 3. For each one at level 1 or 2, write one sentence describing what goal you'd give a level-3 Claude Code run to replace the manual step.</li>
+      <li><b>Sketch a level-4 skill inventory.</b> Open a blank file called <code>skills-inventory.md</code> in your consultancy-research project. Write one line per skill you'd want: name, what it does, what files it needs. Aim for five to eight. This is the design document for your level-4 build — the coding follows from it, and most of it is just writing instructions in plain English.</li>
+      <li><b>Wire up your first memory file.</b> Add a <code>CLAUDE.md</code> to your consultancy-research folder containing: your 96-firm schema (column names and types), the AQuA rules that must hold for every extracted figure, and a running list of company-specific extraction notes (e.g. "Keystone Economics — confirm which entity; two namesakes on CH"). Run one extraction session with it present and observe whether Claude Code respects the constraints without you re-stating them.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Chatbot (level 1)</dt><dd>A conversational AI interface (ChatGPT, Claude web) that responds to input but does not execute actions or retain dynamic context between sessions. Passive; advice without action.</dd>
+      <dt>AI workflow (level 2)</dt><dd>A fixed pipeline built in automation tools (n8n, Zapier) where the AI fills defined steps but the execution path is always the same. Automated but not adaptive.</dd>
+      <dt>Agentic workflow (level 3)</dt><dd>A goal-directed run where the model decides its own execution path inside a harness. You give it the goal; it works out the steps. Claude Code is the main example.</dd>
+      <dt>Agentic AI system (level 4)</dt><dd>A multi-skill, memory-enabled, MCP-connected system that coordinates specialised agents with a human review at defined points. Production-grade; runs 95% without you.</dd>
+      <dt>Harness</dt><dd>The infrastructure around the model that gives it agency: file access, shell execution, tool calls, and the loop to iterate on its own output. Claude Code is a harness; a browser chat tab is not.</dd>
+      <dt>ReAct loop</dt><dd>Reason + Act: the inference cycle where the model reasons about the next step, takes an action (tool call, file edit), observes the result, and repeats until done. The engine inside every agentic run.</dd>
+      <dt>Skill</dt><dd>An official Claude Code feature: a <code>SKILL.md</code> file with a YAML header and instructions for a specific task. Only the name/description loads into context until the skill is invoked — progressive disclosure that keeps context lean.</dd>
+      <dt>MCP (Model Context Protocol)</dt><dd>An open standard for connecting external tools and data sources to a harness. An MCP server exposes named tools the model can call. Companies House, Gmail, and Notion MCPs all work this way.</dd>
+      <dt>Memory</dt><dd>Persistent context carried across sessions. The simplest form is a markdown file (<code>CLAUDE.md</code>) the model reads each session; more advanced forms use structured databases the model writes to. Prevents starting from zero every run.</dd>
+      <dt>Human in the loop</dt><dd>A deliberate design point where a person reviews output before it proceeds — at input (goal-setting), mid-process (phase gate), or output (quality review). Not optional in production systems; analogous to the AQuA independent-review step.</dd>
+      <dt>Harness engineering</dt><dd>Simon's term (community usage, not official Anthropic language) for the practice of assembling skills, memory, MCPs, and review gates into a level-4 system. The jump from level 3 to level 4.</dd>
+      <dt>OpenClaw / Hermes</dt><dd>Community-created open-source personal agent frameworks — opinionated assemblies of files and skills on top of Claude Code. Not Anthropic products; useful pointers to the level-4 pattern but their specifics change rapidly.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-07-claude-code-has-a-new-ui-pair-it-with-claude-os.html"><span class="dir">← Previous</span>Claude Code has a new UI (pair it with Claude OS)</a>
+    <a class="next" href="ep-09-creating-your-own-agentic-os-is-easy-insanely-powerful.html"><span class="dir">Next →</span>Creating Your Own Agentic OS is Easy (Insanely Powerful)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=kwRTUw8pb2c" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

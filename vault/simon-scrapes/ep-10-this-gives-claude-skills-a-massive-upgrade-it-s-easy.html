@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>10. THIS Gives Claude Skills a Massive Upgrade (It's Easy!) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=FD53kEpLh9c" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 10 · Simon Scrapes</div>
+    <h1>THIS Gives Claude Skills a Massive Upgrade (It's Easy!)</h1>
+    <div class="meta">
+      <span><b>12:56</b> runtime</span>
+      <span><b>36K</b> views</span>
+      <span>Published 30 Apr 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=FD53kEpLh9c" target="_blank" rel="noopener">youtu.be/FD53kEpLh9c</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/FD53kEpLh9c"
+    title="THIS Gives Claude Skills a Massive Upgrade (It's Easy!)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">A single skill is a module, not a product — the upgrade is wiring several small focused skills into an <em>orchestrated skill system</em> where each output feeds the next automatically, end to end, without you in the middle.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon diagnoses two failure modes that kill the value of Claude Code skills: using them in isolation (one prompt, one output, still manual in between) and over-engineering them into a single mega-skill that loses modularity, reusability, and the progressive-disclosure benefit Anthropic designed in. The fix is a <em>skill system</em>: a small orchestrator skill that wires multiple focused skills in sequence, managing inputs, outputs, handoffs, human-in-the-loop checkpoints, and display. He walks through a real five-skill YouTube short-form video pipeline — transcript extraction → clip selection → reframe/face tracking → editing/illustrations → packaging — as a worked example, then shows how a single transcript skill feeds three different skill systems simultaneously.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Your research pipeline is already a skill system waiting to happen: pull accounts → extract numbers → QA → append to database → draft firm profile → publish. Right now you are the connector between those steps — pasting output from one into the next. This episode gives you the architectural pattern to eliminate that manual wiring. The orchestrator-plus-subagents model maps directly onto your AQuA-compliant workflow: each stage is isolated, auditable, and replaceable without touching the others — exactly what a model QA standard requires.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Skill systems</span>
+    <span class="chip">Orchestrator skill</span>
+    <span class="chip">Modular skills</span>
+    <span class="chip">Progressive disclosure</span>
+    <span class="chip">Subagents</span>
+    <span class="chip">Context management</span>
+    <span class="chip">Sequential workflow</span>
+    <span class="chip">Skill library</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The problem with downloaded skills</h2>
+    <p>Downloaded Claude Code skills are generic, they're bloated, and they're also at the same time lacking context. But that's not even their biggest problem. They're still built for one task at a time — think copywriting, researching, whatever. Whilst real businesses don't operate like that at all, because real work isn't one process document with five different steps. It's a sequence of processes that need to connect to each other. So if you keep thinking of skills in isolation, you'll never build out systems that run end to end. So in this video you learn how to turn your skills into building blocks for bigger workflows. This is what Simon calls skill systems, so that each output feeds the next and actually drives a real business goal.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A Claude Code <strong>skill</strong> is a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus optional bundled scripts or reference files. It packages a reusable workflow Claude invokes by name. The critical design property is <strong>progressive disclosure</strong>: only the name and description sit in context at all times; the full body loads only when the skill is invoked. This keeps your always-on context lean and fast, and is precisely what breaks when you build mega-skills.</p></aside>
+
+    <h2>Mistake one — using skills in total isolation</h2>
+    <p>So here's the thing about skills. They're designed to do one thing really well. If you actually read Anthropic's own guidance on skills, they're really clear about this. Skills are supposed to be modular, composable building blocks. The official line is that Claude can load multiple skills simultaneously, and your skill should therefore work well alongside others — not assuming it's going to be the only skill running. So skills are effectively packages of instructions and context with one job each, built to plug into bigger systems. But that's where most people go wrong. They take that one-job rule and use it the wrong way.</p>
+    <p>The first mistake is using skills in total isolation. Let's say you download a copywriting skill — the Corey Haynes copywriting skill from his marketing skill pack. You want to use it to improve the way you write LinkedIn posts. You manually ask it to draft a LinkedIn post using your copywriting skill. It's going to output some copy, but what have you actually done here? You've used Claude Code the same way you would actually use something like ChatGPT. You've asked it a question, it's come back with advice. Yes, it's written a file, but it's effectively given you a single isolated output. You're still going to do the topic research yourself. You're still scheduling on LinkedIn manually. And that's because you're treating this copywriting skill as the full process — but it isn't the full process.</p>
+    <p>Think about all of the other manual steps. You need to decide on a topic. You need to do research into what other people have posted about that topic. You then might find associated visuals to go with it, and then you're scheduling on LinkedIn. But what if you could actually package all of that together into one skill system? Instead of a copywriting skill, it's a content creation skill that embodies a copywriting skill, a research skill, a scheduling skill, and it runs on autopilot every week without your input. That's exactly what skill systems are about.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This isolation failure is exactly where your Companies House pipeline sits right now. You have a mental sequence: navigate to the company → download accounts PDF → extract turnover, operating profit, headcount → paste into your 96-firm database. Each step is a potential skill, but you're the connector. A <code>ch-firm-profiler</code> orchestrator skill could chain a <code>ch-accounts-downloader</code>, a <code>financial-extractor</code>, and a <code>db-appender</code> in sequence — one prompt, zero manual paste steps. The output of the downloader (a local PDF path) becomes the clean input for the extractor automatically.</p></aside>
+
+    <h2>Mistake two — the mega-skill</h2>
+    <p>Then you have the opposite end of the spectrum, and arguably this one's worse. People feel that pain of using skills in isolation, so they end up overcorrecting. They build one giant skill that tries to do everything — think a 1,000-line <code>skill.md</code> document. And this is surprisingly common, actually. Just check out some marketplace <code>skill.md</code> docs, and unsurprisingly, most of them are built by AI, and therefore they overcompensate to try and niche down on a specific process. You can think of this like a content creation skill that is not only handling the research, it's handling the writing, the repurposing, the scheduling, and posting — all condensed into one huge <code>skill.md</code> file.</p>
+    <p>And this sounds really smart, but it's not, because you've just thrown away everything that made skills useful in the first place. You lose modularity: the copywriting logic inside that mega skill is now locked in, and you can't reuse it. It won't go on your newsletter intros or your landing page unless you rewrite the skill for those separately. You lose maintainability: when you update it now, you're hunting through a 1,000-line skill for the right lines, and every other workflow that needs this copywriting skill has to be updated completely separately. And you lose the inbuilt progressive disclosure. Anthropic specifically designed skills to load only the context that's needed — that's how they keep responses fast and maintain high quality. A mega skill blows that up. Everything loads at once when the skill loads, the model gets overwhelmed, and the quality of output drops significantly.</p>
+    <p>This is something Anthropic's own teams have been clear about. Their growth marketing team built ad copy automations, and they explicitly broke them into specialised subagents — not skills, but subagents. One for headlines, one for descriptions — not because it was easier to write, but because in their words, it makes debugging easier and improves output quality when dealing with complex requirements. So if you take one giant content creation skill — research, writing, visuals, scheduling — what you should actually do is break that down into four small skills, each one doing its job properly, each reusable, each updateable independently.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Progressive disclosure</span>
+    <p>Progressive disclosure is the key scaling property of the skills design: Claude loads only a skill's <code>name</code> and <code>description</code> into the always-on context, not its full body. The full instructions only load when the skill is actually invoked. This keeps the base context lean for sessions with many skills defined, and it's the property a mega-skill destroys by forcing Claude to hold a thousand lines of instructions from the moment it fires.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon's point about Anthropic's marketing team using <em>subagents</em> (not skills) for each ad component is worth sitting with. For output-quality on complex tasks, subagents — each with their own isolated context window — may outperform even a well-composed skill chain. The skill system pattern and the subagent pattern are complementary, not competing; skills can invoke subagents as part of their execution.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A mega-skill temptation in your world would be a single <code>salary-survey-qa</code> skill that ingest all 25 years of data, runs outlier detection, checks year-on-year consistency, flags PII, and writes a report — all in one. The progressive-disclosure argument bites hard here: a 25-year dataset plus QA rules plus chart logic would overwhelm context from the start. Instead: <code>survey-loader</code> (one year at a time), <code>outlier-detector</code>, <code>yoy-consistency</code>, <code>pii-scanner</code>, <code>report-writer</code> — five focused skills that can each be tested and updated independently, reused across the 2026 and 2027 surveys.</p></aside>
+
+    <h2>The right answer — the skill system</h2>
+    <p>With skills in isolation, you're still the connector between them. But on the other side, mega skills lose all the benefits of the original skill design. So both aren't quite right, and the right answer is actually somewhere in the middle. You build small, focused skills, and then you wire them together into something bigger using one orchestrator skill. So skills are effectively treated then as components of the skill system.</p>
+    <p>And really, what we're talking about here is not novel at all. It's an automation made up of multiple skills being chained together in a sequence, with the intelligence of an LLM to route and format inputs and outputs, as well as check in with the human when required. It's exactly the same way that OpenClaw and Hermes are able to execute tasks on your behalf. So at its crux, a skill system is a prompt and an instruction set wired around multiple skills. The prompt kicks off, and the instruction set is the brain that runs the chain or the sequence of multiple skills.</p>
+    <p>That instruction set has to understand five things fundamentally. One: the skill architecture — which skills are involved and in what order. Two: the inputs needed for each skill — what does each step need to do its job properly. Three: how outputs hand off between the skills — the output of skill one has to become the clean input for skill two. Four: the human-in-the-loop checkpoints — where do you step in to approve or adjust before the system carries on, and this varies from user to user. And five: how visual results are actually going to get displayed back to the user — markdown files with a link, an HTML dashboard, PNGs — it totally depends on what the skill is creating. And the wiring between them — and the ability to work until completion with this loop — is what makes it actually work end to end without you sitting there copying outputs and pasting them into the next prompt.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Orchestrator skill</span>
+    <p>An orchestrator skill is a <code>SKILL.md</code> that doesn't do the work itself — it manages the sequence. It knows which component skills to invoke, what to pass between them, where to pause for human review, and how to surface results. This maps directly onto the <strong>orchestrator / subagent</strong> pattern that Anthropic's own documentation describes as "sequential workflow orchestration": explicit step ordering, clear dependencies between steps, and validation at each stage.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"OpenClaw" and "Hermes" are community-created frameworks, not official Claude Code features. They implement a similar orchestration idea via their own conventions. Treat them as useful inspiration for the pattern rather than authoritative references — specifics change rapidly and they may not reflect your version of Claude Code.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The five things an orchestrator instruction set must know map cleanly onto your consultancy-database pipeline. Write a <code>ch-pipeline-orchestrator</code> skill that specifies: (1) skills in order: <code>ch-accounts-downloader</code> → <code>financial-extractor</code> → <code>ratio-calculator</code> → <code>db-appender</code>; (2) inputs per step — company number for step 1, PDF path for step 2; (3) handoff format — a JSON row after step 3; (4) checkpoint — human approves the extracted numbers before DB write; (5) display — a rendered HTML diff showing what changed in the 96-firm table. That's your end-to-end pipeline as a single invocable skill.</p></aside>
+
+    <h2>A real skill system — five-skill video pipeline</h2>
+    <p>This is exactly the pattern that Anthropic talks about in their own skills guide. They call it sequential workflow orchestration: explicit step ordering, clear dependencies between steps, and validation at each stage. So skills are effectively your components and skill systems are the automations you build with them — a wrapper around skills. Let me show you what one looks like in practice.</p>
+    <p>Here's a skill system built to run every single week, taking one long-form YouTube video and producing five short-form clips. They're face-tracked, reframed to portrait mode, captioned, illustrated, and ready to post on YouTube Shorts, LinkedIn, and X. A massive shout-out to Enrique who built V1 of this. It's a brilliant flow that runs on autopilot in the background and gets one task done every single week without you touching it.</p>
+    <p>The orchestrator skill contains the prompt connecting them — dead simple: take this video from a URL and produce five short-form clips ready to post. The instruction set is then a <code>skill.md</code> file that orchestrates the full chain and makes sure outputs go from one step to the next. The skills that make this up are:</p>
+    <p><strong>Skill one: transcript extraction.</strong> Input is the video URL; output is a word-level timestamped transcript. That precision really matters because later you sync pop-out illustrations to the exact frame when somebody says a keyword.</p>
+    <p><strong>Skill two: clip selection.</strong> Working out what hooks you want, generating five clip-worthy moments, each scored across five different categories to work out how shareable that clip is.</p>
+    <p><strong>Skill three: reframe / clip extraction.</strong> Input is the approved clips from the source video. It runs face detection on every sampled frame — faces appear in the short-form clips — then renders each clip down to 9×16 portrait mode with continuous face tracking, so even if the face moves across the screen, it tracks and stays the primary focus.</p>
+    <p><strong>Skill four: editing.</strong> Input is the reframed clip plus the transcript; output creates pop-out illustrations timed to the exact frame when a keyword is spoken, built in Remotion so every illustration is completely unique — no repeated visuals between videos. Something that would take a human editor 20–30 minutes per animation, generated in minutes automatically.</p>
+    <p><strong>Skill five: packaging.</strong> Input is the complete rendered clip; output bundles a thumbnail, description, title, and the file, getting it into a position where it's ready to schedule on different platforms via zerno.com.</p>
+    <p>That is a skill system: five skills, one automation end to end, with one orchestration skill wrapped around it. The whole thing runs from a single prompt — kick it off with a video URL, walk away, and it pings you when it's done with all the outputs just to check.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context management in skill chains</span>
+    <p>Simon makes a point that often gets missed: when chaining skills, each skill in the chain gets <em>exactly what it needs to do its job — nothing more and nothing less</em>. This is achieved by spinning off <strong>subagents</strong> at relevant parts of the chain to keep each context window narrow and the quality of each output high before it's passed on. This is not just good practice — it's why skill systems produce better outputs than a single mega-session attempting the same work.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Your SPE salary survey pipeline has a directly analogous five-skill structure waiting to be built: (1) <code>survey-ingestor</code> — reads the raw submission Excel and normalises headers; (2) <code>outlier-detector</code> — flags statistical outliers against the prior year; (3) <code>pii-scanner</code> — checks for personally identifiable fields that need anonymising; (4) <code>yoy-consistency</code> — runs your year-on-year break-detection logic across the 25-year series; (5) <code>report-builder</code> — writes the AQuA-compliant QA summary. Each runs as a subagent in isolation. The orchestrator accepts the raw submission path and produces a signed-off QA report with no manual wiring between stages.</p></aside>
+
+    <h2>Skill reuse across multiple skill systems</h2>
+    <p>When you're chaining skills like this, context management becomes everything. Each skill in the chain gets exactly what it needs to do its job — nothing more and nothing less. We spin off subagents at relevant parts to keep the context window narrow and the quality of each output high before it's passed on between the skills. And those skills aren't locked into this one skill system. Once you've built your skills as proper modular components, they plug into other skill systems too. So you have a skill library — a refined library of let's say 10 to 30 skills that you build once and reuse everywhere. Any changes you make to the transcript skill will automatically be ported into any skill system that's using it.</p>
+    <p>In practice, it might look a little bit like this. You have a transcript skill that obviously takes a video and transcribes it. That feeds into the short-form video skill system. But you use the exact same transcript skill for a newsletter creation skill system — you chain it to push into a copywriting skill that generates a newsletter based on a video you've produced. And you could also turn that into a blog post and have it in an SEO content production skill system too. So systems you build get faster because you're already most of the way there. You've got a refined set of skills which feed into multiple skill systems. By the time you've got 10 skill systems running, you might only need 20 or 30 unique skills powering all of them.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill library</span>
+    <p>A skill library is the set of modular skills you maintain independently of any specific workflow. Because each skill has one job and a stable interface (inputs in, outputs out), it can be composed into any skill system that needs that capability. The library grows incrementally — you build a skill once, then discover it's useful in three other automations you hadn't anticipated. This is the compounding return Simon is pointing at: each skill you build well is a permanent reusable asset, not a one-off.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Your <code>ch-accounts-downloader</code> skill — once built and debugged against the Companies House API — slots into your 96-firm database pipeline, your PE-ownership mapping pipeline, and any future Substack deep-dive that needs a fresh filing. Your <code>financial-extractor</code> — trained to handle UK <em>£000s</em> units, FRS 102 format, and group versus company accounts — is reusable across all three. Build those two skills to production quality now, and every subsequent pipeline inherits them for free. That's the skill library compounding effect in your domain.</p></aside>
+
+    <h2>What's coming — skill systems to ship</h2>
+    <p>It's the exact conversation that's been happening inside the Agentic Academy, where there's recently been a vote on what skill systems to build out next. The slate includes ad generation and outline detection, SEO and GEO content production (blog generation and page optimisation), social media carousels with long-form content generating those carousels, and a whole bunch of other systems that are starting to be deployed — plug-and-play, one-click installs for everyone inside the Academy. The point is to get high-quality outputs, not AI slop. There's no point in doing this if you're going to generate rubbish outputs. The focus is on producing high-quality outputs that save a ton of time on all admin tasks.</p>
+    <p>Skills aren't single isolated endpoints, and they're not meant to be mega files that do everything, either. They're modular components designed to plug into skill systems. Build them small, build them really focused, and build them around real workflows. And when you start thinking about it like that, you start to design every single skill for reuse from day one. Next video: the full Agentic OS setup — how to inject the right context into these skill systems without high effort.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The "Agentic Academy" is Simon's paid community, not an Anthropic product or standard. The skill systems he plans to ship are community contributions that may vary in quality and may not reflect best practices as Claude Code evolves. Evaluate any downloaded skill system critically: read the orchestrator's <code>skill.md</code> to understand what it's actually doing before you run it on real data.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Map your CH pipeline onto the five-element orchestrator spec.</b> Write out — in plain English first — the five things your <code>ch-pipeline-orchestrator</code> must know: which skills in what order, inputs per step, handoff format between steps, one human-approval checkpoint (before DB write), and how results display. Then turn that spec into a real <code>SKILL.md</code> orchestrator and test it against three companies in your 96-firm list.</li>
+      <li><b>Build one reusable skill to production quality.</b> Pick the skill with the highest reuse potential in your work — most likely a <code>financial-extractor</code> that reads a Companies House PDF and outputs a structured JSON row (turnover, operating profit, headcount, <code>£000s</code> flag, source page). Make it handle FRS 102 format and group-versus-company account structures. Once it's solid, it's a permanent asset in your skill library that every future pipeline inherits.</li>
+      <li><b>Refactor the salary-survey QA into five focused skills.</b> Split your current manual QA process into: <code>survey-ingestor</code>, <code>outlier-detector</code>, <code>pii-scanner</code>, <code>yoy-consistency</code>, <code>report-builder</code>. Write a simple orchestrator that chains them with a human approval checkpoint after <code>outlier-detector</code>. Run it on the 2024 data (where you know the answers) to verify output quality before touching the 2026 live submission.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Skill</dt><dd>A <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus optional bundled scripts — packages a reusable, single-job workflow Claude invokes by name.</dd>
+      <dt>Progressive disclosure</dt><dd>The design property of skills where only the name and description are loaded into context at all times; the full body loads only when the skill is invoked — keeps base context lean.</dd>
+      <dt>Skill system</dt><dd>A community pattern (not an official Anthropic term) for an orchestrator skill that wires several component skills in sequence, managing inputs, outputs, handoffs, and human checkpoints end to end. Equivalent to what Anthropic calls sequential workflow orchestration.</dd>
+      <dt>Orchestrator skill</dt><dd>The coordinating <code>SKILL.md</code> that specifies skill architecture, routes inputs/outputs between component skills, and controls checkpoints — it directs without doing the work itself.</dd>
+      <dt>Mega-skill</dt><dd>An anti-pattern: a single massive <code>SKILL.md</code> trying to do everything, sacrificing modularity, reusability, maintainability, and progressive disclosure in one go.</dd>
+      <dt>Skill library</dt><dd>Your maintained set of well-built, single-job skills — a permanent reusable asset base that compounds in value as more skill systems draw on the same components.</dd>
+      <dt>Subagent</dt><dd>An agent spawned with its own isolated context window and tool set to do focused work; only its final summary returns to the main agent. Used within skill chains to keep per-step context narrow and output quality high.</dd>
+      <dt>Sequential workflow orchestration</dt><dd>Anthropic's own term for the pattern Simon demonstrates: explicit step ordering, clear dependencies between steps, and validation at each stage — what a skill system implements.</dd>
+      <dt>Context management</dt><dd>In a skill chain, ensuring each step receives exactly the information it needs — no more — so the model's limited context window is used efficiently and quality stays high at every stage.</dd>
+      <dt>Human-in-the-loop checkpoint</dt><dd>A deliberate pause in a skill system where the human reviews and approves (or adjusts) the output before the automation proceeds to the next step — essential for high-stakes work like database writes or publications.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-09-creating-your-own-agentic-os-is-easy-insanely-powerful.html"><span class="dir">← Previous</span>Creating Your Own Agentic OS is Easy (Insanely Powerful)</a>
+    <a class="next" href="ep-11-master-80-of-claude-code-just-learn-these-15-things.html"><span class="dir">Next →</span>Master 80% of Claude Code. Just Learn These 15 Things.</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=FD53kEpLh9c" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

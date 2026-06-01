@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>30. Has Claude Code Just Killed N8N? — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=5U3D6o6Gi_g" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 30 · Simon Scrapes</div>
+    <h1>Has Claude Code Just Killed N8N?</h1>
+    <div class="meta">
+      <span><b>11:25</b> runtime</span>
+      <span><b>3.9K</b> views</span>
+      <span>Published 15 Feb 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=5U3D6o6Gi_g" target="_blank" rel="noopener">youtu.be/5U3D6o6Gi_g</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/5U3D6o6Gi_g"
+    title="Has Claude Code Just Killed N8N?" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Claude Code hasn't killed n8n — but it has exposed three structural gaps in n8n's design that force a clear division of labour: Claude Code builds the product shell, n8n owns the business logic where visual debuggability is non-negotiable.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon, an n8n educator with two years of teaching experience, argues the "is n8n dead?" question misframes the situation entirely. He identifies three gaps where Claude Code now leads: raw build speed (prompting is as fast as dragging nodes), product capability (Claude Code can produce ownable, saleable, multi-tenant software — something n8n's licence explicitly forbids), and version/state management at scale (n8n offers no propagation of shared logic across multiple workflows). Against that, he makes the case for n8n's irreplaceable strength: a visual execution-history log that any non-technical team member can use to debug in plain English. He concludes with the hybrid system he actually runs.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>The n8n-vs-Claude Code framing is exactly the build-or-automate decision you face on every scraping and data-pipeline task: Companies House account extraction, salary-survey ingestion, or FP&amp;A reporting packs. Simon's framework — put repeatable, business-critical logic where it can be visually inspected and debugged by any team member; use Claude Code for the bespoke, ownable scaffolding around it — maps directly to how you'd separate a stable AQuA-audited core from the ad hoc analysis that wraps it. The point about version propagation is also a live issue in your 96-firm database pipeline, where the same extraction logic needs to run consistently across firms.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">n8n vs Claude Code</span>
+    <span class="chip">MCP servers</span>
+    <span class="chip">Skills</span>
+    <span class="chip">Visual debuggability</span>
+    <span class="chip">SaaS licensing</span>
+    <span class="chip">Version propagation</span>
+    <span class="chip">GSD</span>
+    <span class="chip">Ralph loop</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>Introduction — two tools, one practitioner, one question</h2>
+
+    <p>Claude Code is blowing up right now, and I've been right in the middle of it. I've been building full production systems, shipping MVPs, testing frameworks like GSD and the Ralph loop. But I've also been teaching n8n now for over 2 years to thousands of people, and I genuinely love it. So, I've been using both daily, side by side, and I've been paying very close attention to where one is pulling ahead and where the other one still wins.</p>
+
+    <p>And I keep seeing these posts everywhere — is n8n dead? Is Claude Code going to kill n8n? And look, I do get why people are asking this, but I actually think they're asking the wrong question entirely. Because n8n and Claude Code aren't actually competitors. They do completely different jobs, and once you see them as one system, not two, what you can build actually changes dramatically. So, in this video, I'm going to give you my honest wish list for what n8n needs to ship to stay on top. But I'm also going to show you what Claude Code does now that n8n was never designed to do. So, three big gaps, my wish list for each one, and the system that we're actually running today.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · GSD ("Get Shit Done")</span>
+    <p>GSD is a community-built framework for Claude Code (not an official Anthropic feature) that structures a project into discrete phases — discuss, plan, execute, verify — each with its own context document. The goal is to avoid context drift on long builds by keeping each phase's scope narrow. Simon references it alongside the Ralph loop as an example of the more sophisticated orchestration patterns he's been stress-testing.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Ralph loop</span>
+    <p>The Ralph loop is a community pattern, also not an official Claude Code feature, that re-feeds a fixed <code>prompt.md</code> to Claude Code each iteration until a cap or stopping condition is reached. It enables unattended, repetitive runs — useful for batch extraction or repeated QA passes. Simon's reference signals he's operating at the more autonomous end of Claude Code usage.</p></aside>
+
+    <h2>Gap 1 — Speed: prompting now matches drag-and-drop</h2>
+
+    <p>So, let's get into number one. The whole promise of n8n was drag and drop, connect, and done. No code required at all. And that was genuinely faster than writing everything from scratch. I actually found n8n because I was trying to code a SaaS app back in 2024 as a non-developer, and it was super painful. But here's what changed — prompting Claude Code is now just as fast as dragging nodes. And in some cases, it's blown right past it.</p>
+
+    <p>I recently showed in a video me personally building a workflow in less than 10 minutes with Claude Code, the same one which I actually use in my business, which took me an hour to build in n8n. So, think about what you actually do when you build in n8n. You're searching for the right node, you're configuring credentials, copying and pasting JSON schemas, you're manually mapping fields one by one. And if you need any custom logic, you basically put it inside a code node and start writing some JavaScript anyway. But with Claude Code, with MCPs to connect your systems and skills properly set up, you just describe what you want. It handles all of the API syntax, the credentials, and most time-consumingly, all of the individual data mapping. And you've got a working system in hours, not days. And that includes end-to-end testing.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · MCP (Model Context Protocol)</span>
+    <p>MCP is an open standard for connecting Claude Code to external tools and data sources. An MCP <em>server</em> exposes a set of callable tools — for example, a Companies House MCP lets Claude look up filings; a Gmail MCP lets it read and send email. Simon's point is that once your key systems have MCP servers, Claude Code can orchestrate across them by natural-language description rather than requiring you to manually configure API credentials and field mappings in a visual canvas.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A Claude Code skill is a <code>SKILL.md</code> file with a YAML header (<code>name</code>, <code>description</code>) plus any bundled reference files or scripts. Only the name and description sit in context by default ("progressive disclosure"); the full body loads only when the skill is invoked. Skills package reusable workflows — Simon's "skills properly set up" comment means he's pre-packaged his key procedures so Claude Code can invoke them by name rather than receiving a long prompt each time.</p></aside>
+
+    <p>And the crazy thing is, iterating is even faster. You just tell it to write a test for this thing or handle this bug that's come up, and it's basically done in a few minutes. You just go away, do something else, come back, and it's done. Whereas in n8n, every single one of those changes means going back into the canvas, finding the right node, reconfiguring it, testing it. It's a lot more manual.</p>
+
+    <p>And actually, there's already a bit of a community around this trying to speed it up inside n8n. The n8n MCP server and the n8n skills pair with Claude Code and n8n — together, you can use Claude Code to actually build or edit your workflows much faster. Now, n8n have their own inbuilt workflow builder, but from my experience, it's not as powerful as Claude Code plus these connections. And people are building with these things together. Network Chuck built a full integration where n8n triggers Claude Code for specific use cases. And they're doing that because they know alone, one of these tools isn't enough. Whereas together combined, they're much better. So, the drag-and-drop speed that made n8n actually special in the first place, back when I started in 2024, well, Claude Code now just matches that with a prompt.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The speed argument applies directly to your Companies House extraction pipeline. Right now, pulling the latest accounts for a firm involves: finding the right filing, downloading the PDF, extracting turnover/profit/headcount, and pushing it into your 96-firm SQLite database — a multi-step process you typically do manually or in a fragile script. With your Companies House MCP already connected, you can describe the whole pipeline in one Claude Code prompt: "For company number 12345678, find the most recent full accounts, extract turnover, operating profit, and average headcount, and upsert into the firms table." Claude Code handles the credential routing and field mapping — what would take 30 minutes of n8n node configuration becomes a 2-minute prompt. The n8n approach still makes sense for the <em>scheduled trigger</em> (e.g., "every Monday, pull any firms whose last filing date is over 12 months ago") — but the extraction logic itself is faster to build and iterate in Claude Code.</p></aside>
+
+    <h2>Gap 2 — Product capability: Claude Code builds what n8n's licence forbids</h2>
+
+    <p>So, Claude Code is fast, but speed isn't the only thing that's shifted over the last few months. There's something bigger that n8n simply wasn't built to do. So, here's where the conversation gets really interesting because people keep comparing n8n and Claude Code like they're the same category of tool, and they're not.</p>
+
+    <p>And actually, if you go to the n8n website, they even tell you exactly what they're for. If we hover over the use cases here, we've got building AI agents, RAG, IT operations, lead automation, supercharge your CRM, back-end prototyping. And if you click into the back-end prototyping page, we can go down to the properties here on why we would choose n8n. So, we're going to build back-end prototypes quickly. So, we're increasing our speed of learning by using n8n. We're gaining better observability than code — really important one — and we're improving efficiency of our business operations. So, if we think about it, that's all internal ops, observability, and fast experiments. And that makes total sense. That is genuinely what n8n is brilliant at.</p>
+
+    <p>But here's the thing a lot of people in communities around n8n have wanted for a long time. We've wanted to build complete SaaS products, multi-tenant systems, client portals with their own logins, and full product stacks, basically. And I do get that. When you're inside n8n all day, and you can see what it can do, how powerful it is, you naturally start to think, okay, how can I progress on this and just build a whole product in here? But actually, if you go and check the licence, and I've got a specific video covering this and what's allowed versus what's not allowed, n8n's sustainable use licence restricts usage to your own internal business purposes only. So, it specifically says you can't sell a product where the value derives entirely or substantially from the n8n functionality. So, anything like white-labelling it, hosting it for clients, building a multi-tenant SaaS on top of it — that was never what n8n was designed for. It's something that we just wanted to do with it.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon's licence point is accurate as of early 2026 for n8n's "sustainable use" community licence. If you're using n8n Cloud or a paid plan the terms may differ slightly — always check the current licence text for your tier before building any client-facing product around it.</p></aside>
+
+    <p>And this is where Claude Code completely changes the game. Because with Claude Code, I can build a full multi-tenant back-end in a few days. I can attach a proper front end, have a database with authentication, and even attach Stripe billing to take payments. We can build out client portals where each client can log in, see their own data, interact with their own interface, and I own every line of code that comes from Claude Code. Yes, I have to pay for the tokens to produce it, but I still own the code, and I can host that wherever I want.</p>
+
+    <p>So, when it comes to Claude Code and you're a business owner, it's like being able to build your own internal tool with a proper interface that your team actually logs into every single day, and not just have a workflow running in the background. It becomes a product. And if on the other side you're building an agency, imagine going from selling these £2K n8n workflows that the client still has to operate in the back-end to actually selling £10K-plus products with dashboards, client logins, branded front ends. It's a lot more bespoke with not much additional work. And for you, that's a completely different value proposition.</p>
+
+    <p>But if we go back to the point, n8n was never designed to do any of that. And it's not a criticism of n8n. Their own website, as we saw, tells you exactly what it's for. But Claude Code is designed to fill that gap completely, or that's how we use them together. So, n8n builds your internal automations, Claude Code builds customer-facing products. And the moment you see them that way, the "is n8n dead?" question kind of answers itself.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The product-capability gap matters less for your immediate work — you're not selling software products — but the ownership point is directly relevant to your HTML deliverables for the Substack series and the SPE salary-survey report. Every annotated page, every AQuA'd chart, every dashboard you build with Claude Code is fully ownable, hostable, and shareable on your own terms. There's no SaaS platform taking a cut or restricting redistribution. More practically: if you ever productise the 96-firm consultancy database into a lightweight client portal (even just a password-protected static site with firm-level pages), Claude Code is the right tool for that build — n8n's licence would block that use case entirely.</p></aside>
+
+    <h2>Gap 3 — Version management: n8n has no propagation across instances</h2>
+
+    <p>So, we've got speed, and we've got product capability covered, but there's one more major gap that's been driving me mad, and it's the one I think n8n actually should fix. So, the biggest issue for any internal team running multiple workflows is this. Every n8n workflow is essentially in its own isolated little world. There's no global state management, there's no versioning across multiple instances, and that creates a massive problem when you start to scale.</p>
+
+    <p>So, picture this: you've got 10 workflows for 10 different clients. They all share the same core logic. And then you find a bug, or you want to improve that logic. In Claude Code, you just ask it to update one function, and you push it, and your multiple clients will receive the updates. Whereas in n8n, you're opening each workflow one by one — you'll know the pain. You're manually updating the same node configuration in all 10 of the workflows. And this can somewhat be circumvented if you use sub-workflows, but you still can't version them independently. You can't roll back one workflow without affecting the others, and you definitely can't do a global logic update across all your workflows in one go.</p>
+
+    <p>And it's not just an exclusively agency problem. If you're an internal team, and you've got five people who each built slightly different versions of the same workflow, which happens all the time, you still have to keep them all aligned. And these may be features that are available on n8n's enterprise plan or more so, but with Claude Code, we're pretty much able to do this for free.</p>
+
+    <p>So, here's my wish list for n8n. Give us a way to roll out versions across multiple instances. Let us treat that shared logic like shared code so that we can update once and just propagate it everywhere. Because right now, that is where Claude Code — I see it just running away with it. And it's what you need to scale fundamentally. So, without this, n8n really hits a ceiling at scale.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is your clearest live problem in the 96-firm database pipeline. The extraction logic — find latest full accounts, parse the relevant line items, normalise to a common schema — needs to run consistently across all 96 firms, and when you fix a bug (say, a parser that mis-reads a Note-based revenue figure), you need that fix applied everywhere in one go. In n8n you'd be editing the same node in 96 places. In Claude Code, the extraction function lives in one place in your codebase, you patch it once, and every firm gets the corrected logic on the next run. The propagation argument is essentially the case for keeping your extraction logic in version-controlled Python rather than distributed across a canvas.</p></aside>
+
+    <h2>Where n8n wins: visual debuggability no terminal can match</h2>
+
+    <p>So, I know I've just spent a few minutes now being pretty critical to n8n, but here's the thing — I'm absolutely not telling you to ditch n8n, not even close, actually. Because n8n still does something that Claude Code, in my opinion, genuinely can't match at this point. So, here's what the "n8n is dead" crowd actually keeps missing, and it's the thing that actually matters for most businesses.</p>
+
+    <p>If you look at n8n's execution history log, it's genuinely one of the most powerful debugging tools I've ever used. It is so visual and so easy to use. You can literally see every single run, you click on any node, and you can see exactly what data went in and what data came out. So, every branch, every condition, every transformation — it's all right in a visual interface. And for non-technical people like business owners, ops teams, clients who want to understand what happened and why, it's absolutely massive. Once they know the core fundamentals of the n8n interface, it's really easy to visually understand the bugs. You don't need to understand logging, you just need to click through and actually see it. And it's pretty much in plain English what the problem is, too.</p>
+
+    <p>And actually, this is why n8n, in my opinion, should stay as your core business logic layer. So, the automations that actually add value — the lead enrichment, the data processing, the client workflows — that's where I think n8n really shines. Because when something goes wrong, and ultimately, things always go wrong, anyone on your team can go into the interface and actually diagnose and help fix the problem. So, your core business logic should live where it can be inspected, tested, and debugged by the people who actually depend on it. And in my opinion, it's the same way in which you don't outsource the core parts of your business where you're actually adding value. You do those in-house. We want visibility of those areas, we want full control, and n8n gives us that.</p>
+
+    <p>So, don't get me wrong, Claude Code is incredible for building, but try handing a client the terminal or the code that you've created to a non-technical team and saying, "Here, check the logs." I mean, good luck with that. The visual transparency in n8n is actually probably where it shines the most. And right now, I've not found a solution for Claude Code that actually matches that visually. So, your business logic should live where your team can see it, where they can trust that it's going to be repeatable, debug it, and where they can again and again. And right now, for me, that's inside n8n.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Simon's visual-debuggability argument maps directly onto the AQuA Book principle that a model's logic should be auditable by someone other than its author. Your salary-survey compilation pipeline has exactly this property requirement: when the 2026 survey results differ from 2025, a colleague (or you in six months) needs to be able to trace which transformation produced the anomaly — which year, which firm, which field, which step. An n8n canvas with execution history gives you that inspection surface without requiring anyone to read Python. For the salary-survey QA loop specifically, n8n's visual log is worth preserving even if Claude Code handles the statistical outlier checks upstream. The two tools aren't in competition in this workflow — they're in sequence.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon notes he hasn't found a Claude Code equivalent to n8n's visual execution log as of February 2026. This is a genuine gap at the time of recording. Some community tooling (GSD's verify phase, custom hooks that write structured run logs) partially addresses it, but nothing yet matches n8n's click-through node inspection for non-technical users.</p></aside>
+
+    <h2>The hybrid system — how to combine them</h2>
+
+    <p>So, here's how we're actually building now, and it's the most powerful setup that I've ever used. Claude Code is building everything that n8n was never designed to do. The back-end infrastructure, the front ends, the client portals, the multi-tenant hosting, the auth, the databases — all stuff that I don't really want to build myself. So, it builds the packaging around the product, whereas n8n I'm using to handle the core business logic. It might take more time to build this way, but I have more control and I can debug and test in this way.</p>
+
+    <p>n8n is ultimately going to handle the automations that are actually going to drive value — the stuff that needs to be visual, debuggable, and accessible to anyone in the team. And when you combine them together, you're not just building workflows anymore, you're building systems — complete systems that you can sell, or you can operate entire businesses around.</p>
+
+    <p>So, is n8n dead? No, but it does need to keep up. So, my wish list is super simple. Close the speed gap — n8n's built-in builder needs to be better, needs to match the Claude Code n8n MCP, and give us the ability to propagate versions, too. But here's the bigger picture. The builders who figure out how to combine Claude Code and n8n into one system, they are going to leave everyone else behind, because they'll no longer be selling automations anymore, they'll be selling complete products and systems. So, if you want to see how we build full systems with Claude Code and n8n together, I've just released a complete course on exactly that. The link's down in the description below. Thanks for watching. Give it a like and subscribe if you want to see more content like this.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Simon's hybrid architecture — Claude Code for ownable, versionable code; n8n for visually inspectable business logic — is a useful mental model for your own toolchain. A concrete mapping for your work: use Claude Code to build a <code>firms-data-refresh.py</code> script that orchestrates Companies House API calls, PDF parsing, and SQLite upserts (ownable, version-controllable, propagatable); then use n8n to schedule that script on a trigger (e.g., "every Monday, check for new filings for any firm not updated in 30 days") and to surface the execution log to anyone who needs to verify the run completed cleanly. Claude Code handles the logic you want to own and iterate; n8n handles the scheduling and the audit trail that non-technical stakeholders can inspect.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Propagation test on your extraction logic.</b> Pick three firms from your 96-firm database that use the same filing format. Write a single Python function with Claude Code that extracts turnover and operating profit from their accounts. When you deliberately introduce a bug (wrong line-item label) and then fix it, confirm the fix propagates to all three firms in one edit — then reflect on how that compares to doing the same correction in three separate n8n nodes.</li>
+      <li><b>Build an n8n execution-log equivalent for Claude Code.</b> Use Claude Code hooks (<code>PostToolUse</code> in <code>settings.json</code>) to write a structured JSON log entry after each tool call in your extraction runs — capturing tool name, input summary, output summary, and timestamp. After a 10-firm extraction run, open the log and trace where a specific anomalous value came from. This is the closest Claude Code equivalent to n8n's visual execution history.</li>
+      <li><b>Map the hybrid architecture onto the salary survey.</b> Draw out (or prompt Claude Code to draft) a two-layer diagram for the 2026 salary-survey pipeline: layer 1 is n8n handling the ingest trigger (new submission email → extract attachment → route to QA queue) with a visual execution log; layer 2 is a Claude Code script running AQuA outlier checks on each submission. Identify exactly where the handoff between the two tools should happen and what data format crosses the boundary.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>n8n</dt><dd>An open-source workflow-automation tool with a drag-and-drop canvas interface. Excellent for building visual, debuggable internal automations; restricted by its sustainable-use licence from being used to build products sold to third parties. Separate from Claude Code — not a competitor, a complement.</dd>
+      <dt>MCP (Model Context Protocol)</dt><dd>Anthropic's open standard for connecting Claude Code to external tools and data sources via MCP servers. Each server exposes callable tools (e.g., Companies House API, Gmail, Notion) that Claude can invoke by natural-language instruction.</dd>
+      <dt>Skills</dt><dd>Reusable Claude Code workflows packaged as <code>SKILL.md</code> files with a YAML header. Only the name and description load into context by default; the full body loads on invocation. Lets Simon (and you) describe a complex multi-step procedure once and invoke it by name.</dd>
+      <dt>GSD ("Get Shit Done")</dt><dd>A community framework (not an official Anthropic feature) structuring Claude Code projects into discuss → plan → execute → verify phases, each with its own context document. Reduces context drift on long builds.</dd>
+      <dt>Ralph loop</dt><dd>A community pattern that re-feeds a fixed <code>prompt.md</code> to Claude Code each iteration until a cap is reached, enabling unattended batch runs. Useful for repetitive extraction or QA loops.</dd>
+      <dt>Sustainable use licence</dt><dd>n8n's licence term that restricts usage to internal business purposes and explicitly forbids building products sold to third parties where the value derives substantially from n8n functionality. Claude Code-produced code carries no such restriction — the code is yours.</dd>
+      <dt>Version propagation</dt><dd>The ability to update shared logic once and have that change apply across all workflows or instances that use it. Claude Code supports this naturally through standard code versioning (git, functions); n8n does not, requiring manual per-workflow edits.</dd>
+      <dt>Execution history log</dt><dd>n8n's visual per-run inspection interface: every workflow run is stored, every node's input and output is click-inspectable in plain language. Simon identifies this as n8n's most durable advantage over Claude Code — non-technical teams can debug without reading code or logs.</dd>
+      <dt>Multi-tenant</dt><dd>A system architecture where multiple clients each have isolated data and potentially isolated interfaces within a single hosted codebase. n8n's licence prohibits this use case; Claude Code can build it freely because you own the output code.</dd>
+      <dt>RAG (Retrieval-Augmented Generation)</dt><dd>A pattern where a language model is augmented with retrieved documents or data at query time, improving accuracy on specific knowledge domains. Mentioned as one of n8n's listed use cases; not the main focus of this episode.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-29-claude-code-just-went-mobile-remote-control-vs-openclaw.html"><span class="dir">← Previous</span>Claude Code Just Went Mobile (Remote Control vs OpenClaw)</a>
+    <a class="next" href="ep-31-you-re-using-claude-code-wrong-these-10-tips-will-change-eve.html"><span class="dir">Next →</span>You're using Claude Code Wrong - These 10 Tips Will Change Everything</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=5U3D6o6Gi_g" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>03. I Rebuilt Hermes in Claude Code (It's Ridiculously Good) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=wdc1OFWDxlU" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 03 · Simon Scrapes</div>
+    <h1>I Rebuilt Hermes in Claude Code (It's Ridiculously Good)</h1>
+    <div class="meta">
+      <span><b>12:56</b> runtime</span>
+      <span><b>24K</b> views</span>
+      <span>Published 23 May 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=wdc1OFWDxlU" target="_blank" rel="noopener">youtu.be/wdc1OFWDxlU</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/wdc1OFWDxlU"
+    title="I Rebuilt Hermes in Claude Code (It's Ridiculously Good)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Instead of installing Hermes — the fastest-growing agentic AI system on GitHub — Simon read its issues first, found three hidden costs, and rebuilt only the parts worth keeping inside his own Claude Code setup, modularly and on his own terms.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon opens with the viral rise of Hermes (40,000 GitHub stars in 46 days) and makes the case that off-the-shelf agentic systems like Hermes and OpenClaw impose invisible costs: inherited assumptions, opaque security vulnerabilities, and limits that only appear when you try to scale. He then walks through the three Hermes features he chose to rebuild — the identity layer, the memory system, and a disciplined skill-systems architecture — and explains why he deliberately skipped the self-learning loop. The episode closes with a clear trade-off: Hermes is faster to start; your own custom setup is faster to scale.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Leath's consultancy-research project already operates like a multi-client agency — a 96-firm database, separate Companies House extraction runs, distinct Substack series, the SPE salary survey, and DCC board-reporting — each with its own context, schema, and quality rules. The identity-layer and skill-system patterns Simon describes map directly onto that structure: a single Claude Code install that shares core procedures (AQuA checks, ratio extraction, chart formatting) while keeping client/project context cleanly separated is far more maintainable than one sprawling CLAUDE.md or multiple parallel installations.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Hermes</span>
+    <span class="chip">OpenClaw</span>
+    <span class="chip">Agentic OS</span>
+    <span class="chip">Identity layer</span>
+    <span class="chip">Memory system</span>
+    <span class="chip">Skills</span>
+    <span class="chip">Skill systems</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Modular architecture</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>Hermes goes viral — and Simon reads the issues</h2>
+
+    <p>Hermes went from zero to 40,000 GitHub stars in 46 days. And to compare, OpenClaw did it in 61. So for agentic systems, this is the fastest adoption ever seen on GitHub. And when you look at what they do — the memory systems, the identity layers, and the self-learning loops — you can understand why.</p>
+
+    <p>But before I installed it, I did something most people don't do. I went and read through the issues. And pretty quickly, I realized something: off-the-shelf systems are fast to begin with. They're fast to start. But you inherit somebody else's architecture, their assumptions, and therefore their problems, too. You can't fix what you don't understand underneath.</p>
+
+    <p>So, instead of replacing Claude Code, I rebuilt the parts I actually wanted inside my own setup. And honestly, it turned out ridiculously good. Not because it's better than Hermes, but because I actually understand every single layer now. And I built it in a modular way so I can swap pieces in and out, reuse workflows across projects, and evolve the system as the space changes.</p>
+
+    <p>So, in this video, I'm going to show you the exact Hermes features I rebuilt in Claude Code and the parts I deliberately skipped — and why understanding the architecture underneath gives you way more leverage long-term than just installing something like Hermes blindly. So, let's get into it.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p><b>Hermes</b> and <b>OpenClaw</b> are community-created frameworks — not official Anthropic products. They are opinionated assemblies of CLAUDE.md files, skills, and memory patterns built on top of Claude Code. Simon's critique in this episode is of their specific design choices, not of Claude Code itself.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The instinct Simon describes — read the issues before you install — is identical to the AQuA Book's "check the model before you trust it" principle. Before adopting any new tool or data pipeline for your 96-firm consultancy database (say, a new CH accounts scraper or a salary-survey ingestion script), spend 30 minutes reading its open issues and recent commits. The hidden assumptions in someone else's scraper — about filing formats, null handling, or currency units — will propagate silently into your ledger. Better to find them on day one than after 50 rows are wrong.</p></aside>
+
+    <h2>The three hidden costs of off-the-shelf agentic systems</h2>
+
+    <p>But before I show you what I built, let me show you the three hidden costs of installing something like Hermes off the shelf, to save you some time and pain later.</p>
+
+    <p><b>Cost number one</b> is that you inherit assumptions that you didn't even know existed in the first place. So as an example, the infamous self-learning loop on Hermes — the bit that everyone celebrates — has no external guardrails. We're effectively telling it to build its own skills automatically, then grade your own homework. So we've got the self-validation problem: the same model that writes the skill is also the sole judge of its correctness. Without that external validation step, it basically can't see its own blind spots. It thinks everything is good. And what that means in practice is it can quietly overwrite the changes that you've made to make your skills better, replacing them with worse versions, and it has no version control or audit log. So you can say goodbye to your good hard work.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>In Claude Code, a <b>skill</b> is a <code>SKILL.md</code> file with YAML frontmatter (name, description) plus optional bundled scripts. It packages a reusable workflow that Claude invokes by name. Skills use <em>progressive disclosure</em>: only the name and description sit in context at all times; the full body loads only when the skill is actually invoked. This is what makes a large library of skills scalable — you're not burning context on skills you're not using. Simon's objection to Hermes's self-learning loop is that auto-generating and auto-validating skills bypasses the human curation that keeps a skill library coherent and trustworthy.</p></aside>
+
+    <p><b>Cost number two</b> is that you can't fix what you don't understand. OpenClaw is one cycle ahead of Hermes — the first version of OpenClaw came out in November, the first version of Hermes came out in February. But it's the same category of product. And when you look at OpenClaw, there are over 200 vulnerabilities identified and filed since February. There are a ton of critical and high vulnerabilities. A security researcher even found 386 malicious packages on the skills marketplace from a single threat actor. When something breaks at this scale, when something is critical to security, you're left debugging somebody else's code because you don't understand the assumptions underneath or the choices they made when they were building it.</p>
+
+    <p><b>Cost number three</b> is it doesn't scale across your business. Paul, a non-technical CEO, spent over a hundred hours and over $1,000 testing OpenClaw over two months. He wanted to understand if the hype was real — if it could do things that personal AI assistants promised they could do. But he basically later found that the bugs and security gaps he identified disqualified it from being usable in any real way. He has now moved on to Claude and has replicated about 30% of OpenClaw's features in the last couple of months.</p>
+
+    <p>So Hermes may be faster to start, but your own setup is actually going to be faster to scale. And the hidden costs of off-the-shelf software like OpenClaw or Hermes only show up once you're already committed and in the process of building with them.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Paul's hundred-hour/£800 sunk-cost story is a clean cautionary tale for anyone tempted to adopt a community agentic framework wholesale before understanding it. For Leath's work the equivalent risk is a ready-made CH-accounts scraper that "just works" until you discover it mis-classifies consolidated vs. unconsolidated accounts — a silent error that corrupts your margin ratios across the entire 96-firm ledger. The fix: treat any external tool as a black box whose assumptions you must audit (filing-type logic, currency handling, entity deduplication) before trusting its output in your database. Build a small verification pass — five known companies with manually checked figures — before running at scale.</p></aside>
+
+    <h2>Layer 1 — rebuilding the identity layer</h2>
+
+    <p>So, let's get into what I actually built and what parts I lifted from Hermes. The first thing that Hermes actually nails — and the first thing I therefore rebuilt — is the identity layer. The agent needs to know who you are, who your business is, and what you stand for. Otherwise, every AI output is going to sound like an AI output.</p>
+
+    <p>In Hermes, this represents itself as a <code>memory.md</code> file and a <code>user.md</code> file. It's a super simple setup, designed for one individual client or a single business. But that's also where its limitations come in, because it's assuming you're one person working on one set of stuff. There's no concept of switching brand contexts, client contexts, or business contexts inside a single setup. If you wanted to run Hermes for multiple clients, you'd effectively have to install, for each individual client, its own Hermes installation with its own memory and user.md files.</p>
+
+    <p>So if you run an agency, or multiple clients, or even just two distinct brands of your own, you either bake it into one identity and one system in one install and live with that, or you spin up entirely separate Hermes installs. And each one of those has its own memory, its own skills, and its own learning loop. You can see how that embeds a maintenance problem — the skills aren't shared between the clients, even though some of the procedures might be repeatable. It's not a direct knock on Hermes; it's just what they built it for. But it's not fit for purpose for a business owner running multiple clients or multiple brands.</p>
+
+    <p>So the way I've built this is to effectively inject context in the same way, but more flexibly. I have our own identity inside a <code>user.md</code> file, memories inside a <code>memory.md</code> file. But I also inject shared brand context — voice, how you sound, ICP (the audience you want to aim your content at), and visual identity (your colours, fonts). So each individual client has its own set of shared context — their brand voice, their ICP, their positioning, their visual identity — but they're still able to access and share the procedures and skills across those client folders.</p>
+
+    <p>We've effectively built the folder structure so you can handle multiple clients or multiple brands, but still share the relevant shared context so you don't have to maintain it in multiple places. It's just one single install. Versus Hermes for multiple clients: individual installs, each with their own memory and learnings. Now, what Hermes actually does is inject the <code>memory.md</code> and <code>user.md</code> into the start of every single conversation, which drastically improves the short-term recall of important information.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md (hierarchical context)</span>
+    <p>Claude Code loads <b>CLAUDE.md</b> files hierarchically: a user-global one at <code>~/.claude/CLAUDE.md</code> and per-project ones at the root of each repo. Simon's folder-per-client architecture exploits this — a shared <code>user.md</code> and skill library live at the top level, while each client folder has its own brand-context files that get injected when Claude is working inside that folder. This is an intentional design pattern that Claude Code supports natively; Hermes's flat one-install-per-client model forgoes it.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Leath's consultancy-research project already demands exactly this multi-context pattern. The core procedures — downloading CH accounts PDFs, extracting turnover/operating profit/headcount, running AQuA consistency checks, formatting Substack drafts — are shared. But the context differs: SPE salary-survey work needs SPE-specific schema and PII rules; DCC board reporting needs regulatory-finance framing; the 96-firm database needs the CH ledger schema. A single Claude Code install with a shared skills folder plus per-project CLAUDE.md files (one for <code>~/spe-migration/</code>, one for your consultancy-research repo, one for DCC FP&A work) is far more maintainable than duplicating those core skills three times over.</p></aside>
+
+    <h2>Layer 2 — rebuilding the memory system</h2>
+
+    <p>So, let's go on now to talk about memory, which is probably the most important feature after this shared brand context for getting better results. And I've got to give it to Hermes — they've actually really thought through the way you store, inject, and recall information at various points in the life cycle.</p>
+
+    <p>When you consider memory, you've basically got three levels. You've got storage of context: how does information get saved, and at what point? You've got injection: how does that context actually get pushed into every conversation? And then more long-term, how do you recall memories that aren't recent but are still important — the ones you have to go back and search for?</p>
+
+    <p>Simply put, Hermes autosaves and summarises conversations every single conversation turn. It then injects important memories back into every conversation through the <code>memory.md</code>, the <code>user.md</code>, and sibling MD files — capped at around 1,300 tokens, meaning you're only loading in a limited snapshot of recent important information for every session. But its biggest limitation is when you go back to recall information that hasn't been injected into that recent memory. That's because it's searching by keyword and not meaning. So you might be able to recall exact long-term memories if you remember the exact words you used when you were talking to Claude. But it's much harder if you can't remember those exact words — which is pretty likely. And it kind of renders long-term recall in this case a bit useless. Who remembers the exact words they used with a client six months ago in a conversation they were having with Claude?</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Memory tool vs. CLAUDE.md</span>
+    <p>Claude Code offers two distinct persistence mechanisms. <b>CLAUDE.md</b> is a file the human curates — always injected into context, zero search needed, stable. The <b>Memory tool</b> is a newer capability the model itself writes to across sessions, creating structured entries that can be retrieved later. Hermes's pattern (auto-summarise every turn → write to <code>memory.md</code> → inject at session start) is an approximation of this: it solves short-term recall but falls back to keyword search for long-term retrieval, which is the weak point Simon identifies.</p></aside>
+
+    <p>This is where it gets really powerful when you're building a custom setup. You can take the stuff you like about Hermes — like capping a memory file at 2,500 characters and injecting that as recent memory into the conversation — and where there were limitations, like keyword-only recall, you can plug in other memory systems like mem search, which makes recall far more powerful by searching by meaning rather than keywords. And that's exactly what we've done with our own agentic operating system.</p>
+
+    <p>We're still using some patterns of the recall from Hermes, where we effectively check that injected context first. But then when the information is not found in that local memory, we go deeper and actually search by meaning — not by keywords. And that's part of the mem search architecture, not the Hermes architecture. So you can plug and play the bits you like when you build your own custom system and make it bespoke for your context. Say you needed verbatim recall — you might implement a memory palace instead of mem search, for example.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Long-term recall by meaning rather than keyword is a genuine unlock for Leath's research workflow. The SPE salary survey spans 25 years of data decisions — why a particular year's "Consulting" category was reclassified, which 2014 break-adjustment method was approved by the AQuA review. If those decisions are buried in old CLAUDE.md notes and retrievable only by exact keyword, they're effectively lost. A semantic memory layer (mem search or equivalent) means asking "what did we decide about the 2014 break?" in natural language and getting the right answer, even if the original note used different wording. Worth wiring this in before the 2027 survey cycle begins.</p></aside>
+
+    <h2>The self-learning loop — the part Simon skipped</h2>
+
+    <p>Now, here's the bit where Hermes gets controversial: the self-learning loop we talked about earlier. One of Hermes's biggest selling points is that an agent finishes a task, it writes itself effectively a new skill every time, and uses it the next time. Which sounds brilliant in practice — and the first time it happens, it's probably pretty special.</p>
+
+    <p>But what happens by the 10th skill, or the 20th skill, when you've made tiny iterations on effectively the same process? Effectively what happens is: you start on day one, you tell it to do a specific task, and then a couple of weeks later when you come back to do a similar task, it's going to create two skills that are fairly similar, have a similar description, but are kept as separate skills and maintained as separate skills — because it's not going to capture the nuance in your process, and you also have poor visibility of all the skills that already exist. So it's just going to continue to create more skills, and each one is going to capture that approach at the moment in time, with that context, for that specific situation.</p>
+
+    <p>Over time you risk ending up with 15 skills that all do roughly the same thing — like LinkedIn post V1, V2; LinkedIn post for this client, that client; post writer one and two — all with slightly different contexts and slightly different bits of logic baked in. They've all got similar descriptions, so it doesn't know which one to use any given time. Then when your brand voice shifts, or when a client's positioning changes, you've got 15 places to go and update and maintain. So yes, it's absolutely faster to build this way initially. But it's a serious commitment to actually maintain properly, and basically impossible to scale across multiple clients without the whole thing turning into a mess.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The self-learning loop Simon critiques here is a feature of <b>Hermes</b> specifically — not a built-in Claude Code behaviour. Claude Code's native <b>Skills</b> feature does not auto-generate or self-modify skills; that requires explicit user or agent action. If you've seen claims that Claude Code "learns automatically," they're likely referring to community agentic setups like Hermes, not the official product.</p></aside>
+
+    <h2>Layer 3 — building a proper skill-systems architecture</h2>
+
+    <p>Now, in-house we've created our own logic around how to tackle this, and we call this <em>skill systems</em>. A skill shouldn't be just a one-off task. A skill is a modular component that feeds into a skill system. Each one does one job. It lives in one place. It has a consistent naming format and gets updated in one place — and all the updates propagate to the rest of the system.</p>
+
+    <p>So when you want to do something complex like write a LinkedIn post in your brand voice, for a specific audience, in a specific format, you don't create a "write a LinkedIn post" skill that bakes in all of those things. You actually have the voice, the ICP, the formatting already maintained as separate skills — and then the LinkedIn post system just grabs the correct, up-to-date context from one single file for the voice, for the ICP, and for the formatting. The skill system prompt is effectively chaining those together in the right order.</p>
+
+    <p>When your brand voice shifts, you just update one file, and then every skill system that uses it will pull from that single file. It's infinitely maintainable and scalable. Hermes is faster to build the first skill, but building your own approach is going to be faster to build the 10th — and the 100th skill system that depends on the actual skill — and infinitely easier to maintain.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill chaining</span>
+    <p><b>Skill chaining</b> is a usage pattern — not a named Claude Code feature — where one skill's prompt references or invokes other skills in sequence. Because skills use progressive disclosure (only name + description in context until invoked), chaining doesn't blow up your context window; each component loads only when needed. Simon's "skill systems" architecture formalises this: shared atomic skills (voice, ICP, formatting) are imported by higher-level task skills rather than duplicating their logic. This is analogous to function composition in code — small, single-responsibility units assembled into larger workflows.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The skill-systems pattern is directly applicable to Leath's research pipeline. Consider the components that recur across projects: <code>ch-extract</code> (download and parse a CH accounts PDF into structured fields), <code>aqua-qa</code> (run AQuA consistency and outlier checks on a dataset), <code>substack-draft</code> (format findings into Substack-ready markdown with appropriate hedging language), <code>ratio-compute</code> (calculate operating margin, revenue per head, CAGR). Each is a standalone skill. A higher-level <code>firm-deep-dive</code> skill system chains them: extract → QA → ratio → draft. When the AQuA rules change (say, a new 2027 Book revision), you update <code>aqua-qa</code> once and every pipeline that uses it picks up the change automatically.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>An atomic skill file for CH extraction might live at <code>.claude/skills/ch-extract.md</code> with frontmatter <code>name: ch-extract</code> and <code>description: Download the latest filed accounts for a given company number and extract turnover, operating profit, and headcount into a structured row</code>. A composite <code>firm-deep-dive.md</code> skill then references it: "Run <code>/ch-extract</code>, then <code>/aqua-qa</code>, then <code>/ratio-compute</code>, then draft a Substack paragraph via <code>/substack-draft</code>."</p></aside>
+
+    <h2>The build-vs-install trade-off — and Simon's verdict</h2>
+
+    <p>So, it begs the question: should you build this for yourself, or grab something off the shelf? Well, if you install someone else's stack, you've basically inherited their assumptions about identity, memory, about how their learning loop should work, about whether you'll need multi-client context. And some of those assumptions will work for you. Hermes is great as an off-the-shelf system compared to something like OpenClaw, which was a lot more buggy. But some of those assumptions might not work for you — and then you're left actually trying to maintain or fix the broken parts, versus just building it more slowly for yourself, understanding the assumptions, and making it more scalable.</p>
+
+    <p>If you are building it for yourself, you're making those choices on purpose. Yes, you will move slower. You'll get some of it wrong. But every layer is something you can see, you can edit, and actually reuse. You can build it in that modular way. And when something does break, you'll have better knowledge of how to find the part that's broken and fix it, so it's maintainable in the future.</p>
+
+    <p>That's effectively the trade-off. It's going to be faster to start with Hermes, but faster to scale with your own built setup. And neither is going to be the right answer for everyone — it's just a personal choice. Now, I'm definitely not saying my version of the agentic operating system, or every custom version, is better than Hermes in every way. Absolutely not. But I understand exactly what assumptions have been made under the hood, and I can build on it in a modular way — in a slower way — that's going to end up being completely custom to my own setup.</p>
+
+    <p>So if you want my exact Agentic OS, it's inside the Agentic Academy in the description below. It's basically installed in one line, gets up and running today, and we run through exactly what's inside the OS and all the logic — so you're not just left installing something again without understanding the assumptions. You can plug and play the parts you like and leave out the stuff that doesn't work for you. Now, if you want to see more around what we've got inside our agentic operating system, watch the next video.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Simon's "build your own, understand every layer" verdict maps onto a principle familiar from econometric modelling: a bespoke model you built and understand beats a black-box one you can't interrogate — especially when a regulator, a board, or an AQuA reviewer asks you to explain a result. For Leath's DCC work (variance analysis, repatriation tracking, BMA cost reporting), the equivalent is: don't plug in a third-party FP&A template you don't understand and then defend its outputs to the CFO. Build the model yourself, document every assumption, and you'll be able to fix it when the cost-category definitions change mid-year — which they always do.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Audit before adopting.</b> Before wiring any new community tool into your consultancy-research pipeline — a CH scraper, a PDF parser, a memory framework — spend 30 minutes reading its open GitHub issues. List every assumption it makes about input format, currency, entity type, or filing structure. Decide which assumptions hold for your 96-firm database and which need a wrapper or a verification pass.</li>
+      <li><b>Build an atomic skill library for your research pipeline.</b> Write four single-responsibility skills: <code>ch-extract</code> (extract CH accounts fields), <code>aqua-qa</code> (run AQuA outlier/consistency checks), <code>ratio-compute</code> (calculate operating margin, revenue per head), and <code>substack-draft</code> (format findings into Substack prose). Then write a composite <code>firm-deep-dive</code> skill that chains them. Run it on five companies with manually verified figures to validate the chain end-to-end.</li>
+      <li><b>Design a multi-context folder structure.</b> Set up a Claude Code install with a top-level <code>user.md</code> (your identity and working style) and shared skills folder, then per-project CLAUDE.md files for your three main workstreams: the 96-firm consultancy-research repo, the SPE salary-survey folder, and your DCC FP&A work. Verify that a session opened inside the SPE folder sees SPE-specific schema rules but still has access to shared skills like <code>aqua-qa</code>.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Hermes</dt><dd>A community-created agentic AI framework for Claude Code, notable for reaching 40,000 GitHub stars in 46 days. Provides identity layers, memory injection, and a self-learning loop. Not an official Anthropic product.</dd>
+      <dt>OpenClaw</dt><dd>An earlier community agentic framework (predecessor category to Hermes), known for rapid growth but later found to have over 200 filed vulnerabilities including malicious packages in its skills marketplace. Not an Anthropic product.</dd>
+      <dt>Agentic OS / Agentic operating system</dt><dd>Creator branding for an opinionated assembly of CLAUDE.md files, skills, memory patterns, and slash commands into a structured personal AI system. Simon's term for what he built. Not an official Anthropic feature.</dd>
+      <dt>Identity layer</dt><dd>The files (user.md, memory.md, brand-context files) that tell the agent who you are, what your brand voice is, and who your audience is — so outputs sound like you rather than a generic AI. Corresponds to CLAUDE.md and companion files in Claude Code's native model.</dd>
+      <dt>Skills (Claude Code)</dt><dd>SKILL.md files with YAML frontmatter (name, description) that package reusable workflows. Progressive disclosure means only name + description are in context until invoked; the body loads on demand. The primary scaling mechanism for a large personal workflow library.</dd>
+      <dt>Skill systems</dt><dd>Simon's pattern of composing multiple single-responsibility skills into a higher-level workflow skill, rather than building monolithic skills that bake in all context. Analogous to function composition — each atomic skill is updated once and all callers pick up the change.</dd>
+      <dt>Self-learning loop</dt><dd>A Hermes feature where the agent auto-generates and self-validates a new skill after each completed task. Simon's critique: the same model that writes the skill grades its own correctness, producing skill proliferation and no audit trail.</dd>
+      <dt>Memory injection</dt><dd>The practice of loading a capped summary of recent/important memories (e.g. memory.md) into the system prompt at the start of each session, improving short-term recall without burning the full context window.</dd>
+      <dt>Mem search</dt><dd>A community memory system that retrieves memories by semantic meaning rather than exact keyword match, solving the long-term recall problem that keyword-only systems like Hermes's native recall have.</dd>
+      <dt>Progressive disclosure (skills)</dt><dd>The property that only a skill's name and one-line description sit in context at all times; the full SKILL.md body loads only when that skill is actually invoked. Keeps context lean across large skill libraries.</dd>
+      <dt>CLAUDE.md</dt><dd>Claude Code's native memory/instructions file, auto-loaded into context. Hierarchical: a user-global file at ~/.claude/CLAUDE.md and per-project files at each repo root. The primary way to give Claude persistent project context and house rules without burning tokens on skills you're not using.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-02-i-built-a-social-media-carousel-generator-with-claude-code.html"><span class="dir">← Previous</span>I Built a Social Media Carousel Generator (With Claude Code)</a>
+    <a class="next" href="ep-04-create-your-own-personal-claude-ai-system-that-makes-your-wo.html"><span class="dir">Next →</span>Create Your Own Personal Claude AI System (That Makes Your Work EASY)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=wdc1OFWDxlU" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>19. The Only Claude Code Updates You Need to Know (Apr 2026) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=7Sn10hZWPuQ" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 19 · Simon Scrapes</div>
+    <h1>The Only Claude Code Updates You Need to Know (Apr 2026)</h1>
+    <div class="meta">
+      <span><b>15:54</b> runtime</span>
+      <span><b>16K</b> views</span>
+      <span>Published 31 Mar 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=7Sn10hZWPuQ" target="_blank" rel="noopener">youtu.be/7Sn10hZWPuQ</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/7Sn10hZWPuQ"
+    title="The Only Claude Code Updates You Need to Know (Apr 2026)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Q1 2026 transformed Claude Code from a terminal tool you babysit into an always-on, anywhere-reachable autonomous agent — and this episode is your triage guide for what actually changed your workflow versus what you can skip.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon groups the quarter's releases into four themes: new ways to reach Claude from anywhere (remote control, dispatch, channels, computer use); new permission modes that reduce manual approval friction (auto mode, settings-file allow/deny, loops, scheduled tasks); memory consolidation via "Auto Dream"; and the broader shift from terminal tool toward a platform with visual interfaces on top. He then rapid-fires a handful of additional releases — Google Workspace CLI, Skills 2.0 evaluation, voice mode, and the 1-million-token context window for Opus 4.6.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Every theme here maps directly to Leath's workflow bottlenecks. Dispatch and scheduled tasks mean his nightly Companies House scrape or SPE salary-survey consistency checks can run unattended overnight. Auto mode removes the approval loop that makes long-running analysis sessions painful. Auto Dream keeps the memory files he uses to maintain project context from rotting into contradictions. And the platform shift — visual interfaces, skills with evaluation — matters for the Wenta RCT and DCC FP&A work where non-technical collaborators need to interact with Claude Code outputs without touching a terminal.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Remote control &amp; dispatch</span>
+    <span class="chip">Channels (Telegram/iMessage)</span>
+    <span class="chip">Computer use</span>
+    <span class="chip">Auto mode</span>
+    <span class="chip">Scheduled tasks</span>
+    <span class="chip">Auto Dream / memory</span>
+    <span class="chip">Skills 2.0</span>
+    <span class="chip">1M-token context</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The problem: Claude Code could only live in your terminal</h2>
+
+    <p>Claude Code has so many features at this point that it's genuinely hard to keep up. And Q1 2026 didn't make it any easier. Anthropic shipped more this quarter than most tools do in a year. So, if you want to get up to speed fast, this video is going to show you what actually matters. Now, some of these updates completely change how you use Claude Code, but some of them honestly aren't even worth your time. So, instead of walking through every single update, I've grouped the last 3 months into a few things that will actually make a difference to your day-to-day.</p>
+
+    <h2>Four ways to reach Claude from anywhere</h2>
+
+    <p>Let's get started with how you can now use Claude from anywhere. Up until recently, Claude Code lived in your terminal. You sat at your desk, you typed in commands, and if you walked away, that was it — your session was over. But then OpenClaw went viral, and suddenly everyone saw what it looked like when you could message your AI from Telegram, from WhatsApp, and from your phone whilst you're out walking the dog. And you probably saw people going absolutely crazy buying dedicated Mac minis just to run this 24/7, even if they had no real reason to. One of the standout features of OpenClaw that made it so popular was of course phone use.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"OpenClaw" (sometimes written "open Claude") is community branding for a third-party setup — not an Anthropic product. It describes an opinionated assembly of Claude Code with external messaging hooks. Anthropic's own quarter-one releases (below) address the same use-cases natively, so you no longer need the community workaround for most of these scenarios.</p></aside>
+
+    <p>So, what did Anthropic do? They went on an absolute feature spree, and in about 4 weeks they shipped not one, not two, but four different ways to use Claude without sitting at your desk.</p>
+
+    <p><strong>First up: remote control</strong>, which landed at the end of February. You start a Claude Code session in your terminal, and then you pick it up and continue from your phone or any browser. Nothing runs in the cloud here — your machine stays running, and Claude keeps working locally; the mobile interface is just a window into that session. You get a URL or a QR code, you scan it, and you're in the session. The good thing is it's dead simple to set up — anyone can do it in about 30 seconds — but you are limited to one session at a time, and you still have to approve every action manually. There was no way to automatically approve permissions. So if Claude needs permission to write a file whilst you're on that walk, it's going to sit there waiting for you to tap yes, and it won't notify you.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Remote control</span>
+    <p>Remote control is a Claude Code feature (available from late February 2026) that tunnels your local Claude Code session to a mobile-accessible URL. Your code runs on your own machine; the phone is purely a UI. It is not cloud execution — no files leave your machine. Sessions are one-at-a-time and still require per-action approval unless you have separate permission rules configured.</p></aside>
+
+    <p><strong>Second: dispatch</strong>, which arrived just two weeks later. Claude Work got something called dispatch — you send a task from your phone, and Claude figures out what kind of session to spin up. Code tasks get passed to Claude Code; knowledge work gets passed to Claude Code Work. Each runs independently on your desktop, and you get push notifications when things are done. This was great because you could direct multiple parallel tasks from your phone whilst doing other things. But your desktop still had to stay awake and the app had to be open — close the lid on your laptop and you've lost the session.</p>
+
+    <p>One user, Pavel, tracked his usage over 48 hours when he started using dispatch. He spent a total of 25 minutes giving direction from his phone, but Claude in the background ran over 3 hours of parallel work. He did a competitor analysis during his coffee, iterated on designs at a trampoline park with his kids, and reviewed everything when he sat back down. This is starting to feel like a different way of working — you delegate for 25 minutes and get 3.5 hours of work out the back end.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Pavel's 25-minutes-in / 3.5-hours-out ratio maps directly to Leath's consultancy-research bottleneck: the Companies House pipeline (downloading filed accounts, extracting revenue/margin/headcount rows, flagging anomalies) is the kind of multi-step work that stalls on approval prompts. With dispatch, Leath could send a phone message — "Run the CH accounts pipeline for the next 20 firms on the queue" — while commuting, and return to a completed batch. The same applies to the SPE salary-survey ingestion: kick off the annual consistency-check script from his phone, get a push notification when outliers are flagged, review when back at desk.</p></aside>
+
+    <p><strong>Third: channels</strong>, which dropped on 20 March. This is the one Anthropic was literally calling the OpenClaw killer. You can now message your Claude Code session from Telegram, Discord, or even iMessage. It's a two-way chat — you send a task, Claude picks it up, does the work on your machine, and replies back in that same chat. The setup takes about 5 minutes. But again, your machine still has to be running; close the terminal and you'll lose the channel.</p>
+
+    <p>Channels aren't just you chatting with Claude either. They can also receive updates from the other tools you use. If a new lead comes in, a form gets submitted, a payment fails, or an order gets flagged, that event gets pushed straight into your Claude Code session — and Claude Code can start to react to that when you're not even there. So we're starting to move towards Claude not waiting for you to ask — it's actually responding to things happening inside your business, much closer to the OpenClaw vision.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Channels</span>
+    <p>Channels is an official Claude Code feature (from 20 March 2026) that creates a two-way bridge between your Claude Code session and a messaging app (Telegram, Discord, iMessage). Unlike remote control, channels support event-driven inbound messages: external systems (webhooks, form submissions, payment processors) can push events directly into Claude's session, allowing it to act autonomously on real-world triggers rather than only on your manual messages.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For Leath's DCC FP&A work, a channels integration is a natural alert layer: wire up the PI Tracker (repatriation events, BMA threshold breaches) to push a Telegram message into Claude Code, which then drafts the variance commentary and sends it back. For the consultancy database, a webhook from a Companies House filing notification service could trigger Claude Code to pull the new accounts, extract the numbers, and post a summary to Telegram before Leath even opens his laptop.</p></aside>
+
+    <p><strong>Fourth: computer use</strong>, which dropped on 23 March. Claude can now actually control your Mac — point, click, open apps, navigate to your browser, fill in spreadsheets, fill in forms — and it pairs with dispatch. You can effectively assign a task from your phone, and Claude will open whatever apps it needs on your desktop to get it done. It can literally control your screen and your browser and act as you now.</p>
+
+    <p>Computer use is still super early — it's in research preview, Mac only, and limited to Pro and Max plans. It's also slower than direct API integration. But for the long tail of apps that will never have an MCP server — think enterprise applications that are a bit older, that nobody's going to create an MCP server for — being able to point Claude at the screen and say "do this task for me" is going to be a massive unlock for some enterprises, and also for some personal use cases.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Computer use</span>
+    <p>Computer use lets Claude Code control your Mac's GUI: it sees your screen, moves the mouse, types, and clicks. It is slower and less reliable than an MCP server (which talks directly to an API), but it can automate any application regardless of whether that app exposes an API. As of March 2026 it is research preview, Mac only, Pro/Max plans. Prefer MCP servers when they exist; fall back to computer use for GUI-only apps.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The practical unlock for Leath is legacy portals. Companies House's own filing-download UI, Wenta's grant-management system, or Smart DCC's internal cost-reporting portal are all GUI-only — no public API, no MCP server will ever exist. Computer use means Claude Code can navigate those portals, download the PDFs or export the CSVs, and feed them into the rest of the analysis pipeline, all triggered from dispatch while Leath is away from his desk.</p></aside>
+
+    <p>That's four features in four weeks that have turned Claude Code into an always-on assistant you can reach from anywhere — what Simon calls the "OpenClaw-ification of Claude." But being able to reach it only matters if you can actually leave it alone to do its thing in the first place.</p>
+
+    <h2>Solving the permissions problem: auto mode and allow/deny rules</h2>
+
+    <p>Here's the frustration that everyone had. Claude Code would stop and ask permissions for everything — every file write, every API call — and if you walked away, it just sat there waiting for you to come back. You had two choices originally: babysit it (sit there clicking approve on absolutely everything), or use the <code>--dangerously-skip-permissions</code> flag and hope it didn't delete anything. Neither was great, and we needed a middle ground. This quarter gave us three solutions.</p>
+
+    <p><strong>Auto mode</strong> dropped on 24 March and is the one Simon is most excited about for practical daily use. It's a completely new permissions mode where a classifier reviews every single action before it runs and decides whether it's safe or not. Say you ask Claude to build out a new landing page. In the default mode, Claude would stop and ask: "Can I create this file?" Yes. "Can I write to this file?" Yes. "Can I run npm install?" Yes. "Can I start the dev server?" Yes — over and over. It turns out, from Anthropic's research, developers approve 93% of those prompts anyway.</p>
+
+    <p>In auto mode, Claude creates files, writes code, installs packages, and runs your tests automatically. But if it tries to do something riskier — delete a bunch of files, push to your main branch, or send data somewhere unexpected — the classifier catches it and blocks it. Claude then tries a different approach, or if it really insists, it comes and asks you. It's designed to reduce friction while maintaining safety.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Start Claude Code with auto mode: <code>claude --enable-auto-mode</code>, then press <kbd>Shift Tab</kbd> to cycle through permission modes until you land on "auto." Note: as of late March 2026, auto mode is team-plan only — Pro/Max users won't see the option yet.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Auto mode</span>
+    <p>Auto mode is an official Claude Code permissions mode (team plan, March 2026) that sits between "approve everything" and "skip all permissions." A built-in classifier evaluates each proposed action at runtime and approves it automatically if it judges it safe, or blocks it and asks the user if it judges it risky. This is distinct from the manual allow/deny rules in settings.json, which are static pattern-matching — auto mode reasons about the action in context.</p></aside>
+
+    <p>If you're on Pro or Max — and therefore can't access auto mode yet — there is a workaround. You can set up your own allow and deny rules in your settings file. You allow Claude Code to read files and folders, run dev-server tests, do formatting, edit and write files. But you stop it from installing packages, deleting files, sending data externally, and reading sensitive files and secrets. It's definitely not as smart as auto mode's classifier — it won't reason about whether an action is safe; it's a blanket yes/no to certain commands — but it'll get you 80% of the way there, and you can use it right now on any plan.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Settings / permissions (allow/deny rules)</span>
+    <p>Claude Code's <code>settings.json</code> (in <code>.claude/</code> or your user directory) lets you define explicit allow and deny rules for tool calls by pattern. A rule like <code>{"allow": ["Read(*)", "Write(*)"]}</code> means Claude Code can read and write files without asking — but anything not matched still requires approval. This is static and literal: it cannot reason about context, only match patterns. Use it as a baseline safety net that complements auto mode when auto mode is unavailable.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For the CH accounts pipeline, a sensible settings.json baseline would allow: Read/Write to the project data directories, run the Python scraper and pandas scripts, append to the SQLite database. Deny: any shell command that touches external network calls beyond the Companies House API, any deletion of the master workbook, and reading of <code>.env</code> files containing API keys. This lets the pipeline run unattended overnight without needing auto mode — and the deny rules are your AQuA-style guardrail against accidental data loss.</p></aside>
+
+    <p>The other two key updates for running tasks autonomously are <strong>loops</strong> and <strong>scheduled tasks</strong>, which Simon covered in a previous video. Loops let you run recurring prompts inside your current session for up to 3 days — anything you want to auto-repeat within a running session. Scheduled tasks started as local only inside the Claude Code desktop app, but this quarter Anthropic also shipped cloud-based recurring tasks. You can now set up a repo, a schedule (daily, weekly, monthly), and a prompt — and it runs whether your machine is awake or not. Combine auto mode, loops, and scheduled tasks and you can run real work without watching: Claude Code handles the busy work.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Loops</span>
+    <p>Loops is a Claude Code feature that re-runs a prompt on an interval inside the current active session (maximum 3 days). It's for within-session polling or repetition — for example: re-check whether a build has passed every 10 minutes. Loops stop if the session ends. For persistence across machine restarts, use scheduled tasks instead.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Scheduled tasks</span>
+    <p>Scheduled tasks (now cloud-based as of Q1 2026) let you configure a repo + prompt + cron schedule that runs on Anthropic's infrastructure — no local machine required. You set it up once in the Claude Code desktop app or via CLI; after that it fires on schedule regardless of whether your laptop is open. This is a significant upgrade over the earlier local-only version, which required your machine to be awake.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A cloud-based scheduled task is the right vehicle for Leath's SPE salary-survey annual cycle. Set a monthly scheduled task: pull the latest submissions, run the year-on-year outlier checks (flagging any entry more than 2 SD from the rolling mean), output a QA report to a Notion page, and push a summary to Telegram via channels. The whole AQuA-style consistency pass runs automatically without Leath opening his laptop — and the channels integration means he sees the flag on his phone the moment it fires.</p></aside>
+
+    <h2>Auto Dream: fixing Claude's decaying memory</h2>
+
+    <p>Claude Code can now run on its own, but there's a problem that builds up the longer it runs — and you might have faced this if you've used Claude Code for a while. That problem is memory. The more sessions you have, the messier Claude's notes about you and the work you've done get.</p>
+
+    <p>Previously, Claude Code had something called auto memory. As you talk to Claude, it starts understanding your project preferences, build commands, your architecture decisions, and debugging solutions, and it captures that memory for about a month of previous sessions. That's been brilliant — until you've done about 50 sessions, and those notes are full of contradictions, stale references from 3 weeks ago, and the information keeps changing over time.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Memory tool / auto memory</span>
+    <p>Claude Code's memory tool writes observations across sessions to a <code>memory.md</code> index file (and associated files), auto-loaded at startup. This is distinct from CLAUDE.md, which you curate manually. Auto memory populates and updates these files automatically as you work. The tradeoff: it accumulates contradictions and stale entries over time — hence the need for Auto Dream (below).</p></aside>
+
+    <p>To tackle that, Anthropic shipped something called <strong>Auto Dream</strong>. The name is deliberate — it's modelled on how your brain consolidates memories during sleep. Between your sessions, a background subagent kicks in and reviews all of Claude's memory files. It does four things: it converts relative dates to absolute dates (so "yesterday" becomes "on 30 March"); it deletes contradicted facts; it merges duplicates; and it prunes stale notes that reference files or bugs that don't exist any more.</p>
+
+    <p>It keeps your memory.md index under 200 lines, because that file loads at startup and every token spent on memory is a token you can't spend on actual work. Auto Dream is designed to keep it lean so you can reference a small amount of context and keep it manageable. It triggers automatically after 24 hours and five sessions — you don't even have to do anything to benefit from this.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Auto Dream</span>
+    <p>Auto Dream is an official Claude Code feature (Q1 2026) that runs a background subagent between sessions to consolidate memory files. Its four operations — absolute-date conversion, contradiction deletion, duplicate merging, stale-entry pruning — are designed to keep the memory index lean (under 200 lines) and accurate. It triggers automatically after 24 hours and 5 sessions. There is a <code>/dream</code> slash command for manual invocation, but as of late March 2026 it is not reliable for all users; the natural-language instruction "Consolidate my memory files" runs the same process.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Leath's CLAUDE.md and memory files for the CH consultancy project already contain dozens of firm-specific facts (revenue, headcount, PE ownership, filing dates). Without Auto Dream-style consolidation, entries from a March session ("Baringa HQ is Paddington") can sit alongside a newer November entry ("Baringa moved to Farringdon") — and Claude will be confused. With Auto Dream running between sessions, contradictions get resolved, and the memory the pipeline uses to match firms to their Companies House records stays clean. The practical habit: after a major pipeline run, also say "Consolidate my memory files" to force an immediate pass.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Manual consolidation: tell Claude <code>Consolidate my memory files.</code> — the <code>/dream</code> slash command works for some users but is not yet reliable everywhere (as of late March 2026). Anthropic will likely fix the slash command soon.</p></aside>
+
+    <h2>Beyond the terminal: Claude Code becomes a platform</h2>
+
+    <p>Now we've got Claude that remembers better, runs on its own, and you can reach it from absolutely anywhere. But here's the shift that most people are missing right now — and it's not just about new features. It's about how the way we work with Claude Code is fundamentally changing. It's about going beyond the terminal.</p>
+
+    <p>When Claude Code launched, it was completely a terminal tool. If you weren't comfortable with the command line, that was a barrier. But this quarter something really interesting started happening. People have started building layers on top of Claude Code that look nothing like a terminal any more. And Simon thinks this is the most important trend to pay attention to right now — because it's not one feature, it's a shift in how we use Claude Code.</p>
+
+    <p>Anthropic themselves shipped <strong>agent teams</strong> this quarter. You can have multiple Claude instances working in parallel on different parts of a project, coordinating through a shared task list and a mailbox system. One lead agent, multiple teammates — actual collaboration between agents, not just parallel terminal sessions.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Agent teams / subagents</span>
+    <p>Agent teams is the Q1 2026 formalisation of Claude Code's subagent capability. The Task (Agent) tool already allowed spawning isolated subagents; agent teams extends this with a shared task list and mailbox, so a lead agent can coordinate multiple specialist subagents that communicate with each other. Each subagent has its own isolated context window; only summaries and messages propagate back to the lead. This is parallel execution with coordination, not just parallel independent runs.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The agent-teams model maps neatly onto Leath's 96-firm database pipeline. A lead agent breaks the work into batches by SIC code or alphabetical range; specialist subagents run the CH download-and-extract loop in parallel for each batch; a reviewer subagent flags anomalies and contradictions against the existing database. Only the flagged anomalies and row updates return to the lead. This structure keeps each subagent's context window clean and means the pipeline scales without the lead agent's context filling up with raw filing text.</p></aside>
+
+    <p>But what's more interesting is what the community is building. People are abstracting Claude Code away from the terminal entirely. Tools like pulsia.com put a visual interface on top of Claude Code sessions and are designed to run your company autonomously. paperclip.in is an open-source equivalent for agents that run your company autonomously. And then there are Kanban-style project management systems where you act as a supervisor to multiple terminal sessions — tools like Vibe Kanban or Mission Control from OpenClaw, or Simon's own business-focused tool he's building for his school community.</p>
+
+    <p>There are also people creating repeatable operating systems to store all of your business context, which means your agents know your business context, store memories of all your work, and that speeds up all your task management. And then there's the Claude desktop app, which brought scheduled tasks and a more visual UI, coupled with Claude Code Work, which is basically Claude Code with a GUI for non-technical users.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Operating system for your business," "agentic OS," and similar framings are community/creator branding — not an Anthropic product name. They describe an opinionated assembly of CLAUDE.md, skills, subagents, shared memory, and MCP servers. Simon teaches one such assembly in his academy (18 production skills, brand memory, self-learning loop). These are useful patterns; just understand you're configuring a custom setup, not installing an Anthropic-named product.</p></aside>
+
+    <p>The pattern is clear: Claude Code started as a developer tool but it's now becoming an operating system for the way we work. The terminal is still there and still powerful, but it's becoming one of many interfaces, not the only one. For business owners, that's the bit that matters: you don't need to be a developer to use what Claude Code can do any more. You just need the right interface on top of it. Claude Code is evolving from a terminal tool into a platform — and the question is just what interface works best for the way you work.</p>
+
+    <h2>Rapid-fire: four more updates worth knowing</h2>
+
+    <p>We've covered the big shifts, but there are a few more updates from this quarter you should know about.</p>
+
+    <p><strong>Google Workspace CLI</strong> — Google released an open-source command-line interface that gives Claude Code access to your entire Google ecosystem: Drive, Gmail, Calendar, Docs, and over 100 built-in recipes for working with these inside Claude Code. One tool that replaces many MCP integrations that were built before it.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · MCP (Model Context Protocol)</span>
+    <p>MCP is an open standard (backed by Anthropic) for connecting external tools and data sources to Claude Code. An MCP server exposes typed tools (functions Claude can call) so Claude can reach systems beyond the filesystem: databases, APIs, email, calendar. The Google Workspace CLI is a single MCP-compatible CLI that bundles Google Drive/Gmail/Calendar/Docs integrations with pre-built recipes, replacing the need to wire up separate MCP servers for each Google service.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The Google Workspace CLI is immediately useful for Leath's board-reporting workflow at Smart DCC. A Claude Code session with Workspace access can pull the latest BMA figures from a Sheets model, draft the variance commentary in Docs, and send a review request via Gmail — in one pipeline step. For the SPE salary survey, it means Claude Code can read the raw submissions from a Drive folder directly rather than Leath manually exporting CSVs.</p></aside>
+
+    <p><strong>Skills 2.0</strong> — The skill creator now includes a built-in evaluation system. You can test your own skills against specific criteria and improve them at a much faster rate. You get scored results back and can AB test with different versions against each other, or test with certain reference files removed from your skills. The goal: go from a skill that kind of works (and you have to adapt over many months) to a skill that is an 80% version from the get-go.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills &amp; Skills 2.0 evaluation</span>
+    <p>A skill is a SKILL.md file with YAML frontmatter (name, description) plus optional bundled scripts and reference files. It packages a reusable workflow Claude invokes by name. Progressive disclosure means only the name and description sit in context until the skill is invoked; the body loads on demand — the key scaling property for large skill libraries. Skills 2.0 adds an evaluation harness: you define test cases and scoring criteria, run the skill against them, get scored results, and can A/B test different skill versions automatically.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For Leath's CH accounts pipeline, Skills 2.0 evaluation is a direct AQuA-style quality gate for the skill itself. Define a test suite: 10 known company numbers with known correct revenue/margin/headcount figures. Run the <code>ch-accounts-extractor</code> skill against them, score each extraction for accuracy, and A/B test two versions of the extraction prompt. This is model-QA applied to your own Claude Code tooling — the same rigour Leath applies to Excel models, now applied to the skills that power the pipeline.</p></aside>
+
+    <p><strong>Voice mode</strong> — It seems so long ago now, but you can use the <code>/voice</code> slash command, hold the space bar, speak your instructions, and it even works in 20-plus languages. If you're not voice-dictating using something like Whisper Flow or the built-in functionality, you are limiting your own productivity, because you can speak much faster than you can type.</p>
+
+    <p><strong>1-million-token context window for Opus 4.6</strong> — The most powerful model now has the biggest context window. It can work with massive codebases or long documents, and there's no longer a blocker on context. Simon does caveat that loading a million tokens will give you massively degraded performance — so treat this as a ceiling, not a target.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context window &amp; model selection</span>
+    <p>The context window is the total number of tokens (roughly: words + code) Claude can hold in active memory for a single session. A 1-million-token window for Opus 4.6 means a 750,000-word document (or a very large codebase) can fit in a single session without chunking. In practice, performance degrades at very high utilisation — Auto Dream and lean CLAUDE.md files exist precisely to avoid burning context on stale metadata. Use the large window for genuine one-off deep analysis; for routine work, keep context lean.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The 1M-token window is directly relevant to the Companies House accounts work. A large group's consolidated accounts and subsidiary filings can easily run to hundreds of pages of PDF text. With Opus 4.6 and the 1M-token window, Leath can load an entire filing set (parent + 10 subsidiaries) into a single session and extract all the inter-company eliminations, consolidation adjustments, and segment breakdowns in one pass — rather than chunking across sessions and losing cross-reference context. For the SPE salary survey, the 25-year time series with all the raw submissions could fit in a single context for the annual consistency check.</p></aside>
+
+    <h2>Putting it together</h2>
+
+    <p>Every one of these makes Claude Code more capable, but together they make it a completely different tool than it was 3 months ago. If you want a head start on all of this, Simon has a complete agentic operating system built on Claude Code inside his academy (in the description): 18 production skills, brand memory and contacts, self-learning loop, all accessible through a non-technical visual UI.</p>
+
+    <p>Claude Code is not slowing down. If you want more like this, drop a comment below.</p>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li>Set up a cloud-based scheduled task (daily, 07:00) that runs your Companies House accounts-extractor skill on the next 5 firms in the queue, appends results to your SQLite database, and pushes a Telegram summary via channels. Measure actual hands-off time saved over a week.</li>
+      <li>Build a test suite for your <code>ch-accounts-extractor</code> skill using the Skills 2.0 evaluation system: pick 10 company numbers with known correct revenue/margin figures from filed accounts. Score each extraction, identify the failure modes, and A/B test two prompt variants. Target ≥90% extraction accuracy before the skill goes into the nightly scheduled task.</li>
+      <li>Configure a <code>settings.json</code> allow/deny baseline for your consultancy-research project: allow Read/Write to the data directory and the SQLite database, allow running the Python scraper, deny any shell command that touches external URLs other than the CH API, deny deletion of the master workbook. Verify the rules by running the pipeline and confirming it completes without a single approval prompt.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Remote control</dt><dd>Official Claude Code feature (Feb 2026) that tunnels your local session to a mobile-accessible URL. Code runs on your machine; the phone is just a UI. One session at a time; manual approval still required per action.</dd>
+      <dt>Dispatch</dt><dd>Claude Code Work feature that routes tasks sent from your phone to the appropriate local session (Claude Code for coding, Claude Code Work for knowledge tasks). Enables parallel task delegation; requires your desktop to stay awake.</dd>
+      <dt>Channels</dt><dd>Official Claude Code feature (March 2026) for two-way messaging between your Claude Code session and Telegram, Discord, or iMessage. Also accepts inbound webhooks from external systems, enabling event-driven autonomous action.</dd>
+      <dt>Computer use</dt><dd>Claude Code feature (research preview, March 2026, Mac only) that lets Claude control your desktop GUI — mouse, keyboard, browser — for automating apps that have no MCP server or API.</dd>
+      <dt>Auto mode</dt><dd>Official Claude Code permissions mode (team plan, March 2026) where a runtime classifier approves safe actions automatically and blocks or escalates risky ones, replacing the blanket approve-everything or skip-everything dichotomy.</dd>
+      <dt>Scheduled tasks (cloud)</dt><dd>Claude Code feature that runs a configured repo + prompt on a cron schedule on Anthropic's infrastructure. No local machine required. Set-and-forget recurring agents.</dd>
+      <dt>Loops</dt><dd>Claude Code feature for repeating a prompt on an interval within a running session (max 3 days). Stops when the session ends. Use for within-session polling; use scheduled tasks for persistence across restarts.</dd>
+      <dt>Auto Dream</dt><dd>Official Claude Code feature that runs a background subagent between sessions to consolidate memory files: converts relative dates to absolute, deletes contradictions, merges duplicates, prunes stale entries. Keeps the memory index under 200 lines. Triggers after 24 hours and 5 sessions.</dd>
+      <dt>Agent teams</dt><dd>Q1 2026 formalisation of Claude Code's subagent coordination model: a lead agent plus multiple specialist subagents communicating via a shared task list and mailbox. Each subagent has an isolated context window; only results propagate back.</dd>
+      <dt>Skills 2.0</dt><dd>Enhanced Claude Code skill system that adds a built-in evaluation harness: define test cases, score skill outputs against criteria, and A/B test prompt versions. Aims to get skills to 80% quality from first build rather than months of manual iteration.</dd>
+      <dt>MCP (Model Context Protocol)</dt><dd>Open standard for connecting external tools and data sources to Claude Code. An MCP server exposes typed functions Claude can call. The Google Workspace CLI is a single MCP-compatible tool covering Drive, Gmail, Calendar, and Docs with 100+ built-in recipes.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-18-stop-using-claude-code-in-terminal-it-s-holding-you-back.html"><span class="dir">← Previous</span>Stop Using Claude Code in Terminal (It's Holding You Back)</a>
+    <a class="next" href="ep-20-200-hours-of-claude-code-lessons-in-14-minutes-for-business-.html"><span class="dir">Next →</span>200+ Hours of Claude Code Lessons in 14 Minutes (for business owners)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=7Sn10hZWPuQ" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

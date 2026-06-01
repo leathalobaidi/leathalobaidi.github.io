@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>26. The Claude Code Skills Trap (Most People Fall For This) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=CXeCIgc982I" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 26 · Simon Scrapes</div>
+    <h1>The Claude Code Skills Trap (Most People Fall For This)</h1>
+    <div class="meta">
+      <span><b>9:36</b> runtime</span>
+      <span><b>20K</b> views</span>
+      <span>Published 6 Mar 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=CXeCIgc982I" target="_blank" rel="noopener">youtu.be/CXeCIgc982I</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/CXeCIgc982I"
+    title="The Claude Code Skills Trap (Most People Fall For This)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">More skills installed does not mean a smarter agent — Simon identifies the three structural mistakes that silently destroy output quality, and shows exactly how to fix each one in under 15 minutes.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon reviews three compounding traps that undermine Claude Code skill setups: installing too many skills and degrading Claude's ability to pick the right one (the hoarding trap); installing skills from marketplaces without customising them to your own context (the generic-context trap); and cramming everything into a single <code>SKILL.md</code> file rather than separating process from reference material (the monolith trap). Each trap gets a diagnosis and a concrete five-minute fix.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Leath runs a growing set of research skills — Companies House account extraction, salary-survey QA, Substack drafting, FP&amp;A variance commentary — and the same traps apply: a skill that works well in isolation breaks unpredictably once it shares the system prompt with a dozen lookalike skills, or fails to cite your specific Companies House MCP context because no reference file was wired in. Getting the folder architecture right now avoids a rework when the skill library grows to 30+ tools.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Skills architecture</span>
+    <span class="chip">YAML front matter</span>
+    <span class="chip">Progressive disclosure</span>
+    <span class="chip">Reference files</span>
+    <span class="chip">Context window budget</span>
+    <span class="chip">Hoarding trap</span>
+    <span class="chip">Skill curation</span>
+    <span class="chip">Marketplace vs custom</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The three traps — why your agent feels inconsistent</h2>
+
+    <p>After reviewing dozens of Claude skills on multiple marketplaces, I realised that almost everyone is falling into the same three traps. People install a bunch of skills, get a poor output, and assume that it's the skills that aren't working. But the skills absolutely work — the three mistakes you're making do compound, and that's exactly why your agent feels inconsistent, feels generic, and is probably a little bit unpredictable. And you're not going to be able to build great agentic systems until you recognise these traps. So in this video I'll break down each trap, why it quietly kills your output quality, and the five-minute fix for every mistake.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A Claude Code <strong>skill</strong> is a folder containing a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code> and <code>description</code>) plus optional reference files, scripts, and assets. Claude Code uses <strong>progressive disclosure</strong>: only the <code>name</code> and <code>description</code> sit in context at all times (contributing to the system-prompt budget). The full body of the <code>SKILL.md</code> — and any reference files — are only loaded when Claude actually invokes that skill. This is the key scaling property that lets you have many skills without burning context on every interaction.</p></aside>
+
+    <h2>Trap 1 — The hoarding trap: installing everything</h2>
+
+    <p>Let's start with one almost everyone is making right now, which is called the hoarding trap — installing absolutely everything. I've noticed a trend where people are sharing their "ultimate skill setups," and I often see 50, 100, sometimes 200 skills installed. It looks impressive, and everyone says, "Wow, I need to install all these skills." But here's what's actually happening under the hood when you do that.</p>
+
+    <p>Claude has a 15,000-character budget for the skills list in its system prompt. All the names and descriptions combined — what we call the YAML front matter — are fed into the system prompt. So if you've got a thousand skills installed, all of those names and descriptions are fed into it. Think about that: the more skills you have installed, the noisier the menu that Claude has to pick from. Claude has to pick the right skill based on a one- or two-line description, and if you have 200 generic skills, you're probably going to have some crossover. You might have three different SEO skills, four different copywriting skills — and this leads to ambiguity. What happens if you try to run your SEO audit two days in a row and it uses a separate set of skills each day? Installing these might be unintentional; you might think it's not harmful, but you're literally making your agent less smart by installing more. And if you've got skills installed globally, you might not even be able to see what your agent has access to.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · YAML front matter &amp; the 15,000-character system-prompt budget</span>
+    <p>The <strong>YAML front matter</strong> of every installed skill — just the <code>name</code> and <code>description</code> fields — is concatenated and injected into Claude's system prompt at session start. Anthropic caps this at roughly 15,000 characters. With verbose descriptions or large numbers of skills, you can saturate this budget, forcing truncation or degrading how reliably Claude selects the right skill. Simon's figure is approximate and may shift with product updates, but the principle is solid: keep descriptions tight and the installed list curated.</p></aside>
+
+    <p>Thankfully, the fix is super simple. Unless you're using a specific skill all the time and you understand why you're using it, start from scratch. I'd highly recommend building out a curated list of 20 to 30 well-built skills that are specific to your workflows only. Audit what you've got. And if you can't explain when Claude should use one skill versus another, delete one of them — the less noise, the better. Claude will then be able to pick better and produce better output quality. If you're guilty of installing a library of, say, 20 marketing skills, it's probably time to remove them and build them from the ground up.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Apply the curation rule to your own growing skill library right now. List every installed skill, then for each one write one sentence answering: "Claude should use this when…" If you can't write that sentence clearly and without overlap with another skill — for example, if you have a <code>ch-accounts-extractor</code> and a <code>ch-financials-pull</code> that are both described as "extracts financials from Companies House" — merge or delete one. A 25-skill curated set built around your actual workflows (CH extraction, salary-survey QA, Substack drafting, board-pack variance commentary, Wenta RCT power-calc) will out-perform a 200-skill library every single time, because Claude's selection step is reliable rather than a coin-flip.</p></aside>
+
+    <h2>Trap 2 — The generic-context trap: installing without customising</h2>
+
+    <p>Before we move onto the next one, I just wanted to quickly mention our agentic community linked down in the description below. We've built out a curated set of skills that we're building on for all types of businesses, as well as a from-zero Claude Code course that we've just released. Check it below if you're interested.</p>
+
+    <p>So — you're out there searching for skills on GitHub or Skills MP or any of the skills marketplaces, and maybe you find something great: Corey Haynes's copywriting skill, an SEO audit, a content writer. You install it, you run it, and the output is just fine — generic, competent — but it feels like we're dealing with ChatGPT 3.5 again. The reason for that is because it's missing something absolutely crucial: contextual references to your business. When you install from a marketplace, you're effectively taking somebody else's skill built for them or optimised for the general public. It doesn't know your brand voice, it doesn't know your audience, it doesn't know how you position things, it doesn't have examples of your previous context, nor what your customers actually say about you.</p>
+
+    <p>Installing a skill like this is like hiring a consultant who's never been briefed on your business. They'll give you textbook answers — competent, of course, but entirely forgettable. The whole point of skills is to contextualise them to your use case. The skill is just the starting point for you to build on top of.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Reference files inside a skill</span>
+    <p>A skill folder can contain any number of additional files — brand voice documents, example outputs, banned-words lists, scoring rubrics, domain reference sheets — that the <code>SKILL.md</code> process document <em>points to</em> and loads only when needed. This is the official design: <code>SKILL.md</code> = the process; reference files = the knowledge. Keeping them separate preserves progressive disclosure (reference files don't sit in context permanently) and makes the skill debuggable (you know whether a bad output came from wrong process or wrong knowledge).</p></aside>
+
+    <p>So when you install a skill, try installing it locally next time using the <code>--local</code> flag. Read through the files, understand the <code>SKILL.md</code>, and understand the reference files where the skill should actually be tailored to your business. Maybe in the references you can add a brand voice document, some example posts you've actually published before, some banned words you've never used — and that is how you get a genuinely customised experience rather than something out of the box. Remember: the value isn't necessarily in the <code>SKILL.md</code>, it's in the reference files you add around it. The <code>SKILL.md</code> is just our process document — the step-by-step instructions for Claude on how to take some action — but the reference files are what give it context for your business.</p>
+
+    <p>I'd highly recommend that with every skill you install, you spend 15 minutes customising it: add a reference file with your brand context, and drop in three to five examples of what you actually like the output to look like. Then update the <code>SKILL.md</code> to say, "Refer to my brand references or brand voice before you write anything." That's it. 15 minutes turns a generic skill into your skill. You can of course customise these for clients too.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Install a skill locally (scoped to the current project, not globally): <code>claude skill install &lt;skill-name&gt; --local</code>. This places the skill folder under <code>.claude/skills/</code> in your project, where you can edit <code>SKILL.md</code> and add reference files directly.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Every skill in your economics research stack should have a <code>references/</code> subfolder wired into its <code>SKILL.md</code>. For your <code>ch-accounts-extractor</code> skill, that means a reference file listing the specific line items you always want (turnover, operating profit, headcount, director remuneration, filing date) and three or four example rows from your 96-firm database showing the exact output format. For your <code>salary-survey-qa</code> skill, reference files should include the AQuA Book outlier-check definitions and your year-on-year tolerance thresholds. Without these, any marketplace skill will produce structurally correct but domain-useless output — exactly the "ChatGPT 3.5" feeling Simon describes.</p></aside>
+
+    <h2>Trap 3 — The monolith trap: cramming everything into one file</h2>
+
+    <p>Okay, the last one — and this is the one that even experienced skill builders are missing, because it's about how the skill is built, not what's inside it. You've customised your skills, you've added your brand context, your examples, your rules — but you've put all of it inside the <code>SKILL.md</code> file. One massive document including process steps, brand guidelines, examples, scoring sheets, everything. It feels right: everything in one place, easy to find, easy to modify. But this is actually quietly killing your output quality, and you probably can't see why.</p>
+
+    <p>There's a reason people build like this: in the spec, a skill only needs the <code>SKILL.md</code> file. References, scripts, and everything else are optional. So technically a single-file skill is the correct minimum. But it just misses the entire point of why Anthropic designed the architecture the way they did: <code>SKILL.md</code> for the process, YAML front matter for what's loaded into context, and then additional files referenced in the <code>SKILL.md</code> that bring context and knowledge to that process — loaded only when necessary.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Progressive disclosure and context efficiency</span>
+    <p>In Claude Code's skill system, <strong>progressive disclosure</strong> means only the skill's name and description (from YAML front matter) sit in the system prompt permanently. The full <code>SKILL.md</code> body is loaded only when Claude invokes that skill; reference files are loaded only when the <code>SKILL.md</code> process explicitly calls for them. If you pack thousands of words of brand guidelines and example outputs directly into the <code>SKILL.md</code>, every invocation of that skill loads all of it — even when the task only needs 10% of the content. This wastes token budget and degrades context quality.</p></aside>
+
+    <p>A few reasons why people default to monolith skills: marketplaces like Skills MP display the <code>SKILL.md</code> content. When people are browsing, they only see that file — they don't open the other files — so everyone puts everything on the front page so people can see the capability. And people think longer context equals better context, but that's just not true. Then others browse those, copy them, and learn from them, so they never see the folder structure behind well-built skills because the marketplace tends to flatten everything to one screen. Most tutorials when teaching how to build skills also stop at the <code>SKILL.md</code> file; even the getting-started guides from Anthropic show you how to write a <code>SKILL.md</code> and call it done. They don't necessarily include the context to build all the reference files. Those references, scripts, and assets are treated like an advanced layer when really they should be the default for anything serious, anything where you want good-quality output.</p>
+
+    <p>And if you think about how people are generating skills, a huge chunk of those 280,000-plus skills on Skills MP are auto-generated — batch created by LLMs. If you're doing that, it's far easier to just generate one file than a proper folder structure with curated reference docs.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon's "280,000-plus skills on Skills MP" figure is from early March 2026 and may have moved significantly since. Treat it as an order-of-magnitude indicator of marketplace scale rather than a precise count. The broader point — that most auto-generated skills are monoliths — is well-founded regardless of the exact number.</p></aside>
+
+    <p>But here's the actual problem with the monolith approach. It might seem okay on the surface, but let's think about how Claude Code actually references these documents — which is called progressive disclosure. It starts with the YAML front matter. If it needs the skill, it loads up the <code>SKILL.md</code>, which should be the process document, and then that process document should relate to the additional context. But if Claude is loading the entire <code>SKILL.md</code> every time, and you've got a 1,000-word <code>SKILL.md</code>, and Claude only needs 200 lines of it, you're passing in those extra tokens on every single run and eating up context — which costs you more. But that's not the only cost. When everything is in one file, you can't iterate properly. If the output's wrong, you don't know whether it's a process problem (fix the <code>SKILL.md</code>) or a knowledge problem (fix or add reference files). You're staring at one giant wall of text trying to figure out where to fix it — like one giant prompt.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This debugging clarity matters a lot for your salary-survey QA skill. When the outlier-detection output is wrong — say it's flagging legitimate year-on-year jumps as errors — you need to know immediately whether the problem is in the <em>process</em> (the step-by-step QA logic in <code>SKILL.md</code>) or in the <em>knowledge</em> (the tolerance thresholds in your reference file). A monolith skill makes that diagnosis a word-search through 1,500 lines of mixed text. A properly structured skill with <code>SKILL.md</code> pointing to <code>references/outlier-thresholds.md</code> and <code>references/aqabook-rules.md</code> makes it a two-second decision. Same applies to your CH-extraction skill: process bugs (wrong scraping sequence) vs. knowledge bugs (wrong line-item definitions) need to be in separate files to be fixable fast.</p></aside>
+
+    <p>Let me use a real example here — I've anonymised it. There's way too much context crammed into the <code>SKILL.md</code> file: context information mixed with all the different process steps. When the output eventually fails for this, where do you even start to fix it? Now compare that to a properly structured skill with the <code>SKILL.md</code> plus references and scripts files. We've got references that are only used and loaded into context when absolutely necessary. Not only does it save the context window, it makes it easier to debug and also to understand what context is present when you're reading through and installing these.</p>
+
+    <p>The fix is relatively simple: understand how to build these out from the ground up before you go out and install a bunch. Separate your process from your context. Your <code>SKILL.md</code> should be just a step-by-step of what Claude is going to do and in what order. Everything else — brand voice, examples, rules, scoring criteria — goes into reference files that the <code>SKILL.md</code> points to, to use at the right time. And that's it.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice — skill folder structure</span>
+    <p>Target folder layout for any serious skill:</p>
+    <p><code>.claude/skills/ch-accounts-extractor/</code><br>
+    <code>  SKILL.md</code>  ← process only: what steps, in what order<br>
+    <code>  references/line-items.md</code>  ← which financials to extract<br>
+    <code>  references/output-format.md</code>  ← 3–5 example rows from the 96-firm DB<br>
+    <code>  references/filing-rules.md</code>  ← CH filing conventions, what to do with abridged accounts</p></aside>
+
+    <h2>Recap — the three traps and their fixes</h2>
+
+    <p>Quick recap. We had three traps: the hoarding trap — installing skills instead of curating them from the ground up; the generic-context trap — copy-pasting without actually adding your reference files and making them personalised to you; and the monolith trap — cramming everything into one <code>SKILL.md</code> file instead of using the structure that actually lets you iterate.</p>
+
+    <p>The best skill setup isn't the biggest. It's the one where every skill is personalised to your business and built so that you can improve it and maintain it. If you want to see exactly how to build skills from scratch — the full framework, the folder structure, the iteration process — I did a deep dive on that right here. See you in the next one.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Run a one-off audit session right now: open a Claude Code conversation, list every installed skill, and for each one ask yourself (a) is this skill's description unique enough that Claude will never confuse it with another? (b) does it have at least one reference file containing domain-specific knowledge rather than generic guidance? (c) does the <code>SKILL.md</code> body contain only process steps, with all examples and rules delegated to reference files? Any skill that fails two or more of these tests should be rebuilt rather than patched. For your economics research work specifically, the minimum-viable skill set is probably: <code>ch-accounts-extractor</code>, <code>salary-survey-qa</code>, <code>substack-draft</code>, <code>variance-commentary</code>, <code>aqabook-review</code> — five curated, deeply contextualised skills rather than 50 generic ones.</p></aside>
+
+  </div><!-- /.transcript -->
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li>Open your Claude Code skill directory (<code>~/.claude/skills/</code> for global, <code>.claude/skills/</code> for project-local) and list every installed skill. For each one, write a one-sentence trigger condition ("Claude should use this skill when…"). If any two sentences are confusable or you can't write one at all, delete or merge those skills.</li>
+      <li>Pick your most-used research skill — likely your Companies House accounts extractor. Install it locally with <code>--local</code>, then create a <code>references/</code> subfolder and add two files: <code>line-items.md</code> (the exact financial fields you always need: turnover, operating profit, headcount, director pay, filing date) and <code>example-output.md</code> (three complete rows from your 96-firm database). Update the <code>SKILL.md</code> to reference both files before it begins extraction. Run it on a firm you've already processed and compare output quality to the unmodified version.</li>
+      <li>Take your salary-survey QA skill and split it into process vs. knowledge. Move the AQuA Book outlier-check rules and year-on-year tolerance thresholds out of the <code>SKILL.md</code> body and into <code>references/aqabook-rules.md</code>. Have the <code>SKILL.md</code> load that file explicitly. Then deliberately introduce a threshold error and see how quickly you can locate and fix it — this is the debugging payoff Simon describes.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Skill</dt><dd>A reusable Claude Code workflow defined by a <code>SKILL.md</code> file with YAML frontmatter plus optional reference files. Invoked by name; Claude selects which skill to use based on name and description alone.</dd>
+      <dt>YAML front matter</dt><dd>The <code>---name: … description: …---</code> block at the top of a <code>SKILL.md</code>. This is all that sits in Claude's system prompt permanently. Keep it tight and unique or Claude's skill-selection becomes unreliable.</dd>
+      <dt>Progressive disclosure</dt><dd>The skill system's scaling mechanism: only names and descriptions are in context at session start; the <code>SKILL.md</code> body loads on invocation; reference files load only when the process explicitly needs them. Conserves token budget.</dd>
+      <dt>Reference files</dt><dd>Non-process files bundled inside a skill folder: brand voice docs, example outputs, scoring rubrics, domain reference sheets. Loaded on demand by the <code>SKILL.md</code> process. The key to contextualising a generic skill to a specific use case.</dd>
+      <dt>System-prompt budget (15,000 chars)</dt><dd>The approximate character limit Anthropic allocates for all skill names and descriptions in the system prompt. Exceeding it forces truncation and degrades skill selection. The main reason to keep installed skill counts low and descriptions concise.</dd>
+      <dt>Hoarding trap</dt><dd>Installing large numbers of skills without curation, causing ambiguity in Claude's skill-selection and inconsistent outputs. Fix: curate down to 20–30 purpose-built, non-overlapping skills.</dd>
+      <dt>Generic-context trap</dt><dd>Installing marketplace skills without adding domain-specific reference files, producing competent-but-generic outputs that ignore your actual context. Fix: spend 15 minutes adding reference files and updating the <code>SKILL.md</code> to load them.</dd>
+      <dt>Monolith trap</dt><dd>Packing all process steps, brand guidelines, examples, and rules into a single <code>SKILL.md</code>, making the skill expensive to run (all tokens loaded every time) and impossible to debug (can't tell if the error is process or knowledge). Fix: separate process into <code>SKILL.md</code>, everything else into reference files.</dd>
+      <dt>Skills MP</dt><dd>A third-party skill marketplace for Claude Code where users share and install community-built skills. Simon notes the majority of its 280,000+ listings are auto-generated monoliths, making curation essential. Community tooling, not an Anthropic product.</dd>
+      <dt><code>--local</code> flag</dt><dd>When installing a skill, <code>--local</code> scopes it to the current project's <code>.claude/skills/</code> directory rather than installing globally. Recommended: install locally, read the files, customise before using.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-25-claude-code-2-0-has-arrived-it-s-insane.html"><span class="dir">← Previous</span>Claude Code 2.0 Has Arrived (It's Insane)</a>
+    <a class="next" href="ep-27-how-to-use-claude-code-skills-like-the-1-it-s-easy-actually.html"><span class="dir">Next →</span>How to Use Claude Code Skills Like the 1% (it's easy actually)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=CXeCIgc982I" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

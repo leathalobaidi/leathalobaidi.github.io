@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>24. Build Self-Improving Claude Code Skills. The Results Are Crazy. — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=wQ0duoTeAAU" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 24 · Simon Scrapes</div>
+    <h1>Build Self-Improving Claude Code Skills. The Results Are Crazy.</h1>
+    <div class="meta">
+      <span><b>11:02</b> runtime</span>
+      <span><b>111K</b> views</span>
+      <span>Published 13 Mar 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=wQ0duoTeAAU" target="_blank" rel="noopener">youtu.be/wQ0duoTeAAU</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/wQ0duoTeAAU"
+    title="Build Self-Improving Claude Code Skills. The Results Are Crazy." loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Claude Code skills that rewrite their own instructions overnight — Andrej Karpathy's auto-research loop, adapted so your SKILL.md files self-optimise against binary assertion tests while you sleep.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon shows how to take Andrej Karpathy's "auto-research" pattern — try a change, run a test, keep it if the score improves, revert if it drops, never stop — and apply it to Claude Code SKILL.md files. The mechanism combines two loops: Anthropic's built-in skill-creator activation loop (fixing the YAML description so the skill triggers reliably) and a new Karpathy-style output loop driven by an <code>eval.json</code> of binary true/false assertions. The episode walks through a real marketing-copywriting skill going from 23/24 → 24/24 pass rate after a single overnight iteration.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Any repeatable analytical workflow Leath runs — CH accounts extraction, salary-survey cleaning, regulatory FP&amp;A reporting — can be wrapped in a SKILL.md. Binary assertion evals are directly analogous to audit rules: "total must reconcile to ±£0", "no cell references to external workbooks". The self-improvement loop means those skills converge on correct output structure without manual iteration, freeing Leath to focus on the economic interpretation rather than prompt engineering.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Skills</span>
+    <span class="chip">SKILL.md</span>
+    <span class="chip">Evals</span>
+    <span class="chip">Auto-research loop</span>
+    <span class="chip">Binary assertions</span>
+    <span class="chip">Skill creator</span>
+    <span class="chip">Git commit/revert</span>
+    <span class="chip">Self-improvement</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The problem: skills take weeks to get right manually</h2>
+    <p>Skills are one of the most powerful things you can build inside Claude Code for your business. But what if those skills could even improve themselves overnight? I've built over 20 so far, and getting them from version one to something reliable usually takes weeks of tweaking. You run the skill, you spot something wrong, you open up the SKILL.md file and make a change — and it's pretty repetitive. It's slow and it's inconsistent.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills (SKILL.md)</span>
+    <p>A Claude Code skill is a folder containing a <code>SKILL.md</code> file (the instructions Claude reads) plus optional reference files, prompt fragments, and eval data. Claude uses the YAML front-matter in <code>SKILL.md</code> — especially the <code>description</code> field — to decide whether to activate the skill for a given user request. The skill can also contain sub-prompts, examples, and tool references that shape Claude's behaviour when the skill is active.</p></aside>
+
+    <p>And then last week Andrej Karpathy, part of the founding team at OpenAI and former head of AI at Tesla, shared an idea called auto-research. The idea is simple: you give an AI system something to improve and one clear way to measure if it got better. Then it just loops — trying a change, running a test, checking the score. If the result improves it keeps the change. If not, it rolls it back and tries something else. And the best thing about it is it keeps going all night, so you get to sleep and wake up to a better system. Today we're applying that exact idea to Claude Code skills. I'm going to show you how to set up a loop where your skills improve themselves automatically. Let's get straight into it.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Leath's SPE salary-survey compiler skill currently goes through manual SKILL.md edits after each run: spot a mis-normalised job title, open the file, patch the instruction, rerun. That's exactly the slow loop Simon describes. The Karpathy pattern would instead encode the normalisation rules as binary assertions — "every row in the 'Consulting/Consultancy' column must read 'Consulting'" — and let Claude iterate the SKILL.md against those assertions automatically before the annual publish deadline.</p></aside>
+
+    <h2>Karpathy's auto-research loop: the three-file structure</h2>
+    <p>So let's take a quick look at what Karpathy actually built — it can pretty much be summarised by three different files. First we have <code>program.md</code>, which is just a markdown instruction file that we give to the agent telling it what we want to test. We have a fixed data file for recording all the results. And then we have a training script that the agent actually goes in and edits. The core of the <code>program.md</code> file — the one we edit — is actually really summarised by about 10 lines, and that's all we need to make it our own.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Auto-research loop</span>
+    <p>Auto-research (Karpathy's term) is a self-optimisation pattern where an AI agent autonomously edits a file, runs an evaluation, reads the score, and branches: if the score improved it commits the change; if it dropped it resets to the previous state. The loop continues without human input until a target score is reached or the operator interrupts it. It is a community pattern, not an official Claude Code feature, but it runs cleanly inside Claude Code because of Claude's built-in <code>git</code> tooling.</p></aside>
+
+    <p>We've got: tune <code>train.py</code> with an experimental idea by directly hacking the code (i.e. make a change). Run the experiment. Read out the results. If the value has improved, advance the branch and keep the commit. If the value is worse, reset to where we started. And I love this line too: "Never stop. Once the experiment loop has begun, do not pause to ask the human if you should continue. Do not ask if I should keep going or is this a good stopping point. The human might be asleep or gone from the computer and expects you to continue working indefinitely until you are manually stopped. You are autonomous." In other words: keep working until you've either improved the results to the point where there are no additional gains to be made, or we interrupt you.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Git commit / revert in Claude Code</span>
+    <p>Claude Code has native <code>git</code> integration: it can stage and commit files, read commit history, and run <code>git reset</code> to revert to a prior state. The Karpathy loop exploits this — a passing iteration is committed and becomes the new baseline; a failing iteration is hard-reset, so the SKILL.md returns to the previous good state before the next attempt. This means the file on disk is always the best version seen so far.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The "never stop, you are autonomous" instruction is the key unlock for Leath's overnight workflows. The CH accounts-extraction skill could run the same pattern: extract five test filings, check binary assertions (company number matches filing header, turnover figure is numeric and positive, director count is ≥ 1), commit if all pass, revert and tweak if any fail — all while Leath is offline. By morning, the extraction skill would have converged on a version that handles the edge cases that break the current manual-review step.</p></aside>
+
+    <h2>Applying the loop to skills: activation vs output quality</h2>
+    <p>So let's talk about how we apply this directly to our skills. Before we improve our skill's output, we need Claude to actually use the skill. A quick recap because we covered this in the last video: Claude reads your YAML description to decide relevance of the skill, and community testing found that activation was as low as 20% when you've got vague descriptions. So descriptions in the YAML are super important inside the skill.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill activation (YAML description)</span>
+    <p>Whether Claude Code chooses to invoke a skill depends almost entirely on the <code>description:</code> field in the YAML front-matter of <code>SKILL.md</code>. If the description is vague or uses generic language, the skill may only activate 20% of the time even when the user's intent is a clear match. The skill-creator tool's built-in activation loop tests a set of trigger queries and rewrites the description until the trigger accuracy reaches a target threshold.</p></aside>
+
+    <p>Now the skill creator — that's the Anthropic skill — the upgrade already has a built-in loop for this. It's effectively the same pattern as Karpathy: you give it test queries to see if a skill activates, some are going to trigger the skill and some aren't, and it runs each multiple times, checks the trigger accuracy, proposes a better description, and then retests. So you can see this directly in the <code>improved_description.py</code> file, which is designed to improve a skill description based on evaluation results. That runs through the <code>run_loop</code>, which combines the evaluation and the improved-description Python files in a loop — it keeps running and improves the description based on trigger accuracy. Did Claude actually activate the skill at the right time? Yes or no. That's basically how it works.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Leath's Companies House data skill probably has a vague description like "extract company accounts data". The activation loop would test queries such as "pull turnover from this filing", "get the director list for this company", "scrape the balance sheet" — and keep rewriting the YAML description until Claude triggers the skill reliably on all of them. A 20%-activation skill is functionally useless in a batch workflow; 95%+ activation is the minimum for a production data pipeline.</p></aside>
+
+    <p>So we already know by this that activation improvement is automated and built into this skills 2.0 version — there's no need to reinvent the wheel there. But triggering reliably and producing actual great outputs from the skills are different problems. The skill creator's eval, which we covered in the last video, lets you test and score output quality based on your own defined metrics. So we actually went ahead and tested this: we had "optimise my skill for making sure my copy follows the persuasive techniques listed in my persuasion toolkit reference file" — just a reference file inside the marketing copywriting skill — and we said measure it on: does it always use that reference file? Does it use curiosity and open loops? How often is it using proof or founder-led stories, which were both metrics inside that persuasion toolkit? And then we tested it by getting it to write landing page copy for my school community five times against that criteria. It was brilliant — it came up with qualitative feedback on the skill quality and even displayed it in a nice click-through dashboard. But it wasn't self-improving. So what we're adding today is making that loop run autonomously Karpathy-style, so it improves overnight without your input.</p>
+
+    <h2>The two loops side by side: Karpathy vs skills</h2>
+    <p>Let's visualise them now side by side so you can see the exact framework and the similar logic we're using. Karpathy's original loop: read the <code>train.py</code> file, change a value, run a test, check the value (their metric is <code>val_bpb</code>), keep or revert — if the score improved, commit and keep it and run the next loop; if the score dropped, reset and start again with a different change. Ours is seriously similar — same logic, same infrastructure — but instead of reading a Python training file, we're reading our <code>SKILL.md</code>. Reading the skill instructions, changing a value, running a test, checking the pass rate, then keeping or reverting. The only real difference is the metric: they're using a continuous validation value; we're checking the pass rate against 25 binary assertions across five tests.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Eval.json and binary assertions</span>
+    <p>An <code>eval.json</code> file lives inside a skill's <code>eval/</code> subfolder and defines a set of test cases. Each test case has a prompt, an expected-output description, and a list of binary (true/false) assertions that can be mechanically checked. Examples: "the final line is not a question", "word count is under 300", "output does not contain em-dashes". The agent runs the skill, checks each assertion, tallies a pass rate, then decides whether the current SKILL.md version should be kept or reverted. Binary assertions are critical: anything subjective ("is this compelling?") cannot be automated.</p></aside>
+
+    <h2>Why binary assertions are everything</h2>
+    <p>Let's talk about what binary assertions are and why they're important. The word binary is everything here — this is where most people are getting it wrong when they're executing tests on their skills. On the right-hand side we have something binary: it does not contain em-dashes; it is under 300 words; the final line is a question. All true-or-false statements. Versus something very subjective like "does it have a compelling subject line?" — obviously not binary, because two people can disagree on what compelling actually means, which means we can't automate it. Of course you can get assistance from Claude Code to say "based on certain frameworks, this is considered compelling", but it's not the binary true/false approach. Those still need a bit of human judgement.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Binary assertions map directly onto the audit rules Leath already applies manually to the SPE salary-survey master workbook. "2014 series break is disclosed in the methodology section" is binary. "Year-on-year change in median salary is within ±50% (no data error)" is binary. "All 25 years of the series are present in the compensation_history tab" is binary. Encoding these as <code>eval.json</code> assertions means the SKILL.md self-corrects until the workbook it produces passes every audit check — the same quality gate Leath currently runs by eye before publish.</p></aside>
+
+    <h2>The actual setup: eval folder and eval.json</h2>
+    <p>Here's my actual setup. Inside my skills I've got a marketing copywriting skill, and what we need to do is set up an eval folder. This is something the skill creator skill can actually do for you, or you can create it yourself. So we set up an eval folder and an <code>eval.json</code>. Inside that <code>eval.json</code> we've got 25 assertions — true-or-false binary things — that we can check, or that the autonomous agent can go through and check and make sure are true or not.</p>
+
+    <p>For example, for the copywriting skill on the first test, we're going to feed in the prompt "write a LinkedIn post about why simple automations beat complex ones", with an expected output of a LinkedIn post following brand structure rules — and it's grabbing those brand structure rules from our reference files: a tone-of-voice guide, a persuasion toolkit, examples of good posts. But what we're actually testing are things that are totally based on this <code>SKILL.md</code> and the process. Does the first line appear as a standalone sentence and not part of a paragraph? That's marked true or false. Does it contain at least one specific number or statistic? Is the final line not a question? Is the total word count under 300? We have various different tests with different prompts and assertions that come back true or false. This enables the loop to go through each assertion, validate whether it's true or false, and then make a change to the <code>SKILL.md</code> if it hasn't hit a perfect score.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Reference files inside a skill</span>
+    <p>A skill folder can contain additional markdown or text files (reference files) that Claude reads as context when the skill is active. These might be a tone-of-voice guide, a list of brand rules, example outputs, or a domain-specific glossary. The skill's <code>SKILL.md</code> instructs Claude to load and apply them. Crucially, whether Claude actually uses the reference files — and uses them correctly — is exactly the kind of quality question that the binary-assertion eval loop cannot validate without carefully designed structural proxies.</p></aside>
+
+    <p>And of course you don't need to create this manually. You can just ask Claude Code to spin up an <code>eval.json</code> file with assertions that can be validated by true-or-false questions based on your <code>SKILL.md</code>. Then what we're effectively doing is feeding in a prompt, seeing whether it hits those assertions, and if it doesn't, improving the <code>SKILL.md</code> so that Claude Code is able to follow it every single time.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For the regulatory FP&amp;A reporting skill — producing the monthly board pack for DCC — Leath could ask Claude Code to generate an <code>eval.json</code> automatically: "given this SKILL.md, write 25 binary assertions". It would produce checks like "the BMA variance table appears before the PI Tracker section", "all monetary figures are in £m to one decimal place", "the cover page date matches the reporting period in the body". That's a month's worth of manual QA encoded in five minutes — and the skill self-corrects to meet all of them before Leath even opens the draft.</p></aside>
+
+    <h2>Running the autonomous loop: the prompt</h2>
+    <p>After that, all you need to do to run this autonomously is prompt Claude Code — using the skill creator skill — to "run a self-improvement loop on my copywriting skill". Point it to the evals file to evaluate each iteration. Tell it to detect whether it passes or fails and return a pass/fail mark. If any assertions fail, make one change to the <code>SKILL.md</code>. Then rerun the tests and recalculate. If the score improved, keep the change and git commit. If it dropped, git reset and make a new change. Log everything. And — critically — give it the instruction not to ask for your permissions: keep looping until it is interrupted or it hits a perfect score.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · "One change at a time" discipline</span>
+    <p>Making only one change per loop iteration is a deliberate scientific constraint. If you allow the agent to make multiple simultaneous edits and the score improves, you cannot tell which change caused the improvement — or which caused a regression. One-change-per-commit preserves a clean git history where each commit represents a single testable hypothesis about the SKILL.md, making it possible to bisect if the skill later degrades.</p></aside>
+
+    <p>So let's run through that. What we've effectively got on the first run is a score of 23 out of 24 — a 95.8% success rate. Now, as I've mentioned, this is like the fifth version of this marketing copywriting skill, so it's already gone through quite comprehensive iterations. One assertion failed: the "end with a question" rule, which was in the <code>tone-of-voice.md</code> reference file but not in the <code>SKILL.md</code> itself — contrasting information. So the loop added a rule to the <code>SKILL.md</code>: "LinkedIn post must not end with a question; close with a declarative statement, CTA, or a punchy fragment." On the second iteration it ran and got a perfect score. Obviously we're talking about an example that only needed two runs to reach perfect — but where you've just created a skill, this will take many runs to refine.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The "contrasting information" catch — a rule in a reference file but not in the SKILL.md — is directly analogous to Leath's 2014 data-break situation in the SPE salary survey, where the disclosure existed in the methodology appendix but not in the chart caption. The self-improvement loop would catch exactly this kind of inconsistency: if an assertion checks "the chart subtitle mentions the 2014 methodological break", and the SKILL.md doesn't instruct Claude to pull that text from the methodology reference file, the assertion fails and the loop adds the instruction. Human-in-the-loop editing misses these cross-file gaps; the automated loop doesn't.</p></aside>
+
+    <h2>The two layers of skill self-improvement</h2>
+    <p>So get Claude Code to write your assertions once, set up the loop, and you can literally let it run overnight and come back to a skill the next day — or have multiple agents running multiple tests on multiple skills, all structurally more sound by morning. There are two layers of skill self-improvement:</p>
+    <p><strong>Layer one</strong> is the skill creator's own description improvement loop — improving skill activation so the skill actually triggers in the first place.</p>
+    <p><strong>Layer two</strong> is our amended Karpathy loop for skill outputs — using those binary true/false assertions and a score, then autonomous improvement through a simple prompt where we ask it to keep looping until it meets a certain criteria.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill creator (Anthropic official tool)</span>
+    <p>The skill-creator is an official Anthropic-provided skill (invoked as <code>/skill-creator</code> in Claude Code) that helps build and improve other skills. It can: scaffold a new skill folder, improve the YAML description via an activation-test loop, run qualitative output evals with a side-by-side dashboard, and — when extended by the Karpathy pattern — run a fully autonomous binary-assertion improvement loop on the <code>SKILL.md</code>. It is a first-party tool, unlike GSD or Ralph which are community-built systems.</p></aside>
+
+    <h2>Limitations: what the binary loop cannot fix</h2>
+    <p>A quick note on limitations. The binary loop handles structure, format, word counts, and forbidden patterns — but it does not handle tone of voice, creative quality, or whether your skill is actually using the context you've put in your reference files properly. Those still need a bit of human judgement. But if you watched the last video, you already know how to use the skill creator tool for that — it gives you a side-by-side dashboard to review the qualitative output, write feedback, and even A/B test your reference files. The binary loop is for the structural stuff; the qualitative dashboard is for the creative stuff.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The binary/qualitative split maps cleanly onto how Leath already divides QA: structural checks (does the table have the right number of rows? do figures add up?) can be automated in code today — the Karpathy loop just automates the SKILL.md edits that fix those failures. But whether the economic interpretation of a salary trend is correct, or whether a Wenta RCT write-up reads as academically credible, requires Leath's domain judgement. The self-improvement loop handles the former; Leath remains in the loop for the latter.</p></aside>
+
+    <h2>Closing: the agentic operating system</h2>
+    <p>Now, if you're looking for bespoke skills to run your business, we've just launched a complete agentic operating system built on Claude Code that ties all of this — including all the skills — into one system. It has your brand memory, 18 production skills across marketing, strategy, ops, and visuals. A self-learning loop, self-maintenance, and you can access it through your phone via Telegram. It's not a personal assistant — it's your entire business context packaged into a system that gets sharper every time you use it. Links down in the description if you want more info. Thanks so much for watching.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Agentic operating system (community branding)</span>
+    <p>Simon uses "agentic operating system" as his own commercial branding for a pre-packaged Claude Code setup bundling multiple skills, memory files, self-improvement loops, and a Telegram interface. This is a community product, not an official Anthropic offering. The underlying components — skills, CLAUDE.md memory, hooks, subagents — are all standard Claude Code primitives; the "operating system" framing is Simon's way of selling them as a coherent out-of-the-box system.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li>Pick one SKILL.md you already use (e.g. the CH accounts extractor). Ask Claude Code: "Generate an <code>eval.json</code> with 20 binary true/false assertions that test whether this skill's output is structurally correct." Review the assertions — add any domain-specific audit rules (e.g. "company number is exactly 8 digits") — then run the skill creator's self-improvement loop and let it run for 30 minutes.</li>
+      <li>Take the SPE salary-survey compiler skill. Encode the three most common publish-blocking errors as binary assertions (e.g. "the 2014 series break is mentioned in the methodology note", "Consulting and Consultancy are normalised to a single value", "the Hirst/Jim duplication has been removed"). Run the Karpathy loop overnight. Compare the SKILL.md before and after: how many new rules were added?</li>
+      <li>Test activation: use the skill creator's description-improvement loop on a skill that you suspect triggers inconsistently. Start with a set of 10 trigger queries and 5 non-trigger queries. Target ≥95% activation accuracy on the trigger set before using the skill in any production batch workflow.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Auto-research loop</dt><dd>Karpathy's pattern: an AI agent autonomously edits a file, runs an evaluation, and commits or reverts based on whether the score improves. Applied here to SKILL.md files rather than ML training scripts.</dd>
+      <dt>SKILL.md</dt><dd>The core instruction file inside a Claude Code skill folder. Contains YAML front-matter (with the activation description) and markdown instructions that shape Claude's behaviour when the skill is active.</dd>
+      <dt>Binary assertion</dt><dd>A test that returns strictly true or false and can be checked mechanically — e.g. "word count is under 300". Contrasted with subjective quality judgements that require human review. Binary assertions are the only type that can be used in an autonomous improvement loop.</dd>
+      <dt>Eval.json</dt><dd>A file inside a skill's <code>eval/</code> folder defining test cases: each has a prompt, expected-output description, and a list of binary assertions. The Karpathy loop runs the skill against each test case and tallies a pass rate.</dd>
+      <dt>Skill activation</dt><dd>Whether Claude Code chooses to invoke a skill when a user types a request. Determined primarily by the YAML <code>description:</code> field. Low activation (as low as 20% with vague descriptions) makes a skill unreliable in production.</dd>
+      <dt>Skill creator</dt><dd>An official Anthropic-provided skill (<code>/skill-creator</code>) that can scaffold, evaluate, and improve other skills. Includes a built-in activation-improvement loop and a qualitative output-evaluation dashboard.</dd>
+      <dt>Reference files</dt><dd>Supplementary markdown or text files inside a skill folder — tone-of-voice guides, brand rules, example outputs — that Claude reads as context when the skill is active. Whether the skill correctly uses them is a qualitative check, not a binary one.</dd>
+      <dt>Pass rate</dt><dd>The fraction of binary assertions across all test cases that evaluate to true. The Karpathy loop commits a SKILL.md change if and only if the pass rate improves; otherwise it reverts via <code>git reset</code>.</dd>
+      <dt>Agentic operating system</dt><dd>Simon's commercial branding for a pre-packaged Claude Code bundle (18 skills, brand memory, self-improvement loop, Telegram interface). Community product built on standard Claude Code primitives — not an Anthropic product.</dd>
+      <dt>val_bpb</dt><dd>The validation metric Karpathy's original ML loop optimises (bits-per-byte on a validation set). The direct analogue in the skills loop is pass rate across binary assertions.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-23-how-smart-people-are-using-claude-code-skills-to-automate-an.html"><span class="dir">← Ep 23</span><span class="eptitle">How Smart People Are Using Claude Code Skills to Automate Anything</span></a>
+    <a class="next" href="ep-25-claude-code-2-0-has-arrived-it-s-insane.html"><span class="dir">Ep 25 →</span><span class="eptitle">Claude Code 2.0 Has Arrived (It's Insane)</span></a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=wQ0duoTeAAU" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

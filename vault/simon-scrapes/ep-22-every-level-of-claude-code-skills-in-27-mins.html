@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>22. Every Level of Claude Code Skills in 27 mins — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=-u_igSQHAIo" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 22 · Simon Scrapes</div>
+    <h1>Every Level of Claude Code Skills in 27 mins</h1>
+    <div class="meta">
+      <span><b>27:10</b> runtime</span>
+      <span><b>51K</b> views</span>
+      <span>Published 19 Mar 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=-u_igSQHAIo" target="_blank" rel="noopener">youtu.be/-u_igSQHAIo</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/-u_igSQHAIo"
+    title="Every Level of Claude Code Skills in 27 mins" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Skills look simple until they don't work — this episode traces the seven levels from "folder of knowledge" to a self-improving, context-aware AI workforce, with the exact structural rules that separate skills that fire reliably from ones that silently bloat your context window.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon walks through seven progressive levels of Claude Code skill building, starting from the anatomy of a skill (the required <code>skill.md</code> and its three optional folders) and the progressive-disclosure loading model that keeps context lean. He then covers the golden rule of keeping skill.md under 200 lines, writing activation descriptions that actually trigger, refactoring marketplace skills using Anthropic's skill creator, baking in business context, measuring quality with the built-in eval system, building a feedback loop so skills self-improve, and finally wiring skills together into coordinated multi-skill workflows.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Every level maps directly to Leath's research stack. A lean, properly triggered skill is the difference between a Companies House accounts extractor that fires every time and one that silently loads 900 lines of irrelevant context. The eval and feedback-loop levels are directly equivalent to the AQuA model-QA cycle: test, score against criteria, log what worked, iterate. And the final level — skills coordinating with each other — is how a "pull filing, extract numbers, append to database, flag outliers" pipeline gets built without human hand-holding between steps.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Skills</span>
+    <span class="chip">SKILL.md</span>
+    <span class="chip">Progressive disclosure</span>
+    <span class="chip">YAML front matter</span>
+    <span class="chip">Skill creator</span>
+    <span class="chip">Evaluations</span>
+    <span class="chip">Feedback loops</span>
+    <span class="chip">Agentic OS</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>Introduction — why most people are stuck at level two</h2>
+
+    <p>You've probably started building Claude Code skills, and at first they seem super simple. You write some instructions, add context, and suddenly Claude can produce work that normally takes a specialist. But then things start breaking. Skills don't trigger when they should, your context window starts to fill up, and the outputs aren't getting better. And here's what most people don't realise. They're still stuck at level two or three of skill building. This video is going to show you what's beyond that.</p>
+
+    <p>I've spent hundreds of hours now inside Claude Code studying Anthropic's complete skill-building guide and building over 20 production skills that now run parts of my marketing, strategy, and operations every day in my business. I'm going to walk you through each level from simple setups to self-improving systems that work together as your AI workforce.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A skill is an official Claude Code feature: a folder containing at minimum a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) and a structured process body. Drop the folder into <code>~/.claude/skills/</code> and Claude Code can discover and invoke it by name. The YAML description is always in context; the body and any referenced files are loaded only when the skill fires — this is "progressive disclosure." Skills package reusable workflows (SOPs) in a form Claude can reliably invoke without re-prompting.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Think of each skill as a codified SOP from your research toolkit. A <code>companies-house-extractor</code> skill that Simon's progressive-disclosure model would handle: the YAML tells Claude "use this when the user asks to pull filed accounts for a UK company," the body walks the PDF-download and field-extraction steps, and the references folder holds your 96-firm schema so it's only loaded when writing the output row — not during the initial API call. That's the structural discipline this episode is selling.</p></aside>
+
+    <h2>Level 1 — understanding what a skill actually is</h2>
+
+    <p>Level one is all about understanding what a skill actually is, and it's not what people have been telling you. At its core, a skill is just a folder of knowledge. That's it. But it's how you build the files inside of the folder and the relationship between those files that actually determines how successful your skills are. Let me break it down with a real example skill that I found online that I love. It's called the last-30-days skill in a running nutrition GitHub repo. The idea is it goes out and does trending research on topics of your choice on Reddit and X — collecting upvotes, likes, retweets, all of that from sources where traditional search cannot reach.</p>
+
+    <p>Now, every skill has one required file: the <code>skill.md</code>. This is the brain of the skill — a markdown file that tells Claude what to do, when to do it, and how to do it well. Think of it as an SOP or standard operating procedure. In our adapted trending research skill, the <code>skill.md</code> has step one: parse the request, understand the user's intent. Step two: run the research, collecting from the Reddit and X APIs.</p>
+
+    <p>Beyond the <code>skill.md</code>, you have three optional folders. A <strong>scripts</strong> folder for executable code — like an API-calling script that the trending research skill uses to actually pull Reddit and X threads. A <strong>references</strong> folder for documentation Claude can pull in only when needed, like a brief template that defines how research reports should look. And an <strong>assets</strong> folder for templates, fonts, or icons. Ultimately they're all just additional files of deep knowledge that the <code>skill.md</code> references in its instructions — and they're only pulled in as and when needed.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Progressive disclosure</span>
+    <p>Progressive disclosure is Anthropic's term for the three-tier loading model inside skills. Tier one: the YAML frontmatter — always loaded into your context for every installed skill (name and description only). Tier two: the body of <code>skill.md</code> — loaded only when the skill is activated. Tier three: reference files, scripts, assets — loaded only when a specific step in the body explicitly calls for them. The result is that Claude is never reading more than it needs, keeping the context window clean and performance high.</p></aside>
+
+    <p>That three-tier system is really, really important because it means Claude isn't loading everything all at once. It's being smart about what information it brings in and when. So to use a skill, all you need to do is drop that folder directly into your <code>.claude</code> folder under a <code>skills</code> subfolder. Each skill has its own folder. As long as it has a <code>skill.md</code>, it's considered a skill and Claude can see and use it.</p>
+
+    <p>At level one you can take a skill that somebody else has built, install it, and Claude follows those instructions to produce better work than it would on its own.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The three-tier model maps directly to how you'd structure an AQuA-grade analysis SOP. Tier one (always visible): "use this skill when the user asks to QA a salary-survey submission." Tier two (loaded on activation): the full step-by-step method — parse the Excel, run year-on-year delta checks, flag outliers above two standard deviations, check for PII in free-text fields. Tier three (loaded only when needed): a <code>references/outlier-rules.md</code> with your specific thresholds and a <code>references/pii-patterns.md</code> with the redaction rules. This way a 25-year series check doesn't dump every reference file into context on startup.</p></aside>
+
+    <h2>Level 2 — lean, properly structured skills that actually trigger</h2>
+
+    <p>You can install and use a skill — great. But here's where most people hit a wall. They start building their own skills and they think that more information equals a better output. That's exactly what level two is about solving. I found a really popular Reddit post called "I Was Wrong About Agent Skills and How I Refactor Them." The story is so common I had to share it. This developer started building skills the day they dropped, and within two weeks they had a CloudFlare skill at 1,131 lines, a Svelte UI skill at 850 lines, and a Next.js skill at 900 lines. Every time Claude Code activated multiple related skills, the context window exploded, loading 5,000 to 7,000 lines every single time.</p>
+
+    <p>That's because he put everything in one giant <code>skill.md</code> file so that Claude could access all that information up front — but that is completely wrong. The problem isn't lack of information; it's actually having too much <em>irrelevant</em> information. Skills share the context window with your conversation, so uncontrolled loading of unnecessary information is basically a direct performance tax on your conversation. If you build skills this way, you'd probably see slowness, drifting from instructions, and Claude ignoring the obvious parts of your instructions.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · The 200-line golden rule</span>
+    <p>Anthropic's guidance is to keep the main <code>skill.md</code> body under 200 lines. This isn't arbitrary — it reflects how much context an LLM can efficiently scan to decide what to load next. Think of <code>skill.md</code> as a table of contents: it tells Claude where to look; the actual detailed documentation lives in the references folder, pulled bit by bit. Anything beyond 200 lines of process instructions should be abstracted into a reference file pointed to from the body.</p></aside>
+
+    <p>Here's the fix, and this is the golden rule of skill building: keep your <code>skill.md</code> under 200 lines max. That 200-line limit effectively caps how much context an LLM has to scan to decide what to load next. We're keeping the entry point under 200 lines so that Claude can understand what the skill offers, decide which reference file it needs to read, and load just that file — another 200–300 lines only. The <code>skill.md</code> is a table of contents; the actual detailed documentation goes into your references folder, and Claude should only be pulling it when it needs it, bit by bit.</p>
+
+    <p>The second massive mistake people make is in the description field — the YAML frontmatter. This is how Claude decides whether to load your skill in the first place. If it's too vague, the skill will never trigger. If it's too broad, it triggers on everything. Studies apparently suggest that skill activation sits around 20% for skills downloaded from a marketplace — they activate only one in five times. Here's a simple three-step framework for writing it well: first, write the trigger (what event or situation causes the skill to be used, what keywords trigger it), second, write what does <em>not</em> trigger it (e.g. "does not trigger for general web browsing or simple URL searching"), and third, state the outcome the skill produces. For the trending research skill: "produces a research brief that other skills can consume, and researches what's trending in the last 30 days." If any marketplace skill you have installed doesn't have these three things, it can be improved massively.</p>
+
+    <p>At level two you know how to build skills that are lean, properly structured, and actually trigger when they should. That is a huge competitive advantage over most people building skills right now.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The activation-description problem is real in research pipelines. A vague description like "helps with company research" will fire on half your sessions for unrelated tasks; a description like "triggers when the user asks to extract filed accounts, revenue, or headcount for a named UK company from Companies House; does not trigger for general company background questions" will fire precisely. Spend ten minutes writing the trigger/not-trigger/outcome triple for each skill you install — it pays back in every session where the skill fires first time.</p></aside>
+
+    <h2>Level 3 — importing and refactoring marketplace skills</h2>
+
+    <p>You know how to build skills that work, but you don't have to build everything from scratch. There's a whole world of skills out there that you can grab, install, and make your own. But there is a catch. A lot of marketplace skills are badly built — 1,000-line <code>skill.md</code> files with no progressive disclosure, everything dumped into one massive markdown document, no references folder, no scripts. Just a wall of text that's going to load into your context window as soon as the skill is activated. And the most frustrating part is that the actual content is often really good. The business logic is solid, the step-by-step processes are valuable; it's just the structure that's the problem.</p>
+
+    <p>Here's what you can do. You can grab the skill, look at what's inside it, and apply everything you learned in level two by refactoring it using Anthropic's skill creator skill. The skill creator skill, effectively as it sounds, creates new skills, modifies and improves existing skills, and measures skill performance — this even applies to improving skill descriptions and activation rates.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill creator skill</span>
+    <p>The skill creator is Anthropic's own meta-skill for building and refactoring other skills. It takes an existing <code>skill.md</code>, analyses what belongs in the body versus the references folder, rewrites the YAML description using the trigger/not-trigger/outcome framework, and can generate an evals suite (see level five). It's the fastest way to restructure a poorly built marketplace skill without losing any of its domain logic.</p></aside>
+
+    <p>I want to create a skill that can help my website be cited by AI answers like ChatGPT, Gemini, Claude. I found a really popular one by a guy called Corey Haines — a sequence of marketing skills with brilliant content, about 13,000 stars. It does have some references and even an evals folder, but the <code>skill.md</code> file is around 400 lines. Although it's packed with really useful information, we're probably loading too much into the context of Claude right away and can abstract some of this out.</p>
+
+    <p>So we grab the installation line, go to our terminal and install it locally. Then we ask the meta skill creator skill — which is an adapted version of Anthropic's skill creator skill — to refactor it and ensure it's under 200 lines. We said: "Take the new AI SEO skill and use the skill creator skill to refactor it. I want the skill to be max 200 lines and I want all the reference info inside the references folder."</p>
+
+    <p>It worked out what information to abstract into different reference files and told us exactly what changed. The <code>skill.md</code> was 400 lines and now it's 148 lines — a 60% reduction in the number of lines loaded every time this skill activates — and it created four new reference files: authority signals, AI visibility audits, content type optimisation, and others you can see inside the references folder. So we've got more things we're pointing to, but less information loaded at any one point.</p>
+
+    <p>The important bit about the references file and pointing to other files is that Claude Code can load and unload information out of its context. During step two it doesn't have a huge amount of information from the other references files — it's just focusing on step two and can load the AI visibility audit at that point, which is an extra 50 or so lines. As soon as it's finished with step two, it can offload it and therefore save token usage, but also improve the accuracy of the results we're getting.</p>
+
+    <p>When you think about it like this, you've now got this incredible ability to take someone else's domain expertise, clean it up, structure it properly, and have it working in your system in an afternoon. At level three, you're not limited to what you can build yourself. You can pull in expertise from anywhere and refactor it into a proper skill format — so Claude is basically a specialist running workflows that didn't even exist in your business in the morning.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Install a marketplace skill locally, then refactor it in one prompt:</p>
+    <p><code>Take the new AISEO skill and use the skill creator skill to refactor it. I want the skill to be max 200 lines and put all reference info inside the references folder.</code></p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The same refactor pattern applies to any community skill you pull in for your research work. If you find a well-regarded Companies House or ONS data-extraction skill on GitHub that's 800 lines of undifferentiated markdown, the skill creator can restructure it in minutes: body down to under 200 lines (the process logic), with your UK-specific field-mapping rules, the AQuA outlier thresholds, and the 96-firm schema moved to reference files. You keep the domain expertise; you gain the progressive-disclosure performance. The afternoon cost is real but the ongoing benefit — every session that skill stays lean — compounds.</p></aside>
+
+    <h2>Level 4 — baking in your business context</h2>
+
+    <p>You can build skills, you can import and fix skills, but up until now everything has been pretty generic. And this is where it gets really, really interesting — because a skill without your business context is basically not worth having at all. This brings us to the next level, which stops skills giving generic outputs and starts making them actually sound like you. That is a massive jump in value.</p>
+
+    <p>If you had a generic "rank my site in AI search" tool, that skill would produce decent content. But an AI SEO skill that knows your brand voice, your product offering, your audience, your content pillars, your competitors, and your positioning will produce content that both ranks and brings you traffic for relevant queries. It's the difference between ranking for a high-volume keyword that gets you traffic you can't do anything with versus ranking for a query where the person typing already has commercial intent or intent to buy.</p>
+
+    <p>The way you do this is by adding your business context to all your skills, giving them all access. Your brand guidelines go into the references folder, your audience personas, your tone of voice examples, all should go into the references files. As good as Anthropic's skill creator skill is, it can give you the structure — but you must also supply the context.</p>
+
+    <p>For my own business, I've built what I call the agentic operating system or agentic OS. It's a set of production skills across marketing, strategy, operations, and visuals, and every single one of those skills has my business context baked in. We have a separate shared brand context folder with all of my assets, my ICP, my positioning, my voice profile. My marketing skills know my audience, they know my tone of voice, they know my content pillars, they know the specific examples and case studies I reference again and again. Claude isn't just following a generic process — it's following <em>my</em> process with <em>my</em> context.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Agentic OS" is Simon's own community branding — not an official Anthropic product or Claude Code feature. It describes an opinionated assembly of skills, shared context folders, and CLAUDE.md into a structured personal system. The idea is valid and powerful; just don't expect an official "agentic OS" command to exist.</p></aside>
+
+    <p>The <code>skill.md</code> for the AI SEO skill should reference all our contextualised information through a context needs chart. Inside the positioning in the brand context shared folder, it says: "load the summary of that because it helps you understand what differentiates the brand with citation-worthy framing." It feeds in the ideal customer profile so that everything written is directly relevant to the existing audience. It's basically only pulling in the right context when it's necessary — not blowing the context window, exactly what we've spoken about throughout.</p>
+
+    <p>Here's how you do it for yourself step-by-step. First, identify the skill you actually want to build or improve on. Second, use the skill creator skill to generate the base structure, get the <code>skill.md</code> formatted properly with a good description. Third, add your business context into the references folder — you don't need a separate brand context folder, just add it into the AI SEO references folder and reference it inside the <code>skill.md</code>. Fourth, test it — run it against real tasks and see if the output matches what you'd produce yourself, because it should be totally contextualised to your work.</p>
+
+    <p>At level four, your skills are not generic anymore. They're customised to your business, your voice, your audience. Claude is producing work that actually sounds like you, not just AI-generated slop.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Your "brand context" is your methodological context: the AQuA QA standard, your 96-firm database schema, the SPE salary-survey outlier rules, your Substack house style. A shared <code>references/econ-context/</code> folder — holding your schema, your QA thresholds, and a one-page positioning of what your Substack series is about — can be referenced by every research skill you build. A <code>companies-house-extractor</code>, a <code>salary-survey-qa</code>, a <code>substack-drafting</code> skill all draw from the same shared context rather than duplicating it. That's the structural equivalent of Simon's brand context folder, just with your methods instead of brand guidelines.</p></aside>
+
+    <h2>Level 5 — measuring and testing skill quality with evaluations</h2>
+
+    <p>Now you've got personalised skills that produce really good outputs — but here's the question that nobody's asked yet. How do you know they're actually producing good outputs? How do you know that version two you've made is better than version one? This is where we move from building to measuring.</p>
+
+    <p>Anthropic just released evaluation and benchmarking built right into that skill creator skill. Up until now it was completely vibe-based whether it was giving us high-quality outputs or not. You had no way to actually measure whether your changes made things better or worse. Say we removed a reference file — we wouldn't know if that was affecting quality apart from reviewing every single output and making a judgment call. Most good skills go through many iterations before they really start solving your problems in an automated fashion, and that's exactly what the eval function is designed for — to speed up that learning cycle.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill evaluations</span>
+    <p>The evaluations feature (built into Anthropic's skill creator skill) lets you define three to five measurable criteria, run the skill five or ten times against a test task, and score each output against those criteria automatically. It supports A/B testing: run the same task with a reference file included versus excluded, compare pass rates, and see whether that file actually improves quality or just costs tokens. The output is a structured report with per-run pass/fail results and aggregate scores.</p></aside>
+
+    <p>Let's continue with the AI SEO skill to demo this. Instead of saying "run some tests on my SEO skill," we're going to say "run a new test using the skill creator evals optimised for making sure my content follows the content type optimisation patterns." I specifically looked through the reference files and figured out I want to optimise the results for this specific reference file. Is it even loading the reference file in the first place? And if it is, is it optimising for things like: does it have one clear target query per post? Does it have an author bio with relevant credentials? Does it have internal links that relate to product or feature pages? Those are some of the things that help rank in AI search because they show authority and content-pillar depth.</p>
+
+    <p>We gave it a blog page from my AI agency — written before I did any work on optimising content, not very long at all. The evals feature also has a great other feature: A/B testing. If I wanted to A/B test, I could take out the content type optimisation reference file and say "Run this same task five times, once with the content type optimisation and once without — which ranks better?" It comes back with a thorough before-and-after review and helps me effectively optimise this skill: does this reference file even feed into the results in the first place, or does it help enhance quality?</p>
+
+    <p>I'd highly recommend when you run these evals doing three to five criteria at a time, so you're not giving it too much to think about. It creates an assertions file, then spawns all five or ten runs in parallel and grades them against the criteria. What you get is a really nice overview of the different assertions and an aggregated results report hosted on your local environment.</p>
+
+    <p>You can read the full output from each variation, see exactly where it passed and failed, and give feedback directly into the report — which then feeds back into improving the skill and will retest to make sure the improvements actually fixed the results. In the benchmark, you get an overview of all different runs. With the skill and all reference files, the pass rate was 93%. Taking out some reference files, the pass rate was also 93% but the time taken and tokens were significantly lower. So what this tells you is: can we take away some reference files without compromising output quality? That is where you run the A/B test to see exactly which files are improving quality and which don't even matter.</p>
+
+    <p>At level five, you stop guessing whether your skills actually work. You can test them, score them, measure them, and improve them. That's how you go from a skill that kind of works to one that consistently delivers.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is AQuA model QA, applied to Claude Code skills. Instead of "does this model produce the right variance analysis?" you're asking "does this skill reliably assess whether a page has a target query, an author bio, and internal links?" Define three to five concrete criteria — for a salary-survey QA skill that might be: does it flag every year where the year-on-year delta exceeds 15%? Does it check for PII in free-text fields? Does it produce a summary table in the standard format? Run five times, aggregate, score. Then A/B test whether your <code>references/outlier-rules.md</code> is actually being used or just consuming tokens. This is the difference between "I think it works" and "it passes at 93% on these specific criteria."</p></aside>
+
+    <h2>Level 6 — skills that learn and improve themselves</h2>
+
+    <p>Now you can measure and improve your skills — but you're still the one doing all the manual tests for improvements. What if skills could actually improve themselves? Things get really, really cool now, and this is something I've been using for my own agentic OS that makes a massive difference. The concept is super simple: your skills should learn from every interaction and get better over time. But to do this, you need one critical piece that most people are missing — a feedback loop.</p>
+
+    <p>Let's stick with the AI SEO skill. Every time you run it and notice something, that observation gets captured in a learnings and/or rules file inside the skill directory. The meta skill creator adds a rule section when asked to create one. It says whatever feedback we add will go into these rules, and the rules will always be read when the <code>skill.md</code> is read. So maybe you're running the skill and the article it produces ranks on page one within a week. You can go back and note exactly what worked: "Articles that open with a direct answer to the search query in the first paragraph seem to get picked up in AI search more quickly." Or: "A comparison table in the middle of this article increased time on page." All of that can go into the rules file and/or a separate learnings file that sits within your context, documenting on a skill-by-skill basis what works and what doesn't.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Learnings files and feedback loops</span>
+    <p>A learnings file is a structured markdown file inside your skill folder (or referenced from your CLAUDE.md) that accumulates observations from past runs: what worked, what patterns emerged, what to always check. Because it's loaded as part of the skill's tier-three references, Claude reads it before each run and applies the accumulated knowledge. It's distinct from the AQuA-style eval (which scores against fixed criteria) — the learnings file captures qualitative, contextual patterns that build up over time.</p></aside>
+
+    <p>The way this gets updated is with a wrap-up skill. At the end of every session you close the session, and any skill you've used and any feedback you've been given will be generated and input directly into this <code>learnings.md</code> file on a skill-by-skill basis. It's just a line that says something like "after completing a task, review the output against these criteria, and if you identify specific patterns or improvements, add them back to the learnings file."</p>
+
+    <p>Now every time you run a skill, it's actually checking its own work. Did the article answer the search query in the first 100 words? Did it include structured data patterns from the reference file? And if it doesn't do any of that, it logs it automatically. This connects straight back to level five because you can use your evals to validate that the learnings are actually improving output quality — run the same eval before and after the learnings are applied, and you'll see the difference in your benchmark scores. They'll start improving without you actively having to run evals.</p>
+
+    <p>But the key thing is keeping the learnings file under control. You can't just dump random notes in there forever, or it becomes its own context window problem — feeding in too much every single time. The idea is to keep it structured and prune the obvious stuff every so often. Every week, go through the learnings file and strip out any surplus information that won't contribute to quality.</p>
+
+    <p>At level six, your skills are not static anymore. They're actually learning from every piece of content they produce, accumulating knowledge over time, and getting better the more you use them. Your skill in three months from now will be dramatically better than the one you built on day one, and you didn't even have to manually run evaluations for it.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Build a <code>learnings.md</code> into your <code>companies-house-extractor</code> skill. After each extraction run, the wrap-up skill logs: which PDF layouts caused the revenue figure to be misread (e.g. "£000s units on balance sheet — always multiply by 1,000"), which company types use non-standard filing dates that shift comparability, which firms have changed their year-end mid-series. Over a year of running the skill across 96 firms, that file becomes a precise set of gotchas that no prompt you write from scratch would capture. The skill in month twelve will catch errors the skill in month one missed — automatically.</p></aside>
+
+    <h2>Level 7 — skills that work together as a coordinated system</h2>
+
+    <p>Now that your individual skills are learning and improving on their own, there's only one thing left to solve: they're still operating independently. What happens if they start working together?</p>
+
+    <p>Before we hit the final level — my YouTube analytics tell me that 94% of you are not subscribed but still watching the content. So if that's you, head down below, subscribe to the channel so you can get more value from the videos I create.</p>
+
+    <p>This is level seven, the final level where everything connects. Let's use a copywriting skill as an example inside the agentic OS. Say I want to write a piece of copy for a landing page. Not only do we have the context needs we spoke about earlier — pulling in all of my voice profile, the angles to target from the positioning, my full ICP so it can tailor the copy towards that — but it's also connecting with my other skills to make more powerful workflows.</p>
+
+    <p>In step eight, the "humaniser gate": before saving all copy, we pass everything through the tool humaniser, which is its own set of production instructions to apply pattern detection to every bit of written content to make it more human-written and less AI slop. Or inside the content repurposing skill: if we can't get our transcripts from YouTube, then we can leverage another skill — the YouTube tool — only when it's necessary, to actually collaborate and work together as one unit to complete an entire workflow rather than specific isolated jobs.</p>
+
+    <p>So the copywriting skill pulls in info from my positioning doc, it knows how to differentiate from competitors, and when it writes actual content the humaniser runs it through my voice profile to make sure it sounds like me and not like AI slop. I want to be straight with you: this all takes time to build. You're not setting this up in one afternoon. The foundation skills alone — your voice profile, the positioning, the ICP — need to be built properly first. But once they're in place, every new skill you add immediately benefits from that shared context.</p>
+
+    <p>Think about what you've actually got here. Specialist knowledge encoded in skills. Personalised to your business through shared context. Self-testing with evaluations. Self-improving through a learning process. And coordinating with each other in full workflows, making sure that nothing loads more than it needs to at any one point. That's not an AI tool — that is an AI workforce. And the best part is you don't need to be technical to build this. Everything shown today, every single level, can be done by someone who knows their own processes. The skills handle the complexity; you bring the context and the feedback.</p>
+
+    <p>At level seven, your skills aren't separate tools anymore — they're a complete system. There you have it: every level of Claude Code skill building. If you want to see how I've built my own agentic OS using these exact principles with 20-plus production skills running across my entire business, check out the Agentic Academy in the description. And if you want to see more Claude Code content like this, hit subscribe and give this video a like. See you in the next one.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill chaining (usage pattern)</span>
+    <p>Skill chaining — where one skill invokes another in sequence — is a usage pattern rather than a named official Claude Code feature. It works because skills can reference other skills in their <code>skill.md</code> instructions, telling Claude to invoke a specific named skill at a given step. The result is a pipeline where each skill stays lean and focused while the overall workflow spans multiple specialist processes. The key discipline is still progressive disclosure: no skill in the chain should load more than it needs for its own step.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Your end-to-end research pipeline for the 96-firm database is exactly this: a <code>companies-house-extractor</code> skill that pulls and parses the filing, passes its structured output to a <code>ratio-calculator</code> skill that computes margin and headcount ratios, which passes to a <code>db-appender</code> skill that writes the row to your SQLite database, which triggers a <code>salary-survey-qa</code> subagent to check the new row against your AQuA outlier rules. Each skill does one thing, stays under 200 lines, and the system as a whole covers a workflow that would otherwise require four separate prompting sessions and manual copy-paste between them. The foundation cost is building the shared <code>econ-context/</code> reference folder once — after that every new skill in the chain inherits your schema and QA rules automatically.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Refactor an existing skill.</b> Take any skill you currently have installed and check its <code>skill.md</code> line count. If it's over 200 lines, use Anthropic's skill creator skill to restructure it: move detailed documentation into a <code>references/</code> subfolder and rewrite the YAML description using the trigger/not-trigger/outcome triple. Verify that activation improves by running it five times on realistic tasks and noting how often it fires without prompting.</li>
+      <li><b>Build a contextualised extractor.</b> Create a <code>companies-house-extractor</code> skill whose YAML targets "extract revenue, operating profit, and headcount from a filed UK company account." Put the extraction steps in a lean <code>skill.md</code> body (under 200 lines) and move your 96-firm schema and AQuA field-mapping rules into <code>references/schema.md</code>. Run it on five company numbers. Compare the output row format against your database — adjust the references file until the output is drop-in ready.</li>
+      <li><b>Run a three-criteria eval on your best skill.</b> Pick the skill you trust most, define three concrete pass/fail criteria (e.g. "does the output always include a year-on-year delta?", "does it flag £000s units correctly?", "does the output match the required column order?"), run five iterations, and score against the criteria. Then A/B test by removing one reference file — does pass rate hold? That tells you whether the file is earning its token cost.</li>
+      <li><b>Start a learnings file.</b> After your next three sessions using any research skill, add one observation to a <code>learnings.md</code> in that skill folder — what the skill got wrong, what pattern emerged, what the fix was. After a month, review whether the skill's outputs have measurably improved on those dimensions. This is the AQuA feedback cycle applied to your AI tools.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Skill</dt><dd>An official Claude Code feature: a folder containing a <code>SKILL.md</code> plus optional scripts, references, and assets. The YAML frontmatter is always in context; the body and supporting files load only when the skill fires.</dd>
+      <dt>SKILL.md</dt><dd>The required file in every skill folder. Contains YAML frontmatter (name, description, trigger words) and a process body (the SOP steps). Must stay under 200 lines to maintain performance.</dd>
+      <dt>Progressive disclosure</dt><dd>Anthropic's three-tier loading model: YAML always in context (tier 1), body loaded on activation (tier 2), reference files/scripts loaded only when a specific step needs them (tier 3). Keeps the context window lean.</dd>
+      <dt>YAML frontmatter</dt><dd>The structured metadata block at the top of a <code>SKILL.md</code>: name, description, trigger keywords, exclusions. This is what Claude reads to decide whether to activate the skill — so its description must be precise.</dd>
+      <dt>Skill creator skill</dt><dd>Anthropic's meta-skill for building and refactoring other skills. Restructures bloated marketplace skills, rewrites YAML descriptions, and can generate an evaluations suite.</dd>
+      <dt>Progressive disclosure (15,000-character limit)</dt><dd>The total budget for all skill YAML descriptions loaded into context at startup is 15,000 characters (~5 pages). Installing too many skills exhausts this budget before any work begins.</dd>
+      <dt>Skill activation rate</dt><dd>The proportion of times a skill fires when it should. Marketplace skills average ~20% activation without description tuning. The trigger/not-trigger/outcome framework in the YAML description is the primary lever for improving this.</dd>
+      <dt>Evaluations (evals)</dt><dd>A testing feature built into the skill creator skill. Define three to five criteria, run the skill multiple times against a test task, score each output, and aggregate into a report. Supports A/B testing of reference files.</dd>
+      <dt>Learnings file</dt><dd>A structured markdown file in a skill folder that accumulates observations from past runs — what patterns worked, what errors to watch for. Loaded as a tier-three reference, it gives the skill a growing memory of what good looks like.</dd>
+      <dt>Wrap-up skill</dt><dd>A meta-skill run at the end of a session to capture feedback from all skills used and append it automatically to their respective learnings files. Closes the self-improvement loop without manual note-taking.</dd>
+      <dt>Agentic OS</dt><dd>Simon's community branding (not an official Anthropic product) for an opinionated assembly of production skills, shared context folders, evaluations, and learnings files into a structured personal AI system. The underlying Claude Code features are all official; the framing is creator-specific.</dd>
+      <dt>Skill chaining</dt><dd>A usage pattern (not a named official feature) where one skill invokes another in sequence, allowing multi-step pipelines where each skill stays lean and the workflow spans specialist processes without a human hand-off between them.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-21-the-easiest-way-to-get-ahead-with-claude-code.html"><span class="dir">← Previous</span>The Easiest Way to Get Ahead With Claude Code</a>
+    <a class="next" href="ep-23-how-smart-people-are-using-claude-code-skills-to-automate-an.html"><span class="dir">Next →</span>How Smart People Are Using Claude Code Skills to Automate Anything</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=-u_igSQHAIo" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>32. How to Use Claude Code Agent Teams in 13 Mins (Opus 4.6) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=y9IYtWELMHw" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 32 · Simon Scrapes</div>
+    <h1>How to Use Claude Code Agent Teams in 13 Mins (Opus 4.6)</h1>
+    <div class="meta">
+      <span><b>13:13</b> runtime</span>
+      <span><b>54K</b> views</span>
+      <span>Published 11 Feb 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=y9IYtWELMHw" target="_blank" rel="noopener">youtu.be/y9IYtWELMHw</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/y9IYtWELMHw"
+    title="How to Use Claude Code Agent Teams in 13 Mins (Opus 4.6)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Agent teams are the missing upgrade between subagents and production-scale AI systems — they let Claude Code instances work in parallel <em>and</em> talk directly to each other, bypassing the single-agent bottleneck that kills long, complex sessions.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon picks up from his "every level of Claude Code" episode to cover the one thing he left out: agent teams. He explains why single agents fail on long projects (context rot leading to compaction and lost detail), why the earlier subagent approach (hub-and-spoke delegation) creates a coordination bottleneck, and how the new agent teams feature solves both problems via a shared task list that lets teammates talk to each other. He walks through a 2/10, 6/10, and 8/10 complexity rating system for deciding when to use each architecture, demos a live three-teammate content-repurposing run, covers setup (a single <code>settings.json</code> flag), and closes with practical limitations — cost, file conflicts, context inheritance — and a simple decision rule: start single, graduate to subagents, reach for teams only when genuine cross-collaboration is needed.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Your biggest Claude Code jobs — extracting revenue and headcount from 96 Companies House PDFs, running 25 years of SPE salary-survey QA, drafting a Substack piece while simultaneously building the evidence ledger — are precisely the tasks where single-agent context rot bites hardest. Agent teams offer a credible architecture for parallel, communicating workstreams: one agent pulls and parses accounts, a second cross-checks prior-year figures, a third writes the narrative, and they coordinate through a shared task list rather than funnelling everything through a single bloated context. Understanding when the coordination overhead is worth paying is the key decision this episode arms you to make.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Agent teams</span>
+    <span class="chip">Subagents</span>
+    <span class="chip">Context rot</span>
+    <span class="chip">Shared task list</span>
+    <span class="chip">Orchestration</span>
+    <span class="chip">settings.json</span>
+    <span class="chip">Hub-and-spoke vs. mesh</span>
+    <span class="chip">tmux</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The problem with single agents on long projects</h2>
+
+    <p>Three days ago I released a video showing every level of Claude Code and it took off, but I left out something critical that you need to understand if you're going to use it properly, and that's agent teams. Since then, I've dug deep into the official docs and been hands-on testing, and once this clicked, it completely changed how I thought about using Claude Code for my projects. Because if you're running it the way most people are, as a single agent, you've probably noticed the same thing that I have. The longer it runs, the worse it gets. It's forgetting context, introducing bugs, and forcing you to fix things yourself.</p>
+
+    <p>So, in this video, I'll break down what Claude's agent teams actually are, why they exist, and when to use them versus subagents or single agents, so that you can build reliable systems faster. Let's go straight into it.</p>
+
+    <p>More information you stuff into a single agent's context window, the worse it performs. The harder it is for the model to focus on what actually matters right now. As this little context bar fills up, you get context rot. And when it gets to around 95%, it compresses and summarises important information. And the next section of the conversation uses these summaries only, meaning ultimately, it can no longer find the key details that you gave to it thousands of tokens ago. Now, imagine the damage this can cause on a much larger project where all of the key details matter and not just getting Claude Code to do an isolated task.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context rot &amp; compaction</span>
+    <p>Context rot is the empirical finding that LLM reliability degrades as the context grows — not because information disappears, but because the model struggles to retrieve the right needle from a bigger haystack. Claude Code's built-in response is automatic compaction at around 95% fill: the conversation history is replaced by a model-written summary, and only that summary enters the next exchange. The risk is that a lossy summary silently drops a binding rule or a critical schema detail. The manual <code>/compact</code> command lets you invoke compression at a chosen moment and append instructions about what must survive.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is the exact failure mode that breaks your 96-firm accounts-extraction sessions. You load the Companies House MCP, paste your firm schema and QA rules, start pulling PDFs — and by firm 40 the AQuA outlier thresholds you stated at the start are the first casualty of compaction. The fix isn't a longer prompt; it's architecture. Pin your schema and rules in a short <code>CLAUDE.md</code> so they reload on every exchange regardless of compaction. Then consider whether firms 1–50 and firms 51–96 should be separate sessions — or separate agents — rather than a single sprawling context.</p></aside>
+
+    <h2>Why subagents alone aren't enough — the hub-and-spoke bottleneck</h2>
+
+    <p>Single agents get overwhelmed, they forget, and actually experts in the community spotted this problem early, and they started building out their own subagents. So, you'd only use subagents for two reasons with Claude Code. The first is to improve output quality. Think hiring a specialist versus hiring a generalist. We can have one Claude that's just delegating to focused, specialised instances in the same session that have their own context window, and therefore we can improve the output quality and also reduce the cost because we're not feeding all of the context to those specialised subagents. And the second reason is to get things done faster. So, instead of having them feeding back and forth between each other, we would have them in parallel — two terminal windows open taking on non-dependent tasks. Like for example, in terminal one we could have it writing our LinkedIn post, in terminal two at the same time in parallel, we could have it working on Instagram posts which are often unrelated.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Subagents</span>
+    <p>A subagent is a Claude Code instance spawned by the main (parent) agent to do focused work in its own isolated context window. Only its summary or output is returned to the parent — the parent's context is not visible to the subagent. This isolation is the feature: each specialist starts fresh, so it doesn't inherit the noise that has accumulated in the parent's window. Subagents can run sequentially (chained) or in parallel (separate terminals), but they have no direct channel to each other — all inter-agent communication must flow through the parent.</p></aside>
+
+    <p>People like Boris Cherney, the creator of Claude Code and other power users in the community, were tackling this by building their own subagent system. Boris even said he ran up to 15 agents — five in parallel in his terminal, and then five to ten Claudes online at the same time. And this is great in theory, but it broke down when the agents actually had to communicate with each other.</p>
+
+    <p>Subagents can only report back to the parent. So if for example we had a content research team with a researcher as subagent one, the writer as our main instance, and the reviewer as subagent two — the subagents, the researcher and the reviewer, can only feed information back to the main instance, the writer. The reviewer can't review the research, and the researcher can't see any outputs of the reviewer; the writer handles all of that. So with subagents, what you actually end up with is the main agent becoming the bottleneck. There's only two-way communication between that main agent and every single specialist subagent.</p>
+
+    <p>So when we were spinning up subagents, each subagent has its own context, and the results are returned to our main agent — in our case the writer — and we'd have the reviewer and the researcher as subagents there. But the main agent is coordinating all of that work. So if multiple tasks and multiple subagents feed into that main agent, that becomes the clear bottleneck. And this only works if you don't need the researcher to interact with the reviewer and vice versa. So subagents acted like a hub-and-spoke model, and they gave us delegation, but they didn't give us collaboration. And that's the gap that agent teams actually fills.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The hub-and-spoke bottleneck is precisely the failure mode in your SPE salary-survey pipeline if you try to run it as a single-parent subagent setup. Imagine: one subagent parses each year's submission CSV, another flags outliers, a third checks year-on-year consistency. All three funnelling results back to the main agent, which then tries to reconcile 25 years of flagged rows in a single growing context. That's the bottleneck. The moment the consistency-checker needs to see what the outlier-detector already flagged — and can't — is the moment errors slip through. Agent teams, or at minimum a well-structured sequential pipeline with explicit handoff files, is what this data-quality workflow actually needs.</p></aside>
+
+    <h2>What agent teams add — the shared task list</h2>
+
+    <p>And they do this through a shared task list. The main agent will decide and spin up the teammates — effectively our subagents — but the difference is they have a shared task list, which is able to communicate back and forth with every single teammate. And not only that, the teammates are able to actually communicate with one another. So, think of it as a subagent structure, but with the ability to not only communicate with our main agent, but also bring tasks down from the shared task list and communicate with each other.</p>
+
+    <p>So, again, they have their own context window, but actually instead of returning all the information to the main agent, they are set up as their own Claude Code instances. Now, this comes with drawbacks. They have access to everything that the main agent has access to — the <code>CLAUDE.md</code> file, the MCP servers, etc. — but it comes at the expense that we have to put all of that in the context of every single subagent or teammate that we spin up. So, it ends up costing more in tokens.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Agent teams &amp; the shared task list</span>
+    <p>Agent teams are Claude Code's experimental multi-agent architecture (as of early 2026) in which multiple Claude instances run as "teammates" — full Claude Code sessions in their own right — coordinated by a shared task list rather than a parent–child delegation tree. Unlike subagents, teammates can pull tasks from the shared list and message each other directly, enabling genuine peer-to-peer collaboration. The cost is that every teammate's context must be seeded with the full setup (CLAUDE.md, MCP configs, tool permissions), making teams more token-intensive than subagents for the same breadth of task.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon is explicit: agent teams are "still very experimental" at the time of this video (February 2026). The shared task list mechanism, the specific <code>settings.json</code> flag name, and the exact behaviour of teammate communication may have changed in subsequent Claude Code releases. Treat the conceptual architecture as stable; treat the exact setup steps as a starting point you should verify against the current docs.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The shared task list is the architectural element that makes genuinely parallel, communicating analytical workstreams possible. For your Companies House deep-dives, picture a team where an "accounts extractor" teammate pulls and parses PDFs, a "ratio calculator" teammate consumes the extractor's output files and computes margins and headcount growth, and a "narrative drafter" teammate checks both teammates' files and writes the Substack paragraph. They coordinate via the shared task list; you don't need to manually paste outputs from one step into the next. This is meaningfully different from running three separate single-agent sessions and stitching results together yourself.</p></aside>
+
+    <h2>Setup — enabling agent teams in settings.json</h2>
+
+    <p>So, now you know what it is, let's actually set this up. And by the way, it's still very experimental. There's one thing we need to do first, and that's to enable it in our <code>settings.json</code> file. So, we have a Claude Code instance already open here. I'm going to jump to our <code>settings.json</code> file, and we're going to replace that with Claude Code experimental agent teams as one, which is <code>true</code>, and then we're going to need to make sure that we restart our Claude instance.</p>
+
+    <p>Before we restart our Claude instance, we're just going to make sure that we have the latest version of Claude. So, we're going to run <code>claude update</code>. It's going to make sure that we're past 2.1.32, otherwise you will not be able to use agent teams even if you've got the flag in the settings. And then we're going to run it with the flag <code>--dangerously-skip-permissions</code>, because we don't want to approve every single file change that's going to be made.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Enable agent teams in your <code>settings.json</code>:</p>
+    <p><code>"claudeCodeExperimentalAgentTeams": true</code></p>
+    <p>Then update and launch:</p>
+    <p><code>claude update</code> &nbsp;(must be ≥ 2.1.32)<br>
+    <code>claude --dangerously-skip-permissions</code></p>
+    <p>Then in your prompt, explicitly say you want an agent team — Claude won't spawn teammates unless you ask.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Settings &amp; permissions</span>
+    <p>Claude Code's behaviour is controlled by a <code>settings.json</code> file (project-level or user-global). It governs allow/deny rules for tools, environment variables, hooks, and — when experimental features are enabled — feature flags such as agent teams. Permissions propagate to all teammates: if you start with <code>--dangerously-skip-permissions</code>, every teammate inherits that permission level. Simon flags this as a limitation: if you want a reviewer teammate to be read-only, you have to explicitly instruct Claude to set narrower permissions for that agent.</p></aside>
+
+    <h2>Three tiers of complexity — when to use which architecture</h2>
+
+    <p>Now, when it comes to actually spawning a team, we can either tell Claude exactly what we want — we want a researcher agent, we want a writer agent — or just let it decide and give it a task scope. You have to specifically at this point tell it you want an agent team, or at least allude to that in your prompt. Now, I'll walk through a few different use cases to try and understand where I'd use an entire agent team versus subagents versus single agents. I've got examples with business use cases, content creation, and some where I thought: actually, when it comes down to it, I probably wouldn't use agent teams for this. And then cases where the collaboration is more important, which would be our six-out-of-ten or eight-out-of-ten use cases.</p>
+
+    <p>A <strong>two-out-of-ten use case</strong> would be creating an agent team which pulls ideas from an Airtable content calendar. It spawns four teammates: one to write LinkedIn posts, one to write Instagram posts, another to do some deep research, and then a style reviewer to check the drafts. Now, that is something that's effectively a set of context prompts pulled together and does not require much collaboration between the teammates. The LinkedIn post writer doesn't need to necessarily communicate with the Instagram post writer. They possibly need to get some deep research, but actually could that be done in one separate step and actually passed into each of the individual writers as subagents? Probably. So, that's why I've deemed this a two-out-of-ten use case.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The two-out-of-ten litmus test — "could each piece be done as a subagent with the output passed as a file?" — is a useful gate for your own work too. Extracting revenue from 10 Companies House PDFs, one after another, is a two-out-of-ten job: a single subagent with a loop (or a Ralph-style batch) handles it cleanly. The overhead of spinning up four communicating teammates for serial, non-interdependent tasks just burns tokens without adding value.</p></aside>
+
+    <p>A <strong>six-out-of-ten use case</strong> where there's an increased amount of collaboration could be content repurposing from a video transcript. So, I could load in the transcript for this video. Teammate one is writing a long-form blog post as markdown — it pulls out key frameworks, structures it for SEO, makes sure that we can actually upload that to WordPress or Webflow. We have teammate two, which is all about LinkedIn carousels: generating images, the hook, and the storytelling angle. And then teammate three, which might be writing an email newsletter tailored for your audience.</p>
+
+    <p>All of those are quite individual tasks, so they could be run as subagents. But the reason this is a six-out-of-ten use case instead of a two-out-of-ten use case is because actually you want them to be consistent in their output. Therefore, teammates one, two, and three would likely need to collaborate on things like what the angle on the hook is, so that we can actually not duplicate exactly but share similarities. And they can also check each other's files to keep consistent messaging across the assets.</p>
+
+    <p>And where agent teams really shine — what I call the <strong>eight-out-of-ten use case</strong> — is building something more complex where you definitely need collaboration. For example, a Next.js application with Stripe. Teammate one is going to build the API layer with all the endpoints and webhooks. Teammate two is going to build just the front end — specialising in front-end work without any of the back-end context feeding in. And teammate three is going to write a full testing suite. Throughout the builds of the API layer and the front end, they're going to be constantly talking to teammate three, who is doing the testing and then feeding that back up into the task list.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Map this framework to your own work. Your annual SPE salary-survey compilation is a six-out-of-ten: processing each year's submission can be done in parallel subagents, but the consistency checks (year-on-year comparisons, cross-year outlier flags) require the outputs of multiple subagents to be visible to a reviewing agent simultaneously. An eight-out-of-ten analogue would be a combined "build the evidence ledger and draft the Substack series" task: an extractor agent, a QA agent, and a narrative agent that draws on the QA agent's live flagging — they genuinely need to see each other's work in motion, not just exchange finished files.</p></aside>
+
+    <h2>Live demo — three-teammate content repurposing</h2>
+
+    <p>Just so you can see exactly how this runs, we're going to copy this second use case here and specify: "create an agent team that" — and then paste in the task. Now it's going to understand — if we've restarted our instance with the <code>settings.json</code> flag on — that we want to use teams. We've specified we want an agent team, and it's actually going to now go out and create those individual teammates. We're going to drop in the actual transcript from the video, it's going to generate the teammates, and then those are going to interact with each other to create consistent messaging across the long-form article, the five-part LinkedIn carousel script, and also the email newsletter.</p>
+
+    <p>So it's going to grab the context and then spin up those individual teammates. We're going to see all those individual teammates working in parallel and we're going to be able to flick through them — and you can actually talk individually and assign tasks individually to a specific teammate using shift-up and shift-down to navigate between them. We can interrupt specific teammates, we can talk to them directly. And this enables us to actually run an agent team where they're collaborating with each other but we can also control them and provide inputs to individual members.</p>
+
+    <p>Now, unless you have something like tmux installed, they're all going to appear in this single terminal window. If you have tmux installed, it's going to split out into individual windows so you can see each agent's context being fed in and the work that it completes at the time.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · tmux for multi-agent visibility</span>
+    <p>tmux is a terminal multiplexer — a standard Unix tool that splits a single terminal session into multiple panes or windows, each running independently. When Claude Code spawns an agent team, each teammate runs in its own shell. Without tmux, all their output is interleaved in a single terminal window. With tmux (install via <code>brew install tmux</code>), each teammate gets its own visible pane, making it much easier to watch parallel agents' progress and spot one that has stalled or diverged. tmux is not part of Claude Code itself; it is a separate, widely used terminal utility.</p></aside>
+
+    <p>So it's set up the three content teammates in parallel. You've got a blog writer teammate, a carousel writer teammate, and a newsletter writer. It gives each one an individual task and an output file to complete, and then now they're going to interact with each other. So it's got cross-coordination built in already: the blog writer messages the carousel writer with their hook angle so they don't duplicate. The newsletter writer checks on the other two drafts to keep messaging consistent but takes a different angle. And all three follow the same brand voice, brand word list, humaniser rules, and no em dashes.</p>
+
+    <p>Once all three finish, it'll be run through the review stage to flag any contradictions, check brand voice, and make sure each piece genuinely takes a different angle rather than just being a shortened version of the same thing.</p>
+
+    <p>Now, the great thing here is that it has in the same window all of the actions that are taking place. So, we've got the actions of the carousel writer — then we can see the actions of the blog writer — and both of these are being run simultaneously at the same time. Now, if we wanted to actually view these in separate windows and see their progression as individual agents, then we would just <code>brew install tmux</code>, which would allow us to actually see the agents on different terminal windows. But because we're using the standard VS Code terminal, we can see them all in the same window.</p>
+
+    <p>Now, if we want to shift between the teammates and give specific instructions, then we can use shift and press up, and we can see that we're switching between the team lead, the blog writer, the carousel writer, the newsletter writer, and so on. So, if we wanted to actually give specific information to the team lead, we would hit enter, and then we would talk to the team lead and give those specific instructions. We can, of course, interrupt their sessions, but the idea is we still have control over the team that's running in parallel.</p>
+
+    <p>And that's important because when we're running subagents, we generally talk to the team lead. When we're running teams of agents, we can actually directly talk to an individual team member. So, literally one setting in our <code>settings.json</code>, one prompt, and you've got a coordinated team of AI agents working in parallel, all communicating with each other.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The ability to interrupt and directly message an individual teammate mid-run is genuinely useful for your research workflow. If you're running a three-teammate Companies House extraction — extractor, ratio-calculator, narrator — and you spot that the extractor has misread a consolidated vs. standalone figure, you can interrupt just that agent and correct it without stopping the narrator or calculator. That's a material advantage over a single-agent run where one mistake propagates through the entire session before you can intervene.</p></aside>
+
+    <h2>Limitations — cost, file conflicts, and context inheritance</h2>
+
+    <p>But the important thing is to understand which tasks actually are suitable for a team and which should just be using subagents or single agents. Let's quickly talk about some of the potential limitations of using this team approach.</p>
+
+    <p>First is <strong>no context inheritance</strong>. Teammates spun out don't get that conversation history from your main workflow. So, we need to actually make sure that Claude is passing them a generous amount of the context so that they can do their job.</p>
+
+    <p><strong>Permissions do propagate</strong>, so if we start with bypass permissions on, they will be passed to all of the teammates. So, say we have a reviewer agent that we don't want to be actually editing — we're going to need to actually ask Claude to change the permissions of that.</p>
+
+    <p>Of course, with the cross-collaboration between teammates, we're effectively spending more tokens. <strong>More agents equals more tokens</strong>, so only use it when the task is that eight-out-of-ten or seven-out-of-ten and actually warrants an agent team.</p>
+
+    <p>And then of course, if they're working on individual files, it's okay, but if there's cross-collaboration in the same file, then they can actually override each other, so you need to make sure they have that <strong>separation of output files</strong>.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context inheritance &amp; permission propagation</span>
+    <p>When agent teams spawn teammates, each teammate starts with a fresh context — it does not inherit the main agent's conversation history. The main agent must explicitly pass necessary context (schema, rules, prior findings) in the teammate's initialisation prompt. In contrast, <em>permissions</em> do propagate automatically: if the orchestrating session is running with <code>--dangerously-skip-permissions</code>, all teammates inherit that. This asymmetry matters: you control what context a teammate receives, but you cannot easily restrict a teammate's permissions relative to the parent without explicitly instructing Claude to do so when it spins up that agent.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The "no context inheritance + cost ≈ N×single-agent" limitation is the decisive factor for your work. For your 96-firm database build, team overhead only pays if the agents genuinely need to communicate mid-run — not just exchange final files. A practical rule: if you can describe each agent's job as "take this input file, produce that output file, done" with no mid-task consultation needed, use sequential subagents or a looped single agent and save the token cost. Reserve agent teams for tasks where agent B's <em>interim</em> output changes what agent A should do next — for example, if a QA agent's live outlier flags should redirect the extractor agent to re-pull a specific filing before it moves on.</p></aside>
+
+    <h2>Decision rule — single agent, subagents, or teams?</h2>
+
+    <p>So, the question is then: when do I use agent teams versus subagents versus just a single agent anyway? The way that I'm going to treat this going forward is straightforward. For straightforward tasks where I have one file or a couple of context files, one feature, and one conversation — I'm going to use a single agent. And I can ask that single agent to spin out subagents too, if I need specialists and effectively my context is getting too large for a single agent conversation.</p>
+
+    <p>I will expand to subagents where we can improve the quality and reduce the cost for that level of quality — so the example of having a researcher, writer, and reviewer. But when I need a more complex task, like building out a SaaS application for example, then I'm going to need speed and coordination where parallel tasks are taking place and agents need to talk to each other — then I'm going to use agent teams. So, in simple: start simple, graduate to subagents as the project gets more complex, and then reach for agent teams when the task genuinely needs that cross-collaboration.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Simon's decision ladder maps cleanly onto your three main project types. Single-agent: a one-shot DCC variance-analysis memo, a single-firm Substack profile from a known Companies House number, a quick SPE chart update. Subagents: the 96-firm accounts extraction pipeline (specialist extractor per batch, results collated by parent), a multi-year salary-survey QA run (one subagent per year, outlier flags returned to parent for final reconciliation). Agent teams: a combined "extract + QA + narrate" pipeline where the QA agent's interim flags need to redirect the extractor before it moves on, or a full Wenta RCT analysis where data-cleaning, power-calculation, and pre-registration drafting agents need to stay in sync on evolving design decisions.</p></aside>
+
+    <p>Now, if you haven't seen my original Claude Code video, go watch that first — I'll link it above. And if you want to go deeper on building production-ready systems with tools like this, check out my AI Automation Academy. The link's down in the description below.</p>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Map your pipeline to the decision ladder.</b> Take one current Claude Code project (e.g., the 96-firm accounts-extraction run or the SPE survey QA). Write out each logical step as a box, then ask: does step B need to see step A's <em>interim</em> output before A is done? If yes, that's a candidate for agent teams. If every step only needs the finished output of the previous step, sequential subagents or a loop suffices — and costs far less.</li>
+      <li><b>Enable teams and run a six-out-of-ten task.</b> Add <code>"claudeCodeExperimentalAgentTeams": true</code> to your project <code>settings.json</code>, update Claude Code to ≥ 2.1.32, then try a real six-out-of-ten job: ask Claude to "create an agent team — a researcher, a data extractor, and a narrative drafter — to profile one Companies House company from scratch." Observe how the shared task list manifests, what context each teammate receives, and what the token cost looks like versus your usual single-agent approach.</li>
+      <li><b>Build the output-file separation discipline.</b> Before running any agent team, define one output file per teammate (e.g., <code>extractor-output.json</code>, <code>qa-flags.json</code>, <code>narrative-draft.md</code>) and tell Claude explicitly which file each agent owns. This prevents the mid-run file-overwrite failure Simon flags, and it also creates a clean audit trail — each agent's contribution is separately reviewable, which matters for AQuA-style QA on your deliverables.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Agent team</dt><dd>Claude Code's experimental multi-agent mode (enabled via a <code>settings.json</code> flag) in which multiple Claude instances run as teammates sharing a task list and able to communicate directly with each other — not just with the parent agent.</dd>
+      <dt>Subagent</dt><dd>A Claude Code instance spawned by a parent agent to do focused work in its own isolated context window. Returns its output to the parent; cannot directly communicate with sibling subagents. The hub-and-spoke predecessor to agent teams.</dd>
+      <dt>Shared task list</dt><dd>The coordination mechanism in agent teams: a common list of tasks that the main agent populates and all teammates can pull from and update, enabling peer-to-peer collaboration without routing everything through the parent.</dd>
+      <dt>Context rot</dt><dd>Degradation in a model's reliability as context grows — not because content is deleted, but because the model becomes worse at finding the right information amid the noise. The core reason long single-agent sessions drift.</dd>
+      <dt>Compaction / auto-compact</dt><dd>Claude Code's built-in response to a nearly-full context: it replaces conversation history with a model-written summary. Automatic near the limit; manually invokable via <code>/compact</code> with optional instructions about what to retain.</dd>
+      <dt>Hub-and-spoke model</dt><dd>Simon's term for the subagent architecture: a central parent agent delegates to specialist subagents and all communication flows in and out through that hub. Efficient for delegation; a bottleneck when specialists need to coordinate with each other.</dd>
+      <dt>Orchestrator</dt><dd>The main agent acting as a coordinator — initialising teammates, seeding their context, and managing the shared task list — rather than doing all the work itself.</dd>
+      <dt>Context inheritance</dt><dd>Whether a spawned agent receives the parent's conversation history. In agent teams, teammates do <em>not</em> inherit conversation history; the orchestrator must explicitly pass any required context in the teammate's initialisation prompt.</dd>
+      <dt>Permission propagation</dt><dd>Agent team teammates automatically inherit the permission level of the session that spawned them (e.g., <code>--dangerously-skip-permissions</code>). Restricting a specific teammate requires explicit instruction at spawn time.</dd>
+      <dt>tmux</dt><dd>A terminal multiplexer (installed via <code>brew install tmux</code>) that splits a terminal into multiple independent panes. Used alongside agent teams to give each teammate its own visible window rather than interleaving all output in one stream.</dd>
+      <dt>settings.json</dt><dd>Claude Code's configuration file controlling tool permissions, environment variables, hooks, and feature flags. The <code>claudeCodeExperimentalAgentTeams: true</code> flag enables agent teams; changes take effect after restarting Claude.</dd>
+      <dt>Two / six / eight out of ten</dt><dd>Simon's informal scoring rubric for how much inter-agent collaboration a task genuinely needs. Two-out-of-ten tasks (independent parallel outputs) are better served by subagents; eight-out-of-ten tasks (tight mid-run coordination) justify the overhead of agent teams.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-31-you-re-using-claude-code-wrong-these-10-tips-will-change-eve.html"><span class="dir">← Previous</span>You're using Claude Code Wrong - These 10 Tips Will Change Everything</a>
+    <a class="next" href="ep-33-every-level-of-claude-code-explained-in-39-minutes.html"><span class="dir">Next →</span>Every Level of Claude Code Explained in 39 Minutes</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=y9IYtWELMHw" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>13. Claude just got another superpower (but they kept it quiet!) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=rW7NvKnIEqk" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 13 · Simon Scrapes</div>
+    <h1>Claude just got another superpower (but they kept it quiet!)</h1>
+    <div class="meta">
+      <span><b>7:37</b> runtime</span>
+      <span><b>109K</b> views</span>
+      <span>Published 24 Apr 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=rW7NvKnIEqk" target="_blank" rel="noopener">youtu.be/rW7NvKnIEqk</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/rW7NvKnIEqk"
+    title="Claude just got another superpower (but they kept it quiet!)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">The Claude desktop app quietly gained a file browser, a plan sidebar, and multi-session split views — the features that used to force power users into the terminal are now built in to the UI.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon walks through a Claude desktop update that Anthropic under-announced: alongside the headlined parallel-session support, the app gained a rendered file-system sidebar (so you can browse and edit your agentic OS folder structure without touching VS Code), a rendered markdown plan view, side-by-side split windows for up to four simultaneous sessions, and a preview pane for output files. He also flags three current limitations — hidden-file folders like <code>.claude</code>, <code>.env</code> credential access, and PNG rendering — and argues they'll be fixed soon.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>If you run structured agentic work — a 96-firm Companies House extraction loop, a salary-survey QA pass, or a multi-section Substack draft — you previously had to manage your context files, CLAUDE.md, and output folders entirely from the terminal or VS Code. With the new sidebar you can see and edit your project structure, open rendered output files, and track plan progress all inside the desktop app, which lowers the overhead of running sophisticated, file-heavy agentic pipelines on real analytical work.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Claude desktop app</span>
+    <span class="chip">Agentic OS</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">File sidebar</span>
+    <span class="chip">Split view</span>
+    <span class="chip">Plan view</span>
+    <span class="chip">Multiple sessions</span>
+    <span class="chip">Context management</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>Why the desktop app used to feel one-dimensional</h2>
+    <p>Holy smokes — Simon did not expect to be making this video, but if you've been using Claude Code in the terminal inside VS Code or anything like that, and you've been waiting for a reason to switch to the desktop app, today might be that day. Claude dropped an update last week, and while the announcement focused on running sessions in parallel and reviewing things without leaving the app, they buried two features that are actually going to change how most people use Claude inside the desktop.</p>
+    <p>The real issue before was that the desktop app was always super one-dimensional. Remember back to the days of ChatGPT — chatting back and forth with one single task, everything living in an isolated workspace. Then came Claude Desktop, which brought Claude Co-work as well as Claude Code. But even then everything was designed to be a back-and-forth chat with individual tasks, so you had no visibility into your wider business context, no connection between your sessions, and no sense of progress across projects. These are all things you absolutely need when you're working on a real business problem.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Claude desktop app vs terminal</span>
+    <p>Claude Code can be driven from a terminal (giving full filesystem access and the ability to run shell commands) or from the Claude desktop app (a GUI wrapper around the same underlying model and tool set). The desktop app has historically offered less raw power but lower friction. This episode is about the gap narrowing fast.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For structured analytical projects — building the 96-firm consultancy database, compiling the SPE salary series, or running an AQuA QA pass — the terminal gives you power but adds cognitive overhead: you're mentally tracking which files are where, what the agent last wrote, and what the plan said. A GUI that surfaces all of that alongside the chat is a genuine productivity gain, not just a cosmetic one.</p></aside>
+
+    <h2>The agentic OS: why file structure matters</h2>
+    <p>It's exactly the reason Simon's team built their own agentic operating system in the first place — effectively a pre-built file structure that stores your context, loads it in only when you need it, and is designed to improve its own output every single time you use it, just by managing context in the right way. But you couldn't properly use that in the desktop app before because the files were invisible.</p>
+    <p>Now you can actually see and interact with them. So instead of those isolated chats, you've got the framework to carry out structured, complex projects. Each client can have their own folder, you can move into that workspace, run tasks inside the workspace, and keep everything tied with the right context. Because of that, you can plan properly, track progress, and actually start to improve your outputs over time. Effectively the same system that used to require the terminal due to its flexibility can now work natively on desktop.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Agentic OS / agentic operating system</span>
+    <p>Simon's term — not an Anthropic product — for a deliberate folder structure that sits behind Claude Code sessions. It typically holds a CLAUDE.md with persistent instructions, a context folder with client/project data, a skills folder with slash-command definitions, and an output folder where the agent writes deliverables. By starting each session inside the right subfolder, Claude Code automatically picks up the relevant context without you having to paste it in each time. Treat this as a community pattern, not a named Anthropic feature.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>You can apply this pattern directly to the consultancy-research project: a top-level folder holds your 96-firm schema, AQuA QA rules, and shared methodology in CLAUDE.md; individual company subfolders hold raw Companies House data and previous extraction outputs. Starting a new Claude Code session inside <code>~/consultancy-db/baringa/</code> rather than the repo root means the agent inherits only Baringa's files and context — no bleed from other firms. The same logic applies to the salary survey: a <code>spe-survey/2026/</code> subfolder with its own CLAUDE.md pinning the master schema and outlier-detection rules.</p></aside>
+
+    <h2>What's new: multiple sessions and the plan sidebar</h2>
+    <p>So let me show you exactly the features that were buried in there. Firstly, multiple sessions. You can see a holistic view of all of your sessions — it's no longer just chats on the left-hand side. It means you can work on actual projects where you have multiple tasks or multiple sessions pertaining to a single project, and you can also see how they all connect.</p>
+    <p>Secondly, let's jump into one of these. Say we have a plan — we used to have to view the plan down in the chat thread, but Claude has quietly launched a sidebar that has options to actually view the plan inside markdown. You get the markdown rendered and formatted in a nice plan view that you can expand and collapse. You can see exactly what plan Claude set out, and you can therefore execute against the plan inside the chat without having to scroll all the way back up. You can now track progress side by side.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Plan view / markdown sidebar</span>
+    <p>When Claude Code produces a structured plan (often in response to a "discuss and plan" style prompt or a GSD-style planning phase), it writes that plan as markdown. Previously on desktop this was just another chat bubble you'd scroll past. The new sidebar renders the markdown and keeps it visible as a persistent reference pane while you work — equivalent to having your project plan open in a second window without leaving the app.</p></aside>
+
+    <h2>Split view: up to four sessions on one screen</h2>
+    <p>Having a holistic view of a given project where you have multiple sessions is super important, and what's more important is actually being able to view those in a split view. Say for example you wanted to view two of these sessions together — you can absolutely do that, just drag and drop. You can also open up the plan on one side, and they are completely independent windows. You can run a third session in there, run up to four sessions at once, adjusting how you please and using the real estate on the screen how you want.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Split view is most useful when you're running parallel extraction passes — for example, one session doing Companies House account downloads for a batch of firms while a second session runs QA checks on the previous batch's output. You can watch both in real time without alt-tabbing. For the SPE salary survey, you might run a data-cleaning agent in one pane and a chart-generation agent in another, monitoring both without losing sight of either plan.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>To open split view: drag a session tab from the left sidebar into the main canvas, then drag a second one alongside it. Up to four panes are supported. Each pane is an independent session with its own context — they don't share tool calls or history.</p></aside>
+
+    <h2>File browser and output preview</h2>
+    <p>Previously, similar to the plan, you never had any of your outputs rendered at all, and this made things really difficult. This was also a pain inside VS Code because you had to go and render things like PNGs elsewhere without a preview window. Now you're not only able to view the plan, but you can go into the same window and go into files. As long as you have an operating system in the back end telling it where to put output files — Simon's team keeps theirs in a <code>projects</code> folder — you can go into any of the output files, especially if they're markdown, and actually see the full preview of that file rendered on the right-hand side.</p>
+    <p>It's not perfect — it doesn't render exactly — but these are things that Claude will fix. You can effectively start to see how they're going to build out an ability to see your output files all in one place rendered in markdown, and then actually go in and directly edit those markdown files. Simon's team had literally been building their own UI to do this exact thing: holistic views of projects, editing markdown files. He's quite amazed that Claude has got to this phase already.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · File sidebar / output preview</span>
+    <p>The new file browser in Claude desktop exposes the working directory the session started in. You can navigate the folder tree, click a file, and see it rendered in a preview pane — no separate editor needed for markdown outputs. This is significant because agentic workflows commonly produce markdown reports, plans, and structured data files that you'd previously only read after switching applications.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For the Substack series, your agent might produce a markdown draft per firm profile. With the file browser you can click through each draft without leaving Claude desktop, spot formatting issues or missing figures inline, and send a quick edit instruction back to the agent in the same session. This tightens the review loop — you're no longer context-switching between a file manager, a text editor, and the agent chat.</p></aside>
+
+    <h2>Three current limitations</h2>
+    <p>Simon has noticed a few downsides, but he's sure they'll be fixed soon. The first: if you're outputting PNGs — say the Excalidraw skill is generating PNG diagrams — trying to render that in the sidebar just gives you the PNG as code rather than an actual image preview. That's something they'll fix quickly.</p>
+    <p>The second downside is that you still can't see your skills folder — hidden files like <code>.claude</code> are not accessible. You can't see or edit the skills inside there directly. You're still forced to go to the file structure or open it in VS Code to make those changes directly. That too will likely be fixed.</p>
+    <p>The third, which is a bit harder to work around, is the <code>.env</code> file. The hidden environment variables where you keep all your credentials and API keys are not accessible or editable from the desktop app. You have to go to the underlying file structure or open VS Code. However — and this is important — if you're working in the agentic OS repo, Claude Code is still able to access those credentials and use them in API calls. It just has access; you can't change them yet from inside the desktop app.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The three limitations — PNG rendering, hidden-folder access, and .env editing — were current as of the April 2026 update Simon is describing. Anthropic ships desktop updates frequently; check the release notes to see if any of these have been resolved before working around them.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · .env files and API credentials</span>
+    <p>A <code>.env</code> file is a plain-text file in a project root that holds environment variable definitions (e.g. <code>OPENAI_API_KEY=sk-...</code>). Shell processes and Claude Code read these at startup; the values are never committed to git. Because the file starts with a dot, most operating-system UIs hide it by default — which is exactly why the Claude desktop file browser can't show it yet. For now, edit it in a terminal or VS Code when you need to add or rotate credentials.</p></aside>
+
+    <h2>The net verdict: moving off the terminal</h2>
+    <p>Given all these updates, Simon can actually now see himself starting to fully move away from VS Code. He's curious whether there are any features he's missed, or anything that's still holding people back from jumping to the desktop app. Drop a comment below, subscribe if you found this valuable, and if you want to know about the context powering the agentic operating system that sits behind something like the desktop app, watch the next video.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The practical threshold for switching is: does the desktop app give you enough visibility into your file structure and output files to run a real, multi-step project without reaching for the terminal? For lightweight to medium complexity work — a single-firm Companies House pass, a chart-generation task, a Substack draft — it sounds like yes. For heavy agentic pipelines involving hidden-folder skills or credential rotation, you'll still want terminal access alongside. A sensible approach: run Claude desktop as your primary interface, keep a terminal window open in the background for .env edits and .claude skills maintenance.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Set up an agentic OS folder for the consultancy database.</b> Create <code>~/consultancy-db/</code> with a CLAUDE.md that pins your 96-firm schema, AQuA QA rules, and the instruction to write all outputs into <code>projects/</code>. Start a Claude desktop session rooted there, open the file browser, and confirm the sidebar shows your folder tree and renders a markdown output file correctly.</li>
+      <li><b>Run a split-view extraction pass.</b> Open two sessions side by side: one running a Companies House account download for five firms, a second running a QA check on the previous batch's extracted rows. Practice monitoring both plans in the sidebar simultaneously — this is the pattern for any parallel-batch analytical pipeline.</li>
+      <li><b>Test the context-folder handoff.</b> Create a <code>spe-survey/2026/CLAUDE.md</code> that defines your master schema and outlier thresholds. Start a fresh desktop session rooted in that folder and ask Claude to describe the project constraints it has loaded. Verify that the right CLAUDE.md (not a parent or sibling one) is active — this confirms the folder-scoped context inheritance is working correctly before you run a long extraction job.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Claude desktop app</dt><dd>The official GUI application for Claude, distinct from the web interface and the terminal-based Claude Code CLI. As of April 2026, it runs Claude Code natively and now exposes a file browser, plan sidebar, and split view.</dd>
+      <dt>Agentic OS (agentic operating system)</dt><dd>Simon's community term for a deliberate folder structure — with CLAUDE.md, a context folder, a skills folder, and an output folder — that acts as persistent memory and instruction set for Claude Code sessions. Not an official Anthropic product; treat as a design pattern.</dd>
+      <dt>CLAUDE.md</dt><dd>A markdown file Claude Code reads automatically when it starts a session inside a directory. Used to store persistent instructions, project schemas, QA rules, and style guides that should apply throughout the session.</dd>
+      <dt>File sidebar</dt><dd>The new panel in Claude desktop that shows the folder tree of the working directory and renders selected files (especially markdown) in a preview pane, without requiring a separate editor.</dd>
+      <dt>Plan view / plan sidebar</dt><dd>A panel that renders Claude's structured markdown plan alongside the chat, so you can track what the agent committed to doing without scrolling back through the conversation.</dd>
+      <dt>Split view</dt><dd>The ability to display two, three, or four independent Claude sessions tiled on screen simultaneously. Each pane has its own context, history, and tool calls — they do not share state.</dd>
+      <dt>Multiple sessions</dt><dd>Running more than one Claude Code conversation concurrently. Anthropic's April 2026 update formalised this in the desktop UI with a holistic session list and the ability to relate sessions to projects.</dd>
+      <dt>.env file</dt><dd>A hidden plain-text file (starts with a dot, so invisible in most UIs) that holds environment variable definitions including API keys. Claude Code reads it at startup but the April 2026 desktop app cannot display or edit it yet — use a terminal or VS Code for that.</dd>
+      <dt>Hidden files / dotfiles</dt><dd>Files and folders whose names start with a dot (e.g. <code>.claude</code>, <code>.env</code>). Most file browsers hide them by default. The Claude desktop file browser currently omits them, which is why the skills folder under <code>.claude</code> is not yet visible or editable from the UI.</dd>
+      <dt>Context management</dt><dd>The practice of controlling what information is loaded into the model's context window for a given session — by choosing the right starting directory, writing a focused CLAUDE.md, and scoping output folders — so the model has what it needs without being overwhelmed by irrelevant content.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-12-master-claude-design-in-one-video-complete-build.html"><span class="dir">← Previous</span>Master Claude Design in One Video (Complete Build)</a>
+    <a class="next" href="ep-14-every-claude-code-memory-system-compared-so-you-don-t-have-t.html"><span class="dir">Next →</span>Every Claude Code Memory System Compared (So You Don't Have To)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=rW7NvKnIEqk" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

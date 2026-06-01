@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>25. Claude Code 2.0 Has Arrived (It's Insane) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=F4zSxfBe5R0" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 25 · Simon Scrapes</div>
+    <h1>Claude Code 2.0 Has Arrived (It's Insane)</h1>
+    <div class="meta">
+      <span><b>15:38</b> runtime</span>
+      <span><b>164K</b> views</span>
+      <span>Published 12 Mar 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=F4zSxfBe5R0" target="_blank" rel="noopener">youtu.be/F4zSxfBe5R0</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/F4zSxfBe5R0"
+    title="Claude Code 2.0 Has Arrived (It's Insane)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Four updates that turn Claude Code from a reactive coding assistant into a scheduled, self-improving agent system — and the one that matters most is the evaluation harness hiding inside the Skills framework.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon demos four Claude Code features that arrived together: <code>/loop</code> (recurring prompts inside the current session via cron jobs), <code>/schedule</code> (persistent daily/weekly tasks that survive session close), the Google Workspace CLI (open-source tool giving Claude access to Drive, Docs, Sheets, Slides, Calendar and Gmail without REST API work), and Skills 2.0 (built-in evaluation and AB testing for skill files, powered by parallel subagents). Each feature gets a live demo with realistic examples, and the episode closes with the skills evaluation workflow in detail — defining criteria, running five parallel test runs, reading the HTML report, and iterating on the skill file.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Your two most repetitive pain points — pulling the same Companies House or GSC data on a cadence, and not knowing whether a scraping or QA skill actually works until it hits production — now have architectural answers. <code>/loop</code> covers sprint-length monitoring; <code>/schedule</code> covers the daily salary-survey ingestion or weekly consultancy-database refresh you'd otherwise forget to trigger manually. The Skills 2.0 eval harness is the part to sit with: it gives you a structured, scored pass/fail report against criteria <em>you</em> define, which is essentially AQuA-style QA applied to AI workflows.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">/loop</span>
+    <span class="chip">/schedule</span>
+    <span class="chip">Cron jobs</span>
+    <span class="chip">Google Workspace CLI</span>
+    <span class="chip">Skills 2.0</span>
+    <span class="chip">Skill evaluation</span>
+    <span class="chip">Subagents (parallel)</span>
+    <span class="chip">AB testing</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The four updates — overview</h2>
+
+    <p>If you're using Claude Code, these four brand-new updates completely change what you can build: loops, scheduled tasks, Google Workspace access, and built-in skill testing, or Skills 2.0. So instead of watching four separate videos to figure these out, here's the shortcut. In the next 10 or so minutes, I'll show you exactly what each feature does, when you'd actually use it, and a quick demo of all four. Let's get straight into it.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · What "Claude Code 2.0" means here</span>
+    <p>Simon's "2.0" label is community shorthand, not an official Anthropic version number — it signals a cluster of platform-level upgrades shipped together rather than a model change. The four features cover automation scheduling, external-tool integration, and skill quality assurance. They don't change the underlying model; they extend what Claude Code as an <em>agentic system</em> can do without human prompting.</p></aside>
+
+    <h2>Feature 1 — /loop: recurring prompts within a session</h2>
+
+    <p>Up until now, if you wanted Claude Code to check on something repeatedly, you had to keep coming into the interface, prompting it, come back, ask again, come back, ask again. But the new <code>/loop</code> feature changes that completely. It says here: "Run a prompt or slash command on a recurring interval." Loop lets you schedule recurring prompts inside your current session. So you can say something like, <code>/loop every 10 minutes, check my inbox for important emails</code>. When we fire that, Claude is going to create a cron job that fires automatically, and the prompt is going to be put into Claude Code every single 10 minutes, and it just runs. We don't need to touch it. You can see that cron create being created there.</p>
+
+    <p>And you can literally write anything in natural language, and it will set up and use the skills that you want it to use too. So <code>/loop every day, check my YouTube for new videos, and then run my content repurposing skill inside my skills library</code> — we've got the marketing content repurposing skill to create a newsletter and a tweet — and it's going to create that too. You can see that it's put all the scheduled tasks in this scheduled tasks document.</p>
+
+    <p>Or you can say something like, "In 1 minute, remind me to talk about one-off reminders." What that's going to do is go and set up a single occurrence reminder, and in a minute it's going to give us that notification. And after the longest minute of my life, we've got the reminder up here — Claude Code reminder, "talk about one-off reminders." So the point is: reminders are one-off, loops are recurring tasks, and both get created the same way under the hood using cron jobs.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · /loop and cron jobs</span>
+    <p><code>/loop</code> is an official Claude Code slash command that takes a natural-language prompt and an interval, then registers a cron job internally so Claude re-runs that prompt on a timer without further user input. Under the hood Claude Code exposes three cron tools — <code>cron_create</code>, <code>cron_list</code>, and <code>cron_delete</code>. "Cron" stands for "command run on notice"; the schedule is expressed in standard cron syntax (five fields: minute, hour, day-of-month, month, day-of-week). The loop runs inside your current terminal session — it has no persistence beyond that session.</p></aside>
+
+    <p>If we go to the Claude Code docs we can see there are three tools it uses: cron create, cron list, and cron delete — exactly as they sound. A cron is a notice for some sort of command to run at a given time, and that's exactly what it stands for. And just for quick reference, it's done using cron expressions, which effectively are different symbols for different time values. That's it.</p>
+
+    <p>Now let's talk about the limitations. Loops expire after 3 days — that is probably the biggest limitation so far, and it's a safety thing so you don't accidentally have 20 loops running forever. They also only live in your current session. So if you close the terminal, they're completely gone, and they don't even catch up. If the session was closed when a loop was supposed to fire, it just disappears and never runs again. So think of loops as "help me right now on this project" — watch my inbox for important emails, track changes across a sprint, anything where you need Claude checking in for the next few hours or days. It's not long-term.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Loops are session-scoped — the moment you close the terminal they vanish, and missed firings are not recovered. This makes <code>/loop</code> unsuitable for anything that needs to survive overnight or across restarts. For those use cases the answer is <code>/schedule</code> (Feature 2 below). Also: the 3-day expiry cap means a loop started on Monday will be dead by Thursday regardless of whether you've kept the session open.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>During a Companies House extraction sprint — pulling accounts PDFs for, say, 30 consultancies — you could fire <code>/loop every 15 minutes, check the extraction queue, report how many firms are done and flag any 404s or format errors</code>. That gives you a running tally in the same terminal session without you having to remember to check. Similarly, while cleaning the SPE salary-survey submissions on a given afternoon, <code>/loop every 20 minutes, count rows with missing Grade or Sector and list the firm names</code> catches new gaps as you correct earlier ones, without breaking your flow.</p></aside>
+
+    <h2>Feature 2 — /schedule: persistent daily and weekly tasks</h2>
+
+    <p>What if you do need something that runs every week or every morning? That's where scheduled tasks, the second update, comes in. Loops are great for short bursts, but if you want Claude Code to do something every single morning or every Monday, for example, you need something more permanent. Many of you will think of this as workflows, much like you build in a tool like n8n.</p>
+
+    <p>Scheduled tasks are exactly that. You set up a task with a prompt, choose the model, choose the schedule — whether it's daily, weekly, hourly, whatever — and it just runs. Every time it fires, it's going to start a fresh instance, unlike <code>/loop</code> which sits in one instance. It's going to read your project files, run through the skills it needs, and then run the command, and it's going to stop the session once it's completed.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · /schedule vs /loop</span>
+    <p><code>/schedule</code> creates a persistent, server-side scheduled task stored by Claude Code's desktop app — it survives session close and machine restarts (as long as the app is open when the trigger fires). Each run starts a fresh context window, reads your project files from scratch, and invokes the relevant skills. If a run is missed because the machine was off, it catches up when the app reopens — unlike <code>/loop</code> which simply drops missed firings. At time of recording, <code>/schedule</code> only works in the Claude Code desktop app or Claude.ai co-working interface, not in the terminal CLI or VS Code extension.</p></aside>
+
+    <p>Something I would use, for example, is <code>/schedule every day check my YouTube for new videos, and then run my content repurposing skill to create a newsletter and tweet</code>. And I have to run this in the desktop app, either in code using the schedule, or I can run this directly in co-work by hitting "new task" on scheduled tasks. You can see we add a name, we add a description, we add a prompt, and here we don't need the <code>/schedule</code>. We say "repurpose videos", repurposes new YouTube videos, and then tell it what to do. We can obviously then add the daily frequency of 9:00 a.m., choose the model, select the folder to work in if we want, and hit save — and that's going to create a scheduled task that's going to run every single day.</p>
+
+    <p>And if we go to customise, we go to our skills, it's going to leverage — because of the descriptions that we've used in our skills — the YouTube tool to actually pull information from my YouTube, and then the marketing content repurposing skill with all of the references to different copywriting techniques, splitting it out per platform from that skill too. Now all of this sounds really good, right? But the key limitation right now is that you can only use this inside the desktop app, inside the Claude Code or Claude Co-working interface. Not in the terminal, and not in VS Code extensions. But knowing how fast Anthropic is shipping at the moment, I'd expect that to change very soon. The other thing: your computer has to be on, and the app has to be open. But unlike <code>/loop</code>, if you do miss a run, it does actually catch up and run the missed task when you reopen it — it doesn't just disappear. So: loops for right now, scheduled tasks for every single day, and between the two, Claude Code will now never stop working.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>In the Claude Code desktop app: <code>/schedule every Monday at 08:00, pull the latest filing for each company in my watchlist and append turnover and headcount to consultancy-db.csv</code>. Or in the co-working UI: create a named scheduled task with the same prompt and set the frequency to weekly.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A Monday-morning <code>/schedule</code> task is the right home for your weekly consultancy-database refresh: at 07:30 each Monday, check Companies House for any new filings from your 96-firm watchlist, download any new accounts PDF, and append a provisional row (company number, period end, filing date) to the master ledger. It runs whether you remember to trigger it or not, and because each run starts a fresh instance it won't carry forward stale context from last week's session. For the SPE survey, a daily scheduled task during submission season could count new responses against expected respondent list and send a summary to your Notion inbox — giving you a morning briefing before you open your laptop.</p></aside>
+
+    <h2>Feature 3 — Google Workspace CLI: Drive, Docs, Sheets, Slides at last</h2>
+
+    <p>Claude Code can run on a schedule and check in on things automatically, but there's one area that's been a massive gap in Claude Code skills up until now: getting it to actually work with your Google Workspace. If you have ever tried to get Claude Code to create a Google Doc, or manage your files through the built-in skills, you'll know this pain. For some reason, you could only manage emails and your calendar, but so many of us work in Google Workspace that it needed a critical update to interact with Google Drive. You can see Claude Code has no good MCP server for Google Drive, and can't interact with the Claude Code desktop. And Rich here just wanted one that could set up an MCP server to list, read, write, and modify Google Docs directly — and have it work with minimal setup, not having to go through the APIs.</p>
+
+    <p>Now, this one's not strictly a Claude Code update, but it's still really important. And good news: Google just released an open-source Workspace command-line interface, or CLI, that changes everything. It's one tool that gives Claude access to your entire Google ecosystem — Drive, Gmail, Calendar, Docs, Sheets, Slides, absolutely everything. And it comes with over 100 built-in recipes that Google have already set up. So it makes it super simple to do anything like create a document.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Google Workspace CLI</span>
+    <p>The Google Workspace CLI is an open-source command-line tool released by Google (in beta at time of recording — marked "not an officially supported Google product" because it's pre-GA, not because it's risky). It exposes over 100 shell commands that map to Workspace API operations, so Claude can call <code>gws docs create</code> or <code>gws drive list</code> as ordinary bash commands rather than having to authenticate and call REST endpoints directly. This is meaningfully different from building an MCP server: Claude invokes the CLI via its existing Bash tool, so no additional MCP configuration is needed. The documents it creates are natively formatted (headings, links, images rendered properly) rather than raw markdown that needs post-processing.</p></aside>
+
+    <p>I know this says it's not an officially supported Google product, but this is just because it's in beta phase. The setup is super simple: you can either install it directly in your terminal or literally just take it directly to Claude Code and ask it to set up this Google command-line interface — it's going to guide you through the whole setup process.</p>
+
+    <p>And the way it creates documents is going to be completely different. If you've ever created documents through a tool like Notion AI or similar, you'll have seen that the documents come out with raw markdown formatting and you actually have to make API calls to make it look good. This, in contrast, runs bash commands that talk directly to Google. So you get properly formatted docs with headers, images, links, everything — the full package. Let's use our content repurposing system to produce a properly formatted Google Doc now to show you. And there you go — you can see that we've got a properly formatted markdown document that's just been created with one install: the Google command-line interface.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The Google Workspace CLI was in beta at time of recording and labelled "not officially supported." Command names and authentication flows may have changed since March 2026. Verify against the current Google Workspace CLI docs before wiring it into a scheduled task. Also: because Claude invokes it via bash rather than a dedicated MCP, it works in the terminal CLI unlike <code>/schedule</code> — but you're trusting bash access to your Google account, so review exactly what permissions the OAuth flow requests.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The immediate win for your consultancy-research workflow is generating the per-firm Substack drafts directly as Google Docs rather than markdown files you have to reformat. A skill called <code>ch-to-gdoc</code> could: pull the latest accounts data for a firm from your SQLite database, draft a 400-word commentary in your Substack voice, and <code>gws docs create</code> it into a "Draft — PE analysis" folder in Drive — properly headed, ready to edit. For DCC board reporting, a <code>/schedule</code> task could pull the latest variance figures from your Excel model, format a management narrative, and push it to a Docs template each Friday morning ahead of the Monday pack deadline.</p></aside>
+
+    <h2>Feature 4 — Skills 2.0: built-in evaluation and AB testing</h2>
+
+    <p>We've got loops, we've done scheduled tasks, and now we have Google Workspace access. But the update I'm most excited about is the one that makes every skill you build dramatically better, much, much quicker. And by the way, if you're building skills and want a head start, I've got a full library of production-ready skills, reference files, and frameworks inside my Agentyc Academy in the description — it'll help you spin up brand voice files, ICP templates, copywriting references, the lot. Plus you get one-on-one help if you get stuck. The link's in the description if you want to check that out. Right — let's move on to Skills 2.0.</p>
+
+    <p>If you've been building skills inside Claude Code so far, you would build a skill, run it, the output's okay but not brilliant. So you tweak it, run it again, and this continues until you get something passable. You're always iterating on it and you don't really know what's working and what isn't. But Skills 2.0 is designed to fix that with built-in evaluation and testing — and this is a much-needed update. Anthropic actually went and updated the Skill Creator skill — their own Skill Creator skill — to include proper evals. And what that means in plain English is: you can now automatically test your skills against specific criteria and get scored results back. Not just simple "did it work or not" — you get actual grades on things that matter to you.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills and the Skill Creator skill</span>
+    <p>A Claude Code skill is a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>, trigger) plus optional reference files. Only the name and description sit in context by default (progressive disclosure); the full body loads only when the skill is invoked. The <strong>Skill Creator</strong> is a meta-skill — a built-in skill that helps you write other skills — updated by Anthropic to include evaluation tooling. "Skills 2.0" is Simon's shorthand for this updated Skill Creator plus the eval workflow; it's not a separate official product name.</p></aside>
+
+    <p>Here's how I'd recommend using it, because if you just say "Run some tests" you'll get generic results that aren't very useful. The key is being specific about what you're actually trying to optimise the test for. Let's walk through a process. First, build your skill with a solid framework — you can use the Skill Creator skill itself to do that. Give it a clear name, a trigger description that's really descriptive, and define the goal. Specify which tools or connectors it needs. List your reference files — your brand voice, your ICP — and actually connect those inside the <code>SKILL.md</code> description. Then lay out step-by-step the process you want it to follow, including where you want human-in-the-loop checkpoints and where the output should actually be saved. That will get you to a good first version.</p>
+
+    <p>But as you know, skills are never finished on the first try. Most good skills go through many iterations before they really start solving your problems — and that's exactly what evals are designed for, to speed up that learning cycle. Let's use my marketing copywriting skill to demo this. Instead of saying "Run some tests on my copywriting skill," you say something like: "Run a new test optimised for making sure my copy follows the persuasive techniques listed in my persuasion toolkit reference file." And you can see in the marketing copywriting skill, we've got the <code>persuasion-toolkit.md</code> as a reference file. The criteria might be: does it always use the reference file? Does it use curiosity and open loops, which are actually listed inside the persuasion toolkit? And how often is it using proof or founder-led stories, which is another thing listed in that toolkit?</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skill evaluation and subagents</span>
+    <p>The eval workflow runs your skill N times in parallel using subagents — each subagent gets an isolated context window and the same prompt, runs the skill independently, and returns its output to the orchestrator. The orchestrator then scores each output against the criteria you defined and compiles an HTML report with per-run grades, token counts, timing, and specific pass/fail breakdowns. Running in parallel (5 agents in the demo) means you get a statistically meaningful sample quickly rather than waiting for sequential runs. This is the same subagent/orchestrator pattern described in the Claude Code docs — the Skill Creator skill wires it into an eval harness automatically.</p></aside>
+
+    <p>So we're testing the copywriting skill: writing landing page copy for my school community. We're going to get it to do this five times and test it against that exact criteria. What it's going to do is go out and actually do the test and come back with a proper framework of evaluation of how it performed. So it successfully loaded that meta Skill Creator skill — which is a renamed and improved version of the Skill Creator skill through Anthropic — and it's starting to run the evaluation test now. And notice: we're not trying to optimise for six things at once because there would be way too many moving parts. What we're doing is picking one to three things, testing it, improving it, and then moving on to the next one.</p>
+
+    <p>Let's have a look at what they come back with. And by the way, the eval runs multiple variations in parallel using subagents, so it happens pretty quickly. It's going to score each one against your criteria and give you a structured report, an HTML report that we can actually go through. You can see five agents launch — "grade copywriting" run 1, 2, 3, 4, and 5. And it's going to come back with a really nice click-through where we can see the criteria and actually improve our skill.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Map this directly onto your consultancy-research skill stack. Your <code>ch-accounts-extractor</code> skill — the one that downloads a Companies House PDF and pulls out turnover, operating profit, headcount, and period end — should be evaluated against criteria like: "Does it correctly identify the consolidation scope (group vs parent-only)?" and "Does it flag if the figure is in £000s vs £m?" and "Does it always extract the comparative prior-year figure alongside the current-year figure?" Run it across 10 companies you've already hand-checked, compare the extracted numbers to your ground truth, and you get a scored pass/fail that tells you exactly where the skill breaks — without discovering it when a wrong number makes it into your Substack.</p></aside>
+
+    <p>This is where the brilliance comes in — the Skill Creator evaluations will spin this up into a web page that we can go and look at all of the landing page outputs. So we have the prompt that was originally put in, and we can also test it with and without the skill. And it's got the outputs and we can flick through between the different outputs and even go down to this formal grade section. It's saying it's not used curiosity gaps in at least two instances where a result or discovery was teased without immediately revealing it, creating an information gap the reader needed to close. And it's going to say: "The copy lacks genuine curiosity gaps that sustain across multiple sentences." So what this means is that if we wanted curiosity gaps to actually be abided by, we need to improve either the <code>SKILL.md</code> file referencing that information in our persuasion toolkit, or place more emphasis on it.</p>
+
+    <p>So you can see this is pretty poor: 50% on this run, six pass, six failed out of 12. But it gives us a really good idea — with actual examples — of how to improve our skills. This is a skill I've whacked up quickly yesterday, and you can see it needs improvements if those curiosity gaps and open loops were really important for my copywriting. We can then also go to the benchmark. We can see how long each run took, how many tokens plus or minus each run took, and we've obviously run five here with the skill and none without the skill here to compare. And we can see for each run the evaluation breakdown of what passed and what failed.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>The eval invocation looks like: "Run a new test on my <code>[skill-name]</code> skill, optimised for [criteria]. Run it 5 times on [test input]. Mark against: criterion 1, criterion 2, criterion 3." Keep criteria to 1–3 per run. After the HTML report, feed specific failures back: "Applying the fix: more founder-led stories — edit the <code>SKILL.md</code> and re-run." Repeat until you hit your target pass rate.</p></aside>
+
+    <p>Thankfully, it's also assessed it against other criteria — so some things were always passed: five out of five times it makes the pain concrete, it digs to the emotional benefit. But sometimes we don't have that founder story section — maybe we're not giving it enough founder context in our initial brand context, or maybe it's just not inferring it correctly. So what we would do is provide specific feedback for each of the outputs and copy that back into Claude Code: "More founder-led stories." We take that back to Claude Code and it would now start to evaluate and improve the skill and tell us what has changed. It's applying the fixes now with extra emphasis on founder stories, then re-running. Let me edit the <code>SKILL.md</code>.</p>
+
+    <p>Now, what we saw earlier was that we could actually test things in AB mode — with or without the skill. So let's split the terminal and reopen Claude. We can run a simple AB test: is the skill actually improving the output versus not? Can we create a leaner version of the skill? Can we strip out certain reference files that aren't needed? We effectively get a side-by-side comparison of the results with and without the skill. But it's also important here to specify the criteria you're marking against — which one takes longer, which one has fewer tokens, and which one ticks the criteria in the persuasion toolkit the most. So we'd effectively ask it: "Create landing page copy as an AB test with and without the copywriting skill" — run the same set of evaluations, give it the criteria to mark against, and then see whether the skill is actually adding to quality or reducing it and just costing tokens.</p>
+
+    <p>So ultimately this is about improving our skills in a quicker way than just running them in production and trying to work out what is and isn't working. The evals function is going to do that for us and make us learn in quicker loops. For example: does the marketing copywriting skill need these three reference files, or can it work just as well with one of them? And you can see it's now rewriting that copywriting skill so we can have an improved result, and it's running the evaluations again so we can see the result of the new test — which is super powerful. Basically: stop guessing whether your skills actually work. Test them with the Anthropic Skill Creator skill, score them, improve them, and that's how you go from a skill that kind of works to one that nails it nine out of ten times. When you've got that nine out of ten, you can stop iterating on it.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The AB test mode has a direct application in your salary-survey QA skill. You probably have two competing approaches — a detailed multi-step skill with five reference files (sector definitions, outlier rules, prior-year benchmarks, PII patterns, unit-conversion rules) versus a leaner one with just the outlier rules and unit-conversion rules. Run an AB eval across 20 test rows with known ground-truth anomalies: score each approach on anomaly recall (did it catch the outlier?), false positive rate, and token cost. That tells you objectively whether the extra reference files earn their place, instead of you guessing from production runs where edge cases are rare. This is the AQuA principle — document your QA method and its performance — applied to the skill itself.</p></aside>
+
+    <h2>Wrap-up — what these four features change together</h2>
+
+    <p>So there you have it: four updates that genuinely change what's possible with Claude Code. Loops for short-term automation. Scheduled tasks for daily and weekly routines. Google Workspace for further access to your Google ecosystem. And Skills 2.0 for building skills that actually get better over time.</p>
+
+    <p>And speaking of skills that work together — we've just launched a complete agentic operating system built on Claude Code that ties all of this into one system, including all the skills you've seen today. It's got brand memory, 18 production skills across marketing, strategy, operations, and visual assets. It's got self-learning loops, self-maintenance, and you can access it from your phone through Telegram. So it's not a personal assistant — it's your entire business context packaged into a system that gets sharper every time you use it. If you're in the academy, you can download it right now and have it running today. The link's down below in the description. And if you want to stay on top of what's coming next, subscribe and I'll keep breaking these down. Thanks for watching.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Agentyc Academy" is Simon's paid community product — not an Anthropic offering. The "complete agentic operating system" he describes is a collection of skills and reference files he sells, not an official Claude Code feature. The self-learning loop and Telegram integration he describes are community-built on top of Claude Code's official primitives. Take the specific skill file names he references (persuasion toolkit, brand voice, ICP template) as illustrative patterns, not canonical Anthropic content.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Build a /loop monitoring pass for an extraction sprint.</b> Next time you run a Companies House accounts batch, open a Claude Code session and fire <code>/loop every 20 minutes, open extraction-log.csv and report: how many rows have all three fields (turnover, op_profit, headcount) populated, and list any company numbers where turnover is blank or zero</code>. Keep the loop running for the duration of the sprint and compare its tally to your manual checks at the end.</li>
+      <li><b>Wire up a /schedule task for weekly consultancy-database refresh.</b> In the Claude Code desktop app, create a scheduled task: every Monday at 07:30, check Companies House for new filings from firms in your watchlist CSV, and append any new filing (company number, period-end date, filing date) as a provisional row to <code>consultancy-db.csv</code> with a "needs_download" flag. Verify it catches up correctly if you test it with the machine off overnight.</li>
+      <li><b>Eval your ch-accounts-extractor skill against ground truth.</b> Take 10 companies for which you've already hand-extracted the numbers. Write explicit criteria for the Skill Creator eval: "Does it correctly identify whether figures are in £000s or £m?", "Does it extract the prior-year comparative alongside the current-year figure?", "Does it flag if accounts are parent-only vs consolidated group?" Run five parallel eval passes and read the HTML report. Fix the two lowest-scoring criteria in the <code>SKILL.md</code> and re-run until you hit at least four passes out of five on each criterion.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>/loop</dt><dd>Official Claude Code slash command that registers a cron job to re-run a natural-language prompt on a recurring interval within the current terminal session. Expires after 3 days; missed firings are not recovered when the session is closed.</dd>
+      <dt>/schedule</dt><dd>Persistent scheduled task (set via Claude Code desktop app or co-working UI) that starts a fresh agent instance on a cron schedule and survives session close. Missed runs are caught up on next app launch. At time of recording: desktop app only, not terminal CLI.</dd>
+      <dt>Cron job / cron expression</dt><dd>A standard Unix scheduling mechanism. A cron expression is five whitespace-separated fields (minute, hour, day-of-month, month, day-of-week) that define when a command fires. Claude Code uses <code>cron_create</code>, <code>cron_list</code>, and <code>cron_delete</code> tools internally to manage loop and schedule entries.</dd>
+      <dt>Google Workspace CLI</dt><dd>Open-source command-line tool from Google (beta at time of recording) that exposes 100+ shell commands covering Drive, Docs, Sheets, Slides, Gmail, and Calendar. Claude invokes it via the Bash tool; no REST API integration required. Creates natively formatted Google documents rather than raw markdown.</dd>
+      <dt>Skills 2.0</dt><dd>Simon's shorthand for the updated Anthropic Skill Creator skill, which now includes an evaluation harness that runs a skill N times in parallel using subagents, scores each output against user-defined criteria, and returns a structured HTML report. Not an official Anthropic product name.</dd>
+      <dt>Skill Creator skill</dt><dd>A meta-skill built and maintained by Anthropic that helps users author, structure, and (after the 2.0 update) evaluate other Claude Code skills. It loads when invoked and uses the full skill scaffolding — YAML frontmatter, reference files, step-by-step process — to guide skill construction.</dd>
+      <dt>Subagent (parallel)</dt><dd>An agent spawned with its own isolated context window and tool set. In the eval harness, the orchestrator spawns one subagent per test run; all five run simultaneously and return their outputs and scores to the orchestrator for aggregation. Each subagent is independent — they do not share state.</dd>
+      <dt>AB test (skills)</dt><dd>Running the same eval with two variants — e.g., skill vs no-skill, or full reference-file set vs trimmed set — then comparing scores, token counts, and timing side by side. Used to objectively determine whether a skill addition improves output quality enough to justify its cost.</dd>
+      <dt>Progressive disclosure (skills)</dt><dd>Only the <code>name</code> and <code>description</code> fields of a skill's YAML frontmatter sit in Claude's context by default; the full <code>SKILL.md</code> body loads only when the skill is explicitly invoked. This keeps the base context window lean even across large skill libraries.</dd>
+      <dt>Cron expression fields</dt><dd>Five fields: <code>minute hour day-of-month month day-of-week</code>. Each can be a number, <code>*</code> (any), <code>*/n</code> (every n), or a range. E.g., <code>0 9 * * 1</code> = 09:00 every Monday. Claude Code accepts natural language (e.g., "every Monday at 9am") and converts it internally.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-24-build-self-improving-claude-code-skills-the-results-are-craz.html"><span class="dir">← Previous</span>Build Self-Improving Claude Code Skills. The Results Are Crazy.</a>
+    <a class="next" href="ep-26-the-claude-code-skills-trap-most-people-fall-for-this.html"><span class="dir">Next →</span>The Claude Code Skills Trap (Most People Fall For This)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=F4zSxfBe5R0" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

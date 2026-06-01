@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>34. Claude Code's Biggest Problem (That Nobody Is Talking About) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=cYCUWVIgniw" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 34 · Simon Scrapes</div>
+    <h1>Claude Code's Biggest Problem (That Nobody Is Talking About)</h1>
+    <div class="meta">
+      <span><b>12:07</b> runtime</span>
+      <span><b>4.5K</b> views</span>
+      <span>Published 5 Feb 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=cYCUWVIgniw" target="_blank" rel="noopener">youtu.be/cYCUWVIgniw</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/cYCUWVIgniw"
+    title="Claude Code's Biggest Problem (That Nobody Is Talking About)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">The reason a long Claude Code session quietly falls apart isn't a bug — it's <em>context rot</em>, and there are three escalating frameworks for fighting it: manual compaction, the Ralph loop, and GSD.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon explains why Claude Code starts ignoring your instructions deep into a long build: as the context window fills, the model gets worse at <em>finding</em> the right information inside the noise — a phenomenon called context rot. He then walks through three remedies of increasing effort and power: (1) Claude Code's built-in context compaction, used manually; (2) the "Ralph loop", which re-feeds a fixed prompt to drive autonomous runs; and (3) the GSD ("Get Shit Done") framework, which breaks a project into discuss → plan → execute → verify phases and uses subagents so only the relevant context is loaded at each step.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Your longest, most error-prone Claude sessions are exactly the ones this fixes — building the 96-firm consultancy database, running 25 years of salary-survey QA, or drafting a multi-section Substack analysis. Context rot is why Claude "forgets" your AQuA rules halfway through. The three frameworks map cleanly onto analytical practice: pin your method in <code>CLAUDE.md</code>, batch-loop repetitive extraction, and run genuinely complex work in audited phases with a verification gate — which is just the AQuA lifecycle by another name.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Context rot</span>
+    <span class="chip">Context window</span>
+    <span class="chip">Compaction</span>
+    <span class="chip">/compact</span>
+    <span class="chip">Ralph loop</span>
+    <span class="chip">GSD framework</span>
+    <span class="chip">Subagents</span>
+    <span class="chip">Orchestration</span>
+  </div>
+
+  <div class="transcript">
+    <h2>The problem: your session falls apart after 30 minutes</h2>
+    <p>You spend 10 minutes crafting the perfect prompt for Claude Code, but 30 minutes into your session it starts breaking your logic as if it's never read a thing. When your context window fills up, key instructions vanish, and you're left rewriting the same steps again and again just to keep it on track. So this video is going to give you three lightweight, easy-to-use frameworks to keep Claude Code anchored in your longer, more complex builds, so you can stop re-explaining everything and finally make real progress.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context window</span>
+    <p>The context window is the total amount of text (measured in tokens) the model can "see" at once — your prompt, the files it has read, tool outputs, and the conversation so far. Everything the model knows in a session lives here. When it fills, something has to give, and that's where the trouble starts.</p></aside>
+
+    <h2>Why it happens — context rot</h2>
+    <p>Before we jump into the frameworks, I want to show you why Claude Code behaves like this in the first place. It's not exclusive to Claude Code — it's actually because of the underlying LLM behaviour, a well-known problem called context rot. We naturally assume every word we give a model has the same weighting. But studies suggest that as we increase the number of tokens, it gets less reliable. This chart represents a test where they feed a number of tokens into a model and the response should match those words on the output. At 100 tokens, performance is good — most models have no degradation. At 1,000 tokens they start to degrade, and less is returned as an exact match. And as soon as you hit 10,000 tokens — roughly 7,500 words — there's a huge amount of degradation, up to 50% in some cases.</p>
+    <p>But it's not actually forgetting the context as the input increases. It just loses the ability to find the most appropriate context as the noise increases. It's even more evident when we're coding, because we're passing in hundreds or thousands of lines of code across multiple files. Imagine building a complete web app from scratch — the instructions alone in that first prompt would probably hit half the context window.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context rot</span>
+    <p>"Context rot" is the empirical finding that an LLM's reliability falls as the input gets longer — not because information is deleted, but because the model gets worse at <em>retrieving</em> the relevant needle from a bigger haystack. The practical lesson: a smaller, cleaner, more relevant context beats a giant one. Quality of context &gt; quantity.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is the real reason Claude "drifts" during your big jobs. When you load 25 years of salary-survey tabs, or paste a long methodology before asking for analysis, the AQuA rules you stated at the top are precisely the instructions most likely to get lost in the noise by the time it's processing year 2014. The fix isn't a longer prompt — it's <em>less, better-placed</em> context: keep the binding rules in a short <code>CLAUDE.md</code> the tool re-reads, and feed data in scoped chunks rather than one giant dump.</p></aside>
+
+    <h2>Framework 1 — manual context compaction</h2>
+    <p>Framework one is the simplest solution, and you don't even need to do anything to use it. We're going to use Claude Code's built-in context compression tool — but manually. Imagine you're mid-project building a SaaS and you see a little loading bar at the top of your terminal. That's Claude Code telling you you're nearing the max context window. After that point it's designed to automatically compress whatever it's had so far — the conversation history — and keep summaries of the most critical information. Anthropic say it's supposed to preserve architecture decisions, unresolved bugs, and implementation details while discarding redundant tool outputs. When it starts the next session, it starts with that context preloaded.</p>
+    <p>Now this is great — it's low effort. However, the art of compaction lies in the selection of what to keep versus what to discard, and some reviews on Reddit are scathing: "Is it just me, or does Claude Code wake up after compression with a desire to violently destroy any positive work done before?" This genuinely feels like the most dangerous part of my workflow at the moment. To use it more effectively you tell it exactly what context is important by running the compact command manually at any time — and you can pass in extra instructions.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Run it before the bar forces it on you, and steer what survives:</p>
+    <p><code>/compact keep the database schema and unresolved bugs</code></p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Compaction (auto-compact)</span>
+    <p>Compaction replaces the bulky conversation history with a model-written summary when the window nears full, so the session can continue. It's automatic near the limit, but you can invoke <code>/compact</code> yourself at a clean moment and append guidance about what must be retained. The risk is that a poor summary silently drops something load-bearing — so compact deliberately, not by accident.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Treat <code>/compact</code> like a deliberate checkpoint, the way you'd snapshot a model before a big edit. Mid-way through a consultancy-database build, run <code>/compact keep the 96-firm schema, the AQuA outlier rules, and which companies still need accounts pulled</code>. That pins your method and your to-do list across the summary boundary, instead of trusting the auto-summary to guess that your QA rules matter more than some long Companies House tool dump.</p></aside>
+
+    <h2>Framework 2 — the Ralph loop</h2>
+    <p>This brings us to the Ralph loop. It's been highlighted as the holy-grail solution for completely autonomous projects — supposedly even while you sleep. You give Claude Code a task, and when it tries to stop, the loop just feeds the prompt back in. The files it just changed are still there, so each iteration has the context of the new files, but the original prompt is passed back in every single time. Fresh prompt, same files. You give it a cap — a max iteration count, or "I want this completed and done" — and only when it hits that cap or the completion condition does it exit the loop. It's a very simple mechanism that works effectively for certain tasks.</p>
+    <p>It's easy to install: clone the Ralph repo, install globally, then <code>ralph enable</code> in a project (or <code>ralph setup</code> for a fresh one). It analyses your project and creates files that feed into the context every time: a <code>prompt.md</code> with the project goals and principles, a fix-plan for specific implementation tasks, and specs where you detail more requirements. Ralph solves context degradation by re-feeding the full intended context each loop — including the files it's just created — and it saves tokens by re-handing the original prompt rather than the entire back-and-forth history. The catch: you must give it really precise instructions, because it's executing continuously until "done", and poor inputs equate to poor outputs — especially when vibe coding like this.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · The Ralph loop</span>
+    <p>"Ralph" is a community pattern (not an official Claude Code feature): wrap the agent in a loop that re-submits a fixed <code>prompt.md</code> each iteration until a max count or a "done" signal. Because it restarts from a clean, curated prompt plus the files on disk — rather than an ever-growing chat history — it sidesteps context rot. Its strength (no human in the loop) is also its danger.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon is candid that Ralph is best for <em>bounded, low-context</em> tasks — refactors, adding tests, scaffolding a minimal app — and that without supervision it will still go off the rails on genuinely complex work. "Vibe coding" (accepting AI output without close review) plus an unattended loop is how small errors compound silently. Tight guardrails are non-negotiable.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The Ralph loop is ideal for the repetitive heavy-lifting in your research: "for each of these 96 companies, pull the latest filed accounts, extract turnover, operating profit and headcount, append a row, move to the next" — looping until the list is exhausted. But heed the warning: bound it (a fixed company list, a strict output schema) and <em>always</em> follow with a verification pass before the numbers touch your database. An unguarded loop that mis-reads one filing's "£000s" units will cheerfully mis-read all 96.</p></aside>
+
+    <h2>Framework 3 — the GSD framework</h2>
+    <p>Ultimately Ralph still loses context on complex projects, which is where my favourite framework applies: GSD, the "Get Shit Done" framework. This one requires more upfront work, but the payoff is huge. GSD — designed by a guy called Tash — breaks complex projects into smaller, detailed phases. There's a discussion phase where you nail down requirements; a planning phase where it researches the best way to do the task; a build/execution phase where it spawns subagents that run in waves; and finally — crucially, unlike Ralph — a human verification step for each phase. It uses more tokens upfront because it leverages Claude Code's built-in ask-user-questions tool to present multiple-choice questions while building the road map, but that saves you from refactoring incorrect outputs later.</p>
+    <p>Install with <code>npx</code> and run the slash commands. <code>/gsd-new-project</code> grills you on requirements and spins out high-level files: a <code>project.md</code> of goals and audience, a requirements doc, a road map, and — importantly — a state document tracking where you are. It then breaks each phase into documents you can think of as the prompts fed into context per phase, and that's how it solves context rot: it only feeds the relevant context at the right time. It has fewer errors by spawning subagents to do the work, treating Claude Code itself as just an orchestrator — Claude takes the subagents' outputs and makes contextualised summaries that later subagents reuse. You plan a phase (<code>/gsd-plan-phase</code>), execute it, then verify it with both manual checks and programmatic ones.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>The real install + entry commands Simon shows:</p>
+    <p><code>npx sketch-it-done cccc</code> &nbsp;then&nbsp; <code>/gsd-new-project</code> → <code>/gsd-plan-phase</code> → execute → verify</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · GSD &amp; the orchestrator pattern</span>
+    <p>GSD is a community framework that imposes a discuss → plan → execute → verify lifecycle, persisting state in markdown files and inserting only each phase's documents into context. The key idea is <em>orchestration</em>: the main agent doesn't do the work itself — it dispatches subagents, each with its own clean context window, then summarises their results for the next stage. This is the single most effective antidote to context rot for large projects.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>If this lifecycle feels familiar, it should: discuss → plan → execute → <em>verify</em> is the AQuA Book analytical cycle. GSD is a natural fit for your multi-stage work — a Substack firm-profile (scope → research plan → extract & draft → fact-check) or the annual salary survey (define schema → plan QA → process each year as a subagent → audit). The orchestrator pattern is exactly how you'd want it: a dedicated "verification" subagent runs your outlier and year-on-year consistency checks in isolated context, immune to whatever noise filled the build agent's window.</p></aside>
+
+    <h2>Which one, and when</h2>
+    <p>In contrast to Ralph, which completes a full project without oversight and can veer off course, GSD tackles the project phase by phase in that plan-execute-verify sequence — and that's what makes it the most powerful framework, in my opinion, for complex projects, because it only inserts the right context at the right time. Use manual compaction for everyday sessions, Ralph for bounded repetitive runs, and GSD when the project is big enough that rework would hurt.</p>
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Pin your method against compaction.</b> Add a short <code>CLAUDE.md</code> to your consultancy-research repo holding the 96-firm schema and your AQuA QA rules. Mid-session, run <code>/compact keep the schema and QA rules</code> and confirm they survive into the next exchange.</li>
+      <li><b>Bound a Ralph-style extraction.</b> Take 10 companies, write a tight prompt that extracts turnover, operating profit and headcount into a fixed schema, loop until done — then run a separate verification pass that flags any unit or sign anomalies before you trust a single figure.</li>
+      <li><b>Run one real GSD cycle.</b> Pick a single Substack firm profile and take it through discuss → plan → execute → verify. Log how much rework you did versus your usual one-shot approach — that delta is the value of the verify gate.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Context window</dt><dd>The total tokens a model can hold at once (prompt + files + tool output + history). Finite; when full, content must be summarised or dropped.</dd>
+      <dt>Token</dt><dd>The unit models read/measure text in — roughly ¾ of a word in English. ~10,000 tokens ≈ 7,500 words.</dd>
+      <dt>Context rot</dt><dd>Degradation in a model's ability to retrieve the right information as the context grows — the core reason long sessions drift.</dd>
+      <dt>Compaction / auto-compact</dt><dd>Replacing conversation history with a summary near the context limit so work can continue; invokable manually via <code>/compact</code>.</dd>
+      <dt>Ralph loop</dt><dd>A community pattern that re-feeds a fixed <code>prompt.md</code> to the agent each iteration until a cap or "done", enabling unattended runs.</dd>
+      <dt>GSD ("Get Shit Done")</dt><dd>A community framework structuring projects into discuss → plan → execute → verify phases with per-phase context documents.</dd>
+      <dt>Subagent</dt><dd>An agent spawned with its own isolated context and tools to do focused work; only its summary returns to the main agent.</dd>
+      <dt>Orchestrator</dt><dd>The main agent acting as a coordinator — dispatching subagents and summarising their outputs — rather than doing all work itself.</dd>
+      <dt>Ask-user-questions tool</dt><dd>A built-in Claude Code tool that presents multiple-choice questions to gather requirements during planning.</dd>
+      <dt>Vibe coding</dt><dd>Accepting AI-generated output with little close review; convenient, but risky inside an unattended loop.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-33-every-level-of-claude-code-explained-in-39-minutes.html"><span class="dir">← Previous</span>Every Level of Claude Code Explained in 39 Minutes</a>
+    <span></span>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=cYCUWVIgniw" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>07. Claude Code has a new UI (pair it with Claude OS) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=J6tPNRc9m2Q" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 07 · Simon Scrapes</div>
+    <h1>Claude Code has a new UI (pair it with Claude OS)</h1>
+    <div class="meta">
+      <span><b>5:35</b> runtime</span>
+      <span><b>37K</b> views</span>
+      <span>Published 12 May 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=J6tPNRc9m2Q" target="_blank" rel="noopener">youtu.be/J6tPNRc9m2Q</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/J6tPNRc9m2Q"
+    title="Claude Code has a new UI (pair it with Claude OS)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Anthropic shipped a native multi-agent dashboard inside Claude Code — and the key insight is that it doesn't replace your personal operating system, it <em>sits on top of it</em>.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon walks through the new agent view built into Claude Code: a terminal-based UI that lets you see, control, and chat with every backgrounded Claude Code session from a single pane. He covers the key commands for getting into the view, how to migrate existing sessions into it using <code>/bg</code>, how to navigate between conversations, and how the view's grouping and status features work. He closes by explaining why this pairs naturally with any pre-existing "agentic OS" folder structure.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>When you're running parallel research jobs — extracting accounts from 20 Companies House filings, running AQuA QA passes on salary-survey tabs, or compiling regulatory variance reports — you're effectively managing a fleet of agents. This UI eliminates the five-terminal juggle and gives you a single pane showing which session is waiting for input, when you last touched it, and what it last said. That's a genuine time-management and oversight upgrade for any high-volume research workflow.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Agent view</span>
+    <span class="chip">Background sessions</span>
+    <span class="chip">/bg command</span>
+    <span class="chip">Multi-agent management</span>
+    <span class="chip">Claude OS (community)</span>
+    <span class="chip">Session grouping</span>
+    <span class="chip">Research preview</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The multi-agent problem nobody had solved cleanly</h2>
+
+    <p>The way we're using Claude Code has fundamentally shifted. We're no longer sitting in one ChatGPT-style window babysitting every step and asking it to redo everything. We're now actually executing on a brief and getting to 90% from a good prompt. But this has created a brand new problem: how do we actually manage multiple agents running at the same time without five terminal windows open and juggling between them?</p>
+
+    <p>So we had Vibe Kanban, who built a Kanban-style UI. We had tmux, which had an unofficial answer for the terminal crowd. And Simon even built his own command centre to manage business goals. Loads of others did exactly the same — it was dashboard crazy. So it's honestly about time that Anthropic stepped in and shipped something native for us all to use. And that's what we're looking at today: the new agent view.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Agent view (multi-agent dashboard)</span>
+    <p>The agent view is a built-in terminal UI inside Claude Code that aggregates all your backgrounded Claude Code sessions into one pane. You can see session names, their current status (running, waiting for input, idle), the last thing the model said, and how long it's been since you interacted — without opening each terminal separately. It's a first-party feature shipped by Anthropic, not a community tool.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>If you've ever run three Companies House extraction sessions at once — one pulling filed accounts, one cross-checking officer lists, one verifying charity numbers — you'll know the pain of alt-tabbing to discover two have been waiting for approval for 20 minutes while you were focused on the third. The agent view is purpose-built for this: a single status pane tells you at a glance which session needs your input, which is running, and which is idle. For a 96-firm research pipeline, that's the difference between productive parallelism and chaotic babysitting.</p></aside>
+
+    <h2>Getting in — version check and the first command</h2>
+
+    <p>The first thing you need to do — because it's in research preview — is make sure you're on the latest version of Claude Code. Run <code>claude --version</code> in your terminal; it will tell you exactly which version you're on, and you need to be on 2.1.139 or higher. Then run <code>claude --update</code> in your terminal to make sure you're up to date.</p>
+
+    <p>Then run <code>claude agents</code> and you'll pop into the summary view. Get really familiar with this view — it's the high-level picture of all your agents organised by session.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Check version: <code>claude --version</code> &nbsp;|&nbsp; Update: <code>claude --update</code> &nbsp;|&nbsp; Open agent view: <code>claude agents</code></p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>This feature was shipped in research preview at the time of recording (May 2026). The exact version number threshold and command flags may change as the feature graduates to stable. Always check Anthropic's changelog or <code>claude --help</code> if a command doesn't work as shown.</p></aside>
+
+    <h2>Migrating existing sessions into the dashboard</h2>
+
+    <p>The first time you start the agent view, if you've already got sessions running in separate terminals it will appear blank — those sessions aren't pulled in automatically. Here's how to migrate them. Go to an existing terminal session and hit <code>/bg</code> (background this session and free the terminal). That task gets backgrounded, the terminal closes itself, and when you go back to the agent view another session appears in the dashboard. Do the same for each running terminal, and now you can actually close those terminal windows down. They've been backgrounded and put into the agent view.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Background sessions (<code>/bg</code>)</span>
+    <p>The <code>/bg</code> slash command tells Claude Code to detach the current session from the foreground terminal and continue running it as a background process. The session remains alive, retains its full context and tool permissions, and becomes visible in the agent view. It's the mechanism that makes the multi-agent dashboard useful: you convert terminal-bound sessions into managed background tasks without interrupting their work.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For a Companies House extraction run — where you might have kicked off five separate sessions each scraping a cohort of 20 firms — <code>/bg</code> on each is the clean way to hand them all to the agent view without losing state. You no longer need to keep a dedicated terminal window open per session; everything consolidates into one manageable pane. This is especially useful when sessions run overnight: start them, background them, close your laptop, and the dashboard is waiting for you in the morning with status and last-output for each.</p></aside>
+
+    <h2>Navigating the dashboard — sorting, grouping, and quick replies</h2>
+
+    <p>By default the agent view is sorted by status — which makes total sense from a UX perspective, because the sessions that need your input bubble to the top. You can describe a new task for a new session at the bottom of the view, which spins up a new agent or a new instance without leaving the dashboard.</p>
+
+    <p>One of the more powerful features is that you can actually group sessions. So if you're operating with multiple clients, you can see all the tasks for all your different clients in separate aggregated groups. Jump back to the status view to see which sessions need input, and you can see the names of the different sessions and flick through those. You can see the last output Claude Code gave you and also how long it's been waiting for your input.</p>
+
+    <p>You can of course jump into the detail of any conversation. So if you wanted to jump into, say, a "meta skill system creator" session, you now get a recap at the bottom, the ability to control that session specifically from what Simon calls the remote control view, and you can reply directly in the conversation — while still seeing the full context as if it were a standard Claude Code terminal session. Hit back (or left on the keyboard) to jump back to the dashboard, and right to jump into that session.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Session grouping and status view</span>
+    <p>The agent view organises sessions into two main viewing modes: <em>status view</em> (sorted by whether a session is running, waiting for input, or idle) and a <em>grouped view</em> where you assign sessions to named groups (e.g. by client, by project, by phase). The status view is the default because it surfaces the sessions that actually need human attention. Grouping is a manual labelling step — Claude Code doesn't auto-assign sessions to groups — but once set up it gives you a persistent project-level map of all active work.</p></aside>
+
+    <p>What's more useful still is that you can talk to sessions directly from the dashboard without diving into their full view. Hit spacebar to expand any session and go up and down to see the latest status for all conversations, then reply directly in-line. No context is lost from the session — you're just interacting through a thin overlay rather than the full terminal view.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For the SPE salary-survey workflow, you might have one session handling year-group data cleaning, another running consistency checks across years, and a third drafting the narrative section. Grouping them under "SPE 2026" in the dashboard means you never lose track of which phase each session is in, and the status sort ensures you see immediately if the data-cleaning session is waiting for you to approve a schema decision. The quick-reply overlay (spacebar) lets you unblock it in seconds without losing your place in another session.</p></aside>
+
+    <h2>The approval flow — when human input is required</h2>
+
+    <p>One important caveat Simon highlights: if a session requires you to actually approve a tool call — running a command, writing a file, calling an API — you can't just reply in the summary view. You need to jump into the full conversation view for that session and give the approval there. The dashboard shows you that input is needed, but the approval itself is session-level, not dashboard-level.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>This is a meaningful operational constraint if you're running agents with broad tool permissions. You may set a session to high-trust in its own terminal (e.g. allow all file writes) but still be prompted for certain actions. The dashboard shows you the session is waiting — but you have to enter it to actually approve. Build that approval step into your workflow rather than assuming everything runs unattended.</p></aside>
+
+    <h2>Pairing the agent view with your "Claude OS" folder structure</h2>
+
+    <p>The big question Simon addresses is: if you've already set up an agentic operating system — what Simon calls a "Claude OS" — how do you use it alongside the new agent view? And the answer is: it's actually pretty simple, because the agentic OS is just a folder structure at the end of the day that injects context at the right time. It's just pulling in your brand context, your client context, your scheduled jobs, at the right time. So if you've got your operating system architecture already built, each conversation is going to benefit from it automatically. The agent view is the visual layer on top; the folder structure is what loads context into each session. They don't conflict — they complement.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · "Claude OS" / "Agentic OS" (community framing)</span>
+    <p>"Claude OS" or "Agentic OS" is <em>not</em> an official Anthropic product — it is Simon's and the community's term for an opinionated folder structure that systematically injects context into Claude Code sessions. In practice it means a hierarchy of <code>CLAUDE.md</code> files, skills, slash commands, and memory files organised so that each session automatically loads the right project rules, client brief, and workflow definitions without manual copy-pasting. The agent view's job is to manage the <em>sessions</em>; the agentic OS's job is to manage the <em>context</em> inside each session.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is the architecture insight that makes multi-agent work scalable for a research practice. Your consultancy-research folder already has a <code>CLAUDE.md</code> with the 96-firm schema, AQuA rules, and Companies House extraction instructions. When you spin up a new session from the agent view — scoped to that folder — it inherits all that context automatically. You don't need to re-paste the schema into each agent; the folder does the work. The agent view then gives you the oversight layer on top: you can see five extraction sessions running in parallel, all correctly contextualised, and intervene only when one needs approval or has stalled.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Structure: your project folder holds <code>CLAUDE.md</code> (schema + rules) → start each session from that folder → background with <code>/bg</code> → manage all from <code>claude agents</code>. Context is loaded per session via folder; the dashboard handles oversight.</p></aside>
+
+    <h2>Closing thoughts — will this replace the third-party dashboards?</h2>
+
+    <p>Now you can operate multiple conversations at the same time without flicking through multiple terminals to work out which ones need input and which ones don't. Simon signs off curious whether the native agent view will stop people using third-party UIs like Vibe Kanban or tmux-based setups — and invites viewers to weigh in below.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Vibe Kanban" and tmux-based dashboards are community-built tools, not Anthropic products. They will likely continue to evolve alongside the native agent view, and power users with complex orchestration needs may prefer them for features the native view doesn't yet support (e.g. custom status hooks, richer grouping, integration with external task managers). The native view is the right starting point — but it's not necessarily the final word.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Run a parallel Companies House cohort extraction.</b> Pick five firms from your 96-firm database, start a separate Claude Code session for each (scoped to your consultancy-research folder so the schema loads automatically), then background each with <code>/bg</code>. Open <code>claude agents</code> and watch the status view. When sessions request approval, jump in and approve, then return to the dashboard. At the end, compare how much wall-clock time you saved versus running sequentially in a single session.</li>
+      <li><b>Group your active research streams.</b> In the agent view, create two groups — "SPE 2026" and "Consultancy DB" — and assign your current sessions accordingly. Practise using the spacebar quick-reply to unblock a waiting session without leaving the group view. Note which sessions block most often and whether that reveals a missing permission in your <code>settings.json</code>.</li>
+      <li><b>Stress-test the approval boundary.</b> Set up a session with a file-write tool call pending, then try to approve it from the summary view (spacebar overlay). Confirm you can't — you must enter the full session view. Document this constraint in your research workflow notes so that overnight runs are designed to minimise approval gates, either by pre-granting permissions in <code>settings.json</code> or structuring tasks to complete without human sign-off until morning.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Agent view</dt><dd>A built-in terminal UI in Claude Code (accessed via <code>claude agents</code>) that aggregates all backgrounded Claude Code sessions into one pane, showing status, last output, and idle time.</dd>
+      <dt>/bg (background command)</dt><dd>A slash command that detaches the current Claude Code session from its terminal and moves it into the agent view as a background process. The session stays alive and retains its full context.</dd>
+      <dt>Research preview</dt><dd>Anthropic's label for features that are functional but not yet in stable release — they may change, and require being on a sufficiently recent version of Claude Code.</dd>
+      <dt>Status view</dt><dd>The default sort order in the agent view: sessions waiting for input appear at the top, followed by running, then idle. Makes it easy to triage which agent needs human attention first.</dd>
+      <dt>Session grouping</dt><dd>A manual labelling mechanism in the agent view that lets you organise sessions by client, project, or phase, so you can see all related work aggregated rather than in a flat list.</dd>
+      <dt>Approval gate</dt><dd>A moment when Claude Code pauses and waits for explicit human approval before executing a tool call (file write, shell command, API call). The agent view shows that a session is blocked, but the approval itself must be given inside the full session view.</dd>
+      <dt>Claude OS / Agentic OS (community term)</dt><dd>Not an official Anthropic product. A community framing for an opinionated folder structure — CLAUDE.md files, skills, commands, memory — that automatically injects the right context into each Claude Code session. The agent view manages sessions; the agentic OS manages what's inside them.</dd>
+      <dt>Tmux</dt><dd>A terminal multiplexer that allows multiple terminal sessions to run side by side in one window. Was used as an unofficial multi-agent dashboard before the native agent view shipped.</dd>
+      <dt>CLAUDE.md</dt><dd>A file that Claude Code auto-loads into context at session start. Hierarchical: a global one at <code>~/.claude/CLAUDE.md</code> and per-project ones at <code>./CLAUDE.md</code>. The mechanism by which a folder-scoped session automatically inherits the right schema, rules, and instructions.</dd>
+      <dt>Skills</dt><dd>Reusable workflow packages: a <code>SKILL.md</code> file with YAML frontmatter naming the skill plus the full instructions. Only the name and description sit in context until the skill is invoked — progressive disclosure that keeps multi-session context lean.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-06-skill-chaining-in-claude-os-is-insane-don-t-fall-behind.html"><span class="dir">← Previous</span>Skill Chaining in Claude OS is INSANE (Don't Fall Behind!)</a>
+    <a class="next" href="ep-08-agentic-ai-systems-clearly-explained.html"><span class="dir">Next →</span>Agentic AI Systems, Clearly Explained</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=J6tPNRc9m2Q" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

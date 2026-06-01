@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>28. Every Claude Code Concept Explained for Normal People — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=ZlDnsf_DOzg" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 28 · Simon Scrapes</div>
+    <h1>Every Claude Code Concept Explained for Normal People</h1>
+    <div class="meta">
+      <span><b>27:24</b> runtime</span>
+      <span><b>715K</b> views</span>
+      <span>Published 28 Feb 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=ZlDnsf_DOzg" target="_blank" rel="noopener">youtu.be/ZlDnsf_DOzg</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/ZlDnsf_DOzg"
+    title="Every Claude Code Concept Explained for Normal People" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">The definitive plain-English dictionary for Claude Code: 27 concepts stacked from "what is the terminal?" to work trees and agent teams — the mental model that stops you second-guessing every command.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon runs through all 27 foundational Claude Code concepts in order of complexity, from the basics (what Claude Code is, what the terminal is, how prompts work) through configuration (permissions, CLAUDE.md, memory, models, flags) to the advanced features that make the tool genuinely powerful: skills, hooks, MCP servers, subagents, agent teams, extended thinking, CLI mode, the Ralph loop, Git integration, work trees, and pricing. Each concept gets a tight &lt;60-second explanation with a concrete example.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>This episode is the foundation layer. Once you have a crisp mental model of how Claude Code actually works — context windows, permissions, CLAUDE.md, subagents, work trees — every other efficiency gain follows naturally. For Leath's work, the payoff is most direct in three places: the subagent and agent-team architecture (parallel Companies House extraction across 96 firms), work trees (running a salary-survey QA pass in isolation from a live Substack draft), and CLAUDE.md as a persistent AQuA-rules carrier that survives every new session.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Claude Code</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Context window</span>
+    <span class="chip">Permissions</span>
+    <span class="chip">MCP servers</span>
+    <span class="chip">Subagents</span>
+    <span class="chip">Agent teams</span>
+    <span class="chip">Work trees</span>
+    <span class="chip">Skills</span>
+    <span class="chip">Hooks</span>
+    <span class="chip">Extended thinking</span>
+    <span class="chip">Ralph loop</span>
+    <span class="chip">CLI mode</span>
+    <span class="chip">Slash commands</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The problem with jumping in cold</h2>
+
+    <p>You're probably staring at Claude Code thinking: how is this supposed to make my life easier? A black screen, a blinking cursor, and terms like context window, subagents, MCP servers. None of it feels like it's built for somebody without a coding background. So you jump between random tutorials and scattered docs, half understand one concept and get stuck on the next, and waste hours trying to connect all of those pieces that were never clearly explained.</p>
+
+    <p>Without a solid mental model of how this tool works, you'll keep second-guessing every command, leading to slower builds, broken automations, and projects that you never end up shipping. Now, after hundreds of hours inside Claude Code, building production apps, automating revenue-generating businesses, and helping thousands of non-technical founders use it confidently, I'm going to give you today the shortcut that I wish I had. I'll break down 27 Claude Code concepts, each explained in less than 60 seconds, starting from the basics and stacking all the way up. By the end, you won't just recognise the terminology — you'll know what to use, when to use it, and how to build without feeling lost every single time you open the terminal.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This is exactly the problem with picking up Claude Code mid-project. If you've been half-using it for Companies House scraping or salary-survey processing, you've probably hit walls caused by not understanding the underlying model: context limits silently degrading your extraction quality, permissions blocking a bash command mid-run, or not knowing that a subagent could have kept that 96-firm loop from ballooning your context. This video is the foundation. Read it once; the rest of the series pays off faster.</p></aside>
+
+    <h2>Concepts 1–3 — what Claude Code is, the terminal, and prompts</h2>
+
+    <p>Let's start with concept one: what is Claude Code? Most people already know chatbots like ChatGPT, Claude, Gemini. You type a message, you get a reply. Those tools can only talk to you — they can't actually do anything on your computer, and they've only recently been given access to do anything more than that, like web search. Claude Code is entirely different. It can create files, build websites, set up databases, install packages on your machine, and do your repetitive tasks, all from a simple conversation in plain English. You describe what you want, and it builds it. Chatbots give you advice; Claude Code takes actions.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Claude Code</span>
+    <p>Claude Code is Anthropic's agentic CLI (command-line interface) — also available as a desktop app, web interface, and IDE plugin. Unlike a chatbot, it runs a continuous loop: read files, call tools, execute bash commands, write or edit code, and report back. It can take real actions on your machine and, via MCP servers, on external services too. The model underneath (Haiku, Sonnet, or Opus) can be switched mid-session.</p></aside>
+
+    <p>Concept two is the terminal. Claude Code doesn't run in a browser like ChatGPT — it runs in the terminal, that black screen with white text that looks so cryptic whenever you've seen developers use it. The terminal is actually really simple: it's just another way to interact with your computer. Instead of clicking buttons, you type commands. But here's the thing — when you're using Claude Code, you don't need to know many terminal commands at all. You type in plain English and Claude handles everything else underneath. You really only need to know a few: <code>claude</code> to open it, Control-C twice to close it, and <code>/clear</code> to clear its memory. And then, of course, how to talk to it well — which brings us onto prompts.</p>
+
+    <p>Concept three: a prompt is simply what you type to tell Claude Code what to do, the same as when you're typing something into ChatGPT. You write prompts in plain English — build me a landing page, create me a dashboard, fix this error. There's no special syntax, no code, just describe what you want. The more specific you are, the better the result. So instead of "build me a website", say something like: "Build me a one-page landing page for a consulting business with a green colour scheme. I want it to have a contact form and three cards explaining our service." Better prompts, better results — and that is really the whole game when it comes to Claude Code. But there's a concept later that will make prompting much easier.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The "specificity = quality" rule for prompts maps directly onto analytical instruction-writing. When you kick off a Companies House extraction, the difference between "pull the accounts" and "extract turnover, operating profit, and headcount from the latest filed accounts PDF for company number 12345678, returning a single JSON object with those three fields" is the difference between a usable row in your 96-firm database and a vague narrative summary. Invest ten seconds in specificity at the prompt — it buys minutes of correction later.</p></aside>
+
+    <h2>Concepts 4–5 — permissions and tool use</h2>
+
+    <p>Concept four: permissions. This is an incredibly important concept because Claude Code can make actual changes to your computer — it can create files, run commands, edit code, even delete files. By default, it asks for your permission before it does anything significant. But if you're clicking approve every 10 seconds on a project that's going to take a day, it really kills your flow, and there is a better way.</p>
+
+    <p>I recommend starting with a default where Claude asks approval on most actions, so you understand exactly what it's asking for. But as you get comfortable, you can pre-approve specific actions so Claude works faster without stopping you constantly. You can go nuclear and give it permissions to do absolutely anything using the <code>--dangerously-skip-permissions</code> flag — but even Boris Cherney, the creator of Claude Code, says he never does this. Instead, use a permissions file in <code>settings.json</code>. You can edit this file directly or type <code>/permissions</code> and add commands to an allow list. These get saved to your <code>settings.json</code> file, which means you can check it into your repo and share it with your team, so everyone has exactly the same permission setup.</p>
+
+    <p>Here's my thinking for most projects. Things safe to pre-approve: reading files and folders, running the dev server, running tests so Claude can check its own work, and Git operations — things like committing changes and keeping version control in place. Things to keep gated and requiring your approval: installing new packages, deleting files or folders, and anything touching the internet — API calls, sending data. Keep your eyes on those. And the nice thing is you don't need to write that JSON by hand — just tell Claude: "Add the common safe permissions to my settings — reading files, running tests, Git operations, starting the dev server. Show me what you're adding before you save it." Claude will go and do the hard work for you.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Permissions / settings.json</span>
+    <p>Permissions in Claude Code are controlled by <code>settings.json</code> (per-project) and a user-level settings file. Each entry is either an allow rule (runs without confirmation) or a deny rule (blocked outright). The format uses tool names and optional argument patterns — for example, allowing <code>Bash(ls *)</code> lets Claude list files without prompting. You can invoke <code>/permissions</code> in the terminal to view and edit these interactively. The <code>--dangerously-skip-permissions</code> flag bypasses all checks and is strongly discouraged for anything beyond throwaway experiments.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A shared <code>settings.json</code> checked into your consultancy-research repo is the right way to standardise what Claude can do unattended. Allow reads, test-runs, and Git commits; gate API calls and file deletion. That way, if you hand the project to a colleague or run it on a different machine, the safety envelope travels with the repo — the same guarantee you'd want on any shared analytical pipeline. Add a deny rule for your <code>.env</code> and any credentials folder so API keys can never be accidentally read into context.</p></aside>
+
+    <p>Concept five is all about tool use. What makes Claude Code more powerful compared to regular Claude or ChatGPT is that it has access to tools — built-in capabilities that let it interact with your computer. The main ones are really simple: <strong>Read</strong> (Claude can look at your files and data), <strong>Write</strong> (Claude can create new files), and <strong>Bash</strong> (Claude can run commands like installing packages, running tests, or moving files around). You don't need to tell Claude which tool to use — you just describe what you want and Claude picks the right tools automatically. You just need to understand the concept of tools; you describe the goal, Claude picks the tools.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Tool use</span>
+    <p>Claude Code's built-in tools are: <strong>Read</strong> (read file contents), <strong>Write</strong> (create or overwrite files), <strong>Edit</strong> (targeted in-file edits), <strong>Bash</strong> (run shell commands), and several specialised tools like web search and the ask-questions tool used during planning. Each tool invocation is visible in the terminal and subject to your permissions settings. You never need to invoke tools yourself — Claude selects them based on what your prompt requires.</p></aside>
+
+    <h2>Concepts 6–8 — context window, conversation history, and token cost</h2>
+
+    <p>Concept six: the context window. The context window is Claude's short-term memory — it's everything Claude can see and think about at any given moment during a conversation. Every message you send, every file Claude has read, every response it has generated: all of that lives inside the context window. And it has a limit. When a conversation gets too long or too much information piles up, Claude is going to start losing track of the earlier stuff. This is a phenomenon called context rot — that's when outputs get worse and Claude seems to forget what you've told it, similar to hallucinations on ChatGPT.</p>
+
+    <p>The fix is simple: keep your conversations focused, start fresh sessions when you need to switch tasks, or use the <code>/clear</code> or <code>/compact</code> commands to help manage it — we'll talk more about those shortly. You can track context limits by the green bar at the bottom of the terminal. Think of the context window as Claude's short-term memory: try to keep it clean as you go through a session.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context window &amp; context rot</span>
+    <p>The context window is the total amount of text (measured in tokens) the model can "see" at once — your prompt, the files it has read, tool outputs, and the conversation history. Everything the model knows in a session lives here; when it fills, earlier content gets pushed out or summarised. "Context rot" is the empirical finding that as the window gets fuller, the model becomes less reliable at retrieving the most relevant information — not because it forgets, but because the signal-to-noise ratio falls. This is why a 30-minute build session can drift and why keeping context lean matters.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Context rot is the hidden reason your longer analytical sessions degrade. When you load 25 years of salary-survey tabs or paste a methodology section before asking for QA analysis, the AQuA rules you stated at the top are precisely the instructions most likely to get buried by the time Claude is processing year 2014. The structural fix is CLAUDE.md (concept 9 below) — keep your binding rules in a short file Claude re-reads at the start of every session, and feed data in focused chunks rather than one giant dump.</p></aside>
+
+    <p>Concept seven: conversation history. Claude Code automatically saves your previous conversations — every single session is stored, and you can get back to any of them. If you close your instance, just type <code>claude --resume</code> and it will drop you straight back into your most recent conversation: same project, same context, picking up right where you left off. This shows you a list of all your previous sessions; you can scroll through, see what each one was about, and pick the one you want to jump back into. This is essential in practice, because you're rarely finishing a big project in one conversation instance — you build something, close your laptop, come back the next day, and instead of starting over, you just resume.</p>
+
+    <p>Concept eight: token usage. When you use Claude Code, it costs money, and the way that cost is calculated is through token usage. A token is roughly three-quarters of a word, so 1,000 tokens is roughly 750 words of input or output. Every prompt you send, every response you receive, every file Claude reads — it all uses tokens. The price depends on which model you're using: Sonnet is cheaper, Opus is more powerful but costs more. Claude Code tracks your usage so you can see exactly what you're spending — use <code>/cost</code> and <code>/stats</code> to bring up the amount of tokens spent in a given session.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Tokens and model pricing</span>
+    <p>Tokens are the billing unit for Claude API usage. One token ≈ 0.75 words in English. Input tokens (your prompt, files read, tool outputs fed back) and output tokens (Claude's response) are both charged. Claude Code runs on Anthropic's API, so costs accrue per token unless you're on a Claude Max subscription ($100 or $200/month flat-rate). The <code>/cost</code> command shows cumulative spend for the current session; <code>/stats</code> shows token counts broken down by input/output.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For research-intensity work — pulling 96 Companies House filings, each requiring several tool calls and file reads — the per-token cost can stack up surprisingly quickly on pay-as-you-go. If you're doing regular batch extraction runs, the flat-rate Claude Max subscription almost certainly beats API billing once you're past a few thousand tokens a day. Treat it the same way you'd model a data-subscription cost: estimate your monthly token volume at current rates, compare to the subscription, and switch when the crossover is clear.</p></aside>
+
+    <h2>Concepts 9–10 — CLAUDE.md and persistent memory</h2>
+
+    <p>Okay, so now you've got the foundations — you know what Claude Code is, how it works, and how to talk to it. But until now it's still a blank slate. This is where we make Claude Code personal to you, which brings us to CLAUDE.md — possibly the most important concept in this whole video.</p>
+
+    <p>Every time Claude Code starts working on your project, it needs to know how you want to get things done. Without guidance, it's going to completely guess — and guessing leads to poor results. CLAUDE.md is just a markdown file in your file structure where you write your preferences, your rules, and your project structure. Claude reads it first, every single line, every time you open a new instance. It'll see things like "We use TypeScript. Always write using our brand voice. Don't ever use em dashes." You write it once, and Claude Code follows it in every single conversation. Think of CLAUDE.md as your instruction manual for Claude — you iterate on it over time, and benefit from that forever.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md</span>
+    <p>CLAUDE.md is a plain markdown file that Claude Code automatically loads into context at the start of every session. It is hierarchical: a user-global version lives at <code>~/.claude/CLAUDE.md</code> (applies to all projects) and a per-project version lives at <code>./CLAUDE.md</code> (or <code>.claude/CLAUDE.md</code>) in your repo. The per-project file takes precedence for project-specific rules. It is the primary mechanism for persistent context — not AI-written, but human-curated. Put your coding standards, QA rules, schema definitions, and project conventions here. Simon's <code>/init</code> command helps you create a good starting version.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>CLAUDE.md is your AQuA rulebook and schema registry made permanent. In your consultancy-research project, the CLAUDE.md should carry: the 96-firm database field definitions (company_name, registration_number, turnover, operating_profit, headcount, filing_year), your data-quality rules (source must be filed accounts not estimates; flag if turnover differs by &gt;30% year-on-year as a potential outlier), and the Substack house-style guide (no em dashes, active voice, economist not journalist). That way every new session — whether you're extracting a new firm or drafting a profile — starts from the same authoritative baseline without you restating it.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Bootstrap a project CLAUDE.md with: <code>/init</code> — Claude Code will inspect your repo structure and draft a starter file. Then edit it to add your domain rules.</p></aside>
+
+    <p>Concept ten: memory. Everything we've covered so far lives within a single conversation — but what if you want Claude to remember things <em>across</em> multiple conversations? This isn't about bringing up previous conversations like the history we just showed; it's about recognising patterns you use repeatedly and storing those so Claude can be even more personalised. CLAUDE.md was our manual memory file, but Claude Code also has an auto-memory file that lets it store your preferences and facts across different sessions. If you always work in JavaScript or prefer a certain coding style or have specific project conventions, those get automatically saved to memory and Claude will know them every time you start something new. You can ask Claude to add, remove, and review what it remembers about you and the way you work. It's all about learning your preferences over time, not just within a single chat. You won't see the memory files in your project directory, but they are being built as you work.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Memory tool</span>
+    <p>The Memory tool is a Claude Code feature that persists facts across sessions by writing to a file in Claude's data directory (separate from CLAUDE.md). Claude can be instructed to save preferences, update what it remembers, or clear stale entries. The key distinction: CLAUDE.md is <em>human-curated</em> — you write and maintain it deliberately. The memory tool is <em>AI-maintained</em> — Claude writes to it automatically as it learns patterns. Both complement each other; use CLAUDE.md for stable, structural rules and memory for evolving personal preferences.</p></aside>
+
+    <h2>Concepts 11–13 — compact context, models, and file deny-listing</h2>
+
+    <p>Concept eleven: compact context. We talked earlier about context length — when conversations get really long, the context window fills up. If you don't manage that, Claude starts losing track of the important info. Here's how we actually manage it. Claude can do it automatically: when it detects the context is getting close to full, it automatically takes the key information, summarises it, and clears out the noise, passing the summary to the next instance of the conversation. This happens in the background without you doing anything at around 85% of the context window. But if you notice Claude getting confused mid-session, you can manually trigger this using the <code>/compact</code> command and append arguments like "keep info about API calls" to give more specific instructions on what to keep. Memory compacting keeps Claude sharper during longer sessions — you can leave it to itself or help it by doing it at key stages.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Compaction (/compact)</span>
+    <p>Compaction replaces the bulky conversation history with a model-written summary when the window nears full, so the session can continue. It triggers automatically at roughly 85% capacity, but you can invoke <code>/compact</code> yourself at a clean moment — ideally before Claude gets confused — and append retention guidance. The risk: a poor auto-summary silently drops something load-bearing (a schema definition, a QA rule, an outstanding to-do list). Compact deliberately at natural checkpoints rather than waiting for the automatic trigger.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Steer compaction to preserve what matters: <code>/compact keep the 96-firm schema, the AQuA outlier rules, and the list of companies still needing accounts pulled</code>. That pins your method and to-do list across the summary boundary.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Treat <code>/compact</code> like saving a model checkpoint before a risky edit. In a long salary-survey QA session — say, checking all 25 years for the annual-hours outlier pattern — compact at the end of each decade block: "keep the outlier flag rules, the years completed, and any firms already flagged". That way if the auto-summary fires unexpectedly, your methodology and progress notes survive rather than the chatty tool output from 2001–2010.</p></aside>
+
+    <p>Concept twelve: models. When people say "Claude Code", they're actually referring to a family of AI models underneath. Each one has different strengths, speeds, and costs. <strong>Haiku</strong> is the fastest and cheapest — great for simple, quick tasks. <strong>Sonnet</strong> is the middleman: an all-rounder, good at most things, reasonably priced and reliable. <strong>Opus</strong> is the most intelligent — it handles complex problems that require a lot of thinking, but costs the most. You can switch between them mid-conversation using <code>/model</code> in the terminal. The key: match the model to the task. Use Sonnet for most things, Opus when it genuinely matters, and Haiku for very simple tasks.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Model selection</span>
+    <p>Claude Code currently runs on Claude Haiku, Sonnet, and Opus (with numbered sub-versions, e.g. Claude Sonnet 4.6). Haiku is best for quick, low-stakes tasks — formatting, simple lookups. Sonnet is the everyday workhorse — it handles code generation, multi-step extraction, and most analytical tasks well at reasonable cost. Opus is the right choice when you need genuine multi-step reasoning: complex QA, ambiguous interpretation, or designing an evaluation framework. Switch with <code>/model claude-sonnet-4-6</code> (or whichever version is current).</p></aside>
+
+    <p>Concept thirteen: denying access to files. Not every file in your project should be passed to Claude Code. Some are massive and would waste your context window. Some contain sensitive data — API keys and passwords. Some are just totally irrelevant. You need a way to tell Claude: do not touch these under any circumstance. You do this in the <code>settings.json</code> file — you can add a deny list that tells Claude which files and folders are completely off-limits. Claude won't even discover these files, won't include them in search results, and can't read them even if you ask directly. Deny rules in <code>settings.json</code> are the proper way to do this inside Claude Code.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Any project that touches real data needs a deny list. In your consultancy-research repo: deny <code>.env</code>, <code>secrets/</code>, and any folder with raw filed accounts PDFs that haven't been cleaned yet (to avoid accidentally feeding PII or confidential data into the model's context). In your salary-survey project, deny the raw submission CSVs before your PII-scrubbing step has run — this is a cheap guard against accidentally processing un-anonymised respondent data mid-session.</p></aside>
+
+    <h2>Concept 14 — launch flags</h2>
+
+    <p>Concept fourteen: flags. Flags are options you pass when you start and launch Claude Code — they let you customise how Claude behaves for that specific session before it even begins. You can use <code>--model</code> to choose the model, <code>--allowed-tools</code> to control which tools it has access to (like reading or writing), <code>--verbose</code> to get a more detailed output every time Claude responds so you know exactly what it's doing, or <code>--dangerously-skip-permissions</code> (the nuclear option we mentioned earlier). Flags are just launch settings — entirely optional, but a useful shortcut for non-standard sessions.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLI flags</span>
+    <p>Claude Code flags are passed on the command line when you start a session: <code>claude --model claude-opus-4-6 --verbose</code>. Key flags include: <code>-p "&lt;prompt&gt;"</code> for headless/CLI mode (runs once with no conversation loop); <code>--allowed-tools</code> to restrict the tool set; <code>-w &lt;name&gt;</code> / <code>--worktree &lt;name&gt;</code> to start in an isolated work tree; and <code>--verbose</code> for detailed output. They are session-scoped — they do not persist to settings.json.</p></aside>
+
+    <h2>Concepts 15–18 — extended thinking, slash commands, skills, and hooks</h2>
+
+    <p>Now the foundations and configuration are solid. This next section is where things get genuinely game-changing — features that take Claude Code from useful to transformative.</p>
+
+    <p>Concept fifteen: extended thinking. Some tasks are super simple — rename this file, for example. But some tasks need Claude to genuinely reason through the problem before it acts. Extended thinking gives Claude a dedicated reasoning budget in tokens to think through the problem step-by-step before taking any action. You used to have to write words like "think", "think hard", or "ultra think" in your responses to activate this, but now by default Claude Code has the ability to use that thinking budget with a cap of max budget for thinking tokens. So all you need to know is: extended thinking is Claude reasoning before it acts, it's on by default, and it has a max token budget allocated with it.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Extended thinking</span>
+    <p>Extended thinking is a Claude capability where the model uses a separate reasoning "scratchpad" (a block of thinking tokens) before producing its visible response. This improves performance on tasks requiring multi-step planning, logical decomposition, or ambiguity resolution. In Claude Code, a thinking budget is allocated automatically for complex requests — you do not need to enable it manually. The thinking block is not always visible in the terminal output, but it is happening. Expect it to be most valuable during plan-mode, agent-team orchestration, and complex debugging sessions.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Extended thinking is most valuable at the design stage of a complex analytical task. When you're asking Claude to plan a 3-arm RCT power calculation or to design a financial-ratio extraction pipeline for 96 firms with varying account formats, it pays to let it think through edge cases before writing a line of code or making a tool call. Use Opus with extended thinking for those design phases; switch to Sonnet for the execution once the plan is locked.</p></aside>
+
+    <p>Concept sixteen: slash commands. Throughout this video we've been using slash commands — typing a forward slash followed by a command name to trigger a specific action. <code>/init</code> sets up a new project and helps you create your CLAUDE.md file. <code>/compact</code> shrinks your conversation to save context space. <code>/clear</code> wipes the conversation for a fresh start. If you forget any, just type <code>/help</code> and it will show you a list of all available slash commands. And importantly, you can turn any task you do on a day-to-day basis into a slash command by putting it in the slash commands folder. Think of slash commands as shortcuts — and <code>/help</code> shows you all of them.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Slash commands</span>
+    <p>Slash commands are built-in shortcuts invoked by typing <code>/&lt;name&gt;</code> in the Claude Code terminal. Built-in examples: <code>/init</code>, <code>/compact</code>, <code>/clear</code>, <code>/model</code>, <code>/cost</code>, <code>/stats</code>, <code>/rewind</code>, <code>/permissions</code>, <code>/help</code>. You can also create <em>custom</em> slash commands by placing markdown files in <code>.claude/commands/</code> — each file becomes a <code>/filename</code> command that submits that markdown as a prompt. This is distinct from Skills (which are richer, with YAML frontmatter and supporting files) but useful for quick repeatable prompts.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Create a custom slash command for your most repeated research task: save a prompt template as <code>.claude/commands/pull-accounts.md</code> and invoke it with <code>/pull-accounts</code>. Useful for a standard "given company number X, extract turnover, operating profit, and headcount from the latest filed accounts and return JSON" instruction.</p></aside>
+
+    <p>Concept seventeen: skills. Claude Code is a generalist — it can do a lot of things to an okay degree. But for specific task types, like creating a social media strategy or building a front end, it can do even better if you give it specialised instructions. Skills are pre-written instructions that teach Claude how to do specific tasks really well — whether that's building presentations, writing good copy, or designing front ends. When you ask Claude to do something that matches a skill's description, it reads that skill file, which can also have supporting reference files to understand best practices and optimal approaches, and then builds using all of that knowledge. Skills use more context because those files are loaded in, but they improve the quality of your outputs. You can find a skill and install it, or create your own. Skills are expert playbooks, and Claude reads them before building.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A Skill is a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus optional bundled reference files. Claude Code detects which skill to load based on matching the description to your request, then pre-loads the skill's instructions and supporting files into context before responding. Skills package reusable domain knowledge — a copywriting style guide, a financial-ratio extraction methodology, a chart-formatting standard. They are shareable, installable, and composable. Simon's community maintains a curated library; you can also write your own from scratch.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Skills are the right abstraction for your repeatable analytical workflows. A <code>companies-house-extractor</code> skill could carry: the exact fields to extract (turnover, operating profit, headcount, filing date, SIC code), the logic for handling different account formats (abbreviated, full, micro-entity), and a QA checklist (cross-check turnover against prior year, flag if operating margin is outside &minus;20% to +60% band). Once written, every extraction session in your 96-firm project starts from that methodology without any re-prompting. Similarly, a <code>spe-salary-survey-qa</code> skill could encode your AQuA outlier-detection rules and year-on-year consistency checks.</p></aside>
+
+    <p>Concept eighteen: hooks. Sometimes you want specific rules to run automatically at certain moments — after an event has taken place — but you don't need AI to do that every single time and spend AI tokens on it. Hooks are custom scripts that trigger at those specific points. Whenever Claude saves a file, we're going to auto-format that file using our rules. Or we're going to log every single command that Claude runs. Setting them up requires a bit more technical know-how — though you can just ask Claude Code to do that for you. Think of hooks as custom rules that trigger automatically every single time, like guardrails that run in the background without using any AI tokens.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Hooks</span>
+    <p>Hooks are shell scripts configured in <code>settings.json</code> that fire at defined lifecycle events in the Claude Code loop — for example: <code>PostToolUse</code> (after any tool call), <code>PreToolUse</code> (before), or <code>Stop</code> (when the session ends). They run as regular processes, not via the model, so they consume no AI tokens. Common uses: auto-lint after every file write, log every bash command for audit purposes, or send a Slack notification when a long-running task finishes. Because hooks are deterministic scripts, they are also a safer guardrail than trying to instruct Claude to "always do X" in a prompt.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A PostToolUse hook is a natural fit for your data-integrity pipeline. After every Write tool call in your consultancy-database project, fire a hook that runs a short Python validator — checking the JSON Claude just wrote conforms to the schema (required fields present, types correct, no negative turnover). That validation runs outside the model, costs nothing, and catches schema drift before it silently corrupts 50 rows. Similarly, a hook that appends every bash command to an audit log gives you the analytical equivalent of a version-controlled methodology trail.</p></aside>
+
+    <h2>Concepts 19–20 — MCP servers and subagents</h2>
+
+    <p>Concept nineteen: MCP servers. By default, Claude Code works with files on your local computer — but your business doesn't just live on your machine. It lives across Airtable, Notion, Asana, and dozens of other tools. MCP stands for Model Context Protocol, and in simple terms, MCP servers connect Claude Code to those external tools. Once connected, Claude can pull data from those tools, push updates to them, and interact with your full tech stack from that single conversation window. This is what makes it so powerful — Claude can take actions not only on your desktop, but in the apps you use day-to-day.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · MCP servers</span>
+    <p>MCP (Model Context Protocol) is an open standard for connecting AI agents to external data sources and services. An MCP server is a lightweight process that exposes tools (callable functions) and resources (readable data) to Claude Code over a local socket or network connection. Once configured in <code>settings.json</code>, Claude can invoke those tools just like it uses its built-in Read/Write/Bash tools. Examples: a Companies House MCP server that accepts a company number and returns filing metadata; a Gmail MCP server that reads and labels threads; a Notion MCP server that queries and creates pages. MCP servers are independent of Claude Code — they can be written in any language and shared as open-source packages.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>You already run MCP servers for Companies House, Gmail, and Notion — which means you can build Claude Code workflows that span all three in a single conversation. A canonical example: ask Claude to find all Companies House filings for the 15 firms in your PE-owned cohort that were filed in the last 12 months, pull the accounts summary for each, draft a one-paragraph Substack update for each firm, and log the results to a Notion database — all in one unattended loop. That's the MCP value proposition: your whole research stack, orchestrated from a single prompt.</p></aside>
+
+    <p>Concept twenty: subagents. So far, everything we've covered runs in a single conversation — one terminal, one context window — and that works for 80% of your daily tasks. But the longer a session runs, the more context piles up and the more Claude starts forgetting things. We talked about compact as one fix. But there's another way to stop that: delegating to subagents. Subagents are specialists that run in their own separate context window with their own system prompt and their own tool access, but still follow the main CLAUDE.md file. Your main instance hands off a task, the subagent does the work independently, and then sends back the result to the main agent.</p>
+
+    <p>There are two reasons to use subagents. First, output quality: a focused specialist with a clean context window beats a generalist with too much information. Second, speed: you can run multiple subagents in parallel on unrelated tasks. Similar to skills and commands, you can create your own agents in the agents folder or leverage other people's agents too. The general rule: use a skill when you want Claude to be better at something in your current conversation; use a subagent when the task is entirely self-contained — "go away, analyse this report, come back with your findings" — something it can do unsupervised. Note that Claude Code will also spin out subagents on its own whenever it deems that architecture necessary.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Subagents</span>
+    <p>A subagent is a Claude Code instance spawned by an orchestrator (the main agent) with its own isolated context window, its own system prompt, and its own tool permissions. It receives only the information it needs for its specific task, executes independently, and returns a summary result to the orchestrator. Subagents cannot communicate with each other directly — everything flows through the main agent. This isolation means each subagent starts fresh, avoiding context rot, but it also means the orchestrator must carefully specify what each subagent needs to know. Subagents respect the project's CLAUDE.md even though they have isolated context.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Subagents are the right tool for your 96-firm extraction loop. Rather than one long session that progressively degrades as it processes firm after firm, spin a subagent per firm: give each one the company number, the extraction schema from CLAUDE.md, and the specific filing URL. Each runs with a clean context, returns a structured JSON row, and the orchestrator appends it to the master database. Parallelising across 10 subagents simultaneously would take a batch of 96 firms from a serial multi-hour job to a roughly 20-minute one — and each subagent result is independently auditable.</p></aside>
+
+    <h2>Concept 21 — agent teams</h2>
+
+    <p>Concept twenty-one: agent teams. Subagents have a limitation: they can only report back to the main agent. So if you have a researcher, a writer, and a reviewer as subagents, the reviewer can't see the research directly, and the researcher can't see the reviewer's feedback. Everything flows through the main agent, and that becomes a bottleneck when you have five or more subagents reporting in.</p>
+
+    <p>Agent teams — a newer feature of Claude Code — are designed to solve this. Instead of that hub-and-spoke model where everything goes through one central point, teammates can communicate directly with each other and share a task list. The main agent spins up teammates only when you specifically ask it to, and each runs in their own Claude Code instance — they get a sample of the information, but not the full context of the main conversation history. If you're doing something complex like building a SaaS app, you might have an API developer, a front-end developer, and a tester all working in parallel as separate agents who need to share context on what each other is working on and feed it back to a shared task list.</p>
+
+    <p>Here's the simple rule for when to use what: a single agent for one feature or one file that needs changing; subagents when you need specialists and your context is getting bloated; agent teams when you have a genuinely complex build that requires collaboration between the team.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Agent teams</span>
+    <p>Agent teams are a Claude Code feature that enables peer-to-peer communication between agents (rather than everything routing through a single orchestrator). Each team member runs as its own Claude Code instance with its own context window, and team members can read from and post to a shared task list. This removes the main-agent bottleneck of the hub-and-spoke subagent model and is suited for large, multi-component projects where different specialists genuinely need awareness of each other's work. Agent teams are spawned explicitly — Claude will not create them automatically the way it may spin up subagents.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Agent teams are described as a "newer feature" in this video (February 2026). The implementation details — how the shared task list is structured, how peer communication works in practice — may have evolved since filming. Treat the conceptual model (peer-to-peer vs hub-and-spoke) as stable, but check current Anthropic documentation for the precise API and configuration before building a production workflow around it.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Agent teams are probably the right architecture for your full Substack firm-profile pipeline, once it reaches production scale. Think: a <em>researcher</em> agent pulling Companies House filings and financial data; a <em>drafter</em> agent writing the narrative profile from the researcher's output; and a <em>fact-checker</em> agent cross-referencing figures against source documents. In a subagent model, the fact-checker never sees the raw data the researcher pulled — it only gets what the orchestrator decides to pass on. In an agent team, it can read the researcher's output directly. That matters for your libel-risk and accuracy-QA requirements.</p></aside>
+
+    <h2>Concepts 22–23 — multimodal input and checkpoints</h2>
+
+    <p>Concept twenty-two: multimodal support — image and screenshot input. Sometimes describing a problem in text takes way longer than just showing it. Claude Code allows you to upload a screenshot directly. Say you've got a bug on your website — you can screenshot it, paste it in, and Claude will see exactly what's wrong. You can also use this in reverse: paste in a design you like the look of and ask Claude to build to match it. It won't get it perfect, but it'll get to a 60–70% version in the first shot. Images do use context, so be aware of that, but it's a quick shortcut for things that are faster to show than describe.</p>
+
+    <p>Concept twenty-three: checkpoints and rewind. Claude doesn't get everything right, especially when it's working autonomously and making a lot of changes quickly. If it goes down a wrong path, you need a way to undo. Thankfully, Claude Code automatically creates checkpoints — session-level snapshots of your code — before every file edit. You don't need to do anything to enable this. When something goes wrong, just type <code>/rewind</code>: it opens a list of every prompt from your session, lets you go back and pick the point you want to restore, and shows you which ones actually had changes in the codebase. You can choose what to restore — just the code, or just the conversation. Checkpoints happen automatically before every edit; <code>/rewind</code> is how you go back.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Checkpoints and /rewind</span>
+    <p>Claude Code creates an automatic snapshot of the codebase state before every file write or edit. These checkpoints are session-level (not a full Git commit) and are stored internally. The <code>/rewind</code> command presents a list of all prompts in the session, indicating which ones triggered file changes, and lets you restore to any prior state — code only, conversation only, or both. This is a safety net for autonomous runs. It complements (but does not replace) Git version control — use Git for cross-session history and team sharing, checkpoints for within-session recovery.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Checkpoints are your intra-session undo stack — critical during any autonomous extraction or data-transformation run. If a subagent mis-parses an account format and overwrites 15 correctly extracted rows, <code>/rewind</code> takes you back to before that write without touching the correctly processed rows. This is particularly relevant for your salary-survey master workbook: always run Claude Code transformations against a copy of the workbook (or use work trees), but know that checkpoints give you a second line of defence if you forget.</p></aside>
+
+    <h2>Concepts 24–25 — Git integration and CLI/headless mode</h2>
+
+    <p>Concept twenty-four: Git integration. When Claude Code makes changes to your project, you need a way to track what changed, when, and why. That's what Git and GitHub are for — version control that tracks every single change made to your project over time. All you need to do is connect your GitHub account to Claude Code. This powers the checkpoint system and lets you review Claude's changes, roll back specific edits, and work with a team without overriding each other's work. You don't need to be a Git expert — it runs in the background, keeps everything trackable and safe, and enables those rewinds.</p>
+
+    <p>Concept twenty-five: CLI mode (formerly headless mode). Normally Claude Code is interactive — you type, Claude responds, you approve sections, back and forth. If you want Claude Code to work completely on its own with no human in the loop, use CLI mode (previously called headless mode). With any task, add the <code>-p</code> flag to your command and it runs a full agentic loop independently — no approval prompts, no waiting for your input. It processes the request and outputs the results automatically. This is where the flags we covered earlier become critical: if you want to pre-approve certain tools or restrict certain actions, set them upfront with <code>--allowed-tools</code>.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLI mode (-p flag)</span>
+    <p>CLI mode (also called headless mode or non-interactive mode) is invoked with the <code>-p "&lt;prompt&gt;"</code> flag: <code>claude -p "extract accounts for company 12345678" --allowed-tools Bash,Read,Write</code>. Claude runs the full agentic loop, completes the task, prints the result, and exits — no conversation, no approval prompts. This makes Claude Code scriptable and pipeable, enabling cron-job automation, CI/CD integration, and unattended batch runs. It pairs naturally with <code>--allowed-tools</code> to lock down what the agent can do in non-supervised context.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>CLI mode turns Claude Code into a proper data-pipeline component. Your Companies House extraction workflow could run as a nightly <code>cron</code> job: <code>claude -p "process the next 5 companies in pending_queue.json using the extraction schema in CLAUDE.md; append results to master_db.json" --allowed-tools Read,Write,Bash</code>. That runs unattended, outputs structured results, and you wake up to a larger database. The key discipline: test the prompt interactively first, lock the permissions tightly, and monitor the output log for the first few runs before trusting it overnight.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>For the Ralph loop — which takes CLI mode further — Claude runs a fixed <code>prompt.md</code> in a while loop, re-reading the files it just created each iteration until the task is done. Simon recommends this for bounded, well-specified tasks. Check the description link in the original video for the official Ralph plugin.</p></aside>
+
+    <p>The Ralph loop is an official Claude Code plugin named after Ralph Wiggum from The Simpsons. Instead of Claude Code running once and stopping as in CLI mode, the Ralph loop keeps feeding in the same prompt, but as files are continually built, it feeds in those prompts with the new set of files and works out what's left to do on the task. Claude literally iterates on its own while the while loop runs until it nails the task. People have used this to ship entire projects overnight. It's like headless mode on steroids.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon describes Ralph as "an official Claude Code plugin" — this is community terminology for a packaged Claude Code skill/plugin, not an Anthropic-built feature. Ralph is a community-maintained pattern that wraps Claude Code in a loop structure. The core concept (re-feeding a curated prompt.md with fresh file state each iteration) is sound and widely used. The specific implementation details may have changed since filming — check the current repository before building a production workflow around it.</p></aside>
+
+    <h2>Concepts 26–27 — pricing and work trees</h2>
+
+    <p>Concept twenty-six: cost and pricing. There are two ways to pay for Claude Code, and picking the wrong one will cost you more. Claude Max is a monthly subscription — $100 or $200 per month. You can also start on Pro at around $20 a month, which has generous usage limits, all models included, and is simple and predictable — it tells you when you run out. Or you can use the API on a pay-as-you-go basis, charged per token. For light usage, pay-as-you-go may actually be cheaper. But for active builds, you probably want the Pro or Max option for a much better deal: mid-build, you don't want to be worrying about token spend. You just want a fixed monthly cost.</p>
+
+    <p>Concept twenty-seven — and this is a big one — work trees. When you're working on a bigger project, you often need to work on multiple things at once: a new feature, a bug fix, an experiment. You don't want them interfering with your production environment. Work trees give you multiple Claude Code instances working on different tasks simultaneously, each in a separate working directory with its own files and its own branch, but all sharing the same repository history. You can have a Claude working on a feature in one work tree while fixing a bug in another, without either session polluting the other's context.</p>
+
+    <p>To activate this, use the <code>--worktree</code> or <code>-w</code> flag when starting Claude. The value you pass becomes both the directory name and the branch name. Here's what this looks like in practice: open three terminal panes and type <code>claude --worktree feature-auth</code>, <code>claude --worktree bugfix-login</code>, and <code>claude --worktree refactor-api</code>. Now you have three Claude Code instances working on completely different tasks in completely separate copies of your code — they can't override each other's work, they can't interfere with each other. When finished, merge the branch back into your main project. When you exit a work tree session, Claude handles cleanup based on whether changes were made. And it gets even more powerful: you can have subagents working on separate work trees too — each subagent gets its entirely separate work tree, automatically cleaned up when it finishes.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Work trees</span>
+    <p>Work trees are a Claude Code feature built on top of Git's native worktree mechanism. Each work tree is a separate checkout of the same repository into a new directory, on a new branch — so you get full file isolation without duplicating your entire repo. Claude Code manages the branch and directory creation for you via the <code>-w</code> flag. Work trees are particularly powerful in combination with subagents: an orchestrator can spawn each subagent into its own work tree, so parallel tasks never touch the same files. Merging is a standard Git operation once work is complete.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Work trees solve a real problem in your research workflow: running a risky transformation (say, bulk-updating the 96-firm database schema) at the same time as you're actively drafting a Substack article against that same codebase. With work trees, the schema migration runs in <code>worktree/schema-v2</code> — its own branch, its own directory — while your draft work continues in <code>main</code>. If the migration breaks something, you discard that branch. Nothing in your active writing session is touched. For the salary survey, use a work tree whenever you're running Claude Code's automated QA passes so the master workbook stays clean until the pass is verified and merged.</p></aside>
+
+    <h2>Wrapping up — your reference for 27 concepts</h2>
+
+    <p>So there you have it: every core Claude Code concept explained in plain English. Don't worry about memorising all 27 right now. Bookmark this video and come back to it when you hit a concept you don't understand. If you want to get hands-on and start building real projects with Claude Code, there's a full Claude Code track inside the AI Automation Academy in the description below. Let me know in the comments which concept was the one that finally clicked for you — and like and subscribe if you want to see more content like this.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The three concepts from this video most worth internalising first, for Leath's specific work: (1) <strong>CLAUDE.md</strong> — write one for every research project and put your schema, QA rules, and house style in it; (2) <strong>subagents + work trees</strong> — these two together unlock parallel, isolated extraction pipelines without context bleed; (3) <strong>CLI mode</strong> — once you trust a workflow interactively, script it with <code>-p</code> and run it unattended. The rest of the 27 concepts will reveal their value organically as you build.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Write your first research CLAUDE.md.</b> Create <code>CLAUDE.md</code> at the root of your consultancy-research project. Include: the 96-firm database schema (field names, types, and allowed ranges), your three core AQuA QA rules (source must be filed accounts; flag turnover changes &gt;30% YoY; operating margin must be plausible for a professional-services firm), and your Substack house style (no em dashes, cite filing dates not URLs). Open a new Claude Code session and verify it reads the file at startup.</li>
+      <li><b>Run a two-subagent parallel extraction.</b> Pick two firms from your pending queue. Ask Claude Code to spin up one subagent per firm, each using the extraction schema from CLAUDE.md, and return a JSON row for each. Compare the two results for schema compliance — this is your first test of whether isolated subagent context stays disciplined without manual correction.</li>
+      <li><b>Use a work tree for your next salary-survey QA pass.</b> Before running any automated outlier-detection script on the master workbook, start Claude Code with <code>claude -w salary-survey-qa-2026</code>. Run the full QA pass in that isolated branch. Only merge back to main after you've manually checked the flagged rows. Measure how much safer this feels versus running QA directly against the live workbook.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Claude Code</dt><dd>Anthropic's agentic CLI tool. Takes real actions on your computer and external services via a continuous loop of reading, reasoning, tool use, and writing — unlike a chatbot, which only talks.</dd>
+      <dt>Terminal</dt><dd>A text-based interface to your computer where you type commands instead of clicking. Claude Code runs here; you only need a handful of commands to operate it.</dd>
+      <dt>Prompt</dt><dd>The plain-English instruction you type to Claude Code. The more specific, the better — include format, fields, constraints, and examples where possible.</dd>
+      <dt>Permissions / settings.json</dt><dd>The allow/deny rules governing what Claude Code can do without asking. Stored in <code>settings.json</code>; can be checked into your repo for team sharing.</dd>
+      <dt>Tool use</dt><dd>Claude Code's built-in capabilities: Read, Write, Edit, Bash, and specialised tools. Claude selects them automatically; you just describe the goal.</dd>
+      <dt>Context window</dt><dd>The total tokens the model can "see" at once — your prompt, files read, tool outputs, and conversation history. Finite; when full, older content is pushed out.</dd>
+      <dt>Context rot</dt><dd>The degradation in model reliability as the context window fills — not forgetting, but losing the ability to find the most relevant information in a noisier haystack.</dd>
+      <dt>CLAUDE.md</dt><dd>A human-curated markdown file auto-loaded into every session. The primary mechanism for persistent project context: schema definitions, QA rules, house style, coding standards. Hierarchical: user-global and per-project versions both apply.</dd>
+      <dt>Memory tool</dt><dd>An AI-maintained persistent-memory file that Claude Code updates automatically across sessions to remember your preferences and patterns. Distinct from CLAUDE.md, which you write.</dd>
+      <dt>Compaction (/compact)</dt><dd>Replaces bulky conversation history with a model-written summary when the context window nears full. Automatic at ~85% capacity; invoke manually with <code>/compact [instructions]</code> to control what survives.</dd>
+      <dt>Slash commands</dt><dd>Built-in shortcuts invoked with <code>/&lt;name&gt;</code> in the terminal (<code>/init</code>, <code>/compact</code>, <code>/clear</code>, <code>/rewind</code>, etc.). Custom slash commands can be added via <code>.claude/commands/</code>.</dd>
+      <dt>Skills</dt><dd>Packaged domain-knowledge bundles: a <code>SKILL.md</code> with YAML frontmatter plus optional supporting files. Claude loads the relevant skill when your request matches its description, improving specialist output quality.</dd>
+      <dt>Hooks</dt><dd>Shell scripts that fire at lifecycle events (PostToolUse, PreToolUse, Stop) without consuming AI tokens. Used for auto-linting, audit logging, notifications, and deterministic guardrails.</dd>
+      <dt>MCP servers</dt><dd>External processes exposing tools and data to Claude Code via the Model Context Protocol. Extend Claude's reach beyond local files to APIs, SaaS tools, and databases.</dd>
+      <dt>Subagents</dt><dd>Isolated Claude Code instances spawned by an orchestrator, each with their own clean context window. Best for self-contained tasks; cannot communicate with each other directly.</dd>
+      <dt>Agent teams</dt><dd>A Claude Code architecture where multiple agents communicate peer-to-peer and share a task list, removing the single-orchestrator bottleneck. Suited for large, multi-component collaborative builds.</dd>
+      <dt>Extended thinking</dt><dd>A reasoning budget of tokens Claude uses internally before producing a response — improving performance on multi-step planning and ambiguous tasks. On by default in Claude Code.</dd>
+      <dt>CLI mode / headless mode</dt><dd>Non-interactive mode invoked with the <code>-p</code> flag. Claude runs the full agentic loop, outputs the result, and exits — no conversation. Makes Claude Code scriptable and pipeable.</dd>
+      <dt>Ralph loop</dt><dd>A community pattern that wraps Claude Code in a while loop, re-submitting a fixed <code>prompt.md</code> with the current file state each iteration until the task is complete. Enables unattended, iterative project builds. Not an official Anthropic feature.</dd>
+      <dt>Work trees</dt><dd>Isolated repository checkouts on separate branches, each with their own Claude Code session. Enables parallel, non-interfering work streams and is particularly powerful when combined with subagents.</dd>
+      <dt>Checkpoints / /rewind</dt><dd>Automatic session-level snapshots taken before every file edit. <code>/rewind</code> lets you restore code and/or conversation to any prior state within the session.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-27-how-to-use-claude-code-skills-like-the-1-it-s-easy-actually.html"><span class="dir">← Previous</span>How to Use Claude Code Skills Like the 1% (it's easy actually)</a>
+    <a class="next" href="ep-29-claude-code-just-went-mobile-remote-control-vs-openclaw.html"><span class="dir">Next →</span>Claude Code Just Went Mobile (Remote Control vs OpenClaw)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=ZlDnsf_DOzg" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

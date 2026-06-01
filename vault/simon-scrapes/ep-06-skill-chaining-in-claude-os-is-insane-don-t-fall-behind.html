@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>06. Skill Chaining in Claude OS is INSANE (Don't Fall Behind!) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=RrMTtG1ZccI" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 06 · Simon Scrapes</div>
+    <h1>Skill Chaining in Claude OS is INSANE (Don't Fall Behind!)</h1>
+    <div class="meta">
+      <span><b>13:07</b> runtime</span>
+      <span><b>12K</b> views</span>
+      <span>Published 14 May 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=RrMTtG1ZccI" target="_blank" rel="noopener">youtu.be/RrMTtG1ZccI</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/RrMTtG1ZccI"
+    title="Skill Chaining in Claude OS is INSANE (Don't Fall Behind!)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">The real leverage in a Claude OS isn't individual skills — it's wiring modular skills into orchestrated <em>skill systems</em> that compound in quality as you improve any single component.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon argues that most people are building their Claude OS wrong in one of two ways: keeping skills isolated (acting as the manual connector) or cramming everything into one giant "mega skill" that destroys modularity, maintainability, and progressive disclosure. The right architecture, he shows, is small focused skills wired together through an orchestrator skill — a pattern he calls a <em>skill system</em>. He walks through real examples from his own setup (video-to-short-clips, video-to-article, social carousel, slide generation) to show how shared child skills compound across multiple systems when kept modular.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Leath's consultancy-research workflow already has the natural decomposition Simon describes: find a firm, pull its Companies House filing, extract numbers, QA against the 96-firm schema, draft the Substack entry. Each step is a candidate skill. Building these as reusable child skills wired through an orchestrator means that when his extraction logic improves — say, to handle consolidated group accounts — every downstream skill system (salary-survey cross-check, PE-ownership mapper, sector-ratio report) benefits automatically from the single update.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Skill systems</span>
+    <span class="chip">Orchestrator skill</span>
+    <span class="chip">Skill chaining</span>
+    <span class="chip">Progressive disclosure</span>
+    <span class="chip">Modular skills</span>
+    <span class="chip">Mega skills (anti-pattern)</span>
+    <span class="chip">Claude OS</span>
+    <span class="chip">Subagents</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The architecture question: what's actually worth your time?</h2>
+
+    <p>I've spent a lot of time mapping out the architecture inside my own Claude operating system — the actual structure underneath, the file system, the skill composition, and the way that everything connects together. And here's what I think most people are missing in theirs. They're building dashboards to display tasks, but dashboards are just a temporary problem. Just look at Claude desktop today, or even the new agents view. Anthropic are already starting to aggregate context, surface the right information, and remove the need for half the dashboards that people are building right now. Three months from now, most of these custom dashboards are going to look completely redundant. And I'm not even biased, because I've built one, too.</p>
+
+    <p>But your workflows — that's completely different. So Anthropic's aim is to give the majority of users a decent result out of the box. What they can't do is build the exact system that your business needs. So that's still down to you. And that's why the architecture really matters. The architecture underneath is what gets you past the limitations of Claude Code that Anthropic won't be solving for you. So in this video, I'm going to show you what's actually worth your time: the architecture underneath the agentic operating system, the way that we structure skills to support that, and the mistakes you're probably making when you're building these systems for yourself.</p>
+
+    <p>So at the end of this video, you'll basically have the setup pattern that you can steal for your own workflows. Let's get straight into it.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span><p>"Claude OS", "agentic operating system", and "Claude operating system" are <em>community framings</em>, not Anthropic product names. They describe an opinionated assembly of CLAUDE.md, skills, subagents, and commands into a structured personal system. Useful concept; not a named Anthropic feature.</p></aside>
+
+    <h2>What Anthropic will and won't fix for you</h2>
+
+    <p>Before we get into the architecture itself, I want to show you something. When I started mapping out my own Claude operating system, I literally started here: what was my goal, and how can we get past the limitations of the LLMs as they are today? We had a list of nine different things which were effectively limiting factors inside Claude Code — things driven by the fact that context recall is really poor, Claude is a generalist, and that there's no way to actually separate the folders inside Claude Code so that you get all of your outputs cleanly into one place, or that you could actually access it from anywhere.</p>
+
+    <p>But if you actually look at this today, eight out of nine of these things will get solved by Anthropic themselves. So everything to do with context recall and memory, Anthropic is actually already working on things like that — memory features, project-level context, and all of that is moving really quickly. They've released scheduled tasks inside the desktop app, which solves our multi-step workflows on a schedule. You can also run cron jobs inside Claude Code in the terminal. The next three are all about separation of context in terms of the outputs delivered. At some point, Anthropic will just change the way outputs are displayed — and you're already seeing that in the desktop app, where they now give you links directly to the assets being produced. And of course we've got Claude Code channels and dispatch and a bunch of other stuff to access Claude from Telegram, from our mobile, from wherever.</p>
+
+    <p>So this one goal of the Claude operating system — having repeatable processes with consistent high-quality outputs — will <em>not</em> get solved by Anthropic, because overall Anthropic are building Claude to be a good generalist. And it's going to stay a generalist because as soon as they start niching down on specific workflows, they're effectively making the product worse for everyone else. They can't ship a model that's going to be brilliant at your specific copywriting style, your client onboarding process, or the way that you compose meta ads. So we've got to fix the gap between a good generalist output and the exact output from Claude Code that your business needs.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A skill in Claude Code is a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus any bundled scripts or reference files. It packages a reusable workflow Claude invokes by name. The key design property is <strong>progressive disclosure</strong>: only the name and description sit in context until the skill is invoked — the full body loads only when needed. This means you can have dozens of skills without bloating your context window on startup.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The generalist/specialist gap Simon describes is exactly the gap between "Claude can extract data from a PDF" and "Claude extracts turnover, operating profit, and headcount from a UK statutory filing into your 96-firm schema, flags missing line items, and notes whether the accounts are consolidated." That last precision comes from a well-written skill — not from a better model. Invest in your <code>companies-house-accounts-extractor</code> skill, and you're compounding that precision across every firm in the database, not writing bespoke prompts each time.</p></aside>
+
+    <h2>Mistake 1 — skills in isolation</h2>
+
+    <p>If you spent much time with Claude Code so far, you'll probably recognise that skills are how you turn a generalist into a specialist. They're how you take Claude from "good enough for most things out of the box with a good model like Opus 4.7" to "indistinguishable from how you'd actually manually do it yourself." That's the goal of where we want to get to. Skills aren't just a nice-to-have inside your agentic OS — they're the one part of the architecture that compounds in value over time as your skills get better. Everything else Anthropic is going to fix eventually. So if you're going to invest your time anywhere in the architecture of your Claude OS, invest in improving your skills.</p>
+
+    <p>Now, I haven't just got this far to tell you that skills are important. You probably know that already. But the way most people are connecting and building skills right now is actually the problem. There are two ways people are getting skills wrong, and I see both of them constantly.</p>
+
+    <p>Mistake number one is having your skills in isolation. For example, you download a copywriting skill, you ask Claude to write a LinkedIn post for you, it writes one, you copy it out, you then ask Claude to schedule it with another skill, and effectively you're manually chaining those together. You've used Claude Code in the same way you'd probably progress from something like ChatGPT or Claude in the desktop — asking it a question, it gives you a draft, you then ask it to schedule with another skill. <strong>You are still the intermediary connecting your skills.</strong></p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This isolation pattern is the default trap in research workflows too. You invoke a scrape-skill to pull a Companies House filing, manually copy the company number, invoke an extract-skill, copy the output into a spreadsheet, then invoke a QA-skill. You're the pipe between components. The whole point of skill chaining is to stop being the pipe — the orchestrator skill carries the state, and you only re-enter to review the final result.</p></aside>
+
+    <h2>Mistake 2 — the mega skill</h2>
+
+    <p>Mistake two, which is becoming more prolific, is building out mega skills. People feel the pain of mistake one, and they actually overcorrect. They build one giant skill that tries to do a full end-to-end process in one file — combining the research, the writing, the repurposing, the scheduling, and the posting all in a single file. And that sounds like a really intelligent way to do it, but actually what you've done there is thrown away everything that made skills useful in the first place.</p>
+
+    <p>What you lose with mega skills is <strong>modularity</strong>. That copywriting logic is now locked inside one giant flow, and you can't reuse it for emails, newsletters, or landing pages. You then by default lose <strong>maintainability</strong>: every time you want to change your copywriting style, you have to go and change it inside your email flow, your newsletter flow, your landing flow, and your social post flow, because you've pigeonholed your copywriting logic inside each of those individual skills without pulling it out as a separate skill. And the last thing you've lost is <strong>progressive disclosure</strong>. Anthropic specifically designed skills to only load the context that's needed. A mega skill loads too much context at once by default — and you might think that's fine, but what you're going to experience is a quality drop.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Progressive disclosure</span>
+    <p>Progressive disclosure is the key scaling property of the skills architecture. Only a skill's <code>name</code> and <code>description</code> (from YAML frontmatter) load into context at startup. The full <code>SKILL.md</code> body — instructions, examples, reference content — only loads when the skill is invoked. A mega skill destroys this: its entire body is effectively always "loaded" once invoked, and it typically tries to do too many things in a single context, reducing the model's ability to do any of them at the level a focused skill would.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The mega-skill temptation in salary-survey work would be one giant <code>salary-survey-2026</code> skill that pulls submissions, cleans data, runs AQuA outlier checks, generates charts, and drafts the Substack narrative — all in a single file. The problem is that your outlier-check logic can't then be reused by your consultancy-database QA pass, and your chart-generation instructions can't feed into the SPE deck builder. Break them out: <code>outlier-detector</code>, <code>year-on-year-checker</code>, <code>chart-generator</code>, each reusable across multiple skill systems.</p></aside>
+
+    <h2>The right answer — modular skills wired by an orchestrator</h2>
+
+    <p>So, you might be wondering: what is the right answer? And it is, honestly, somewhere in between those two. You want to build small, focused, modular skills, then wire them together into something bigger with an orchestrator. That's how the architecture of your Claude operating system is supposed to support better outputs. Stop thinking of skills as the system — they're <em>components</em> of the system. If you build them as little reusable building blocks, designed to connect together and disclose information progressively from day one, then you can start to actually stack them into something way more powerful and build out these skill systems much, much quicker.</p>
+
+    <p>So we've got the components as skills — why not wire them into something that actually runs end-to-end? This is the pattern that makes a Claude operating system actually useful. It's one that Claude isn't going to solve for you. And we call it a <strong>skill system</strong>.</p>
+
+    <p>A skill system is really simple: it's an orchestrator skill with an instruction set, wired around multiple smaller skills. The orchestrator is effectively the brain, and the child skills are the modular components that do the actual work and pass information back to the brain. Much in the same way that when you deploy subagents inside Claude, we have an orchestrator in our main instance, and then individual agents are passed a section of the context, and they return the output to the orchestrator. Just chain them together end-to-end to achieve a business goal.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Subagents / Task tool (the orchestrator pattern)</span>
+    <p>When Claude Code spawns a subagent using the Task tool, it creates an agent with its own <em>isolated context window</em> and tool set. Only the subagent's final summary returns to the main agent. This isolation is the core advantage: the main orchestrator context stays clean and focused, while each subagent does deep, focused work — scraping, extracting, verifying — without polluting the orchestrator's window with all its intermediate tool outputs.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span><p>"Skill chaining" and "skill system" are Simon's community terminology, not official Anthropic feature names. They describe a valid and powerful usage pattern — orchestrating multiple skills in sequence via an orchestrator skill — but you won't find these terms in the Claude Code docs. The underlying mechanism (skills + subagents/Task tool + CLAUDE.md context) <em>is</em> official.</p></aside>
+
+    <h2>Real examples — how skill systems scale</h2>
+
+    <p>The best way to show you this is an actual example we've just launched inside the Agentic Academy. This is a diagram of two skill systems that we run inside our own setup. On the left we've got our video-clip short-form system: you upload your own video, walk away, and it spits out five short-form clips ready to post. And next to it we have video-to-article — similar logic: you upload your own video and it converts it into a piece of long-form written content that we can use as a lead magnet or as a document in my school community.</p>
+
+    <p>Both of these systems have some component parts or skills that get reused between them. And then they both have individual skills that are not shared — bespoke to that specific process — but can still be reused by other skill systems. It becomes even more obvious when you start scaling to multiple skill systems. Now we've got two more: social carousel generation, which turns source material into multi-step LinkedIn carousels, and slide generation, which turns a topic into a full interactive HTML slide deck.</p>
+
+    <p>Now you can start to see that the shared skills has increased to four. Multiple of these systems now use four steps in common — including fact-checking to verify claims and figures, and humanising where we rewrite in our own personal brand voice. And then they still all have individual pipeline-specific skills. And because they're inside our Claude operating system, they're all supported by our shared context: brand voice, learnings, and so on, which feed into all of these skills and skill systems in turn.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Map Simon's four shared skills to your consultancy-research stack. The equivalent of his "fact-checker" skill is your <code>companies-house-verifier</code> — a child skill that, given a company name and registered number, confirms the filing exists, reads the accounts date, and flags if the data is stale. The equivalent of "humanise" is your <code>substack-voice-adapter</code> that rewrites a financial summary in your editorial register. Build each once, share them across the firms-database pipeline, the PE-ownership mapper, and the sector-ratio Substack series — improve one, all benefit.</p></aside>
+
+    <h2>Why modularity compounds — and why mega skills cost you later</h2>
+
+    <p>Everything we're building is done in a really modular way. We're treating skills as individual building blocks. So when I go in and improve a skill like the fact-checker skill, every system that uses it — one, two, three, four — gets better automatically by just updating in one single place.</p>
+
+    <p>Now, I could have absolutely built any of these as one big mega skill. Social carousels, for example, could have all of these individual skills inside that mega skill. And honestly, if I was building this for the first time, that would be quicker to build than actually breaking these out into modular skills. But the problem comes when the other three systems all want to leverage the same four skills that I've embedded into the social carousel system. The logic is buried inside that mega skill, so it's difficult to pull out, and you're effectively going to be rewriting these skills from scratch every single time for all of these different end-to-end processes.</p>
+
+    <p>Yes, mega skills are faster to build the first time. But for the second, third, and tenth time, being able to actually reutilise skills in a skill system is going to save you enormous amounts of time. As you build out your skills and make them better, your system gets easier to maintain, and you get faster at building out full systems — which are your end-to-end business workflows. The thing that Claude themselves is not going to solve for you.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This compounding logic is exactly why good database normalisation matters in your 96-firm dataset. If you embed firm-specific logic in every extraction script, a schema change requires 96 rewrites. If you abstract the extraction into a shared <code>companies-house-extractor</code> skill and pass the company number as a parameter, you change one file and every pipeline update. The analogy is direct: modular skills are to your Claude OS what normalised tables are to your database — less duplication, lower maintenance, higher confidence in consistency.</p></aside>
+
+    <h2>Onboarding, the skill system creator, and what to build next</h2>
+
+    <p>One thing we've also built to make it easy for a user to actually personalise these to their own setup: every single one of these skill systems has an onboarding. You configure certain things when you're first set up on a skill. If we go to the slide skill — which turns a topic outline or transcript into a production-ready HTML presentation — when the user first sets this up, they're asked about their style preferences (which can pull from your design system), max slides, whether they want it to export as a PDF every time, and whether they want to auto-open it in browser. A user configures this once when they first set it up.</p>
+
+    <p>So once you understand this pattern of orchestrated skill and child skills — parent and children skills — and connecting them all together with a single <code>SKILL.md</code> prompt (as we've seen with these 00-labelled skill systems), you can actually start building your own skill systems from your existing skills.</p>
+
+    <p>Naturally, we've gone one step further and created a skill system creator, which — as it sounds — helps you, based on your existing skills and what skills you want to build, map exactly the process you're looking for. It then goes out and searches existing skills that you have and works out where they can be reutilised or adapted to build out this end-to-end system. It's then all packaged up into a format that can be deployed using a one-line installation script — the same way we deploy it to users inside the community. They insert one line, run through the onboarding, all the skills are automatically put inside the folder, they do their configuration, and then they're ready to get outputs straight out of the box.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>The pattern Simon describes for one-line deployment resembles a skill bundle install. Inside your own setup you'd create a <code>00-skill-system.md</code> orchestrator that references child skills by name, then wire them together with a single invocation: <code>/skill-system-creator</code> to scaffold the structure and generate the onboarding flow automatically.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The onboarding step is underrated for analytical work. A <code>salary-survey-2026</code> skill system onboarding could ask: what Excel file path holds the master workbook? What year is this run covering? What's the outlier threshold for year-on-year salary change? Those answers get written into the session config once, and every child skill — cleaner, QA-checker, chart-generator, report-drafter — reads from that shared config instead of requiring you to repeat the parameters in every prompt.</p></aside>
+
+    <h2>The big picture — where to invest your time</h2>
+
+    <p>Taking you back to the big picture: skills are modular components. The orchestrator then is just chaining them together into skill systems. And we have a specific skill system creator to create exactly the same format every time. This is what's going to give you the real leverage when you're working inside Claude Code — rather than building out those mega skills or keeping your skills isolated and very manual.</p>
+
+    <p>If we just revisit the diagram: the agentic OS, or your Claude operating system, is not the dashboard. And all of these goals, apart from repeatable processes with consistent high-quality outputs, are probably going to be solved by Anthropic in the next few months. So if you're going to focus your time on anything, make sure it's on building those repeatable processes — wiring your skills together and building your skills in the right way.</p>
+
+    <p>In the next video, I'm going to walk you through our full agentic operating system setup, the file architecture underneath, how context flows between skills, and how we inject the right context into our skill systems without the high effort. And if you want the skill systems or skill system creator we're shipping inside the Agentic Academy, they come pre-built, plug-and-play, install and run with a few commands, and the link is inside the description. As you've seen, we've just launched our first four skill systems and are voting on what workflow problems to solve next right now. Thanks for watching. Give it a like and subscribe — it really helps. See you in the next one.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Simon's closing call to action — "invest in modular skills, not dashboards" — translates directly to your setup. You already have the right instincts (building HTML deliverables, reusing Python scripts, normalising your database). The next step is formalising those reusable steps as proper skills with <code>SKILL.md</code> files and wiring them into at least one skill system: an orchestrator that runs the full consultancy-profile pipeline (scrape → extract → QA → draft → save to 96-firm DB) end-to-end, so you invoke it once and review the output rather than babysitting each step.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Decompose one existing workflow into child skills.</b> Take your Companies House firm-profiling process and list every distinct step (find CH number, download filing PDF, extract financials, check against prior year, flag anomalies, draft Substack paragraph). Write a stub <code>SKILL.md</code> for each step — just a name, description, and 3-bullet instruction set. You don't need to run them yet; the exercise is proving that each step is genuinely separable and reusable.</li>
+      <li><b>Build one orchestrator skill.</b> Create a <code>00-consultancy-profile.md</code> skill that calls your child skills in sequence, passing the company number as state between them. Test it on one firm you know well (so you can spot errors). Log how much manual back-and-forth you eliminated versus your current workflow.</li>
+      <li><b>Identify your four shared skills.</b> Across your consultancy-research, salary-survey, and FP&amp;A reporting work, find the steps that appear in more than one pipeline — likely candidates: outlier-checker, schema-validator, chart-generator, plain-English-summariser. Promote these to standalone skills. Improve one and observe whether all pipelines that use it get better automatically — that's the compounding payoff Simon is describing.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Skill system</dt><dd>Simon's term (community, not official Anthropic) for an orchestrator skill wired to multiple child skills that runs an end-to-end workflow. The orchestrator holds the instruction set; child skills do focused work and pass results back.</dd>
+      <dt>Orchestrator skill</dt><dd>The "brain" skill that coordinates a skill system — dispatches to child skills, receives their outputs, and sequences the overall pipeline. Mirrors the orchestrator pattern in subagent use.</dd>
+      <dt>Child skill</dt><dd>A focused, single-responsibility skill invoked by an orchestrator. Designed to be reusable across multiple skill systems.</dd>
+      <dt>Skill chaining</dt><dd>Using one skill to invoke others in sequence to accomplish a multi-step goal. A usage pattern, not a named Claude Code feature.</dd>
+      <dt>Mega skill (anti-pattern)</dt><dd>A single large skill file that tries to execute an entire end-to-end process. Destroys modularity, maintainability, and progressive disclosure — the three core advantages of the skills architecture.</dd>
+      <dt>Progressive disclosure</dt><dd>The design property of skills where only the name and description load into context at startup; the full skill body loads only when the skill is invoked. Mega skills defeat this by forcing too much context at once.</dd>
+      <dt>Skills</dt><dd>Official Claude Code feature: a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus optional bundled files. Packages a reusable workflow Claude can invoke by name.</dd>
+      <dt>Subagent</dt><dd>An agent spawned with its own isolated context window and tools to do focused work; only its final summary returns to the main agent. The mechanism underlying the orchestrator pattern.</dd>
+      <dt>Claude OS / agentic OS</dt><dd>Community framing (not an Anthropic product) for an opinionated assembly of CLAUDE.md, skills, subagents, and commands into a structured personal system. Simon uses this term throughout; Anthropic has no product by this name.</dd>
+      <dt>CLAUDE.md</dt><dd>The memory/instructions file auto-loaded into context. Hierarchical: a user-global <code>~/.claude/CLAUDE.md</code> and a per-project <code>./CLAUDE.md</code>. The shared context all skill systems in your OS inherit.</dd>
+      <dt>Onboarding (skill)</dt><dd>A configuration step built into a skill system that gathers user-specific settings (paths, preferences, thresholds) once at setup, writing them into shared config that all child skills then read.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-05-master-claude-memory-in-23-minutes.html"><span class="dir">← Previous</span>Master Claude Memory in 23 Minutes</a>
+    <a class="next" href="ep-07-claude-code-has-a-new-ui-pair-it-with-claude-os.html"><span class="dir">Next →</span>Claude Code has a new UI (pair it with Claude OS)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=RrMTtG1ZccI" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

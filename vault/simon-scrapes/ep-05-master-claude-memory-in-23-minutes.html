@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>05. Master Claude Memory in 23 Minutes — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=rFWxRZ5D-lM" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 05 · Simon Scrapes</div>
+    <h1>Master Claude Memory in 23 Minutes</h1>
+    <div class="meta">
+      <span><b>23:12</b> runtime</span>
+      <span><b>30K</b> views</span>
+      <span>Published 16 May 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=rFWxRZ5D-lM" target="_blank" rel="noopener">youtu.be/rFWxRZ5D-lM</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/rFWxRZ5D-lM"
+    title="Master Claude Memory in 23 Minutes" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Claude Code's built-in memory barely scratches the surface — the open-source community has already built systems that go 10x further, and combining the best of Hermes and MemSearch gives you a lean, semantically searchable long-term memory that actually works across sessions.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon frames every memory problem around three questions: how does information get stored, how does it get injected into context, and how does it get recalled later? He walks through Claude Code's built-in auto memory (honest verdict: underwhelming), then contrasts two community systems — MemSearch, which captures everything via a stop hook and embeds it into a vector database, and Hermes, which captures curated facts plus raw transcripts and injects a frozen 1,300-token snapshot at session start. The episode concludes with Simon's recommended hybrid: auto-capture for completeness plus curated facts for relevance, tiered recall that checks local context before querying the vector database.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Most analytical workflows live across dozens of sessions: a Companies House extraction run last Tuesday, an SPE outlier-detection pass from three months ago, a DCC variance model you touched before a holiday. Claude Code out of the box will forget all of it. Getting the memory architecture right means Claude can reliably recall which firm numbers you've already verified, which AQuA checks you've signed off, and which methodological decisions you made mid-project — without you re-pasting context every session. This is the infrastructure layer that makes multi-session research projects tractable rather than endlessly repetitive.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Memory tool</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Auto memory</span>
+    <span class="chip">Stop hook</span>
+    <span class="chip">Pre-tool hook</span>
+    <span class="chip">MemSearch</span>
+    <span class="chip">Hermes</span>
+    <span class="chip">Vector database</span>
+    <span class="chip">Store · Inject · Recall</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The problem: Claude Code forgets almost everything</h2>
+
+    <p>Right now, Claude Code's memory system is still way behind a lot of what the open-source community has already figured out. In a recent video, I broke down the seven levels of Claude memory systems. And whilst researching that, I ended up digging through some really advanced setups that people are building right now — setups like the Hermes agent, MemSearch, and a bunch of others. And to my own surprise, a lot of these systems looked incredibly advanced, but the core ideas underneath them are actually very simple to replicate.</p>
+
+    <p>Underneath all the complexity, it always comes down to just two questions. When and how does information get written to memory, and when and how does it get retrieved again? In this video, I'm going to show you what Claude Code's memory looks like today, what the newest systems are actually doing differently, and then the setup I'd actually recommend if you want Claude Code to stop forgetting things. And one thing up front: this isn't about loading more context into Claude Code. It's about keeping context lean — only retrieving the right information when it's actually needed.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Memory tool</span>
+    <p>Claude Code has two distinct memory mechanisms. <strong>CLAUDE.md</strong> is a plain markdown file the human curates; it is injected into every session automatically. The <strong>Memory tool</strong> is a newer capability where the model itself writes structured facts to <code>.md</code> files in the <code>.claude/</code> global folder — the "auto memory" Simon discusses throughout this episode. The two are separate: CLAUDE.md is what you write; auto-memory files are what the model writes. Both are file-based and readable/editable by the user.</p></aside>
+
+    <h2>The three questions every memory system must answer: store, inject, recall</h2>
+
+    <p>Let's start by talking about the three questions that every memory system has got to answer. First, it's all about storage. How does information actually get saved, and at what point? What happens when somebody says something to Claude that's worth remembering? How does that actually get stored in the system? You might say, "Our landing page is school.com/grapes." And you want Claude to always remember that information. In some way, we want the agent to go away and save that — consistently and reliably. Or a decision like, "We're using Stripe, not PayPal." Same thing: you want that saved into memory and retrieved at a later date.</p>
+
+    <p>Then we want to understand how information gets injected. You're probably familiar that the CLAUDE.md file gets injected into the system prompt whenever we prompt Claude — every single time. So, how do we actually take important context of recent memory and push it to the agent during our conversation? So that next time you do start a session, you can open Claude Code and the memory of the most recent or most important information is loaded in automatically — but it's only a snippet of that information. Not tens of thousands of tokens. We have a small curated, always-there set of memory that's pushed in, so that Claude already knows your landing page URL or already knows your Stripe decision.</p>
+
+    <p>We've got storage and injection, but then, more importantly for long-term memories: how do we actually find and recover past information? Information that we told it about client X six months ago — that's the information that we need to be able to recall. This could be as recent as last week or it could be several years ago. We might ask, "What did we decide about pricing last Tuesday?" And we might need a step-by-step process: check what's been loaded in the injection phase — if not found, go deeper — if not found, go even deeper. So: how does it store? How does it inject? How does it recall? These are the three themes I'm going to follow through this video.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>These three questions map directly onto managing a 96-firm consultancy database across many sessions. Storage: every time Claude extracts revenue or headcount from a Companies House filing, that extraction decision (and any caveats — "EY turnover figure excludes advisory arm per note 4") should be written to a curated memory file, not just left in the transcript. Injection: at the start of each research session, a <code>memory.md</code> with your current data-quality flags and methodological choices (e.g. "use turnover not revenue line, per auditor note") loads automatically. Recall: when you return three months later and ask "what did we decide about NERA's 2023 accounts?", the system retrieves the note rather than requiring you to paste it in again. Getting this right turns Claude Code from a session-based tool into a genuine longitudinal research assistant.</p></aside>
+
+    <h2>Storage — what Claude Code does out of the box (and why it barely saves a thing)</h2>
+
+    <p>So let's get into the first section, which is all about storage. When you have a conversation with Claude, it's actually auto-detecting certain things you say in the background and writing them silently to <code>.md</code> files. These are stored at a per-project level in the global space — so we've got the <code>.claude/projects/</code> folder, and then memory folders stored in there. We also have a <code>memory.md</code> index that's updated with all the files Claude can point to. So when you have a conversation in the future, Claude can always reference those files.</p>
+
+    <p>This is on a per-project basis, but if you repeat things multiple times — if you have certain preferences that are done three or more times — then it gets promoted to a global <code>.claude/memory/</code> folder. You can actually see this if you go directly into your Claude Code terminal and do <code>/memory</code>. It will say: "Do you want to look at your user memory, which is saved in the CLAUDE.md? Do you want to look at the project's memory? Or do you want to open the auto-memory folder?" If you open that auto-memory folder, you can see all of the files and the index that Claude has created, and you can see that those actually point to each other.</p>
+
+    <p>These are happening automatically in the background, and I wouldn't say they're very comprehensive. It's kind of mostly if you're telling it, "This is a really important thing." Otherwise, it's not really going to store a huge amount of information.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Auto memory and the /memory command</span>
+    <p>Claude Code's auto memory is the model-side half of the Memory tool. When Claude detects a fact worth persisting, it writes a small <code>.md</code> file into <code>~/.claude/projects/&lt;project-hash&gt;/memory/</code> and updates a <code>memory.md</code> index. Frequently repeated facts get promoted to the global <code>~/.claude/memory/</code> folder. Running <code>/memory</code> in the Claude Code terminal surfaces three options: user memory (your CLAUDE.md), project memory, and the auto-memory folder. As Simon notes, in practice this system is conservative — it captures far less than most users expect.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p><code>/memory</code> — opens the memory management menu in the Claude Code terminal. Lets you inspect or edit user memory (CLAUDE.md), project memory, and the auto-memory folder. Use it to audit what Claude has actually retained from past sessions.</p></aside>
+
+    <h2>MemSearch — capturing everything with a stop hook and a vector database</h2>
+
+    <p>Now let's look at what the open-source community has figured out around this. So, how did they store and capture information as you go through? MemSearch uses a Claude Code stop hook. It's going to fire after every turn, not just the memory-worthy turns. It's going to call Haiku, which is going to summarise each turn into bullets — it uses Haiku because it's a cheap, fast model, and it's doing it all the time. It's going to append that data to a <code>memory/&lt;date&gt;</code> file with session anchors. So, when you close a session and you have a specific session ID, the notes from that session get appended to a specific memory file. So, it's storing literally everything.</p>
+
+    <p>It then periodically runs <code>memsearch index</code>, or you can run this manually. Each bit of information gets chunked into a hash. The reason it's converting that information into a hash is because it can then embed those chunks and turn them into vectors. Those vectors are then stored in a Milvus vector database, and it's all done locally on your CPU — so there's zero API cost. What this means for you: the information is stored as vectors, so literally a sequence of numbers, but what it does is store effectively a <em>meaning</em> and a bunch of metadata associated with that specific memory. This is great for the retrieval stage later because it means we can actually retrieve information by meaning instead of just by keyword search.</p>
+
+    <p>Not only do we have the markdown files — everything is also indexed, vectorised, and put into a database in the backend automatically. That is absolutely critical for the retrieval stage later. And what's great about this is it basically treats markdown as the source of truth. Everything is appended as markdown, and then everything else is rebuildable later from those markdown files. So, if you lost the database, you could actually rebuild it from all the memories that had been appended to that date. And the other thing — good and bad — is it captures everything. It's not just what Claude Code's auto memory thinks is the most relevant thing; it's going to capture absolutely everything.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Stop hook and pre-tool hook</span>
+    <p>Claude Code supports lifecycle hooks configured in <code>settings.json</code>. A <strong>stop hook</strong> fires after every agent turn completes — MemSearch uses this to summarise the completed turn into bullets and append them to a dated memory file. A <strong>pre-tool hook</strong> fires before the agent calls any tool — Claude Code's own auto memory uses this to check whether any memory file should be injected into context before the tool runs. Hooks are shell commands or scripts; they run outside the model and can call any API or write any file.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The stop-hook approach has a direct analogue to audit logging in model QA. In your SPE salary survey workflow, every turn where Claude detects or flags an outlier — say, a reported salary that breaks the 25-year trend — could be automatically appended to a dated <code>memory/2026-05-31.md</code> by a stop hook calling Haiku. At the end of the session you have a full audit trail of decisions and flags, queryable by meaning later: "what did we flag about the 2019 Consulting sector submissions?" That's the AQuA change-log discipline, automated.</p></aside>
+
+    <h2>Hermes — curated facts, deduplication, and a 7-day curator</h2>
+
+    <p>You might wonder, is MemSearch's everything-capture overkill? Well, let's look at what Hermes does and decide for yourself. Hermes takes a completely different approach — it's closer to what Claude Code is doing out of the box, because the agent decides what to save. The agent has access to a couple of tools inside Hermes: add, replace, or remove. It's adding those to a <code>memory.md</code> file and a <code>user.md</code> file. This isn't the same as Claude's auto <code>memory.md</code> — this is a <code>memory.md</code> with a cap on the number of characters that retains the most important information.</p>
+
+    <p>So, <code>memory.md</code> stores environment information and things you've done, while <code>user.md</code> is all about user profile — anything you say about the way you work or the way you want to operate. It also has mechanisms for deduplicating: whenever the agent thinks it's going to add, replace, or remove something important, it will also check for duplicates and make sure it's not writing duplicate information to our valuable memory space. Now, all of these are kind of useless unless the information gets injected at some point — which we'll talk about next. But the important thing to know is these caps on characters enforce consolidation. Where MemSearch captures absolutely everything, the point in the Hermes memory logic is that it enforces consolidation for when it injects that context later on.</p>
+
+    <p>But in some ways it is very similar to MemSearch, because every turn it also auto-saves the complete raw transcript to a database in the background. And it uses a curator — every 7 days it goes through and prunes and consolidates all of the information. The curator's job is to keep everything clean: it removes the raw transcripts from active memory. Whilst MemSearch stores exact raw transcripts, Hermes consolidates and prunes that information. So they're actually both excellent, especially when you compare them to Claude Code out of the box. If you look in your own <code>memory.md</code> with the auto memory, it barely saves a thing. MemSearch and Hermes go 10x further.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Hermes" is a community-built system, not an official Anthropic or Claude Code feature. The specific file names (<code>memory.md</code>, <code>user.md</code>, <code>soul.md</code>), the 7-day curator logic, and the add/replace/remove tools are part of that third-party project, not built-in Claude Code behaviour. Similarly, MemSearch and the Milvus vector database are external open-source tools. Simon is recommending a community architecture that wraps Claude Code — assess stability and maintenance before adopting in production workflows.</p></aside>
+
+    <h2>Which to use? Combining automatic capture with curated facts</h2>
+
+    <p>So, which one would I actually recommend? Well, MemSearch captures everything automatically with that stop hook, but it's raw and uncurated. Hermes is going to capture our curated facts — especially those put into <code>memory.md</code> and <code>user.md</code> — which is lean and intentionally lean. But if the agent doesn't think to save something, it's kind of like with our Claude auto memory: it's still actually grabbing the full transcript and saving it into something we can retrieve from a database at a later point.</p>
+
+    <p>So, my answer to which one you should actually use? I actually think we should combine the logic of both. We should use automatic capture for completeness, and then curated facts for what matters most — because this is really important for the injection phase. Take the best of both and combine them: you get long-term search from an embedded vector database that you can search by meaning, but also the power of choosing specific information to store in the <code>memory.md</code> and <code>user.md</code> so that when we come to the injection phase, we can push that information into our context without having to search through a load of raw uncurated transcripts in the background.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>This hybrid maps cleanly onto your consultancy-research workflow. Use the stop-hook capture for completeness: every extraction session appends raw dialogue to a dated file, so nothing is ever irretrievably lost. Separately, maintain a curated <code>memory.md</code> for the 96-firm database: canonical entries like "CEPA turnover: £71m (2023 accounts, note 3, verified against CH filing)" — the kind of fact that should survive indefinitely and be retrieved instantly at session start. The curator analogue is your periodic AQuA pass: every month, prune duplicate entries, resolve contradictions, and consolidate firm-level notes. That discipline is already in your workflow; Hermes just automates the enforcement.</p></aside>
+
+    <h2>Injection — loading the right context, not all the context</h2>
+
+    <p>Memory injection into the context window is quite misunderstood. It's not about loading more context in. Like we always talk about, it's loading the right context at the right time only. The default behaviour of Claude Code is: when you start a session, you inject the full CLAUDE.md — and that's why we want to keep the CLAUDE.md ideally under 200 lines. That goes in with the system prompt. And then, before Claude uses a tool, there is a pre-tool use hook which grabs the <code>memory.md</code> index, looks through the list of memory files that were stored earlier, and decides — based on your query — whether to actually go and research one of those memory files and inject that into the context too. If it does, it will inject that in as additional context inside the conversation. This is a pretty decent starting point, but we can learn a lot from the way Hermes does this.</p>
+
+    <p>We already saw that Hermes captured a <code>user.md</code> and <code>memory.md</code> file with more information that's periodically updated and consolidated. We can inject those into the context window. But first, let's quickly cover MemSearch, because it might surprise you here — MemSearch actually has no injection layer at all. It just relies on the default behaviour of Claude Code: injecting the CLAUDE.md and the <code>memory.md</code>. MemSearch is really built for recall. Think of it as a storage and search library that massively improves long-term recall.</p>
+
+    <p>Hermes, I think, nails the injection layer. At session start, it loads a frozen snapshot — similar to the way Claude uses CLAUDE.md, but it will additionally add in the <code>memory.md</code>, the <code>user.md</code>, and <code>soul.md</code> every single time. That comes to around 1,300 tokens put into every single conversation window. Now, this is per session because it's a frozen snapshot, so it gets cached in memory. You don't spend 1,300 tokens every time you send a message — just at the start of a session. The session ID will have that context saved. Anything saved to <code>memory.md</code>, <code>user.md</code>, <code>soul.md</code> during the session will be written to disk in the background and loaded into the next conversation.</p>
+
+    <p>So the obvious choice for our injection layer is: use Claude Code's behaviour plus Hermes' frozen snapshot to load in <code>memory.md</code>, <code>user.md</code>, and <code>soul.md</code>, which — as we saw in the storage stage — consolidates recently-biased and most important information inside these three markdown files. Yes, you are loading in 1,300 tokens every single session, but compared to the huge context windows, the increased performance from recent consolidated memories is, in my opinion, worth it.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context injection and caching</span>
+    <p>When text appears at the top of a session (as a system prompt or initial context block), Claude can cache it — meaning subsequent messages in the same session re-use the cached version without re-spending tokens. Hermes exploits this by injecting its frozen snapshot once at session start. The 1,300-token cost is paid once per session, not once per message. This is distinct from prompt caching in the Anthropic API (which uses cache-control headers) but the economic logic is the same: load the stable base once, pay for it once.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For your DCC board-reporting work, a frozen injection snapshot could contain: the current regulatory period's key parameters (£827m EAR FY26/27, BMA outturn, PI Tracker baseline), your active variance explanations, and the names of live cost lines you're monitoring. At the start of every session — whether you're in a quick Slack-to-model query or a full modelling run — Claude already has this skeleton in context. You're not pasting it in; it just loads. The 1,300-token cost is trivial against the time saved not re-establishing context each time. Keep CLAUDE.md under 200 lines and put the stable analytical skeleton in <code>memory.md</code>.</p></aside>
+
+    <h2>Recall — the biggest gap in Claude Code's built-in system</h2>
+
+    <p>This is probably the biggest gap that Claude Code has out of the box. Most of the time, we're not working just on a task-by-task basis with Claude Code. We have a bunch of clients, we have a bunch of projects on the go. Storing that information is critical, but recall is the most important thing. If you can store as much information as you want but can't get it out at the right time, then it's not worth having a good storage mechanism in the first place.</p>
+
+    <p>Claude Code out of the box has a really poor — dare I say it — recall system. Basically: user asks about the past, Claude checks the auto-memory files (which we've already seen are sparse), and if it's not been saved in there, it's completely lost. You might have opened the memory files from earlier inside your project repository, but Claude is really quite selective about what it saves. You probably don't have a huge amount of information stored there. So actually recalling past conversations has to trawl through previous conversations and burn through a load of tokens trying to find relevant information. And it has no methodology for doing so right now.</p>
+
+    <p>You can of course use the <code>--resume</code> flag to resume a previous conversation, but you have to know which session you actually want to resume to get that context back. So for Claude Code: the storage of information is okay, the injection is basic with just the CLAUDE.md, but the recall is actually really weak — and that's where we can benefit most from external systems.</p>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p><code>claude --resume &lt;session-id&gt;</code> — resumes a previous conversation from its session file, restoring that session's context. Useful for short-term continuity but requires knowing the session ID. Not a substitute for a proper memory system when working across many projects over months.</p></aside>
+
+    <h2>MemSearch recall — three-tier progressive retrieval</h2>
+
+    <p>How does that compare to MemSearch? If a user were to ask about something from the past week, the past month, the past six months — MemSearch has a really powerful three-tier retrieval system that only goes deeper if it needs to. It works on the same principles of progressive disclosure.</p>
+
+    <p>The user asks a question about the past, and we're going to use the MemSearch search query. It's basically going to convert your query into vectors so it can go and find semantic matches for your query in the vector database where we stored the information earlier. And because it's stored as vectors, we'll also be able to find matches for monetisation, revenue, price — so it doesn't have to be exact keyword matches. We're actually searching in the vector database by meaning. And it even has a method to do that by keyword: the dense vectors allow it to search by meaning, the keywords allow it to actually keyword-match, and then it's basically summarised in one list — "these are the closest matches to your relevant query that you asked about the past."</p>
+
+    <p>It will pass that back to the agent first. If there's nothing that's totally relevant, it's able to go one level deeper. At that point — <strong>tier one</strong> — it could stop and find the most relevant queries from the past. If that answers the question, great. However, if that does not answer the question, then it jumps to <strong>tier two</strong>, which is MemSearch expand. And MemSearch expand gives it more context, more metadata, a summary of information around the match we potentially found. And again, if that is not good enough and we need the raw dialogue, then it's going to go to the next tier — <strong>level three</strong> — which has all of the session dialogue, because every single message we send is summarised into bullets, appended to the memory, and then indexed. So all the raw dialogue is actually saved, and we can retrieve that with level three as a last resort.</p>
+
+    <p>Now, all of these take more tokens as we go down, but if you need a reliable system for retrieving information about your client's project six months ago, then MemSearch is going to be the one.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Progressive retrieval is exactly the approach you use in AQuA review: check the model summary first, expand to the working paper only if the summary is ambiguous, go to the raw data only as a last resort. Applied to the 96-firm database: ask "what revenue figure did we confirm for Oxera in 2022?" — tier zero hits your curated <code>memory.md</code> instantly if you recorded it. If not, tier one searches the vector database semantically and returns the session where you extracted it. Tier two gives you the chunk with surrounding metadata. Tier three retrieves the raw extraction dialogue verbatim. The whole chain runs programmatically; you spend tokens only as deep as necessary. That's efficient memory, not brute-force context stuffing.</p></aside>
+
+    <h2>Hermes recall — keyword sessions plus the tier-zero check</h2>
+
+    <p>You might have identified the limitation in MemSearch's approach: if you're asking about the past, it immediately thinks "okay, instead of searching the local context, let's go and do a database query" — which is slower than just checking our local in-context memory. Hermes uses a really clever approach for this. First, instead of going straight into the database, it checks our <code>memory.md</code>: has the question the user asked actually been answered by the context already loaded into the conversation? If it has, it can answer from zero cost and instantaneously. The power of injecting the frozen snapshot means that, for some queries, it's going to be answerable just from the context that's already in memory.</p>
+
+    <p>It should in theory always search the context of that existing conversation before it goes down to the levels and searches the database. If it is not found in there, then it goes deeper and searches the sessions — which were stored in a database, but instead of a vector database it's just searching by keywords effectively. Then it returns the top three matching sessions by relevance, summarises them using Gemini Flash, and passes that back to the agent.</p>
+
+    <p>So Hermes is really good at exact keyword matching. If you were to ask it about pricing, it could find things about pricing — but it might not necessarily find things about revenue because that's by meaning and not keywords. They do do one really smart thing that we're going to adapt and use: inject this <code>memory.md</code> into the conversation history, and then by default run a level-zero check on that <code>memory.md</code> first — check what's already in context before jumping down into the MemSearch hybrid search, the MemSearch expand, and level three below.</p>
+
+    <p>So what we actually ideally do is grab this <code>memory.md</code> check and put that into the MemSearch flow, so that we have a hybrid of both: check what's already in context before we go deeper and check the vector database. If the user asks about the past, it's going to check the <code>memory.md</code> and the context in the existing window first — and if not found, then go on to MemSearch level one, level two, level three as needed.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Hermes uses Gemini Flash to summarise session matches — a second model provider separate from Anthropic. The MemSearch system uses a Milvus vector database running locally on CPU. Both add operational dependencies (model API costs/rate limits for Gemini; local compute and storage for Milvus). Factor this into your setup decision, especially if you want to avoid mixing API keys or if you're running on a constrained machine. The hybrid architecture Simon recommends is conceptually sound; the operational overhead is real.</p></aside>
+
+    <h2>The recommended hybrid setup: store + inject + recall in practice</h2>
+
+    <p>So, that's a lot of information. How do you actually set this up for yourself and take the best elements of each system that can be worked together? Here's what I'd actually recommend when taking the best from each system. Let's run through store, inject, and recall and the lifecycle of a conversation as it happens — leveraging everything that's already built into Claude Code that works well as best practice.</p>
+
+    <p><strong>Store:</strong> as a conversation happens, we're going to leverage the auto memory, which is built in and saves those <code>memory.md</code> files to the Claude global folder for us. But, after every turn completes, we're going to add in the search stop hook that's basically going to capture word for word all of our transcript of our conversation so that those can be put into a daily memory. What we also want to do is maintain a <code>memory.md</code> and a <code>user.md</code> file — so that if the agent decides something is important, it's not just relying on Claude Code's auto-detect to add, replace, or remove into those files. We also leverage the vector database of MemSearch, which consolidates this information into long-term semantically searchable memory. We're going to run a nightly job to consolidate all the information — all the raw transcripts — using <code>memsearch index</code> every single night.</p>
+
+    <p><strong>Inject:</strong> when the session starts, we want to inject a little bit more context than just CLAUDE.md. We want to inject the <code>soul.md</code>, the <code>user.md</code>, <code>memory.md</code>, and then possibly today's log — you could also inject yesterday's log if you think that'll be relevant. That'll be roughly 3,000 tokens cached at the start of every session, which will really be important when we come to actually recalling it.</p>
+
+    <p><strong>Recall:</strong> what we've done here is combined the tier-zero of Hermes — where we check the <code>memory.md</code> and daily log first. Those are injected inside the system prompt every time we send a message, but they're cached. So before digging deeper into the vector database to search past history, we check the local recent data that's been loaded into the conversation already. That has zero cost, and it's also pretty much immediate because Claude already has it in context. If that is not found, then we jump onto MemSearch: level one, level two, level three — searching by hybrid keyword and semantic or vector search, expanding with chunks, and if still not found, passing back the raw transcripts.</p>
+
+    <p>This setup gives us the ability to actually search information really quickly from local recent files and prioritise those, but also gives us the ability to search further back in less recent history to recall old knowledge — to the point where we can literally pull out the raw dialogue at the end.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Running this for your consultancy-research project means: every extraction session is captured automatically (MemSearch stop hook); the 96-firm schema, your AQuA rules, and your canonical methodological decisions live in a curated <code>memory.md</code> (Hermes-style); the nightly index consolidation means last week's extraction is already embedded and semantically searchable when you start Monday morning. The practical test: after a two-week break, ask Claude "what did we flag about Analysys Mason's 2024 filing?" — it should answer from tier one without you pasting anything. If it can't, the recall layer isn't wired correctly. That's the verification gate worth running before trusting the system for research that will go into a published Substack piece.</p></aside>
+
+    <h2>Closing: the single thing to take away</h2>
+
+    <p>The one thing I want you to take away is none of this is complicated individually, but it's all about preserving best practice for storage, injection, and recall, so that we can massively improve the memory usage inside your Claude Code sessions. If you're working on projects and multiple clients, then this is an absolute must-have. And I know Anthropic are working on their own memory systems, but right now it's far, far behind what you can get from systems that are currently open source and free to access.</p>
+
+    <p>I'll link below a completely free <code>plan.md</code> document for you to pass into Claude and set it up for yourself. If you do want this straight out of the box, done for you, you know it's going to work well — then we'll be implementing this inside our own Agentic Operating system next week. That's also linked down inside the academy in the description below. Now, if you want to see what other options I considered for memory, check out the next video. Thanks for watching.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Our own Agentic Operating System" refers to Simon's community product — a creator-branded bundle, not an official Anthropic release. The free <code>plan.md</code> document he mentions (pass it to Claude Code and it will guide the installation) is a community resource. The underlying tools — MemSearch, Milvus, Hermes — are genuine open-source projects. Always check current maintenance status and whether each project is still actively developed before wiring it into a production workflow.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Audit your current auto memory.</b> Open Claude Code in your consultancy-research directory, run <code>/memory</code>, and open the auto-memory folder. Count how many memory files exist and read their contents. Compare what's there against the methodological decisions you actually made in your last five sessions — the gap between the two is exactly the recall problem this episode is diagnosing. Note: you'll likely find far less than you expected.</li>
+      <li><b>Write a curated <code>memory.md</code> for the 96-firm database.</b> Create a <code>~/.claude/projects/&lt;your-consultancy-research-hash&gt;/memory/memory.md</code> (or place it in your project root) containing: the canonical schema (fields, units, source-priority rules), your AQuA QA flags (e.g. firms with unresolved filing gaps), and the three most consequential methodological decisions you've made. Then start a fresh Claude Code session and confirm it loads and references them without prompting. This is your tier-zero injection foundation.</li>
+      <li><b>Wire a minimal stop hook for the SPE salary survey.</b> In your SPE project's <code>.claude/settings.json</code>, add a stop hook that appends the completed turn's summary to a dated file in <code>memory/&lt;YYYY-MM-DD&gt;.md</code>. Run a single extraction session — pulling one year's submission data — and verify the hook writes a legible audit trail. That file is now queryable by future sessions and doubles as an AQuA change log for the audited master workbook.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Memory tool (auto memory)</dt><dd>Claude Code's built-in capability where the model writes facts it deems important to <code>.md</code> files in <code>~/.claude/projects/&lt;hash&gt;/memory/</code>. Conservative in practice — frequently repeated facts promote to a global memory folder. Inspectable via <code>/memory</code>.</dd>
+      <dt>CLAUDE.md</dt><dd>A markdown file auto-injected into every Claude Code session. The human writes and curates it; the model reads it. Keep under 200 lines. Distinct from auto-memory files, which the model writes.</dd>
+      <dt>Stop hook</dt><dd>A shell command configured in <code>settings.json</code> that fires after every agent turn completes. MemSearch uses a stop hook to summarise each turn into bullets and append it to a dated memory file — capturing everything, not just what the model deemed important.</dd>
+      <dt>Pre-tool hook</dt><dd>A shell command that fires before the agent calls any tool. Claude Code's built-in auto memory uses this to check whether a stored memory file should be injected into context before the tool run. Part of Claude Code's hooks system.</dd>
+      <dt>MemSearch</dt><dd>A community open-source memory library for Claude Code. Captures everything via a stop hook, embeds session summaries as vectors in a Milvus database (locally, zero API cost), and provides three-tier semantic + keyword retrieval. No injection layer — relies on Claude Code defaults for that.</dd>
+      <dt>Hermes</dt><dd>A community agent framework with curated memory. The agent uses add/replace/remove tools to maintain lean <code>memory.md</code> and <code>user.md</code> files; a 7-day curator prunes and consolidates. Injects a frozen ~1,300-token snapshot at session start. Keyword-based session recall rather than vector search.</dd>
+      <dt>Milvus</dt><dd>An open-source vector database that MemSearch uses to store embedded session chunks locally on CPU. Enables semantic search (search by meaning, not just keywords) over all stored memories. Part of the external MemSearch toolchain, not native to Claude Code.</dd>
+      <dt>Frozen snapshot injection</dt><dd>Hermes' technique of loading <code>memory.md</code>, <code>user.md</code>, and <code>soul.md</code> once at session start and caching them. The ~1,300-token cost is paid once per session; subsequent messages re-use the cache. Ensures Claude always starts with curated recent facts already in context.</dd>
+      <dt>Store → Inject → Recall</dt><dd>Simon's three-part framework for evaluating any memory system. Storage: when and how facts are written. Injection: what is loaded into context and when. Recall: how past information is retrieved on demand. Claude Code out of the box scores: storage okay, injection basic, recall weak.</dd>
+      <dt>Progressive retrieval (tier 0 / 1 / 2 / 3)</dt><dd>MemSearch's approach: only dig deeper if the current level doesn't answer the question. Tier 0: check already-injected memory (zero cost). Tier 1: hybrid semantic + keyword search against the vector database. Tier 2: expand with metadata and surrounding context. Tier 3: retrieve the raw session dialogue verbatim.</dd>
+      <dt>Vector embedding</dt><dd>Converting a text chunk into a sequence of numbers (a vector) that encodes its semantic meaning. Allows retrieval by meaning — searching for "revenue" also surfaces results about "turnover" or "income". MemSearch embeds all stored summaries; the embeddings are stored locally in Milvus.</dd>
+      <dt>soul.md</dt><dd>A file in Hermes' setup that stores stable identity/persona configuration for the agent — persistent preferences about how it should behave. Injected alongside <code>memory.md</code> and <code>user.md</code> at session start. A Hermes-specific convention, not a Claude Code built-in.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-04-create-your-own-personal-claude-ai-system-that-makes-your-wo.html"><span class="dir">← Previous</span>Create Your Own Personal Claude AI System (That Makes Your Work EASY)</a>
+    <a class="next" href="ep-06-skill-chaining-in-claude-os-is-insane-don-t-fall-behind.html"><span class="dir">Next →</span>Skill Chaining in Claude OS is INSANE (Don't Fall Behind!)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=rFWxRZ5D-lM" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>29. Claude Code Just Went Mobile (Remote Control vs OpenClaw) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=hLPlyx_t7iY" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 29 · Simon Scrapes</div>
+    <h1>Claude Code Just Went Mobile (Remote Control vs OpenClaw)</h1>
+    <div class="meta">
+      <span><b>8:23</b> runtime</span>
+      <span><b>3K</b> views</span>
+      <span>Published 27 Feb 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=hLPlyx_t7iY" target="_blank" rel="noopener">youtu.be/hLPlyx_t7iY</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/hLPlyx_t7iY"
+    title="Claude Code Just Went Mobile (Remote Control vs OpenClaw)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Anthropic's new remote-control feature untethers Claude Code from your desk — and once you understand how it differs from OpenClaw, you'll know exactly which to reach for and when.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon walks through Anthropic's freshly-shipped <code>claude remote</code> command, showing how a QR code on your laptop gives you a mobile browser window with full access to your running Claude Code session — skills, agents, custom commands and all. He then pivots to OpenClaw, the open-source, self-hosted, 24/7 AI-agent platform that has amassed 230,000 GitHub stars, and does an honest side-by-side: setup complexity, security risks, permission models, and the key architectural difference. He closes with the emerging pattern of running Claude Code on a VPS so remote control becomes always-on.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Long-running data jobs — pulling Companies House filings, running salary-survey outlier checks, or building a regulatory cost model — don't need you sitting at a terminal the whole time. Remote control means you can kick off a multi-hour extraction pipeline from your desk, step away to a meeting, and supervise or unblock it from your phone. The VPS-hosted variant goes further: a cheap cloud server running Claude Code 24/7 is close to having a persistent research assistant that you can text tasks to — without OpenClaw's security baggage.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Remote control</span>
+    <span class="chip">claude remote</span>
+    <span class="chip">OpenClaw</span>
+    <span class="chip">QR code session</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Permissions</span>
+    <span class="chip">VPS deployment</span>
+    <span class="chip">Always-on agent</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The announcement — Claude Code gets a mobile window</h2>
+    <p>Anthropic just dropped a feature that's going to make OpenClaw optional for so many people. It's called remote control. You start a Claude Code session on your laptop, you scan a QR code, and you've got full control then from your mobile phone. No Docker, no Mac Mini running in your apartment, no WhatsApp hacks. I've been playing with it today, and I want to give you the honest breakdown: what it does, how to set it up, how it actually compares to OpenClaw, its limitations, and which one actually makes sense to use depending on what you're trying to do.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Remote control (<code>claude remote</code>)</span>
+    <p>Remote control is a first-party Anthropic feature that exposes your running Claude Code terminal session over a web interface. You run <code>claude remote</code> in your terminal and Claude Code prints a URL and an optional QR code. Anyone who scans that QR code — on any device — gets a browser window wired into the same session, with full access to the same working directory, skills, agents, and slash commands. The session lives on the host machine; the phone is just a thin window. Available on Claude Pro and Max plans (from around $20/month).</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Think of this as the equivalent of leaving a long regression or web-scrape running on your work machine and being able to check its progress from your phone during your commute — except you can also intervene, approve permission prompts, and redirect the agent. For a Companies House batch pull across 96 firms, that's the difference between babysitting your terminal and getting on with your day. Kick off the extraction in the morning, approve any unexpected permission prompts from your phone at lunch, and come back to a populated database.</p></aside>
+
+    <h2>Setting it up — the demo walkthrough</h2>
+    <p>All we need to type in is <code>claude remote</code>. What it's going to do is effectively give us a session. You can either take the URL it prints or press space to show the QR code. We take a picture of the QR code and it now opens up our remote control session. Right now we're just in a repository with various skills — this was just a demo repo. But the important thing here is that we still have access on our remote control session to everything as part of this local directory: the skills, the agents, the commands, etc.</p>
+    <p>We're going to test it out by running the <code>/init</code> command, which will hopefully run through the repository and create our CLAUDE.md file. Now, everything on mobile we still have to give permissions and allow permissions for — we can't run it yet with <code>--dangerously-skip-permissions</code>. But you can see it's going through now: it's starting to read the files, understand the repo, and actually create our CLAUDE.md file for us. So it means I can go away from the computer and the CLAUDE.md is going to be produced for me. I can do tasks away from my computer now.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md</span>
+    <p>CLAUDE.md is a markdown file, typically at the root of a project, that Claude Code reads automatically at the start of every session. It's your persistent briefing document — repo structure, conventions, key constraints, ongoing tasks. When the <code>/init</code> slash command runs, Claude Code inspects the codebase and writes a CLAUDE.md capturing what it found. Subsequent sessions start already oriented to the project, without you re-explaining context.</p></aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>Start a remote session and load your project config in one step:</p>
+    <p><code>claude remote</code> → scan QR → type <code>/init</code> in the mobile window</p>
+    <p>To resume an existing named session from your phone: <code>/rc</code></p></aside>
+
+    <h2>Security and session lifecycle</h2>
+    <p>While we're waiting for that to load — don't share this QR code with anybody, because actually anybody might be able to get access to your Claude Code instance and that project folder. As soon as we're finished, we're going to close this by double-clicking C or just killing the terminal on the right-hand side. That will stop anyone accessing this session.</p>
+    <p>It said: "Now I have a thorough understanding of the codebase. Let me create CLAUDE.md." We're going to allow this for this session. And we can see on screen now we've got a CLAUDE.md. It's gone through and understood the skills, said what this repository is, talked about skill architecture — because this was specifically to demonstrate skills — talked about router patterns and skill conventions, and basically made that CLAUDE.md. And we've not needed to be sat at a computer whilst it does that task.</p>
+    <p>A couple of things. If your laptop sleeps or your Wi-Fi drops, the session will stay alive for around 10 minutes, otherwise the connection is going to drop. Right now it's available on the Pro and Max plans, so you can try it for literally around $20 a month. And it is a step in the right direction for persistent, always-available agentic companions, which I think we're moving towards. But there's a key limitation here: you can't close a session currently from your phone. You can only close it from the machine running it. Your phone is just a window to interact with it, so you can send messages and approve permissions, but you can't kill it remotely.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The QR code grants full file-system access to the working directory of your Claude Code session — treat it like an SSH key, not a meeting invite. Never screenshare or post a screenshot that includes an active QR code. Close the session (<code>Ctrl+C</code> in the host terminal) the moment you're done; don't leave it open overnight.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The 10-minute reconnect window is the thing to plan around. For a long salary-survey processing run, make sure your laptop's sleep settings are set to "never sleep while charging" before you walk away. If you're running on a Mac, <code>caffeinate -d</code> in a separate terminal tab keeps the display on and the Wi-Fi alive. The harder constraint — no remote close — means you need physical access to stop a runaway session; build a natural stopping point into your prompt so Claude pauses for approval rather than running to completion unattended.</p></aside>
+
+    <h2>Demo continued — the PDF skill and permissions in practice</h2>
+    <p>Let's try getting it to go and search for some information. We're going to try and get it to use the PDF skill and go and download a PDF from the web. And we can see it's running through the skills now to try and find the right one. It's done a quick web search. It's found the URL — it's not found it yet but it's found the right URL. We can now watch it load the content in there. It's starting to find the PDF URL now. Let's say go off and hopefully it's going to do that as well.</p>
+    <p>It was struggling a little bit to do that, but now it's gone to the web and is actually now performing a web search. So it's finding its way to actually do that with the PDF skill. It was blocked by some permissions thing. But anyway, let's move on to OpenClaw.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Permission prompts on mobile</span>
+    <p>Claude Code's permission system requires explicit approval before any action that writes to disk, runs shell commands, or calls external APIs — by default, it pauses and asks. Remote control surfaces these prompts in the mobile browser window, so you can approve or deny them from your phone. The <code>--dangerously-skip-permissions</code> flag that power users sometimes pass to bypass all prompts is <em>not</em> available in remote control mode — a deliberate safety constraint for mobile sessions.</p></aside>
+
+    <h2>OpenClaw — what it is and how it differs</h2>
+    <p>Unless you've been living under a rock over the last couple of months, you'll have seen OpenClaw everywhere. It's got over 230,000 GitHub stars now. The creator, Peter Steinberger, literally just joined OpenAI. It's been the hot thing, and the pitch is similar — control an AI agent from your phone — but the approach is completely different. OpenClaw claims to be the AI that actually does things: clears your inbox, sends emails, manages your calendar, and is an agent that goes out and does your tasks for you.</p>
+    <p>It's a self-hosted AI agent that runs 24/7 on a dedicated machine — usually a Mac Mini sitting inside your house or on a rented VPS server. You can connect it to Telegram, WhatsApp, and you text it like you text a friend, and it actually reaches out to you like a friend. The actual software is open source, it's free, and it's model-agnostic — you can run it with Claude, GPT, local models through Ollama, whatever you want.</p>
+    <p>But the setup is not simple at all. You need a dedicated machine running 24/7 — whether that's a VPS or a Mac Mini — a separate phone number for WhatsApp Business, Tailscale for networking, Docker, and a fair bit of patience to set it up. Let's be honest: it's actually really technical. And let's be honest: there are some real security concerns about it. A critical vulnerability was found earlier this year, and apparently around 12% of community skills on their marketplace were exfiltrating data. And people are using Mac Minis for this. It's powerful, but it's not plug-and-play. And frankly, it seems quite risky to me.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · OpenClaw</span>
+    <p>OpenClaw is an open-source, community-built platform — <em>not</em> an Anthropic product — that connects an AI model to messaging apps (WhatsApp, Telegram) so you can assign tasks via text. It runs as a persistent daemon on a self-hosted machine and is model-agnostic. It is distinct from Claude Code: OpenClaw wraps any model into a task-runner you message; Claude Code's remote control extends a specific Claude Code terminal session to a browser. The two products solve different problems and carry very different security profiles.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>OpenClaw is community branding, not an Anthropic feature. The 12% marketplace-skill data-exfiltration figure Simon cites was a real reported finding at the time of filming (Feb 2026). The platform's threat surface is large: a self-hosted machine with WhatsApp Business access, arbitrary community-contributed skills, and Tailscale tunnelling is a meaningful attack surface. Treat community skills the same way you'd treat unsigned code from a random GitHub repo — read them before running them.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For the kind of work Leath does — Companies House account downloads, salary-survey compilation, regulatory reporting — OpenClaw's value proposition (clear inbox, manage calendar) is mostly irrelevant, and the security risk is not. Your consultancy database and your SPE salary-survey workbook are sensitive; you don't want them on a machine running arbitrary marketplace skills. Remote control on a controlled machine is the safer path.</p></aside>
+
+    <h2>Comparing the two — which one and when</h2>
+    <p>Here's how I'd start thinking about this if I'm considering both — and this bit matters, because they're not really competing. They're trying to solve different problems. The big deal with remote control is that Claude Code is no longer deskbound, and that's genuinely a game-changer. You can kick off a build, a refactor, an automation, go into an existing session by just using <code>/rc</code>, and have access to the skills, the agents, the commands, etc. in your repository and on your machine.</p>
+    <p>And here's the thing that hasn't really been mentioned yet: you don't have to run this on your laptop. People are already starting to deploy Claude Code on a VPS or a cheap cloud server. You can run remote control inside that. And once you're doing that, you've got an always-on agent — similar to OpenClaw, but without the safety concerns. The server's not sleeping, so the session never drops. And that's going to change the game completely.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Claude Code on a VPS</span>
+    <p>Nothing in Claude Code requires a local machine. Because it runs as a CLI process, you can install it on any Linux server — a $5/month VPS, a GitHub Codespace, a cloud VM. Running remote control against a VPS means the host never sleeps, the session is always accessible, and you don't risk a 10-minute drop window. This effectively replicates OpenClaw's "always-on" benefit using a first-party Anthropic tool on infrastructure you fully control.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>A lightweight VPS (2 vCPU, 4 GB RAM, ~£6/month on Hetzner or similar) running Claude Code with your consultancy-research repo mounted is a credible setup. You'd keep your CLAUDE.md pinning the 96-firm schema and your CH extraction workflow, start a remote session, and be able to supervise batch pulls from your phone throughout the day. For the SPE salary-survey, you could run the AQuA outlier-check pass as an overnight job — approve any flagged anomalies from your phone the next morning — without worrying about your laptop sleeping mid-run. The VPS approach is worth a small experiment before you commit to more complex tooling.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Mobile supervision for a batch extraction.</b> Pick 10 companies from your 96-firm database that still need accounts pulled. Start a Claude Code session with your Companies House extraction skill, then run <code>claude remote</code> and scan the QR code on your phone. Walk away and approve permission prompts from your phone as they arrive. Verify the extracted rows look right before killing the session from your laptop.</li>
+      <li><b>Pin your CLAUDE.md for remote sessions.</b> Add a section to your consultancy-research CLAUDE.md that explicitly states the 96-firm schema, the AQuA QA rules, and which companies are still in scope. Run <code>/init</code> on a fresh remote session and confirm Claude Code's opening message reflects those constraints — that's what any remote mobile session will be working from.</li>
+      <li><b>VPS feasibility test.</b> Spin up a cheap VPS (Hetzner, Fly.io, or a free-tier cloud VM), install Claude Code, copy your repo, and connect via <code>claude remote</code> from your phone. Check that your skills and commands load correctly. Time how long a simple CH lookup takes versus your local machine. If it's comparable, you've got the foundation for an always-on research assistant without any OpenClaw complexity.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Remote control (<code>claude remote</code>)</dt><dd>A first-party Anthropic feature that exposes a running Claude Code terminal session in a browser via a QR code or URL. The host machine does the work; the phone is a thin control window. Available on Pro and Max plans.</dd>
+      <dt>OpenClaw</dt><dd>An open-source, community-built platform (not an Anthropic product) that wraps an AI model into a 24/7 messaging-based task agent, typically self-hosted on a Mac Mini or VPS. Model-agnostic, but carries significant security surface area from community skills.</dd>
+      <dt>CLAUDE.md</dt><dd>A markdown file Claude Code reads automatically at session start, containing project conventions, schema, constraints, and ongoing tasks. Persists context across sessions without re-prompting.</dd>
+      <dt>Permission prompt</dt><dd>Claude Code's pause-and-ask mechanism before any write, shell, or external-API action. On mobile remote control, these appear in the browser window for you to approve or deny.</dd>
+      <dt><code>--dangerously-skip-permissions</code></dt><dd>A flag that bypasses all permission prompts, allowing fully unattended runs. Deliberately unavailable in remote-control mode — you must approve permissions from the mobile window.</dd>
+      <dt>/init</dt><dd>A slash command that instructs Claude Code to inspect the current repository and write a CLAUDE.md summarising its structure and conventions. Useful at the start of a new remote session to orient Claude to the project.</dd>
+      <dt>VPS (Virtual Private Server)</dt><dd>A rented remote Linux machine running 24/7 in a data centre. Hosting Claude Code on a VPS means the session is always-on and never drops due to laptop sleep — replicating OpenClaw's always-available benefit with a first-party tool.</dd>
+      <dt>Session window (10 minutes)</dt><dd>If the host machine's Wi-Fi drops or the laptop sleeps, the remote control session stays alive for approximately 10 minutes before dropping. The fix: prevent sleep on the host, or run on a VPS.</dd>
+      <dt>Skill</dt><dd>A reusable prompt package (a SKILL.md file plus optional assets) stored in a project repository that Claude Code can load and execute. Skills are accessible in remote control sessions because they live in the same directory.</dd>
+      <dt>Model-agnostic</dt><dd>Compatible with multiple underlying AI models (Claude, GPT, Ollama local models, etc.). OpenClaw is model-agnostic; Claude Code's remote control is inherently Claude-specific.</dd>
+      <dt>Tailscale</dt><dd>A zero-config VPN tool used by OpenClaw to expose a self-hosted machine's network to your phone without port-forwarding. One of several infrastructure components required to run a full OpenClaw setup.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-28-every-claude-code-concept-explained-for-normal-people.html"><span class="dir">← Previous</span>Every Claude Code Concept Explained for Normal People</a>
+    <a class="next" href="ep-30-has-claude-code-just-killed-n8n.html"><span class="dir">Next →</span>Has Claude Code Just Killed N8N?</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=hLPlyx_t7iY" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

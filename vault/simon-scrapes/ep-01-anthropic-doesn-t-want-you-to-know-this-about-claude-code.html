@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>01. Anthropic Doesn't Want You To Know This About Claude Code — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=DLKWB0tlIfU" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 01 · Simon Scrapes</div>
+    <h1>Anthropic Doesn't Want You To Know This About Claude Code</h1>
+    <div class="meta">
+      <span><b>10:57</b> runtime</span>
+      <span><b>7.4K</b> views</span>
+      <span>Published 28 May 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=DLKWB0tlIfU" target="_blank" rel="noopener">youtu.be/DLKWB0tlIfU</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/DLKWB0tlIfU"
+    title="Anthropic Doesn't Want You To Know This About Claude Code" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Claude Code is drifting toward developer infrastructure — and a small business owner who doesn't want to think about GitHub repos and credential vaults needs a different strategy: build on the portable, open parts, and stop depending on anything that only runs inside Anthropic's box.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon opens by naming a pattern he sees across Anthropic's recent launches: every headline promises "no infrastructure needed," but the actual onboarding quickly reaches environment variables, cloud containers, network-access toggles, and credential vaults. He traces this to a simple business fact — 80% of Anthropic's revenue comes from enterprise and developers, so the product inevitably drifts toward serving them. The episode then gives four concrete steps a non-developer can take to remain in control: define what you actually need, cut anything providers will ship for free, build bespoke the bits they won't, and stack memory layers where the model is weak.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>The portability argument maps directly onto your research infrastructure. Your 96-firm consultancy database, your SPE salary-survey pipeline, and your Wenta RCT tooling are too valuable to have locked inside one provider's hosted environment. Simon's four-step framework is a concrete way to decide which Claude Code features to build on (CLAUDE.md, skills, MCP servers, folder-based context management) versus which to treat as disposable conveniences (managed agents, hosted routines). The principle — understand your core requirements, then build only the bespoke pieces yourself — is exactly how you'd structure an AQuA-compliant model QA pipeline.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Platform drift</span>
+    <span class="chip">Managed agents</span>
+    <span class="chip">Portability</span>
+    <span class="chip">Context management</span>
+    <span class="chip">CLAUDE.md</span>
+    <span class="chip">Memory</span>
+    <span class="chip">Skills</span>
+    <span class="chip">Agentic OS</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>The promise versus the reality</h2>
+    <p>Every time Anthropic ships a new Claude Code feature, the announcement implies that it's easier for your team, or that no infrastructure is needed, that it's built for non-technical users. So you and I get excited, you open it up, and five minutes in you're looking at words like environment variables, MCP credentials, and containers. And it kind of makes you feel like an idiot. I know I certainly do, and I teach this stuff for a living. You have to know this though: you are not the problem. It turns out the product has just been drifting over time — it's getting more technical, more feature-heavy. So I'm going to tell you why, as well as the four steps I'm taking to make sure my setup survives in case I need to move away from Claude Code at any point in the future. And once you see the pattern, you start spotting it everywhere.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Claude Code</span>
+    <p>Claude Code is Anthropic's agentic coding CLI (also available via desktop app and IDE integrations). It runs in a terminal loop — reading and editing files, running shell commands, calling tools — without requiring the user to manually manage each step. The "product drift" Simon describes is real: its early positioning was accessibility-first, but recent features (managed agents, hosted routines, GitHub-connected remote execution) presuppose developer familiarity.</p></aside>
+
+    <h2>Two examples of drift — managed agents and hosted routines</h2>
+    <p>There are two places the drift is already blatantly obvious. The first one is the launch of managed agents. The headline was built around "build and deploy agents 10 times faster, no infrastructure needed" — which sounds exactly like what a business owner would need: run things on demand, without having to be there, without worrying about the technical detail. The audience here is supposed to be that everyday business owner, that everyday person.</p>
+    <p>So you run through the actual onboarding, and it's around five steps. Step one is writing a prompt — or getting Claude to write a prompt for you. You're probably fairly familiar with this; you've come from ChatGPT, so you understand how to do this part. Then step two very quickly progresses onto more technical details. We've got "create an environment," which is basically a cloud container with different networking rules. Step three, you're deciding whether your agent gets unrestricted or restricted network access — and sometimes you just need unrestricted just so you can click forwards on the toggles and get it working. Then step four is setting up a credential vault and connecting to your MCP servers. It suddenly got very technical for something marketed as "no infrastructure needed." And then step five — finally — we've got to a point where we can actually start a session through these managed agents.</p>
+    <p>Really, is it "no infrastructure needed," or have we just told it what infrastructure to use through a nicer UI? We haven't done the development work in the background, but this is much like how you sometimes find yourself running <code>--dangerously-skip-permissions</code>: you end up just doing that to save yourself time, without understanding the implications of the technical details in the background.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Managed agents</span>
+    <p>Managed agents (also called remote agents or hosted routines depending on UI context) let you deploy an agent that runs in Anthropic's cloud infrastructure on a schedule or trigger, without your local machine being on. Simon's critique is accurate: the current UX requires selecting a GitHub repository, configuring networking rules, and setting up a credential vault — steps that assume developer context. This is a genuinely useful feature for teams that already have a GitHub workflow; it is friction-heavy for solo researchers who don't.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The managed-agents credentialling flow is a fair proxy for how you'd approach it: if Anthropic's hosted routine requires GitHub plumbing just to run a weekly FP&A variance report, the marginal cost of building that plumbing is likely higher than writing a local cron job that calls Claude Code via API. For your consultancy-database work, the useful question isn't "can I host this in Anthropic's cloud?" but "what's the minimum infrastructure I control that gets a Companies House PDF pull running on a schedule?" A local Python script + cron + your MCP server is often that answer — and it's fully portable.</p></aside>
+
+    <p>The second really good example of drift is in the Claude desktop app, which is obviously made to be a nicer UI to use. If you go into the code view and into routines, you can see the option to create a task that runs every day — triggering certain skills and running a prompt that connects multiple of those skills together. When I go to create a new routine, I can obviously create that locally, but that means my computer or laptop has to be on all day every day to make sure those local routines run. So what I'd want to do is create it remotely — in theory, brilliant: we just send off a task, it lives in the cloud somewhere, it runs, and we're charged. That's all we want to do. We want to hand off the operations and the technical details.</p>
+    <p>We can fill out name and instructions — that's fairly simple — but then it starts to get a bit more confusing. If you need to host this remotely, then we need to select a repository, and we need to actually interact with GitHub to put the right infrastructure in place just to run this one simple thing. It could just be a weekly review that you want to run every single week. Suddenly we're taken up a level on the technicality, and the everyday business owner doesn't want to worry about this. They might already know how to select a trigger — if you work with n8n you'll be very familiar with triggers, schedule-based or event-based. We understand that much, but it's still a barrier. Then we come down and click on "behaviour," and we've got effectively a bunch of technical jargon: auto fix pull requests, version control. To developers this is super simple, but as a non-developer business owner I don't want to worry about the back-end infrastructure. I just want to know it's consistent, reliable, and running my prompts — importantly, when my computer is actually closed so my business can continue operating without me.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>n8n is a separate open-source workflow-automation tool — not part of Claude Code. Simon references it here to show the experience gap: n8n hides infrastructure behind a visual node interface, while Claude Code's hosted routines expose it. Whether Claude Code narrows this gap will depend on product roadmap decisions that may well have shifted since this video was published (May 2026).</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills</span>
+    <p>A skill is a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>) plus optional bundled scripts. It packages a reusable workflow Claude can invoke by name. The key property Simon is gesturing at — feeding skills into scheduled routines — relies on skills being loaded on demand (progressive disclosure: only the name and description sit in context until the skill is invoked). This is an official Claude Code feature; how cleanly it integrates with hosted routines is the developer-UX gap he's pointing to.</p></aside>
+
+    <h2>Why this is happening — the 80% rule</h2>
+    <p>Claude has made great strides in making the desktop app accessible, especially with the code work views that aggregate levels of detail. But the language they still use is very technical — GitHub pushes, pull requests, merges. As a business owner I don't really care about that. As long as I have version control, the job is done to a high degree of quality, and I'm in control through the skills I build and the prompts I input — those are the things I want to control. I want the technical details handed off and managed for me. It's almost like the experience you do get with a tool like n8n: you build the visual logic on the front end, and the infrastructure is sorted on your behalf.</p>
+    <p>Which brings me to why I think this is happening, and there's one chart which explains it all. Anthropic have just crossed $30 billion in annualised revenue this April. Around 80% of that is enterprise and developers — which says it all. Over the last year, Anthropic have quadrupled business adoption, while OpenAI have only grown by 0.3% in that same period, so Anthropic have now overtaken OpenAI. Now, if you were Anthropic, and 80% of your business was coming from one source, would you tailor your products to that source? Of course you would. You don't focus on your 20%, and that source for Anthropic is enterprise development teams.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The $30 billion annualised revenue figure and the 0.3% OpenAI growth claim are Simon's assertions based on data available at time of recording (May 2026). Treat as directionally illustrative, not audited figures. The underlying argument — that Anthropic's incentive structure is enterprise-first — is well-supported by the company's publicly stated strategy and customer mix, regardless of the precise numbers.</p></aside>
+
+    <p>So, as much as we'd like to hope that Anthropic will stay flexible and give us tools to help manage our small businesses, the truth is we need to take the power and flexibility of the underlying tools like Claude Code and build our own systems on top that are portable — in case we need to move away from Claude Code at any point in the future. We don't want to get locked in. Here are the four steps I'm personally taking to do that, which you can go and copy too.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The portability argument is strongest precisely for long-horizon research infrastructure. Your 96-firm consultancy database and your 25-year SPE salary-survey series represent years of accumulated data and cleaning logic — neither should be locked inside one provider's hosted environment. Anthropic's enterprise tilt is actually useful framing here: it tells you that the primitives (CLAUDE.md, skills, MCP servers, local file access) will remain stable longer than the hosted-service conveniences, because enterprise customers need stable APIs. Build on the primitives; treat the SaaS conveniences as optional extras.</p></aside>
+
+    <h2>The one rule — avoid features that only run inside Anthropic's box</h2>
+    <p>The four steps all come back to one rule: avoid features that only run inside Anthropic's box. Managed agents, hosted environments by Claude — they might be convenient for you now, but they leave you dependent on Claude or Anthropic later on.</p>
+
+    <h2>Step 1 — list what you actually need the system to do</h2>
+    <p>Before you touch a tool or a feature, sit down and list what you actually need the system to do. Here are mine — nine different goals. I want it to know who I am and how I work — i.e., inject the right context. Similarly, know my business, clients, and projects. I want it to be able to recall sessions, decisions, and learnings — that's all about memory as well as context management. I want it to create repeatable processes with consistent output that actually match my own business processes: my content generation needs to run like my content generation, not like another company's. Then I need multi-step workflows on a schedule. I need planning that matches the size of the project — again, context management. And importantly, I need to actually separate the context of my clients, my team, and manage how those are shared. I need outputs in one predictable place, not all over the place. And I want to access it from anywhere — I don't want this dependent on my computer being on or on me actively messaging the system. I want it to work on autopilot, still with human in the loop, but without me actually having to engage with it.</p>
+    <p>These are all my goals, but you might have several different ones. You're writing this list down to understand which ones you can actually eliminate — because all the key AI platforms are going to tackle these problems anyway — versus the things you should actually spend your time and attention on.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Running this exercise against your actual work is worth doing explicitly. Your list would probably include: know my 96-firm schema and data-collection rules (context injection); recall which companies still need accounts pulled (session memory); produce consistent extraction output I can trust in the master workbook (repeatable processes); run Companies House PDF pulls on a schedule without me being present (scheduled workflows); keep SPE salary-survey work and consultancy-DB work in separate contexts (domain separation). Writing that list reveals immediately which items are commodity (access from anywhere — every provider is solving this) and which are bespoke to your methodology and need to be built once, owned forever.</p></aside>
+
+    <h2>Step 2 — strike off what providers will give you for free</h2>
+    <p>Step two is going down that list and striking off anything that Anthropic, OpenAI, Hermes Agent, OpenClaw, etc. will probably provide to you out of the box. Where all the players provide it out of the box, there's no point spending time building it — because we're not going to be dependent on Anthropic. Those will be things like accessing it from anywhere: we've already seen the ability to access and remote-dispatch tasks in Anthropic, in Codex, in all these different environments. Another one might be outputs in one predictable place — providers are working on aggregating that information more cleanly now. Go through and pick the ones where you'd put a 95% chance on them being built out in the next couple of months.</p>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Hermes Agent" and "OpenClaw" are community/creator-built frameworks, not official Anthropic products. Simon uses them here as shorthand for the ecosystem of third-party agent setups. Their features and support levels vary; don't assume continuity across versions. The point holds regardless: multi-provider competition means commodity features (remote access, output aggregation) will commoditise fast, so don't spend capital building them.</p></aside>
+
+    <h2>Step 3 — architect for the bits they won't build for you</h2>
+    <p>Then step three is working out which ones you should focus your time on — architect for the bits that they actually won't build out for you. Look at what's left on my list. For me, there are four things that stand out in particular. Clean separation between clients and team — where each client has its own isolated set of contexts. Multi-step workflows on a schedule. Repeatable processes — multi-step workflows that inject the right skills. And memory that isn't dependent on a specific file structure like CLAUDE.md, because if we want to switch to Codex we're going to have to convert that to <code>agents.md</code>, and there are all sorts of decisions tied to memory that we might want to rebuild for ourselves. And the other thing that stands out is domain separation between team members: if you want your team to be able to use this operating system, you need a clean separation where somebody can share knowledge but also have their own isolated context that nobody else can touch.</p>
+    <p>These ones we're going to build for ourselves, and some of this is predominantly context management through a clever folder structure that inherits the right context at the right time. So we've got "know who I am and how I work" and "know my business clients and projects" — this is all about context management, and it can be done through a folder structure of different markdown files: how you speak and write, your voice profile, who you're speaking to, your ICP, how you stand out. All that global brand context is segregated off into a folder, and then we've got a set of rules about when to inject it. If you're working in a specific client context, you have access to that client's brand context, that client's project plans, and that client's global processes. And that's all an agentic operating system actually is when you crack the lid open: markdown files in folders, with a handful of rules about which files to load when.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · CLAUDE.md and context injection</span>
+    <p>CLAUDE.md is the official mechanism for injecting persistent context: the file is automatically loaded into every session. It's hierarchical — a user-global <code>~/.claude/CLAUDE.md</code> applies everywhere, a per-project <code>./CLAUDE.md</code> applies to that project. Simon's "folder structure of markdown files" pattern is an extension of this: you have multiple scoped context files, and rules (in the root CLAUDE.md or via a skill) govern which ones load for a given task. This is a common and sound pattern — it's portable because it's just files on disk.</p></aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · "Agentic OS" / "Claude OS"</span>
+    <p>"Agentic OS" and similar terms ("Claude OS," "personal AI system") are creator framings — not official Anthropic products. They describe an opinionated assembly of CLAUDE.md files, skills, slash commands, subagents, MCP servers, and memory layers, all configured to behave as a coherent personal system. The underlying components are official Claude Code features; the system design on top is community practice. Simon's Agentyc OS is his own flavour of this pattern.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The "folder structure with rules" pattern solves a real problem in your work: keeping the consultancy-database project context (schema, AQuA rules, 96-firm list) completely separate from SPE salary-survey context (25-year series, outlier thresholds, PII handling rules) separate again from your DCC FP&A context (BMA model, PI Tracker, board-reporting templates). A root <code>CLAUDE.md</code> holds your universal identity and working style; project-level <code>CLAUDE.md</code> files hold domain-specific schemas and rules; a skill per project loads the right one. You already have the raw materials — this is just making the inheritance structure explicit and documented.</p></aside>
+
+    <h2>Step 4 — stack layers where the model is weak</h2>
+    <p>Then step four: we actually start to look at where the model is weak itself, and decide to stack layers of things on top. We talked about recalling sessions, decisions, and learnings. Claude Code's memory out of the box is really poor. I broke it down in a previous video — we've got things like auto memory and the injection of the CLAUDE.md, and that's great for some level of storage, although unreliable and dependent on the agent. But actually injecting context back into the chat for short-term memory, and particularly recalling long-term information, is really poor out of the box. So we built our own sequence sitting on top of that. We took the patterns from Hermes — which were working really well and had high reviews — and we've also taken patterns from Memsearch, and combined the best of both worlds. So we've got better storage, smarter injection at the start of the session, and longer-term recall of data that searches by meaning.</p>
+    <p>Now, the day that Anthropic ships that kind of stuff properly natively — fine, you can just rip your layer out and use theirs. But until then, you've built out the capabilities you need without waiting for a release that might never come, because actually they're focused on serving those enterprises you're not. This memory example is obviously more complex than building out a folder structure with some rules, but it keeps you portable — and that's what matters. You're not locked in, in case you need to move in the future.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Memory tool vs CLAUDE.md</span>
+    <p>Claude Code has two distinct persistence mechanisms. CLAUDE.md is a file you (the human) curate: it loads automatically and sets standing context. The newer Memory tool is model-written: the agent can append to a memory file across sessions, effectively allowing Claude to remember things it learned mid-session. Simon is correct that out-of-the-box long-term recall is weak — the Memory tool handles some of it, but semantic search over past sessions is not natively built in. Custom stacks (like Hermes + Memsearch patterns) fill this gap today.</p></aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>"Hermes" and "Memsearch" are third-party community memory systems — not official Claude Code features. Their specifics change rapidly. The underlying pattern Simon describes (smarter injection at session start + semantic search over long-term memory) is sound and likely to be approximated by native features in future releases. Build on the pattern; don't hardcode a dependency on a specific community tool's implementation.</p></aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The memory gap Simon describes is most painful in your long-running research projects. A session that pulls Companies House accounts for firm 47 of 96 has no native way to "remember" which 46 firms it already processed and what it found, unless you explicitly write that state to a file and load it back. The portable fix is exactly what Simon describes: a session-state markdown file your skill writes at the end of each run and reads at the start of the next — effectively a lightweight checkpoint. For the SPE salary survey this would hold which years have passed QA, which are pending review, and what anomalies were flagged. This is just structured file I/O; it runs on any platform, not just Anthropic's.</p></aside>
+
+    <h2>The bottom line — future-proof your setup</h2>
+    <p>So here's the bottom line of all this. This whole approach does obviously take longer to start than using something out of the box — to understand your core requirements, work out what's worth building, and then actually spend the time building it. But if the day comes when you do need to move off Claude Code, this is going to future-proof your business AI operating system.</p>
+    <p>Now, if you want to build out this folder structure for the context management and want the shortcut, you can just grab ours off the shelf inside our Agentyc Academy. We go through and explain every single piece, and we've built it to stay portable — so you can pick and choose which parts suit your business and which don't, and you can build on top of it. In the next video, I'm going to walk you through our Agentyc OS architecture so you can see how to architect your own. Thanks for watching.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The four-step framework maps cleanly onto how you'd scope any analytical infrastructure decision. Step 1 (list requirements) is your scoping document. Step 2 (strike commodity items) is your build-vs-buy analysis. Step 3 (architect bespoke pieces) is your technical specification. Step 4 (stack where weak) is your risk mitigation plan — identifying model limitations and engineering around them. This is the same logic you'd apply to any piece of QA infrastructure at DCC or in consultancy-market research: understand what the tool does well natively, build only the custom layer where it falls short, and keep that custom layer thin and portable.</p></aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Run the requirements exercise for your own research stack.</b> Write out nine goals for your consultancy-database project (analogous to Simon's list). Mark each one: (a) providers will commoditise this in 6 months, (b) bespoke to my methodology and worth building, or (c) not worth the effort. The remaining (b) items are your actual build backlog — focus there.</li>
+      <li><b>Build a portable session-state skill.</b> Write a short skill called <code>companies-house-state</code> that, at the end of each extraction run, appends a row to a <code>session-state.md</code> file (company number, filing found, key figures extracted, any anomalies flagged) and, at the start of the next run, reads that file to skip already-processed firms. This is the portable memory pattern Simon describes — no Anthropic hosting required.</li>
+      <li><b>Map your CLAUDE.md inheritance.</b> Create a folder structure with a root <code>CLAUDE.md</code> (your identity, working style, universal QA rules) and three project-level <code>CLAUDE.md</code> files — one for the consultancy DB (schema, AQuA rules, 96-firm list), one for the SPE survey (series structure, outlier thresholds, PII rules), one for DCC FP&A (BMA model conventions, board-reporting templates). Load each project and confirm Claude picks up the right scoped context without cross-contamination.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Managed agents</dt><dd>Anthropic's hosted-execution feature for running agents in the cloud on a schedule or trigger, without your local machine. Requires configuring cloud environments, network access, and a credential vault — more developer-facing than the headline implies.</dd>
+      <dt>Platform drift</dt><dd>Simon's term for a product gradually shifting its features and UX toward a more technical, enterprise audience even while its headline messaging continues to target non-developers. The cumulative effect is a mismatch between promise and experience.</dd>
+      <dt>Credential vault</dt><dd>A secure store for API keys and secrets used by a hosted agent. Required when connecting managed agents to MCP servers or external services — one of the onboarding steps that trips up non-developers.</dd>
+      <dt>CLAUDE.md</dt><dd>The official Claude Code memory/instructions file, auto-loaded into every session. Hierarchical: a user-global version at <code>~/.claude/CLAUDE.md</code> and a per-project version at <code>./CLAUDE.md</code>. The primary portable mechanism for giving Claude persistent context.</dd>
+      <dt>Skills</dt><dd>A <code>SKILL.md</code> file (with YAML frontmatter) that packages a reusable workflow. Only the name and description sit in context until invoked — then the full body loads. The key scaling property for keeping context lean.</dd>
+      <dt>Context injection</dt><dd>Deliberately loading the right files and rules into the context window at the start of a session or task, rather than relying on the model to remember across sessions. The folder-structure-with-rules pattern is one way to automate this.</dd>
+      <dt>Portability</dt><dd>Simon's central design criterion: build your AI system so it can migrate to a different provider (OpenAI Codex, Gemini, etc.) without losing your workflows, context files, or processes. Achieved by building on open primitives (markdown files, local scripts, standard MCP servers) rather than provider-specific hosted features.</dd>
+      <dt>Agentic OS / Claude OS</dt><dd>Creator-community framings (not official Anthropic products) for an opinionated assembly of CLAUDE.md files, skills, subagents, commands, and memory layers into a structured personal system. The underlying components are official; the system design is community practice.</dd>
+      <dt>Memory tool</dt><dd>A newer Claude Code feature that lets the model write to a persistent memory file across sessions — distinct from CLAUDE.md, which the human curates. Currently limited in semantic recall; third-party patterns (Hermes, Memsearch) extend it.</dd>
+      <dt>MCP (Model Context Protocol)</dt><dd>An open standard for connecting external tools and data sources to Claude. An MCP server (Companies House, Gmail, Notion, a SQLite database) exposes tools Claude can call, extending it beyond the local filesystem.</dd>
+      <dt>n8n</dt><dd>A separate open-source workflow-automation tool (not part of Claude Code) that Simon references as a UX contrast: it hides infrastructure behind a visual node interface. Used here to illustrate the kind of abstraction Claude's hosted routines don't yet achieve.</dd>
+      <dt>Vibe coding</dt><dd>Accepting AI-generated output with little close review — convenient for quick prototypes but dangerous in production workflows where output correctness matters.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <span></span>
+    <a class="next" href="ep-02-i-built-a-social-media-carousel-generator-with-claude-code.html"><span class="dir">Next →</span>I Built a Social Media Carousel Generator (With Claude Code)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=DLKWB0tlIfU" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>17. Every Claude Code Workflow Explained (& When to Use Each) — Simon Scrapes · Leath's Vault</title>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<nav class="bar">
+  <a class="crumb" href="index.html">← Simon Scrapes index</a>
+  <a href="https://www.youtube.com/watch?v=38t5UBCa4OI" target="_blank" rel="noopener">Watch on YouTube ↗</a>
+</nav>
+<div class="wrap">
+  <header class="ep">
+    <div class="kicker">Episode 17 · Simon Scrapes</div>
+    <h1>Every Claude Code Workflow Explained (&amp; When to Use Each)</h1>
+    <div class="meta">
+      <span><b>17:49</b> runtime</span>
+      <span><b>101K</b> views</span>
+      <span>Published 7 Apr 2026</span>
+      <span><a href="https://www.youtube.com/watch?v=38t5UBCa4OI" target="_blank" rel="noopener">youtu.be/38t5UBCa4OI</a></span>
+    </div>
+  </header>
+
+  <div class="embed"><iframe src="https://www.youtube.com/embed/38t5UBCa4OI"
+    title="Every Claude Code Workflow Explained (& When to Use Each)" loading="lazy"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen></iframe></div>
+
+  <p class="lead">Claude Code isn't a chatbot you ping one task at a time — it's an orchestration platform with five distinct agentic patterns, and knowing which to reach for (and when) is the difference between saving minutes and saving days.</p>
+
+  <div class="overview">
+    <h3>What this episode covers</h3>
+    <p>Simon walks through five agentic workflow patterns built into Claude Code: sequential flow (single-thread conversation), the operator pattern (you managing multiple parallel terminals with git worktrees), split and merge (Claude autonomously fanning out to up to ten subagents within one session), agent teams (agents coordinating through a shared task list — an experimental Opus 4.6 feature), and headless mode (fully autonomous, scheduled execution via the <code>-p</code> flag). Before the five patterns, he reveals three hidden built-in subagents — explore, plan, and general-purpose — that Claude already uses automatically to keep your main context window clean.</p>
+    <h3 style="margin-top:14px">Why it matters for an applied economist</h3>
+    <p>Every pattern maps to real research bottlenecks. Sequential flow is the Companies House deep-dive you run today; the operator pattern is running three independent firm analyses in parallel worktrees; split and merge is extracting financials from ten filings simultaneously; headless plus cron is your 7 a.m. "pull yesterday's SPE submissions and flag outliers" automation. Understanding the ceiling of each pattern prevents you from hitting context rot mid-project or burning tokens on agent teams when a single session would do.</p>
+  </div>
+
+  <div class="chips">
+    <span class="chip">Sequential flow</span>
+    <span class="chip">Operator pattern</span>
+    <span class="chip">Git worktrees</span>
+    <span class="chip">Split &amp; merge</span>
+    <span class="chip">Subagents</span>
+    <span class="chip">Agent teams</span>
+    <span class="chip">Headless mode (<code>-p</code>)</span>
+    <span class="chip">Context rot</span>
+  </div>
+
+  <div class="transcript">
+
+    <h2>Built-in subagents — the hidden layer Claude is already using</h2>
+
+    <p>If you're still using Claude Code one conversation at a time, you're using it wrong. And this video is going to change how you work with it. So, at the moment you give it a task, you wait for the result, and then you move on to the next task. Everything's running at one time, but that's not how you'd run a team. You'd run teams in parallel, and you'd bring in specialists when required. And Claude Code is built to work exactly like that, too, but most people aren't using it that way. So, in this video, you'll see five ways on how to actually use it, from simple setups to fully hands-off workflows. So, you can stop working on one conversation and start saving some serious time.</p>
+
+    <p>So, let's get into it. And I'll start off with something that surprised me when I first found out about it. So, every single time you use Claude Code, even in a basic conversation, it's already using a version of these patterns that we'll run through behind the scenes. So, it actually has already built-in subagents that it uses automatically without you having to tell it to. So, there are actually three built-in subagents baked into Claude Code.</p>
+
+    <p>The first one is called explore, and explore is basically a fast cheap scout. So, it runs on Haiku, which is Anthropic's fastest and cheapest model, and all it can do is read your files. So, it can search your files, it can look through folder structures, but it's read-only. It can't change anything. So, when you ask Claude something like, "How does my user authentication work in this project?" then Claude will often spin up an explore agent behind the scenes without you asking to. It will go off, read through your files with its own set of context window, and it will come back with a summary, and your main conversation therefore can stay clean. It doesn't bloat the context. And you actually see this inside the terminal when you run these tasks. You'll see it pop up in the terminal as the explore tool.</p>
+
+    <p>The second one is similar, it's called plan, but it specifically activates when you're in plan mode. So, if you type /plan or hit Shift+Tab twice to enter plan mode, then Claude is going to use the plan subagent to research your codebase before it presents you with a strategy. Again, separate context window, read-only.</p>
+
+    <p>And the third one that they've implemented behind the scenes is general purpose. And this, as it sounds, is quite general purpose, so it's the one that does the heavy lifting. It runs on Sonnet, and it has full tool access, so it can read and write, and Claude uses it for complex multi-step tasks. So, if you're asking Claude to do something that requires both exploring the codebase and making changes across multiple files, that's when it will often delegate that to a general-purpose subagent.</p>
+
+    <p>And the key thing here is you've not told it to do anything. Claude is deciding when to use these automatically. It's looking at the complexity of your task and routing it to the right subagent. And all of those subagents run with their own context window, so that your main conversation never gets bloated with all the reading and searching of those files. So, even before we get into the five patterns, just know that Claude Code is already doing some of this work for you. But when you understand the full spectrum of the patterns, you can take control and get so much more out of it.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Built-in subagents (explore, plan, general-purpose)</span>
+    <p>Claude Code ships with three automatic subagents it can invoke without any instruction from you. <strong>Explore</strong> (runs on Claude Haiku, read-only) scouts files and folder structures. <strong>Plan</strong> (read-only, triggered by plan mode) researches a codebase before proposing a strategy. <strong>General-purpose</strong> (runs on Claude Sonnet, full read/write tool access) handles complex multi-step edits. Each gets its own isolated context window, so work it does never bloats your main session. You can see them appear in the terminal output.</p>
+    </aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Plan mode</span>
+    <p>Plan mode is a read-only investigation phase you trigger with <code>/plan</code> or Shift+Tab twice. In this mode Claude cannot edit files — it can only read and reason. It proposes a strategy and waits for your approval before making any changes. This is an official Claude Code feature, not community tooling. Use it before any destructive or irreversible operation to catch misunderstandings cheaply.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Even in a single Companies House deep-dive session — "extract turnover, operating profit, and headcount from these 10 filed PDF accounts" — the explore subagent is already firing off in the background to read your folder structure without polluting the main context. You don't have to do anything to get this benefit. What you <em>should</em> do is keep your project's <code>CLAUDE.md</code> concise and accurate so the explore agent surfaces the right files quickly: list your SQLite schema, your target fields, and where your output CSVs live.</p>
+    </aside>
+
+    <h2>Pattern 1 — Sequential flow: building on shared context</h2>
+
+    <p>Okay, so with that context, let's start at the beginning with pattern one. And sequential flow is exactly as it sounds. You open a terminal, you start a Claude Code session, and every task you give it builds on the last one. So, you've got you here, we assign a task, we then move to the next task once task one is finished, move to the next, move to the next, and our shared context is growing over time. So, it's building on the context that we've been giving it throughout the different tasks.</p>
+
+    <p>So, it might be something like build me a landing page, Claude then builds it as task one, or a first version of it. You say add a hero image to page one, add a contact form. All of these are different tasks that build on the first task. And the output of task one can feed into task two, and the outputs of task one and two can feed into task three because it's all stored in the context window. And this might seem like you're not using any subagents, but remember that Claude has those built-in subagents. So, even in this single conversation, Claude might spin up its explore, plan, or general-purpose agents that help by actually offloading some context at the right time to get stuff done faster or more effectively on your behalf. And you'll see these pop up in the terminal, but from your perspective, it's still just one conversation flow between you and Claude.</p>
+
+    <p>Now, the really important thing to understand about sequential flow is that it has a ceiling, and that ceiling is dictated by the context window, and that's shown by the little green bar on the bottom of the terminal. So, the longer you work in that one session, the more the context is going to accumulate, and at that point, Claude starts forgetting things or not being able to find things, which is what we call context rot.</p>
+
+    <p>So, this is where skills and commands become super valuable because if you've got a well-structured CLAUDE.md and some well-structured skills that are described well, then Claude is able to load in that skill and any reference files at the right time and then offload it at the right time also to not bloat the conversation window. And then using commands like /clear and /compact will help you actually keep the summary of the conversation in the context. But, eventually with this, you're going to hit a wall, and that's when we need to move to pattern two.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Context rot</span>
+    <p>As a Claude Code session grows, earlier exchanges, file reads, and tool outputs accumulate in the context window. Eventually the model can no longer reliably access information from the early part of the session — it "forgets" or conflates things. Simon calls this <strong>context rot</strong>. The green bar at the bottom of the terminal is the context-fill indicator. The built-in <code>/compact</code> slash command summarises the conversation and replaces the full history with that summary, buying more room. <code>/clear</code> wipes context entirely and starts fresh.</p>
+    </aside>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Skills and CLAUDE.md</span>
+    <p>A <strong>skill</strong> is a <code>SKILL.md</code> file with YAML frontmatter (<code>name</code>, <code>description</code>, optional <code>tools</code>) that packages a reusable workflow. Claude reads skill names and descriptions and decides when to load one. A well-described skill lets Claude pull in relevant context on demand — and unload it when done — rather than holding everything in the main conversation. <strong>CLAUDE.md</strong> is the persistent project-instructions file auto-loaded into context; keeping it tight and accurate is the primary lever for fighting context rot.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Sequential flow is the right choice for a single, self-contained research task: "take firm X, download their last three years of CH accounts, extract the key financials, and add a row to the database." Each step feeds the next naturally. The danger is that a 96-firm sweep in one session hits context rot around firm 20. The fix: keep your <code>CLAUDE.md</code> to a tight schema definition and file-path map, and run <code>/compact keep the schema and target fields</code> every 10 firms or so. For anything broader than a handful of firms, graduate to pattern two or three.</p>
+    </aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p><code>/compact keep the 96-firm schema and AQuA QA rules</code> — run this mid-session to summarise history while preserving your key instructions in context.</p>
+    </aside>
+
+    <h2>Pattern 2 — The operator: you as orchestrator across parallel terminals</h2>
+
+    <p>And pattern two is called the operator. And this time, you are acting as an orchestrator. So, instead of running one Claude session, you're going to open up multiple terminal windows. You might have found yourself doing this already to get things done quickly. Each has its own Claude instance. So, you can treat these like separate agents. Terminal 1, 2, 3, and 4, completely separate agents. They have their own context window, and therefore, you can give them specific context for specific tasks.</p>
+
+    <p>So, this time, let's say you're building out a SaaS app. You need a new onboarding flow built. You also need your checkout bug fixed, and you want to experiment with a new design for, let's say, your user settings page. All of these tasks that we've mentioned don't depend on each other, and that's one of the reasons why we can actually orchestrate these in completely separate terminals that don't blow each other's context. Because there's no connection between those terminals, we are purely coordinating.</p>
+
+    <p>So, you open three terminals like this inside VS Code, and Claude actually has now a built-in flag to do this much easier. So, in the first terminal, you type in <code>claude -w</code>, which is important, new onboarding flow. The second one, <code>claude -w</code>, fix checkout bug. And the third one, <code>claude -w</code>, redesign user settings. And you'll see that in the project folder here, we've now opened up what's called a worktree, where you've got new onboarding flow, fixed checkout bug, and redesign user settings. And now if we go into our dot Claude folder, we've effectively got these different worktrees, which is a separate copy of your project with its own branch, and it drops it straight into the Claude Code session. Each one in its own isolated workspace, and they can't interfere with each other. So they all have a clean context window, so there's no context rot from other tasks, and us as the operator are the ones coordinating between these different terminals here.</p>
+
+    <p>So you're probably at this point checking in on the different terminals, the different tasks going on. You're copy-pasting findings from one to another if you needed, and then you're going to have to decide when each one is done and when you want to merge that back into the main project. But this is a massive upgrade from this sequential flow, because actually we can get multiple things done in parallel as long as they're not dependent on each other.</p>
+
+    <p>But if they do depend on each other, then this flow isn't going to work for us. And here's the nice touch about closing a worktree session. As soon as we close this window, Claude is going to handle the cleanup for us. So if nothing's changed, it removes that workspace automatically. But if there is work to keep, then it's going to ask you what to do. And you can see as I close these sessions, they disappear from the worktrees up here.</p>
+
+    <p>So the operator pattern is you running multiple Claude sessions in parallel, each with its own isolated workspace, but you're still the one coordinating. So it's perfect for independent tasks where you want maximum control and clean context windows where they will not interfere with each other. Now the operator pattern is great, but as you'll have probably noticed, you can only manage a certain number of terminals at any one point. Four to five terminals and you're flicking between those terminals, it becomes really difficult checking in on all of the sessions. So what if Claude could actually handle the parallel tasks itself?</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Git worktrees (<code>claude -w</code>)</span>
+    <p>A <strong>git worktree</strong> is a separate checked-out copy of your repository, each on its own branch, living in its own folder. Claude Code's <code>-w</code> flag creates a worktree automatically when you start a session — no manual <code>git worktree add</code> needed. Each worktree has its own Claude instance and its own clean context window. Changes in one worktree cannot bleed into another. When you close the session, Claude cleans up unchanged worktrees automatically; if there's work to keep, it prompts you. This is an <em>official</em> Claude Code feature as of early 2026.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The operator pattern is ideal for a batch of independent firm analyses. Open three terminals: <code>claude -w "extract PA Consulting accounts 2019-2024"</code>, <code>claude -w "extract Oxera accounts 2019-2024"</code>, <code>claude -w "extract FTI Economics accounts 2019-2024"</code>. Each runs in isolation — no context contamination, no risk of one firm's numbers bleeding into another's. You are the coordinator: check back periodically, copy findings from each terminal into your master SQLite database when done, then close and let Claude clean up the worktree. For your 96-firm database this pattern alone could cut your data-collection time by 3–5×.</p>
+    </aside>
+
+    <h2>Pattern 3 — Split and merge: Claude orchestrates its own subagents</h2>
+
+    <p>So pattern three then is the split and merge. And this is where it gets really interesting, because the core idea is that within a single Claude Code session, one terminal, Claude itself can split work across multiple subagents that then run in parallel. So, if you're thinking about all four of these terminals, we could effectively spin off multiple subagents inside each terminal to get more done quicker. And then effectively at the end, it's going to merge all the results back into the main agent so that you can reap the rewards.</p>
+
+    <p>And if you remember those built-in subagents I mentioned earlier, explore, plan, and general purpose, those are good examples of that, but you're not limited to just those. You can create your own custom subagents inside your .claude folder. And Claude can spin up multiple of them at the same time.</p>
+
+    <p>And here is how that works in practice. You give Claude a task, Claude is going to analyze that task and realize that it can be broken down into independent pieces. It will then fan out into multiple subagents, each one running in its own context with no, and each one focused on the specific piece of work. And then when it's all done, it will merge all those results automatically and give you the final output. So, a lot is happening in the background here that we don't have to manually tell it to do.</p>
+
+    <p>So, let's say you ask Claude to research five different competitors for a client proposal. Instead of researching them one by one, which could take ages if we ran it in that sequential flow pattern one, Claude can spin up five subagents, one per competitor, and they all research simultaneously. So, each one is going to come back with their findings, and the main agent is going to synthesize the five findings into one single report. And Boris Cherney even, one of the creators of Claude Code, has talked about sometimes spinning up 15 subagents at a time to get things done. But actually, the limit on this is 10 at once. So, 10 subagents at once. Claude will actually queue any additional tasks as additional subagents.</p>
+
+    <p>But here's the critical limitation here. Subagents can only report back to the main agent, so they can't actually talk to each other. So, subagent one and subagent three have no idea what each other are doing. It's this hub-and-spoke methodology where the main agent, or our main instance where we're interacting with Claude, is acting as the hub, and it's receiving information back and forth from that subagent.</p>
+
+    <p>And if you've ever used the framework GSD or Get Done by Tash, this is like a framework I'd highly recommend for comprehensive projects. It's basically a planning framework that will split your initial project brief into subtasks and execute on those subtasks. So it's designed for big projects, but not in an enterprise fashion. We can look at the agents inside the agents folder. They've got quite a few agents in here. And actually what you can do is go into the agents listed and see exactly, like we do with skills, the name, the description. So research is a single gray-area decision and returns a structured comparison table with rationale. So we're effectively giving this agent a role to do and a specific set of context that it goes out and performs a certain process, as well as giving that agent a certain set of tools that it actually has access to. Now Claude will read the name of all agents in our .claude folder and decide when it's suitable to offload a task to those subagents. It will automatically use it when it thinks the task matches the description. Or you can specifically say, "I want to use the advisor researcher subagent in this task."</p>
+
+    <p>And one of the most powerful applications of this pattern is the builder-validator chain. So you have one subagent build something, and then you have another subagent actually review it. But what that requires is the subagent one to build it first, pass it back to the main agent, pass that to the second subagent through here, and then that passes the results back to the main agent. So you can see because they can't communicate with each other, they're actually orchestrating it through this main agent. But you can effectively get a built-in quality check without doing any of the reviewing yourself by using that builder-validator chain. So split and merge is Claude doing the parallelization for you within a single session. So it can fan out work to those subagents and merge the results for you. And again, they keep your context window clean. So this is really powerful.</p>
+
+    <p>So split and merge is awesome, but it has one limitation. Subagents can't talk to each other. So everything has to funnel through the main agent, and for some tasks, that is a genuine bottleneck. So, what if your researcher agent needs to check in with your reviewer agent? Or what if you have a front-end developer that needs to coordinate with a back-end developer?</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Subagents and custom agents (.claude/agents/)</span>
+    <p>Beyond the three built-in subagents, you can create your own by adding agent definition files to your <code>.claude/agents/</code> folder. Each file specifies the agent's <code>name</code>, <code>description</code>, and the tools it can access — similar in structure to skills. Claude reads all agent names and descriptions and automatically routes tasks to the right agent when the task matches the description. You can also invoke a specific agent explicitly in your prompt. The hard cap is 10 parallel subagents; further tasks are queued. Crucially, subagents cannot communicate directly with each other — all coordination flows through the main orchestrating agent (hub-and-spoke).</p>
+    </aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>Simon mentions "GSD" (Get Done / Get Shit Done) by Tash as a framework that uses this pattern well. GSD is <em>community tooling</em> — a popular third-party skill/agent framework — not an official Anthropic feature. Its agents folder structure and phase names (discuss → plan → execute → verify) are Tash's design conventions. The underlying mechanism (Claude reading <code>.claude/agents/</code> definitions and routing automatically) <em>is</em> official. Treat GSD as useful reference architecture, not a stable API.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>The builder-validator chain is the closest Claude Code equivalent of the AQuA Book QA loop. For your SPE salary survey, one subagent could extract year-on-year figures from submitted Excel files; a second subagent, given only the extracted table, could flag sign errors, implausible growth rates, and missing fields — all without any manual review. Wire this into a single prompt: "use the extractor agent to pull the 2026 submissions, then run the validator agent over the output and write any anomalies to <code>qa-flags-2026.md</code>." You walk away; you come back to a flagged report. That is a direct AQuA pass-3 equivalent for zero incremental cost.</p>
+    </aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p>To invoke a custom agent explicitly: <em>"Use the <code>companies-house-extractor</code> subagent to pull accounts for firms 41–50, then pass the results to the <code>margin-validator</code> subagent to check for unit-scaling errors."</em> No flag needed — natural language in the prompt is enough once the agent definitions exist in <code>.claude/agents/</code>.</p>
+    </aside>
+
+    <h2>Pattern 4 — Agent teams: agents that talk to each other</h2>
+
+    <p>And so, this is where the fourth pattern comes in, which is agent teams. An agent team is effectively a team of agents, as it sounds, that can share findings, challenge each other, and adapt together. So, the way that they share information is through a shared task list. So, they're no longer interacting with the team lead, which is our main orchestration window. They're interacting with that shared task list. Agent one understands what tasks agent two is doing, and vice versa. They can send messages between the agents.</p>
+
+    <p>And it's the most advanced coordination pattern. It's the newest addition to Claude Code, and it is genuinely a game-changer for complex projects, but it should only be used in complex projects because the token usage is extremely high when you've got cross-collaboration between the agents. Now, this is completely still experimental. It shipped with Opus 4.6 as a research preview. So, you need to still enable it by adding a flag to your settings.json, which is "Claude Code experimental agent teams one." And you need to add that as an environment variable in your settings.json. But once it's enabled, you just tell Claude in your prompt that you want to use an agent team. So, you must still specify that you want to use an agent team, not like subagents, where it will choose those automatically.</p>
+
+    <p>You go in, you describe the task you want, you describe the team structure, or Claude will actually determine the team structure itself, and Claude will then create that team, spawn the teammates, and coordinate the work. And in your terminal, you can actually navigate between the teammates using Shift+Up and Shift+Down. And you can message directly any teammate and bypass this team lead entirely, or you can talk directly to the team lead.</p>
+
+    <p>Now, as I mentioned, they use significantly more tokens because we've got this back and forth between the shared task list, the team lead, between the agents. And each teammate is its full Claude Code instance with its own context window again. So, it's got a portion of the main context passed in it from that shared task list and the team lead. And they roughly estimate it's going to be four to seven times more tokens than a single session when you're actually using agent teams.</p>
+
+    <p>And the thing that actually matters here is you don't need agent teams for most of your work. You should actually only reach for them when subagents or even a single session couldn't do the job. So say you're trying to build out a complex SaaS application where you have a front-end developer, a back-end developer, and then a testing developer that spins up tests and needs to communicate to agent one and two as they build. That is an example where you would actually want an agent team to save from back and forth between the orchestration layer.</p>
+
+    <p>But a lot of people in the community are just saying that actually this is just a way to produce large quantities of work very quickly, which isn't necessarily a good thing. You still need the work to be the right work. So it's powerful but expensive, so only reach for this when the task genuinely needs that cross-collaboration.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Agent teams (experimental)</span>
+    <p><strong>Agent teams</strong> is an experimental Claude Code feature, shipped as a research preview with Opus 4.6. Unlike the split-and-merge hub-and-spoke model, agent teams use a <strong>shared task list</strong> — agents can read each other's progress and send messages peer-to-peer, not just report to the orchestrator. You must opt in via <code>settings.json</code> (<code>"claudeCodeExperimentalAgentTeams": 1</code> as an environment variable) and must explicitly request an agent team in your prompt. Token cost is 4–7× a single session; each teammate is a full Claude Code instance with its own context window. Use only when true cross-agent coordination is genuinely needed.</p>
+    </aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>As of April 2026 this feature is a <em>research preview</em> — experimental, behind a flag, and liable to change. Simon's note that it "shipped with Opus 4.6" is correct at the time of recording, but the API and settings key may evolve. Don't build production workflows around it yet; use split-and-merge (pattern 3) for anything that needs to ship reliably.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>For virtually all of your economics research work, agent teams are overkill. The split-and-merge hub-and-spoke model handles 95% of parallelisable tasks (multi-firm extraction, parallel PE mapping, concurrent outlier checks) at a fraction of the token cost. The genuine use case for agent teams in your world would be something like: a live Wenta RCT monitoring pipeline where a data-ingestion agent and an analysis agent need to negotiate on data completeness before the analysis agent proceeds — a genuinely iterative dialogue between two specialised agents. Outside that kind of real-time inter-dependency, stick to pattern 3.</p>
+    </aside>
+
+    <h2>Pattern 5 — Headless mode: Claude working without you</h2>
+
+    <p>So patterns one through four all have one thing in common. You're there in the terminal, you're either typing, coordinating, or at least watching the task. But what if you didn't need to be there at all? So this brings us on to the last pattern, which is Claude working without you. So this is the dream of autonomous workflows where you don't need to be in the loop. You just set a task, you walk away, and you come back to the results. And this is called headless, and it's where Claude Code goes from being a tool you sit with to a team member that's going to go and work independently.</p>
+
+    <p>This requires you having no conversation back and forth, no terminal window open, and no human in the loop at all. So when we're running this, we're using the <code>-p</code> flag. So we're saying <code>claude -p</code>, and we're entering a prompt after the P flag. So we're saying Claude, process this prompt. We don't want any interaction, no approvals. You've got full permissions, just go get it done and return to me the result when you're finished. And that on its own is kind of iterating with that task, <code>claude -p prompt</code>, and will give us that report.json.</p>
+
+    <p>But when it gets really groundbreaking, when it gets really powerful, is like when you plug this into other systems. So, if you plug this in to your Windows or your Mac scheduling function, your cron functionality that can say at 7:00 a.m. every day, fire in this command to my terminal, and then Claude goes and iterates and gets the report and sends it back to you, that is when it genuinely becomes a game changer. Because then what we're doing is actually creating workflows that can run on a schedule without your input.</p>
+
+    <p>So, it could be review yesterday's work and write a summary to a morning report.md. So, when Claude wakes up, it's going to read all the work you did yesterday, analyze them, write the report, and then you just have to go and look at the output before you've even done anything. You didn't open a terminal, you didn't even type a prompt in, it basically just happened. Or say you're actually running content for your business, you could have a script that pulls your latest video transcript, runs it through Claude with specific prompt, gets you back a set of social media posts saved to a file that you can then just schedule automatically. And you can chain these together, you can add skills into the prompt so that invoke specific skills. And this is all completely automated.</p>
+
+    <p>Now, the big limitation in this is trust. You're not asking for an iterative conversation, you're giving Claude autonomy to do things on your behalf. So, you're not checking each step. So, this works best for tasks where the output is extremely easy to verify. At the moment, you probably don't want to go headless on anything that's hard to undo. But you can actually put guardrails on this as well. If you want it to only read and not write, for example, we can do <code>--allowedTools</code>, and then make sure that we add specific things that it can do.</p>
+
+    <p>And some people in the community have taken this even further with things like the Ralph loop, which keeps feeding the same prompt back in so that Claude iterates on its own work until it gets it right. And each time it iterates, it understands what has been done in the last cycle. And people have actually been using this to ship entire projects overnight. So, this is brilliant. This is like Claude working without you. You set a task, you walk away, and you come back for the results. But like we said, it's best for batch processing things and anything where the output is really easy to verify.</p>
+
+    <aside class="aside aside--concept"><span class="lab">Concept · Headless mode (<code>claude -p</code>)</span>
+    <p>Running <code>claude -p "your prompt"</code> fires Claude Code in <strong>headless mode</strong> — no interactive terminal, no approval prompts, no human in the loop. Claude processes the prompt, does its work, and exits, writing any output to files you specify. This is an official Claude Code flag. Combined with OS-level scheduling (macOS <code>launchd</code> / Linux <code>cron</code>), it becomes a fully automated agent that runs on a timer. Use <code>--allowedTools read</code> to restrict it to read-only when you don't want it writing files.</p>
+    </aside>
+
+    <aside class="aside aside--watch"><span class="lab">Worth flagging</span>
+    <p>The <strong>Ralph loop</strong> — a community pattern where a wrapper script repeatedly feeds the same <code>prompt.md</code> back into Claude until a termination condition is met — is community tooling, not an official Claude Code feature. It's a clever use of headless mode, but its behaviour depends on wrapper scripts that vary by implementation. Don't confuse it with built-in iteration. The <code>-p</code> flag itself is official; the looping wrapper around it is not.</p>
+    </aside>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Headless mode is where your SPE salary-survey pipeline becomes genuinely automated. Write a tight prompt: <em>"Read all Excel files in <code>~/Downloads/SPE/2026-submissions/</code>, extract the salary rows, apply the outlier rules in <code>qa-rules.md</code>, and write any flagged rows to <code>qa-flags-2026.md</code>. Do not modify source files."</em> Schedule this via <code>launchd</code> to run at 6 a.m. each morning during the submission window. You arrive at your desk to a ready-made flags file. For your DCC regulatory reporting, a nightly <code>claude -p "read the PI Tracker CSV, compute variance against the £719.9m baseline, and append a one-paragraph summary to morning-report.md"</code> takes the daily sense-check off your plate entirely. Key guardrail: add <code>--allowedTools read,write</code> explicitly so it cannot call external APIs or run shell commands beyond file I/O.</p>
+    </aside>
+
+    <aside class="aside aside--cmd"><span class="lab">In practice</span>
+    <p><code>claude -p "$(cat prompt.md)" --allowedTools read,write &gt; run.log 2&gt;&amp;1</code> — run headless with a file-based prompt, restrict tools to read/write only, capture all output to a log for post-hoc verification.</p>
+    </aside>
+
+    <h2>Choosing the right pattern</h2>
+
+    <p>So, there you have it. Five agentic patterns for Claude Code. And if you want to go deeper on any of these or on building skills, creating custom subagents, how to structure your CLAUDE.md, and actually put these patterns into practice with real projects, then check out the first link to the Agentic Academy in the description below. We've got a full Claude Code track where we build this stuff step-by-step. And let me know in the comments which pattern you're looking forward to trying. And if this did save you the time of figuring it out yourself, then I'd really appreciate a like and subscribe. Thanks so much for watching.</p>
+
+    <aside class="aside aside--econ"><span class="lab">Applied economist lens</span>
+    <p>Map the five patterns to your actual work: <strong>sequential</strong> for a single firm deep-dive; <strong>operator</strong> for 3–5 parallel firm analyses where you want direct control; <strong>split and merge</strong> for a 10-firm batch where you want Claude to coordinate (and a builder-validator chain for AQuA-style QA); <strong>agent teams</strong> only when two specialist agents genuinely need to negotiate in real time; <strong>headless</strong> for any recurring, low-risk extraction or reporting task. The common mistake is reaching for agent teams when split and merge would do — at 4–7× the token cost, that error compounds across a 96-firm project.</p>
+    </aside>
+
+  </div>
+
+  <div class="tryit">
+    <h3>Try this (applied-economist exercises)</h3>
+    <ol>
+      <li><b>Operator pattern — parallel firm extraction.</b> Open three VS Code terminals. In each, run <code>claude -w "extract turnover, operating profit, headcount from [Firm X] CH accounts 2020–2024 and write to firm-x.json"</code> with a different firm in each. Observe that each session has a clean, isolated context. When all three finish, merge the JSON files into your master SQLite database and close the worktrees. Compare elapsed time against running them sequentially.</li>
+      <li><b>Builder-validator chain — SPE outlier check.</b> In a single session, ask Claude: "Use the extractor subagent to pull salary rows from <code>2026-submissions/</code>, then pass the results to a validator subagent that applies the rules in <code>qa-rules.md</code> and writes flagged rows to <code>qa-flags.md</code>." Review <code>qa-flags.md</code> — if it catches a real anomaly, you've just automated an AQuA pass-3 step.</li>
+      <li><b>Headless morning report.</b> Write a prompt file (<code>morning-prompt.md</code>) that reads your previous day's work notes, summarises completed and outstanding tasks, and appends a paragraph to <code>morning-report.md</code>. Test it manually with <code>claude -p "$(cat morning-prompt.md)" --allowedTools read,write</code>. Once it works reliably, schedule it via <code>launchd</code> (macOS) to run at 6 a.m. every weekday — your first daily act becomes reading the output, not writing the prompt.</li>
+    </ol>
+  </div>
+
+  <div class="glossary">
+    <h3>Glossary — terms from this episode</h3>
+    <dl>
+      <dt>Sequential flow</dt><dd>Pattern 1: a single Claude Code session where each task builds on the last, sharing one growing context window. The simplest workflow; hits a ceiling when context rot sets in.</dd>
+      <dt>Context rot</dt><dd>The degradation in model reliability as a session's context window fills up — Claude starts losing or conflating information from earlier in the conversation. The green bar in the terminal shows fill level. Mitigated by <code>/compact</code> and well-structured skills.</dd>
+      <dt>Operator pattern</dt><dd>Pattern 2: the human manually manages multiple parallel Claude sessions, each in its own terminal and git worktree, coordinating between them. Maximum control; limited by how many terminals a human can track.</dd>
+      <dt>Git worktree (<code>claude -w</code>)</dt><dd>An official Claude Code flag that creates a separate branch and working directory for each session, keeping parallel tasks fully isolated. Claude cleans up unchanged worktrees on session close.</dd>
+      <dt>Split and merge</dt><dd>Pattern 3: within a single session, Claude fans out work to up to 10 parallel subagents, then merges their results. The human writes one prompt; Claude handles all parallelisation. Subagents cannot communicate directly — everything routes through the main (hub) agent.</dd>
+      <dt>Subagent</dt><dd>A child agent spawned by the main orchestrator with its own isolated context window and (optionally) restricted tool set. Built-in types: explore, plan, general-purpose. Custom agents can be defined in <code>.claude/agents/</code>.</dd>
+      <dt>Builder-validator chain</dt><dd>A split-and-merge pattern where one subagent builds output and a second subagent reviews it — a built-in QA loop that requires no human review step.</dd>
+      <dt>Agent teams</dt><dd>Pattern 4: an experimental feature (research preview, Opus 4.6) where multiple full Claude Code instances share a task list and can message each other directly, bypassing the orchestrator. 4–7× token cost of a single session; must be opted into via <code>settings.json</code>.</dd>
+      <dt>Headless mode (<code>-p</code>)</dt><dd>Pattern 5: running <code>claude -p "prompt"</code> with no interactive terminal — Claude executes the task autonomously and exits. Composable with OS scheduling (cron, launchd) for fully automated recurring workflows.</dd>
+      <dt>Ralph loop</dt><dd>A community wrapper that repeatedly feeds the same prompt file back into headless Claude until a termination condition is met. Not an official feature; useful for iterative refinement tasks left to run overnight.</dd>
+      <dt>Hub-and-spoke</dt><dd>The coordination topology of the split-and-merge pattern: a central main agent routes tasks to subagents and receives their results; subagents have no direct channel to each other.</dd>
+      <dt>Plan mode</dt><dd>An official Claude Code mode (<code>/plan</code> or Shift+Tab twice) that locks Claude to read-only investigation. It proposes a plan and waits for approval before making any edits.</dd>
+    </dl>
+  </div>
+
+  <nav class="epnav">
+    <a class="prev" href="ep-16-build-real-ai-systems-with-claude-code-step-by-step.html"><span class="dir">← Previous</span>Build Real AI Systems With Claude Code (Step-by-Step)</a>
+    <a class="next" href="ep-18-stop-using-claude-code-in-terminal-it-s-holding-you-back.html"><span class="dir">Next →</span>Stop Using Claude Code in Terminal (It's Holding You Back)</a>
+  </nav>
+</div>
+<footer>
+  Transcript auto-captioned from <a href="https://www.youtube.com/watch?v=38t5UBCa4OI" target="_blank" rel="noopener">the original video</a>
+  by Simon Scrapes · annotations added for private study · noindex.
+</footer>
+</body>
+</html>
