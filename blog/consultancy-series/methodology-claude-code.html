@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend</title>
 <meta name="author" content="Leath Al Obaidi">
-<meta name="description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into a 12-piece Substack series, and prepared the entire dataset for GitHub release.">
+<meta name="description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for GitHub release.">
 <link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code">
 <meta property="og:title" content="Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend">
-<meta property="og:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into a 12-piece Substack series, and prepared the entire dataset for GitHub release.">
+<meta property="og:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for GitHub release.">
 <meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Leath Al Obaidi">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend">
-<meta name="twitter:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into a 12-piece Substack series, and prepared the entire dataset for GitHub release.">
+<meta name="twitter:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for GitHub release.">
 
 <link rel="stylesheet" href="apple-theme.css">
 <style>
@@ -240,13 +240,13 @@
 
   <h3>The full firm list</h3>
 
-  <p>The dataset contains ninety active entries across seven categories, matching the canonical `data/firms.csv` export. Firms that appear on both the global network map and the UK office map are listed once. Category assignment reflects the firm's primary UK activity; several firms &mdash; particularly US-origin multi-practice outfits &mdash; could reasonably sit in more than one category.</p>
+  <p>The dataset contains ninety entries across seven categories (80 active, 2 dissolved, 8 parent-filed practices), matching the canonical `data/firms.csv` export. Firms that appear on both the global network map and the UK office map are listed once. Category assignment reflects the firm's primary UK activity; several firms &mdash; particularly US-origin multi-practice outfits &mdash; could reasonably sit in more than one category.</p>
 
   <h3>A note on the two denominators</h3>
 
-  <p>Two firm-counts run through this series and they should be kept distinct. The <strong>curated universe is 90 firms</strong> &mdash; the public-facing catalogue of UK economics consultancies, used in headlines, treemaps and category counts. The public directory gives <strong>80 firms a direct Companies House number</strong>. The remaining ten are sub-practices, academic or charity arms, overseas branches, or parent-filed practices: <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong>; <strong>E.CA Economics (UK)</strong>; the <strong>Fraser of Allander Institute</strong>; <strong>NEF Consulting</strong>; <strong>PA Consulting</strong>; and <strong>Skylark Consulting Group</strong>. Separately, the working database carries <strong>87 internal firm rows</strong> for analytical continuity, including registered entities and a brand-of-parent pointer for <strong>Compass Lexecon</strong> to FTI Consulting LLP (CH OC372614). That internal row count is not the same thing as 87 public-catalogue firms with standalone CH filings.</p>
+  <p>Two firm-counts run through this series and they should be kept distinct. The <strong>curated universe is 90 firms</strong> &mdash; the public-facing catalogue of UK economics consultancies, used in headlines, treemaps and category counts. The public directory gives <strong>81 firms a direct Companies House number</strong>. The remaining nine are sub-practices, academic or charity arms, overseas branches, or parent-filed practices: <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong>; <strong>E.CA Economics (UK)</strong>; the <strong>Fraser of Allander Institute</strong>; <strong>PA Consulting</strong>; and <strong>Keystone Strategy</strong> (US-headquartered, no UK-filed entity). Separately, the working database carries <strong>87 internal firm rows</strong> for analytical continuity, including registered entities and a brand-of-parent pointer for <strong>Compass Lexecon</strong> to FTI Consulting LLP (CH OC372614). That internal row count is not the same thing as 87 public-catalogue firms with standalone CH filings.</p>
 
-  <p><strong>Quantitative slices in this series &mdash; disclosed-turnover totals, ownership segmentation, small-company-exemption counts, league-table coverage &mdash; state their basis: the 90-row public catalogue, the 80 direct-CH public directory rows, or the 87-row internal tracking table.</strong> Where an earlier draft blurred those denominators, it has been corrected; the band of estimates does not move materially but the arithmetic now reconciles.</p>
+  <p><strong>Quantitative slices in this series &mdash; disclosed-turnover totals, ownership segmentation, small-company-exemption counts, league-table coverage &mdash; state their basis: the 90-row public catalogue, the 81 direct-CH public directory rows, or the 87-row internal tracking table.</strong> Where an earlier draft blurred those denominators, it has been corrected; the band of estimates does not move materially but the arithmetic now reconciles.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <div class="table-wrap">
