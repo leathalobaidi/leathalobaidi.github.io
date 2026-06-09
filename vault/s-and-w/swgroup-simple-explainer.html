@@ -1,0 +1,1629 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S&W Economics: Candidate Prep Pack</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7faf8;
+      --surface: #ffffff;
+      --surface-2: #eef6f2;
+      --surface-3: #f9f4ec;
+      --ink: #172321;
+      --muted: #5f716d;
+      --line: #d8e4df;
+      --teal: #0f8587;
+      --teal-dark: #0a5f60;
+      --green: #2e7d4f;
+      --red: #c9504d;
+      --amber: #d99a22;
+      --violet: #74546a;
+      --shadow: 0 16px 38px rgba(21, 48, 43, 0.11);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--teal-dark);
+      text-underline-offset: 0.18em;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 14px 0 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--teal);
+      border-radius: 50%;
+      font-weight: 800;
+      color: var(--teal-dark);
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(1.35rem, 2.1vw, 2rem);
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .brand p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 6px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      color: var(--muted);
+      white-space: nowrap;
+      font-size: 0.92rem;
+    }
+
+    .tabs-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      padding: 14px 0;
+      background: rgba(247, 250, 248, 0.94);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(216, 228, 223, 0.82);
+    }
+
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .tab {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      align-items: center;
+      gap: 10px;
+      min-height: 64px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(20, 42, 39, 0.05);
+    }
+
+    .tab:hover {
+      border-color: color-mix(in srgb, var(--teal) 55%, var(--line));
+    }
+
+    .tab[aria-selected="true"] {
+      background: var(--teal-dark);
+      border-color: var(--teal-dark);
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(15, 133, 135, 0.2);
+    }
+
+    .tab svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+    }
+
+    .tab-copy {
+      display: block;
+      min-width: 0;
+    }
+
+    .tab strong {
+      display: block;
+      font-size: 0.98rem;
+      line-height: 1.18;
+    }
+
+    .tab-subtitle {
+      display: block;
+      margin-top: 2px;
+      color: currentColor;
+      opacity: 0.72;
+      font-size: 0.82rem;
+      line-height: 1.2;
+    }
+
+    main {
+      padding-top: 24px;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .article-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(300px, 0.8fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .section {
+      margin-bottom: 22px;
+    }
+
+    .hero-strip {
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--teal-dark);
+      font-size: 0.83rem;
+      font-weight: 750;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero-strip h2 {
+      margin: 0;
+      font-size: clamp(1.65rem, 3vw, 2.65rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .plain {
+      margin: 14px 0 0;
+      max-width: 72ch;
+      color: #293b38;
+      font-size: 1.08rem;
+    }
+
+    .source-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-height: 30px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--surface-2);
+      color: #39534f;
+      font-size: 0.87rem;
+      white-space: nowrap;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-card {
+      min-width: 0;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .info-card h3,
+    .side-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      line-height: 1.25;
+      letter-spacing: 0;
+    }
+
+    .info-card p,
+    .side-card p {
+      margin: 0;
+      color: #30423f;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 11px;
+      align-items: start;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .steps li::before {
+      content: counter(step);
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--teal);
+      color: white;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .steps strong {
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .steps span {
+      color: #435854;
+    }
+
+    .diagram {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .diagram-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--line);
+      background: var(--surface-2);
+    }
+
+    .diagram-header h3 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .diagram-body {
+      padding: 16px;
+    }
+
+    .flow {
+      display: grid;
+      gap: 12px;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr) 32px minmax(0, 1fr);
+      gap: 8px;
+      align-items: center;
+    }
+
+    .flow-box {
+      min-height: 82px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfdfc;
+    }
+
+    .flow-box strong {
+      display: block;
+      font-size: 0.95rem;
+      line-height: 1.2;
+      margin-bottom: 4px;
+    }
+
+    .flow-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .arrow {
+      display: grid;
+      place-items: center;
+      color: var(--teal-dark);
+    }
+
+    .arrow svg {
+      width: 24px;
+      height: 24px;
+      stroke: currentColor;
+    }
+
+    .bad {
+      border-left: 5px solid var(--red);
+    }
+
+    .good {
+      border-left: 5px solid var(--green);
+    }
+
+    .mixed {
+      border-left: 5px solid var(--amber);
+    }
+
+    .risk-map {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .risk-column {
+      min-height: 260px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfdfc;
+    }
+
+    .risk-column h4 {
+      margin: 0 0 9px;
+      font-size: 1rem;
+    }
+
+    .risk-list {
+      display: grid;
+      gap: 9px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .risk-list li {
+      padding: 10px;
+      border-radius: var(--radius);
+      background: var(--surface-2);
+      color: #344945;
+      font-size: 0.92rem;
+    }
+
+    .model-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .model-card {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfdfc;
+    }
+
+    .model-card h4 {
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .mini-bars {
+      display: grid;
+      gap: 8px;
+    }
+
+    .bar {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 10px;
+      align-items: center;
+      font-size: 0.86rem;
+      color: #3d524e;
+    }
+
+    .bar-track {
+      height: 12px;
+      border-radius: 999px;
+      background: #e2ece7;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--teal);
+    }
+
+    .warning {
+      padding: 14px;
+      border: 1px solid color-mix(in srgb, var(--amber) 60%, var(--line));
+      border-radius: var(--radius);
+      background: #fff8e8;
+      color: #4d3d18;
+    }
+
+    .solution-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .solution {
+      min-height: 156px;
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: var(--surface);
+    }
+
+    .solution svg {
+      width: 28px;
+      height: 28px;
+      margin-bottom: 8px;
+      stroke: var(--teal-dark);
+    }
+
+    .solution h4 {
+      margin: 0 0 7px;
+      font-size: 0.98rem;
+      line-height: 1.22;
+    }
+
+    .solution p {
+      margin: 0;
+      color: #435854;
+      font-size: 0.92rem;
+    }
+
+    .side {
+      display: grid;
+      gap: 14px;
+      position: sticky;
+      top: 102px;
+    }
+
+    .side-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: 0 8px 20px rgba(20, 42, 39, 0.06);
+    }
+
+    .quick-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-list li {
+      display: grid;
+      grid-template-columns: 20px minmax(0, 1fr);
+      gap: 9px;
+      align-items: start;
+      color: #354a46;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      margin-top: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .dot.red {
+      background: var(--red);
+    }
+
+    .dot.amber {
+      background: var(--amber);
+    }
+
+    .dot.green {
+      background: var(--green);
+    }
+
+    .plain-table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow-wrap: anywhere;
+    }
+
+    .plain-table th,
+    .plain-table td {
+      padding: 11px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 0.94rem;
+    }
+
+    .plain-table th {
+      color: var(--teal-dark);
+      background: var(--surface-2);
+      font-weight: 750;
+    }
+
+    .plain-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .prep-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .prep-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .script-box {
+      padding: 16px;
+      border: 1px solid color-mix(in srgb, var(--teal) 35%, var(--line));
+      border-radius: var(--radius);
+      background: #f8fcfb;
+    }
+
+    .script-box h3 {
+      margin: 0 0 10px;
+      font-size: 1.05rem;
+      line-height: 1.25;
+    }
+
+    .script-box p {
+      margin: 0;
+      color: #30423f;
+    }
+
+    .evidence-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .evidence-list li {
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .evidence-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--teal-dark);
+    }
+
+    .evidence-list span {
+      display: block;
+      color: #405651;
+      font-size: 0.93rem;
+    }
+
+    .question-bank {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .question-bank .info-card {
+      background: #fbfdfc;
+    }
+
+    .listen-card {
+      background: var(--surface-3);
+      border-color: #ead9bd;
+    }
+
+    .negotiation-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .negotiation-strip .term {
+      background: #fbfdfc;
+    }
+
+    .glossary {
+      margin-top: 30px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+    }
+
+    .glossary h2 {
+      margin: 0 0 14px;
+      font-size: 1.35rem;
+    }
+
+    .glossary-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .term {
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .term strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--teal-dark);
+    }
+
+    .term p {
+      margin: 0;
+      color: #435854;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 940px) {
+      .article-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .side {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .tab {
+        min-height: 56px;
+      }
+
+      .solution-grid,
+      .negotiation-strip,
+      .glossary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page {
+        width: min(100% - 20px, 1180px);
+        padding-top: 12px;
+      }
+
+      .topbar {
+        display: block;
+      }
+
+      .meta-pill {
+        margin-top: 12px;
+      }
+
+      .grid-2,
+      .prep-grid,
+      .side,
+      .solution-grid,
+      .question-bank,
+      .model-grid,
+      .risk-map,
+      .negotiation-strip,
+      .glossary-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-row {
+        grid-template-columns: 1fr;
+      }
+
+      .arrow {
+        transform: rotate(90deg);
+      }
+
+      .bar {
+        grid-template-columns: 92px minmax(0, 1fr);
+      }
+
+      .hero-strip {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <div class="mark">S</div>
+        <div>
+          <h1>S&amp;W economics interview and negotiation pack</h1>
+          <p>Article understanding, personal evidence, listening plan, and negotiation strategy.</p>
+        </div>
+      </div>
+      <div class="meta-pill">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path>
+        </svg>
+        Built from CVs, transcript notes, and S&amp;W source articles
+      </div>
+    </header>
+
+    <nav class="tabs-wrap" aria-label="Article tabs">
+      <div class="tabs" role="tablist">
+        <button class="tab" id="tab-pricing" role="tab" aria-selected="true" aria-controls="panel-pricing" data-target="panel-pricing">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+            <path d="M20.59 13.41 11 3.83A2.82 2.82 0 0 0 9 3H4a1 1 0 0 0-1 1v5a2.82 2.82 0 0 0 .83 2l9.58 9.59a2 2 0 0 0 2.83 0l4.35-4.35a2 2 0 0 0 0-2.83Z"></path>
+            <path d="M7 7h.01"></path>
+          </svg>
+          <span class="tab-copy"><strong>Pricing practices</strong><span class="tab-subtitle">DMCC, CMA, online sales journeys</span></span>
+        </button>
+        <button class="tab" id="tab-efficiency" role="tab" aria-selected="false" aria-controls="panel-efficiency" data-target="panel-efficiency">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+            <path d="M3 3v18h18"></path>
+            <path d="m19 9-5 5-4-4-4 4"></path>
+          </svg>
+          <span class="tab-copy"><strong>Efficiency models</strong><span class="tab-subtitle">Utilities, regulation, future costs</span></span>
+        </button>
+        <button class="tab" id="tab-risk" role="tab" aria-selected="false" aria-controls="panel-risk" data-target="panel-risk">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path>
+            <path d="M12 8v4"></path>
+            <path d="M12 16h.01"></path>
+          </svg>
+          <span class="tab-copy"><strong>Political risk</strong><span class="tab-subtitle">Cost of capital, WACC, CAPM</span></span>
+        </button>
+        <button class="tab" id="tab-candidate" role="tab" aria-selected="false" aria-controls="panel-candidate" data-target="panel-candidate">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+            <circle cx="9" cy="7" r="4"></circle>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+          </svg>
+          <span class="tab-copy"><strong>Candidate strategy</strong><span class="tab-subtitle">Pitch, evidence, questions, terms</span></span>
+        </button>
+      </div>
+    </nav>
+
+    <main>
+      <section class="panel active" id="panel-pricing" role="tabpanel" aria-labelledby="tab-pricing">
+        <div class="article-shell">
+          <div>
+            <section class="hero-strip section">
+              <p class="eyebrow">Article 1</p>
+              <h2>Pricing practices: the price is not the only problem</h2>
+              <p class="plain">
+                The simple idea: businesses can change prices, offer discounts, and sell add-ons. But customers must be able to understand the real deal before they decide. Under the DMCC, the CMA can punish pricing journeys that confuse, pressure, or mislead people.
+              </p>
+              <div class="source-row">
+                <span class="chip">Published 04 Jun 2026</span>
+                <a class="chip" href="https://www.swgroup.com/insights-events/insights/dmcc-pricing-practices/">Open source article</a>
+              </div>
+            </section>
+
+            <section class="grid-2 section">
+              <div class="info-card bad">
+                <h3>The issue in one sentence</h3>
+                <p>A sales page may show a price that looks attractive, but the full journey can hide fees, exaggerate discounts, or rush the customer into buying.</p>
+              </div>
+              <div class="info-card good">
+                <h3>The fix in one sentence</h3>
+                <p>Show the true total price early, explain why prices differ, and keep evidence that every claim is genuine.</p>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Bad pricing journey versus clear pricing journey</h3>
+              </div>
+              <div class="diagram-body flow">
+                <div class="flow-row">
+                  <div class="flow-box bad">
+                    <strong>1. Headline price</strong>
+                    <span>Looks low, but it may not include required fees.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box mixed">
+                    <strong>2. Pressure signals</strong>
+                    <span>Countdowns, stock warnings, or labels may push a quick decision.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box bad">
+                    <strong>3. Surprise total</strong>
+                    <span>The customer discovers the real price too late.</span>
+                  </div>
+                </div>
+                <div class="flow-row">
+                  <div class="flow-box good">
+                    <strong>1. Real price early</strong>
+                    <span>Mandatory charges are visible from the start.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box good">
+                    <strong>2. Honest labels</strong>
+                    <span>Premium tiers, discounts, and availability are explained.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box good">
+                    <strong>3. Informed choice</strong>
+                    <span>The customer can compare, pause, and decide.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h3>Step by step</h3>
+              <ol class="steps">
+                <li>
+                  <div>
+                    <strong>Some online pricing tools are useful.</strong>
+                    <span>Dynamic prices can match demand. “From” prices can point people to cheaper options. Discounts can help people spot a bargain.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>They become risky when the customer cannot see the truth.</strong>
+                    <span>If required fees appear late, a discount is based on a fake old price, or a timer is not real, the customer may make a bad choice.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>The CMA is looking at the whole journey.</strong>
+                    <span>The regulator is not only asking “Was the final price legal?” It is asking “Was the customer guided fairly from start to finish?”</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Businesses need proof, not just wording.</strong>
+                    <span>They should be able to show where a discount came from, why a “from” price is real, and whether urgency messages match actual stock or time limits.</span>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Common pricing risks</h3>
+              </div>
+              <div class="diagram-body">
+                <table class="plain-table">
+                  <thead>
+                    <tr>
+                      <th>Practice</th>
+                      <th>Simple meaning</th>
+                      <th>Safe version</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Drip pricing</td>
+                      <td>Fees are added later.</td>
+                      <td>Show unavoidable fees early.</td>
+                    </tr>
+                    <tr>
+                      <td>Discount claims</td>
+                      <td>“Was £100, now £60.”</td>
+                      <td>Use a real, recent comparison price.</td>
+                    </tr>
+                    <tr>
+                      <td>Urgency claims</td>
+                      <td>Timers or “only 2 left” messages.</td>
+                      <td>Only use them when the claim is true and evidenced.</td>
+                    </tr>
+                    <tr>
+                      <td>Pre-selected add-ons</td>
+                      <td>Extras are already ticked.</td>
+                      <td>Let customers actively choose extras.</td>
+                    </tr>
+                    <tr>
+                      <td>Tiered or premium labels</td>
+                      <td>Different versions cost very different amounts.</td>
+                      <td>Explain what the customer gets for each tier.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <div class="side-card">
+              <h3>Remember this</h3>
+              <ul class="quick-list">
+                <li><span class="dot red"></span><span>High prices are not automatically unlawful.</span></li>
+                <li><span class="dot amber"></span><span>Hidden, confusing, or pressured pricing is the danger zone.</span></li>
+                <li><span class="dot green"></span><span>Clear information and real evidence reduce the risk.</span></li>
+              </ul>
+            </div>
+            <div class="side-card">
+              <h3>Oasis ticket lesson</h3>
+              <p>The article says the CMA did not find real-time dynamic pricing in that case. The concern was clearer disclosure: customers needed better information about ticket tiers, queues, and premium labels.</p>
+            </div>
+            <div class="warning">
+              <strong>Simple test:</strong> Could a normal customer understand the real total price and compare it before feeling pushed to buy?
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-efficiency" role="tabpanel" aria-labelledby="tab-efficiency">
+        <div class="article-shell">
+          <div>
+            <section class="hero-strip section">
+              <p class="eyebrow">Article 2</p>
+              <h2>Efficiency models: old scorecards can punish necessary investment</h2>
+              <p class="plain">
+                The simple idea: regulators compare utilities to decide how much money they should be allowed to collect from customers. The problem is that old models often assume a stable world. Today’s infrastructure world is not stable.
+              </p>
+              <div class="source-row">
+                <span class="chip">Published 22 May 2026</span>
+                <a class="chip" href="https://www.swgroup.com/insights-events/insights/why-uk-regulators-need-to-rethink-efficiency-modelling/">Open source article</a>
+              </div>
+            </section>
+
+            <section class="grid-2 section">
+              <div class="info-card bad">
+                <h3>The issue in one sentence</h3>
+                <p>Traditional benchmarking can treat a company as inefficient when it is actually facing harder assets, climate risk, cyber risk, or decarbonisation costs.</p>
+              </div>
+              <div class="info-card good">
+                <h3>The fix in one sentence</h3>
+                <p>Use models that combine statistics with engineering evidence, long-term value, and risk scenarios.</p>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Why the old model struggles</h3>
+              </div>
+              <div class="diagram-body model-grid">
+                <div class="model-card bad">
+                  <h4>Old model view</h4>
+                  <div class="mini-bars" aria-label="Old model emphasis">
+                    <div class="bar"><span>Current cost</span><div class="bar-track"><div class="bar-fill" style="width: 92%"></div></div></div>
+                    <div class="bar"><span>Asset age</span><div class="bar-track"><div class="bar-fill" style="width: 32%"></div></div></div>
+                    <div class="bar"><span>Climate risk</span><div class="bar-track"><div class="bar-fill" style="width: 24%"></div></div></div>
+                    <div class="bar"><span>Cyber risk</span><div class="bar-track"><div class="bar-fill" style="width: 20%"></div></div></div>
+                    <div class="bar"><span>Future value</span><div class="bar-track"><div class="bar-fill" style="width: 28%"></div></div></div>
+                  </div>
+                </div>
+                <div class="model-card good">
+                  <h4>Modern model view</h4>
+                  <div class="mini-bars" aria-label="Modern model emphasis">
+                    <div class="bar"><span>Current cost</span><div class="bar-track"><div class="bar-fill" style="width: 70%"></div></div></div>
+                    <div class="bar"><span>Asset age</span><div class="bar-track"><div class="bar-fill" style="width: 78%"></div></div></div>
+                    <div class="bar"><span>Climate risk</span><div class="bar-track"><div class="bar-fill" style="width: 82%"></div></div></div>
+                    <div class="bar"><span>Cyber risk</span><div class="bar-track"><div class="bar-fill" style="width: 68%"></div></div></div>
+                    <div class="bar"><span>Future value</span><div class="bar-track"><div class="bar-fill" style="width: 86%"></div></div></div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h3>Step by step</h3>
+              <ol class="steps">
+                <li>
+                  <div>
+                    <strong>Regulators need to stop waste.</strong>
+                    <span>If a water, energy, telecoms, transport, or postal company spends too much, customers may pay too much.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>So regulators compare companies.</strong>
+                    <span>They use models to ask: “What should an efficient company spend?” This affects allowed revenues and investment incentives.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>But the old comparisons can miss reality.</strong>
+                    <span>Two companies may look similar in a spreadsheet, but one may have older assets, harder geography, more climate exposure, or more security work.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Short-term cheapness can be false efficiency.</strong>
+                    <span>A company can look cheap today by delaying maintenance, then create bigger costs and failures later.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>The answer is a wider evidence base.</strong>
+                    <span>Statistics still help, but they should sit beside engineering evidence, risk analysis, and long-term asset health.</span>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Next-generation efficiency modelling</h3>
+              </div>
+              <div class="diagram-body solution-grid">
+                <div class="solution">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M3 21h18"></path><path d="M6 21V9l6-6 6 6v12"></path><path d="M9 21v-6h6v6"></path>
+                  </svg>
+                  <h4>Structural cost modelling</h4>
+                  <p>Include real cost drivers: asset age, network shape, climate exposure, service quality, and resilience needs.</p>
+                </div>
+                <div class="solution">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path>
+                  </svg>
+                  <h4>Long-term value</h4>
+                  <p>Reward spending that prevents future failures, protects asset health, and reduces whole-life cost.</p>
+                </div>
+                <div class="solution">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M3 3v18h18"></path><path d="M7 16V8"></path><path d="M12 16v-4"></path><path d="M17 16V6"></path>
+                  </svg>
+                  <h4>Scenario benchmarking</h4>
+                  <p>Test outcomes under different futures: demand, climate, technology, security threats, and policy change.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <div class="side-card">
+              <h3>Remember this</h3>
+              <ul class="quick-list">
+                <li><span class="dot red"></span><span>Cheap today can be expensive tomorrow.</span></li>
+                <li><span class="dot amber"></span><span>Different networks can have genuinely different efficient costs.</span></li>
+                <li><span class="dot green"></span><span>A good model checks cost, risk, engineering reality, and long-term value.</span></li>
+              </ul>
+            </div>
+            <div class="side-card">
+              <h3>Why small samples matter</h3>
+              <p>Some regulated sectors have only a few comparable firms. With small samples, a model can change a lot when assumptions change. That makes judgment and transparency more important.</p>
+            </div>
+            <div class="warning">
+              <strong>Simple test:</strong> Does the model reward the company that protects the network for the next decade, or only the company that spends less this year?
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-risk" role="tabpanel" aria-labelledby="tab-risk">
+        <div class="article-shell">
+          <div>
+            <section class="hero-strip section">
+              <p class="eyebrow">Article 3</p>
+              <h2>Political risk and WACC: risk must be put in the right box</h2>
+              <p class="plain">
+                The simple idea: utilities need investors to fund long-life assets. Investors care about political and geopolitical risk. Regulators need to reflect that risk carefully, without charging customers twice for the same risk.
+              </p>
+              <div class="source-row">
+                <span class="chip">Published 20 May 2026</span>
+                <a class="chip" href="https://www.swgroup.com/insights-events/insights/incorporating-political-and-geopolitical-risk-into-the-cost-of-capital/">Open source article</a>
+              </div>
+            </section>
+
+            <section class="grid-2 section">
+              <div class="info-card bad">
+                <h3>The issue in one sentence</h3>
+                <p>If regulators understate political risk, utilities may struggle to attract investment; if they overstate it, customers may pay too much.</p>
+              </div>
+              <div class="info-card good">
+                <h3>The fix in one sentence</h3>
+                <p>Separate broad market risk from UK-specific policy risk, then use the right tool for each one.</p>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Where political risk belongs</h3>
+              </div>
+              <div class="diagram-body risk-map">
+                <div class="risk-column good">
+                  <h4>Systematic risk: use WACC/CAPM inputs</h4>
+                  <ul class="risk-list">
+                    <li>Global wars, sanctions, and trade shocks</li>
+                    <li>Broad inflation, interest-rate, and sovereign-market changes</li>
+                    <li>Sector exposure that moves with the wider market</li>
+                    <li>May appear in the risk-free rate, equity risk premium, or beta</li>
+                  </ul>
+                </div>
+                <div class="risk-column mixed">
+                  <h4>Idiosyncratic risk: use regulatory design</h4>
+                  <ul class="risk-list">
+                    <li>UK-specific policy reversals</li>
+                    <li>Sudden bill freezes or sector interventions</li>
+                    <li>Project-specific political exposure</li>
+                    <li>Better handled through reopeners, pass-throughs, guarantees, or protections</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+              <h3>Step by step</h3>
+              <ol class="steps">
+                <li>
+                  <div>
+                    <strong>Price controls use WACC.</strong>
+                    <span>WACC is the blended cost of debt and equity. It helps decide how much revenue a regulated utility can earn.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>WACC depends partly on CAPM.</strong>
+                    <span>CAPM estimates the return equity investors need: risk-free rate plus beta times the equity risk premium.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>Political risk can enter through those inputs.</strong>
+                    <span>Global risk can affect government bond yields, market risk premiums, and sector beta.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>But not all political risk belongs in WACC.</strong>
+                    <span>Some UK-specific policy risks are better handled by changing cash-flow rules, not by adding a vague extra premium.</span>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <strong>The regulator must be explicit.</strong>
+                    <span>It should say which risk is included, where it is included, and what happens if the risk gets worse.</span>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Decision path for regulators</h3>
+              </div>
+              <div class="diagram-body flow">
+                <div class="flow-row">
+                  <div class="flow-box mixed">
+                    <strong>1. Name the risk</strong>
+                    <span>War, tariffs, inflation shock, bill freeze, net-zero policy shift, vendor ban.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box mixed">
+                    <strong>2. Ask if it is broad market risk</strong>
+                    <span>If yes, let market data feed risk-free rate, ERP, or beta.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box good">
+                    <strong>3. Use the right mechanism</strong>
+                    <span>If it is specific policy risk, use protections, reopeners, or pass-throughs.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <div class="side-card">
+              <h3>Remember this</h3>
+              <ul class="quick-list">
+                <li><span class="dot red"></span><span>Too low a WACC can scare away investment.</span></li>
+                <li><span class="dot amber"></span><span>Too high a WACC can overcharge customers.</span></li>
+                <li><span class="dot green"></span><span>The best answer is disciplined classification, not a loose add-on.</span></li>
+              </ul>
+            </div>
+            <div class="side-card">
+              <h3>Why not just add a political premium?</h3>
+              <p>The article says a broad extra premium can double-count risks already in market data and can become too subjective for the UK framework.</p>
+            </div>
+            <div class="warning">
+              <strong>Simple test:</strong> Is this a market-wide risk investors cannot diversify, or a specific policy risk that changes cash flows?
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-candidate" role="tabpanel" aria-labelledby="tab-candidate">
+        <div class="article-shell">
+          <div class="prep-stack">
+            <section class="hero-strip section">
+              <p class="eyebrow">Your core thesis</p>
+              <h2>You are a regulated-infrastructure economist who can turn insight into sellable advisory work</h2>
+              <p class="plain">
+                The meeting should not sound like a job interview only. It should sound like a careful conversation about whether you can help S&amp;W build a new economics practice in regulated utilities, infrastructure finance, price controls, evidence-backed pricing, and public-sector advisory.
+              </p>
+              <div class="source-row">
+                <span class="chip">Primary angle: regulatory economics and finance</span>
+                <span class="chip">Secondary angle: thought leadership and proposal discipline</span>
+                <span class="chip">Style: concise, curious, listening-heavy</span>
+              </div>
+            </section>
+
+            <section class="grid-2 section">
+              <div class="info-card good">
+                <h3>What you should sell</h3>
+                <p>You have sat inside Ofgem, the British Business Bank, and Smart DCC. That gives S&amp;W a person who understands regulators, government, boards, regulated companies, evidence, and the ambiguity behind real price-control work.</p>
+              </div>
+              <div class="info-card mixed">
+                <h3>What you should not oversell</h3>
+                <p>Do not pretend to arrive with a full independent client book. Position yourself as someone who can generate credible ideas, write strong proposals, convert warm networks into workshops, and help partners win.</p>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Five-minute answer: "Tell me about you"</h3>
+              </div>
+              <div class="diagram-body">
+                <ol class="steps">
+                  <li>
+                    <div>
+                      <strong>Start with breadth.</strong>
+                      <span>"I have spent more than ten years around economic regulation, public policy and regulated infrastructure: Ofgem, the British Business Bank, and now Smart DCC."</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <strong>Then prove the regulatory finance depth.</strong>
+                      <span>"At DCC I work on price control, cost of capital, charging, financeability, and long-range funding for the 4G smart-meter programme."</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <strong>Then show policy and evidence credibility.</strong>
+                      <span>"At the British Business Bank I turned finance-market data into Board, Treasury and ministerial decisions, including Spending Review bids and flagship market reports."</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <strong>Then connect to S&amp;W.</strong>
+                      <span>"That maps to the practice you are building: public-sector work, regulatory finance, competition-adjacent evidence, pricing strategy, and multidisciplinary advisory."</span>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <strong>Close with the offer.</strong>
+                      <span>"I can help turn technical regulatory problems into clear client propositions, credible submissions and practical work that partners can sell."</span>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Evidence bank: best proof points from your CVs</h3>
+              </div>
+              <div class="diagram-body">
+                <table class="plain-table">
+                  <thead>
+                    <tr>
+                      <th>S&amp;W need</th>
+                      <th>Your evidence</th>
+                      <th>How to say it</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Price controls and regulatory finance</td>
+                      <td>Rebuilt a rejected Ofgem baseline margin model; led 10+ pricing workshops; drafted DCC1-to-DCC2 charging transition plans.</td>
+                      <td>"I understand how a regulated company has to make its position transparent, evidenced and defensible."</td>
+                    </tr>
+                    <tr>
+                      <td>Cost of capital and financeability</td>
+                      <td>Worked on RIIO-style frameworks, DCF valuation models, margin, returns, credit metrics and long-range capital planning.</td>
+                      <td>"I can sit between finance, regulation and economics without losing the commercial reality."</td>
+                    </tr>
+                    <tr>
+                      <td>Infrastructure investment</td>
+                      <td>Led financial strategy, scenario modelling, funding design and tariff structuring for DCC's multi-billion-pound 4G reinvestment programme.</td>
+                      <td>"I have done the practical modelling and the stakeholder explanation, not only the theory."</td>
+                    </tr>
+                    <tr>
+                      <td>Government and public-sector credibility</td>
+                      <td>Economic lead on Spending Review bids securing over &pound;1bn; built cases for Covid loan schemes protecting more than 1m businesses.</td>
+                      <td>"I know what Treasury-quality evidence looks like because I have had to produce it."</td>
+                    </tr>
+                    <tr>
+                      <td>Thought leadership</td>
+                      <td>Led Small Business Finance Market Reports, UK Private Debt Research, VC and Female Founders work, and finance-market publications.</td>
+                      <td>"I can turn data into a public argument that policymakers, media and clients can use."</td>
+                    </tr>
+                    <tr>
+                      <td>Delivery discipline</td>
+                      <td>Automated charging work to cut cycle time by 40%; identified and fixed over &pound;500k in errors; supervised teams and survey contracts.</td>
+                      <td>"I bring quality control, pace and practical assurance, which matters in proposals and client delivery."</td>
+                    </tr>
+                    <tr>
+                      <td>External presence and trust</td>
+                      <td>Non-Executive Director at Wenta, SPE Councillor, podcast interviewer with senior economists, former charity treasurer.</td>
+                      <td>"I am comfortable with senior audiences, public-facing economics and governance responsibility."</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>How you can help S&amp;W in the first 90 days</h3>
+              </div>
+              <div class="diagram-body solution-grid">
+                <div class="solution">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"></path>
+                  </svg>
+                  <h4>Build the offer</h4>
+                  <p>Create reusable proposition notes for price controls, cost of capital, financeability, regulatory submissions and efficiency modelling.</p>
+                </div>
+                <div class="solution">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-4 4"></path>
+                  </svg>
+                  <h4>Generate market hooks</h4>
+                  <p>Turn DCC2, RIIO, water reform, heat networks, data centres, connections and DMCC pricing into publishable client conversation starters.</p>
+                </div>
+                <div class="solution">
+                  <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                  </svg>
+                  <h4>Strengthen proposals</h4>
+                  <p>Build method templates, evidence checklists, CV/case-study libraries and golden-thread proposal structures for ambiguous client problems.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Case study and proposal answer frame</h3>
+              </div>
+              <div class="diagram-body flow">
+                <div class="flow-row">
+                  <div class="flow-box mixed">
+                    <strong>1. Problem and duties</strong>
+                    <span>Define the client problem, regulator duties, affected stakeholders and decision window.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box good">
+                    <strong>2. Evidence and options</strong>
+                    <span>Set out data, modelling approach, comparators, scenarios, options and trade-offs.</span>
+                  </div>
+                  <div class="arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                  </div>
+                  <div class="flow-box good">
+                    <strong>3. Decision and delivery</strong>
+                    <span>Translate the analysis into recommendations, assurance steps, outputs, timetable and team roles.</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="question-bank section">
+              <div class="info-card">
+                <h3>Questions that show commercial judgment</h3>
+                <p>What work has already been won in utilities, infrastructure, regulatory finance or competition? What is the live pipeline? Which propositions do you want to own rather than simply respond to?</p>
+              </div>
+              <div class="info-card">
+                <h3>Questions that test support</h3>
+                <p>What is the expected team composition around this role? Would I have a director or partner sponsor with aligned regulatory finance experience? What does good look like after six months?</p>
+              </div>
+              <div class="info-card">
+                <h3>Questions that fit S&amp;W's strategy</h3>
+                <p>How do you want the economics practice to be different from Big Four and pure-play economics firms? Which proprietary tools, models or repeatable methods are you trying to build?</p>
+              </div>
+              <div class="info-card">
+                <h3>Questions that frame your value</h3>
+                <p>Where do you most need leverage: delivery, proposals, thought leadership, internal cross-sell, client workshops, or building reusable methodology?</p>
+              </div>
+            </section>
+
+            <section class="diagram section">
+              <div class="diagram-header">
+                <h3>Negotiation points to clarify before accepting</h3>
+              </div>
+              <div class="diagram-body negotiation-strip">
+                <div class="term">
+                  <strong>Role level</strong>
+                  <p>Tie grade to actual responsibility: proposal leadership, client meetings, delivery ownership, line management and BD expectations.</p>
+                </div>
+                <div class="term">
+                  <strong>Runway</strong>
+                  <p>Ask how utilisation, probation and early success will be assessed while the practice is still being built.</p>
+                </div>
+                <div class="term">
+                  <strong>Support</strong>
+                  <p>Confirm partner access, analyst support, templates, design support, pricing support and review process for proposals.</p>
+                </div>
+                <div class="term">
+                  <strong>Commercials</strong>
+                  <p>Clarify base, bonus, notice, probation, promotion path, hybrid pattern and how business development is rewarded.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="side">
+            <div class="side-card listen-card">
+              <h3>Listening plan for Schellion</h3>
+              <ul class="quick-list">
+                <li><span class="dot green"></span><span>Let her explain the practice vision first; capture her language and use it back later.</span></li>
+                <li><span class="dot amber"></span><span>Keep answers to two to five minutes; leave space for a conversational interview.</span></li>
+                <li><span class="dot red"></span><span>Do not fill silence with a full CV tour. Pick the proof point that answers the question.</span></li>
+              </ul>
+            </div>
+            <div class="side-card">
+              <h3>Strong answer to "Why S&amp;W?"</h3>
+              <p>"The attraction is the build phase. S&amp;W is combining economics with valuations, forensics, consulting and sector specialists. My background fits that because I work best where regulation, finance, policy and practical delivery overlap."</p>
+            </div>
+            <div class="side-card">
+              <h3>Weakness to handle directly</h3>
+              <p>"I have not spent years selling consulting work under my own name. But I have commissioned, evaluated and written evidence-led work for senior decision-makers, and I know how to turn a live regulatory problem into a credible method, submission and workshop."</p>
+            </div>
+            <div class="warning">
+              <strong>Meeting test:</strong> After each answer, ask yourself whether you have shown fit, evidence and curiosity. If you have only shown intelligence, tighten it.
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="glossary">
+        <h2>Tiny glossary</h2>
+        <div class="glossary-grid">
+          <div class="term">
+            <strong>CMA</strong>
+            <p>The UK Competition and Markets Authority. It checks whether markets and consumer practices are fair.</p>
+          </div>
+          <div class="term">
+            <strong>DMCC</strong>
+            <p>The Digital Markets, Competition and Consumers Act 2024. It gives the CMA stronger consumer enforcement powers.</p>
+          </div>
+          <div class="term">
+            <strong>Efficiency model</strong>
+            <p>A model regulators use to judge what a well-run utility should spend.</p>
+          </div>
+          <div class="term">
+            <strong>WACC</strong>
+            <p>Weighted average cost of capital. A blended estimate of the cost of debt and equity funding.</p>
+          </div>
+          <div class="term">
+            <strong>CAPM</strong>
+            <p>A finance model used to estimate the return equity investors require for risk.</p>
+          </div>
+          <div class="term">
+            <strong>Beta</strong>
+            <p>A measure of how much a company’s returns move with the wider market.</p>
+          </div>
+          <div class="term">
+            <strong>ERP</strong>
+            <p>Equity risk premium. The extra return investors expect for holding shares instead of safer assets.</p>
+          </div>
+          <div class="term">
+            <strong>Reopener</strong>
+            <p>A rule that lets a price control be revisited if a major unexpected event happens.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>This prep pack combines local CV material, Otter transcript notes, S&amp;W source articles and public S&amp;W economics pages. It is for interview preparation, not legal, regulatory, financial or career advice.</p>
+    </footer>
+  </div>
+
+  <script>
+    const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+    const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+
+    function activateTab(tab) {
+      tabs.forEach((item) => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+
+      panels.forEach((panel) => {
+        panel.classList.toggle('active', panel.id === tab.dataset.target);
+      });
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (event) => {
+        const current = tabs.indexOf(tab);
+        let next = current;
+        if (event.key === 'ArrowRight') next = (current + 1) % tabs.length;
+        if (event.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+        if (event.key === 'Home') next = 0;
+        if (event.key === 'End') next = tabs.length - 1;
+        if (next !== current) {
+          event.preventDefault();
+          tabs[next].focus();
+          activateTab(tabs[next]);
+        }
+      });
+      tab.tabIndex = index === 0 ? 0 : -1;
+    });
+  </script>
+</body>
+</html>
