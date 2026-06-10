@@ -303,13 +303,13 @@
 
   <p>This was the mistake that almost went to print. The first research pass described Cristina Caffarra as still at Keystone Europe in 2025, co-head of Europe alongside Andrea Coscelli. That had been the story in November 2022, when Keystone announced her. It was not the story in 2025. Caffarra had in fact left Keystone in 2023, about a year after joining, and had moved into an academic-plus-policy posture: Honorary Professor at UCL, co-founder of the <a href="https://cepr.org/research/research-policy-networks/competition-policy">CEPR Competition Research Policy Network</a>, lead of EuroStack. (The UCL profile URL previously cited here has been removed because the page does not render a substantive profile as of April 2026.)</p>
 
-  <p>The error surfaced only because a second research agent was dispatched to check three residual questions still nagging at the draft: what had actually happened to Caffarra after Keystone; what was the nature of the Faten Sabry hire at Compass Lexecon; and why had Mark Pragnell briefly re-appeared as a Cebr director in 2024. The Caffarra correction came back first. The draft was edited before publication.</p>
+  <p>The error surfaced only because a second research agent was dispatched to check two residual questions still nagging at the draft: what had actually happened to Caffarra after Keystone, and what was the nature of the Faten Sabry hire at Compass Lexecon. The Caffarra correction came back first. The draft was edited before publication.</p>
 
   <p>The broader lesson is simple. <strong>Do not rely on a single research pass for any claim about a named individual.</strong> Verify against the person's own public profile, their current LinkedIn headline, or an authoritative third-party listing. The cost of a wrong personnel claim in a public piece is reputational and potentially legal, so the standard has to be higher than "the first agent found it."</p>
 
   <h3>The Sabry misframing</h3>
 
-  <p>Faten Sabry was initially described as a London antitrust counter-hire by Compass Lexecon, framed as the firm's defensive response to the Econic Partners exodus. Wrong on two counts. Sabry sits in New York, not London. Her practice is securities valuation and financial-damages testimony, not antitrust. She came from NERA, where she had chaired the Global Securities and Finance Practice for 27 years. She is a US financial-litigation hire, not a London competition backfill. The correction went into both the text and the visual-story commentary before publication.</p>
+  <p>Faten Sabry was initially described as a London antitrust counter-hire by Compass Lexecon, framed as the firm's defensive response to the Econic Partners exodus. Wrong on two counts. Sabry sits in New York, not London. Her practice is securities valuation and financial-damages testimony, not antitrust. She came from NERA after 27 years, where she had chaired the Global Securities and Finance Practice. She is a US financial-litigation hire, not a London competition backfill. The correction went into both the text and the visual-story commentary before publication.</p>
 
   <h3>The Fingleton / LECG confusion</h3>
 
@@ -390,7 +390,7 @@
 
   <p>The key architectural decision of the first hour was to put structured facts into a SQLite database rather than keep them only in a spreadsheet. It sounds obvious to a developer. It is not obvious to an economist. SQLite gave the project one place to correct firm names, incorporation dates, categories and financial fields. Corrections such as CEPA incorporated September 2000 not 1993, A&amp;M consolidated, and BRG moved to Overlap went into the database first; the Substack HTML and chart files then read from the corrected source where possible. Corrections still required review, but they no longer depended on hunting through multiple copied tables.</p>
 
-  <p>The schema is deliberately small. Ten tables, about 20 useful columns across them. Anyone can reproduce it:</p>
+  <p>The schema is deliberately small. Nine core tables, about 20 useful columns across them. Anyone can reproduce it:</p>
 
   <pre><code>firms              (id, name, ch_number, category, year_founded, founders, ...)
 financials         (firm_id, year_end, turnover, operating_profit, num_members, ...)
