@@ -105,7 +105,7 @@
     </div>
     <table id="tbl"><thead></thead><tbody></tbody></table>
     <p class="note" id="metricNote"></p>
-    <p class="note">Turnover converted to GBP at €/£ 0.85, $/£ 0.78 where filed in another currency. "Members" and "top earner" come from LLPs' filed accounts, or from Ltd companies that disclose an equivalent partner/member figure; "staff" is average headcount where disclosed. One institute (the Fraser of Allander Institute, structure "Other") sits outside both the LLP and Ltd filter chips and is reachable via "All". Firms filing under the small-company exemption (e.g. <strong>Cebr</strong>) or as overseas/sub-brand entities (BDO, Deloitte, PwC, Grant Thornton, RSM economics arms, PA Consulting, E.CA, Fraser of Allander) disclose no turnover and several no headcount &mdash; they remain in the catalogue and the table, shown as &ldquo;&mdash;&rdquo;. Each firm's CH-derived facts are reconciled in the <a href="methodology-claude-code.html">project ledger</a>.</p>
+    <p class="note">Turnover converted to GBP at €/£ 0.85, $/£ 0.78 where filed in another currency. "Members" and "top earner" come from LLPs' filed accounts, or from Ltd companies that disclose an equivalent partner/member figure; "staff" is average headcount where disclosed. One institute (the Fraser of Allander Institute, structure "Other") sits outside both the LLP and Ltd filter chips and is reachable via "All". Firms filing under the small-company exemption (e.g. <strong>Cebr</strong>) or as overseas/sub-brand entities (BDO, Deloitte, PwC, Grant Thornton, RSM economics arms, PA Consulting, E.CA, Fraser of Allander) disclose no turnover and several no headcount &mdash; they remain in the catalogue and the table, shown as &ldquo;&mdash;&rdquo;. &ldquo;Est.&rdquo; mixes two bases: the brand-founding year where the firm clearly predates its UK legal entity (24 firms &mdash; NERA traces to 1961, CRA to 1965, PA to 1943), otherwise the UK incorporation year &mdash; so FTI shows 2012 (LLP) though the firm dates to 1982, AlixPartners 2010 (firm 1981), A&amp;M 2007 (firm 1983), Cornerstone 2014 (firm 1989), ICF 2001 (firm 1969), EIU 1983 (founded 1946), Ecorys 1982 (lineage to NEI, 1929) and AFRY 1991 (&Aring;F, 1895). Each firm's CH-derived facts are reconciled in the <a href="methodology-claude-code.html">project ledger</a>.</p>
   </div>
 </div>
 
@@ -170,11 +170,11 @@ function render(){
     grid:{left:180,right:64,top:8,bottom:30},
     xAxis:{type:'value',name:cfg.unit,nameLocation:'middle',nameGap:26,axisLine:{lineStyle:{color:'#d9d8d2'}},splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#8a8980'}},
     yAxis:{type:'category',data:bars.map(d=>short(d.firm)),axisLine:{show:false},axisTick:{show:false},axisLabel:{color:'#1f1f1c',fontSize:11.5}},
-    tooltip:{trigger:'item',formatter:p=>{const d=bars[p.dataIndex];return `<b>${short(d.firm)}</b> · ${d.seg}<br>${cfg.label}: ${cfg.fmt(d[m])}<br>turnover ${d.gbp_m!=null?'£'+d.gbp_m+'m':'n/d'} · margin ${d.margin!=null?d.margin+'%':'n/d'} · founded ${d.founded||'?'} · FY ${d.year||'—'}`;}},
+    tooltip:{trigger:'item',formatter:p=>{const d=bars[p.dataIndex];return `<b>${short(d.firm)}</b> · ${d.seg}<br>${cfg.label}: ${cfg.fmt(d[m])}<br>turnover ${d.gbp_m!=null?'£'+d.gbp_m+'m':'n/d'} · margin ${d.margin!=null?d.margin+'%':'n/d'} · est. ${d.founded||'?'} · FY ${d.year||'—'}`;}},
     series:[{type:'bar',barWidth:'64%',label:{show:bars.length<=40,position:'right',formatter:p=>cfg.fmt(bars[p.dataIndex][m]),color:'#5f5e5a',fontSize:10.5},
       data:bars.map(d=>({value:d[m],itemStyle:{color:SEG_COLORS[d.seg]||'#bcbbb4',borderRadius:[0,4,4,0],opacity:isTop(d.firm)?1:0.78}}))}]
   },true);
-  const head=`<tr><th>Firm</th><th>Segment</th><th>Founded</th><th>Turnover £m</th><th>Margin %</th><th>Staff</th><th>Members</th><th>Top £m</th></tr>`;
+  const head=`<tr><th>Firm</th><th>Segment</th><th>Est.</th><th>Turnover £m</th><th>Margin %</th><th>Staff</th><th>Members</th><th>Top £m</th></tr>`;
   const body=[...sel].sort((a,b)=>(b[m]??-1e12)-(a[m]??-1e12)).map(d=>
     `<tr><td class="firm">${isTop(d.firm)?'<span class="star">★ </span>':''}${short(d.firm)}</td><td>${d.seg}</td><td>${d.founded||'—'}</td>
      <td>${d.gbp_m!=null?d.gbp_m.toFixed(1):'—'}</td><td>${d.margin!=null?d.margin.toFixed(1):'—'}</td>
