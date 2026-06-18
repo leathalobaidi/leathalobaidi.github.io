@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Worked Answer — Pedalford E-Scooter Case (S&amp;W Stage 2)</title>
+<style>
+  :root {
+    --bg: #fffdf8; --ink: #1a1a1a; --mute: #5a5a5a; --line: #d8d3c4;
+    --accent: #1a4470; --accent2: #b54300; --accent3: #1f5a3d; --schel: #8c1d40;
+    --hi: #eef4fa; --hi2: #fff6df; --code: #f5efe2; --good: #eef7ee; --warn: #fff0f0; --warnline: #d18a8a;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--ink); margin: 0; padding: 0;
+    font-family: "Iowan Old Style","Charter","Source Serif Pro",Georgia,serif; font-size: 16.5px; line-height: 1.55; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 50px 36px 96px; }
+  header.h1 { border-bottom: 5px double var(--ink); padding-bottom: 18px; margin-bottom: 24px; }
+  header.h1 .kicker { font-family: ui-monospace,Menlo,monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+  header.h1 h1 { font-size: 33px; line-height: 1.1; margin: 6px 0 8px; letter-spacing: -.01em; }
+  header.h1 .sub { color: var(--mute); font-style: italic; font-size: 16px; }
+  h2 { font-size: 22px; margin: 42px 0 10px; padding: 9px 0 6px; border-top: 4px solid var(--ink); border-bottom: 1px solid var(--line); }
+  h2 .num { font-family: ui-monospace,Menlo,monospace; font-size: 13px; color: var(--accent); margin-right: 10px; }
+  h3 { font-size: 17px; margin: 22px 0 6px; color: var(--accent); }
+  h3.sec { font-family: ui-monospace,Menlo,monospace; text-transform: uppercase; letter-spacing: .05em; font-size: 15px; }
+  h4 { font-size: 15px; margin: 14px 0 4px; }
+  ul, ol { padding-left: 22px; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+  p { margin: 8px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+  th, td { border: 1px solid var(--line); padding: 7px 9px; vertical-align: top; text-align: left; }
+  th { background: #e7eef6; font-weight: 700; }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .note { background: var(--hi2); border: 1px solid #d9c47a; padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
+  .warn { background: var(--warn); border: 1px solid var(--warnline); padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
+  .keyfind { background: var(--good); border-left: 4px solid var(--accent3); padding: 12px 16px; margin: 14px 0; border-radius: 0 4px 4px 0; }
+  .keyfind h4 { margin: 0 0 6px; color: var(--accent3); }
+  .brief { background: #fcfaf4; border: 1px solid var(--line); border-left: 5px solid var(--accent2); padding: 4px 22px 14px; border-radius: 0 6px 6px 0; margin: 16px 0; }
+  .saythis { background: var(--hi); border-left: 4px solid var(--accent); padding: 10px 14px; margin: 12px 0; font-size: 15px; }
+  .saythis::before { content: "Defence line →"; font-family: ui-monospace,Menlo,monospace; font-size: 11px; letter-spacing: .08em; color: var(--accent); display: block; margin-bottom: 4px; }
+  .formula { background: var(--code); border-left: 3px solid var(--accent3); font-family: ui-monospace,Menlo,monospace; font-size: 13px; padding: 8px 14px; margin: 8px 0; }
+  blockquote { border-left: 3px solid var(--schel); margin: 12px 0; padding: 6px 14px; color: #333; background: #fdeef3; font-style: italic; }
+  .toc { background: #fafafa; border: 1px solid var(--line); padding: 12px 18px; border-radius: 4px; margin: 0 0 28px; font-size: 14.5px; }
+  .toc ol { columns: 2; column-gap: 30px; margin: 0; padding-left: 18px; }
+  .toc a { color: var(--ink); text-decoration: none; } .toc a:hover { color: var(--accent); }
+  hr.thin { border: none; border-top: 1px solid var(--line); margin: 24px 0; }
+  .small { font-size: 13px; color: var(--mute); }
+  .pill { display:inline-block; font-family: ui-monospace,Menlo,monospace; font-size:11px; padding:2px 8px; border-radius:999px; margin:0 4px 4px 0; border:1px solid var(--accent); color: var(--accent); }
+  .qa { margin: 8px 0 14px; }
+  .qa .q { font-weight: 700; }
+  .qa .a { margin-top: 3px; color:#333; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="h1">
+  <div class="kicker">Worked Answer + Defence Pack · S&amp;W Stage-2 take-home · 18 Jun 2026</div>
+  <h1>The curious case of the rising scooter fares — Pedalford</h1>
+  <div class="sub">Market-investigation archetype + tacit-coordination theory · 60-minute briefing note, fully worked, with the numbers and the Stage-3 conversation drill</div>
+</header>
+
+<div class="warn">
+  <strong>Use this as a study model, not a copy-out.</strong> This is the actual case S&amp;W sent. The take-home is assessed on <em>your</em> reasoning and is the basis of a live conversation at the next stage — so internalise the structure and the numbers and write it in your own words under the clock. If you submit this verbatim you cannot defend it in the room. The value is in Part 2 (the defence pack): being able to derive every number live.
+</div>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#tldr">The 30-second read</a></li>
+    <li><a href="#calc">Part 1 · The numbers (do these first)</a></li>
+    <li><a href="#brief">Part 2 · The briefing note (A–E)</a></li>
+    <li><a href="#defence">Part 3 · Defence pack &amp; traps</a></li>
+    <li><a href="#drill">Part 4 · Stage-3 conversation drill</a></li>
+    <li><a href="#assump">Assumptions register</a></li>
+  </ol>
+</div>
+
+<!-- ===================== TLDR ===================== -->
+<h2 id="tldr"><span class="num">0</span>The 30-second read</h2>
+<div class="keyfind">
+  <h4>What the data actually says</h4>
+  <ul>
+    <li><strong>Highly concentrated:</strong> three licensed firms, HHI ≈ <strong>3,550</strong> (well above the 2,000 "highly concentrated" threshold), with entry <em>capped at 3 by statute</em>.</li>
+    <li><strong>High profitability:</strong> share-weighted margin ≈ <strong>46%</strong>; ≈ <strong>£5.2m</strong> annual profit on ≈ £11.3m revenue. Prices sit far above marginal cost.</li>
+    <li><strong>Inelastic market demand:</strong> +10% price → −5% rides ⇒ market elasticity ≈ <strong>−0.5</strong>. Consumers have few good alternatives; firms have pricing power.</li>
+    <li><strong>Parallel conduct:</strong> near-identical prices, all moved within a 2-week window, no entry for 2 years, switching costs — classic coordination markers.</li>
+    <li><strong>BUT:</strong> parallel pricing alone is <em>not</em> proof of unlawful coordination — it is equally consistent with oligopolistic interdependence (conscious parallelism). And the likely <em>root cause</em> is the statutory cap of three, i.e. a regulatory barrier, not necessarily firm misconduct.</li>
+  </ul>
+  <p style="margin-bottom:0"><strong>Bottom line:</strong> a genuine competition concern with real consumer harm, but the evidence is not yet sufficient to prove coordination. Recommend (i) gather "plus-factor" evidence, (ii) review the licensing cap as the proportionate structural fix, (iii) low-cost switching/transparency remedies — and hold price control as a backstop, not a first move.</p>
+</div>
+
+<!-- ===================== PART 1 CALC ===================== -->
+<h2 id="calc"><span class="num">1</span>Part 1 · The numbers (do these in the first 15 minutes)</h2>
+
+<p>The examiner says "focus on clear reasoning rather than perfect calculations" — but the candidates who stand out <em>do</em> the arithmetic, because it powers every section. Average ride = <strong>12 minutes</strong> throughout.</p>
+
+<h3>Per-ride economics (Year 3)</h3>
+<div class="formula">Revenue/ride = unlock + (price-per-min × 12) &nbsp;|&nbsp; Cost/ride = cost-per-ride + (cost-per-min × 12)</div>
+<table>
+  <tr><th>Operator</th><th class="num">Rev/ride</th><th class="num">Cost/ride</th><th class="num">Profit/ride</th><th class="num">Margin</th><th class="num">Yr3 share</th></tr>
+  <tr><td>ZoomZip</td><td class="num">£3.64</td><td class="num">£2.00</td><td class="num">£1.64</td><td class="num">45.1%</td><td class="num">45%</td></tr>
+  <tr><td>FlashRide</td><td class="num">£3.98</td><td class="num">£2.17</td><td class="num">£1.81</td><td class="num">45.5%</td><td class="num">30%</td></tr>
+  <tr><td>Scootly</td><td class="num">£3.76</td><td class="num">£1.95</td><td class="num">£1.81</td><td class="num">48.1%</td><td class="num">25%</td></tr>
+  <tr><th>Share-weighted</th><th class="num">£3.77</th><th class="num">£2.04</th><th class="num">£1.73</th><th class="num">46.0%</th><th class="num">100%</th></tr>
+</table>
+<p class="small">ZoomZip rev/ride = 1.00 + 0.22×12 = £3.64; cost/ride = 0.80 + 0.10×12 = £2.00; profit £1.64; margin 1.64/3.64 = 45.1%. Same method for the others.</p>
+
+<h3>Market-wide aggregates (3,000,000 rides/yr)</h3>
+<table>
+  <tr><th>Metric</th><th class="num">Value</th></tr>
+  <tr><td>Annual revenue (3.0m × £3.77)</td><td class="num">≈ £11.3m</td></tr>
+  <tr><td>Annual cost (3.0m × £2.04)</td><td class="num">≈ £6.1m</td></tr>
+  <tr><td>Annual profit</td><td class="num">≈ £5.2m</td></tr>
+  <tr><td>Aggregate margin</td><td class="num">≈ 46%</td></tr>
+</table>
+<p class="note"><strong>Caveat to state:</strong> these are <em>contribution</em> margins on the costs given. Table 3 is "estimated" and almost certainly excludes capital cost of the scooter fleet, depreciation, app/platform R&amp;D, licence fees and overhead. A 46% contribution margin is <em>not</em> a 46% economic profit — but even after plausible fixed costs it points to comfortable profitability, and there is no cost time-series to justify the 10% price rise.</p>
+
+<h3>Concentration — HHI</h3>
+<div class="formula">HHI = Σ(share²). Year 3 = 45² + 30² + 25² = 2025 + 900 + 625 = 3,550</div>
+<table>
+  <tr><th>Year</th><th>ZoomZip</th><th>FlashRide</th><th>Scootly</th><th class="num">HHI</th></tr>
+  <tr><td>Year 1</td><td>40%</td><td>35%</td><td>25%</td><td class="num">3,450</td></tr>
+  <tr><td>Year 2</td><td>42%</td><td>33%</td><td>25%</td><td class="num">3,478</td></tr>
+  <tr><td>Year 3</td><td>45%</td><td>30%</td><td>25%</td><td class="num">3,550</td></tr>
+</table>
+<p>HHI > 2,000 ⇒ highly concentrated on any UK/EU yardstick. Concentration is <em>rising</em>. Note the dynamics: ZoomZip gaining (40→45), FlashRide losing (35→30), <strong>Scootly frozen at exactly 25% for three years</strong> — discussed below.</p>
+
+<h3>Demand elasticity</h3>
+<div class="formula">Market arc elasticity ε = %ΔQ ÷ %ΔP = (−5%) ÷ (+10%) = −0.5  →  INELASTIC (|ε| &lt; 1)</div>
+<div class="keyfind">
+  <h4>The single most important number in the case — and the cleverest point you can make</h4>
+  <p>Market demand is <strong>inelastic (−0.5)</strong>. Two consequences, and the second is the one that separates a strong candidate:</p>
+  <ol>
+    <li>Inelastic demand means consumers lack close substitutes → it <em>confers</em> pricing power and explains why a 10% rise stuck.</li>
+    <li><strong>A profit-maximising monopolist never prices on the inelastic part of the demand curve</strong> (cutting output would raise revenue <em>and</em> cut cost). So if these firms were perfectly coordinating as a joint monopolist, we would expect them to have pushed prices even higher until demand turned elastic. The fact that they sit at ε = −0.5 suggests either (a) coordination is imperfect/tacit rather than a full cartel, (b) −0.5 is a short-run elasticity and long-run is more elastic, or (c) they are restrained by the licence, entry threat or political risk. Either way, it tempers an over-confident "this is a cartel" conclusion.</li>
+  </ol>
+  <p style="margin-bottom:0">Cross-check via the <strong>Lerner index</strong> on the per-minute margin: L = (0.22−0.10)/0.22 ≈ 0.55, implying each firm <em>acts as if</em> it faces a firm-level elasticity of 1/0.55 ≈ <strong>1.8</strong>. Firm-level demand (≈1.8) being more elastic than market demand (0.5) is exactly what you expect under oligopoly with some substitution between apps — consistent with rivalry, not a textbook monopoly.</p>
+</div>
+
+<!-- ===================== PART 2 BRIEFING ===================== -->
+<h2 id="brief"><span class="num">2</span>Part 2 · The briefing note (what you'd actually submit)</h2>
+<p class="small">Style: briefing note to your CA manager, to brief the Authority. ~2 pages. Bullets where they earn their place. Covers Sections A–E.</p>
+
+<div class="brief">
+<p><strong>TO:</strong> Manager, Comparative Advantage &nbsp;|&nbsp; <strong>FROM:</strong> [Candidate] &nbsp;|&nbsp; <strong>RE:</strong> Pedalford e-scooter market — preliminary competition assessment</p>
+<p><strong>Headline:</strong> The market shows clear symptoms of weak competition — high concentration, high margins, inelastic demand and parallel pricing. The evidence justifies further investigation and likely intervention, but does <em>not</em> yet prove unlawful coordination, and the binding constraint may be the statutory cap of three operators rather than firm conduct. I recommend a pro-competition package (review the cap; cut switching costs) over price control, plus targeted evidence-gathering on coordination.</p>
+
+<h3 class="sec">Section A — Market structure</h3>
+<ul>
+  <li><strong>Tight oligopoly, statutorily closed.</strong> Three operators, HHI ≈ 3,550 (highly concentrated) and rising. Entry is capped at three by the licensing regime — an <em>absolute legal barrier</em>, the most important structural fact in the case.</li>
+  <li><strong>Homogeneous service, repeat low-value purchase, switching costs</strong> (separate apps, accounts, stored credit) → consumers tend to single-home, which softens competition further.</li>
+  <li><strong>Implication:</strong> structure is conducive to both unilateral market power and tacit coordination. With three symmetric-ish firms, a closed market and homogeneous output, the <em>conditions</em> for coordination are present — but conditions are not conduct.</li>
+</ul>
+
+<h3 class="sec">Section B — Pricing &amp; profitability</h3>
+<ul>
+  <li><strong>Profitability:</strong> per 12-minute ride, revenue ≈ £3.6–4.0, cost ≈ £2.0, profit ≈ £1.6–1.8 → contribution margin ≈ <strong>46%</strong>; ≈ <strong>£5.2m</strong> annual industry profit. Caveat: estimated costs likely exclude capital, depreciation, platform and licence costs, so economic profit is lower — but no cost increase is recorded to justify the 10% price rise.</li>
+  <li><strong>Demand elasticity:</strong> +10% price, −5% volume ⇒ market elasticity ≈ <strong>−0.5 (inelastic)</strong>. Few substitutes; pricing power present.</li>
+  <li><strong>Pricing power:</strong> yes — high margins, inelastic demand, and the ability to raise price 10% and retain 95% of volume. Lerner on the per-minute margin ≈ 0.55. Note the nuance: a fully-coordinated monopolist would not stop on the inelastic part of demand, which argues coordination (if any) is imperfect.</li>
+</ul>
+
+<h3 class="sec">Section C — Competitive dynamics</h3>
+<ul>
+  <li><strong>Why similar prices / simultaneous increases?</strong> Three non-exclusive explanations, which the evidence does not yet separate:
+    <ol>
+      <li><em>Tacit coordination / conscious parallelism</em> — firms recognise their interdependence and match, without any agreement (generally lawful absent a "plus factor").</li>
+      <li><em>Explicit coordination</em> — an agreement or concerted practice / information exchange (unlawful) — possible but unproven.</li>
+      <li><em>Common cost or demand shock</em> — competitive firms passing through a shared input-cost rise. Weakened here because no cost increase is in the data.</li>
+    </ol>
+  </li>
+  <li><strong>What the evidence infers:</strong> weak price competition, but the share dynamics cut against a perfectly stable cartel — ZoomZip is gaining (40→45%) at FlashRide's expense (35→30%). <strong>Scootly's share is frozen at exactly 25% for three years</strong>, which is unusual and worth probing.</li>
+  <li><strong>Non-price competition you'd expect:</strong> scooter availability/density and geographic coverage, app reliability and UX, battery range, safety, speed of unlock, loyalty/subscription bundles. With a closed market and fat margins, even non-price rivalry may be muted — worth testing.</li>
+  <li><strong>Extra evidence on coordination ("plus factors"):</strong> internal emails/board minutes; any direct or indirect contact or signalling (public price pre-announcements); membership of/data-sharing via a trade body; use of <em>shared pricing algorithms or the same pricing software</em> (algorithmic collusion); common ownership / overlapping investors; the full price/cost/margin time-series; how prices moved at earlier dates; reasons no entrant applied.</li>
+</ul>
+
+<h3 class="sec">Section D — Market failure &amp; need for intervention</h3>
+<ul>
+  <li><strong>The failure:</strong> market power in a statutorily closed oligopoly producing prices above the competitive level, an inelastic-demand consumer base (limited self-protection), and allocative inefficiency — the 10% rise priced out ~150,000 rides/year (the −5% volume), against the original policy goals of cutting congestion and emissions.</li>
+  <li><strong>How it manifests:</strong> high margins, parallel pricing, no entry, stable shares. Distributionally, a transfer from consumers (many of them commuters, some low-income) to operators.</li>
+  <li><strong>Is the evidence sufficient?</strong> Sufficient to establish a <em>competition concern</em> and justify a deeper market investigation; <strong>not</strong> sufficient to prove unlawful coordination (parallel conduct has innocent explanations) or to leap to heavy regulation. Key uncertainties: costs are estimated and lack a time-series; −0.5 may be short-run; switching costs may reflect product design not strategy; only three years of data; and the cap of three is a <em>regulatory</em> barrier the Authority itself (or government) controls — this may be as much regulatory failure as market failure.</li>
+</ul>
+
+<h3 class="sec">Section E — Policy options &amp; cost–benefit</h3>
+<table>
+  <tr><th>Option</th><th>Expected benefits</th><th>Costs / risks</th></tr>
+  <tr><td><strong>1. Relax the licensing cap / re-tender more licences</strong> (structural; targets root cause)</td><td>Introduces entry pressure; addresses the binding statutory barrier; can lower prices and lift service without ongoing price regulation.</td><td>Re-introduces the congestion/clutter/safety risks the cap was meant to solve; market may be a natural oligopoly (limited room for more viable operators); takes time.</td></tr>
+  <tr><td><strong>2. Reduce switching costs / mandate transparency</strong> (pro-competition; light-touch)</td><td>Enables multi-homing and price comparison; cheap; preserves market-based pricing; strengthens whatever rivalry exists. E.g. interoperable accounts, in-app price display, portable stored credit, a comparison tool.</td><td>May be insufficient if the core problem is coordination or the hard entry cap; firms may comply in form not substance.</td></tr>
+  <tr><td><strong>3. Price cap / fare regulation</strong> (behavioural; backstop)</td><td>Directly limits consumer harm; fast; certain.</td><td>Blunt; severe information asymmetry on true costs; risks under-investment and worse availability; ongoing monitoring burden; can entrench the three incumbents.</td></tr>
+  <tr><td><em>(4. Enforcement investigation)</em></td><td>If a concerted practice is found: fines + deterrence + redress.</td><td>Parallel pricing alone is insufficient; resource-intensive; may find nothing (conscious parallelism is lawful).</td></tr>
+</table>
+<p><strong>Most proportionate:</strong> a <strong>package of 1 + 2</strong>, evidence-led. Start with the low-cost switching/transparency remedies and a review of the licence cap (the root structural cause), run in parallel with targeted evidence-gathering for "plus factors" on coordination. Reserve price control as a backstop if structural and behavioural measures fail, because it is the most information-hungry and distortion-prone tool and does nothing about the underlying closed-market structure. Sequencing matters: fix the structure and the information environment before regulating the price.</p>
+<p style="margin-bottom:4px"><strong>What would change this recommendation:</strong> hard evidence of an agreement/algorithmic coordination (→ enforcement first); evidence that costs genuinely rose ~10% (→ harm is smaller, conduct more benign); or evidence the market cannot sustain a fourth operator (→ drop option 1, lean on 2 + targeted price oversight).</p>
+</div>
+
+<!-- ===================== PART 3 DEFENCE ===================== -->
+<h2 id="defence"><span class="num">3</span>Part 3 · Defence pack &amp; the traps</h2>
+
+<h3>The five judgement calls that separate strong from average</h3>
+<ol>
+  <li><strong>Don't shout "cartel".</strong> The whole case is engineered to tempt you into declaring illegal collusion. The disciplined answer distinguishes <em>tacit coordination / conscious parallelism</em> (lawful, no agreement) from a <em>concerted practice</em> (unlawful) and says the evidence can't yet tell them apart. That nuance is the test.</li>
+  <li><strong>Spot that the cap is the root cause.</strong> Entry is capped at three <em>by the regulator's own regime</em>. A lot of the "market power" is manufactured by policy. The mature answer treats this partly as regulatory failure and puts "review the cap" at the centre.</li>
+  <li><strong>Use the inelastic-demand paradox.</strong> ε = −0.5 both explains pricing power <em>and</em> argues against a perfect cartel (a monopolist wouldn't stop there). Holding both ideas at once signals real economic literacy.</li>
+  <li><strong>Caveat the margins honestly.</strong> 46% is a contribution margin on estimated costs that likely omit capital/depreciation/platform/licence. Don't present it as economic profit. But note there's no cost increase to justify the 10% rise.</li>
+  <li><strong>Sequence the remedies and tie to proportionality.</strong> Structural + behavioural before price control; evidence-gathering before enforcement. Proportionality is the examiner's word — use it.</li>
+</ol>
+
+<h3>Traps planted in the data</h3>
+<ul>
+  <li><strong>"They all charge the same → collusion."</strong> No — homogeneous oligopoly often produces near-identical prices competitively. Need a plus factor.</li>
+  <li><strong>"Prices rose → consumer harm proven."</strong> Only if not cost-justified. Flag the missing cost time-series.</li>
+  <li><strong>Scootly at exactly 25% for 3 years.</strong> Suspiciously stable — a coordination flag worth naming — but equally could be a capacity-constrained fringe player. Name it, don't over-read it.</li>
+  <li><strong>HHI alone.</strong> High HHI shows structure, not conduct or harm. Pair it with margins + elasticity.</li>
+  <li><strong>Per-minute vs per-ride margins.</strong> Be explicit which you're using; the unlock fee is a fixed per-trip charge, not a marginal-minute cost.</li>
+</ul>
+
+<div class="saythis">"My read is that this market has the <em>structure</em> and <em>symptoms</em> of weak competition — HHI around 3,500, ~46% contribution margins, inelastic demand and parallel pricing — but the data can't yet distinguish tacit oligopolistic interdependence, which is lawful, from an unlawful concerted practice. And the binding constraint is arguably the statutory cap of three, which is the Authority's own instrument. So my instinct is a proportionate, evidence-led package — review the cap, cut switching costs, gather plus-factor evidence — and to hold price control as a backstop rather than a first resort."</div>
+
+<!-- ===================== PART 4 DRILL ===================== -->
+<h2 id="drill"><span class="num">4</span>Part 4 · Stage-3 conversation drill</h2>
+<p>The brief says the note "will be used as the basis of a conversation." Expect Schellion / the panel to push on exactly these. Rehearse the answers aloud.</p>
+
+<div class="qa"><div class="q">Q. Is this a cartel?</div><div class="a">A. On this evidence I can't say so, and I'd be cautious asserting it. The pricing is parallel and the structure is conducive, but parallel pricing in a homogeneous three-firm oligopoly is consistent with lawful conscious parallelism. To allege a concerted practice I'd want a plus factor — contacts, signalling, information exchange, shared pricing algorithms, or common ownership. That's where I'd direct evidence-gathering.</div></div>
+
+<div class="qa"><div class="q">Q. You computed a 46% margin — so they're gouging consumers?</div><div class="a">A. It's a 46% <em>contribution</em> margin on estimated costs that almost certainly exclude capital, depreciation, platform and licence costs, so economic profit is lower. But it's high, and crucially there's no recorded cost increase to justify the 10% price rise, so it does support a pricing-power concern — I'd just resist calling it 46% economic profit.</div></div>
+
+<div class="qa"><div class="q">Q. Demand elasticity is −0.5. So what?</div><div class="a">A. Two things. It confirms pricing power — few substitutes, so a 10% rise only shed 5% of rides. But it also tempers the cartel story: a profit-maximising monopolist wouldn't price on the inelastic part of demand, so if they were perfectly coordinating I'd expect higher prices still. That suggests imperfect/tacit coordination or external restraint, not a textbook cartel.</div></div>
+
+<div class="qa"><div class="q">Q. What's your single most important recommendation?</div><div class="a">A. Review the statutory cap of three operators. It's the binding structural barrier and it's the Authority's own instrument — so before regulating conduct or price, I'd ask whether the regime itself is manufacturing the market power, balanced against the congestion and safety reasons the cap exists.</div></div>
+
+<div class="qa"><div class="q">Q. Why not just cap prices now?</div><div class="a">A. Proportionality. Price control is the most information-hungry and distortion-prone tool — it needs the true cost base I don't yet have, risks under-investment and worse availability, and does nothing about the closed structure. I'd use it as a backstop if structural and behavioural remedies fail.</div></div>
+
+<div class="qa"><div class="q">Q. What evidence would most change your view?</div><div class="a">A. Proof of an agreement or shared pricing algorithm would move me to enforcement first. Evidence that input costs genuinely rose ~10% would shrink the harm and make the conduct look competitive. And evidence the market can't support a fourth operator would drop the entry remedy and push me toward switching-cost measures plus light price oversight.</div></div>
+
+<!-- ===================== ASSUMPTIONS ===================== -->
+<h2 id="assump"><span class="num">5</span>Assumptions register (state these in the note)</h2>
+<ul>
+  <li>Average ride = 12 minutes applied to all operators; revenue/cost per ride built on that single average (the data gives no per-operator usage split).</li>
+  <li>"Cost per ride" treated as a fixed per-trip cost and "cost per minute" as the marginal riding cost; both as given and labelled "estimated".</li>
+  <li>Estimated costs are contribution-level and likely exclude capital, depreciation, platform/R&amp;D, overhead and licence fees — so margins overstate economic profit.</li>
+  <li>3,000,000 total rides/year split by the Year-3 market shares for aggregate revenue/profit.</li>
+  <li>Elasticity is an arc/market-level estimate from a single Y2→Y3 change; treat as indicative, possibly short-run, not a precise structural parameter.</li>
+  <li>No cost time-series provided → cannot attribute the 10% price rise to a cost shock; treated as an open question, not assumed either way.</li>
+</ul>
+
+<hr class="thin">
+<p class="small">Companion docs: <a href="SW_Case_Exam_Prep_General.html">general case archetypes</a> (this is archetype C, market investigation, + a coordination theory) · <a href="SW_Idiot_Guide_AD_Level.html">idiot guide</a> (ch. 8 competition, ch. 16 sounding like an AD) · <a href="SW_Interview_Teaching_Plan.html">teaching plan</a>. Numbers independently computed; all arithmetic reproducible from the case tables.</p>
+
+</div>
+</body>
+</html>
