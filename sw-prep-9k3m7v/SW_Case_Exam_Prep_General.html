@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case-Exam Prep — General Archetypes (S&amp;W Stage 2)</title>
+<style>
+  :root {
+    --bg: #fffdf8;
+    --ink: #1a1a1a;
+    --mute: #5a5a5a;
+    --line: #d8d3c4;
+    --accent: #1a4470;
+    --accent2: #b54300;
+    --accent3: #1f5a3d;
+    --hi: #eef4fa;
+    --hi2: #fff6df;
+    --code: #f5efe2;
+    --warn: #fff0f0;
+    --warnline: #d18a8a;
+    --good: #eef7ee;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--ink); margin: 0; padding: 0;
+    font-family: "Iowan Old Style","Charter","Source Serif Pro",Georgia,serif;
+    font-size: 17px; line-height: 1.58;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 52px 36px 96px; }
+  header.h1 { border-bottom: 5px double var(--ink); padding-bottom: 20px; margin-bottom: 28px; }
+  header.h1 .kicker { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+  header.h1 h1 { font-size: 36px; line-height: 1.1; margin: 6px 0 8px; letter-spacing: -.01em; }
+  header.h1 .sub { color: var(--mute); font-style: italic; font-size: 17px; }
+  h2 { font-size: 23px; margin: 46px 0 12px; padding: 10px 0 6px; border-top: 4px solid var(--ink); border-bottom: 1px solid var(--line); }
+  h2 .num { font-family: ui-monospace,Menlo,monospace; font-size: 13px; color: var(--accent); margin-right: 10px; }
+  h3 { font-size: 17px; margin: 22px 0 6px; font-family: ui-monospace,Menlo,monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+  h4 { font-size: 15px; margin: 14px 0 4px; }
+  ul, ol { padding-left: 22px; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+  p { margin: 9px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14.5px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top; text-align: left; }
+  th { background: #e7eef6; font-weight: 700; }
+  .arch {
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--accent);
+    padding: 18px 22px;
+    margin: 18px 0;
+    border-radius: 0 6px 6px 0;
+    background: #fcfaf4;
+  }
+  .arch h3 { color: var(--ink); margin: 0 0 10px; font-family: inherit; font-size: 19px; text-transform: none; letter-spacing: 0; }
+  .arch h3 small { color: var(--accent); font-family: ui-monospace,Menlo,monospace; font-size: 12px; letter-spacing: .08em; }
+  .arch h4 { font-size: 13px; color: var(--mute); font-family: ui-monospace,Menlo,monospace; text-transform: uppercase; letter-spacing: .08em; margin: 14px 0 4px; }
+  .saythis { background: var(--hi); border-left: 4px solid var(--accent); padding: 10px 14px; margin: 12px 0; font-family: inherit; font-size: 15.5px; }
+  .saythis::before { content: "Opening line →"; font-family: ui-monospace,Menlo,monospace; font-size: 11px; letter-spacing: .08em; color: var(--accent); display: block; margin-bottom: 4px; }
+  .ex { background: var(--good); border: 1px solid #b8d4c3; padding: 14px 18px; border-radius: 4px; margin: 14px 0; }
+  .ex h4 { margin-top: 0; color: var(--accent3); font-family: inherit; text-transform: none; letter-spacing: 0; font-size: 15px; }
+  blockquote { border-left: 3px solid var(--accent2); margin: 12px 0; padding: 6px 14px; color: #333; background: var(--hi2); font-style: italic; }
+  .toc { background: #fafafa; border: 1px solid var(--line); padding: 14px 20px; border-radius: 4px; margin: 0 0 32px; font-size: 15px; }
+  .toc ol { columns: 2; column-gap: 30px; margin: 0; padding-left: 18px; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+  hr.thin { border: none; border-top: 1px solid var(--line); margin: 28px 0; }
+  .small { font-size: 13px; color: var(--mute); }
+  .archlist { display: grid; grid-template-columns: repeat(2,1fr); gap: 8px; margin: 14px 0; }
+  @media (max-width: 720px) { .archlist { grid-template-columns: 1fr; } .toc ol { columns: 1; } }
+  .archlist a { text-decoration: none; color: var(--ink); background: #fcfaf4; border: 1px solid var(--line); padding: 8px 12px; border-radius: 4px; font-size: 14.5px; }
+  .archlist a:hover { border-color: var(--accent); color: var(--accent); }
+  .formula { background: var(--code); border-left: 3px solid var(--accent3); font-family: ui-monospace,Menlo,monospace; font-size: 13.5px; padding: 8px 14px; margin: 8px 0; }
+  .pre { background: var(--hi2); border: 1px solid #d9c47a; padding: 14px 18px; border-radius: 4px; margin: 14px 0; }
+  .pre h4 { color: #735300; margin: 0 0 6px; font-family: inherit; text-transform: none; letter-spacing: 0; font-size: 16px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="h1">
+  <div class="kicker">Case-Exam Prep · General archetypes · S&amp;W Stage 2 take-home · 18 Jun 2026</div>
+  <h1>The seven Stage-2 case archetypes</h1>
+  <div class="sub">One universal answer architecture, seven case templates with opening lines — for any take-home prompt S&amp;W throws at you</div>
+</header>
+
+<div class="toc">
+  <strong>Contents</strong>
+  <ol>
+    <li><a href="#mechanics">Stage-2 mechanics</a></li>
+    <li><a href="#architecture">The universal answer architecture</a></li>
+    <li><a href="#archetypes">The seven case archetypes</a></li>
+    <li><a href="#toolkit">Cross-cutting analytical toolkit</a></li>
+    <li><a href="#evidence">Cross-cutting evidence hierarchy</a></li>
+    <li><a href="#time">Time management — 60 minutes</a></li>
+    <li><a href="#examiners">What the examiners are looking for</a></li>
+    <li><a href="#traps">Common traps</a></li>
+    <li><a href="#preflight">Pre-flight checklist</a></li>
+  </ol>
+</div>
+
+<!-- 1 -->
+<h2 id="mechanics"><span class="num">CH 1</span>Stage-2 mechanics</h2>
+
+<ul>
+  <li><strong>Format:</strong> 1-hour take-home, single-prompt brief, sent to your home email.</li>
+  <li><strong>Pass / fail:</strong> Kas was explicit — <em>there is no pass / fail on this stage unless it is a complete and utter disaster.</em> The aim is to test thinking, not produce a finished consulting output.</li>
+  <li><strong>Format of response:</strong> typically a written 1–3 page memo. Sometimes the brief asks for a verbal walk-through at Stage 3 instead.</li>
+  <li><strong>What is being measured:</strong> structure, judgement, ability to identify the right question, ability to triangulate methods, intellectual honesty about uncertainty.</li>
+  <li><strong>What is NOT being measured:</strong> the final number. There is no "right answer". A well-structured wrong direction beats a poorly-structured right answer.</li>
+</ul>
+
+<!-- 2 -->
+<h2 id="architecture"><span class="num">CH 2</span>The universal answer architecture</h2>
+
+<p>Every economics case at S&amp;W's grade-level sits on the same 7-step backbone. Memorise this and you can answer any prompt.</p>
+
+<div class="formula">market failure → theory of harm → counterfactual → evidence → methods → remedies → caveats</div>
+
+<table>
+  <tr><th>Step</th><th>The question you answer</th></tr>
+  <tr><td><strong>1 · Market failure</strong></td><td>What is wrong with the market that requires intervention? (monopoly, information asymmetry, externality, vulnerable consumers, public good, equity)</td></tr>
+  <tr><td><strong>2 · Theory of harm</strong></td><td>How specifically is this market failure manifesting? (price rise, output suppression, foreclosure, distortion, mis-selling) — enumerate, prioritise.</td></tr>
+  <tr><td><strong>3 · Counterfactual</strong></td><td>What would have happened absent the conduct / intervention / restriction? Make this concrete and testable.</td></tr>
+  <tr><td><strong>4 · Evidence</strong></td><td>What evidence is available, what evidence is missing, what evidence would change the analysis?</td></tr>
+  <tr><td><strong>5 · Methods</strong></td><td>How do you quantify the counterfactual? (Methods toolkit below.) Triangulate — two methods always beat one.</td></tr>
+  <tr><td><strong>6 · Remedies / recommendations</strong></td><td>What should the client / regulator / court do? Bounded, proportionate, evidenced.</td></tr>
+  <tr><td><strong>7 · Caveats</strong></td><td>What you do not know, what would change your view, what the next analytical step would be.</td></tr>
+</table>
+
+<p>Walking through these 7 in 60 minutes gets you to ~8 minutes per section. The opening frame and the closing caveats are the highest-leverage parts — examiners read them first.</p>
+
+<!-- 3 -->
+<h2 id="archetypes"><span class="num">CH 3</span>The seven case archetypes</h2>
+
+<p>Take-home prompts cluster into seven archetypes. Each gets a one-page template below. Identify the archetype from the prompt language in the first 5 minutes.</p>
+
+<div class="archlist">
+  <a href="#a-comp">A · Competition damages / cartel quantum</a>
+  <a href="#a-merger">B · Merger control (SLC)</a>
+  <a href="#a-market">C · Market investigation</a>
+  <a href="#a-subsidy">D · Subsidy Control referral</a>
+  <a href="#a-regapp">E · Regulatory appeal (price control / WACC)</a>
+  <a href="#a-consumer">F · Consumer protection / DMCC</a>
+  <a href="#a-policy">G · Policy intervention appraisal</a>
+</div>
+
+<!-- ARCH A -->
+<div class="arch" id="a-comp">
+  <h3>A · Competition damages / cartel quantum <small>· follow-on or stand-alone</small></h3>
+
+  <h4>Recognise from prompt</h4>
+  <p>Mentions: claimants, defendants, infringement period, overcharge, "but-for", pass-on, follow-on, CAT.</p>
+
+  <h4>Market failure</h4>
+  <p>Horizontal coordination or vertical RPM defeats price discovery; output suppressed; consumer surplus transferred upstream.</p>
+
+  <h4>Theory of harm</h4>
+  <ul>
+    <li>Direct overcharge to direct purchasers</li>
+    <li>Volume effect — purchases would have been higher absent the conduct</li>
+    <li>Lost profits — claimant's downstream sales suppressed</li>
+    <li>Pass-on (defence): claimant passed overcharge to its own customers</li>
+  </ul>
+
+  <h4>Counterfactual</h4>
+  <p>Set of but-for prices (and volumes) that would have prevailed absent the cartel. Three constructions: pre/during/post window in same market; comparator (yardstick) market; structural-demand simulation.</p>
+
+  <h4>Methods</h4>
+  <p>DiD (primary), hedonic regression for product mix, structural demand (BLP) for merger simulation, financial-performance analysis for claimant lost profits.</p>
+
+  <h4>Remedies</h4>
+  <p>Damages = aggregate overcharge × volume + interest from each transaction date. Pass-on rate applied if defended. Class certification at the CAT if collective.</p>
+
+  <h4>Caveats</h4>
+  <p>Pass-on quantification fragility; volume effects often under-estimated; parallel-trends assumption; data availability.</p>
+
+  <div class="saythis">"This is a follow-on damages claim where the infringement is established and the question is quantum. My preferred approach is a difference-in-differences against a clean comparator, triangulated with a pre/post structure in the same market — both supplemented with a hedonic adjustment for product mix. The defence will press hard on pass-on; my view on pass-on quantification has to be empirical, not assumed."</div>
+</div>
+
+<!-- ARCH B -->
+<div class="arch" id="a-merger">
+  <h3>B · Merger control — SLC test <small>· CMA Phase 1 / Phase 2</small></h3>
+
+  <h4>Recognise from prompt</h4>
+  <p>Mentions: parties, transaction value, share-of-supply, market overlap, horizontal/vertical/conglomerate, unilateral effects, coordinated effects.</p>
+
+  <h4>Market failure</h4>
+  <p>Concentration potentially reducing rivalry; risk of unilateral price rise, foreclosure of rivals, coordinated conduct.</p>
+
+  <h4>Theory of harm</h4>
+  <ul>
+    <li><strong>Unilateral effects</strong> — merged firm finds price rise profitable post-merger as recapture from rival is internalised.</li>
+    <li><strong>Coordinated effects</strong> — fewer firms makes tacit coordination feasible.</li>
+    <li><strong>Vertical foreclosure</strong> — input or customer foreclosure if vertical.</li>
+    <li><strong>Conglomerate</strong> — tying / bundling.</li>
+  </ul>
+
+  <h4>Counterfactual</h4>
+  <p>The pre-existing competitive structure. NB: this is <em>not</em> the status quo if one party would have exited absent the merger — failing-firm defence.</p>
+
+  <h4>Methods</h4>
+  <p>Market shares + HHI; closeness-of-competition diversion ratios; GUPPI / illustrative price rise (IPR); merger simulation (Bertrand / Cournot or BLP); margin pressure tests.</p>
+
+  <h4>Remedies</h4>
+  <p>Behavioural (rare); structural (preferred) — divestiture; prohibition. Phase 2 in-depth investigation.</p>
+
+  <h4>Caveats</h4>
+  <p>Market definition fragility (cellophane fallacy); efficiencies passing test (rarely accepted); failing-firm evidence quality.</p>
+
+  <div class="saythis">"I would structure the merger assessment around the SLC test in three steps — market definition via SSNIP, competitive assessment via diversion ratios and closeness-of-competition evidence, and counterfactual under the prevailing market structure absent the merger. The unilateral effects analysis is usually the heart of the case; coordinated effects need separate evidence of market conditions that make coordination feasible and stable."</div>
+</div>
+
+<!-- ARCH C -->
+<div class="arch" id="a-market">
+  <h3>C · Market investigation <small>· CMA Enterprise Act Part 4</small></h3>
+
+  <h4>Recognise from prompt</h4>
+  <p>Mentions: market study, sector inquiry, features of the market, adverse effect on competition (AEC), structural remedies.</p>
+
+  <h4>Market failure</h4>
+  <p>One or more "features of the market" preventing, restricting or distorting competition — not necessarily attributable to specific anti-competitive conduct.</p>
+
+  <h4>Theory of harm</h4>
+  <ul>
+    <li>Concentrated supply</li>
+    <li>Barriers to entry / expansion</li>
+    <li>Switching costs / consumer inertia</li>
+    <li>Information asymmetry</li>
+    <li>Behavioural biases preventing effective shopping</li>
+    <li>Vertical relationships restricting access</li>
+  </ul>
+
+  <h4>Counterfactual</h4>
+  <p>The market as it could function with these features mitigated. Often illustrated via comparators (international, neighbouring sectors).</p>
+
+  <h4>Methods</h4>
+  <p>Profitability analysis (Modern Equivalent Asset valuation); margin analysis; price-cost tests; switching data; consumer surveys; market-share dynamics; international benchmarks.</p>
+
+  <h4>Remedies</h4>
+  <p>Structural (most powerful — see UK retail banking remedies); behavioural; informational (open banking, comparison tools); price controls (rare).</p>
+
+  <h4>Caveats</h4>
+  <p>Profitability test methodology disputes; remedy proportionality; unintended consequences of structural intervention.</p>
+
+  <div class="saythis">"A market investigation differs from a Chapter I or merger case in that it does not require pinpointing specific anti-competitive conduct — it asks whether features of the market prevent effective competition. The analytical workplan needs three layers: a profitability and margin diagnosis; a consumer-side switching and information diagnosis; and a structural-features diagnosis. Each layer informs a different family of remedies."</div>
+</div>
+
+<!-- ARCH D -->
+<div class="arch" id="a-subsidy">
+  <h3>D · Subsidy Control referral <small>· Subsidy Control Act 2022 + CMA SAU</small></h3>
+
+  <h4>Recognise from prompt</h4>
+  <p>Mentions: subsidy, grant, public authority, CMA SAU, Schedule 1 principles, CMO test, distortion, market failure.</p>
+
+  <h4>Market failure</h4>
+  <p>The justification for intervention itself — is there a market failure (under-investment in public good, externality, equity)? Without market failure, the subsidy fails Schedule 1.</p>
+
+  <h4>Theory of harm</h4>
+  <ul>
+    <li>Distortion of competition with non-recipient firms</li>
+    <li>Investment displacement (entry / exit / location choices)</li>
+    <li>Cross-subsidisation into adjacent markets</li>
+    <li>Equity vs efficiency trade-off</li>
+  </ul>
+
+  <h4>Counterfactual</h4>
+  <p>Two-part assessment:
+    <ol>
+      <li><strong>CMO test</strong> — would a hypothetical Commercial Market Operator have provided the same financing on the same terms? If yes, no subsidy.</li>
+      <li><strong>Schedule 1 principles</strong> — the seven principles assessed sequentially. Additionality / proportionality / minimum-amount are the three most-litigated.</li>
+    </ol>
+  </p>
+
+  <h4>Methods</h4>
+  <p>CMO benchmarking via private-investor comparables; counterfactual investment appraisal; distortion modelling via dynamic responses (entry, displacement).</p>
+
+  <h4>Remedies</h4>
+  <p>Re-design, time-limit, transparency, claw-back clauses if not retained.</p>
+
+  <h4>Caveats</h4>
+  <p>CMO test heavily fact-dependent; market-failure articulation often weak in submitting authority's materials (Schellion's published critique); dynamic distortion modelling fragile.</p>
+
+  <div class="saythis">"Under the Subsidy Control Act 2022 a defensible referral works in two stages. First, the CMO test: would a commercial operator have done this on these terms? Second, if subsidy is established, the Schedule 1 principles — and the CMA SAU's August 2025 guidance has raised the bar on articulating market failure and the explicit link between policy objective and economic mechanism. The economic reasoning has to be in the submission from day one, not bolted on at the end."</div>
+</div>
+
+<!-- ARCH E -->
+<div class="arch" id="a-regapp">
+  <h3>E · Regulatory appeal — price control / WACC <small>· CMA reference of regulator's final determination</small></h3>
+
+  <h4>Recognise from prompt</h4>
+  <p>Mentions: Ofwat / Ofgem / CAA / Ofcom; final determination; CMA reference; WACC / cost of equity; financeability; RAB; building blocks; totex; ODIs.</p>
+
+  <h4>Market failure</h4>
+  <p>Natural monopoly. Building-blocks regulation substitutes for competitive market discipline.</p>
+
+  <h4>Theory of harm (appellant company-side)</h4>
+  <ul>
+    <li>WACC under-set — return below cost of capital, capital strike</li>
+    <li>Totex challenge over-aggressive — frontier shift unrealistic</li>
+    <li>Real Price Effects under-recognised</li>
+    <li>Sector-specific risks not reflected (Schellion's geopol-risk piece)</li>
+    <li>Financeability cross-check failed</li>
+  </ul>
+
+  <h4>Counterfactual</h4>
+  <p>The allowed revenue / WACC that would have resulted from a different parameter choice within the regulator's stated framework, or a different framework.</p>
+
+  <h4>Methods</h4>
+  <p>WACC build-up — Rf, TMR, asset beta, gearing, debt cost. Sensitivity testing each parameter. Financeability ratios (AICR, FFO / Net debt, gearing) under notional vs actual structure. Comparator regulatory determinations.</p>
+
+  <h4>Remedies</h4>
+  <p>CMA can confirm, modify or reject the regulator's determination. Parameter changes flow through the building-blocks model into allowed revenue.</p>
+
+  <h4>Caveats</h4>
+  <p>The CMA is on the regulator's framework, not the appellant's — radical reframings rarely succeed. Parameter movements at 10–30bp are the realistic battleground.</p>
+
+  <div class="saythis">"In a price-control appeal the question is rarely whether the regulator's framework is right — it's whether the parameter choices within the framework are defensible. I would build the WACC from the regulator's own stated methodology, sensitivity-test each parameter, and identify two or three where the appellant has the strongest case. Schellion's published view on geopolitical risk maps onto this directly — the case for reflecting heightened risk runs through honest Rf and ERP, sector beta where clearly systematic, and cash-flow mechanisms for idiosyncratic UK policy risk."</div>
+</div>
+
+<!-- ARCH F -->
+<div class="arch" id="a-consumer">
+  <h3>F · Consumer protection / DMCC <small>· Unfair commercial practices · pricing transparency</small></h3>
+
+  <h4>Recognise from prompt</h4>
+  <p>Mentions: DMCC, reference prices, drip pricing, urgency / scarcity messaging, fake reviews, dark patterns, vulnerable consumers, customer journey.</p>
+
+  <h4>Market failure</h4>
+  <p>Information asymmetry; behavioural biases; vulnerable consumer protection. Standard "average consumer" test moves down to "average vulnerable consumer" when targeted.</p>
+
+  <h4>Theory of harm</h4>
+  <ul>
+    <li>Misleading reference prices (savings claims not substantiated)</li>
+    <li>Drip pricing (mandatory fees hidden until late in journey)</li>
+    <li>Fake urgency (countdown timers / "only 2 left" not tied to inventory)</li>
+    <li>Default options not in consumer interest</li>
+    <li>Fake or curated reviews</li>
+  </ul>
+
+  <h4>Counterfactual</h4>
+  <p>Customer behaviour under fair / transparent presentation. Choice-experiment methodology.</p>
+
+  <h4>Methods</h4>
+  <p>Customer-journey analysis; consumer survey / understanding testing; substantiation of savings (historical price data); substantiation of scarcity (inventory data); behavioural-economics framing.</p>
+
+  <h4>Remedies</h4>
+  <p>DMCC penalties up to <strong>10% of global turnover</strong> (direct CMA enforcement, no court route). Consumer redress orders. Compliance commitments. Director disqualification for repeated breaches.</p>
+
+  <h4>Caveats</h4>
+  <p>Customer-journey analysis is labour-intensive; survey design has to avoid leading questions; substantiation requires longitudinal price/inventory data the firm may not have retained.</p>
+
+  <div class="saythis">"Under the DMCC the question shifts from 'is the price too high' to 'is the pricing structure, the surrounding claims and the customer journey transparent, substantiated and fair'. The economist's role is to test substantiation: is the reference price a price at which meaningful volume actually sold? Is the urgency claim tied to actual inventory? Is the journey designed to support informed decisions? Schellion's published S&amp;W work sets out this evidence base directly."</div>
+</div>
+
+<!-- ARCH G -->
+<div class="arch" id="a-policy">
+  <h3>G · Policy intervention appraisal <small>· Green Book / Magenta Book / Aqua Book</small></h3>
+
+  <h4>Recognise from prompt</h4>
+  <p>Mentions: government department, intervention, evaluation, ex-ante appraisal, ex-post evaluation, value for money, distributional analysis, NPV.</p>
+
+  <h4>Market failure</h4>
+  <p>Treasury appraisal is built on identifying the specific market failure first. If you cannot articulate the market failure, the appraisal has no foundation.</p>
+
+  <h4>Theory of harm (or benefit)</h4>
+  <p>Either: where is intervention needed? (under-investment, equity, externality) Or: what specifically did the intervention change?</p>
+
+  <h4>Counterfactual</h4>
+  <p>The "do nothing" case is mandatory. Multiple options compared. Distributional and NPV-weighted.</p>
+
+  <h4>Methods</h4>
+  <p>Green Book (ex-ante): 5-case model, NPV, STPR 3.5% discount, optimism bias, distributional weighting. Magenta Book (ex-post): theory of change, contribution analysis, RCT or quasi-experimental design (DiD / IV / RDD). Aqua Book: model QA.</p>
+
+  <h4>Remedies / recommendations</h4>
+  <p>Continue, modify, scale, sunset, replicate. Distributional adjustments. Optimism-bias re-calibration.</p>
+
+  <h4>Caveats</h4>
+  <p>Counterfactual identification; optimism-bias accuracy; long-term benefits realisation; equity vs efficiency.</p>
+
+  <div class="saythis">"A defensible policy appraisal starts from a clearly articulated market failure, applies the Treasury's 5-case model and STPR discounting, and is explicit about counterfactual and distributional assumptions. For ex-post evaluation under the Magenta Book the choice is between RCT where possible and quasi-experimental designs — DiD, IV, RDD, synthetic control — where it isn't. My preference is to triangulate two designs and to write the assumption that would falsify the result in advance."</div>
+</div>
+
+<!-- 4 -->
+<h2 id="toolkit"><span class="num">CH 4</span>Cross-cutting analytical toolkit</h2>
+
+<table>
+  <tr><th>Method</th><th>Identification claim</th><th>Killed by</th><th>Where it lands</th></tr>
+  <tr><td><strong>DiD</strong></td><td>Treated and control follow parallel trends absent treatment.</td><td>Pre-trends diverge; selection.</td><td>Damages, ex-post evaluation, policy.</td></tr>
+  <tr><td><strong>IV</strong></td><td>Instrument affects outcome only through endogenous regressor.</td><td>Weak instrument; exclusion violation.</td><td>Demand estimation, endogenous price.</td></tr>
+  <tr><td><strong>RDD</strong></td><td>Units just above/below threshold are otherwise similar.</td><td>Manipulation at cutoff; bandwidth.</td><td>Eligibility-based interventions.</td></tr>
+  <tr><td><strong>Synthetic control</strong></td><td>Weighted comparator from donor pool matches treated unit pre-treatment.</td><td>Bad pre-fit; placebo fails.</td><td>Single-unit interventions; single-region policy.</td></tr>
+  <tr><td><strong>BLP / structural demand</strong></td><td>Behavioural model identifies preference parameters from market shares + prices.</td><td>Functional-form choices; identification fragility.</td><td>Merger simulation; but-for pricing.</td></tr>
+  <tr><td><strong>Hedonic regression</strong></td><td>Price decomposes into observable product attributes.</td><td>Omitted attributes.</td><td>Damages with product mix change.</td></tr>
+  <tr><td><strong>Profitability analysis</strong></td><td>MEA-based replacement cost yields a competitive return benchmark.</td><td>MEA valuation choices; allocation across products.</td><td>Market investigations.</td></tr>
+  <tr><td><strong>Customer survey</strong></td><td>Stated preference / understanding reveals counterfactual behaviour.</td><td>Question design; sampling; vulnerable groups.</td><td>Consumer protection; market investigations.</td></tr>
+</table>
+
+<p><strong>Rule of thumb:</strong> two methods always beat one. Single-method estimates die in cross-examination.</p>
+
+<!-- 5 -->
+<h2 id="evidence"><span class="num">CH 5</span>Evidence hierarchy</h2>
+
+<ol>
+  <li><strong>Contractual / documentary</strong> — dealer agreements, internal emails, board minutes. Wins object infringements.</li>
+  <li><strong>Pricing data</strong> — daily / weekly, list and transaction, by channel.</li>
+  <li><strong>Volume / sales data</strong> — for aggregation and pass-on.</li>
+  <li><strong>Comparator data</strong> — international, neighbouring product, neighbouring period.</li>
+  <li><strong>Consumer survey</strong> — primary research where journey or understanding matters.</li>
+  <li><strong>Complaint data</strong> — Citizens Advice, ombudsman, trade body, firm CRM.</li>
+  <li><strong>Behavioural / journey analytics</strong> — click-stream, A/B test results.</li>
+  <li><strong>Expert engineering / industry evidence</strong> — bottom-up cost / quality / capacity.</li>
+</ol>
+
+<!-- 6 -->
+<h2 id="time"><span class="num">CH 6</span>Time management — 60 minutes</h2>
+
+<table>
+  <tr><th>Minutes</th><th>Phase</th><th>Output</th></tr>
+  <tr><td>0–5</td><td>Frame</td><td>Restate the question. Identify the archetype. Set out three sub-questions you will answer.</td></tr>
+  <tr><td>5–15</td><td>Market failure + theory of harm</td><td>Articulate the failure in one sentence. Enumerate theories. Prioritise.</td></tr>
+  <tr><td>15–25</td><td>Counterfactual + methods</td><td>Construct the counterfactual concretely. Triangulate two methods. One worked example if you have time.</td></tr>
+  <tr><td>25–40</td><td>Evidence + analysis</td><td>What's available. What's missing. What would change the answer.</td></tr>
+  <tr><td>40–50</td><td>Remedies + recommendations</td><td>Proportionate, evidenced. Sequence them.</td></tr>
+  <tr><td>50–58</td><td>Caveats + "what would update my view"</td><td>The honest close. Most important section after the frame.</td></tr>
+  <tr><td>58–60</td><td>Re-read</td><td>Cut filler. Tighten the opening and closing paragraphs only.</td></tr>
+</table>
+
+<!-- 7 -->
+<h2 id="examiners"><span class="num">CH 7</span>What the examiners are looking for</h2>
+
+<ul>
+  <li><strong>Structure before content.</strong> A clearly-framed weaker answer beats a brilliant unstructured answer.</li>
+  <li><strong>Triangulation.</strong> Two methods, not one. Always.</li>
+  <li><strong>Intellectual honesty.</strong> "I don't know but I would test X" is signal, not weakness.</li>
+  <li><strong>Knowledge of the regulator's framework.</strong> Cite the CMA / DMCC / Treasury appraisal language. Use the right vocabulary.</li>
+  <li><strong>The two-clause sentence.</strong> "Yes, but" — never just yes. "On balance X, although Y" — never one-sided. That cadence is the audible signature of a senior economist.</li>
+  <li><strong>Bounding the claim.</strong> "Subject to data limitations" / "without doing the modelling I can't be certain" / "my preferred direction is X". Never over-claim.</li>
+  <li><strong>Recommendation that survives cross-examination.</strong> Not "do X" but "do X provided Y, evidenced by Z, with the following sensitivity".</li>
+</ul>
+
+<!-- 8 -->
+<h2 id="traps"><span class="num">CH 8</span>Common traps</h2>
+
+<ul>
+  <li><strong>Diving into methodology before identifying the question.</strong> The single most common failure mode.</li>
+  <li><strong>Confusing market definition with market structure.</strong> Define the market <em>first</em>; then assess competitive conditions.</li>
+  <li><strong>Ignoring the counterfactual.</strong> "Prices rose X%" means nothing without "compared to what".</li>
+  <li><strong>Over-quantifying with bad data.</strong> Better to qualitatively bound a parameter than to assert a precise number you cannot defend.</li>
+  <li><strong>Forgetting the regulator's framework.</strong> Especially in price-control appeals — the CMA reviews on the regulator's framework, not yours.</li>
+  <li><strong>Pretending to know a case.</strong> Citing Interchange or Trucks vaguely is worse than not citing.</li>
+  <li><strong>Saying "I think" three times in two minutes.</strong> Replace with "my view, subject to evidence, would be…".</li>
+  <li><strong>Skipping the caveats.</strong> The closing two paragraphs are read first by examiners.</li>
+</ul>
+
+<!-- 9 -->
+<h2 id="preflight"><span class="num">CH 9</span>Pre-flight checklist</h2>
+
+<div class="pre">
+  <h4>Before you start writing (5 minutes max)</h4>
+  <ol>
+    <li>Identify the archetype (A–G).</li>
+    <li>Identify the answer-recipient (who is the client? a regulator? a court? a board?).</li>
+    <li>Identify the role you are playing (advisor / appointed expert / counterfactual analyst).</li>
+    <li>Identify the data the prompt gives you and the data it does not.</li>
+    <li>Note the explicit sub-questions if any.</li>
+    <li>Set the framing sentence aloud in your head before typing.</li>
+  </ol>
+</div>
+
+<div class="pre">
+  <h4>Before you submit (final 2 minutes)</h4>
+  <ol>
+    <li>Does the opening paragraph answer the question?</li>
+    <li>Is the architecture (market failure → harm → counterfactual → evidence → methods → remedies → caveats) visible?</li>
+    <li>Are there two methods, not one?</li>
+    <li>Is there a "what would change my view" sentence?</li>
+    <li>Are there any unsupported numerical claims? Bound or remove.</li>
+    <li>Is the tone advisory, not advocacy?</li>
+  </ol>
+</div>
+
+<hr class="thin">
+<p class="small">Companion docs: <a href="SW_Case_Exam_Prep_Mobility_Scooters.html">mobility-scooters case prep</a> · <a href="SW_Interview_Teaching_Plan.html">teaching plan</a> · <a href="SW_Learning_Refresher.html">refresher</a> · <a href="SW_Idiot_Guide_AD_Level.html">idiot guide</a> · <a href="SW_Partner_Perception_Brief.html">partner perception brief</a>. Use this general doc when the actual case prompt diverges from the mobility-scooters hint.</p>
+
+</div>
+</body>
+</html>

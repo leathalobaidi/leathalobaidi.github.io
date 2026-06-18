@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case-Exam Prep — Mobility Scooters / Disability Aids (CMA + DMCC)</title>
+<style>
+  :root {
+    --bg: #fffdf8;
+    --ink: #1a1a1a;
+    --mute: #5a5a5a;
+    --line: #d8d3c4;
+    --accent: #8c1d40;
+    --accent2: #b54300;
+    --accent3: #1f5a3d;
+    --hi: #fdf1e3;
+    --hi2: #fff6df;
+    --code: #f5efe2;
+    --warn: #fff0f0;
+    --warnline: #d18a8a;
+    --good: #eef7ee;
+  }
+  * { box-sizing: border-box; }
+  html, body { background: var(--bg); color: var(--ink); margin: 0; padding: 0;
+    font-family: "Iowan Old Style","Charter","Source Serif Pro",Georgia,serif;
+    font-size: 17px; line-height: 1.58;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 52px 36px 96px; }
+  header.h1 { border-bottom: 5px double var(--ink); padding-bottom: 20px; margin-bottom: 28px; }
+  header.h1 .kicker { font-family: ui-monospace,SFMono-Regular,Menlo,monospace; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+  header.h1 h1 { font-size: 36px; line-height: 1.1; margin: 6px 0 8px; letter-spacing: -.01em; }
+  header.h1 .sub { color: var(--mute); font-style: italic; font-size: 17px; }
+  h2 { font-size: 23px; margin: 46px 0 12px; padding: 10px 0 6px; border-top: 4px solid var(--ink); border-bottom: 1px solid var(--line); }
+  h2 .num { font-family: ui-monospace,Menlo,monospace; font-size: 13px; color: var(--accent); margin-right: 10px; }
+  h3 { font-size: 17px; margin: 22px 0 6px; font-family: ui-monospace,Menlo,monospace; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+  h4 { font-size: 15px; margin: 14px 0 4px; }
+  ul, ol { padding-left: 22px; margin: 6px 0 12px; }
+  li { margin: 4px 0; }
+  p { margin: 9px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14.5px; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; vertical-align: top; text-align: left; }
+  th { background: #efe8d8; font-weight: 700; }
+  .card { border: 1px solid var(--line); padding: 14px 18px; border-radius: 6px; margin: 12px 0; background: #fcfaf4; }
+  .card h4 { margin-top: 0; color: var(--accent); }
+  .ex { background: var(--good); border: 1px solid #b8d4c3; padding: 14px 18px; border-radius: 4px; margin: 14px 0; }
+  .ex h4 { margin-top: 0; color: var(--accent3); }
+  .vocab { background: var(--hi); border-left: 4px solid var(--accent2); padding: 12px 16px; margin: 14px 0; border-radius: 0 4px 4px 0; }
+  .vocab h4 { color: var(--accent2); margin: 0 0 6px; }
+  .saythis { background: #eef4fa; border-left: 4px solid #2a6bb0; padding: 10px 14px; margin: 12px 0; font-family: inherit; }
+  .saythis::before { content: "Say this →"; font-family: ui-monospace,Menlo,monospace; font-size: 11px; letter-spacing: .08em; color: #2a6bb0; display: block; margin-bottom: 4px; }
+  .warn { background: var(--warn); border: 1px solid var(--warnline); padding: 12px 16px; border-radius: 4px; margin: 14px 0; }
+  blockquote { border-left: 3px solid var(--accent); margin: 12px 0; padding: 6px 14px; color: #333; background: var(--hi2); font-style: italic; }
+  .pill { display: inline-block; font-family: ui-monospace,Menlo,monospace; font-size: 11px; letter-spacing: .06em; padding: 2px 8px; border-radius: 999px; margin: 0 4px 4px 0; border: 1px solid var(--accent); color: var(--accent); }
+  .toc { background: #fafafa; border: 1px solid var(--line); padding: 14px 20px; border-radius: 4px; margin: 0 0 32px; font-size: 15px; }
+  .toc ol { columns: 2; column-gap: 30px; margin: 0; padding-left: 18px; }
+  .toc a { color: var(--ink); text-decoration: none; }
+  .toc a:hover { color: var(--accent); }
+  hr.thin { border: none; border-top: 1px solid var(--line); margin: 28px 0; }
+  .small { font-size: 13px; color: var(--mute); }
+  .formula { background: var(--code); border-left: 3px solid var(--accent3); font-family: ui-monospace,Menlo,monospace; font-size: 13.5px; padding: 8px 14px; margin: 8px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="h1">
+  <div class="kicker">Case-Exam Prep · Stage 2 take-home · Confidential prep doc · 18 Jun 2026</div>
+  <h1>Mobility scooters &amp; the disability-aids market</h1>
+  <div class="sub">The case the recruiter hinted at — a mixed competition + consumer-protection problem under Chapter I CA98 and the DMCC 2024</div>
+</header>
+
+<div class="warn">
+  <strong>Source of the hint.</strong> Kas Rothwell (Michael Page) said in the recruiter prep call that he would <em>"probably have some hints"</em> of the Stage 2 case-study topic. He has since signalled mobility scooters / disability aids / DMCC consumer-protection territory. <strong>Treat as likely but not certain.</strong> If the actual prompt diverges, use the General Case-Exam Prep doc and the Idiot Guide instead.
+</div>
+
+<div class="toc">
+  <strong>Contents — twelve sections</strong>
+  <ol>
+    <li><a href="#why">Why this topic — the 12-year story</a></li>
+    <li><a href="#law">The two laws on the table — Chapter I CA98 + DMCC 2024</a></li>
+    <li><a href="#prompts">The four most likely case prompts</a></li>
+    <li><a href="#schellion">The Schellion angle — her own DMCC piece</a></li>
+    <li><a href="#harm">Seven testable theories of harm</a></li>
+    <li><a href="#cf">Constructing the counterfactual</a></li>
+    <li><a href="#methods">Methods toolkit for this case</a></li>
+    <li><a href="#evidence">Evidence that wins</a></li>
+    <li><a href="#vulnerable">The vulnerable-consumer overlay</a></li>
+    <li><a href="#remedies">Remedies and penalties</a></li>
+    <li><a href="#answer">Mock 60-minute answer structure</a></li>
+    <li><a href="#killer">Killer phrases to deploy</a></li>
+  </ol>
+</div>
+
+<!-- 1 -->
+<h2 id="why"><span class="num">CH 1</span>Why this topic — the 12-year mobility-aids story</h2>
+
+<p>UK mobility scooters and disability aids have produced <strong>three Chapter I infringement findings in a decade</strong>, all on the same pattern: manufacturers restricting online retailers from advertising or showing prices online. The CMA has built a case-law trail. This is why the topic is alive in 2026.</p>
+
+<table>
+  <tr><th>Year</th><th>Case</th><th>What happened</th></tr>
+  <tr><td>2012</td><td>Investigation opened</td><td>OFT opens probe into the mobility aids sector under Chapter I CA98 (case ref CE/9578-12).</td></tr>
+  <tr><td>March 2013</td><td>Statement of objections to Roma</td><td>OFT issues SO against Roma Medical Aids and certain retailers.</td></tr>
+  <tr><td>August 2013</td><td><strong>Roma decision</strong></td><td>OFT finds Roma and 8 named online retailers (Careco, Discount Mobility Plus, Discount Mobility Shop, GBL Wheelchair, Mobility Independence, MT Mobility, Protec Mobility) <strong>infringed Chapter I</strong> by prohibiting online sales and online advertising of any prices for Roma-branded scooters between July 2011 and April 2012.</td></tr>
+  <tr><td>March 2014</td><td><strong>Pride decision</strong></td><td>OFT issues infringement decision to Pride Mobility Products and certain retailers — same conduct, RPM via online advertising bans.</td></tr>
+  <tr><td>October 2014</td><td>Pride decision published</td><td>Non-confidential version published. Case CE/9578-12 closed.</td></tr>
+  <tr><td>March 2013</td><td>(historical) Warning to TGA</td><td>The OFT had warned TGA in March 2013 — alongside the Roma SO — that this kind of conduct is unlawful.</td></tr>
+  <tr><td>April 2017</td><td>CMA opens TGA probe</td><td>CMA investigates TGA Mobility Limited under Chapter I.</td></tr>
+  <tr><td>August 2017</td><td><strong>TGA decision</strong></td><td>CMA finds TGA entered into agreements with 3 online retailers preventing them from advertising prices or below-RRP prices online. Because the combined turnover was below £20m, TGA had <em>limited immunity from penalty</em>. <strong>CMA withdrew that immunity</strong> because TGA had been warned in 2013 and ignored it. Future repeats expose TGA to up to <strong>10% of global turnover</strong>.</td></tr>
+  <tr><td>October 2017</td><td>TGA case closed</td><td>Closed on CA98 administrative-priorities outcome.</td></tr>
+</table>
+
+<p><strong>The pattern across all three cases is identical:</strong> a mobility-aid manufacturer imposes restrictions on its online retailers preventing them from showing online prices below a set level (or showing any prices at all). The economic theory is straightforward — this is <strong>online resale price maintenance (RPM)</strong>. It deprives consumers of price competition exactly where they comparison-shop most easily.</p>
+
+<div class="saythis">
+"The mobility-aids sector has produced three consecutive Chapter I infringement decisions over a decade — Roma in 2013, Pride in 2014, TGA in 2017 — all on the same theory: online RPM through advertising bans. The CMA has built a case-law trail, and the DMCC 2024 now sits on top of it for the consumer-protection side. The case study almost certainly tests one of those two doctrines, or both."
+</div>
+
+<!-- 2 -->
+<h2 id="law"><span class="num">CH 2</span>The two laws on the table</h2>
+
+<h3>A · Chapter I of the Competition Act 1998</h3>
+<p>The UK's domestic version of Article 101 TFEU. Prohibits agreements between undertakings that have the object or effect of preventing, restricting or distorting competition within the UK. Resale price maintenance — including online advertising restrictions that achieve the same effect — is a <strong>hardcore restriction by object</strong>. No effects analysis is required to establish infringement; the agreement is presumptively anti-competitive.</p>
+
+<p><strong>Penalties:</strong> up to <strong>10% of worldwide turnover</strong> of the undertaking. Director disqualification possible. Limited immunity exists for small agreements (combined party turnover ≤£20m), but that immunity can be withdrawn — as in the TGA case.</p>
+
+<h3>B · The Digital Markets, Competition and Consumers Act 2024 (DMCC)</h3>
+<p>Came into force in 2024–25 in tranches. <strong>This is the major regulatory shift on the consumer-protection side, and it is Schellion's published topic.</strong> Three things the DMCC does:</p>
+<ol>
+  <li><strong>Gives the CMA direct enforcement powers on consumer protection.</strong> Previously the CMA had to go to court to enforce consumer law. Now it can impose penalties up to <strong>10% of global turnover</strong> for breaches of unfair commercial practices — same level as competition fines.</li>
+  <li><strong>Codifies prohibited practices.</strong> Drip pricing, fake urgency, misleading reference prices, dynamic pricing without disclosure, fake reviews, undisclosed defaults — all explicitly within scope.</li>
+  <li><strong>Creates a new digital-markets regime</strong> targeting firms with Strategic Market Status, with conduct requirements set firm-by-firm.</li>
+</ol>
+
+<p>The CMA has since published <strong>CMA207 "Unfair Commercial Practices"</strong> guidance (latest update 18 Nov 2025) and <strong>CMA209 price transparency</strong> guidance. Vulnerable consumers feature heavily.</p>
+
+<h3>Why both laws matter together for mobility aids</h3>
+<p>Mobility scooters trigger <em>both</em> regimes in one case:</p>
+<ul>
+  <li><strong>Chapter I:</strong> the vertical RPM-via-advertising-ban pattern (still alive given the recurrence)</li>
+  <li><strong>DMCC:</strong> misleading discount claims, fake urgency ("only 2 left at this price!"), reference-price manipulation, high-pressure sales journeys, drip pricing of finance / delivery / warranty</li>
+</ul>
+
+<div class="vocab">
+  <h4>What they actually mean</h4>
+  <ul>
+    <li><strong>Restriction by object</strong> — agreement type that's anti-competitive on its face; no need to prove anti-competitive effects.</li>
+    <li><strong>Hardcore restriction</strong> — RPM, market sharing, output limitation, bid rigging. Not block-exempt.</li>
+    <li><strong>Online RPM</strong> — restrictions on the prices retailers can advertise or sell at online; functionally equivalent to traditional RPM.</li>
+    <li><strong>Limited immunity from penalty</strong> — small-agreements exception (≤£20m combined turnover). Available unless the CMA withdraws it.</li>
+    <li><strong>Drip pricing</strong> — only the lowest possible price is shown up front; mandatory fees added later in the journey.</li>
+    <li><strong>Reference price</strong> — the "was £" higher price shown alongside the "now £" price to imply a discount.</li>
+    <li><strong>Dark pattern</strong> — UX design choice that nudges consumers toward outcomes against their interest. Now an explicit DMCC target.</li>
+  </ul>
+</div>
+
+<!-- 3 -->
+<h2 id="prompts"><span class="num">CH 3</span>The four most likely case prompts</h2>
+
+<p>Stage 2 case studies are typically a single one-page prompt with 2–4 sub-questions, and they want a structured answer in 60 minutes. Based on the topic hint, these are the four likely shapes.</p>
+
+<div class="card">
+  <h4>Prompt A — Manufacturer-side advice</h4>
+  <blockquote>"A mobility-aids manufacturer has historically required its online retailers not to advertise prices below £X. It is now considering a 'minimum advertised price' policy across its digital channel. Advise on the competition and consumer-protection risks, and what evidence would be needed to defend the policy."</blockquote>
+  <p><strong>What this is testing:</strong> Do you spot the Roma/Pride/TGA pattern? Can you distinguish lawful unilateral conduct from unlawful agreements? Can you frame the role of an economist in defending a policy (counterfactual, market structure, theory of harm)?</p>
+</div>
+
+<div class="card">
+  <h4>Prompt B — Retailer-side damages claim</h4>
+  <blockquote>"An online retailer believes its sales were suppressed by a manufacturer's RPM during the period 2018–2024. Set out how you would quantify damages, what evidence you would need, and what defences the manufacturer might raise."</blockquote>
+  <p><strong>What this is testing:</strong> Damages methodology — but-for world, comparator method, DiD, pass-on. Cross-examination preparedness.</p>
+</div>
+
+<div class="card">
+  <h4>Prompt C — CMA-side market study scoping</h4>
+  <blockquote>"The CMA is considering opening a market study into the UK disability-aids sector following sustained consumer-protection complaints. Advise on the appropriate scope, theories of harm, and analytical workplan."</blockquote>
+  <p><strong>What this is testing:</strong> Can you scope a market study? Do you know the difference between a competition inquiry and a consumer-protection inquiry? Vulnerable-consumer overlay?</p>
+</div>
+
+<div class="card">
+  <h4>Prompt D — DMCC pricing-practice readiness</h4>
+  <blockquote>"A retailer of mobility scooters operates an online store with extensive 'was £X / now £Y' discount claims and 'limited time' urgency messaging. Assess DMCC compliance risk and recommend an evidence-based programme of remediation."</blockquote>
+  <p><strong>What this is testing:</strong> Direct alignment with Schellion's own published piece. Reference prices, drip pricing, urgency, vulnerable consumers, customer-journey analysis.</p>
+</div>
+
+<p>The strongest answer to any of these prompts uses <em>the same architecture</em>: market failure → theory of harm → counterfactual → evidence → methods → remedies → caveats. The next eight chapters build that architecture.</p>
+
+<!-- 4 -->
+<h2 id="schellion"><span class="num">CH 4</span>The Schellion angle — her own DMCC piece</h2>
+
+<p>Schellion authored S&amp;W's flagship piece "<em>Pricing practices: the DMCC, Oasis, Emma Sleep and the CMA</em>". You should read it before the interview and quote a phrase back during the case discussion. Three things to internalise from it.</p>
+
+<h3>Her four pricing-practice risk categories</h3>
+<ol>
+  <li><strong>Dynamic pricing</strong> — Oasis ticket sale; prices changing during the consumer's purchase journey.</li>
+  <li><strong>Drip pricing</strong> — incremental fees revealed after engagement.</li>
+  <li><strong>Discount claims</strong> — Emma Sleep / "was £X" reference prices.</li>
+  <li><strong>Urgency messaging</strong> — "only 2 left" / "ends today" / "30 people viewing now".</li>
+</ol>
+
+<h3>The S&amp;W economist's role (her words, paraphrased)</h3>
+<blockquote>"We help clients assess whether pricing structures are efficiency-enhancing or likely to create consumer detriment; whether reference prices are meaningful; whether price differentials reflect genuine differences in products or services; and whether disclosures are likely to support informed decision-making in practice."</blockquote>
+
+<h3>The economist's evidence base (S&amp;W's framing)</h3>
+<ul>
+  <li>Customer-journey analysis — heat-mapping, choice architecture</li>
+  <li>Consumer understanding testing — survey-based</li>
+  <li>Substantiation of savings claims — historical price data</li>
+  <li>Substantiation of scarcity claims — inventory data</li>
+  <li>Alternative pricing-design counterfactuals</li>
+</ul>
+
+<div class="saythis">
+"Schellion's recent S&amp;W piece on the DMCC frames the economist's role precisely — sitting at the boundary between pricing strategy, consumer behaviour, competition issues and evidence. The mobility-aids sector is the ideal test case because it lights up both regimes simultaneously: Chapter I on the RPM side, DMCC on the discount-and-urgency side."
+</div>
+
+<!-- 5 -->
+<h2 id="harm"><span class="num">CH 5</span>Seven testable theories of harm</h2>
+
+<p>A senior economist's first move in any case is to <em>enumerate the theories of harm</em>, distinguish them, and prioritise. Here are the seven that any mobility-aids case will sit on.</p>
+
+<table>
+  <tr><th>#</th><th>Theory of harm</th><th>Regime</th><th>Evidence anchor</th></tr>
+  <tr><td>1</td><td><strong>Online RPM via advertising ban.</strong> Manufacturer restricts retailers from advertising below set price; consumers can't price-comparison-shop.</td><td>Chapter I CA98</td><td>Contracts, dealer-manual clauses, internal emails. Object infringement so effects are presumed.</td></tr>
+  <tr><td>2</td><td><strong>Online sales ban.</strong> Retailer cannot sell online at all for this brand. Cuts off the competitive channel entirely.</td><td>Chapter I CA98</td><td>Same — dealer agreements.</td></tr>
+  <tr><td>3</td><td><strong>Misleading reference prices.</strong> "Was £1,500, now £899" where £1,500 was never a genuine selling price for any meaningful period.</td><td>DMCC 2024</td><td>Historical price data; sales volume at the reference price.</td></tr>
+  <tr><td>4</td><td><strong>Fake urgency / scarcity.</strong> "Only 2 left at this price" or countdown timers not tied to actual inventory or pricing decisions.</td><td>DMCC 2024</td><td>Inventory data; price-engine logs.</td></tr>
+  <tr><td>5</td><td><strong>Drip pricing.</strong> Headline price excludes mandatory items (delivery, assembly, mandatory warranty, finance set-up).</td><td>DMCC 2024</td><td>Customer-journey analysis; price progression.</td></tr>
+  <tr><td>6</td><td><strong>High-pressure home-sales tactics.</strong> Door-to-door / in-home demonstration with sales-closing pressure, exploiting consumer's reduced ability to walk away.</td><td>DMCC 2024 + general consumer law</td><td>Consumer surveys; complaints data; mystery-shopping.</td></tr>
+  <tr><td>7</td><td><strong>Aftersales / repair failure.</strong> Product quality, warranty refusal, repair delays, lifetime cost much higher than headline.</td><td>Sale of Goods / Consumer Rights Act</td><td>Complaints data; repair-record analysis; expected-life modelling.</td></tr>
+</table>
+
+<p>An AD-level answer enumerates these, then says explicitly which are <em>in scope</em> for the question and which are not.</p>
+
+<!-- 6 -->
+<h2 id="cf"><span class="num">CH 6</span>Constructing the counterfactual</h2>
+
+<p>The counterfactual is where the case is won or lost. Three counterfactuals to have at your fingertips.</p>
+
+<h3>CF-1: Pre-restriction prices in the same brand</h3>
+<p>If the restriction came in at a known date (e.g. July 2011 for Roma), use pre-restriction prices in the same brand as the but-for benchmark. The Roma case used exactly this window (July 2011–April 2012 vs immediately before).</p>
+
+<h3>CF-2: Comparator products (DiD)</h3>
+<p>Use a comparator mobility product not subject to the restriction (e.g. a smaller scooter line, or a brand not subject to RPM). Test parallel trends pre-restriction.</p>
+<div class="formula">DiD: Δ(restricted brand) − Δ(comparator brand) = overcharge attributable to the restriction</div>
+
+<h3>CF-3: Cross-channel</h3>
+<p>For online-specific restrictions, compare online prices to offline prices in the same brand over time. If the online channel is artificially restricted, online prices should fail to fall (or fall slower) than offline.</p>
+
+<div class="ex">
+  <h4>Worked example — Roma-style DiD</h4>
+  <p>Imagine you are quantifying overcharge from an online advertising ban that lasted nine months.</p>
+  <table>
+    <tr><th></th><th>Pre-ban (avg online list)</th><th>During-ban (avg online list)</th><th>Δ</th></tr>
+    <tr><td>Restricted brand (Roma scooters)</td><td>£1,200</td><td>£1,350</td><td>+£150</td></tr>
+    <tr><td>Comparator brand (un-restricted)</td><td>£1,100</td><td>£1,180</td><td>+£80</td></tr>
+    <tr><th>Difference-in-differences</th><th></th><th></th><th><strong>£70 per unit overcharge</strong></th></tr>
+  </table>
+  <p>Aggregate by units sold during the restriction period × £70 + interest. Then test:</p>
+  <ul>
+    <li>Parallel trends pre-restriction</li>
+    <li>Alternative comparators</li>
+    <li>Specification robustness (hedonic adjustment, log vs level)</li>
+    <li>Pass-on (here mostly to end consumers — limited pass-on defence available)</li>
+  </ul>
+</div>
+
+<!-- 7 -->
+<h2 id="methods"><span class="num">CH 7</span>Methods toolkit for this case</h2>
+
+<table>
+  <tr><th>Method</th><th>What you'd use it for</th></tr>
+  <tr><td><strong>DiD (difference-in-differences)</strong></td><td>Estimating online-channel overcharge using a comparator brand or pre/post structure.</td></tr>
+  <tr><td><strong>Hedonic regression</strong></td><td>Controlling for scooter attributes (range, weight capacity, max speed, battery type) when comparing prices.</td></tr>
+  <tr><td><strong>Consumer survey (stated preference)</strong></td><td>Quantifying whether consumers understood reference-price claims and urgency messaging. Vulnerability segmentation.</td></tr>
+  <tr><td><strong>Customer-journey analysis</strong></td><td>Click-stream and choice-architecture analysis. Where does price information appear? Where do mandatory fees appear?</td></tr>
+  <tr><td><strong>Mystery shopping</strong></td><td>For in-home demonstration practices and high-pressure-sales claims. Cited as evidence in CMA consumer-protection enforcement.</td></tr>
+  <tr><td><strong>Complaint-pattern analysis</strong></td><td>Citizens Advice has 1 complaint per hour about disability aids (2023). Trade-body data; retailer-level CRM data.</td></tr>
+  <tr><td><strong>Lifetime cost modelling</strong></td><td>Initial purchase + warranty + repair + lifetime electricity + insurance, to test whether headline price represents true cost.</td></tr>
+  <tr><td><strong>Counterfactual choice-set</strong></td><td>What would the consumer choose under the alternative pricing presentation? Choice-experiment or behavioural-economics framing.</td></tr>
+</table>
+
+<!-- 8 -->
+<h2 id="evidence"><span class="num">CH 8</span>Evidence that wins</h2>
+
+<ul>
+  <li><strong>The dealer agreement language.</strong> The Roma/Pride/TGA cases turned on the contractual clauses. Get them and read them.</li>
+  <li><strong>Internal emails and meeting notes.</strong> Object infringements often need only document evidence — the price-fixing or RPM intent is in the documents.</li>
+  <li><strong>Pricing data over time.</strong> Daily/weekly online list prices for the period covering pre, during, and post restriction — both restricted and comparator brands.</li>
+  <li><strong>Inventory / sales volume data.</strong> Necessary for aggregating overcharge and testing scarcity claims.</li>
+  <li><strong>Customer complaints data.</strong> Citizens Advice cited "one complaint per hour" in 2023; this is a population-level signal that complements firm-level data.</li>
+  <li><strong>Consumer survey / understanding.</strong> Particularly for DMCC claims — does the consumer actually understand the reference price?</li>
+  <li><strong>Trade publications and industry reports.</strong> Mobility-aid trade press (British Healthcare Trades Association), Citizens Advice 2024 "Left in the Lurch" report.</li>
+</ul>
+
+<!-- 9 -->
+<h2 id="vulnerable"><span class="num">CH 9</span>The vulnerable-consumer overlay</h2>
+
+<p>This is where mobility aids differ from standard consumer-protection cases. Three facts to deploy.</p>
+
+<ul>
+  <li><strong>16 million disabled people in the UK</strong> rely on disability aids (Citizens Advice 2024).</li>
+  <li><strong>1 complaint per hour</strong> received by Citizens Advice about disability-aid purchases in 2023.</li>
+  <li><strong>Multi-dimensional vulnerability</strong> — physical limitations, often elderly, often one-time buyers, often relying on family/carers, sometimes purchasing under time pressure following a hospital discharge or condition change.</li>
+</ul>
+
+<p>The DMCC and CMA207 guidance both explicitly require consideration of how a practice would affect <strong>the average member of the group at which the practice is targeted</strong>, including where that group is vulnerable. The legal standard moves down to the most vulnerable plausible consumer.</p>
+
+<div class="saythis">
+"Mobility aids carry a vulnerability overlay that competition and consumer-protection law treat as a higher duty of care. The 'average consumer' standard under the DMCC and the CMA207 guidance shifts to the average <em>vulnerable</em> consumer when the product is targeted at people with disabilities. That changes the threshold for what counts as misleading or unfair — and the evidentiary burden on the firm to demonstrate fair dealing."
+</div>
+
+<!-- 10 -->
+<h2 id="remedies"><span class="num">CH 10</span>Remedies and penalties</h2>
+
+<h3>Chapter I outcomes</h3>
+<ul>
+  <li><strong>Infringement decision</strong> with reasoned analysis published.</li>
+  <li><strong>Financial penalty</strong> up to 10% of worldwide turnover. Reductions for leniency (whistleblower) and settlement (formal admission).</li>
+  <li><strong>Director disqualification</strong> available.</li>
+  <li><strong>Cease-and-desist</strong> — manufacturer ends the restriction.</li>
+  <li><strong>Follow-on damages</strong> at the CAT — retailers and/or consumers can sue. Roma/Pride/TGA decisions are good foundation for follow-ons.</li>
+</ul>
+
+<h3>DMCC outcomes</h3>
+<ul>
+  <li><strong>Direct CMA enforcement notice</strong> — no court route needed.</li>
+  <li><strong>Penalties up to 10% of global turnover</strong> (consumer-protection breaches now mirror competition).</li>
+  <li><strong>Consumer redress orders</strong> — return / refund / compensation.</li>
+  <li><strong>Compliance commitments</strong> — undertakings to rectify pricing presentation.</li>
+  <li><strong>Director disqualification</strong> for serious or repeated breaches.</li>
+</ul>
+
+<h3>Behavioural / structural</h3>
+<ul>
+  <li>Mandatory price-transparency commitments</li>
+  <li>Customer-journey redesign with disclosure standards</li>
+  <li>Independent monitoring trustee</li>
+  <li>Compliance training programme</li>
+</ul>
+
+<!-- 11 -->
+<h2 id="answer"><span class="num">CH 11</span>Mock 60-minute answer structure</h2>
+
+<p>Assume the prompt is Prompt A from Chapter 3 (manufacturer-side advice). Allocate 60 minutes as follows.</p>
+
+<table>
+  <tr><th>Phase</th><th>Time</th><th>What you do</th></tr>
+  <tr><td>1 · Frame</td><td>5 min</td><td>Restate the question. Identify it as a mixed Chapter I + DMCC case. Set out the three sub-questions you will answer.</td></tr>
+  <tr><td>2 · Legal framing</td><td>5 min</td><td>Chapter I CA98 prohibits online RPM as a hardcore object restriction. Cite Roma/Pride/TGA case-law trail (12-year pattern). Note 10% global turnover penalty.</td></tr>
+  <tr><td>3 · Theories of harm</td><td>10 min</td><td>Enumerate the 7 (Chapter 5). Mark which are in scope for the question; prioritise the top three.</td></tr>
+  <tr><td>4 · Counterfactual</td><td>10 min</td><td>Set out CF-1, CF-2, CF-3 (Chapter 6). Triangulate. Worked DiD with notional numbers.</td></tr>
+  <tr><td>5 · Methods</td><td>8 min</td><td>DiD primary; hedonic for product-attribute control; consumer survey for vulnerability overlay; mystery-shop for in-home sales.</td></tr>
+  <tr><td>6 · Vulnerable-consumer overlay</td><td>5 min</td><td>16m disabled; 1 complaint/hour; "average vulnerable consumer" standard. Why this raises the bar for the firm.</td></tr>
+  <tr><td>7 · Recommendations</td><td>10 min</td><td>If client is the manufacturer: do <em>not</em> do this. The Roma/Pride/TGA pattern means object liability + reputational fallout + follow-on damages. Offer two lawful alternatives: (i) genuinely unilateral published recommended retail price; (ii) selective distribution on qualitative criteria.</td></tr>
+  <tr><td>8 · Caveats + what would change my view</td><td>7 min</td><td>Data gaps; vertical-restrictions block exemption issues; pass-on quantification; client-specific facts. End with what evidence would update your view.</td></tr>
+</table>
+
+<!-- 12 -->
+<h2 id="killer"><span class="num">CH 12</span>Killer phrases to deploy</h2>
+
+<div class="card">
+  <h4>Opening (do not skip)</h4>
+  <p>"This is best framed as a mixed competition and consumer-protection case. Mobility scooters are complex products bought by consumers who may be vulnerable and may only purchase once, so competition depends heavily on price transparency, suitability advice and aftersales support."</p>
+</div>
+
+<div class="card">
+  <h4>The case-law spine</h4>
+  <p>"There is a 12-year case-law trail in this sector — Roma 2013, Pride 2014, TGA 2017 — all on the same theory of online resale price maintenance via advertising restrictions. The CMA has signalled clearly. This is not novel doctrine."</p>
+</div>
+
+<div class="card">
+  <h4>The DMCC pivot</h4>
+  <p>"Since 2024 the DMCC has shifted enforcement of consumer protection from court-led to CMA-direct, with penalties of up to 10% of global turnover. That changes the calculus on misleading discounts, urgency messaging and drip pricing — issues Schellion's published S&amp;W work has flagged explicitly."</p>
+</div>
+
+<div class="card">
+  <h4>The counterfactual move</h4>
+  <p>"My preferred approach is a difference-in-differences using a comparator product or channel that was not subject to the restriction, supported by a hedonic adjustment for product attributes and a parallel-trends test. I would triangulate against a pre-restriction time series in the same brand."</p>
+</div>
+
+<div class="card">
+  <h4>The vulnerability move</h4>
+  <p>"The 'average consumer' standard moves down to the average <em>vulnerable</em> consumer where the product is targeted at people with disabilities — Citizens Advice's 2024 work documented 16 million disabled people and one complaint per hour about disability aids. The evidentiary bar on the firm is correspondingly higher."</p>
+</div>
+
+<div class="card">
+  <h4>The honest close</h4>
+  <p>"Without seeing the dealer agreements and the firm's pricing data I can only frame this at the doctrinal level. My view would update materially if the contractual language is less restrictive than the Roma/Pride/TGA pattern, or if the consumer-survey evidence shows the discount and urgency claims are well understood by the target group."</p>
+</div>
+
+<hr class="thin">
+<p class="small">Sources: <a href="https://www.gov.uk/cma-cases/medical-equipment-anti-competitive-practices">CMA 2017 TGA case</a> · <a href="https://www.gov.uk/cma-cases/investigation-into-agreements-in-the-mobility-aids-sector">OFT/CMA 2014 Roma + Pride decisions</a> · <a href="https://www.swgroup.com/insights-events/insights/dmcc-pricing-practices/">S&amp;W (Schellion Horn) DMCC pricing piece</a> · <a href="https://www.gov.uk/government/publications/unfair-commercial-practices-cma207">CMA207 Unfair Commercial Practices guidance (18 Nov 2025 update)</a> · <a href="https://www.citizensadvice.org.uk/policy/publications/left-in-the-lurch-how-the-disability-aids-market-is-failing-its-customers/">Citizens Advice "Left in the Lurch" 2024</a>.</p>
+
+</div>
+</body>
+</html>
