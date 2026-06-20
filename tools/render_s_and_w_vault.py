@@ -217,6 +217,8 @@ def doc_type(path: Path) -> str:
         return "Source article"
     if "regulatory-world" in path.name:
         return "Regulatory briefing"
+    if "pedalford-presentation" in path.name:
+        return "Case walkthrough"
     if "jonathan" in path.name:
         return "Interview prep"
     if "mobility" in path.name:
