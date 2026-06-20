@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Unlisted page: reachable by direct URL, kept out of search engines and not linked from the main site. -->
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Swim Serpentine two-mile pool training plan — sample main sets and drills for swimming 3,200m (128 lengths in a 25m pool).">
+    <title>Swim Serpentine — Two-Mile Pool Training Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-primary: #0a9396;
+            --color-primary-dark: #087074;
+            --color-accent: #c45d3e;
+            --color-text: #2a2a2a;
+            --color-text-light: #666666;
+            --color-background: #fafafa;
+            --color-border: #e8e8e8;
+            --color-card-bg: #ffffff;
+            --color-callout-bg: #e9f6f6;
+            --color-pool: #f0f9fa;
+            --font-serif: 'Newsreader', Georgia, serif;
+            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --spacing-xs: 0.5rem;
+            --spacing-sm: 1rem;
+            --spacing-md: 1.5rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 3rem;
+            --max-width: 760px;
+            --transition: all 0.3s ease;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-text);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        @media (max-width: 640px) { body { font-size: 15px; } }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+            line-height: 1.3;
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+
+        h1 { font-size: 2.5rem; margin-top: 0; }
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.25rem; margin-bottom: var(--spacing-sm); }
+        p { margin-bottom: var(--spacing-md); }
+
+        a {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+        a:hover { opacity: 0.75; border-bottom-color: var(--color-primary); }
+
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-md); }
+
+        /* Navigation */
+        nav {
+            position: sticky; top: 0;
+            background-color: var(--color-background);
+            z-index: 100;
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--spacing-md) 0;
+        }
+        .nav-container {
+            max-width: var(--max-width); margin: 0 auto;
+            padding: 0 var(--spacing-md);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-brand {
+            font-family: var(--font-serif); font-weight: 600; font-size: 1.1rem;
+            color: var(--color-text); text-decoration: none; border-bottom: none; cursor: pointer;
+        }
+        .nav-brand:hover { color: var(--color-primary); }
+        .nav-links { display: flex; list-style: none; gap: var(--spacing-lg); }
+        .nav-links a { color: var(--color-text); border-bottom: none; font-size: 0.95rem; }
+        .nav-links a:hover { color: var(--color-primary); border-bottom: 1px solid var(--color-primary); opacity: 1; }
+        @media (max-width: 640px) { .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; } }
+
+        .page-section { padding-top: var(--spacing-xl); padding-bottom: var(--spacing-lg); }
+
+        /* Hero */
+        .hero-eyebrow {
+            display: inline-block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--spacing-sm);
+        }
+        .lead { font-size: 1.1rem; color: var(--color-text-light); margin-bottom: var(--spacing-lg); }
+
+        /* Stat strip */
+        .stat-strip {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-sm); margin: var(--spacing-lg) 0 var(--spacing-xl);
+        }
+        .stat {
+            background: var(--color-card-bg); border: 1px solid var(--color-border);
+            border-radius: 6px; padding: var(--spacing-md); text-align: center;
+        }
+        .stat-num { font-family: var(--font-serif); font-size: 1.9rem; font-weight: 600; color: var(--color-primary); line-height: 1.1; }
+        .stat-label { font-size: 0.8rem; color: var(--color-text-light); margin-top: 0.25rem; }
+        @media (max-width: 540px) { .stat-strip { grid-template-columns: 1fr; } }
+
+        /* Callout */
+        .callout {
+            background: var(--color-callout-bg); border-left: 3px solid var(--color-primary);
+            border-radius: 0 6px 6px 0; padding: var(--spacing-md); margin-bottom: var(--spacing-lg);
+        }
+        .callout p:last-child { margin-bottom: 0; }
+
+        /* Structure grid */
+        .structure-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-sm); margin-bottom: var(--spacing-lg);
+        }
+        @media (max-width: 540px) { .structure-grid { grid-template-columns: 1fr; } }
+        .structure-card {
+            background: var(--color-card-bg); border: 1px solid var(--color-border);
+            border-radius: 6px; padding: var(--spacing-md);
+        }
+        .structure-card h3 {
+            margin-top: 0; font-size: 0.8rem; font-family: var(--font-sans); font-weight: 700;
+            letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary); margin-bottom: var(--spacing-xs);
+        }
+        .structure-card p { margin-bottom: 0; font-size: 0.95rem; }
+
+        /* Session cards */
+        .session {
+            background: var(--color-card-bg); border: 1px solid var(--color-border);
+            border-radius: 8px; padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md); transition: var(--transition);
+        }
+        .session:hover { border-color: var(--color-primary); box-shadow: 0 2px 14px rgba(10, 147, 150, 0.08); }
+        .session-head {
+            display: flex; align-items: baseline; justify-content: space-between;
+            gap: var(--spacing-sm); flex-wrap: wrap; margin-bottom: var(--spacing-md);
+        }
+        .session-head h3 { margin: 0; font-size: 1.4rem; }
+        .session-total {
+            font-size: 0.8rem; font-weight: 700; color: var(--color-primary);
+            background: var(--color-callout-bg); padding: 0.3rem 0.7rem; border-radius: 20px; white-space: nowrap;
+        }
+
+        .phase { display: flex; gap: var(--spacing-md); padding: var(--spacing-sm) 0; border-top: 1px solid var(--color-border); }
+        .phase:first-of-type { border-top: none; padding-top: 0; }
+        .phase-tag {
+            flex-shrink: 0; width: 110px; font-size: 0.72rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase; color: var(--color-text-light);
+            padding-top: 0.15rem;
+        }
+        .phase-tag.main { color: var(--color-primary); }
+        .phase-body { flex: 1; }
+        .phase-body p { margin-bottom: var(--spacing-xs); }
+        .phase-body p:last-child { margin-bottom: 0; }
+        .phase-body ul { margin: 0 0 0 1.1rem; padding: 0; }
+        .phase-body li { margin-bottom: var(--spacing-xs); }
+        .phase-body li:last-child { margin-bottom: 0; }
+        @media (max-width: 540px) {
+            .phase { flex-direction: column; gap: 0.25rem; }
+            .phase-tag { width: auto; }
+        }
+
+        /* Drills */
+        .drill {
+            background: var(--color-card-bg); border: 1px solid var(--color-border);
+            border-radius: 8px; padding: var(--spacing-md); margin-bottom: var(--spacing-sm);
+        }
+        .drill h3 { margin: 0 0 0.4rem; font-size: 1.1rem; }
+        .drill p { margin-bottom: 0; font-size: 0.95rem; }
+        .drill ol { margin: 0.4rem 0 0 1.2rem; }
+        .drill li { margin-bottom: 0.3rem; }
+
+        hr.div { border: none; border-top: 1px solid var(--color-border); margin: var(--spacing-xl) 0 0; }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--color-border); padding: var(--spacing-lg) 0;
+            text-align: center; color: var(--color-text-light); font-size: 0.9rem; margin-top: var(--spacing-xl);
+        }
+        .footer-content { max-width: var(--max-width); margin: 0 auto; padding: 0 var(--spacing-md); }
+        .footer-social { display: flex; justify-content: center; gap: var(--spacing-md); margin-top: var(--spacing-md); }
+        .footer-social a { color: var(--color-text-light); font-size: 0.85rem; }
+        .source-note { font-size: 0.82rem; color: var(--color-text-light); margin-top: var(--spacing-md); }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 1.9rem; }
+            h2 { font-size: 1.4rem; }
+            .container { padding: 0 var(--spacing-sm); }
+            .nav-container { padding: 0 var(--spacing-sm); }
+            .session { padding: var(--spacing-md); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="nav-brand">Leath</a>
+            <ul class="nav-links">
+                <li><a href="/fitness/">Fitness</a></li>
+                <li><a href="/blog">Blog</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <section class="page-section">
+            <span class="hero-eyebrow">Swim Serpentine · Pool Training</span>
+            <h1>Two-Mile Pool Training Plan</h1>
+            <p class="lead">Training for the Swim Serpentine two-mile event in a 25m pool. Sample main sets and drills to build the pace and endurance to cover the full distance.</p>
+
+            <div class="stat-strip">
+                <div class="stat">
+                    <div class="stat-num">3,200m</div>
+                    <div class="stat-label">Total distance (two miles)</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">128</div>
+                    <div class="stat-label">Lengths in a 25m pool</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-num">4</div>
+                    <div class="stat-label">Phases per session</div>
+                </div>
+            </div>
+
+            <div class="callout">
+                <p>If you're new to swimming or looking to improve, find out whether your local pool holds any adult swimming sessions. These are often welcoming and a great way to progress your technique and fitness quickly — especially if there are coaches on the poolside running set sessions for you.</p>
+            </div>
+        </section>
+
+        <section class="page-section" id="structure">
+            <h2>Session structure</h2>
+            <p style="color:var(--color-text-light);">Every swimming session should consist of four phases — a warm up, main set, contrast set and warm down.</p>
+            <div class="structure-grid">
+                <div class="structure-card">
+                    <h3>Warm Up</h3>
+                    <p>Gradually warm up your arms and lungs as you increase your pace over some short distances.</p>
+                </div>
+                <div class="structure-card">
+                    <h3>Main Set</h3>
+                    <p>A target distance broken into shorter distances with short recoveries to work on pace — e.g. 10 × 100m with one-minute rests lets you swim each 100m faster than a straight 1,000m.</p>
+                </div>
+                <div class="structure-card">
+                    <h3>Contrast Set</h3>
+                    <p>After the main session, throw in some drills with perhaps some kick or stroke work.</p>
+                </div>
+                <div class="structure-card">
+                    <h3>Warm Down</h3>
+                    <p>A reverse of the warm up — reduce your speed and think about technique.</p>
+                </div>
+            </div>
+            <p style="font-size:0.95rem;color:var(--color-text-light);">At other times you may go into the pool to complete a long-distance swim — for example, swim one mile non-stop and time yourself.</p>
+        </section>
+
+        <section class="page-section" id="main-sets">
+            <h2>Sample main sets</h2>
+
+            <article class="session">
+                <div class="session-head">
+                    <h3>Pace Set</h3>
+                    <span class="session-total">2,000m</span>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Up</div>
+                    <div class="phase-body"><p>200–400m</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag main">Main Set</div>
+                    <div class="phase-body">
+                        <ul>
+                            <li>25m relaxed, 25m at a faster pace, 50m relaxed, 50m at pace, 75m relaxed, 75m at pace, 100m relaxed, 100m at pace, then one minute rest</li>
+                            <li>25m relaxed, 25m at pace, 10 sec rest, 50m relaxed, 50m at pace, 15 sec rest, 75m relaxed, 75m at pace, 20 sec rest, 100m relaxed, 100m at pace, then one minute rest</li>
+                            <li>25m relaxed, 10 sec rest, 25m at pace, 10 sec rest, 50m relaxed, 15 sec rest, 50m at pace, 15 sec rest, 75m relaxed, 20 sec rest, 75m at pace, 20 sec rest, 100m relaxed, 30 sec rest, then 100m at pace</li>
+                            <li>25m relaxed, 25m at a faster pace, 50m relaxed, 50m at pace, 75m relaxed, 75m at pace, 100m relaxed, 100m at pace</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Contrast Set</div>
+                    <div class="phase-body"><p>8 × 50m as a 25m drill, 25m kick (you can do arms in front with a short breast pull to breathe), 10 sec rest. Make sure you try sighting during your drills.</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Down</div>
+                    <div class="phase-body"><p>200m swim down</p></div>
+                </div>
+            </article>
+
+            <article class="session">
+                <div class="session-head">
+                    <h3>Pyramid Set</h3>
+                    <span class="session-total">1,600m</span>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Up</div>
+                    <div class="phase-body"><p>150m of any stroke then a 50m drill, then 150m of any stroke and another 50m drill</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag main">Main Set</div>
+                    <div class="phase-body">
+                        <ul>
+                            <li>Swim 100m, 15 sec rest, swim 200m, 15 sec rest, swim 300m, 15 sec rest, swim 400m, 15 sec rest, swim 300m, 15 sec rest, swim 200m, 15 sec rest, swim 100m</li>
+                            <li>On the way up the pyramid, aim to sight on every fourth length. On the way down the pyramid, sight on the first length of each swim segment.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Contrast Set</div>
+                    <div class="phase-body">
+                        <ul>
+                            <li>4 × 25m drill (fists) to work on feel of the water, then 10 sec rest</li>
+                            <li>4 × 50m as a 25m drill and 25m relaxed swim, followed by 10 sec rest</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Down</div>
+                    <div class="phase-body"><p>200m swim down</p></div>
+                </div>
+            </article>
+
+            <article class="session">
+                <div class="session-head">
+                    <h3>Mega Main Set</h3>
+                    <span class="session-total">3,200m · two miles</span>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Up</div>
+                    <div class="phase-body"><p>Swim 200m–400m</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag main">Main Set</div>
+                    <div class="phase-body">
+                        <p style="font-size:0.9rem;color:var(--color-text-light);">Each block: swim the distance, then 10 / 15 / 20 / 30 sec rest in turn. As you get more rest between segments, try to swim faster.</p>
+                        <ul>
+                            <li>Swim 50m, 10 sec rest, swim 50m, 15 sec rest, swim 50m, 20 sec rest, swim 50m, 30 sec rest</li>
+                            <li>Swim 100m, 10 sec rest, swim 100m, 15 sec rest, swim 100m, 20 sec rest, swim 100m, 30 sec rest</li>
+                            <li>Swim 150m, 10 sec rest, swim 150m, 15 sec rest, swim 150m, 20 sec rest, swim 150m, 30 sec rest</li>
+                            <li>Swim 200m, 10 sec rest, swim 200m, 15 sec rest, swim 200m, 20 sec rest, swim 200m, 30 sec rest</li>
+                            <li>Swim 150m, 10 sec rest, swim 150m, 15 sec rest, swim 150m, 20 sec rest, swim 150m, 30 sec rest</li>
+                            <li>Swim 100m, 10 sec rest, swim 100m, 15 sec rest, swim 100m, 20 sec rest, swim 100m, 30 sec rest</li>
+                            <li>Swim 50m, 10 sec rest, swim 50m, 15 sec rest, swim 50m, 20 sec rest, swim 50m, 30 sec rest</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Contrast Set</div>
+                    <div class="phase-body"><p>200m kick</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Down</div>
+                    <div class="phase-body"><p>200m swim down</p></div>
+                </div>
+            </article>
+
+            <article class="session">
+                <div class="session-head">
+                    <h3>Timed Swim</h3>
+                    <span class="session-total">2 × 1,600m</span>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Up</div>
+                    <div class="phase-body"><p>Swim 300m with a 100m kick drill</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag main">Main Set</div>
+                    <div class="phase-body"><p>Time a mile of continuous swimming (1,600m), then rest for two minutes and time another mile. Try to swim the second mile in the same time as (or faster than) the first.</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Contrast Set</div>
+                    <div class="phase-body"><p>25m kick drill, 25m drill, 25m swim, 10 sec rest. Repeat three more times.</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Down</div>
+                    <div class="phase-body"><p>200m swim down</p></div>
+                </div>
+            </article>
+
+            <article class="session">
+                <div class="session-head">
+                    <h3>Broken Swims (Pacing)</h3>
+                    <span class="session-total">10 × 200m</span>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Up</div>
+                    <div class="phase-body"><p>Swim 200m</p></div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag main">Main Set</div>
+                    <div class="phase-body">
+                        <p>10 × 200m as follows:</p>
+                        <ul>
+                            <li>200m broken — stop after 100m for a 10 sec rest, then try to do the second 100m faster than the first, followed by a 30 sec rest. Repeat once.</li>
+                            <li>200m broken — stop after each 50m for a 5 sec rest, trying to get faster with each 50m, followed by a 30 sec rest. Repeat once.</li>
+                            <li>200m broken — stop after 150m for a 10 sec rest then try to swim the last 50m as fast as you can. Repeat once.</li>
+                            <li>200m broken — stop for a 5 sec rest after each 25m, followed by a 30 sec rest. Repeat once.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Contrast Set</div>
+                    <div class="phase-body">
+                        <ul>
+                            <li>100m relaxed swim using another stroke</li>
+                            <li>100m kick</li>
+                            <li>100m drill</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="phase">
+                    <div class="phase-tag">Warm Down</div>
+                    <div class="phase-body"><p>100m relaxed swim</p></div>
+                </div>
+            </article>
+        </section>
+
+        <section class="page-section" id="drills">
+            <h2>Sample basic drills</h2>
+
+            <div class="drill">
+                <h3>Single Arm Swim</h3>
+                <p>Hold one arm out in front of you and swim using only the other arm. Think about getting a good pull through the water with each stroke. Alternate the arms you use for this drill.</p>
+            </div>
+
+            <div class="drill">
+                <h3>Six Arm Switch</h3>
+                <p>Complete six single-arm strokes on one side, then six on the other. The aim is the same as above — a good pull through the water with each stroke — but use your hips when switching from one arm to the other to create a body roll.</p>
+            </div>
+
+            <div class="drill">
+                <h3>Catch Up</h3>
+                <p>Make sure one hand is always in the water out in front of you. The 'glide hand' in the water stays there until the 'moving hand' touches the water — then they switch. This is good for lengthening your stroke for long-distance swimming. It should be nice and smooth as you always have one hand stretched out in front of you.</p>
+            </div>
+
+            <div class="drill">
+                <h3>Chicken Wing</h3>
+                <p>As you swim, touch your right thumb under your right armpit and left thumb under your left armpit. This helps create a high elbow when swimming.</p>
+            </div>
+
+            <div class="drill">
+                <h3>Three-Point Touch <span style="font-weight:400;font-size:0.85rem;color:var(--color-text-light);">(good for warm up and warm down)</span></h3>
+                <p>Touch three points on each stroke:</p>
+                <ol>
+                    <li>Catch up as above.</li>
+                    <li>Touch your thigh with your thumb — this should be at the end of your stroke, as low as you can on your leg without twisting your body.</li>
+                    <li>Under your armpit.</li>
+                </ol>
+                <p style="margin-top:0.4rem;">With practice, this should be nice and smooth and a good way to get your stroke feeling better after a hard session.</p>
+            </div>
+
+            <div class="drill">
+                <h3>Clenched Fist</h3>
+                <p>Keep your fist clenched during the whole stroke. The aim of this drill is to use your forearm while swimming to appreciate the power your hand creates when pulling through the water. Keep this slow and think about keeping a high elbow throughout the stroke.</p>
+            </div>
+
+            <div class="drill">
+                <h3>Kick on Side</h3>
+                <p>Placing your left arm in front of you, swim on your left side, kicking for one length, then change sides. The aim of this drill is to create good balance in the water and get used to rotating onto your side when swimming.</p>
+            </div>
+
+            <hr class="div">
+            <p class="source-note">Sessions and drills adapted from the official Swim Serpentine <a href="https://www.londonmarathonevents.co.uk/sites/default/files/2025-01/two-mile-pool-training-plan.pdf">Two-Mile Pool Training Plan</a> by London Marathon Events. Reproduced here for personal training use.</p>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-social">
+                <a href="https://leathalobaidi.substack.com/">Substack</a>
+                <a href="https://linkedin.com/in/leath-al-obaidi/">LinkedIn</a>
+                <a href="https://x.com/pluckup_courage">X</a>
+                <a href="https://github.com/leathalobaidi">GitHub</a>
+            </div>
+            <p style="margin-top:var(--spacing-md);">&copy; 2026 Leath Al Obaidi</p>
+        </div>
+    </footer>
+
+</body></html>
