@@ -182,6 +182,49 @@
         .drill ol { margin: 0.4rem 0 0 1.2rem; }
         .drill li { margin-bottom: 0.3rem; }
 
+        /* Session flow bar */
+        .flow {
+            display: flex; height: 46px; border-radius: 6px; overflow: hidden;
+            border: 1px solid var(--color-border); margin: var(--spacing-md) 0 var(--spacing-xs);
+        }
+        .flow-seg {
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.02em;
+            text-align: center; padding: 0 4px; overflow: hidden; white-space: nowrap;
+        }
+        .flow-cap { font-size: 0.8rem; color: var(--color-text-light); }
+
+        /* Bar charts */
+        .chart {
+            margin-top: var(--spacing-md);
+            padding: var(--spacing-md) var(--spacing-md) var(--spacing-sm);
+            background: var(--color-pool); border: 1px solid var(--color-border); border-radius: 6px;
+        }
+        .chart-title {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+            text-transform: uppercase; color: var(--color-text-light); margin-bottom: var(--spacing-md);
+        }
+        .bars { display: flex; align-items: flex-end; gap: 5px; }
+        .bar-col { flex: 1 1 0; display: flex; flex-direction: column; align-items: center; min-width: 0; }
+        .bar-wrap { width: 100%; height: 120px; display: flex; align-items: flex-end; }
+        .bar {
+            width: 100%; min-height: 3px; border-radius: 3px 3px 0 0; position: relative;
+            background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            transition: var(--transition);
+        }
+        .bar.light { background: #bfe3e4; }
+        .bar-col:hover .bar { filter: brightness(1.07); }
+        .bar-val {
+            position: absolute; top: -15px; left: -3px; right: -3px; text-align: center;
+            font-size: 0.62rem; font-weight: 700; color: var(--color-primary-dark);
+        }
+        .bar-label { font-size: 0.64rem; color: var(--color-text-light); margin-top: 5px; text-align: center; }
+        .chart-legend { display: flex; gap: var(--spacing-md); margin-top: var(--spacing-sm); font-size: 0.72rem; color: var(--color-text-light); }
+        .legend-key { display: inline-flex; align-items: center; gap: 5px; }
+        .legend-swatch { width: 12px; height: 12px; border-radius: 2px; display: inline-block; }
+        .legend-swatch.dark { background: var(--color-primary); }
+        .legend-swatch.light { background: #bfe3e4; }
+
         hr.div { border: none; border-top: 1px solid var(--color-border); margin: var(--spacing-xl) 0 0; }
 
         /* Footer */
@@ -246,6 +289,13 @@
         <section class="page-section" id="structure">
             <h2>Session structure</h2>
             <p style="color:var(--color-text-light);">Every swimming session should consist of four phases — a warm up, main set, contrast set and warm down.</p>
+            <div class="flow">
+                <div class="flow-seg" style="flex:10;background:#4bb0b2;">Warm Up</div>
+                <div class="flow-seg" style="flex:60;background:var(--color-primary);">Main Set</div>
+                <div class="flow-seg" style="flex:16;background:#38a3a5;">Contrast</div>
+                <div class="flow-seg" style="flex:10;background:#6cc3c5;">Warm Down</div>
+            </div>
+            <p class="flow-cap">Roughly the share of a typical session — the main set is the bulk of the work.</p>
             <div class="structure-grid">
                 <div class="structure-card">
                     <h3>Warm Up</h3>
@@ -274,6 +324,23 @@
                 <div class="session-head">
                     <h3>Pace Set</h3>
                     <span class="session-total">2,000m</span>
+                </div>
+                <div class="chart">
+                    <div class="chart-title">One main-set ladder — relaxed then at pace (m)</div>
+                    <div class="bars">
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar light" style="height:25%"><span class="bar-val">25</span></div></div><span class="bar-label">relax</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:25%"><span class="bar-val">25</span></div></div><span class="bar-label">pace</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar light" style="height:50%"><span class="bar-val">50</span></div></div><span class="bar-label">relax</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:50%"><span class="bar-val">50</span></div></div><span class="bar-label">pace</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar light" style="height:75%"><span class="bar-val">75</span></div></div><span class="bar-label">relax</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:75%"><span class="bar-val">75</span></div></div><span class="bar-label">pace</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar light" style="height:100%"><span class="bar-val">100</span></div></div><span class="bar-label">relax</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:100%"><span class="bar-val">100</span></div></div><span class="bar-label">pace</span></div>
+                    </div>
+                    <div class="chart-legend">
+                        <span class="legend-key"><span class="legend-swatch light"></span> Relaxed</span>
+                        <span class="legend-key"><span class="legend-swatch dark"></span> At pace</span>
+                    </div>
                 </div>
                 <div class="phase">
                     <div class="phase-tag">Warm Up</div>
@@ -304,6 +371,19 @@
                 <div class="session-head">
                     <h3>Pyramid Set</h3>
                     <span class="session-total">1,600m</span>
+                </div>
+                <div class="chart">
+                    <div class="chart-title">Main set — distance per swim, up and down (m)</div>
+                    <div class="bars">
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:25%"><span class="bar-val">100</span></div></div><span class="bar-label">1</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:50%"><span class="bar-val">200</span></div></div><span class="bar-label">2</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:75%"><span class="bar-val">300</span></div></div><span class="bar-label">3</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:100%"><span class="bar-val">400</span></div></div><span class="bar-label">4</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:75%"><span class="bar-val">300</span></div></div><span class="bar-label">5</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:50%"><span class="bar-val">200</span></div></div><span class="bar-label">6</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:25%"><span class="bar-val">100</span></div></div><span class="bar-label">7</span></div>
+                    </div>
+                    <div class="chart-legend"><span class="legend-key">15 sec rest between each swim · sight up on every 4th length, down on the 1st of each segment</span></div>
                 </div>
                 <div class="phase">
                     <div class="phase-tag">Warm Up</div>
@@ -337,6 +417,19 @@
                 <div class="session-head">
                     <h3>Mega Main Set</h3>
                     <span class="session-total">3,200m · two miles</span>
+                </div>
+                <div class="chart">
+                    <div class="chart-title">Main set — rep length per block (×4 each), up and down (m)</div>
+                    <div class="bars">
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:25%"><span class="bar-val">50</span></div></div><span class="bar-label">×4</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:50%"><span class="bar-val">100</span></div></div><span class="bar-label">×4</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:75%"><span class="bar-val">150</span></div></div><span class="bar-label">×4</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:100%"><span class="bar-val">200</span></div></div><span class="bar-label">×4</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:75%"><span class="bar-val">150</span></div></div><span class="bar-label">×4</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:50%"><span class="bar-val">100</span></div></div><span class="bar-label">×4</span></div>
+                        <div class="bar-col"><div class="bar-wrap"><div class="bar" style="height:25%"><span class="bar-val">50</span></div></div><span class="bar-label">×4</span></div>
+                    </div>
+                    <div class="chart-legend"><span class="legend-key">Each rep repeated 4× with 10 / 15 / 20 / 30 sec rest — swim faster as the rest grows</span></div>
                 </div>
                 <div class="phase">
                     <div class="phase-tag">Warm Up</div>
