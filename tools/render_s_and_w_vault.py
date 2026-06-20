@@ -215,6 +215,8 @@ def render_markdown(text: str) -> tuple[str, list[dict[str, str]], str, str]:
 def doc_type(path: Path) -> str:
     if "source-articles" in path.parts:
         return "Source article"
+    if "regulatory-world" in path.name:
+        return "Regulatory briefing"
     if "jonathan" in path.name:
         return "Interview prep"
     if "mobility" in path.name:
