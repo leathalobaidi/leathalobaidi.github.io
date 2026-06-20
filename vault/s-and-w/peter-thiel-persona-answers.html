@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Peter Thiel Persona Answers From Local Chats - S&amp;W Vault</title>
+<link rel="stylesheet" href="assets/readable.css">
+</head>
+<body>
+<main class="page">
+  <div class="topbar">
+    <a class="crumb" href="index.html">Back to S&amp;W vault</a>
+    <a class="source-link" href="peter-thiel-persona-answers.md">Markdown source</a>
+  </div>
+  <header class="hero">
+    <div class="eyebrow">Vault note</div>
+    <h1>Peter Thiel Persona Answers From Local Chats</h1>
+    <p class="summary">These are the Peter Thiel-lens answers I could find in local chat/session material. They are from earlier Chrome-extension review work, not from the S&amp;W consultancy prep conversation.</p>
+  </header>
+  <div class="layout">
+    <article class="article">
+<p>These are the Peter Thiel-lens answers I could find in local chat/session material. They are from earlier Chrome-extension review work, not from the S&amp;W consultancy prep conversation.</p>
+<h2 id="youtube-tab-sorter">YouTube Tab Sorter</h2>
+<p><strong>Verdict:</strong> Revise. A genuinely useful keystroke, but a keystroke is not a company; this is a complete feature with no moat, trivially cloned, with nothing that compounds.</p>
+<p><strong>Top objections</strong></p>
+<ol>
+<li><strong>Feature, not product; zero defensibility.</strong> The value is one function behind one icon click. No account, no state, no network, no data that accrues. Anyone can reproduce it quickly, and YouTube could add a native sort/filter and erase the wedge.</li>
+<li><strong>The real wedge is absent from the code.</strong> The stronger idea is watch-queue triage as a time-management ritual: &quot;what can I watch in my next 20 minutes?&quot; Current sorting does not answer that question. It reorders tabs and forgets everything.</li>
+<li><strong>Silent failure weakens trust.</strong> Unknown durations, live streams or restricted tabs fail quietly. A once-daily ritual needs visible feedback on what was sorted, skipped or unavailable.</li>
+</ol>
+<p><strong>Tickets</strong></p>
+<ul>
+<li>Add a time-budget mode: accept a target window, partition tabs into fits/over, and surface counts.</li>
+<li>Replace console-only warnings with badge/status feedback showing sorted and skipped tabs.</li>
+<li>Rewrite product copy so it either honestly says &quot;reorder by length&quot; or ships the stronger triage ritual.</li>
+</ul>
+<h2 id="vypode-letterboxd">Vypode / Letterboxd</h2>
+<p><strong>Verdict:</strong> Rework. A polished client over Letterboxd&#x27;s own HTML and private API; it owns no data, no network, no durable wedge, and Letterboxd can break it with one endpoint or markup change.</p>
+<p><strong>Top objections</strong></p>
+<ol>
+<li><strong>No proprietary data or distribution.</strong> The local profile database mirrors data the user already owns on Letterboxd. Search/filter over watched history is incumbent parity, not a 10x improvement.</li>
+<li><strong>The write path depends on an undocumented private endpoint.</strong> Posting reviews or ratings through Letterboxd&#x27;s private API leaves the moat owned by the platform the extension depends on.</li>
+<li><strong>The real primitive is the swipe deck, but it does not compound.</strong> Fresh-only filtering and high-throughput triage are useful, but still feel like a cloneable UX layer unless the product captures new proprietary signal.</li>
+</ol>
+<p><strong>Tickets</strong></p>
+<ul>
+<li>Abstract the write path behind a single adapter so endpoint changes degrade gracefully.</li>
+<li>Capture data Letterboxd cannot see: swipe decisions, skip reasons, session velocity and personal triage signals.</li>
+<li>Rewrite the thesis around high-throughput triage of unwatched films rather than &quot;filter and search your history.&quot;</li>
+</ul>
+<h2 id="ft-expand-comments">FT Expand Comments</h2>
+<p><strong>Verdict:</strong> Pass. The extension restores a concrete FT reading capability: one-click expand-all for comments. It is not a venture-scale moat, but it is a sharp utility.</p>
+<p><strong>Objection</strong></p>
+<ul>
+<li>The defensibility question is whether this is more than another generic &quot;expand all&quot; script. The stronger answer is that it restores a specific capability for a specific FT reading workflow: getting every buried reply in long Coral threads without repeated manual clicking.</li>
+</ul>
+<p><strong>Resolution</strong></p>
+<ul>
+<li>No code change was needed in the reviewed report. The product story should emphasise the removed capability and the specific FT reader workflow, not generic filtering.</li>
+</ul>
+<h2 id="general-thiel-lens-lesson">General Thiel-Lens Lesson</h2>
+<p>For small tools, the useful question is not &quot;is this clever?&quot; but:</p>
+<ul>
+<li>What is the one job it does radically better than the incumbent?</li>
+<li>Does usage create any proprietary data, workflow memory, habit or switching cost?</li>
+<li>Could the platform kill it with one native feature, endpoint change or markup redesign?</li>
+<li>Is the copy selling the real wedge, or dressing up a thin feature as a product?</li>
+</ul>
+    </article>
+    <nav class="toc" aria-label="On this page">
+<h2>On this page</h2>
+<a class="h2" href="#youtube-tab-sorter">YouTube Tab Sorter</a>
+<a class="h2" href="#vypode-letterboxd">Vypode / Letterboxd</a>
+<a class="h2" href="#ft-expand-comments">FT Expand Comments</a>
+<a class="h2" href="#general-thiel-lens-lesson">General Thiel-Lens Lesson</a>
+</nav>
+  </div>
+  <p class="footer-note">Private S&amp;W preparation material. Generated from the local Markdown source for easier reading.</p>
+</main>
+</body>
+</html>
