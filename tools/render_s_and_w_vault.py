@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "vault" / "s-and-w"
 CSS = BASE / "assets" / "readable.css"
 OUT_BASE = BASE / "readable"
+DIRECT_HTML_FILES = {"pedalford-presentation-script-and-more-time-analysis.md"}
 
 
 def slugify(text: str, used: set[str]) -> str:
@@ -228,11 +229,8 @@ def doc_type(path: Path) -> str:
     return "Vault note"
 
 
-def render_page(md_path: Path) -> Path:
+def build_page(md_path: Path, out_path: Path) -> str:
     body, toc, title, summary = render_markdown(md_path.read_text(encoding="utf-8"))
-    relative = md_path.relative_to(BASE)
-    out_path = (OUT_BASE / relative).with_suffix(".html")
-    out_path.parent.mkdir(parents=True, exist_ok=True)
     css_href = os.path.relpath(CSS, out_path.parent)
     index_href = os.path.relpath(BASE / "index.html", out_path.parent)
     source_href = os.path.relpath(md_path, out_path.parent)
@@ -276,14 +274,29 @@ def render_page(md_path: Path) -> Path:
 </body>
 </html>
 """
-    out_path.write_text(page, encoding="utf-8")
-    return out_path
+    return page
+
+
+def render_page(md_path: Path) -> list[Path]:
+    relative = md_path.relative_to(BASE)
+    out_path = (OUT_BASE / relative).with_suffix(".html")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(build_page(md_path, out_path), encoding="utf-8")
+
+    outputs = [out_path]
+    if md_path.parent == BASE and md_path.name in DIRECT_HTML_FILES:
+        direct_path = md_path.with_suffix(".html")
+        direct_path.write_text(build_page(md_path, direct_path), encoding="utf-8")
+        outputs.append(direct_path)
+
+    return outputs
 
 
 def main() -> None:
     files = sorted(BASE.glob("*.md")) + sorted((BASE / "source-articles").glob("*.md"))
     for path in files:
-        print(render_page(path).relative_to(ROOT))
+        for rendered in render_page(path):
+            print(rendered.relative_to(ROOT))
 
 
 if __name__ == "__main__":
