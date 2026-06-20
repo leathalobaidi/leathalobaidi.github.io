@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import html
+import os
 import re
 from pathlib import Path
 
@@ -9,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "vault" / "s-and-w"
 CSS = BASE / "assets" / "readable.css"
+OUT_BASE = BASE / "readable"
 
 
 def slugify(text: str, used: set[str]) -> str:
@@ -224,12 +226,12 @@ def doc_type(path: Path) -> str:
 
 def render_page(md_path: Path) -> Path:
     body, toc, title, summary = render_markdown(md_path.read_text(encoding="utf-8"))
-    out_path = md_path.with_suffix(".html")
-    css_href = Path("../assets/readable.css") if "source-articles" in md_path.parts else Path("assets/readable.css")
-    index_href = "../index.html" if "source-articles" in md_path.parts else "index.html"
-    source_href = md_path.name
-    if "source-articles" in md_path.parts:
-        source_href = md_path.name
+    relative = md_path.relative_to(BASE)
+    out_path = (OUT_BASE / relative).with_suffix(".html")
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    css_href = os.path.relpath(CSS, out_path.parent)
+    index_href = os.path.relpath(BASE / "index.html", out_path.parent)
+    source_href = os.path.relpath(md_path, out_path.parent)
 
     toc_html = ""
     if toc:
