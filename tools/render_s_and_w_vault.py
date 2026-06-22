@@ -13,6 +13,7 @@ CSS = BASE / "assets" / "readable.css"
 OUT_BASE = BASE / "readable"
 DIRECT_HTML_FILES = {
     "pedalford-presentation-script-and-more-time-analysis.md",
+    "peter-thiel-persona-answers.md",
     "swgroup-interview-negotiation-prep.md",
 }
 
@@ -274,6 +275,8 @@ def doc_type(path: Path) -> str:
         return "Case exam"
     if "negotiation" in path.name:
         return "Interview script"
+    if "peter-thiel" in path.name:
+        return "Persona note"
     return "Vault note"
 
 
