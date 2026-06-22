@@ -11,7 +11,10 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = ROOT / "vault" / "s-and-w"
 CSS = BASE / "assets" / "readable.css"
 OUT_BASE = BASE / "readable"
-DIRECT_HTML_FILES = {"pedalford-presentation-script-and-more-time-analysis.md"}
+DIRECT_HTML_FILES = {
+    "pedalford-presentation-script-and-more-time-analysis.md",
+    "swgroup-interview-negotiation-prep.md",
+}
 
 
 def slugify(text: str, used: set[str]) -> str:
@@ -112,6 +115,55 @@ def collect_paragraph(lines: list[str], start: int) -> tuple[str, int]:
     return " ".join(parts), i
 
 
+def render_ordered_list(lines: list[str], start: int) -> tuple[str, int]:
+    out = ["<ol>"]
+    i = start
+
+    while i < len(lines):
+        item_match = re.match(r"^\d+\.\s+(.+)$", lines[i].strip())
+        if not item_match:
+            break
+
+        parts = [item_match.group(1)]
+        i += 1
+
+        while i < len(lines):
+            stripped = lines[i].strip()
+
+            if not stripped:
+                j = i + 1
+                while j < len(lines) and not lines[j].strip():
+                    j += 1
+                if j >= len(lines):
+                    i = j
+                    break
+                if re.match(r"^\d+\.\s+", lines[j].strip()):
+                    i = j
+                    break
+                if lines[j].startswith((" ", "\t")):
+                    i = j
+                    continue
+                break
+
+            if re.match(r"^\d+\.\s+", stripped):
+                break
+            if lines[i].startswith((" ", "\t")):
+                parts.append(stripped)
+                i += 1
+                continue
+            break
+
+        if len(parts) == 1:
+            out.append(f"<li>{inline(parts[0])}</li>")
+        else:
+            out.append("<li>")
+            out.extend(f"<p>{inline(part)}</p>" for part in parts)
+            out.append("</li>")
+
+    out.append("</ol>")
+    return "\n".join(out), i
+
+
 def render_markdown(text: str) -> tuple[str, list[dict[str, str]], str, str]:
     lines = text.splitlines()
     out: list[str] = []
@@ -192,12 +244,8 @@ def render_markdown(text: str) -> tuple[str, list[dict[str, str]], str, str]:
             continue
 
         if re.match(r"^\d+\.\s+", line):
-            out.append("<ol>")
-            while i < len(lines) and re.match(r"^\d+\.\s+", lines[i].strip()):
-                item = re.sub(r"^\d+\.\s+", "", lines[i].strip())
-                out.append(f"<li>{inline(item)}</li>")
-                i += 1
-            out.append("</ol>")
+            ordered_html, i = render_ordered_list(lines, i)
+            out.append(ordered_html)
             continue
 
         para, i = collect_paragraph(lines, i)

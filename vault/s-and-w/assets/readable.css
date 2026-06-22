@@ -306,7 +306,6 @@ h1 {
 
   .toc {
     position: static;
-    order: -1;
   }
 }
 
@@ -320,8 +319,12 @@ h1 {
     display: block;
   }
 
-  .source-link {
+  .crumb {
     display: inline-block;
+  }
+
+  .source-link {
+    display: block;
     margin-top: 8px;
   }
 
