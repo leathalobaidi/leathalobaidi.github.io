@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Unlisted page: reachable by direct URL, kept out of search engines and not linked from the main site. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Trigger-based lead-generation strategy for the S&W economic advisory practice.">
+  <title>Economic Advisory — Lead-Gen Strategy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #c45d3e;
+      --color-accent: #1f5a3d;
+      --color-text: #2a2a2a;
+      --color-text-light: #666666;
+      --color-background: #fafafa;
+      --color-border: #e8e8e8;
+      --color-card-bg: #ffffff;
+      --color-callout-bg: #fef4f1;
+      --font-serif: 'Newsreader', Georgia, serif;
+      --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono: ui-monospace, Menlo, Consolas, monospace;
+      --max-width: 860px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text);
+      background: var(--color-background);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+    .wrap { max-width: var(--max-width); margin: 0 auto; padding: 4rem 1.5rem 6rem; }
+    .kicker {
+      font-family: var(--font-sans);
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--color-text-light); margin-bottom: 0.5rem;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 2.5rem;
+      line-height: 1.13;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.015em;
+    }
+    .lede {
+      font-family: var(--font-serif);
+      font-style: italic;
+      color: var(--color-text-light);
+      font-size: 1.2rem;
+      margin-bottom: 2.2rem;
+      line-height: 1.45;
+    }
+    .callout {
+      background: var(--color-callout-bg);
+      border-left: 3px solid var(--color-primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 4px 4px 0;
+      margin: 0 0 2rem;
+      font-size: 0.95rem;
+    }
+    .callout strong { color: var(--color-primary); }
+    .callout.green { border-left-color: var(--color-accent); background: #eef7ee; }
+    .callout.green strong { color: var(--color-accent); }
+    .meta {
+      font-family: var(--font-sans);
+      color: var(--color-text-light);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+      padding: 0.8rem 0;
+      margin-bottom: 2.5rem;
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+    }
+    .meta span strong { color: var(--color-text); font-weight: 600; }
+    nav.toc {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 0 0 3rem;
+    }
+    nav.toc .toc-title {
+      font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--color-text-light); margin-bottom: 0.7rem;
+    }
+    nav.toc ol { list-style: none; counter-reset: toc; display: grid; gap: 0.4rem; }
+    nav.toc li { counter-increment: toc; font-size: 0.95rem; }
+    nav.toc li::before { content: counter(toc) ". "; color: var(--color-primary); font-weight: 600; }
+    nav.toc a { color: var(--color-text); text-decoration: none; }
+    nav.toc a:hover { color: var(--color-primary); text-decoration: underline; }
+    h2 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.7rem;
+      margin: 3.2rem 0 0.4rem;
+      letter-spacing: -0.01em;
+      padding-top: 1rem;
+    }
+    h2 .num { color: var(--color-primary); font-size: 1.1rem; vertical-align: middle; margin-right: 0.5rem; }
+    h2 + .section-sub { color: var(--color-text-light); font-size: 0.98rem; margin-bottom: 1.4rem; }
+    h3 {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 1.8rem 0 0.7rem;
+    }
+    p { margin-bottom: 1rem; }
+    ul, ol { margin: 0 0 1rem 1.3rem; }
+    li { margin: 0.3rem 0; }
+    strong { color: var(--color-text); font-weight: 600; }
+    em.q { font-style: italic; color: var(--color-accent); }
+    .table-scroll { overflow-x: auto; margin: 0 0 2rem; border: 1px solid var(--color-border); border-radius: 8px; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.88rem; background: var(--color-card-bg); }
+    th, td { text-align: left; padding: 0.7rem 0.85rem; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+    th { background: #f3efe9; font-family: var(--font-sans); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.02em; text-transform: uppercase; color: #555; white-space: nowrap; }
+    tr:last-child td { border-bottom: none; }
+    td .tag { display: inline-block; font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--color-primary); font-weight: 600; }
+    .card {
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 0 0 1.2rem;
+    }
+    .card h3 { margin-top: 0; }
+    .card .hook { font-family: var(--font-serif); font-style: italic; color: var(--color-accent); margin: 0.3rem 0 0.6rem; }
+    .badge { display:inline-block; font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600; padding: 2px 8px; border-radius: 999px; margin-left: 0.4rem; }
+    .badge.hi { background: #fdece7; color: #c0432a; }
+    .badge.mid { background: #fff6e6; color: #a9760a; }
+    pre {
+      background: #1d2230; color: #e6e6e6; border-radius: 8px;
+      padding: 1.1rem 1.25rem; overflow-x: auto; font-family: var(--font-mono);
+      font-size: 0.78rem; line-height: 1.5; margin: 0 0 1.5rem;
+    }
+    pre .c { color: #8a93a6; }
+    pre .s { color: #b6e09a; }
+    pre .k { color: #e0a08a; }
+    code.inline { font-family: var(--font-mono); font-size: 0.84em; background: #efe8d8; padding: 1px 5px; border-radius: 3px; }
+    .grid2 { display: grid; gap: 1.2rem; }
+    @media (min-width: 680px) { .grid2 { grid-template-columns: 1fr 1fr; } }
+    .tmpl {
+      background: #fbfaf8; border: 1px dashed var(--color-border); border-radius: 8px;
+      padding: 1.3rem 1.5rem; margin: 0 0 2rem; font-size: 0.93rem;
+    }
+    .tmpl .field { color: var(--color-primary); font-weight: 600; }
+    .tmpl .label { font-family: var(--font-sans); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-light); display: block; margin: 0.9rem 0 0.15rem; }
+    .pill-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.3rem 0 0.8rem; }
+    .pill { font-size: 0.78rem; background: #f0ece4; color: #555; padding: 3px 10px; border-radius: 999px; }
+    footer.foot {
+      margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--color-border);
+      font-size: 0.85rem; color: var(--color-text-light); line-height: 1.6;
+    }
+    footer.foot a { color: var(--color-text); }
+    @media (max-width: 520px) {
+      h1 { font-size: 1.95rem; }
+      .wrap { padding: 2.5rem 1.2rem 4rem; }
+      .meta { gap: 0.8rem; font-size: 0.82rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+
+    <div class="kicker">Private · Unlisted · Not indexed</div>
+    <h1>Turning the economic advisory practice into a trigger-based acquisition engine</h1>
+    <p class="lede">A lead-generation strategy built from the live S&amp;W economic advisory pages — one hub, six service lines — re-engineered into checklists, campaigns and a scoring model that route high-fee work to a named partner.</p>
+
+    <div class="callout">
+      <strong>This page is unlisted.</strong> Reachable only by direct URL. No links point to it from leathalobaidi.com and search engines are told not to index it. Keep the URL private.
+    </div>
+
+    <div class="callout green">
+      <strong>How this was built.</strong> The seven economic advisory pages were read directly from <code class="inline">swgroup.com</code> (hub + six service lines) and turned into the inventory, template and plays below. Every hero line, buyer group, service list and proof point quoted here is taken from the live site. The Firecrawl config in §9 is preserved run-ready for when an API key is available — but the strategy here does not depend on it.
+    </div>
+
+    <div class="meta">
+      <span><strong>Practice</strong> · S&amp;W Economic Advisory</span>
+      <span><strong>Scope</strong> · 1 hub + 6 service lines + insight layer</span>
+      <span><strong>Core thesis</strong> · Trigger → service page → expert insight → checklist/triage → named-partner CTA</span>
+    </div>
+
+    <nav class="toc">
+      <div class="toc-title">Contents</div>
+      <ol>
+        <li><a href="#thesis">The thesis: trigger-based, not category-based</a></li>
+        <li><a href="#inventory">Page inventory (the source material)</a></li>
+        <li><a href="#plays">Seven trigger-based lead plays</a></li>
+        <li><a href="#template">The reusable landing-page template</a></li>
+        <li><a href="#magnets">Ten high-value lead magnets</a></li>
+        <li><a href="#outbound">Ten outbound campaign angles</a></li>
+        <li><a href="#scoring">Lead-scoring model</a></li>
+        <li><a href="#calendar">90-day content calendar</a></li>
+        <li><a href="#firecrawl">Appendix: run-ready Firecrawl config &amp; extraction schema</a></li>
+      </ol>
+    </nav>
+
+    <!-- ============ 1 ============ -->
+    <h2 id="thesis"><span class="num">01</span>The thesis</h2>
+    <p class="section-sub">Why the money is in triggers, not in the word "economics".</p>
+    <p>Nobody wakes up wanting "economic advisory". They wake up to a CMA letter, a contested quantum figure, a price-control deadline, a subsidy challenge, or a board paper that won't survive scrutiny. The S&amp;W pages are written exactly this way — the hub leads with <em class="q">"complex cases when analytical rigour, strategic judgement and credibility count"</em>, and every service line opens on a buyer under pressure, not a methodology.</p>
+    <p>The whole strategy is one loop:</p>
+    <div class="card">
+      <strong>Monitor</strong> a regulatory / legal / commercial event →
+      <strong>map</strong> it to the service page that already sells the answer →
+      <strong>publish</strong> a short expert insight (<em>development → why it matters → what to do now → how we help</em>) →
+      <strong>offer</strong> a practical checklist or triage as the lead magnet →
+      <strong>route</strong> the lead to a named-partner CTA (Schellion Horn for competition/finance, Jonathan Gillham for disputes).
+    </div>
+    <p>This beats broad "economic advisory" lead-gen because each trigger self-selects a buyer who has budget, a deadline, and a fear of getting it wrong in front of a regulator or court — exactly the high-fee work the practice is built to win.</p>
+
+    <!-- ============ 2 ============ -->
+    <h2 id="inventory"><span class="num">02</span>Page inventory</h2>
+    <p class="section-sub">The seven live pages, read as a lead-gen asset map. Hero lines and proof points quoted from the site.</p>
+    <div class="table-scroll">
+    <table>
+      <thead>
+        <tr><th>Page / type</th><th>Hero (verbatim)</th><th>Target buyers</th><th>Core pain</th><th>Proof points</th><th>CTA</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Economic advisory</strong><br><span class="tag">Hub</span><br><code class="inline">/services/economic-advisory/</code></td>
+          <td>"Full-service economics support for complex cases when analytical rigour, strategic judgement and credibility count."</td>
+          <td>Businesses, governments &amp; economic regulators, arm's-length bodies, legal advisers, boards, competition authorities</td>
+          <td>Complex commercial, regulatory and policy challenges where decisions must be defensible</td>
+          <td>Sectors: financial services &amp; payments, energy &amp; utilities, infrastructure, transport &amp; aviation, telecoms &amp; digital, healthcare &amp; life sciences</td>
+          <td>"Start the conversation"</td>
+        </tr>
+        <tr>
+          <td><strong>Competition services</strong><br><span class="tag">Service</span><br><code class="inline">/competition-services/</code></td>
+          <td>"Insights to better understand, manage and respond to competition and antitrust issues."</td>
+          <td>Businesses, legal teams, regulators</td>
+          <td>Antitrust scrutiny, mergers, market investigations, subsidy control, damages exposure</td>
+          <td>CAT, CMA; Interchange, Trucks, Granville damages matters; subsidy control challenges</td>
+          <td>"Start the conversation" / "Find out how we can help you today"</td>
+        </tr>
+        <tr>
+          <td><strong>Disputes &amp; litigation</strong><br><span class="tag">Service</span><br><code class="inline">/disputes-and-litigation/</code></td>
+          <td>"Independent and advisory experts for high-value disputes, when economic analysis really matters."</td>
+          <td>Corporates, financial institutions, investors, insolvency practitioners, law firms &amp; counsel</td>
+          <td>Contested quantum &amp; causation; material financial stakes; cross-examination risk</td>
+          <td>Global infrastructure/construction disputes, PFI claims, event studies, AI-system impact, "but-for" modelling</td>
+          <td>"Start the conversation" / "Get in touch"</td>
+        </tr>
+        <tr>
+          <td><strong>Regulatory economics &amp; policy</strong><br><span class="tag">Service</span><br><code class="inline">/regulatory-economics-and-policy/</code></td>
+          <td>"Economic expertise for policy development, evaluation and guidance in regulated sectors."</td>
+          <td>Economic regulators, central &amp; devolved governments, regulated entities, legal advisers</td>
+          <td>Rapidly changing policy under intense political &amp; public scrutiny; price controls; impact assessments</td>
+          <td>Ofwat (PR24), Ofgem, FCA (motor finance), PSR, Ofcom (broadband), CAA, NHSEI</td>
+          <td>"Get in touch" / "Contact us to see how we can help"</td>
+        </tr>
+        <tr>
+          <td><strong>Regulatory &amp; competition finance</strong><br><span class="tag">Service</span><br><code class="inline">/regulatory-and-competition-finance/</code></td>
+          <td>"Advice at the intersection of economics, accounting and corporate strategy."</td>
+          <td>Regulated companies, competition authorities, government departments, legal advisers</td>
+          <td>Cost-of-capital &amp; financeability, price-control modelling, regulatory reporting &amp; submissions</td>
+          <td>Regulators: Ofwat, Ofgem, PSR, FCA, Ofcom, CAA. Clients: BT, Vodafone, National Grid, Heathrow, UK water cos</td>
+          <td>"Start the conversation" (→ Schellion Horn)</td>
+        </tr>
+        <tr>
+          <td><strong>Economics of strategy</strong><br><span class="tag">Service</span><br><code class="inline">/economics-of-strategy/</code></td>
+          <td>"In … increasingly volatile environments, we give leaders the insights they need to … respond to economic, geopolitical and regulatory risks."</td>
+          <td>Boards, senior executives, investors, legal advisers</td>
+          <td>Pricing strategy, market entry, investment appraisal, business-case challenge under volatility</td>
+          <td>Pension funds, airlines, ports, global soft-drinks co, global &amp; challenger banks, insurers, governments</td>
+          <td>"Start the conversation" / "Talk to one of our experts"</td>
+        </tr>
+        <tr>
+          <td><strong>Economic valuation &amp; inference</strong><br><span class="tag">Service</span><br><code class="inline">/economic-valuation-and-inference/</code></td>
+          <td>"Robust valuations and clear conclusions from complex data for cases when credibility is critical."</td>
+          <td>Corporates &amp; investors, public bodies, legal teams, regulated participants, boards</td>
+          <td>Causal inference, damages, forecasting &amp; valuation that must survive cross-examination</td>
+          <td>Methods: diff-in-diff, IV, regression discontinuity, synthetic control, panel/time-series, DCF</td>
+          <td>"Start the conversation" / "Contact us today"</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>What the inventory reveals.</strong> The pages are remarkably consistent — every one runs <em>hero (problem + stakes) → buyer segmentation → 6–10 concrete sub-services → named-regulator proof → low-friction "Start the conversation" CTA</em>. Two named partners anchor trust: <strong>Schellion Horn</strong> (competition, regulatory finance) and <strong>Jonathan Gillham</strong> (disputes, valuation). The gap to exploit: the pages describe capability beautifully but offer the visitor <em>nothing to do</em> short of a contact form. Every play below inserts a checklist/triage step between the insight and the CTA.</p>
+
+    <!-- ============ 3 ============ -->
+    <h2 id="plays"><span class="num">03</span>Seven trigger-based lead plays</h2>
+    <p class="section-sub">Each maps a live event to a service page, a buyer, and a hook. Ranked by fee potential.</p>
+
+    <div class="card">
+      <h3>1 · DMCC pricing-journey review <span class="badge hi">High fee</span></h3>
+      <p class="hook">"Are your pricing journeys defensible under DMCC / CMA scrutiny?"</p>
+      <p><strong>Trigger:</strong> The Digital Markets, Competition and Consumers Act 2024 gives the CMA direct consumer-enforcement powers over drip pricing, urgency/scarcity claims, fake discounts and default opt-ins. <strong>Buyer:</strong> consumer-facing retail, ticketing, travel, marketplaces, SaaS, subscriptions. <strong>Routes to:</strong> Competition services + Economics of strategy. <strong>Owner:</strong> Schellion Horn.</p>
+    </div>
+    <div class="card">
+      <h3>2 · Price-control / WACC challenge session <span class="badge hi">High fee</span></h3>
+      <p class="hook">"Is your cost-of-capital case capturing today's political and geopolitical risk?"</p>
+      <p><strong>Trigger:</strong> Live price-control cycles (PR24, RIIO, NR, aviation) and CMA redeterminations; geopolitical risk poorly reflected in allowed returns. <strong>Buyer:</strong> water, energy, telecoms, transport, airports. <strong>Routes to:</strong> Regulatory &amp; competition finance + Regulatory economics. <strong>Owner:</strong> Schellion Horn.</p>
+    </div>
+    <div class="card">
+      <h3>3 · Regulatory efficiency-model stress test <span class="badge hi">High fee</span></h3>
+      <p class="hook">"Do legacy benchmarking models still reflect decarbonisation, climate resilience and cyber risk?"</p>
+      <p><strong>Trigger:</strong> Efficiency/totex benchmarking embedded in price controls increasingly contested at appeal. <strong>Buyer:</strong> regulated infrastructure companies and regulators. <strong>Routes to:</strong> Regulatory &amp; competition finance + Valuation &amp; inference. <strong>Owner:</strong> Schellion Horn.</p>
+    </div>
+    <div class="card">
+      <h3>4 · Subsidy-control defensibility pack <span class="badge mid">Mid–high</span></h3>
+      <p class="hook">"Can your subsidy decision survive CAT / CMA scrutiny with a clear counterfactual?"</p>
+      <p><strong>Trigger:</strong> Subsidy Control Act regime maturing; SAU referrals and CAT challenges rising. <strong>Buyer:</strong> public authorities, delivery bodies, government-backed projects, their legal advisers. <strong>Routes to:</strong> Competition services. <strong>Owner:</strong> Schellion Horn.</p>
+    </div>
+    <div class="card">
+      <h3>5 · High-value dispute quantum review <span class="badge hi">High fee</span></h3>
+      <p class="hook">"Build a defensible counterfactual before pleadings harden."</p>
+      <p><strong>Trigger:</strong> Pre-action / early-stage high-value disputes where quantum and causation are contested. <strong>Buyer:</strong> law firms, GCs, corporates, investors, insolvency practitioners. <strong>Routes to:</strong> Disputes &amp; litigation + Valuation &amp; inference. <strong>Owner:</strong> Jonathan Gillham.</p>
+    </div>
+    <div class="card">
+      <h3>6 · AI / algorithmic-harm economic assessment <span class="badge hi">High fee</span></h3>
+      <p class="hook">"Translate model failure, algorithmic pricing, bias or data misuse into economic impact."</p>
+      <p><strong>Trigger:</strong> First wave of AI-implementation failures, algorithmic-pricing collusion concerns and data-misuse claims. <strong>Buyer:</strong> digital platforms, AI vendors, legal teams, competition counsel. <strong>Routes to:</strong> Disputes &amp; litigation + Valuation &amp; inference. <strong>Owner:</strong> Jonathan Gillham.</p>
+    </div>
+    <div class="card">
+      <h3>7 · Pricing-strategy &amp; revenue-optimisation review <span class="badge mid">Mid–high</span></h3>
+      <p class="hook">"Optimise pricing while staying defensible under competition and consumer scrutiny."</p>
+      <p><strong>Trigger:</strong> Inflation/margin pressure pushing dynamic pricing — straight into DMCC risk. <strong>Buyer:</strong> CFOs, strategy teams, commercial directors, PE portfolio companies. <strong>Routes to:</strong> Economics of strategy (bridges to Competition). <strong>Owner:</strong> Schellion Horn.</p>
+    </div>
+
+    <!-- ============ 4 ============ -->
+    <h2 id="template"><span class="num">04</span>The reusable landing-page template</h2>
+    <p class="section-sub">Distilled from the repeated S&amp;W formula. Use it for every new campaign page.</p>
+    <div class="tmpl">
+      <span class="label">Title</span>
+      <span class="field">[Specific risk/opportunity]</span> advisory for <span class="field">[buyer / sector]</span>
+      <span class="label">Hero</span>
+      Evidence-based economic support for <span class="field">[buyer]</span> facing <span class="field">[trigger]</span>, where <span class="field">[stakes]</span> and <span class="field">[defensibility]</span> matter.
+      <span class="label">Opening problem</span>
+      <span class="field">[Buyer]</span> is under pressure from <span class="field">[regulation / litigation / market change]</span>. The challenge is not only <span class="field">[surface issue]</span> — it is whether <span class="field">[the decision / pricing / model / submission]</span> is robust, evidenced and defensible under scrutiny.
+      <span class="label">Why now</span>
+      Recent developments at <span class="field">[CMA / CAT / Ofwat / Ofgem / FCA / DMCC / …]</span> mean firms must act before <span class="field">[investigation / appeal / price control / dispute / transaction / board decision]</span>.
+      <span class="label">How we help (the 6-step spine)</span>
+      <ol style="margin-top:0.3rem;">
+        <li>Diagnose the issue</li>
+        <li>Build the economic evidence</li>
+        <li>Model counterfactuals / scenarios</li>
+        <li>Quantify risk, loss, value or impact</li>
+        <li>Prepare defensible submissions / reports</li>
+        <li>Support board, regulator, court or investor engagement</li>
+      </ol>
+      <span class="label">Specific services</span> — list 5 concrete sub-services lifted from the matching service page
+      <span class="label">Proof</span>
+      We combine <span class="field">[economic analysis]</span> with <span class="field">[sector / regulatory / legal / financial experience]</span>, supporting <span class="field">[buyer types]</span> across <span class="field">[sectors]</span> where outcomes are scrutinised by <span class="field">[regulators / courts / boards / investors]</span>. Name real bodies (Ofwat, Ofgem, FCA, CMA, CAT) and real method (DiD, synthetic control, totex benchmarking).
+      <span class="label">Lead magnet</span> — offer the checklist / triage from §5 inline
+      <span class="label">CTA</span>
+      Start the conversation with <span class="field">[named partner]</span>.
+    </div>
+    <p><strong>Credibility vocabulary to keep using</strong> (all drawn from the live pages):</p>
+    <div class="pill-row">
+      <span class="pill">independent</span><span class="pill">evidence-based</span><span class="pill">rigorous</span><span class="pill">defensible</span><span class="pill">robust &amp; credible</span><span class="pill">stands up to scrutiny</span><span class="pill">withstands cross-examination</span><span class="pill">technically robust</span><span class="pill">commercially grounded</span><span class="pill">practical &amp; persuasive</span><span class="pill">sector &amp; regulatory expertise</span>
+    </div>
+
+    <!-- ============ 5 ============ -->
+    <h2 id="magnets"><span class="num">05</span>Ten high-value lead magnets</h2>
+    <p class="section-sub">Each is a short, practical asset that captures a contact and self-qualifies the buyer.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>#</th><th>Lead magnet</th><th>Buyer</th><th>Routes to</th><th>CTA</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>10-point pricing-journey checklist for DMCC / CMA risk</td><td>Consumer-facing brands</td><td>Competition</td><td>Book a pricing-risk triage</td></tr>
+        <tr><td>2</td><td>WACC &amp; political-risk briefing for regulated utilities</td><td>Utilities / infra CFOs</td><td>Reg &amp; competition finance</td><td>Request a cost-of-capital challenge session</td></tr>
+        <tr><td>3</td><td>Efficiency-model stress-test scorecard</td><td>Reg infra / regulators</td><td>Reg &amp; competition finance</td><td>Book an efficiency-model review</td></tr>
+        <tr><td>4</td><td>Subsidy-control economic-reasoning &amp; counterfactual evidence pack</td><td>Public authorities + advisers</td><td>Competition</td><td>Review your subsidy paper trail</td></tr>
+        <tr><td>5</td><td>Dispute quantum readiness checklist ("before pleadings harden")</td><td>Law firms / GCs</td><td>Disputes</td><td>Discuss a quantum scenario</td></tr>
+        <tr><td>6</td><td>Economic-loss framework for AI failure, model bias &amp; data misuse</td><td>Platforms / AI vendors / counsel</td><td>Disputes + Valuation</td><td>Discuss an AI-dispute scenario</td></tr>
+        <tr><td>7</td><td>Expert-witness "will it survive cross-examination?" self-audit</td><td>Litigators</td><td>Valuation &amp; inference</td><td>Pressure-test your expert evidence</td></tr>
+        <tr><td>8</td><td>Price-control submission readiness guide (PR24 / RIIO / aviation)</td><td>Regulated entities</td><td>Reg economics &amp; policy</td><td>Book a submission review</td></tr>
+        <tr><td>9</td><td>Board-paper defensibility checklist for major investment cases</td><td>Boards / investors</td><td>Economics of strategy</td><td>Challenge your business case</td></tr>
+        <tr><td>10</td><td>Merger / market-investigation "theory of harm" preparedness map</td><td>Corporates + counsel</td><td>Competition</td><td>Map your competition risk</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <!-- ============ 6 ============ -->
+    <h2 id="outbound"><span class="num">06</span>Ten outbound campaign angles</h2>
+    <p class="section-sub">Subject-line + opening-line angles for sequenced outreach. Each leads with the trigger, not the service.</p>
+    <ol>
+      <li><strong>DMCC enforcement is live</strong> — "The CMA can now fine for drip pricing directly. Are your checkout journeys evidenced?"</li>
+      <li><strong>Allowed returns vs. real risk</strong> — "Your next price control will be set on a WACC that may not reflect today's geopolitics."</li>
+      <li><strong>Legacy benchmarks, new world</strong> — "Decarbonisation and climate resilience aren't in your efficiency model. The regulator's still using it."</li>
+      <li><strong>Subsidy under challenge</strong> — "If your subsidy decision were referred to the CAT tomorrow, would the counterfactual hold?"</li>
+      <li><strong>Before pleadings harden</strong> — "The cheapest time to fix a quantum case is before the number is in the particulars."</li>
+      <li><strong>When the model is the defendant</strong> — "Algorithmic pricing and AI failure are becoming economic-damages cases. We quantify the harm."</li>
+      <li><strong>Cross-examination test</strong> — "Three questions a barrister will ask your expert — and whether the evidence survives them."</li>
+      <li><strong>Motor finance / FCA redress</strong> — "Sector-wide redress turns on causation and consumer harm. That's an economics question."</li>
+      <li><strong>Pricing power without the headline risk</strong> — "Capture margin with dynamic pricing — without becoming the next DMCC case study."</li>
+      <li><strong>The business case that won't survive the board</strong> — "Independent challenge to your NPV/IRR case before it reaches investment committee."</li>
+    </ol>
+    <div class="callout"><strong>Sequencing.</strong> Pair each angle with the matching §5 lead magnet as the first-touch offer, the relevant insight article as second touch, and a named-partner "start the conversation" as third. Keep volume low and targeted — these are five-to-six-figure engagements, not a newsletter list.</div>
+
+    <!-- ============ 7 ============ -->
+    <h2 id="scoring"><span class="num">07</span>Lead-scoring model</h2>
+    <p class="section-sub">Score every inbound lead on four axes. Total ≥ 12 → route to a partner within 24h; 7–11 → nurture; &lt; 7 → content list.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Axis</th><th>5 pts</th><th>3 pts</th><th>1 pt</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>Trigger event</strong><br><span class="tag">urgency × fee</span></td>
+          <td>Live litigation, CMA/CAT proceeding, price-control deadline, formal investigation, redress programme</td>
+          <td>Anticipated dispute, upcoming submission, planned transaction, board decision pending</td>
+          <td>General interest, research, "keeping informed"</td>
+        </tr>
+        <tr>
+          <td><strong>Buyer type</strong><br><span class="tag">authority to instruct</span></td>
+          <td>Law firm / GC, regulated company exec, regulator, government department, PE/investor</td>
+          <td>Strategy / commercial / finance director, in-house economist</td>
+          <td>Analyst, student, consultant peer, unknown</td>
+        </tr>
+        <tr>
+          <td><strong>Sector</strong><br><span class="tag">fit to practice</span></td>
+          <td>Water, energy, telecoms, transport/aviation, financial services &amp; payments, healthcare/life sciences</td>
+          <td>Other regulated or consumer-facing sector</td>
+          <td>Out-of-scope sector</td>
+        </tr>
+        <tr>
+          <td><strong>Urgency / stakes</strong><br><span class="tag">value at risk</span></td>
+          <td>Deadline &lt; 8 weeks <em>or</em> value at risk &gt; £10m</td>
+          <td>Deadline this quarter <em>or</em> value £1–10m</td>
+          <td>No deadline, value unclear</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>Routing.</strong> Competition / finance / subsidy / pricing → Schellion Horn. Disputes / quantum / AI-harm / valuation → Jonathan Gillham. Tag the originating trigger play and lead magnet on the CRM record so conversion can be measured per play.</p>
+
+    <!-- ============ 8 ============ -->
+    <h2 id="calendar"><span class="num">08</span>90-day content calendar</h2>
+    <p class="section-sub">One flagship insight + one lead magnet + one outbound sequence per fortnight, each tied to a live trigger. Insight format throughout: <em>development → why it matters → what to do now → how we help</em>.</p>
+    <div class="table-scroll">
+    <table>
+      <thead><tr><th>Weeks</th><th>Flagship insight</th><th>Lead magnet</th><th>Outbound</th><th>Partner</th></tr></thead>
+      <tbody>
+        <tr><td>1–2</td><td>DMCC enforcement: what "defensible pricing" now means</td><td>#1 Pricing-journey checklist</td><td>Angle 1 + 9</td><td>Horn</td></tr>
+        <tr><td>3–4</td><td>Geopolitical risk &amp; the cost of capital in the next price control</td><td>#2 WACC briefing</td><td>Angle 2</td><td>Horn</td></tr>
+        <tr><td>5–6</td><td>Quantum before pleadings: building the counterfactual early</td><td>#5 Quantum readiness checklist</td><td>Angle 5 + 7</td><td>Gillham</td></tr>
+        <tr><td>7–8</td><td>When the algorithm is the defendant: economics of AI harm</td><td>#6 AI economic-loss framework</td><td>Angle 6</td><td>Gillham</td></tr>
+        <tr><td>9–10</td><td>Do legacy efficiency models still hold? (decarbonisation &amp; resilience)</td><td>#3 Efficiency stress-test scorecard</td><td>Angle 3</td><td>Horn</td></tr>
+        <tr><td>11–12</td><td>Subsidy control after the CAT: making the counterfactual stick</td><td>#4 Subsidy evidence pack</td><td>Angle 4</td><td>Horn</td></tr>
+        <tr><td>13</td><td>Quarter wrap: "5 economic questions every board should ask in [year]"</td><td>#9 Board-paper checklist</td><td>Angle 10 (merger/market-investigation map)</td><td>Both</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p><strong>Cadence discipline.</strong> Publish the insight first, gate the lead magnet behind a single-field form, then run the outbound sequence to a tightly targeted list. Review per-play conversion at week 6 and 12 and double down on the two highest-converting triggers. Always keep three insights linked at the foot of each service page (the site's existing "insight proof" pattern).</p>
+
+    <!-- ============ 9 ============ -->
+    <h2 id="firecrawl"><span class="num">09</span>Appendix — run-ready Firecrawl config &amp; extraction schema</h2>
+    <p class="section-sub">Preserved from the brief so the crawl can be re-run for refresh/expansion when an API key is available. The strategy above was built by reading the pages directly; this is for systematic re-extraction at scale.</p>
+    <h3>Two-step: map, then crawl only accepted URLs</h3>
+    <pre><span class="c"># pip install firecrawl-py pydantic</span>
+<span class="k">import</span> os, json
+<span class="k">from</span> firecrawl <span class="k">import</span> Firecrawl
+<span class="k">from</span> firecrawl.v2.types <span class="k">import</span> ScrapeOptions
+
+START_URL = <span class="s">"https://www.swgroup.com/services/economic-advisory/"</span>
+app = Firecrawl(api_key=os.environ[<span class="s">"FIRECRAWL_API_KEY"</span>])
+
+crawl = app.crawl(
+    START_URL,
+    limit=<span class="k">25</span>,
+    include_paths=[<span class="s">r"^/services/economic-advisory/.*"</span>],
+    scrape_options=ScrapeOptions(
+        formats=[<span class="s">"markdown"</span>],
+        onlyMainContent=<span class="k">True</span>,
+        removeBase64Images=<span class="k">True</span>,
+        blockAds=<span class="k">True</span>,
+    ),
+)
+print(f<span class="s">"Crawled {crawl.completed} pages · credits {crawl.credits_used}"</span>)
+<span class="k">with</span> open(<span class="s">"sw_economic_advisory_crawl.jsonl"</span>, <span class="s">"w"</span>, encoding=<span class="s">"utf-8"</span>) <span class="k">as</span> f:
+    <span class="k">for</span> doc <span class="k">in</span> crawl.data:
+        f.write(json.dumps({
+            <span class="s">"title"</span>: getattr(doc.metadata, <span class="s">"title"</span>, None),
+            <span class="s">"url"</span>: getattr(doc.metadata, <span class="s">"url"</span>, None) or getattr(doc.metadata, <span class="s">"sourceURL"</span>, None),
+            <span class="s">"markdown"</span>: doc.markdown,
+        }, ensure_ascii=False) + <span class="s">"\n"</span>)</pre>
+    <p><em>Why these settings:</em> <code class="inline">include_paths</code> keeps the crawl inside the economic-advisory tree; an explicit <code class="inline">limit=25</code> caps cost (Firecrawl's default is high); <code class="inline">onlyMainContent</code> + markdown gives clean text for extraction. For a refresh, run <code class="inline">/map</code> first to discover URLs, then crawl only the accepted list.</p>
+    <h3>Per-page extraction schema</h3>
+    <pre><span class="k">class</span> LeadGenPage(BaseModel):
+    url: str
+    title: str
+    page_type: str  <span class="c"># hub | service_page | insight | person_profile | other</span>
+    hero_claim: Optional[str]
+    target_buyers: List[str]
+    target_sectors: List[str]
+    pain_points: List[str]
+    trigger_events: List[str]
+    services_offered: List[str]
+    proof_points: List[str]
+    differentiators: List[str]
+    ctas: List[str]
+    named_experts: List[str]
+    related_insights: List[str]
+    lead_magnet_ideas: List[str]
+    outbound_campaign_angles: List[str]</pre>
+
+    <footer class="foot">
+      <p>Prepared 29 Jun 2026. Source pages read directly from <a href="https://www.swgroup.com/services/economic-advisory/">swgroup.com/services/economic-advisory</a> (hub + six service lines). All hero lines, buyer groups, service lists and proof points are quoted from the live site; the strategy, plays, magnets, scoring model and calendar are the analysis layer on top. "DMCC" throughout refers to the UK Digital Markets, Competition and Consumers Act 2024. This page is unlisted — keep the URL private.</p>
+    </footer>
+
+  </main>
+</body>
+</html>
