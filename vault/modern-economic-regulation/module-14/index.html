@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Master Glossary · Modern Economic Regulation</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* deck-local helpers layered on top of the course-module theme */
+  .tpl-course-module figure.fig{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px 12px;box-shadow:var(--shadow)}
+  .tpl-course-module figure.fig figcaption{font-size:12.5px;color:var(--text-3);margin-top:8px;font-family:'JetBrains Mono',monospace}
+  .tpl-course-module .fig svg{width:100%;height:auto;display:block}
+  .tpl-course-module .fig text{font-family:'Inter',sans-serif;fill:var(--text-2)}
+  .tpl-course-module .flow{fill:none;stroke:var(--text-3);stroke-width:1.6}
+  /* glossary table: term column emphasised, definition column readable */
+  .tpl-course-module table.data td.term{font-weight:700;color:var(--accent);white-space:nowrap;font-size:13.5px}
+  .tpl-course-module table.data.gloss{font-size:13.5px}
+  .tpl-course-module table.data.gloss td{padding:7px 14px;line-height:1.42}
+  .tpl-course-module table.data.gloss th{font-size:11px}
+  .tpl-course-module .jump-list{list-style:none;padding:0;margin:0;font-size:12.5px}
+  .tpl-course-module .jump-list li{padding:2px 0;color:var(--text-3)}
+  .tpl-course-module .jump-list li.here{color:var(--accent);font-weight:700}
+  .tpl-course-module .jump-list li.here::before{content:"▸ ";color:var(--accent-2)}
+</style>
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 14 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">Master glossary &amp;<br><em>key concepts</em></h1>
+    <p class="lede mt-l" style="max-width:66ch">A fast revision reference for the whole course. Every core term from Decker's <em>Modern Economic Regulation</em> — from <em>subadditivity</em> to <em>bill-and-keep</em> — in one place, grouped by theme and cross-linked back to the module where it is taught.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 25 min revision</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), all chapters</span>
+      <span class="pill-academic">prereq · Modules 01–13</span>
+    </div>
+    <div class="deck-footer"><span>Revision reference · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="20"></span></div>
+    <aside class="notes">Welcome to the capstone reference module. Unlike the earlier decks, this one teaches nothing new — it consolidates. Think of it as the vocabulary sheet you take into the exam or into a regulatory hearing. Roughly eighty-five terms sit here, grouped exactly the way the book builds its argument: foundations first, then why we regulate, then the pricing toolkit, the price-control forms, access and competition, the institutions, the finance, and finally the industry-specific jargon for electricity, gas, telecoms and water. Each cluster carries a note telling you which module taught it, so you can jump straight back if a definition doesn't land cold. The last content slide is an acronym quick-reference — the alphabet soup regulators speak in. Use the arrow keys to move; press S at any time for the presenter view with these notes. Don't read passively: cover the definition column, recall it, then check.</aside>
+  </section>
+
+  <!-- 2 · How to use -->
+  <section class="slide" data-title="How to use">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>How to revise</h5>
+      <ul class="obj-list">
+        <li class="current">Skim a theme, recall each term cold</li>
+        <li>Star the ones you miss</li>
+        <li>Revisit only the starred set</li>
+        <li>Learn formulae where they clarify</li>
+        <li>Memorise the acronym sheet last</li>
+      </ul>
+      <h5>Coverage</h5>
+      <p class="dim" style="font-size:13px">~85 terms · 8 themes · Ch. 1–12</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">ORIENTATION · HOW TO USE THIS GLOSSARY</p>
+      <h2 class="h2 mt-s">A revision reference, not a lecture.</h2>
+      <p class="lede mt-m">Every term you met across Modules 01–13, condensed to one testable line. Work it actively.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>The study routine</h4><p class="dim">Skim a theme block, then <b>recall each term cold</b> before reading the definition. Star any you miss; on the next pass, drill only the starred set. That's spaced retrieval, not re-reading.</p></div>
+        <div class="concept-box"><h4>How it's grouped</h4><p class="dim">Themes follow the book's arc: <em>Foundations → Why we regulate → Pricing → Price control → Access → Institutions → Finance → Industry</em>. The sidebar's "Jump to theme" index tracks where you are.</p></div>
+      </div>
+      <div class="callout"><b>On formulae.</b> The three that matter — the marginal-cost rule <code>p = MC</code>, Ramsey's inverse-elasticity mark-up, and the WACC building block — appear only where they sharpen a definition. Everything else is prose you can speak aloud.</div>
+    </div>
+    <aside class="notes">Set expectations before diving in. This module rewards active recall, not passive skimming — so tell learners to physically cover the right-hand column and say the definition out loud first. The grouping is deliberate and worth pointing out: it mirrors the causal spine of regulatory economics. You start with why utilities are special (natural monopoly), move to whether we should intervene at all (normative versus positive theory), then to how you set prices right (the pricing benchmarks and Ramsey), then to the real-world instruments regulators use (RPI–X, RAB, benchmarking), then to the hardest modern problem — sharing a bottleneck network with competitors — and finally the plumbing: who regulates, how capital is paid for, and the sector-specific vocabulary. Three formulae recur and are worth committing to memory: price equals marginal cost, Ramsey's inverse-elasticity rule, and the weighted average cost of capital. Everything else is definitional. Encourage learners to treat the starred-term technique seriously — it's the single highest-yield revision habit.</aside>
+  </section>
+
+  <!-- 3 · Foundations — market structure -->
+  <section class="slide" data-title="Market structure">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li class="here">1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Modules 01–02</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 1 · FOUNDATIONS — MARKET STRUCTURE</p>
+      <h2 class="h2 mt-s">Why utilities are special.</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:22%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Natural monopoly</td><td>One firm supplies the whole market more cheaply than several could.</td></tr>
+        <tr><td class="term">Subadditivity</td><td>A single firm's cost of total output is below the sum of any split among firms — the true test of natural monopoly.</td></tr>
+        <tr><td class="term">Economies of scale</td><td>Average cost falls as output rises.</td></tr>
+        <tr><td class="term">Economies of scope</td><td>Cheaper to produce two goods together than separately.</td></tr>
+        <tr><td class="term">Economies of density</td><td>Unit cost falls as more customers share the same fixed network.</td></tr>
+        <tr><td class="term">Sunk costs</td><td>Spending that cannot be recovered on exit; a barrier to entry and to contestability.</td></tr>
+        <tr><td class="term">Sustainability</td><td>A monopoly's ability to hold prices that deter entry without losing money.</td></tr>
+        <tr><td class="term">Cream-skimming</td><td>Entrants target only the profitable customers, undermining averaged prices.</td></tr>
+        <tr><td class="term">Hold-up</td><td>One party under-invests, fearing the other will later exploit its sunk commitment.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">This cluster is the bedrock — taught in Modules 01 and 02 — and it matters because everything downstream assumes it. The examinable trap is the difference between economies of scale and subadditivity: scale is about a single product's falling average cost, whereas subadditivity is the real, multi-product definition of natural monopoly and can hold even when the cost curve turns upward. Economies of scope and density explain why you don't want duplicate pipes and why a dense city network is cheaper per customer than a rural one. Sunk costs are the hinge of the whole subject — they're what makes entry hard, contestability weak, and hold-up possible. Cream-skimming and sustainability go together: if an incumbent averages prices across profitable and unprofitable customers, an entrant can skim the profitable ones, so the incumbent's price structure must be entry-proof to survive. Hold-up previews the commitment problem you'll meet again under Institutions. Get these nine cold; they recur constantly.</aside>
+  </section>
+
+  <!-- 4 · Efficiency & welfare + SVG triad -->
+  <section class="slide" data-title="Efficiency &amp; welfare">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li class="here">1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Modules 01–02</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 1 · FOUNDATIONS — EFFICIENCY &amp; WELFARE</p>
+      <h2 class="h2 mt-s">The three efficiencies, and the welfare pie.</h2>
+      <div class="split mt-m">
+        <table class="data gloss">
+          <tr><th style="width:34%">Term</th><th>Definition</th></tr>
+          <tr><td class="term">Allocative efficiency</td><td>Output where price equals marginal cost; no gains from trade left unrealised.</td></tr>
+          <tr><td class="term">Productive efficiency</td><td>Producing at least cost for the output chosen.</td></tr>
+          <tr><td class="term">Dynamic efficiency</td><td>Efficient innovation and investment over time.</td></tr>
+          <tr><td class="term">X-inefficiency</td><td>Slack: costs above the minimum because monopoly removes competitive pressure.</td></tr>
+          <tr><td class="term">Cost efficiency</td><td>Umbrella term for producing output at minimum feasible cost.</td></tr>
+          <tr><td class="term">Deadweight loss</td><td>Welfare destroyed when price above MC cuts output below the efficient level.</td></tr>
+          <tr><td class="term">Consumer surplus</td><td>Value consumers get above the price they pay.</td></tr>
+          <tr><td class="term">Producer surplus</td><td>Revenue a firm earns above its marginal costs.</td></tr>
+          <tr><td class="term">Total surplus</td><td>Consumer plus producer surplus; the welfare pie regulators maximise.</td></tr>
+        </table>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 360 250" role="img" aria-label="The efficiency triad: allocative, productive and dynamic efficiency feeding total welfare">
+            <circle cx="110" cy="72" r="46" class="node"/>
+            <circle cx="250" cy="72" r="46" class="node-2"/>
+            <circle cx="180" cy="178" r="46" fill="var(--surface)" stroke="var(--accent-3)" stroke-width="2"/>
+            <text x="110" y="66" text-anchor="middle" class="lbl-em" fill="var(--accent)">Allocative</text>
+            <text x="110" y="82" text-anchor="middle" class="lbl">p = MC</text>
+            <text x="250" y="66" text-anchor="middle" class="lbl-em" fill="var(--accent-2)">Productive</text>
+            <text x="250" y="82" text-anchor="middle" class="lbl">least cost</text>
+            <text x="180" y="172" text-anchor="middle" class="lbl-em" fill="var(--accent-3)">Dynamic</text>
+            <text x="180" y="188" text-anchor="middle" class="lbl">over time</text>
+            <text x="180" y="128" text-anchor="middle" class="lbl" font-weight="700">Total surplus ↑</text>
+          </svg>
+          <figcaption>Fig 14.1 — the efficiency triad regulators trade off.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is the analytical heart of the course, from Modules 01 and 02. The three efficiencies are the criteria against which every regulatory decision is judged, and the figure shows why they don't always pull together. Allocative efficiency is a static, this-period idea: set price equal to marginal cost and you exhaust all gains from trade. Productive efficiency asks whether, for whatever you produce, you produce it at least cost — this is where X-inefficiency bites, the managerial slack a monopoly can afford because nobody is competing it away. Dynamic efficiency is the long game: innovation and timely investment, which sometimes require the very margins that hurt allocative efficiency in the short run. That tension — a fat margin funds tomorrow's investment but destroys today's deadweight — is the recurring dilemma of incentive regulation. The surplus vocabulary underneath is your measuring tape: consumer surplus, producer surplus, and their sum, total surplus, which is the pie a welfarist regulator tries to maximise. Deadweight loss is simply the slice that vanishes when price sits above marginal cost.</aside>
+  </section>
+
+  <!-- 5 · Externalities & networks -->
+  <section class="slide" data-title="Externalities &amp; networks">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li class="here">1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Module 02</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 1 · FOUNDATIONS — EXTERNALITIES &amp; NETWORKS</p>
+      <h2 class="h2 mt-s">When the market misses a cost or a value.</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:26%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Externality</td><td>A cost or benefit falling on third parties, not priced by the market.</td></tr>
+        <tr><td class="term">Environmental externality</td><td>Pollution and emissions costs borne by society — e.g. electricity CO₂.</td></tr>
+        <tr><td class="term">Network externality</td><td>A user's value rises as more others join the same network.</td></tr>
+        <tr><td class="term">Positive / negative network externality</td><td>Joining benefits others (positive) or congests / harms them (negative).</td></tr>
+        <tr><td class="term">Complementary services</td><td>Services worth more together, often across adjacent monopolies.</td></tr>
+        <tr><td class="term">Double-marginalisation</td><td>Successive mark-ups by a vertical chain push price above the monopoly optimum.</td></tr>
+      </table>
+      <div class="callout"><b>Why it belongs in regulation.</b> Externalities are the <em>second</em> market failure (after natural monopoly) that justifies intervention — and network externalities are what make telecoms and payments markets tip toward a dominant standard.</div>
+    </div>
+    <aside class="notes">These six close out the foundations, from Module 02, and they broaden the case for regulation beyond pure monopoly. An externality is any cost or benefit the market price doesn't capture — the classic one in utilities is environmental, the CO₂ from generation that society pays for but the generator historically didn't. Network externalities are subtler and hugely important for telecoms: the value of a phone or a payment network rises with the number of users, which can make markets tip toward a single standard and hand the winner durable market power. Distinguish positive from negative carefully — an extra user on a social network helps everyone; an extra car on a road congests it. Complementary services and double-marginalisation both foreshadow the access chapters: when two separately-owned monopolies each mark up a product that must be consumed together, the combined price ends up higher than a single integrated monopolist would set — the double-marginalisation problem — which is a surprisingly strong argument for either integration or coordinated access pricing.</aside>
+  </section>
+
+  <!-- 6 · Why we regulate -->
+  <section class="slide" data-title="Why we regulate">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li class="here">2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Modules 02–03</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 2 · WHY WE REGULATE — RATIONALES &amp; THEORIES</p>
+      <h2 class="h2 mt-s">Normative <em>should</em> vs positive <em>does</em>.</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:28%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Economic regulation</td><td>Rules constraining a firm's prices, conduct or entry to serve the public interest.</td></tr>
+        <tr><td class="term">Normative theory</td><td>Regulation <em>ought</em> to correct market failure (natural monopoly, externalities).</td></tr>
+        <tr><td class="term">Positive theory</td><td>Explains what regulation actually is, and whose interests it serves.</td></tr>
+        <tr><td class="term">Public-interest rationale</td><td>Regulate to lift welfare where competition cannot.</td></tr>
+        <tr><td class="term">Capture theory</td><td>Regulators come to serve the industry they oversee, not consumers.</td></tr>
+        <tr><td class="term">Interest-group theory</td><td>Regulation is the outcome of groups lobbying for rents (Stigler, Peltzman, Becker).</td></tr>
+        <tr><td class="term">Regulation as long-term contract</td><td>A durable, adjustable bargain between state and firm under uncertainty.</td></tr>
+        <tr><td class="term">Destructive competition</td><td>The (weak) claim that unregulated rivalry is ruinously wasteful.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">This cluster, from Modules 02 and 03, is where the subject gets intellectually honest. Hold the normative–positive distinction firmly: normative theory tells you what regulation should do — fix market failures — while positive theory, associated with Chicago economists Stigler, Peltzman and Becker, asks the uncomfortable empirical question of what regulation actually does and who really benefits. Capture theory and interest-group theory are the sharp end of the positive tradition: the worry that a regulator, over time, ends up defending the incumbents it was meant to discipline, or that the whole apparatus is just the equilibrium of lobbying. "Regulation as long-term contract" is a more constructive framing — a durable, renegotiable bargain between the state and the firm that has to survive shocks neither party foresaw, which is why credible commitment matters so much later. Destructive competition is flagged as weak deliberately: the claim that rivalry is ruinous has been used to justify cartels and is usually a bad-faith argument. Teach learners to be sceptical of it.</aside>
+  </section>
+
+  <!-- 7 · Pricing benchmarks -->
+  <section class="slide" data-title="Pricing benchmarks">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li class="here">3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Key formula</h5>
+      <p class="dim" style="font-size:13px">first-best · <code>p = MC</code></p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 3 · PRICING PRINCIPLES — THE BENCHMARKS</p>
+      <h2 class="h2 mt-s">Getting prices right in a monopoly.</h2>
+      <div class="callout" style="margin-top:14px"><b>First-best rule.</b> Set <code>p = MC</code> — allocatively perfect, but a natural monopoly with falling average cost then loses money. Every other rule below is a fix for that break-even problem.</div>
+      <table class="data gloss mt-m">
+        <tr><th style="width:26%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Marginal-cost / first-best pricing</td><td>Price = MC; allocatively efficient but loss-making for a natural monopoly.</td></tr>
+        <tr><td class="term">Second-best pricing</td><td>Best achievable prices once the break-even (or other) constraint binds.</td></tr>
+        <tr><td class="term">Average-cost pricing</td><td>Price = average cost; breaks even but distorts consumption.</td></tr>
+        <tr><td class="term">Linear pricing</td><td>A single per-unit price with no fixed element.</td></tr>
+        <tr><td class="term">Cross-subsidy</td><td>Profits on one service fund below-cost pricing of another.</td></tr>
+        <tr><td class="term">Transfer subsidy</td><td>An explicit payment used to keep a loss-making service viable.</td></tr>
+        <tr><td class="term">Price discrimination</td><td>Charging different prices to different buyers by willingness to pay.</td></tr>
+        <tr><td class="term">Demand-reflective pricing</td><td>Prices that track how much each user values the service.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">Now we're into the pricing toolkit, taught across the pricing modules. The organising idea is the one in the callout: the textbook-perfect rule is price equals marginal cost, but for a natural monopoly with falling average cost, marginal cost sits below average cost, so pricing at MC means running a loss. That single fact generates the entire rest of the theme. Second-best pricing is the honest response — the best you can do once you accept the firm must at least break even. Average-cost pricing is the crude fix: it balances the books but distorts consumption because price no longer equals marginal cost. The remaining terms are the finer instruments. Cross-subsidy and transfer subsidy are how loss-making services get funded — implicitly through other customers, or explicitly through a payment. Price discrimination and demand-reflective pricing are the bridge to the next slide: charging by willingness to pay isn't just a profit trick, it's often the welfare-improving way to recover fixed costs, which is precisely what Ramsey pricing formalises.</aside>
+  </section>
+
+  <!-- 8 · Ramsey & multi-product + SVG family tree -->
+  <section class="slide" data-title="Ramsey pricing">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li class="here">3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Key formula</h5>
+      <p class="dim" style="font-size:13px">mark-up ∝ 1 / elasticity</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 3 · PRICING — RAMSEY &amp; MULTI-PRODUCT RULES</p>
+      <h2 class="h2 mt-s">Recovering fixed cost with least harm.</h2>
+      <div class="split mt-m">
+        <table class="data gloss">
+          <tr><th style="width:32%">Term</th><th>Definition</th></tr>
+          <tr><td class="term">Ramsey–Boiteux pricing</td><td>Welfare-optimal break-even prices: inverse-elasticity mark-ups.</td></tr>
+          <tr><td class="term">EPMU</td><td>Equi-proportionate mark-up: same proportional mark-up on every service — simpler than Ramsey.</td></tr>
+          <tr><td class="term">FDC</td><td>Fully distributed costs: accounting method allocating common costs by a chosen key.</td></tr>
+          <tr><td class="term">Common / joint costs</td><td>Costs shared across services that no single output causes.</td></tr>
+          <tr><td class="term">Stand-alone cost</td><td>Cost of producing a service entirely on its own — a price <em>ceiling</em> test.</td></tr>
+          <tr><td class="term">Incremental cost</td><td>Extra cost of adding one service to the mix — a price <em>floor</em> test.</td></tr>
+        </table>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 360 250" role="img" aria-label="Family tree of pricing rules descending from the first-best marginal-cost rule">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <rect x="118" y="12" width="124" height="30" rx="6" class="node"/>
+            <text x="180" y="31" text-anchor="middle" class="lbl-em" fill="var(--accent)">p = MC (first-best)</text>
+            <path class="flow" marker-end="url(#arrow)" d="M180,42 L180,70"/>
+            <rect x="108" y="72" width="144" height="30" rx="6" fill="var(--surface)" stroke="var(--text-3)" stroke-width="1.6"/>
+            <text x="180" y="91" text-anchor="middle" class="lbl">break-even binds → 2nd-best</text>
+            <path class="flow" marker-end="url(#arrow)" d="M150,102 L86,140"/>
+            <path class="flow" marker-end="url(#arrow)" d="M210,102 L274,140"/>
+            <rect x="18" y="142" width="140" height="30" rx="6" class="node-2"/>
+            <text x="88" y="161" text-anchor="middle" class="lbl-em" fill="var(--accent-2)">Ramsey (elasticity)</text>
+            <rect x="204" y="142" width="140" height="30" rx="6" fill="var(--surface)" stroke="var(--accent-3)" stroke-width="1.6"/>
+            <text x="274" y="161" text-anchor="middle" class="lbl-em" fill="var(--accent-3)">Two-part tariff</text>
+            <path class="flow" marker-end="url(#arrow)" d="M88,172 L88,200"/>
+            <rect x="30" y="202" width="116" height="28" rx="6" fill="var(--surface)" stroke="var(--text-3)" stroke-width="1.6"/>
+            <text x="88" y="220" text-anchor="middle" class="lbl">EPMU (crude Ramsey)</text>
+          </svg>
+          <figcaption>Fig 14.2 — the pricing-rules family tree.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Ramsey–Boiteux is the crown jewel of regulatory pricing theory, and the figure shows exactly where it sits: it's the second-best answer to the break-even problem the previous slide set up. The intuition worth drilling is the inverse-elasticity rule — to recover fixed costs with the least loss of welfare, load the biggest mark-ups onto the services whose demand is least elastic, because those buyers cut back least when the price rises. EPMU is the practical, blunt cousin: mark everything up by the same proportion, which is easy to defend but ignores elasticities. The cost concepts underneath are the guardrails for any multi-product price. Common or joint costs are the awkward shared costs no single output causes, and how you allocate them is contestable — fully distributed costs is one accounting convention. Stand-alone cost and incremental cost are the two tests that bound a legitimate price: no service should be charged more than it would cost to provide entirely on its own (the ceiling), and none should be charged less than the extra cost it adds (the floor). Those two bounds reappear, renamed, in the access-pricing slides.</aside>
+  </section>
+
+  <!-- 9 · Tariffs & time -->
+  <section class="slide" data-title="Tariffs &amp; time">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li class="here">3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Pricing modules</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 3 · PRICING — TARIFFS &amp; TIME</p>
+      <h2 class="h2 mt-s">Peak-load, two-part and block tariffs.</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:26%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Two-part tariff</td><td>A fixed access charge plus a per-unit price; recovers fixed cost while pricing usage near MC.</td></tr>
+        <tr><td class="term">Non-linear pricing</td><td>Per-unit price varies with quantity (blocks, declining rates).</td></tr>
+        <tr><td class="term">Optimal non-linear pricing</td><td>Quantity-varying schedule that can raise welfare as a Pareto improvement.</td></tr>
+        <tr><td class="term">Block tariff</td><td>Price steps by consumption band (increasing or decreasing block).</td></tr>
+        <tr><td class="term">Peak-load pricing</td><td>Higher prices in high-demand periods to reflect capacity costs.</td></tr>
+        <tr><td class="term">Time-of-use / dynamic tariff</td><td>Prices that vary by time of day or real-time conditions.</td></tr>
+        <tr><td class="term">Ramsey vs peak-load</td><td>Ramsey rations by elasticity; peak-load rations scarce capacity by period.</td></tr>
+        <tr><td class="term">Sustainable prices</td><td>A price set that covers cost and deters inefficient entry.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">These eight are the practical face of the pricing theory, and they're the tariffs your electricity or water bill actually uses. The two-part tariff is the elegant one: a fixed charge recovers the fixed cost while the per-unit price stays near marginal cost, so you get the fixed-cost recovery of average-cost pricing without the consumption distortion — as close to first-best as a break-even monopoly can get. Non-linear and block tariffs generalise that idea to menus where the per-unit price changes with how much you buy; done well, an optimal non-linear schedule can make everyone better off, a genuine Pareto improvement. Peak-load pricing is conceptually distinct and worth contrasting explicitly with Ramsey, which is why it's flagged: Ramsey rations by elasticity to cover fixed costs, whereas peak-load rations scarce capacity by time period — you pay more at 6pm not because your demand is inelastic but because that's when the system is strained. Time-of-use and dynamic tariffs are the smart-meter-era implementation of peak-load, and they're central to the modern electricity modules.</aside>
+  </section>
+
+  <!-- 10 · Price control — rate of return -->
+  <section class="slide" data-title="Rate of return">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li class="here">4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Price-control modules</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 4 · PRICE CONTROL — RATE OF RETURN</p>
+      <h2 class="h2 mt-s">The old US model: cost-of-service.</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:30%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Rate-of-return (cost-of-service) regulation</td><td>Allow prices covering costs plus a fair return on the asset base.</td></tr>
+        <tr><td class="term">Rate base</td><td>The capital value on which the allowed return is earned.</td></tr>
+        <tr><td class="term">Rate case</td><td>The periodic proceeding that sets allowed revenue.</td></tr>
+        <tr><td class="term">Revenue requirement</td><td>Total revenue a firm is permitted: operating costs + return on rate base.</td></tr>
+        <tr><td class="term">Averch–Johnson effect</td><td>If the allowed return exceeds cost of capital, the firm over-invests in capital ("gold-plating").</td></tr>
+        <tr><td class="term">Cost-plus contract</td><td>Pays realised costs plus a margin; weak efficiency incentive.</td></tr>
+        <tr><td class="term">Regulatory lag</td><td>The gap between reviews; longer lag sharpens cost-cutting incentives.</td></tr>
+      </table>
+      <div class="callout"><b>The core weakness.</b> Cost-plus rewards spending, not thrift — the Averch–Johnson gold-plating incentive — which is exactly what RPI–X was invented to fix.</div>
+    </div>
+    <aside class="notes">This is the classic American model, and it's the foil against which the British incentive model is defined. Under rate-of-return regulation, the regulator lets the firm charge prices that cover its costs plus a "fair" return on its rate base — the capital it has invested. The mechanics are the rate case, a periodic proceeding, which sets the revenue requirement: operating costs plus the allowed return. The problem is baked in and examinable: the Averch–Johnson effect. If the allowed rate of return is set even slightly above the firm's true cost of capital, the firm makes money on every pound of capital it deploys, so it over-invests — gold-plating the network. More broadly, cost-plus rewards spending rather than thrift, so efficiency incentives are weak. The one redeeming feature is regulatory lag: because reviews are periodic, a firm that cuts costs between reviews keeps the savings until the next reset, which quietly restores some incentive to be efficient. That insight — that the length of the review period is itself an incentive lever — is the seed of price-cap regulation on the next slide.</aside>
+  </section>
+
+  <!-- 11 · Price control — incentive / cap + benchmarking -->
+  <section class="slide" data-title="Incentive regulation">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li class="here">4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Key mechanism</h5>
+      <p class="dim" style="font-size:13px">RPI − X · RAB · building blocks</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 4 · PRICE CONTROL — INCENTIVE (CAP) &amp; BENCHMARKING</p>
+      <h2 class="h2 mt-s">The British model, and how targets are set.</h2>
+      <div class="split">
+        <table class="data gloss">
+          <tr><th style="width:34%">Term</th><th>Definition</th></tr>
+          <tr><td class="term">Price-cap regulation</td><td>Cap prices for a set period; the firm keeps savings it makes below the cap.</td></tr>
+          <tr><td class="term">RPI − X</td><td>Cap letting prices rise with inflation minus an efficiency factor X.</td></tr>
+          <tr><td class="term">X factor</td><td>The annual real price reduction the regulator expects from efficiency.</td></tr>
+          <tr><td class="term">RAB / RCV</td><td>Regulatory asset base / capital value: the regulated value of assets on which returns accrue.</td></tr>
+          <tr><td class="term">Building-blocks approach</td><td>Allowed revenue = opex + return on RAB + depreciation + tax.</td></tr>
+          <tr><td class="term">Tariff-basket cap</td><td>Cap on the weighted average of a bundle of prices, not each one.</td></tr>
+          <tr><td class="term">Revenue cap</td><td>Cap on total revenue, insulating the firm from volume risk.</td></tr>
+          <tr><td class="term">Ratchet effect</td><td>Firms hide efficiency, fearing the regulator claws it back next period.</td></tr>
+        </table>
+        <table class="data gloss">
+          <tr><th style="width:30%">Sharing &amp; benchmarking</th><th></th></tr>
+          <tr><td class="term">Profit-sharing (sliding scale)</td><td>Customers and firm split gains/losses beyond a band.</td></tr>
+          <tr><td class="term">Deadband</td><td>The range of outcomes left unshared before sharing kicks in.</td></tr>
+          <tr><td class="term">Menu regulation</td><td>Offer a choice of contracts so the firm self-reveals its costs.</td></tr>
+          <tr><td class="term">Yardstick competition</td><td>Set allowed cost from the performance of comparable peers.</td></tr>
+          <tr><td class="term">Benchmarking</td><td>Compare firms' costs / efficiency to set targets.</td></tr>
+          <tr><td class="term">DEA</td><td>Data envelopment analysis: non-parametric efficiency frontier.</td></tr>
+          <tr><td class="term">COLS</td><td>Corrected ordinary least squares: regression-based frontier.</td></tr>
+          <tr><td class="term">SFA</td><td>Stochastic frontier analysis: separates inefficiency from noise.</td></tr>
+          <tr><td class="term">TFP</td><td>Total factor productivity: output-to-all-inputs ratio; drives X.</td></tr>
+        </table>
+      </div>
+    </div>
+    <aside class="notes">This is the densest slide, and deliberately so — it's the machinery a UK regulator like Ofgem or Ofwat actually operates, so for practitioners it's the most useful cluster in the deck. The left column is the price-cap system. RPI–X is the headline: prices may rise with retail inflation minus an efficiency factor X, and because the firm keeps whatever it saves below the cap during the period, it has a genuine incentive to cut costs — the fix for Averch–Johnson. The RAB, or regulatory capital value, is the single most important number in British regulation: the regulated asset base on which the firm earns its return, built up through the building-blocks approach of opex plus return on RAB plus depreciation plus tax. The ratchet effect is the flaw — if firms fear this period's efficiency becomes next period's tougher target, they hide it. The right column is how the regulator sets X credibly: yardstick competition and benchmarking against peers, using frontier methods — DEA, COLS, SFA — to estimate how efficient each firm could be, and menu regulation to make firms reveal their true costs. TFP growth ultimately anchors the X factor.</aside>
+  </section>
+
+  <!-- 12 · Access basics & pricing rules -->
+  <section class="slide" data-title="Access pricing">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li class="here">5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Key rule</h5>
+      <p class="dim" style="font-size:13px">ECPR = IC + opportunity cost</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 5 · ACCESS — BASICS &amp; PRICING RULES</p>
+      <h2 class="h2 mt-s">Sharing the bottleneck network.</h2>
+      <div class="split">
+        <table class="data gloss">
+          <tr><th style="width:34%">Access basics</th><th></th></tr>
+          <tr><td class="term">Access</td><td>A rival's right to use an incumbent's essential network.</td></tr>
+          <tr><td class="term">One-way access</td><td>Entrant buys access into a monopoly network to reach customers.</td></tr>
+          <tr><td class="term">Two-way access</td><td>Interconnection: networks terminate each other's traffic; each needs the other.</td></tr>
+          <tr><td class="term">Essential facility</td><td>An input a rival must have and cannot economically duplicate.</td></tr>
+          <tr><td class="term">Competitive bottleneck</td><td>Control of a must-have facility conferring market power.</td></tr>
+          <tr><td class="term">Access pricing</td><td>The charge for using another firm's network.</td></tr>
+          <tr><td class="term">Retail-minus</td><td>Access price = retail price minus the incumbent's avoided retail cost.</td></tr>
+          <tr><td class="term">Opportunity cost of access</td><td>Profit the incumbent forgoes by carrying a rival's traffic.</td></tr>
+          <tr><td class="term">Vertical integration / separation</td><td>Whether the network owner also competes downstream, or is split off.</td></tr>
+        </table>
+        <table class="data gloss">
+          <tr><th style="width:30%">Access pricing rules</th><th></th></tr>
+          <tr><td class="term">ECPR / Baumol–Willig</td><td>Access price = incremental cost + opportunity cost of access.</td></tr>
+          <tr><td class="term">M-ECPR</td><td>Market-adjusted ECPR: benchmarked to competitive, not monopoly, margins.</td></tr>
+          <tr><td class="term">LRIC</td><td>Long-run incremental cost of the access service.</td></tr>
+          <tr><td class="term">TSLRIC / TELRIC</td><td>Total-service / total-element LRIC; forward-looking cost standards.</td></tr>
+          <tr><td class="term">SAC</td><td>Stand-alone cost: the ceiling for an access charge.</td></tr>
+          <tr><td class="term">FL-LRIC</td><td>Forward-looking LRIC, priced on efficient modern-equivalent assets.</td></tr>
+          <tr><td class="term">Make-or-buy</td><td>Entrant's choice to build its own facility or buy access.</td></tr>
+          <tr><td class="term">By-pass</td><td>A rival routes around the incumbent's network, constraining access prices.</td></tr>
+        </table>
+      </div>
+    </div>
+    <aside class="notes">Access is the hardest and most modern problem in the book, and this slide is its vocabulary core. The basic set on the left frames the situation: an incumbent owns an essential facility — a bottleneck the rival cannot economically duplicate — and regulation forces it to grant access. One-way access is an entrant renting into a monopoly network; two-way access, or interconnection, is when two networks must terminate each other's traffic and neither can do without the other. The pricing rules on the right are where the intellectual fights happen. ECPR, the Baumol–Willig rule, says the access price should equal the incremental cost of carrying the rival plus the opportunity cost the incumbent bears by losing that retail sale — controversial because it can lock in the incumbent's existing margin, which is why M-ECPR benchmarks to competitive margins instead. The cost standards LRIC, TSLRIC, TELRIC and FL-LRIC are all forward-looking attempts to price access on what an efficient modern network would cost, not on historic accounts. Notice stand-alone cost reappearing as the ceiling — the same guardrail from the Ramsey slide.</aside>
+  </section>
+
+  <!-- 13 · Access — termination & investment paths -->
+  <section class="slide" data-title="Termination &amp; entry paths">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li class="here">5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Access &amp; telecoms modules</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 5 · ACCESS — TERMINATION &amp; ENTRY PATHS</p>
+      <h2 class="h2 mt-s">Who pays to connect, and the ladder up.</h2>
+      <div class="split">
+        <table class="data gloss">
+          <tr><th style="width:32%">Termination &amp; interconnection</th><th></th></tr>
+          <tr><td class="term">Termination monopoly</td><td>Each network monopolises delivery to its own subscribers.</td></tr>
+          <tr><td class="term">CPNP</td><td>Calling-party-network-pays: the caller's network pays the terminating network.</td></tr>
+          <tr><td class="term">RPNP</td><td>Receiving-party-network-pays: the called party's side bears the cost.</td></tr>
+          <tr><td class="term">Bill-and-keep (BAK)</td><td>Networks swap traffic and keep their own revenues; no termination charge.</td></tr>
+          <tr><td class="term">Waterbed effect</td><td>Cutting regulated termination rates pushes up other (retail) prices.</td></tr>
+          <tr><td class="term">Zero-charge access</td><td>Reciprocal termination priced at zero.</td></tr>
+          <tr><td class="term">Adjacent monopolies</td><td>Separately-owned complementary bottlenecks whose pricing interacts.</td></tr>
+        </table>
+        <table class="data gloss">
+          <tr><th style="width:34%">Investment &amp; entry paths</th><th></th></tr>
+          <tr><td class="term">Ladder of investment</td><td>Regulate so entrants climb from reselling toward building their own facilities.</td></tr>
+          <tr><td class="term">Stepping-stone hypothesis</td><td>Access-based entry as a stage toward facilities-based competition.</td></tr>
+          <tr><td class="term">Access / regulatory holiday</td><td>Light or no access obligation to reward risky new investment.</td></tr>
+          <tr><td class="term">Facilities-based competition</td><td>Rivals compete with their own networks.</td></tr>
+          <tr><td class="term">Service-based competition</td><td>Rivals compete using access to the incumbent's network.</td></tr>
+          <tr><td class="term">Inter- / intra-platform</td><td>Rivalry across different network technologies vs within one.</td></tr>
+          <tr><td class="term">Real-option value</td><td>The value of waiting; why irreversible network investment needs a risk premium.</td></tr>
+        </table>
+      </div>
+    </div>
+    <aside class="notes">This slide finishes access with two related debates. On the left, the termination problem: every network is a little monopoly over delivery to its own subscribers, so how do you price the handoff between networks? The regimes are named acronyms worth memorising — calling-party-pays, receiving-party-pays, and bill-and-keep, where networks simply keep their own revenues and charge each other nothing. The waterbed effect is the subtle general-equilibrium warning: squeeze regulated termination rates and the operator recoups elsewhere, so retail prices float back up. On the right is the investment-versus-competition dilemma that dominates modern telecoms policy. The ladder of investment and stepping-stone hypothesis argue that cheap mandated access lets entrants start small and climb toward building their own infrastructure. The counter-argument, captured by regulatory holidays and real-option value, is that forcing access on new, risky investment discourages anyone from building it in the first place — because irreversible investment under uncertainty has an option value of waiting that a low regulated return destroys. Facilities-based versus service-based competition is the axis this whole debate turns on.</aside>
+  </section>
+
+  <!-- 14 · Institutions -->
+  <section class="slide" data-title="Institutions">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li class="here">6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Institutions &amp; accountability</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 6 · INSTITUTIONS &amp; ACCOUNTABILITY</p>
+      <h2 class="h2 mt-s">Who regulates — and can we trust them?</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:28%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Independent regulator</td><td>An agency insulated from day-to-day political control.</td></tr>
+        <tr><td class="term">Ex ante regulation</td><td>Set rules and prices <em>before</em> conduct occurs (utility-style).</td></tr>
+        <tr><td class="term">Ex post regulation</td><td>Intervene <em>after the fact</em> via competition law.</td></tr>
+        <tr><td class="term">Regulatory capture</td><td>Agency serves the regulated firm's interests over the public's.</td></tr>
+        <tr><td class="term">Light-handed regulation</td><td>Minimal intervention, relying on monitoring and the threat to act.</td></tr>
+        <tr><td class="term">Time-inconsistency</td><td>A policy optimal today the regulator is later tempted to abandon.</td></tr>
+        <tr><td class="term">Credible commitment</td><td>Binding the regulator so investors trust prices won't be expropriated.</td></tr>
+        <tr><td class="term">Expropriation of sunk investment</td><td>Clawing back returns once capital is committed; deters investment.</td></tr>
+        <tr><td class="term">Quis custodiet ipsos custodes?</td><td>"Who guards the guardians?" — the accountability problem for regulators.</td></tr>
+        <tr><td class="term">Negotiated settlement</td><td>Regulator brokers an agreed outcome between firm and stakeholders.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">These ten terms are about the regulator itself rather than the firms — the governance layer taught in the institutions module. The ex ante / ex post distinction recurs here as the deepest design choice: do you write binding rules up front, the utility model, or do you leave conduct to be challenged afterwards under competition law? The pivotal idea in this cluster is the commitment problem, which ties back to hold-up from the very first slide. Time-inconsistency is the mechanism: a regulator promises high enough prices to induce a firm to sink billions into a network, but once the capital is in the ground and irreversible, the regulator is tempted to cut prices to the bone — expropriating the sunk investment. Rational investors foresee this and won't invest unless the regulator can make a credible commitment not to renege. That is the single most important argument for an independent regulator insulated from short-term politics, and for institutional devices like negotiated settlements. Capture and the Latin tag — who guards the guardians — are the counterweight: independence solves time-inconsistency but reopens the accountability problem.</aside>
+  </section>
+
+  <!-- 15 · Finance -->
+  <section class="slide" data-title="Finance">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li class="here">7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Key formula</h5>
+      <p class="dim" style="font-size:13px">WACC = weighted debt + equity cost</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 7 · FINANCE — COST OF CAPITAL</p>
+      <h2 class="h2 mt-s">Paying for capital: the allowed return.</h2>
+      <div class="callout" style="margin-top:14px"><b>WACC.</b> The weighted average of the cost of debt and equity — the return the regulator allows on the RAB. Get it wrong high, consumers overpay; wrong low, the network doesn't get built.</div>
+      <table class="data gloss mt-m">
+        <tr><th style="width:24%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">Cost of capital</td><td>The return investors require to fund the firm's assets.</td></tr>
+        <tr><td class="term">WACC</td><td>Weighted average cost of debt and equity; the allowed return on the RAB.</td></tr>
+        <tr><td class="term">CAPM</td><td>Prices equity return as risk-free rate + beta × equity risk premium.</td></tr>
+        <tr><td class="term">Gearing</td><td>The ratio of debt to total capital (leverage).</td></tr>
+        <tr><td class="term">DCF</td><td>Discounted cash flow: values assets as the present value of expected future cash.</td></tr>
+        <tr><td class="term">DORC / ORC</td><td>Depreciated / gross optimised replacement cost; a modern-equivalent asset valuation.</td></tr>
+        <tr><td class="term">RCV / RAB</td><td>Regulatory capital value / asset base; the value on which returns are set.</td></tr>
+        <tr><td class="term">Modigliani–Miller</td><td>In ideal markets, capital structure doesn't change firm value.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">Finance is where regulation meets the balance sheet, and for a practitioner it's the most fought-over number at every price review. The whole cluster orbits the WACC — the weighted average cost of capital — because that is the return the regulator allows the firm to earn on its RAB, and it's a knife-edge: set it too high and consumers overpay a monopoly; set it too low and the firm can't finance the investment the network needs, so the lights literally go out over a decade. The building blocks are worth knowing precisely. The cost of equity is usually estimated with CAPM: the risk-free rate plus beta times the equity risk premium, where beta measures how much the firm's returns move with the market. Gearing is the debt-to-capital ratio, which matters because debt is cheaper than equity. DCF is the valuation workhorse. DORC and ORC are ways to value the asset base on a modern-equivalent basis rather than historic cost. Modigliani–Miller is the theoretical anchor — in frictionless markets capital structure is irrelevant to value — which is exactly why the real-world deviations from it, taxes and financial distress, are what regulatory finance arguments are actually about.</aside>
+  </section>
+
+  <!-- 16 · Industry — electricity & gas -->
+  <section class="slide" data-title="Electricity &amp; gas">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li class="here">8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Electricity &amp; gas modules</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 8 · INDUSTRY — ELECTRICITY &amp; GAS</p>
+      <h2 class="h2 mt-s">Sector jargon: energy.</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:26%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">LMP / nodal pricing</td><td>Locational marginal price: energy priced at each node, reflecting losses and congestion.</td></tr>
+        <tr><td class="term">Zonal pricing</td><td>A coarser version pricing energy by zone rather than node.</td></tr>
+        <tr><td class="term">Electricity pool</td><td>A centralised wholesale market clearing generation against demand.</td></tr>
+        <tr><td class="term">Missing-money problem</td><td>Energy-only markets under-reward capacity, starving investment.</td></tr>
+        <tr><td class="term">Capacity market</td><td>A payment stream for available capacity to fix the missing-money gap.</td></tr>
+        <tr><td class="term">Entry-exit tariff</td><td>Gas transport charged on entering and exiting the network, not point-to-point.</td></tr>
+        <tr><td class="term">Postage-stamp tariff</td><td>Uniform (vs distance-based, point-to-point) transport charge.</td></tr>
+        <tr><td class="term">LNG</td><td>Liquefied natural gas: gas cooled to liquid for shipping; adds supply flexibility.</td></tr>
+        <tr><td class="term">Take-or-pay</td><td>Long-term gas contract obliging payment whether or not gas is taken.</td></tr>
+        <tr><td class="term">Trading hub</td><td>A physical/virtual point (e.g. Henry Hub, NBP) where gas is priced and traded.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">The final two slides are sector vocabulary — the jargon you need to read a regulator's decision or a trade-press article, taught in the industry modules. Energy first. The pricing question in electricity is fundamentally spatial and temporal because you can't easily store power and the grid congests. Locational marginal pricing, or nodal pricing, prices energy at every node to reflect losses and congestion — the theoretically pure approach used in much of the US; zonal pricing is the coarser European compromise, and Britain is actively debating a shift toward it. The electricity pool is the centralised market that clears supply against demand. The missing-money problem and capacity markets are a matched pair worth learning together: an energy-only market may not pay generators enough to justify building the peaking plant you need for the coldest evening, so many systems bolt on a capacity market that pays simply for being available. On the gas side, entry-exit and postage-stamp tariffs are about how you charge for transport, take-or-pay is the classic long-term contract structure, and trading hubs like the NBP or Henry Hub are where gas actually gets priced.</aside>
+  </section>
+
+  <!-- 17 · Industry — telecoms & water -->
+  <section class="slide" data-title="Telecoms &amp; water">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li class="here">8 · Industry</li>
+      </ul>
+      <h5>Taught in</h5>
+      <p class="dim" style="font-size:13px">Telecoms &amp; water modules</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">THEME 8 · INDUSTRY — TELECOMS &amp; WATER</p>
+      <h2 class="h2 mt-s">Sector jargon: telecoms &amp; water.</h2>
+      <table class="data gloss mt-m">
+        <tr><th style="width:24%">Term</th><th>Definition</th></tr>
+        <tr><td class="term">PSTN</td><td>Legacy circuit-switched public telephone network.</td></tr>
+        <tr><td class="term">NGN</td><td>Next-generation network: IP-based packet network replacing the PSTN.</td></tr>
+        <tr><td class="term">Unbundling / LLU</td><td>Forcing the incumbent to lease its local loop to rivals.</td></tr>
+        <tr><td class="term">Net neutrality</td><td>ISPs treat all traffic equally; no paid prioritisation.</td></tr>
+        <tr><td class="term">Universal service (USO)</td><td>Obligation to serve everyone at an affordable price.</td></tr>
+        <tr><td class="term">Inset appointment</td><td>A rival water company appointed to serve a specific site.</td></tr>
+        <tr><td class="term">Common carriage</td><td>Third parties ship water / gas through the incumbent's pipes.</td></tr>
+        <tr><td class="term">Sewer mining</td><td>Extracting and treating wastewater locally for reuse, bypassing the network.</td></tr>
+        <tr><td class="term">Block tariff (water)</td><td>Price bands rising or falling with volume used.</td></tr>
+        <tr><td class="term">Sunshine regulation</td><td>Publish comparative performance to shame firms into improving.</td></tr>
+      </table>
+    </div>
+    <aside class="notes">Telecoms and water round out the vocabulary. In telecoms the through-line is the shift from the old circuit-switched PSTN to the IP-based next-generation network, which changes the whole cost structure and reopens every access question. Local loop unbundling — forcing the incumbent to lease the copper or fibre running to the home — is the single most important pro-competition remedy in the sector, and it's a direct application of the essential-facility idea from the access slides. Net neutrality and universal service are the two big policy overlays: equal treatment of traffic, and the obligation to serve even unprofitable rural customers. Water is regulated very differently because retail competition is limited, so the vocabulary is about niche entry — inset appointments and common carriage let third parties serve specific sites or ship water through the incumbent's pipes — and about softer instruments. Sunshine regulation is a lovely example: with no price competition, Ofwat and its peers publish comparative league tables to embarrass laggards into improving. Block tariffs and sewer mining reflect water's specific scarcity and sustainability concerns. That completes the term set.</aside>
+  </section>
+
+  <!-- 18 · Acronym quick-reference -->
+  <section class="slide" data-title="Acronyms">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>Jump to theme</h5>
+      <ul class="jump-list">
+        <li>1 · Foundations</li>
+        <li>2 · Why we regulate</li>
+        <li>3 · Pricing principles</li>
+        <li>4 · Price control</li>
+        <li>5 · Access &amp; competition</li>
+        <li>6 · Institutions</li>
+        <li>7 · Finance</li>
+        <li>8 · Industry</li>
+      </ul>
+      <h5>Memorise</h5>
+      <p class="dim" style="font-size:13px">the alphabet soup regulators speak</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">QUICK REFERENCE · ACRONYMS WORTH MEMORISING</p>
+      <h2 class="h2 mt-s">The alphabet soup, decoded.</h2>
+      <div class="split">
+        <table class="data gloss">
+          <tr><th style="width:34%">Concepts &amp; methods</th><th></th></tr>
+          <tr><td class="term">ECPR / M-ECPR</td><td>Efficient Component Pricing Rule / market-adjusted variant.</td></tr>
+          <tr><td class="term">LRIC / TSLRIC / TELRIC</td><td>(Total-service / total-element) Long-Run Incremental Cost.</td></tr>
+          <tr><td class="term">FL-LRIC · SAC / DSAC</td><td>Forward-Looking LRIC · Stand-Alone / Distributed SAC.</td></tr>
+          <tr><td class="term">FDC · EPMU</td><td>Fully Distributed Costs · Equi-Proportionate Mark-Up.</td></tr>
+          <tr><td class="term">RPI − X · RAB / RCV</td><td>Retail Price Index minus X · Regulatory Asset Base / Capital Value.</td></tr>
+          <tr><td class="term">WACC · CAPM · DCF</td><td>Weighted Avg Cost of Capital · Capital Asset Pricing Model · Discounted Cash Flow.</td></tr>
+          <tr><td class="term">DORC / ORC</td><td>(Depreciated) Optimised Replacement Cost.</td></tr>
+          <tr><td class="term">DEA / COLS / SFA · TFP</td><td>Efficiency-frontier methods · Total Factor Productivity.</td></tr>
+          <tr><td class="term">A-J · CPNP / RPNP · BAK</td><td>Averch–Johnson · Calling/Receiving Party Network Pays · Bill-and-Keep.</td></tr>
+        </table>
+        <table class="data gloss">
+          <tr><th style="width:32%">Regulators &amp; industry</th><th></th></tr>
+          <tr><td class="term">Ofgem / Ofcom / Ofwat / Oftel</td><td>UK energy / comms / water / (former) telecoms regulators.</td></tr>
+          <tr><td class="term">FERC · FCC</td><td>US Federal Energy Regulatory / Communications Commissions.</td></tr>
+          <tr><td class="term">ACCC / AER · CRTC</td><td>Australian competition &amp; energy regulators · Canadian telecoms.</td></tr>
+          <tr><td class="term">PUC · NARUC · ISO</td><td>US state Public Utility Commission(s) · their association · Independent System Operator.</td></tr>
+          <tr><td class="term">USO · SMP</td><td>Universal Service Obligation · Significant Market Power.</td></tr>
+          <tr><td class="term">PSTN / NGN</td><td>Public Switched Telephone / Next-Generation Network.</td></tr>
+          <tr><td class="term">LLU / DSL / xDSL · VoIP</td><td>Local Loop Unbundling / Digital Subscriber Line · Voice over IP.</td></tr>
+          <tr><td class="term">ILEC / CLEC · MVNO</td><td>Incumbent / Competitive Local Exchange Carrier · Mobile Virtual Network Operator.</td></tr>
+          <tr><td class="term">LMP / FTR · LNG · NBP / TTF</td><td>Locational Marginal Price / Financial Transmission Right · LNG · gas hubs.</td></tr>
+        </table>
+      </div>
+    </div>
+    <aside class="notes">This is the pure memorisation slide — the acronyms regulators throw around without unpacking, which are a barrier to entry for anyone new to the field. Two columns: methods on the left, institutions and industry on the right. The left column is worth genuinely learning because these are the load-bearing concepts of the course compressed to initials — ECPR and the LRIC family for access pricing, RPI–X and RAB for price control, WACC and CAPM for finance, DEA/COLS/SFA for benchmarking. If a learner can expand every acronym on the left and state in one sentence what it's for, they've effectively revised the whole course. The right column is the who's-who: the UK's alphabet of Of-regulators, the American FERC and FCC, the Australian and Canadian bodies, and the technical industry terms like local loop unbundling and the gas trading hubs. For a UK practitioner audience, flag that Oftel is the former telecoms regulator, now folded into Ofcom, and that significant market power, SMP, is the legal trigger for ex ante remedies in European telecoms. Drill these until they're automatic.</aside>
+  </section>
+
+  <!-- 19 · MCQ -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M14</div>
+      <h5>How to revise</h5>
+      <ul class="obj-list">
+        <li class="done">Skim a theme, recall each term cold</li>
+        <li class="done">Star the ones you miss</li>
+        <li class="done">Revisit only the starred set</li>
+        <li class="done">Learn formulae where they clarify</li>
+        <li class="current">Test yourself</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">Which definition is stated <em>correctly</em>?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>The <span style="color:var(--accent)">Averch–Johnson effect</span> is a firm's tendency to <em>under</em>-invest in capital under a price cap.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Wrong on both counts — it's <em>over</em>-investment ("gold-plating"), and it arises under <em>rate-of-return</em> regulation, not price caps.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b><span style="color:var(--accent)">Ramsey–Boiteux pricing</span> recovers fixed costs by loading the largest mark-ups onto the services with the <em>least elastic</em> demand.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> The inverse-elasticity rule — least distortion where buyers respond least to price.</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>The <span style="color:var(--accent)">ECPR (Baumol–Willig) rule</span> sets the access price equal to the incumbent's <em>stand-alone cost</em>.</b><p class="dim" style="font-size:13px;margin:4px 0 0">No — ECPR = incremental cost <em>plus opportunity cost of access</em>. Stand-alone cost is the price <em>ceiling</em>, a different test.</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">A three-way self-check across the trickiest clusters. Option A tests two things at once, both classic exam confusions: the Averch–Johnson effect is over-investment, not under-investment — the firm gold-plates because it earns a return on every pound of capital — and crucially it's a pathology of rate-of-return regulation, the very problem RPI–X was designed to cure, so pairing it with a price cap is doubly wrong. Option B is the correct answer and the single most important pricing insight in the course: Ramsey's inverse-elasticity rule loads the biggest mark-ups where demand is least elastic, because those customers cut consumption least, so you recover the fixed costs with the smallest welfare loss. Option C mixes up the two access guardrails: ECPR is incremental cost plus the opportunity cost the incumbent forgoes, whereas stand-alone cost is the ceiling test, the most a service could ever be charged. If a learner picks A, send them back to the price-control slides; if C, back to access pricing. The goal is to feel the difference between these concepts, not just recite the labels.</aside>
+  </section>
+
+  <!-- 20 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 14</p>
+    <h1 class="h1 mt-s">The whole vocabulary,<br>in <em>eight moves</em>.</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Foundations</h4><p class="dim">Subadditivity, the three efficiencies, externalities &amp; networks — <em>why</em> utilities are special.</p></div>
+      <div class="concept-box"><h4>✓ Why &amp; how to price</h4><p class="dim">Normative vs positive theory; <code>p = MC</code> → Ramsey → two-part &amp; peak-load tariffs.</p></div>
+      <div class="concept-box"><h4>✓ Control &amp; access</h4><p class="dim">RPI–X, RAB, benchmarking; ECPR and the LRIC family for sharing the bottleneck.</p></div>
+      <div class="concept-box"><h4>✓ Plumbing</h4><p class="dim">Credible commitment, WACC/CAPM, and the sector jargon of energy, telecoms &amp; water.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>How to use it from here.</b> Keep this deck open beside the others. When a term in Modules 01–13 doesn't land, jump here, drill the one-line definition, then return. Cover the right-hand column, recall cold, star what you miss — and re-drill only the starred set until every acronym on slide 18 expands automatically.
+    </div>
+    <div class="deck-footer"><span>Revision reference · Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 1–12</span><span class="slide-number" data-current="20" data-total="20"></span></div>
+    <aside class="notes">Close by zooming back out to the eight-move arc, because the value of a glossary is seeing the whole structure at once. Foundations tell you why utilities need special treatment. The pricing theme moves from the impossible ideal of marginal-cost pricing, through Ramsey's second-best compromise, to the real tariffs on your bill. Price control and access are the instruments a working regulator actually wields — RPI–X and the RAB to cap the monopoly, ECPR and LRIC to share the bottleneck network with competitors. And the plumbing — commitment, cost of capital, and sector vocabulary — is what makes the system credible and legible. Remind learners this is a living reference, not a one-time read: the highest-yield use is to keep it beside the teaching modules and jump back whenever a term slips. End on the study discipline: cover the definitions, recall cold, star the misses, and drill the starred set until slide eighteen's acronyms expand without thinking. That fluency is what separates knowing the words from understanding the subject.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>
