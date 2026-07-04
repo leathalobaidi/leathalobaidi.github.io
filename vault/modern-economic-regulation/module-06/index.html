@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Regulation in the Presence of Competition · Modern Economic Regulation (Decker) · Ch. 6</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 06 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">Regulating <em>with</em><br>competition in the room.</h1>
+    <p class="lede mt-l" style="max-width:66ch">Once you unbundle a utility, rivals need to run over the monopoly's pipes and wires. What price should the bottleneck owner charge them? Access pricing is the hardest, most litigated idea in modern regulation — and this module builds the intuition from the ground up.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 45 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 6</span>
+      <span class="pill-academic">prereq · Modules 04–05 (cost-based &amp; incentive pricing)</span>
+    </div>
+    <div class="deck-footer"><span>Teaching summary · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="24"></span></div>
+    <aside class="notes">Welcome to Module 6, the technical heart of the course. Chapters 4 and 5 dealt with a vertically integrated monopoly facing final consumers. This chapter changes the game: we've broken the utility apart, opened some activities to competition — retailing, generation, long-distance calls — but rivals still need the monopoly's core network to reach customers. So the question becomes: on what terms does the bottleneck owner let competitors in? That is the access pricing problem, and Armstrong calls it the single most controversial issue in industrial policy. We'll cover one-way access, the famous ECPR, two-way interconnection between networks, how access prices shape investment, and finally when to physically separate the pipes from the competitive business. It's dense — 24 slides — but every idea builds on the last. Navigate with arrow keys; press S any time for the presenter view with these notes.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Frame the bottleneck / essential-facility problem</li>
+        <li>Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 24 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Explain <em>why</em> access is the hard problem.</h4><p class="dim">One instrument — the access price — is asked to serve many objectives at once: cost recovery, efficient entry, investment, competition.</p></div>
+        <div class="concept-box"><h4>② Derive and critique the ECPR.</h4><p class="dim">Access price = direct cost + opportunity cost. The single most contentious formula in regulatory economics — you'll see exactly why.</p></div>
+        <div class="concept-box"><h4>③ Read two-way interconnection.</h4><p class="dim">When networks terminate each other's calls, is cooperation on access charges efficient — or a cloak for collusion?</p></div>
+        <div class="concept-box"><h4>④ Connect access pricing to the wires in the ground.</h4><p class="dim">Hold-up, regulatory holidays, the "ladder of investment," and the make-or-buy choice.</p></div>
+        <div class="concept-box"><h4>⑤ Pick a separation remedy.</h4><p class="dim">Accounting → functional → legal → ownership. When each is warranted, and at what cost.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Five objectives, tracking the chapter's structure. Notice the recurring tension that Decker returns to again and again: the regulator usually has just one lever — the access price — but is trying to hit a whole cluster of targets. A low access price encourages entry and competition, which is good for dynamic efficiency, but starves the network owner of the revenue it needs to invest, and may let in inefficient entrants. A high access price protects the incumbent's investment but chokes off competition. Every section of this chapter is, at bottom, a different attempt to resolve that single trade-off. Keep the sidebar in view — the marker advances as we move through the five objectives. And a warning: this material rewards patience. The ECPR in particular looks simple and turns out to be subtle, so we'll build it slowly.</aside>
+  </section>
+
+  <!-- 3 · 6.1 The access problem -->
+  <section class="slide" data-title="The access problem">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Frame the bottleneck / essential-facility problem</li>
+        <li>Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">access · core network · essential facility · bottleneck · unbundling</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.1 · ACCESS IN THE PUBLIC UTILITIES</p>
+      <h2 class="h2 mt-s">Competition needs the monopoly's pipes.</h2>
+      <p class="lede mt-m">Restructuring "unbundled" competitive activities from the <b>core network</b>. But a retailer, a generator, a rival telco still needs the incumbent's transmission, transportation or local loop as an <b>essential input</b>. On what terms?</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Where competition was introduced</h4><p class="dim">Telecoms &amp; energy retailing; long-distance &amp; international calls; electricity generation; upstream gas extraction &amp; storage; bulk water trading.</p></div>
+        <div class="concept-box"><h4>The one common problem</h4><p class="dim">All of these entrants must reach customers over a <em>bottleneck</em> the incumbent still owns. Access pricing is the general name for the terms of that reach.</p></div>
+      </div>
+      <div class="callout"><b>Essential-facilities doctrine.</b> The one-way access problem is the economic twin of competition law's "essential facilities" idea: a rival cannot compete without an input only the incumbent controls, so the incumbent may be compelled to supply it — at a price the regulator must set.</div>
+    </div>
+    <aside class="notes">Start with the shape of the problem. In earlier chapters the "core network" — the pipes, wires, rails, cables — was the natural-monopoly bit we regulated as a single vertically integrated utility. Modern regulation does something more ambitious: it carves the potentially competitive activities away from that core and lets rivals in. But those rivals are not building their own national grid; they lease access to the incumbent's. A rival gas shipper needs the transportation pipelines; a broadband entrant needs the copper local loop; a generator needs the transmission grid. The access price is the charge for using that bottleneck. Decker flags the deep link to competition law's essential-facilities doctrine — the idea that control of an indispensable input can compel a firm to deal. The reason access is so contested is coming on the next slides, but plant the intuition now: whoever owns the bottleneck holds real power over everyone downstream.</aside>
+  </section>
+
+  <!-- 4 · One instrument, many objectives -->
+  <section class="slide" data-title="One instrument, many aims">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Frame the bottleneck / essential-facility problem</li>
+        <li>Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">allocative vs dynamic efficiency · by-pass · leverage</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.1.2 · WHY IT'S SO HARD</p>
+      <h2 class="h2 mt-s">One price, pulled four ways.</h2>
+      <p class="lede mt-m">Decker's core diagnosis: a <b>single mechanism</b> — the access price — is asked to serve a range of objectives that pull against each other.</p>
+      <div class="split mt-m">
+        <div>
+          <div class="callout" style="margin-top:0"><b>Low access price →</b> encourages entry &amp; competition (dynamic gains), <em>but</em> may invite inefficient entry, starve the provider of revenue, and blunt its incentive to invest.</div>
+          <div class="callout" style="margin-top:14px"><b>High access price →</b> covers costs, rewards investment, <em>but</em> chokes competition and can trigger wasteful <em>by-pass</em> — rivals building duplicate infrastructure.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="The access price as one lever pulled toward four competing objectives">
+            <circle cx="190" cy="125" r="30" class="node"/>
+            <text class="lbl-em" x="190" y="122" text-anchor="middle" fill="var(--accent)">access</text>
+            <text class="lbl-em" x="190" y="136" text-anchor="middle" fill="var(--accent)">price a</text>
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <line class="flow" x1="164" y1="108" x2="70" y2="46"/>
+            <line class="flow" x1="216" y1="108" x2="312" y2="46"/>
+            <line class="flow" x1="164" y1="142" x2="70" y2="204"/>
+            <line class="flow" x1="216" y1="142" x2="312" y2="204"/>
+            <text class="lbl" x="60" y="38" text-anchor="middle">cost</text>
+            <text class="lbl" x="60" y="51" text-anchor="middle">recovery</text>
+            <text class="lbl" x="320" y="38" text-anchor="middle">efficient</text>
+            <text class="lbl" x="320" y="51" text-anchor="middle">entry</text>
+            <text class="lbl" x="60" y="212" text-anchor="middle">investment</text>
+            <text class="lbl" x="60" y="225" text-anchor="middle">&amp; innovation</text>
+            <text class="lbl" x="320" y="212" text-anchor="middle">efficient</text>
+            <text class="lbl" x="320" y="225" text-anchor="middle">network use</text>
+          </svg>
+          <figcaption>Fig 6.a — One instrument, four objectives (after Laffont &amp; Tirole 2000:99).</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is the sentence to underline in the whole chapter: much of the practical difficulty stems from a single mechanism being called on to serve a range of policy objectives. Laffont and Tirole put it crisply — interconnection charges must induce efficient use of networks, encourage owners to invest while minimising cost, generate an efficient amount of entry, and do all this at reasonable regulatory cost. That's four or five jobs for one number. And they conflict. Set the access price low and you get lively retail competition — dynamic efficiency gains — but you may attract entrants who are actually higher-cost than the incumbent, and you leave the network owner unable to fund the next investment. Set it high and you protect that investment but suffocate competition, and worse, you can trigger inefficient by-pass, where a rival builds a duplicate pipe just to escape your charge — society pays for the asset twice. Notice the regulator often can't reach for other tools like taxing entrants or setting retail prices, so this one lever has to do everything. That constraint drives the whole chapter.</aside>
+  </section>
+
+  <!-- 5 · One-way vs two-way -->
+  <section class="slide" data-title="One-way vs two-way">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">one-way (vertical) · two-way (horizontal) · termination · leverage · collusion</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.1.3 · TWO SHAPES OF ACCESS</p>
+      <h2 class="h2 mt-s">Two landscapes, two very different harms.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>One-way access <span class="tag norm">vertical</span></h4><p class="dim">A single core network operator supplies an essential input to firms downstream, but buys nothing back. <b>Asymmetric.</b> E.g. generators &amp; retailers using the grid; shippers using gas pipelines; rivals on the fixed local loop.</p><p class="dim" style="margin-top:8px"><b>Chief worry:</b> the dominant bottleneck sets access <em>too high</em>, and (if integrated) leverages its power into the competitive market.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-2)"><h4>Two-way access <span class="tag neu">horizontal</span></h4><p class="dim">Each firm supplies inputs to <em>and</em> buys inputs from the others. <b>Symmetric.</b> E.g. two mobile networks each terminating the other's calls; adjacent national networks handing off an international call.</p><p class="dim" style="margin-top:8px"><b>Chief worry:</b> competing providers <em>collude</em> — jointly raising the access price to soften retail competition.</p></div>
+      </div>
+      <div class="callout"><b>Same word, opposite reflex.</b> In one-way access the regulator fears a firm setting price too high alone. In two-way access it may actively <em>want</em> firms to cooperate — because non-cooperation causes double marginalisation — yet must police that cooperation for collusion.</div>
+    </div>
+    <aside class="notes">Before we price anything, split the world in two. One-way access is a vertical relationship: the core network sits above, supplies an essential input downward, and buys nothing back. The relationship is asymmetric — the bottleneck holds all the cards. Examples: a generator or retailer needing the transmission grid, a gas shipper needing the pipeline, a broadband rival needing the local loop. The harm here is the dominant firm setting access too high, and if it's vertically integrated — still competing in the downstream market itself — leveraging its bottleneck power to squeeze rivals. Two-way access is horizontal: two firms at the same level each need access to the other. Two mobile networks each terminate calls onto the other's subscribers; British Telecom hands an international call to France Télécom and vice versa. Here the relationship is symmetric, and the classic fear flips — instead of one firm gouging, we worry the competitors coordinate to raise access charges jointly and dampen retail rivalry. Same word, opposite instinct. Hold that contrast; sections 6.2 and 6.3 develop each.</aside>
+  </section>
+
+  <!-- 6 · One-way access diagram -->
+  <section class="slide" data-title="One-way access">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">upstream · downstream · vertical integration · retail market</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2 · ONE-WAY ACCESS PRICING</p>
+      <h2 class="h2 mt-s">The bottleneck sells to its own rival.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Picture the incumbent owning the upstream <b>core network</b> and also competing downstream in <b>retail</b>. A rival entrant must buy access — from the very firm it competes against. That's the vertically integrated one-way problem, and it's where the danger lives.</p>
+          <div class="callout" style="margin-top:14px"><b>The leverage temptation.</b> Set access high, and you raise your rival's costs while your own retail arm pays nothing internally — a "margin squeeze."</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 260" role="img" aria-label="One-way access: upstream bottleneck owner supplies access to its own downstream retail arm and to a rival entrant">
+            <defs><marker id="arrow6" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- upstream box -->
+            <rect x="112" y="14" width="156" height="52" rx="8" class="node"/>
+            <text class="lbl-em" x="190" y="35" text-anchor="middle" fill="var(--accent)">CORE NETWORK</text>
+            <text class="lbl" x="190" y="52" text-anchor="middle">bottleneck · access price a</text>
+            <!-- downstream: own retail arm -->
+            <rect x="40" y="150" width="132" height="46" rx="8" class="node"/>
+            <text class="lbl" x="106" y="171" text-anchor="middle">incumbent's</text>
+            <text class="lbl" x="106" y="185" text-anchor="middle">retail arm</text>
+            <!-- downstream: rival -->
+            <rect x="208" y="150" width="132" height="46" rx="8" class="node-2"/>
+            <text class="lbl" x="274" y="171" text-anchor="middle" fill="var(--accent-2)">rival</text>
+            <text class="lbl" x="274" y="185" text-anchor="middle" fill="var(--accent-2)">entrant</text>
+            <!-- access flows down -->
+            <path d="M150,66 L106,146" stroke="var(--text-3)" stroke-width="2" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow6)"/>
+            <path d="M232,66 L274,146" stroke="var(--accent-2)" stroke-width="2" fill="none" marker-end="url(#arrow6)"/>
+            <text class="lbl" x="150" y="112" text-anchor="end">internal</text>
+            <text class="lbl-em" x="266" y="108" fill="var(--accent-2)">pays a</text>
+            <!-- consumers -->
+            <line x1="106" y1="196" x2="106" y2="232" stroke="var(--text-3)" stroke-width="2" fill="none" marker-end="url(#arrow6)"/>
+            <line x1="274" y1="196" x2="274" y2="232" stroke="var(--text-3)" stroke-width="2" fill="none" marker-end="url(#arrow6)"/>
+            <text class="lbl" x="190" y="252" text-anchor="middle">final consumers (retail price P)</text>
+          </svg>
+          <figcaption>Fig 6.1 — One-way access with a vertically integrated incumbent.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Here's the canonical picture. The incumbent owns the upstream core network — the bottleneck — and also runs a downstream retail arm competing for final customers. A rival entrant wants those same customers but must buy access, at price a, from the incumbent. So the entrant is buying a crucial input from the firm it's trying to beat. The incumbent's own retail arm, of course, "pays" nothing real — it's an internal transfer. That asymmetry is the whole danger: the integrated firm has both the ability and the incentive to set a high, foreclose the rival, or degrade the quality of access — what the literature calls sabotage. Even a squeeze works: keep the access charge just below the retail price and the rival can't earn a margin. When the network is instead vertically separated — the owner doesn't compete downstream — much of this melts away, because the owner's customers are the entrants and its interests align with theirs. We'll take the separated case first, because it's cleaner, then the integrated case where the real controversy lives.</aside>
+  </section>
+
+  <!-- 7 · Separated case: marginal cost / Ramsey -->
+  <section class="slide" data-title="Separated: MC & Ramsey">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">marginal-cost pricing · transfer · Ramsey–Boiteux · inverse-elasticity</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2.1–6.2.3 · WHEN THE OWNER DOESN'T COMPETE</p>
+      <h2 class="h2 mt-s">Separated? Start at marginal cost.</h2>
+      <p class="lede mt-m">If the core network is <b>vertically separated</b>, the first-best is the familiar one: price access at <b>marginal cost</b> — provided the downstream market is competitive and the firm can receive a transfer to cover fixed costs.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>No transfer available?</h4><p class="dim">As in Ch. 4, MC pricing can't recover large fixed costs. Second-best: price at <b>average cost</b> to break even.</p></div>
+        <div class="concept-box"><h4>Better second-best</h4><p class="dim"><b>Ramsey–Boiteux:</b> mark up each access product inversely to its demand elasticity — most efficient way to break even.</p></div>
+        <div class="concept-box"><h4>Imperfect downstream?</h4><p class="dim">If retail is marked up above cost, it can be optimal to set access <em>below</em> MC — the low access price offsets the high retail price.</p></div>
+      </div>
+      <div class="callout"><b>The recurring caveat.</b> Setting access below cost only works if the provider can still recover its fixed costs — hard when the owner isn't in the retail market. And subsidised access can invite excess entry, duplicating fixed costs.</div>
+    </div>
+    <aside class="notes">Take the easy case first: the network owner is separated — it doesn't compete downstream, it just sells access. Now the logic of Chapter 4 carries straight over. First-best is marginal-cost pricing of access, on two conditions: the downstream market is competitive so there's minimal retail mark-up, and the firm can receive a transfer to cover its fixed costs. But networks have huge fixed and sunk costs, marginal cost sits well below average cost, and regulators almost never hand over transfers. So we fall back. The crude second-best is average-cost pricing — it lets the firm break even. The cleverer one is Ramsey–Boiteux: treat each access product as a good and mark it up above marginal cost in inverse proportion to its demand elasticity, which is the least-distorting way to raise the needed revenue. One subtlety worth flagging: if the downstream market is imperfectly competitive, with retail priced above cost, it can actually be optimal to price access below marginal cost — the low input price pulls the final price back down. Elegant in theory, but only if someone can still fund the fixed costs, which is exactly what breaks down in practice.</aside>
+  </section>
+
+  <!-- 8 · Integrated case: entry & opportunity cost -->
+  <section class="slide" data-title="Entry & opportunity cost">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">efficient entry · opportunity cost · entrant's tax · cross-subsidy</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2.2 · WHEN THE OWNER ALSO COMPETES</p>
+      <h2 class="h2 mt-s">Integrated: only let in the truly efficient.</h2>
+      <p class="lede mt-m">Where the incumbent is <b>vertically integrated</b>, opening to competition should be judged on <em>total surplus</em>: entry is efficient only if the entrant is <b>lower-cost</b> than the incumbent. Higher-cost entry is (statically) wasteful — and one job of the access price is to screen it out.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Recover fixed costs</h4><p class="dim">Access at pure MC leaves the provider short; entrants may need to contribute to the network's large fixed costs via a mark-up.</p></div>
+        <div class="concept-box"><h4>Regulated retail ≠ cost</h4><p class="dim">Retail prices often embed cross-subsidies (historical, political). That distorts entry signals.</p></div>
+        <div class="concept-box"><h4>The clean fix (if allowed)</h4><p class="dim">Price access at MC, then levy an <b>entrant's tax</b> equal to the incumbent's forgone profit — targeting the efficient amount of entry.</p></div>
+      </div>
+      <div class="callout"><b>But the tax is usually unavailable.</b> If the regulator can't tax entrants, the <em>only</em> lever left is the access price itself — set at MC of access <b>plus a mark-up equal to the incumbent's forgone profit</b>. That mark-up is the seed of the ECPR.</div>
+    </div>
+    <aside class="notes">Now the hard case: the incumbent both owns the bottleneck and competes downstream. The framing shifts to total surplus — the regulator is indifferent whether the incumbent or an entrant supplies the retail service; it just wants the lowest-cost provider to win. So entry is efficient only when the entrant is genuinely more efficient than the incumbent; letting in a higher-cost rival wastes resources in a static sense, and screening that out is one purpose of the access regime. Three complications. First, pure marginal-cost access leaves the provider unable to cover its big fixed costs, so entrants may have to contribute via a mark-up. Second, regulated retail prices frequently don't reflect costs — they carry historical or political cross-subsidies — which distorts the entry signal. Third, whenever retail deviates from marginal cost you get too much entry in some markets, too little in others — cream-skimming again. The textbook-clean solution: price access at marginal cost for allocative efficiency, then impose an entrant's tax equal to the incumbent's opportunity cost — the profit it forgoes per unit an entrant supplies. But regulators rarely can tax entrants. Strip that tool away and the only remaining lever is to bake that forgone profit into the access price itself. That mark-up is precisely the ECPR — next.</aside>
+  </section>
+
+  <!-- 9 · ECPR decomposition (KEY FIGURE) -->
+  <section class="slide" data-title="ECPR decomposition">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">ECPR · Baumol–Willig · opportunity cost · parity pricing · margin rule</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2.4 · THE EFFICIENT COMPONENT PRICING RULE</p>
+      <h2 class="h2 mt-s">Access price = direct cost + what the incumbent loses.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">The ECPR (Baumol–Willig rule): set access to the <b>direct marginal cost of access</b> plus the <b>opportunity cost</b> — the retail profit the incumbent forgoes when a rival displaces its sale.</p>
+          <p class="mini mt-s"><code>a = C&#8348; + (P − C&#7522;)</code> &nbsp;(6.1)</p>
+          <p class="mini dim" style="margin-top:6px"><code>a</code> access price · <code>C&#8348;</code> direct cost of access · <code>P</code> incumbent retail price · <code>C&#7522;</code> incumbent's downstream marginal cost. The bracket is the lost profit margin.</p>
+          <div class="callout" style="margin-top:12px"><b>Margin-rule form.</b> <code>P − a = C&#7522;</code> — the entrant's margin equals the incumbent's own retail cost. Equivalently <code>a = P − C&#7522;</code>: "retail-minus."</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="ECPR decomposition of the retail price into access cost, opportunity cost and incumbent retail cost">
+            <!-- full retail price bar -->
+            <text class="lbl-em" x="40" y="34" fill="var(--text-1)">P</text>
+            <line class="guide" x1="52" y1="26" x2="330" y2="26"/>
+            <line class="guide" x1="330" y1="26" x2="330" y2="210"/>
+            <!-- stacked bar: Cd (access cost) -->
+            <rect x="120" y="150" width="120" height="60" class="fillA" stroke="var(--accent)" stroke-width="1.5"/>
+            <text class="lbl" x="180" y="176" text-anchor="middle">C&#8348;</text>
+            <text class="lbl" x="180" y="192" text-anchor="middle">direct access cost</text>
+            <!-- opportunity cost (P - Ci) -->
+            <rect x="120" y="70" width="120" height="80" class="loss" stroke="var(--accent-2)" stroke-width="1.5"/>
+            <text class="lbl-em" x="180" y="104" text-anchor="middle" fill="var(--accent-2)">P − C&#7522;</text>
+            <text class="lbl" x="180" y="120" text-anchor="middle">opportunity cost</text>
+            <text class="lbl" x="180" y="134" text-anchor="middle">(forgone margin)</text>
+            <!-- brace: a = Cd + (P - Ci) covers whole -->
+            <line x1="256" y1="70" x2="256" y2="210" stroke="var(--accent)" stroke-width="2"/>
+            <text class="lbl-em" x="300" y="140" text-anchor="middle" fill="var(--accent)">a</text>
+            <text class="lbl" x="300" y="156" text-anchor="middle">= access</text>
+            <text class="lbl" x="300" y="170" text-anchor="middle">price</text>
+            <!-- top marker P line -->
+            <line class="guide" x1="52" y1="70" x2="120" y2="70"/>
+            <text class="lbl" x="46" y="74" text-anchor="end" fill="var(--accent-2)">P</text>
+            <line class="guide" x1="52" y1="150" x2="120" y2="150"/>
+            <text class="lbl" x="46" y="154" text-anchor="end">C&#7522;</text>
+          </svg>
+          <figcaption>Fig 6.2 — ECPR: access price = C&#8348; + (P − C&#7522;). Retail price P slices into access cost, forgone margin and incumbent retail cost.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is the single most contentious formula in access pricing, so go slowly. The efficient component pricing rule — also the Baumol–Willig rule, or parity pricing — says the access price should equal the direct marginal cost of providing access, C-sub-d, plus an opportunity-cost term. That term, P minus C-sub-i, is the retail profit margin the incumbent forgoes whenever a rival wins a customer the incumbent would otherwise have served: the retail price minus the incumbent's own downstream marginal cost. Read the figure as a decomposition of the retail price P. The bottom block is the direct cost of the access input. Above it sits the forgone margin. The incumbent's own retail cost is the sliver at the top. The access charge a is the direct cost plus the forgone margin. There's an equivalent "margin rule" statement that's easier to remember: the entrant's margin, P minus a, should equal the incumbent's retail cost C-sub-i — or rearranged, a equals P minus C-sub-i, which regulators call "retail-minus." When there's one-for-one displacement, the two forms coincide. Next slide: why on earth would you compensate a firm for losing a sale? And why does that provoke such a war?</aside>
+  </section>
+
+  <!-- 10 · ECPR: benefits & the displacement ratio -->
+  <section class="slide" data-title="ECPR benefits">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">displacement ratio σ · productive efficiency · sabotage · M-ECPR</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2.4 · WHAT THE ECPR GETS RIGHT</p>
+      <h2 class="h2 mt-s">It admits an entrant only if it beats the incumbent.</h2>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Right entry signal</h4><p class="dim">An entrant profits under the ECPR <em>only if</em> its retail cost is below the incumbent's — so entry means genuine efficiency, not arbitrage.</p></div>
+        <div class="concept-box"><h4>No sabotage incentive</h4><p class="dim">Because the rule leaves the incumbent's revenue unchanged, it has little reason to degrade access quality to keep rivals out.</p></div>
+        <div class="concept-box"><h4>Protects cross-subsidies</h4><p class="dim">Switchers still contribute to the network's fixed costs — so remaining customers aren't left carrying them. Politically attractive.</p></div>
+      </div>
+      <div class="callout" style="margin-top:16px"><b>The displacement ratio σ.</b> Equation (6.1) assumes each unit of access sold costs the incumbent exactly one retail sale (σ = 1). With product differentiation, by-pass or substitution, displacement is partial: <code>a = C&#8348; + σ(P − C&#7522;)</code> (6.2). Less displacement → smaller opportunity-cost mark-up.</div>
+    </div>
+    <aside class="notes">Why compensate a firm for losing a sale? Because of what the compensation buys you. The ECPR's headline virtue is that it delivers the right entry signal: an entrant can only turn a profit under the rule if its own retail cost is below the incumbent's. So entry happens if, and only if, the entrant is at least as efficient — exactly the productive-efficiency test we wanted. Two more benefits. Because the rule holds the incumbent's revenue constant whether it serves the customer itself or via a rival, the incumbent has little incentive to sabotage — to degrade the quality of access to deter entry. And because switchers still pay the forgone margin, they keep contributing to the network's fixed costs, so the customers who stay aren't stuck with a bigger bill. That cross-subsidy protection is politically attractive. Now the refinement: equation 6.1 assumes one-for-one displacement — every unit of access sold to a rival costs the incumbent exactly one retail sale. Reality is messier. With differentiated products, by-pass, or substitution, a rival's sale only partly displaces the incumbent, so we scale the opportunity cost by a displacement ratio sigma between zero and one. Less displacement, smaller mark-up. Keep sigma in mind — it's where by-pass re-enters.</aside>
+  </section>
+
+  <!-- 11 · ECPR controversy -->
+  <section class="slide" data-title="ECPR controversy">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">retail-price-taken-as-given · monopoly rent · incumbent-friendly · retail price regulation</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2.4 · WHY THE ECPR IS SO CONTESTED</p>
+      <h2 class="h2 mt-s">"The single most contentious issue in access pricing."</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>The fatal assumption</h4><p class="dim">The ECPR takes the retail price <b>P as given</b>. It does <em>nothing</em> about monopoly pricing in the retail market — it only "entrenches monopoly pricing if it already exists." So it needs a complementary <b>retail price control</b> to work.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-2)"><h4>The critics' charge</h4><p class="dim">If P is inflated, the opportunity-cost term hands the incumbent its <b>monopoly rent</b> and preserves historic inefficiency. Seen as "incumbent-friendly" — it guarantees pre-entry profits. Effects on dynamic efficiency are unclear.</p></div>
+      </div>
+      <div class="callout"><b>Where it stands.</b> The ECPR features in every theoretical treatment of access, yet is viewed with scepticism in practice — and has been <em>expressly banned</em> in some jurisdictions (New Zealand telecoms); the FCC opposed it because it gives no push toward competitive retail prices; the UK Competition Appeal Tribunal (water, 2006) found "no examples of ECPR being successfully used."</div>
+    </div>
+    <aside class="notes">Armstrong calls the ECPR probably the single most contentious issue in the theory and practice of access pricing, and here's why. Its whole logic rests on taking the retail price P as given — as fixed by regulation or held down by competition. Crucially, the ECPR does not address monopoly pricing downstream; as Baumol and Sidak put it, the rule only entrenches monopoly pricing if it already exists. So it must be paired with a retail price control — one rule without the other doesn't serve the public interest. And that's the opening critics attack. If the retail price is inflated above cost, then the opportunity-cost term simply passes the incumbent's monopoly rent straight through into the access charge, and preserves whatever historic inefficiency was baked into P. The rule effectively guarantees the incumbent's pre-entry profits — which is why it's tarred as incumbent-friendly. Many economists think the whole point of competition is to push the incumbent's retail prices down; the ECPR freezes them. The upshot: it appears in every textbook but is treated with real suspicion in the field. New Zealand banned it for telecoms, the FCC opposed it, and the UK water tribunal said flatly it had seen no case of ECPR being used successfully. A rare thing — a rule that's theoretically central and practically distrusted.</aside>
+  </section>
+
+  <!-- 12 · Cost-based pricing + Table 6.1 -->
+  <section class="slide" data-title="Cost-based & Table 6.1">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">LRIC · TSLRIC/TELRIC · SAC · make-or-buy · ceiling &amp; floor</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2.5 · COST-BASED ACCESS CHARGES</p>
+      <h2 class="h2 mt-s">What regulators actually use: cost, plus a mark-up.</h2>
+      <p class="lede mt-m">The third approach — base access on the <b>long-run incremental cost</b> of providing it. It needs no demand data, sends clean <b>make-or-buy</b> signals, and dominates practice: UK water (LRMC), gas, aviation and telecoms all use LRIC variants (often "LRIC+" with a mark-up for common costs).</p>
+      <table class="data mt-m">
+        <thead><tr><th>Cost concept</th><th>Definition</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td><b>Marginal cost of X</b></td><td>The rise in total outlay from a <em>small</em> increase in output of X.</td><td class="num">—</td></tr>
+          <tr><td><b>Incremental cost of X</b></td><td>Added cost per unit when output of X expands by a pre-set increment.</td><td class="num">—</td></tr>
+          <tr><td><b>Average incremental cost (AIC)</b></td><td><code>[TC(X,Y,Z) − TC(Y,Z)] / Q&#8339;</code> — cost of the whole service X, spread over its output.</td><td>practical basis</td></tr>
+          <tr><td><b>Stand-alone cost (SAC)</b></td><td><code>SAC&#8339; = TC(X)</code> — what an efficient entrant making <em>only</em> X would spend (all common costs included).</td><td>ceiling</td></tr>
+          <tr><td><b>Incremental cost</b></td><td>Only product-specific costs of X; difference between producing X and not.</td><td>floor</td></tr>
+        </tbody>
+      </table>
+      <div class="callout" style="margin-top:12px"><b>SAC and incremental cost bracket the answer.</b> Stand-alone cost is the <em>ceiling</em>, incremental cost the <em>floor</em>. SAC exceeds incremental cost because it loads all fixed and common costs onto one product; incremental cost carries only those specific to it.</div>
+    </div>
+    <aside class="notes">Meet the approach regulators actually reach for. Cost-based pricing sets access at the long-run incremental cost of providing it. Its appeal is practical: unlike Ramsey or the ECPR it needs no demand or elasticity data, it's comparatively simple, and it sends the right make-or-buy signal — a rival self-supplies only when its own build cost beats the cost-based access charge. That's why it dominates: English and Welsh water uses long-run marginal cost, gas and aviation use LRIC, and telecoms almost everywhere uses LRIC, usually "LRIC-plus" with a mark-up to recover fixed and common costs. Now Table 6.1 — the cost vocabulary you must keep straight. Marginal cost is the rise from a tiny output change. Incremental cost is the same idea over a defined chunk of output. Average incremental cost is total cost with the service minus total cost without it, divided by that service's output — the formula in the table. The two bookends matter most: stand-alone cost, what a single-product efficient entrant would spend, is the ceiling; incremental cost, only the costs specific to that product, is the floor. Any defensible access price lives between them. SAC is higher because it dumps all the common costs onto one product; incremental cost carries only what's genuinely specific. Laffont and Tirole note the LRIC consensus rests on surprisingly little economic argument — but it's what the world does.</aside>
+  </section>
+
+  <!-- 13 · Global price cap & negotiation -->
+  <section class="slide" data-title="Global cap & negotiation">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="current">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li>Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">global price cap · information asymmetry · price squeeze · negotiate–arbitrate</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.2.6–6.2.7 · TWO MORE INSTRUMENTS</p>
+      <h2 class="h2 mt-s">Delegate the pricing — or make firms negotiate.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Global price cap</h4><p class="dim">Put access <em>and</em> retail in one basket under a single weighted cap, then let the better-informed firm choose the structure. Under the right weights it induces the efficient Ramsey structure. But: needs "idealised" demand weights, and the firm can engineer a <b>price squeeze</b> within the cap — so pair it with a margin/imputation test. Little used in practice.</p></div>
+        <div class="concept-box"><h4>Direct negotiation</h4><p class="dim">Let providers and users bargain first; the regulator steps in only if talks fail (US interconnection, Australia's "negotiate–arbitrate," UK telecoms &amp; water). More commercial — but no reason to expect <em>efficient</em> prices: outcome hinges on bargaining power, and the regulator may end up arbitrating the same dispute repeatedly.</p></div>
+      </div>
+      <div class="callout"><b>Why these exist.</b> The three main rules all assumed the regulator had perfect information. It doesn't. The global price cap and negotiation are both attempts to exploit the <em>firm's</em> superior knowledge of demand and cost — at the price of new risks (squeeze, weak bargaining, repeated disputes).</div>
+    </div>
+    <aside class="notes">The three headline rules — Ramsey, ECPR, cost-based — all quietly assumed the regulator knows demand and costs. It doesn't; there's a deep information asymmetry, and that motivates two more instruments that try to lean on the firm's own knowledge. First, the global price cap. Put access and retail products together in one basket under a single weighted-average cap, and let the firm — which knows its demand better than you do — choose the price structure. Laffont and Tirole show that with the right weights it induces the efficient Ramsey structure automatically. Two catches: getting those weights right needs exactly the demand information the regulator lacks, and the firm can raise the rival's access price while cutting its own retail price — a margin squeeze — and stay legally within the cap. So you'd bolt on an imputation test. In practice it's barely been used. Second, direct negotiation: let access provider and user bargain, and only call the regulator if they can't agree — the US model, Australia's negotiate-arbitrate scheme, UK telecoms and water. It feels commercial, but there's no reason bargaining yields efficient prices — it turns on relative power — and with many entrants the regulator can end up arbitrating essentially the same dispute over and over. Both are pragmatic responses to not knowing enough.</aside>
+  </section>
+
+  <!-- 14 · Case: BT Openreach -->
+  <section class="slide" data-title="Case · BT Openreach">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="current">Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Real-world hook</h5>
+      <p class="dim" style="font-size:13px">local loop · functional separation · Ofcom · 2005</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CASE STUDY · ONE-WAY ACCESS IN UK TELECOMS</p>
+      <h2 class="h2 mt-s">The copper local loop — the textbook bottleneck.</h2>
+      <div class="casebox">
+        <h4>BT, Openreach and the "last mile"</h4>
+        <p>The UK's fixed-line <b>local loop</b> — the copper "last mile" from the exchange to the home — is the classic one-way bottleneck. BT owned it and also sold retail broadband and calls, so every rival ISP bought access from the firm it competed against: the vertically integrated one-way problem in its purest form.</p>
+        <p class="mt-s">Access prices were set on <b>cost-based (LRIC)</b> lines, and rivals could enter at different depths — simple resale, shared or fully unbundled local loop (LLU), each requiring more of their own investment. In 2005, rather than face a reference to the Competition Commission that might have forced <em>structural</em> break-up, BT <b>voluntarily</b> functionally separated its wholesale access arm — <b>Openreach</b> — from its retail divisions, mandated to treat internal and external customers equivalently.</p>
+      </div>
+      <div class="callout"><b>Every idea in one story.</b> Bottleneck input, cost-based access, a "ladder" of entry depths, and functional separation as the remedy for leverage — Openreach ties sections 6.2, 6.4 and 6.5 together.</div>
+    </div>
+    <aside class="notes">Let's ground the abstraction in a story every UK economist knows. The copper local loop — the last mile of wire from the telephone exchange to your front door — is the archetypal one-way bottleneck. BT owned it, and BT also sold you retail broadband and phone calls. So every rival ISP — Sky, TalkTalk, the rest — had to buy access to that loop from BT, the firm they were trying to beat in the retail market. That's the vertically integrated one-way problem with no disguise. Ofcom set access prices on cost-based, LRIC lines, and entrants could plug in at different depths: bare resale, shared access, or full local-loop unbundling where they install their own kit in the exchange — each rung demanding more of their own investment, which is exactly the ladder of investment we'll meet in section 6.4. And the remedy for BT's leverage temptation: in 2005, facing a possible reference to the Competition Commission that could have forced full structural break-up, BT jumped first and functionally separated its wholesale access into Openreach, obliged to treat rivals the same as its own retail arm. One case, and it touches access pricing, the investment ladder, and separation — hold it as your worked example for the rest of the module.</aside>
+  </section>
+
+  <!-- 15 · Two-way interconnection diagram (KEY FIGURE) -->
+  <section class="slide" data-title="Two-way interconnection">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="current">Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">termination · reciprocal charge · double marginalisation · adjacent monopolies</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.3 · TWO-WAY ACCESS PRICING</p>
+      <h2 class="h2 mt-s">Each network is a monopoly over reaching its own subscribers.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">When A's caller rings B's subscriber, A must buy <b>termination</b> on B's network — and vice versa. Each firm holds a monopoly over calls <em>to</em> its own customers, however fierce competition is <em>for</em> customers.</p>
+          <div class="callout" style="margin-top:12px"><b>Double marginalisation.</b> Set termination non-cooperatively and each network marks up its termination monopoly; the two mark-ups stack, pushing retail prices <em>above</em> even the monopoly level. Cooperation can strip out the second mark-up — better for firms <em>and</em> consumers.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Two networks each terminating the other's calls, with reciprocal termination charges">
+            <defs><marker id="arrow15" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <circle cx="86" cy="120" r="46" class="node"/>
+            <text class="lbl-em" x="86" y="116" text-anchor="middle" fill="var(--accent)">Network A</text>
+            <text class="lbl" x="86" y="132" text-anchor="middle">subscribers</text>
+            <circle cx="294" cy="120" r="46" class="node-2"/>
+            <text class="lbl-em" x="294" y="116" text-anchor="middle" fill="var(--accent-2)">Network B</text>
+            <text class="lbl" x="294" y="132" text-anchor="middle">subscribers</text>
+            <!-- A -> B (call originates on A, terminates on B) -->
+            <path d="M134,100 C180,74 214,74 250,96" class="flow"/>
+            <text class="lbl" x="190" y="70" text-anchor="middle">A→B call · A pays B a</text>
+            <!-- B -> A -->
+            <path d="M246,140 C210,166 176,166 138,144" class="flow"/>
+            <text class="lbl" x="190" y="188" text-anchor="middle">B→A call · B pays A a</text>
+            <text class="lbl-em" x="190" y="222" text-anchor="middle" fill="var(--text-1)">reciprocal termination charge a</text>
+          </svg>
+          <figcaption>Fig 6.3 — Two-way interconnection: each network terminates the other's calls.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Now flip to two-way access. Two networks, A and B, each with its own subscribers. When someone on A rings someone on B, A must hand the call to B to complete it — A buys termination from B and pays a termination charge, often called a settlement charge. And symmetrically when B's caller rings A. Here's the key insight: no matter how ferociously A and B compete to sign up subscribers, once you're on B's network, B has a monopoly over terminating calls to you. Everyone else has to go through B to reach you. So each network is simultaneously a fierce competitor for subscribers and a little monopolist over access to those subscribers. Now the classic pathology. If the two set termination non-cooperatively, each exploits its termination monopoly and marks up. Because a cross-network call uses both networks, the two mark-ups stack — double marginalisation — and retail prices end up above even the single-monopoly level. Which gives the counter-intuitive result: cooperation on the termination charge strips out that second mark-up and can make both the firms and consumers better off. That's why, for adjacent non-competing monopolies, we positively encourage cooperation. The trouble starts when the two networks also compete for the same subscribers — that's the collusion worry, coming next.</aside>
+  </section>
+
+  <!-- 16 · Adjacent monopolies & FTM -->
+  <section class="slide" data-title="Adjacent monopolies & FTM">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="current">Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">adjacent monopoly · settlement charge · one-to-many · fixed-to-mobile (FTM)</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.3.1–6.3.2 · WHEN NETWORKS DON'T COMPETE</p>
+      <h2 class="h2 mt-s">Complements, not rivals — so cooperate.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Adjacent monopolies</h4><p class="dim">BT (Oxford) needs France Télécom (Paris) to complete an international call. They don't compete for each other's residential customers — services are <b>complementary</b>. Symmetric, reciprocal charges → both agree on marginal-cost termination. Asymmetry (unbalanced traffic, higher costs) → the net-inflow firm prefers a higher charge.</p></div>
+        <div class="concept-box"><h4>One-to-many (fixed-to-mobile)</h4><p class="dim">A fixed network must buy termination from <em>every</em> mobile operator — and each mobile network, however small, holds a monopoly over calls <b>to its own subscribers</b>. So <b>FTM termination is set too high.</b> The revenue can subsidise handsets, boosting mobile take-up (a positive externality) — but raises fixed-line callers' prices.</p></div>
+        </div>
+      <div class="callout"><b>Calling-party-pays is the engine.</b> Because the caller (not the receiver) bears the termination charge, the receiving network can raise termination without losing its own subscribers — they don't feel the price. That's why termination monopolies persist even under fierce competition <em>for</em> subscribers.</div>
+    </div>
+    <aside class="notes">Two sub-cases before the hard one. First, adjacent monopolies. When someone in Oxford phones Paris, BT originates the call and France Télécom terminates it; BT pays FT a settlement charge. But BT and FT don't compete for each other's residential customers — their services are complements, two halves of one call. Where they're symmetric and the charge is reciprocal, their interests align and they'll happily agree on termination at marginal cost. Introduce asymmetry — one has higher costs, or a net inflow of calls — and the inflow firm starts preferring a higher reciprocal charge, which helps explain why developing countries have historically wanted higher termination rates. Second, one-to-many, the fixed-to-mobile case. A fixed-line network has to buy termination from every mobile operator to complete calls, and here's the sting: each mobile network, no matter how tiny, has a monopoly over calls to its own subscribers. So it sets FTM termination too high. The revenue isn't all bad — mobiles used it to subsidise free handsets, driving up penetration and the positive network externality of Chapter 2 — but it inflates the prices fixed-line callers pay. Underneath both sits calling-party-pays: because the caller, not the receiver, pays termination, the receiving network can hike it without its own subscribers ever feeling the pinch. That's the structural reason termination power survives competition.</aside>
+  </section>
+
+  <!-- 17 · Access as a collusion device -->
+  <section class="slide" data-title="Access as collusion">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="current">Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">tacit collusion · raise-each-other's-costs · profit-neutrality · on-net/off-net · bill &amp; keep</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.3.3 · WHEN NETWORKS <em>DO</em> COMPETE FOR SUBSCRIBERS</p>
+      <h2 class="h2 mt-s">A high access charge can be a collusion device.</h2>
+      <p class="lede mt-m">When competing networks set a <b>high reciprocal access charge</b>, they "raise each other's wholesale costs." Undercutting a rival at retail now means <em>more</em> net termination payments <em>to</em> that rival — so nobody undercuts. High access → soft retail competition. But the result is fragile:</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Close substitutes break it</h4><p class="dim">If products are near-identical, the pull to corner the market overwhelms the collusion — it only survives with <b>differentiation</b>.</p></div>
+        <div class="concept-box"><h4>Two-part tariffs break it</h4><p class="dim">With subscription + per-minute pricing, profits become <b>independent</b> of the access charge — the "profit-neutrality" result.</p></div>
+        <div class="concept-box"><h4>On/off-net pricing flips it</h4><p class="dim">Discriminate on-net vs off-net and firms may set access <em>below</em> cost to soften competition — so "bill &amp; keep" can <em>harm</em> consumers.</p></div>
+      </div>
+      <div class="callout"><b>Bottom line (Armstrong &amp; Wright).</b> With uniform FTM/MTM charges set independently, the pull to extract termination profit dominates the pull to soften competition — access lands <em>above</em> cost but <em>below</em> the monopoly level. So cap termination, but set the cap <em>above</em> marginal cost.</div>
+    </div>
+    <aside class="notes">Now the case regulators actually lose sleep over: competing networks that also interconnect. The striking result: a high reciprocal access charge can work as a collusion device. Think about it. If A and B jointly agree a high termination charge, they've raised each other's wholesale costs. Now if A tries to steal share by cutting its retail price, its subscribers make more calls to B's network — and A has to pay B termination on every one. So undercutting hurts you. High access charges therefore soften retail competition without any explicit price-fixing — tacit collusion. That's the theory that made regulators nervous. But Decker's point is that it's fragile. Three assumptions dissolve it. If the networks' products are close substitutes, the temptation to corner the market beats the collusion. If firms use two-part tariffs — a subscription plus per-minute charge — equilibrium profits become independent of the access charge altogether, the profit-neutrality result. And if firms can price on-net calls differently from off-net, the incentive can flip entirely: they may want access below cost to soften competition, which means bill-and-keep, far from being pro-consumer, might soften competition and raise fixed charges. Armstrong and Wright's empirical resolution: with uniform independently-set charges, the profit motive dominates, access sits above cost but below monopoly, so still cap it — but set the cap above marginal cost, not at it.</aside>
+  </section>
+
+  <!-- 18 · Efficient two-way prices summary -->
+  <section class="slide" data-title="Efficient two-way prices">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="current">Handle two-way interconnection &amp; collusion</li>
+        <li>Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">retail benchmarking · demand heterogeneity · network-externality surcharge</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.3.4–6.3.5 · WHAT'S THE EFFICIENT LEVEL?</p>
+      <h2 class="h2 mt-s">No clean answer — but "cap above cost."</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>The benchmark result</h4><p class="dim">Two symmetric firms, fixed subscribers, retail regulated at cost, no joint costs → optimal termination = <b>marginal cost</b>. Rarely holds.</p></div>
+        <div class="concept-box"><h4>Below cost…</h4><p class="dim">Unregulated retail with market power (Laffont &amp; Tirole) → set access <em>below</em> MC to offset the retail mark-up. Joint &amp; common costs muddy this.</p></div>
+        <div class="concept-box"><h4>…above cost</h4><p class="dim">With heavy vs light users &amp; elastic subscription demand (Jullien–Rey–Sand-Zantman) → above-cost termination is privately <em>and</em> socially optimal.</p></div>
+        <div class="concept-box"><h4>Retail benchmarking</h4><p class="dim">Link a firm's termination mark-up to its <em>own</em> retail mark-up (Australia 2001) — intensifies competition; can yield MC pricing under two-part tariffs.</p></div>
+      </div>
+      <div class="callout"><b>Practice.</b> Australia, the UK and most EU states <b>cap</b> mobile termination on LRIC estimates (sometimes plus joint/common cost or a network-externality surcharge). Singapore uses <b>bill &amp; keep</b> (zero); the US negotiates, with symmetric charges, often landing on BAK for new entrants.</div>
+    </div>
+    <aside class="notes">So what is the efficient two-way access price? Decker's honest answer: it's hard to draw strong general conclusions. The clean benchmark — two symmetric firms, a fixed number of subscribers, retail regulated at cost, no joint and common costs — gives optimal termination equal to marginal cost. But those assumptions almost never all hold, and relaxing them pushes the answer in both directions. Laffont and Tirole, allowing unregulated retail with market power, get below-marginal-cost access, to offset the retail mark-up — the same offsetting logic as one-way. But once you add realistic demand heterogeneity — heavy users and light users with elastic subscription demand — Jullien, Rey and Sand-Zantman find above-cost termination is both privately and socially optimal, because it extracts revenue from heavy users and expands the overall market. A neat alternative is retail benchmarking: tie a firm's termination mark-up to its own retail mark-up, so it can cut what it pays by cutting its retail price — Australia used a version in 2001. In practice, most regulators — UK, EU, Australia — just cap mobile termination on LRIC estimates, sometimes with a network-externality surcharge; Singapore sets it at zero via bill-and-keep; the US negotiates. The practical consensus mirrors the theory: regulate, but don't necessarily aim for pure marginal cost.</aside>
+  </section>
+
+  <!-- 19 · 6.4 Access & investment: hold-up + holidays -->
+  <section class="slide" data-title="Access & investment">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="done">Handle two-way interconnection &amp; collusion</li>
+        <li class="current">Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">hold-up · truncation problem · regulatory/access holiday · real-option premium</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.4.1–6.4.2 · THE DYNAMIC PROBLEM</p>
+      <h2 class="h2 mt-s">Why would anyone build if the regulator can grab it later?</h2>
+      <p class="lede mt-m">Access pricing so far was <b>static</b>. But investors act on <em>expected future</em> access prices — and in industries with vast, irreversible sunk assets, that expectation is everything.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>The hold-up / truncation problem</h4><p class="dim">Valletti: if rivals expect the regulator to grant access at cost <em>after</em> the asset is sunk, everyone waits for someone else to build. Risks fall on the investor, returns are shared — so no one invests.</p></div>
+        <div class="concept-box"><h4>Regulatory / access holiday</h4><p class="dim">Regulator commits <em>ex ante</em> to no access regulation for a set period — the builder may charge monopoly prices or deny access, like a patent. Controversial in the EU (see Ch. 10).</p></div>
+        <div class="concept-box"><h4>Real-option premium</h4><p class="dim">Investing early destroys the option to wait for uncertainty to resolve. Compensate with an option premium in the access price (Dixit–Pindyck logic).</p></div>
+      </div>
+      <div class="callout"><b>The commitment bind.</b> Efficient investment needs the regulator to <em>credibly</em> promise cost-recovering access prices once the asset is sunk. But regulators rarely have absolute discretion — legal, economic and political pressure to cut access prices later erodes that promise. Time-inconsistency, back again.</div>
+    </div>
+    <aside class="notes">Everything so far was static — the efficient use of an existing network. Section 6.4 adds time, and it changes the picture, because investment decisions today hinge on expected future access prices, and utility assets are enormous, long-lived and irreversible. The core danger is the hold-up, or truncation, problem, and Valletti states it perfectly: if firms rationally anticipate that once someone invests the regulator will grant access at cost, then everyone waits for someone else to build and seeks access afterwards. The investor bears all the downside risk, but the upside gets shared with entrants at regulated prices — so the risk-return balance is truncated and investment is deterred. Two proposed fixes. The regulatory holiday: the regulator commits in advance to leave a new asset unregulated for a period, letting the builder charge monopoly prices or refuse access — exactly the patent logic, a temporary monopoly to reward risky investment; it's been genuinely controversial in Europe. And the real-option premium: investing early kills your option to wait and see how demand and technology resolve, so compensate the firm for destroying that option with a premium in the access price. But underneath it all is the commitment bind — this only works if the regulator can credibly promise not to expropriate later, and legal, economic and political pressures constantly tempt regulators to cut access prices once the concrete is poured. Time-inconsistency, the ghost that haunts this whole book.</aside>
+  </section>
+
+  <!-- 20 · Make-or-buy & ladder of investment -->
+  <section class="slide" data-title="Ladder of investment">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="done">Handle two-way interconnection &amp; collusion</li>
+        <li class="current">Link access pricing to investment</li>
+        <li>Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">service-based vs facilities-based · make-or-buy · dynamic access pricing · stepping stones</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.4.3 · THE LADDER OF INVESTMENT</p>
+      <h2 class="h2 mt-s">Start rivals renting — then nudge them to build.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Competition sits on a continuum: from <b>service-based</b> (rent everything, compete on customer service) to <b>facilities-based</b> (build your own network). The access price sets the <b>make-or-buy</b> choice: cheap access → rent; costly access → by-pass and build.</p>
+          <div class="callout" style="margin-top:12px"><b>Dynamic access pricing.</b> Set access <em>low</em> at first so entrants get established, then <em>raise</em> it over time as assets become replicable — climbing the "ladder" toward facilities competition. Vulnerable to the same commitment problem; whether it works in practice is a live question (Ch. 10).</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Ladder of investment from service-based to facilities-based competition as access price rises over time">
+            <defs><marker id="arrow20" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--accent)"/></marker></defs>
+            <!-- rising arrow -->
+            <line x1="40" y1="220" x2="330" y2="40" stroke="var(--accent)" stroke-width="2.5" marker-end="url(#arrow20)"/>
+            <!-- rungs -->
+            <rect x="36" y="196" width="120" height="26" rx="5" class="node"/>
+            <text class="lbl" x="96" y="213" text-anchor="middle">resale</text>
+            <rect x="108" y="150" width="130" height="26" rx="5" class="node"/>
+            <text class="lbl" x="173" y="167" text-anchor="middle">shared / bitstream</text>
+            <rect x="150" y="104" width="150" height="26" rx="5" class="node"/>
+            <text class="lbl" x="225" y="121" text-anchor="middle">unbundled loop (LLU)</text>
+            <rect x="200" y="58" width="132" height="26" rx="5" class="node-2"/>
+            <text class="lbl" x="266" y="75" text-anchor="middle" fill="var(--accent-2)">own facilities</text>
+            <!-- axes labels -->
+            <text class="lbl" x="20" y="228" transform="rotate(-90 20 228)" text-anchor="start">investment / time →</text>
+            <text class="lbl" x="200" y="244" text-anchor="middle">access price rises up the ladder →</text>
+          </svg>
+          <figcaption>Fig 6.4 — The "ladder of investment" (Cave &amp; Vogelsang).</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This slide is where access pricing meets industrial strategy. Competition doesn't come in one flavour — it's a continuum. At one end, service-based competition: the entrant rents everything from the incumbent and differentiates purely on customer service and marketing. At the other, facilities-based or infrastructure competition: the entrant builds and runs its own network — cable versus copper, a rival long-distance gas pipeline — and pays the incumbent nothing. The access price decides where on that line rivals sit: price access low and everyone rents, service competition dominates; price it high and rivals by-pass and build. That's the make-or-buy effect. The influential policy proposal is Cave and Vogelsang's ladder of investment: set access prices low at first, so fragile entrants can get a foothold and build reputation and customers, then deliberately raise access prices over time as the underlying assets become replicable, prodding entrants up the rungs from resale to shared access to full unbundling to their own facilities. The logic is that deeper infrastructure competition brings more innovation and technology diversity. Two caveats though: it leans entirely on the regulator credibly committing to raise prices later — the commitment problem again — and the empirical question of whether it actually produced the promised migration is genuinely open, which Chapter 10 revisits. Cave's warning is memorable: a policy of high access prices too early can kill the entrant's business model stone dead.</aside>
+  </section>
+
+  <!-- 21 · 6.5 Integration vs separation -->
+  <section class="slide" data-title="Integrate or separate?">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="done">Handle two-way interconnection &amp; collusion</li>
+        <li class="done">Link access pricing to investment</li>
+        <li class="current">Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">economies of scope · coordination · hold-up · foreclosure · sabotage · raise rivals' costs</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.5.1 · THE STRUCTURAL QUESTION</p>
+      <h2 class="h2 mt-s">Keep the pipes with the retailer — or force them apart?</h2>
+      <p class="lede mt-m">If access pricing under integration is <em>this</em> hard, maybe the answer is structural: separate the core network from the competitive activities. But integration has real virtues too.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Benefits of integration</h4><p class="dim"><b>Economies of scope</b> — cheaper to do jointly. <b>Coordination</b> of interdependent investment &amp; operations (Newbery: "investments in one reduce the costs of the other"). <b>Internalises hold-up</b> — no opportunism over sunk, relationship-specific assets. Contracts <em>can</em> replicate this — but incur transaction &amp; governance costs.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-2)"><h4>Benefits of separation</h4><p class="dim">Kills the incentive to <b>discriminate</b>, <b>foreclose</b>, <b>sabotage</b> and <b>raise rivals' costs</b> — the network's customers are the entrants, so interests align. Plus: simpler regulation, entry of fresh approaches, innovation. But: restructuring costs, lost scope economies, thinner innovation at the core.</p></div>
+        </div>
+      <div class="callout"><b>Decker's verdict.</b> The only safe conclusion is that it's <em>highly context-specific</em>: weigh the efficiency &amp; coordination gains of integration against the competition harm of foreclosure. Consistent with the wider vertical-integration literature.</div>
+    </div>
+    <aside class="notes">Step back and ask the structural question. If setting access prices for a vertically integrated firm is as fraught as sections 6.2 to 6.4 suggest — with all the temptation to foreclose and sabotage — maybe the cleaner answer is to physically separate the core network from the competitive activities, so the conflict of interest simply disappears. But Decker is scrupulously even-handed: integration has genuine benefits. Economies of scope — sometimes it's just cheaper to run the activities together. Coordination — the stages of a utility are deeply interdependent; Newbery notes that in electricity, investment in the network and in generation each reduce the other's costs, and integration lets one brain plan both. And integration internalises the hold-up problem — no separate party can behave opportunistically over your sunk, relationship-specific asset. Long-term contracts can in principle reproduce these gains, but at the cost of transaction and governance overheads. Against that, separation's headline prize: it eliminates the integrated firm's incentive to discriminate, foreclose, sabotage, or raise rivals' costs — because now the network's customers are the entrants, so their interests align. Plus simpler regulation and fresh entry. But restructuring is expensive and you may lose scope economies. Decker's honest verdict: it's context-specific — weigh coordination and efficiency gains against foreclosure harm. No universal answer, which is itself the lesson.</aside>
+  </section>
+
+  <!-- 22 · Vertical separation ladder (KEY FIGURE) -->
+  <section class="slide" data-title="Forms of separation">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="done">Handle two-way interconnection &amp; collusion</li>
+        <li class="done">Link access pricing to investment</li>
+        <li class="current">Choose a form of vertical separation</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">accounting · functional/operational · legal · ownership · equivalence</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">6.5.3 · FORMS OF SEPARATION</p>
+      <h2 class="h2 mt-s">A ladder of remedies, rising with the fear of abuse.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Separation isn't binary. Climb the ladder as the perceived incentive to discriminate grows — each rung more intrusive, and more costly.</p>
+          <p class="mini mt-s"><b>Accounting</b> — separate accounts; reveals cost-padding &amp; margin squeeze, but doesn't change incentives.</p>
+          <p class="mini"><b>Functional / operational</b> — a ring-fenced network division (BT's Openreach), mandated to treat internal &amp; external customers <em>equivalently</em>.</p>
+          <p class="mini"><b>Legal</b> — separate legal entities &amp; boards, still one owner.</p>
+          <p class="mini"><b>Ownership</b> — full break-up into unrelated firms (UK electricity &amp; rail at privatisation; EU third energy package).</p>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Ladder of separation from accounting to functional to legal to ownership separation">
+            <!-- steps rising left to right -->
+            <rect x="24" y="196" width="150" height="34" rx="4" class="node"/>
+            <text class="lbl" x="99" y="217" text-anchor="middle">Accounting</text>
+            <rect x="90" y="150" width="180" height="34" rx="4" class="node"/>
+            <text class="lbl" x="180" y="171" text-anchor="middle">Functional / operational</text>
+            <rect x="150" y="104" width="150" height="34" rx="4" class="node"/>
+            <text class="lbl" x="225" y="125" text-anchor="middle">Legal</text>
+            <rect x="210" y="58" width="150" height="34" rx="4" class="node-2"/>
+            <text class="lbl-em" x="285" y="79" text-anchor="middle" fill="var(--accent-2)">Ownership</text>
+            <!-- rising guide -->
+            <line x1="34" y1="196" x2="285" y2="58" class="guide"/>
+            <text class="lbl" x="24" y="44">more intrusive · costlier ↑</text>
+            <text class="lbl" x="24" y="246">weaker abuse incentive ← → stronger</text>
+          </svg>
+          <figcaption>Fig 6.5 — The separation ladder: accounting → functional → legal → ownership.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Separation is not on-off — it's a ladder, and you climb only as high as the perceived incentive to discriminate demands, because every rung costs more. The lowest rung is accounting separation: the integrated firm keeps and submits separate accounts for the core network and the competitive activities. That lets the regulator spot cost-padding — costs being shifted onto the regulated network to justify higher access charges — and detect a margin squeeze. But — crucial — it only helps you see abuse; it does nothing to remove the incentive to commit it. Next, functional or operational separation: carve out a distinct network business division, ring-fenced from retail, and mandate equivalence — it must treat the incumbent's own retail arm exactly like external rivals. BT's Openreach is the textbook example. Then legal separation: the divisions become separate legal entities with their own boards, but still under one owner. And at the top, ownership separation: full break-up into unrelated companies — what the UK did to electricity and rail at privatisation, and the centrepiece of the EU's third energy package. Note the two axes on the figure: as you rise, the remedy bites harder and costs more, and you'd only go there when the incentive to abuse is strong. Match the rung to the risk.</aside>
+  </section>
+
+  <!-- 23 · Check understanding -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M06</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Frame the bottleneck / essential-facility problem</li>
+        <li class="done">Price one-way access (cost-based, Ramsey, ECPR)</li>
+        <li class="done">Handle two-way interconnection &amp; collusion</li>
+        <li class="done">Link access pricing to investment</li>
+        <li class="current">Choose a form of vertical separation</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">Which statement about the ECPR is <em>correct</em>?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>The ECPR by itself disciplines monopoly pricing in the downstream retail market.</b><p class="dim" style="font-size:13px;margin:4px 0 0">False. The ECPR takes the retail price as <em>given</em>; it "only entrenches monopoly pricing if it already exists," so it needs a complementary retail price control.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>Under the ECPR, an entrant profitably enters <span style="color:var(--accent)">only if</span> its downstream costs are below the incumbent's — so it screens for productive efficiency.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> Access = direct cost + forgone margin means only a lower-cost rival can beat the incumbent's price.</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>The opportunity-cost term in <code>a = C&#8348; + (P − C&#7522;)</code> is unaffected by product differentiation or by-pass.</b><p class="dim" style="font-size:13px;margin:4px 0 0">False — with partial displacement the term is scaled by σ &lt; 1: <code>a = C&#8348; + σ(P − C&#7522;)</code>.</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">Quick self-check on the chapter's centrepiece. Answer A is the classic misunderstanding — and Decker flags that it's commonly misunderstood in practice. The ECPR does not tackle downstream monopoly pricing; it takes the retail price P as given and only entrenches monopoly pricing if it already exists, which is exactly why it must be paired with retail price regulation. So A is wrong. B is correct: because the access price equals the direct cost of access plus the incumbent's forgone retail margin, an entrant can only undercut the incumbent's retail price if its own downstream costs are lower — the rule screens in only genuinely more efficient entrants, delivering static productive efficiency. That's the ECPR's real selling point. C is wrong because it forgets the displacement ratio: when products are differentiated or by-pass is possible, a rival's sale only partly displaces the incumbent, so the opportunity-cost term is scaled by sigma, less than one. If a learner picks A, send them back to slide 11 on the controversy; if C, back to slide 10 on the displacement ratio. Aim to understand the mechanism, not just memorise the formula.</aside>
+  </section>
+
+  <!-- 24 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 06</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Frame the bottleneck problem</h4><p class="dim">One instrument — the access price — asked to serve cost recovery, efficient entry, investment and network use at once. One-way is vertical (fear: high price, leverage); two-way is horizontal (fear: collusion).</p></div>
+      <div class="concept-box"><h4>✓ Price one-way access</h4><p class="dim">MC/Ramsey when separated; ECPR <code>a = C&#8348; + (P − C&#7522;)</code> and cost-based (LRIC) when integrated. SAC ceilings, incremental-cost floors, global caps, negotiation.</p></div>
+      <div class="concept-box"><h4>✓ Read two-way interconnection</h4><p class="dim">Termination monopolies, double marginalisation, access-as-collusion — fragile once you allow substitutes, two-part tariffs or on/off-net pricing. Cap above cost.</p></div>
+      <div class="concept-box"><h4>✓ Link access to investment &amp; structure</h4><p class="dim">Hold-up, regulatory holidays, the ladder of investment; and the separation ladder — accounting → functional → legal → ownership.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 07.</b> We've assumed regulators set prices from a position of knowledge. They don't. Chapter 7 opens the black box of <em>regulation under asymmetric information</em> — how a regulator that knows less than the firm can still design incentives that reveal cost and effort.
+    </div>
+    <div class="deck-footer"><span>Teaching summary of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 6</span><span class="slide-number" data-current="24" data-total="24"></span></div>
+    <aside class="notes">Recap against the five objectives. The one sentence to carry out of this module: access pricing is hard because a single price is forced to do many conflicting jobs at once, and every rule we met — Ramsey, ECPR, cost-based, global caps, negotiation, bill-and-keep — is a different compromise among those jobs under different assumptions and different regulatory toolkits. One-way access fears a dominant bottleneck pricing high and leveraging; two-way access fears competitors coordinating to price high, though that fear turns out fragile. Investment adds the time dimension and the hold-up problem, answered imperfectly by holidays and the ladder of investment. And when pricing gets too hard, separation — up a ladder of increasing intrusiveness — is the structural fallback, though never a free one. Notice how often the honest answer was "it depends on the setting." That humility is the chapter's real teaching. Next module drops the pretence that the regulator knows costs and demand — Chapter 7's asymmetric information is where the incentive-regulation machinery of the modern regulator really comes from. End here.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>

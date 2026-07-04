@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Institutions of Regulation · Modern Economic Regulation (Decker) · Ch. 7</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* deck-local helpers layered on top of the course-module theme */
+  .tpl-course-module figure.fig{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px 12px;box-shadow:var(--shadow)}
+  .tpl-course-module figure.fig figcaption{font-size:12.5px;color:var(--text-3);margin-top:8px;font-family:'JetBrains Mono',monospace}
+  .tpl-course-module .fig svg{width:100%;height:auto;display:block}
+  .tpl-course-module .fig text{font-family:'Inter',sans-serif;fill:var(--text-2)}
+  .tpl-course-module .axis{stroke:var(--text-3);stroke-width:1.5}
+  .tpl-course-module .guide{stroke:var(--text-3);stroke-width:1;stroke-dasharray:3 3}
+  .tpl-course-module .lbl{font-size:12px;font-family:'JetBrains Mono',monospace;fill:var(--text-2)}
+  .tpl-course-module .lbl-em{font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .tpl-course-module .stack{display:flex;flex-direction:column;gap:12px}
+  .tpl-course-module .grid.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tpl-course-module .grid.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .tpl-course-module .grid.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .tpl-course-module .row{display:flex;flex-wrap:wrap;align-items:center}
+  .tpl-course-module .split{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+  .tpl-course-module .split.wide-left{grid-template-columns:1.35fr .65fr}
+  .tpl-course-module .mini{font-size:15px;line-height:1.55}
+  .tpl-course-module .fig .box{fill:var(--surface);stroke:var(--accent);stroke-width:2}
+  .tpl-course-module .fig .box-2{fill:var(--surface);stroke:var(--accent-2);stroke-width:2}
+  .tpl-course-module .fig .box-gov{fill:var(--surface);stroke:var(--accent-3);stroke-width:2}
+  .tpl-course-module .fig .band{opacity:.14}
+</style>
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 07 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">Who <em>are</em> the regulators —<br>and who watches <em>them</em>?</h1>
+    <p class="lede mt-l" style="max-width:66ch">A plain-English tour of the machinery of regulation: why governments hand power to independent agencies like Ofgem, Ofcom and the FCC, how those agencies are designed and staffed, and the ancient problem behind every one of them — <em>quis custodiet ipsos custodes?</em></p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 35 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 7</span>
+      <span class="pill-academic">prereq · Modules 01–06</span>
+    </div>
+    <div class="deck-footer"><span>Teaching summary · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="21"></span></div>
+    <aside class="notes">Welcome to Module 7. Up to now this course has been about the economics of regulation — why we regulate, the alternatives, and the pricing tools. From here on the book turns to the practice of regulation, and this chapter is the hinge. It asks a deceptively simple set of questions: who actually does the regulating, why did governments choose to delegate the job to independent agencies rather than keep it in a ministry, how are those agencies built, and — crucially — who holds them to account. The Latin tag in the title, quis custodiet ipsos custodes, "who guards the guardians", is Decker's framing for section 7.4. Over the next twenty slides we'll build the institutional map every UK practitioner needs: the commitment rationale, the three historical waves of agency creation, the design choices, and the accountability loop. Navigate with the arrow keys; press S for the presenter view.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain the commitment case for independence</li>
+        <li>Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 21 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Explain <em>why</em> we hand power to independent agencies.</h4><p class="dim">Commitment, credibility, depoliticisation and expertise — and the time-inconsistency problem underneath all four.</p></div>
+        <div class="concept-box"><h4>② Trace how the model spread across the world.</h4><p class="dim">US commissions from the 1880s, the UK "Offices" of the 1980s, then the global wave of the 1990s–2000s.</p></div>
+        <div class="concept-box"><h4>③ Compare the big design choices.</h4><p class="dim">Single Director-General vs board; industry-specific vs multi-sectoral; how powers split with ministries and competition authorities.</p></div>
+        <div class="concept-box"><h4>④ Answer "who regulates the regulators?"</h4><p class="dim">Appeals, judicial review, merits review, parliamentary scrutiny and audit — the accountability loop.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Four objectives, mapping the four numbered sections of the chapter. Notice the logical order. First we ask why independence at all — the theory, which centres on a "commitment" or time-inconsistency problem borrowed from monetary-policy economics. Second, the history: independence wasn't invented from theory, it evolved, and it evolved differently in the US, the UK and the rest of the world. Third, design: once you've decided to have an agency, a hundred choices follow — one boss or a board, one sector or many, how much power sits with the minister. Fourth, accountability: an independent agency run by unelected officials is a democratic anomaly, so it needs watching. Keep the sidebar in view; the current-marker tracks where we are, and by the summary all four objectives will read as "done".</aside>
+  </section>
+
+  <!-- 3 · The big shift -->
+  <section class="slide" data-title="The big shift">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain the commitment case for independence</li>
+        <li>Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">independent agency · arm's length · institutional endowment</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHAPTER 7 · THE SHIFT</p>
+      <h2 class="h2 mt-s">From the minister's desk to the arm's-length agency.</h2>
+      <p class="lede mt-m">Over three decades, most jurisdictions moved economic regulation <b>out of government departments</b> and into independent — or quasi-independent — agencies, usually alongside privatisation. A 2006 World Bank study counted almost <b>200 new infrastructure regulators</b> created in 1996–2006.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>What "independent" means</h4><p class="dim">Autonomy from government, not under the direct control of politicians or interested parties, pursuing goals set in a <em>governing statute</em> — an "arm's length" relationship with firms, consumers and ministers.</p></div>
+        <div class="concept-box"><h4>Distinct &amp; specialised</h4><p class="dim">Organisationally and operationally separate from the ministerial bureaucracy, and narrow in focus — a technical agency, not a general department.</p></div>
+        <div class="concept-box"><h4>The USA is the exception</h4><p class="dim">Independent commissions there are a century old and pre-date the theory. Elsewhere the shift is recent.</p></div>
+      </div>
+      <div class="callout"><b>Institutions matter.</b> Research links a country's "institutional endowment" — its legislative, judicial and administrative make-up — to its ability to restrain opportunistic behaviour by government and regulators, and hence to how well its regulated industries perform (Levy &amp; Spiller).</div>
+    </div>
+    <aside class="notes">Set the scene. The single biggest fact of modern regulation is a change of venue: the job of setting utility prices and rules migrated from ministers to independent agencies. The World Bank number — nearly 200 new infrastructure regulators in a single decade — captures how fast and how global this was, and it usually travelled with privatisation and corporatisation. Be precise about "independent": Decker's working definition is autonomy from government, not under the direct control of politicians or interested parties, pursuing statutory goals, at arm's length from everyone. And flag the great exception right away — the United States. American independent commissions date to the 1880s and pre-date every theory we're about to discuss, which is why section 7.2 treats the US separately. The callout introduces a phrase that recurs: institutional endowment. Pablo Spiller's insight is that the same regulatory design performs very differently depending on the surrounding political, judicial and administrative machinery — you can't copy-paste an agency across borders.</aside>
+  </section>
+
+  <!-- 4 · Agency-design org diagram (SVG) -->
+  <section class="slide" data-title="The players">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain the commitment case for independence</li>
+        <li>Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">governing statute · licence · principal–agent</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHAPTER 7 · THE MAP</p>
+      <h2 class="h2 mt-s">Where the regulator sits in the web.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">The regulator is not a free-standing body. Government (a minister) sets objectives in <b>statute</b> and appoints the agency; the agency sets prices and licence conditions for <b>firms</b>; firms serve <b>consumers</b>; and consumers — through political pressure — bear on government. Every arrow is a channel of influence, and a potential source of tension.</p>
+          <div class="callout" style="margin-top:14px"><b>Two hats problem.</b> Where the state still <em>owns</em> the utility, it wears two hats — owner and regulator. Modern reform separates them, which is a big part of why independent agencies exist.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 260" role="img" aria-label="Government, regulator, firms and consumers linked by arrows">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- Government -->
+            <rect class="box-gov" x="120" y="12" width="140" height="42" rx="6"/>
+            <text class="lbl-em" x="190" y="30" text-anchor="middle" fill="var(--accent-3)">Government</text>
+            <text class="lbl" x="190" y="46" text-anchor="middle" font-size="10">minister · statute</text>
+            <!-- Regulator -->
+            <rect class="box" x="120" y="108" width="140" height="46" rx="6"/>
+            <text class="lbl-em" x="190" y="128" text-anchor="middle" fill="var(--accent)">Regulator</text>
+            <text class="lbl" x="190" y="144" text-anchor="middle" font-size="10">Ofgem · Ofcom · FCC</text>
+            <!-- Firms -->
+            <rect class="box-2" x="30" y="200" width="130" height="44" rx="6"/>
+            <text class="lbl-em" x="95" y="220" text-anchor="middle" fill="var(--accent-2)">Regulated firms</text>
+            <text class="lbl" x="95" y="235" text-anchor="middle" font-size="10">networks · retailers</text>
+            <!-- Consumers -->
+            <rect class="box" x="220" y="200" width="130" height="44" rx="6"/>
+            <text class="lbl-em" x="285" y="220" text-anchor="middle">Consumers</text>
+            <text class="lbl" x="285" y="235" text-anchor="middle" font-size="10">voters</text>
+            <!-- arrows -->
+            <path class="flow" d="M175,56 L175,106"/>
+            <text class="lbl" x="120" y="84" font-size="9">appoints,</text>
+            <text class="lbl" x="120" y="94" font-size="9">sets goals</text>
+            <path class="flow" d="M150,152 L110,198"/>
+            <text class="lbl" x="96" y="180" font-size="9">prices,</text>
+            <text class="lbl" x="96" y="190" font-size="9">licences</text>
+            <path class="flow" d="M160,244 L270,222" transform="translate(0,0)"/>
+            <text class="lbl" x="175" y="248" font-size="9">service</text>
+            <path class="flow" d="M270,200 L215,58"/>
+            <text class="lbl" x="278" y="128" font-size="9">political</text>
+            <text class="lbl" x="278" y="138" font-size="9">pressure</text>
+          </svg>
+          <figcaption>Fig 7.A — The regulator in the institutional web: government, firms, consumers.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This diagram is your mental model for the whole chapter, so let it breathe. Four boxes. Government, at the top, holds the constitutional authority: it writes the empowering statute, defines the objectives, and appoints the agency's leadership. The regulator — Ofgem, Ofcom, the FCC — sits in the middle, and its job is to set prices and licence conditions on the regulated firms. The firms serve consumers. And consumers close the loop, because they are also voters, which means they exert political pressure back on government — and that pressure is exactly what tempts governments to lean on regulators over prices. The callout flags the "two hats" problem that recurs across the EU and Australia: when the state still owns the utility, being both owner and referee is a conflict, and structural separation of those roles is a major driver of independent-agency creation. Keep this picture in your head — the rest of the chapter is really about tightening or loosening particular arrows in this web.</aside>
+  </section>
+
+  <!-- 5 · 7.1 Commitment / time-inconsistency -->
+  <section class="slide" data-title="Commitment">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain the commitment case for independence</li>
+        <li>Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">time-inconsistency · Odysseus · tying your hands</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.1 · THE RATIONALE ①</p>
+      <h2 class="h2 mt-s">The core idea: a government that ties its own hands.</h2>
+      <p class="lede mt-m">The principal benefit of an independent regulator is <b>commitment</b>. It is a variant of the general <b>time-inconsistency</b> problem: a government promises today to behave a certain way tomorrow, then reneges when tomorrow arrives and its preferences have changed.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>The monetary-policy analogy</h4><p class="dim">A non-independent central bank faces constant pressure for short-term monetary expansion, which stokes inflation. The fix: delegate to an <em>independent central bank</em> staffed by inflation-averse people. The Bundesbank was the first with full independence.</p></div>
+        <div class="concept-box"><h4>The regulatory analogy</h4><p class="dim">An independent regulator "insulates" price and investment decisions from day-to-day government. Endorsed by the OECD and World Bank as the reason independence matters.</p></div>
+      </div>
+      <div class="callout"><b>Odysseus and the Sirens.</b> Williamson's image: ex-ante resolve breaks down "in the face of recurrent exigencies". You tie yourself to the mast <em>because</em> you know you'll be tempted. Delegation is the mast.</div>
+    </div>
+    <aside class="notes">This is the theoretical heart of section 7.1, and it's genuinely elegant, so slow down. The concept is time-inconsistency, from Kydland and Prescott. A government commits in period one to a policy for period two; but when period two arrives, its incentives have shifted and the old promise is no longer optimal for it to keep — so it breaks it. The trouble is that firms anticipate this and change their behaviour in period one. The canonical cure comes from monetary policy: a government tempted to print money for short-term growth causes long-term inflation, so it "ties its own hands" by delegating to an independent central bank — Rogoff's conservative central banker, someone more inflation-averse than the median voter. The Bundesbank was the pioneer, born of Germany's hyper-inflation memory. Decker's claim is that regulation borrows this logic wholesale: an independent regulator insulates pricing and investment decisions from political temptation, making commitments credible. The Odysseus image in the callout is the one to remember — you bind yourself to the mast precisely because you know the Sirens' song will be irresistible.</aside>
+  </section>
+
+  <!-- 6 · Sunk-asset expropriation & ratchet -->
+  <section class="slide" data-title="Expropriation & ratchet">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain the commitment case for independence</li>
+        <li>Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">sunk-asset hold-up · ratchet effect · regulatory compact</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.1.2–7.1.3 · TWO CLASSIC FAILURES</p>
+      <h2 class="h2 mt-s">Two ways commitment breaks — and firms stop investing.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box" style="border-left:4px solid var(--accent-3)"><h4>Sunk-asset expropriation</h4><p class="dim">A firm sinks a long-lived, immobile asset expecting to recover costs through prices. Afterwards, government caps the price at <em>operating</em> cost. Rational in the short run — low prices for voters, and the firm keeps supplying as long as it covers running costs. But it kills new investment. Worst in <b>developing countries</b> (Spiller &amp; Tommasi).</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-2)"><h4>The ratchet effect</h4><p class="dim">Over repeated periods with asymmetric information, a firm that reveals itself as <em>low-cost</em> gets a tougher deal next time. So it hides efficiency, refuses incentives, and won't reveal cost data. Spiller &amp; Vogelsang read UK telecoms RPI–X (1984–94) as consistent with a ratchet.</p></div>
+      </div>
+      <div class="callout"><b>The fix, in principle.</b> An independent regulator with defined statutory goals — <em>different</em> from the government of the day's short-term aims, and obliged to respect legitimate property rights — signals that ex-post expropriation won't happen. Politicians put limits on their own discretion.</div>
+    </div>
+    <aside class="notes">Two concrete manifestations of the commitment problem, both from earlier chapters and both about investment drying up. First, sunk-asset expropriation — a special case of the hold-up problem from Chapter 6. A firm buys a forty-year pipeline on the promise it can recover the cost through prices. Once the concrete is set, the government's incentive flips: it can cap the price at operating cost, delight voters with cheap energy, and the firm will keep the gas flowing because shutting down costs more than running. Perfectly rational in a static sense, ruinous dynamically — no rational firm invests again. Newbery calls the suspension of investment a completely rational act. Spiller and Tommasi find this is more common in the developing world than outright nationalisation. Second, the ratchet effect from Chapter 4: in a repeated game with asymmetric information, revealing that you're a low-cost firm just earns you a harder target next period, so firms strategically hide their efficiency. The remedy in both cases is the same — an independent regulator with its own statutory objectives, insulated from the government's short-term temptations, credibly signalling that it won't expropriate.</aside>
+  </section>
+
+  <!-- 7 · Constraining opportunism (the four levers) -->
+  <section class="slide" data-title="Constraining opportunism">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain the commitment case for independence</li>
+        <li>Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>The twist</h5>
+      <p class="dim" style="font-size:13px">Independence ≠ commitment. A "secondary agency problem" appears.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.1.4 · RESTRAINING THE REGULATOR</p>
+      <h2 class="h2 mt-s">Insulation isn't enough — the regulator can misbehave too.</h2>
+      <p class="lede mt-m">Delegating to an agency creates a <b>secondary agency problem</b>: the regulator itself may act opportunistically. Four levers can restrain it and enhance commitment.</p>
+      <div class="grid g4 mt-l">
+        <div class="concept-box"><h4>① Voluntary self-enforcement</h4><p class="dim">A long-term repeated game between regulator and firm can sustain a self-enforcing compact — held together by reputation and the threat of punishment (folk-theorem logic). Reputation, not law, is the key in weak-institution countries.</p></div>
+        <div class="concept-box"><h4>② The form of price control</h4><p class="dim">Rate-of-return can support investment if credible; price caps make profits variable and tempt expropriation when they're high (Newbery). RoR may suit developing countries better.</p></div>
+        <div class="concept-box"><h4>③ The regulator's objectives</h4><p class="dim">A regulator known to weight <em>producer</em> interests more than society does is <em>more</em> credible — a pro-industry tilt can mitigate the ratchet. Hence statutory financeability duties.</p></div>
+        <div class="concept-box"><h4>④ The wider legal framework</h4><p class="dim">US administrative law &amp; "just and reasonable" precedent; UK licence-modification safeguards; Chile's rule-based formulae. The right safeguard is <em>context-specific</em>.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Here's the sophisticated twist that separates section 7.1 from a naïve "just make it independent" story. Insulating a regulator from government does not, by itself, guarantee credible commitment — because now the regulator can be the one who cheats. This is the secondary agency problem. Decker lays out four levers to restrain it. One, voluntary self-enforcement: if the regulator and firm interact over the long run, folk-theorem logic says a mutually beneficial compact can hold together through reputation and the threat of retaliation — the firm stops investing if the regulator expropriates. In weak-institution countries, reputation rather than the rule of law is what makes governments honour their promises. Two, the form of price control matters — Newbery shows price caps create variable, sometimes high profits that tempt a regulator to renege, whereas rate-of-return is steadier. Three, counter-intuitively, a regulator that visibly favours producers more than society would is more credible, which is why some statutes require regulators to keep firms financeable. Four, the surrounding law — US administrative-law precedent, UK licence safeguards, Chilean formulae. Spiller and Vogelsang's punchline: the right safeguard depends on the country. There's no universal design.</aside>
+  </section>
+
+  <!-- 8 · Specialisation, expertise & the flexibility trade-off -->
+  <section class="slide" data-title="Expertise & flexibility">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="current">Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">informational intermediary · capture · commitment–flexibility trade-off</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.1.5–7.1.6 · EXPERTISE &amp; ITS RISKS</p>
+      <h2 class="h2 mt-s">The second reason: specialist expertise. And its risks.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Beyond commitment, independent regulators pool <b>specialist expertise</b> a generalist ministry lacks. Laffont &amp; Tirole call them <em>"informational intermediaries"</em> — bodies whose job is to close the information gap between the public and the industry.</p>
+          <div class="callout" style="margin-top:14px"><b>But there are risks.</b> Divergence of objectives (principal–agent between government and agency); <em>capture</em> by regulated firms; reluctance to coordinate; isolation from opinion. And independence may just <b>relocate</b> the commitment problem into "government's commitment to preserve independence".</div>
+        </div>
+        <div class="stack">
+          <div class="concept-box"><h4>The flexibility trade-off</h4><p class="dim">Tie the regulator's hands to guarantee commitment, and you may lock consumers into a bad deal and dull cost incentives — especially in fast-moving telecoms. Discretion needs to be <em>well-specified</em> and exercised transparently.</p></div>
+          <div class="concept-box"><h4>Capture — a heretical upside?</h4><p class="dim">A little capture can foster stable, pro-investment expectations (Estache &amp; Wren-Lewis). "Revolving door" bans meant to curb capture may even <em>worsen</em> commitment — balanced against the harm of privileging firms over consumers.</p></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">The second rationale for independence, and then the honest accounting of its downsides. Specialisation: utility regulation is technical, so concentrating expertise in a dedicated agency yields informational advantages, and specialist bodies are better at extracting and processing cost data from firms. Laffont and Tirole's lovely phrase is "informational intermediaries" — the regulator exists to shrink the information gap between the public and the industry. But section 7.1.6 is refreshingly candid about the risks. There's a principal-agent problem between government and agency: government can't observe what the regulator does, so monitoring is costly. There's capture — a self-interested regulator and firm can collude against the public, hiding information in exchange for future jobs. And there's a deep point: creating an agency may merely relocate the commitment problem, converting it into the government's commitment to preserve the agency's independence, which itself can be broken. Two subtleties worth savouring: the commitment-flexibility trade-off — too many binding constraints can lock consumers into a bad deal — and the genuinely counter-intuitive claim that a mild degree of capture can actually stabilise investment expectations. Regulation is full of these uncomfortable trade-offs.</aside>
+  </section>
+
+  <!-- 9 · Independence spectrum (SVG) -->
+  <section class="slide" data-title="Independence spectrum">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="current">Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">formal vs de-facto independence · ministerial guidance</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.1 / 7.3 · A SPECTRUM, NOT A SWITCH</p>
+      <h2 class="h2 mt-s">Independence comes in degrees.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">"Independent" is not binary. Agencies sit on a spectrum from <b>ministry-run</b> to <b>fully independent</b>, and there's a gap between <em>formal</em> independence (what the statute says) and <em>de-facto</em> independence (real day-to-day autonomy).</p>
+          <div class="callout" style="margin-top:14px"><b>Never fully insulated.</b> Joskow: "no regulatory agency is completely independent of political influences." Most work within ministerial <em>guidance</em> that allows policy input without undermining independence on pricing and investment.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 190" role="img" aria-label="Spectrum from ministry-run to fully independent regulation">
+            <!-- gradient band -->
+            <rect class="band" x="30" y="60" width="320" height="26" rx="13" fill="var(--accent)"/>
+            <line class="axis" x1="30" y1="100" x2="350" y2="100"/>
+            <polygon points="350,100 342,95 342,105" fill="var(--text-3)"/>
+            <polygon points="30,100 38,95 38,105" fill="var(--text-3)"/>
+            <text class="lbl" x="30" y="120" font-size="10">less independent</text>
+            <text class="lbl" x="350" y="120" font-size="10" text-anchor="end">more independent</text>
+            <!-- markers -->
+            <g text-anchor="middle">
+              <circle class="node-2" cx="60" cy="73" r="6"/>
+              <text class="lbl" x="60" y="48" font-size="9">Ministry</text>
+              <text class="lbl" x="60" y="146" font-size="9">dept runs it</text>
+              <circle class="node-2" cx="150" cy="73" r="6"/>
+              <text class="lbl" x="150" y="48" font-size="9">Quasi-indep.</text>
+              <text class="lbl" x="150" y="146" font-size="9">ministerial</text>
+              <text class="lbl" x="150" y="157" font-size="9">guidance</text>
+              <circle class="node" cx="250" cy="73" r="6"/>
+              <text class="lbl" x="250" y="48" font-size="9">Statutory</text>
+              <text class="lbl" x="250" y="146" font-size="9">own mandate</text>
+              <circle class="node" cx="325" cy="73" r="6"/>
+              <text class="lbl-em" x="325" y="48" font-size="9" fill="var(--accent)">Ofgem/FCC</text>
+              <text class="lbl" x="325" y="146" font-size="9">arm's length</text>
+            </g>
+          </svg>
+          <figcaption>Fig 7.B — The independence spectrum: from ministry to arm's-length agency.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">A short but important corrective slide. Students hear "independent regulator" and picture a binary — either the minister runs it or it's free. The reality is a spectrum, and the diagram lays it out. On the left, a government department does the regulating directly. Moving right, a quasi-independent body that operates within ministerial guidance. Further right, a statutory agency with its own legal mandate. On the far right, arm's-length bodies like Ofgem or the FCC. Two refinements make this rich. First, political scientists distinguish formal independence — what the legal provisions grant — from de-facto independence, the effective autonomy an agency actually exercises day to day; the two can diverge sharply. Second, Joskow's warning: no agency is ever completely insulated. Even the most independent regulator works within a framework of ministerial guidance that permits policy input — the trick is that this input shouldn't undermine independence on the crucial questions of pricing and investment. Remember this spectrum when we compare jurisdictions; the UK, EU and developing-country agencies sit at different points on it.</aside>
+  </section>
+
+  <!-- 10 · Timeline of agency creation (SVG .timeline) -->
+  <section class="slide" data-title="Three waves">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="current">Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Three periods</h5>
+      <p class="dim" style="font-size:13px">1870s–1930s US · 1980s UK · 1990s–2000s the world</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.2 · THE EVOLUTION</p>
+      <h2 class="h2 mt-s">Three waves of agency creation.</h2>
+      <p class="lede mt-m">Independence evolved from context, not from theory. Laffont ties agency design to two forces — the <b>technical characteristics</b> of the industry and the <b>political organisation</b> of the state.</p>
+      <ul class="timeline mt-m">
+        <li><span class="yr">1870s</span> Mid-Western US states create the first regulatory commissions over <b>railroad rates</b>.</li>
+        <li><span class="yr">1887</span> The <b>ICC</b> — first federal independent commission — regulates interstate freight rail; models itself on a court.</li>
+        <li><span class="yr">1934</span> New Deal: the <b>FCC</b> (communications) is created; the Federal Power Commission (later <b>FERC</b>) follows for power.</li>
+        <li><span class="yr">1984</span> UK privatises BT and creates <b>Oftel</b> — the template for Ofgas (’86), Offer (’89), Ofwat (’89), ORR (’93).</li>
+        <li><span class="yr">1990–2002</span> Telecoms regulators worldwide rise from &lt;20 to ~120; electricity from &lt;10 to ~70.</li>
+        <li><span class="yr">1996–2006</span> Almost <b>200 new infrastructure regulators</b> created globally (World Bank).</li>
+      </ul>
+    </div>
+    <aside class="notes">This timeline is the backbone of section 7.2, and the key message is that independence is a product of history and context, not a blueprint drawn from theory — Laffont is explicit that agencies "sprang up… without reference to a theoretical framework". He attributes their design to two forces: the technical characteristics of the industry, which pushed regulation from municipal to state to federal level as firms grew geographically, and the political organisation of the state. Walk the dates. The 1870s: Midwestern states regulate railroad rates — the Granger movement. 1887: the Interstate Commerce Commission, the first federal independent commission, deliberately styling itself as a court. The 1930s New Deal brings the FCC and the Federal Power Commission, later FERC. Then a jump across the Atlantic to 1984 — Britain privatises BT and invents Oftel, which becomes the template. And finally the explosion: between 1990 and 2002 telecoms regulators went from under twenty to around a hundred and twenty. The three waves — America, Britain, then the world — structure everything that follows.</aside>
+  </section>
+
+  <!-- 11 · US wave detail -->
+  <section class="slide" data-title="Wave 1 · USA">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="current">Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">quasi-judicial · state PUCs · APA 1946</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.2.1 · THE US MODEL</p>
+      <h2 class="h2 mt-s">America built a <em>court-like</em> regulator.</h2>
+      <p class="lede mt-m">US commissions emerged because the courts were too slow and couldn't handle complex economics, and the legislature was too inflexible. Independent commissions promised <b>stability and continuity</b> — the same values the commitment story prizes.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Quasi-judicial DNA</h4><p class="dim">The ICC modelled itself on the judiciary to borrow the courts' respectability. That court-like character became the template for later US agencies and endures today.</p></div>
+        <div class="concept-box"><h4>State vs federal split</h4><p class="dim">State <b>Public Utility Commissions</b> are typically multi-sectoral; federal agencies (FCC, FERC, STB) are industry-specific. A design divergence we'll return to.</p></div>
+        <div class="concept-box"><h4>Judicial review</h4><p class="dim">The Administrative Procedures Act 1946 created the framework for federal courts to review agency decisions — still structuring how US regulators operate.</p></div>
+      </div>
+      <div class="callout"><b>Why it matters for us.</b> The US "model" is inseparable from America's judicial tradition. That's why copying it wholesale into a different legal system — as many countries tried — often failed.</div>
+    </div>
+    <aside class="notes">The first wave in detail. Why did America — alone in the world for decades — build independent commissions this early? Bernstein's answer: the alternatives were failing. The judicial process was too slow and couldn't cope with complex, ongoing economic relationships; the legislature was too inflexible to set rates. Independent commissions promised stability and continuity — and notice how neatly those words map onto the commitment and time-inconsistency ideas from section 7.1, even though nobody had the theory yet. Three features to lodge. First, the quasi-judicial DNA: the ICC's first chairman was a judge, and the commission deliberately dressed itself in judicial robes to win legitimacy and fend off the courts' hostility over rate-setting jurisdiction. That court-like character propagated to later agencies and survives today. Second, a structural split we'll pick up in section 7.3 — state PUCs tend to be multi-sectoral, federal agencies industry-specific. Third, the 1946 Administrative Procedures Act built the judicial-review scaffolding. The takeaway for a UK audience: the US model is welded to the US legal tradition, which is precisely why it doesn't transplant cleanly.</aside>
+  </section>
+
+  <!-- 12 · UK wave detail -->
+  <section class="slide" data-title="Wave 2 · UK">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="current">Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">Director General · empowering statute · licence modification</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.2.2 · THE UK MODEL</p>
+      <h2 class="h2 mt-s">Britain built its regulator around a <em>licence</em> — and a person.</h2>
+      <p class="lede mt-m">The 1980s privatisations needed a new framework. Oftel (1984) — modelled on the OFT competition authority, <b>not</b> the US — became the template. The focus was <b>curbing private monopoly power</b>, not protecting investors.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Three-legged framework</h4><p class="dim">The agency was one leg only; the others were the <b>empowering statute</b> and the <b>licence</b>. Statutes vested powers in a <em>Director General</em> personally, not the office.</p></div>
+        <div class="concept-box"><h4>The licence safeguard</h4><p class="dim">Licence changes need the holder's agreement or referral to a third party. The regulator can't unilaterally rewrite the compact — a check on over-zealousness.</p></div>
+        <div class="concept-box"><h4>Personality, not review</h4><p class="dim">Unlike the US, judicial review wasn't central; no duty to give reasons. Commitment depended on <em>who</em> the DG was — academics chosen to reinforce independence.</p></div>
+      </div>
+      <div class="callout"><b>The forgotten question.</b> How to <em>value the asset base</em> — so vexed in the US — was left to each regulator at the first price review. A striking omission from the pre-privatisation design.</div>
+    </div>
+    <aside class="notes">The British wave, which matters most to this audience. When Britain privatised its utilities in the 1980s it needed a regulatory framework fast, and it built one that looks quite different from America's. The first office, Oftel in 1984, was modelled on the domestic competition authority, the OFT — Prosser notes the creation of the utility regulators involved a "conscious rejection" of overseas experience. And the initial preoccupation was not investor protection or commitment; it was controlling the dominant market position of the newly-privatised BT. Three design features. One, the framework had three legs — the agency was only one; the empowering statute and the licence were the others, and crucially the statute vested powers in a Director General as an individual, not in an office. Two, the licence-modification safeguard: the regulator couldn't unilaterally change licence terms, needing the holder's agreement or third-party referral — a real check on opportunism. Three, and remarkably, judicial review wasn't seen as important, there was no duty to give reasons, so commitment hung on the personality of the DG — which is why academics were appointed first, to signal independence. The callout is the delicious footnote: the asset-valuation question, so contentious in America, was simply left to each regulator's discretion at the first review.</aside>
+  </section>
+
+  <!-- 13 · Wave 3 · rest of world -->
+  <section class="slide" data-title="Wave 3 · The world">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="current">Trace the three waves of agency creation</li>
+        <li>Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Different reasons</h5>
+      <p class="dim" style="font-size:13px">EU: market integration · Australia: separate the two hats · Developing: attract investment</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.2.3–7.2.4 · THE GLOBAL WAVE</p>
+      <h2 class="h2 mt-s">The same institution — for very different reasons.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>European Union</h4><p class="dim">NRAs arose from the mid-1990s to build a <b>single market</b>. EU directives required separating the regulatory function from state ownership of the incumbent (the 1991 <em>GB-Inno</em> ECJ ruling). Water is the exception.</p></div>
+        <div class="concept-box"><h4>Australia &amp; New Zealand</h4><p class="dim">The Hilmer report flagged the state's "dual role" as owner and regulator; the <b>ACCC</b> (multi-sectoral) followed. NZ first tried "regulation without regulators" — light-handed reliance on competition law — until the <em>Clear v Telecom</em> access dispute exposed its limits.</p></div>
+        <div class="concept-box"><h4>Developing &amp; transitional economies</h4><p class="dim">Agencies created — pushed by the World Bank/IMF — mainly to <b>attract private investment</b> with credible anti-expropriation commitments. Many struggled: weak rule of law, design–context mismatch.</p></div>
+        <div class="concept-box"><h4>Sequencing matters (Wallsten)</h4><p class="dim">Where a regulator was set up <em>before</em> privatisation, it substantially raised the sale proceeds — evidence that credibility has cash value.</p></div>
+      </div>
+    </div>
+    <aside class="notes">The third wave is the most interesting comparatively, because the same institution — the independent agency — was adopted for genuinely different reasons in different places, which is section 7.2.4's reconciling point. In the European Union, national regulatory authorities emerged from the mid-1990s driven by market integration: EU directives sought a single market and therefore required separating the regulatory function from state ownership of incumbents, reinforced by the 1991 GB-Inno ruling that combining regulatory and commercial roles breached the Treaty. Water is the standing exception. In Australia, the Hilmer report identified the state's dual role as owner and regulator as the problem, producing the multi-sectoral ACCC. New Zealand ran a fascinating experiment — "regulation without regulators", relying on competition law alone — until the Clear versus Telecom access saga became, as Patterson puts it, the death knell of light-handed regulation. In developing economies the driver was different again: attract private capital by committing credibly not to expropriate, pushed hard by the World Bank and IMF. Many struggled with weak institutions. And Wallsten's finding is the one to remember — establishing the regulator before privatisation raised sale proceeds, proving credibility is worth real money.</aside>
+  </section>
+
+  <!-- 14 · CASE: New Zealand light-handed -->
+  <section class="slide" data-title="Case · New Zealand">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="done">Trace the three waves of agency creation</li>
+        <li class="current">Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">light-handed regulation · ECPR · Commerce Commission</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CASE STUDY · 7.2.3</p>
+      <h2 class="h2 mt-s">New Zealand: can you regulate <em>without</em> a regulator?</h2>
+      <div class="split mt-m">
+        <div class="casebox">
+          <h4>"Regulation without regulators"</h4>
+          <p>New Zealand deliberately declined to create industry-specific regulators for telecoms and energy. Instead it relied on <b>general competition law</b>, information-disclosure rules, and the threat of tougher intervention if firms misbehaved — an attempt to get the discipline of regulation without the cost, capture and rigidity of a standing agency.</p>
+        </div>
+        <div class="stack">
+          <div class="callout"><b>Why it unravelled.</b> A protracted telecoms access dispute — <em>Clear Communications v Telecom NZ</em>, turning on whether the ECPR was acceptable access pricing — went unresolved for years. In energy, firms earned profits above a conventional regulated benchmark.</div>
+          <div class="concept-box"><h4>The verdict</h4><p class="dim">Light-handed rules proved an ineffective substitute for an agency. New Zealand's framework has since become <b>multi-sectoral</b>, with the Commerce Commission now regulating these industries directly.</p></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">A memorable case, because it's the natural experiment: what happens if you decide not to have a regulator at all? New Zealand, in the reforming spirit of the late 1980s and 1990s, tried exactly that — "regulation without regulators". The theory was attractive: avoid the cost, the capture risk and the rigidity of a standing agency by leaning on general competition law, mandatory information disclosure, and the looming threat of price controls if firms stepped out of line. It's the light-handed approach from Chapter 3 made real. Two things broke it. In telecoms, the Clear versus Telecom dispute — which hinged on whether the efficient-component-pricing rule from Chapter 6 was an acceptable way to price access — dragged on for years without resolution, because there was no expert body to settle it quickly. In energy, firms earned more than a conventional regulated regime would have allowed. The lesson Decker draws is blunt: attractive in principle, but an ineffective substitute in practice. New Zealand converged on the mainstream — a multi-sectoral Commerce Commission now does the job directly. Sometimes you really do need the guardians.</aside>
+  </section>
+
+  <!-- 15 · 7.3.1 Single vs board & sector vs multi-sector -->
+  <section class="slide" data-title="Design choices">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="done">Trace the three waves of agency creation</li>
+        <li class="current">Compare agency design choices</li>
+        <li>Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">multi-sectoral · industry-specific · economies of scope · regulatory competition</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.3.1 · SCOPE OF THE AGENCY</p>
+      <h2 class="h2 mt-s">One sector or many? The core structural choice.</h2>
+      <p class="lede mt-m">Should an agency cover a single industry, or several? The chapter weighs the trade-offs — and the world shows every possible answer.</p>
+      <table class="data mt-m">
+        <thead><tr><th>Dimension</th><th>Industry-specific</th><th>Multi-sectoral</th></tr></thead>
+        <tbody>
+          <tr><td>Expertise</td><td>Deep, sector-focused</td><td>Pooled; economies of scope across sectors</td></tr>
+          <tr><td>Capture risk</td><td>Higher — single "clientele"</td><td>Lower — splitting tasks curbs collusion (Laffont &amp; Martimort)</td></tr>
+          <tr><td>Scarce specialists</td><td>Spreads thin</td><td>Concentrates a limited talent pool</td></tr>
+          <tr><td>Experimentation</td><td>Regulatory competition &amp; variety</td><td>Consistency, less variety</td></tr>
+          <tr><td>Real-world example</td><td class="num">FERC, FCC, STB (US federal)</td><td class="num">ACCC (AUS), state PUCs, CNMC (Spain)</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><b>The UK's own journey.</b> Started industry-specific (Oftel, Ofgas, Offer, Ofwat, ORR). Today gas + electricity sit under one energy regulator (<b>Ofgem</b>), and telecoms, broadcasting + post under one communications regulator (<b>Ofcom</b>). A hybrid.</div>
+    </div>
+    <aside class="notes">Now section 7.3 — design. The first big choice is scope: does the agency cover one industry or many? The table lays out the trade-offs. On expertise, industry-specific gives you depth, but multi-sectoral lets you pool people and capture economies of scope across sectors — attractive where specialist regulators are scarce. On capture, there's a genuine tension in the literature: section 7.1 argued that combining many tasks in one agency raises capture risk, so splitting tasks among regulators reduces collusion, per Laffont and Martimort — yet Macey makes the opposite point, that an agency serving multiple competing clienteles is harder for any one of them to capture than a single-clientele one. Both effects are real. There's also a value in regulatory competition and experimentation that industry-specific structures preserve. Look at the examples: US federal regulators are industry-specific — FERC, FCC, STB — while Australia's ACCC and US state PUCs are multi-sectoral. Spain recently merged its competition authority with six sectoral regulators. The UK's own path is the punchline in the callout: it began fully industry-specific but consolidated into Ofgem for energy and Ofcom for communications — a pragmatic hybrid.</aside>
+  </section>
+
+  <!-- 16 · 7.3.2 Division of powers -->
+  <section class="slide" data-title="Division of powers">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="done">Trace the three waves of agency creation</li>
+        <li class="done">Compare agency design choices</li>
+        <li class="current">Map the division of powers</li>
+        <li>Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Four tasks</h5>
+      <p class="dim" style="font-size:13px">policy · implementation · enforcement · adjudication</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.3.2 · WHO DOES WHAT</p>
+      <h2 class="h2 mt-s">Regulation is a bundle of tasks — split many ways.</h2>
+      <p class="lede mt-m">A regulatory system performs four tasks: <b>policy determination · implementation · compliance &amp; enforcement · adjudication of disputes</b>. How you allocate them across bodies <em>is</em> the design.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Ministry vs regulator</h4><p class="dim">The tidy story — "ministers choose policy, regulators implement" — is <em>too simplistic</em>. Implementation choices (e.g. access pricing) shape whether policy goals are met. The boundary is a grey area, and the relationship is a "combustible state of affairs" (Winsor).</p></div>
+        <div class="concept-box"><h4>Regulator vs competition authority</h4><p class="dim">In the UK, sector regulators hold <b>concurrent</b> competition-law powers with the CMA. In the US, FERC &amp; FCC share merger jurisdiction with the DoJ/FTC — and the FCC's review is broader.</p></div>
+        <div class="concept-box"><h4>Co- &amp; self-regulatory bodies</h4><p class="dim">UK energy <b>industry codes</b> (multi-party, modifiable) and US <b>ISOs'</b> business-practice manuals set operational rules — a co-regulatory layer beside the agency.</p></div>
+        <div class="concept-box"><h4>Levels of government</h4><p class="dim">Federal systems split power: US <b>FERC</b> (interstate) vs <b>state PUCs</b> (intrastate). The EU splits between Commission directives and national NRAs.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Section 7.3.2 is the most substantive design question — how power is divided. Start from the insight that "regulation" is not one activity but four: determining policy, implementing it, enforcing compliance, and adjudicating disputes. Design is the act of allocating those tasks across institutions. Four fault-lines. First, ministry versus regulator: the comforting textbook line is that ministers set strategy and regulators merely execute — but Decker insists this is too simplistic, because implementation decisions like access pricing feed straight back into whether the strategy succeeds, so the boundary is genuinely blurry. Winsor's phrase, "a combustible state of affairs", captures the inevitable tension. Second, regulator versus competition authority — in the UK the sector regulators have concurrent competition powers alongside the CMA; in the US, FERC and FCC share merger review with the antitrust agencies, and the FCC's review is notably broader. Third, co-regulatory bodies — the UK's energy industry codes and America's ISO business-practice manuals set operational rules outside the agency itself. Fourth, in federal systems, levels of government: FERC does interstate, state PUCs intrastate. The point: real regulatory systems are crowded, multi-actor webs, not a single regulator issuing edicts.</aside>
+  </section>
+
+  <!-- 17 · Accountability loop (SVG) -->
+  <section class="slide" data-title="Accountability loop">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="done">Trace the three waves of agency creation</li>
+        <li class="done">Compare agency design choices</li>
+        <li class="done">Map the division of powers</li>
+        <li class="current">Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>The old question</h5>
+      <p class="dim" style="font-size:13px"><em>Quis custodiet ipsos custodes?</em> — who guards the guardians?</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.4 · WHO REGULATES THE REGULATORS?</p>
+      <h2 class="h2 mt-s">Unelected power needs a loop that closes.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Independent regulators are <b>unelected officials</b> wielding delegated power. Accountability runs through a loop: government <b>appoints</b>; firms <b>appeal</b>; courts <b>review</b>; parliament <b>scrutinises &amp; audits</b>. Each arrow is a check.</p>
+          <div class="callout" style="margin-top:14px"><b>Two kinds of oversight.</b> Review of <em>specific decisions</em> (appeals, judicial review) vs <em>general</em> oversight of conduct and performance (committees, audit). Both are needed.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 260" role="img" aria-label="Accountability loop around the regulator">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- centre -->
+            <circle class="node" cx="190" cy="130" r="42"/>
+            <text class="lbl-em" x="190" y="128" text-anchor="middle" fill="var(--accent)">REGULATOR</text>
+            <text class="lbl" x="190" y="144" text-anchor="middle" font-size="9">unelected</text>
+            <!-- four satellites -->
+            <rect class="box-gov" x="130" y="8" width="120" height="36" rx="6"/>
+            <text class="lbl" x="190" y="30" text-anchor="middle" font-size="10">Govt · appoints</text>
+            <rect class="box-2" x="288" y="112" width="86" height="36" rx="6"/>
+            <text class="lbl" x="331" y="128" text-anchor="middle" font-size="9">Firms</text>
+            <text class="lbl" x="331" y="140" text-anchor="middle" font-size="9">appeal</text>
+            <rect class="box" x="130" y="216" width="120" height="36" rx="6"/>
+            <text class="lbl" x="190" y="232" text-anchor="middle" font-size="9">Courts / tribunals</text>
+            <text class="lbl" x="190" y="244" text-anchor="middle" font-size="9">review</text>
+            <rect class="box-gov" x="6" y="112" width="98" height="36" rx="6"/>
+            <text class="lbl" x="55" y="128" text-anchor="middle" font-size="9">Parliament</text>
+            <text class="lbl" x="55" y="140" text-anchor="middle" font-size="9">scrutiny · audit</text>
+            <!-- arrows around loop -->
+            <path class="flow" d="M190,46 L190,84"/>
+            <path class="flow" d="M288,130 L236,130"/>
+            <path class="flow" d="M190,214 L190,176"/>
+            <path class="flow" d="M104,130 L146,130"/>
+          </svg>
+          <figcaption>Fig 7.C — The accountability loop: appointment, appeal, review, scrutiny.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Section 7.4 and the title question: quis custodiet ipsos custodes — who guards the guardians. The tension is real and democratic. We deliberately built agencies that are insulated from elected politicians; the price is that unelected officials now wield enormous delegated power over prices, investment and whole industries. That demands accountability, and the diagram shows the loop that provides it. Four checks surround the regulator. Government appoints its leadership and sets its statutory objectives. Regulated firms can appeal its decisions. Courts and tribunals review those decisions. And parliament scrutinises and audits its conduct. Each arrow is a channel through which the regulator is held to account. The callout draws the organising distinction for the whole section, which we'll follow: oversight of specific decisions — the appeals and judicial-review machinery, covered in 7.4.1 — versus general oversight of the regulator's overall conduct and performance — committees, annual reports, audit, covered in 7.4.2. A well-designed system needs both; neither alone closes the loop. Hold this picture as we drill into each arrow.</aside>
+  </section>
+
+  <!-- 18 · 7.4.1 Appeals: merits vs judicial review -->
+  <section class="slide" data-title="Appeals & review">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="done">Trace the three waves of agency creation</li>
+        <li class="done">Compare agency design choices</li>
+        <li class="done">Map the division of powers</li>
+        <li class="current">Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">merits review · judicial review · standing · specialist tribunal</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.4.1 · REVIEWING SPECIFIC DECISIONS</p>
+      <h2 class="h2 mt-s">Appeal on the <em>merits</em>, or only on the <em>process</em>?</h2>
+      <table class="data mt-m">
+        <thead><tr><th>Question</th><th>Full merits review</th><th>Judicial review</th></tr></thead>
+        <tbody>
+          <tr><td>What's reviewed</td><td>Evidence re-considered <b>afresh</b></td><td>Only whether the <b>process</b> was reasonable &amp; lawful</td></tr>
+          <tr><td>Criticism</td><td>Duplicates the expert regulator; "second roll of the dice"; costly</td><td>May leave substantive errors uncorrected</td></tr>
+          <tr><td>Upside</td><td>Curbs opportunism; reassures investors; drives better decisions</td><td>Respects regulatory discretion; cheaper, faster</td></tr>
+        </tbody>
+      </table>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Which body hears it?</h4><p class="dim"><b>Specialist tribunal</b> (UK CAT, Australian ACT) brings expertise; <b>general court</b> (NZ, Canada, France) avoids narrow group-think. US uses an internal administrative-law judge first.</p></div>
+        <div class="concept-box"><h4>Standing</h4><p class="dim">Who may appeal? Just the parties, submission-makers, or affected third parties. A trade-off between fair access and frivolous, drawn-out challenge.</p></div>
+        <div class="concept-box"><h4>Incentive effect</h4><p class="dim">Appealability makes regulators focus on whether their reasoning will "stand up" — a discipline on the whole process.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Section 7.4.1 zooms into the appeals arrow, and the central distinction — one every UK regulatory practitioner argues about — is merits review versus judicial review. Under full merits review, the tribunal reconsiders the evidence afresh, effectively re-taking the decision. Under judicial review, the court asks only whether the regulator's process was lawful and reasonable, without re-examining the substance. The table gives you the argument on both sides. Critics of merits review say it duplicates the work of an expert regulator, turns the appeal into a second regulatory hearing, gives firms with deep pockets "another roll of the dice", and inflates cost. Defenders say regulators wield huge discretion with huge consequences, so thorough appeal rights are appropriate — and they enhance credibility, reassure investors against opportunism, and push regulators to improve. Then two further choices. Which body hears appeals: a specialist tribunal like the UK's Competition Appeal Tribunal brings expertise, but a generalist court avoids the group-think that Robson warned narrow tribunals can develop. And standing — who is allowed to appeal — trades fair access against a flood of frivolous challenges. Note the elegant incentive effect: merely being appealable disciplines regulators to write decisions that will stand up.</aside>
+  </section>
+
+  <!-- 19 · 7.4.2 General oversight -->
+  <section class="slide" data-title="General oversight">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="done">Trace the three waves of agency creation</li>
+        <li class="done">Compare agency design choices</li>
+        <li class="done">Map the division of powers</li>
+        <li class="current">Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">select committee · NAO / GAO · NARUC · consumer bodies</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">7.4.2 · GENERAL OVERSIGHT</p>
+      <h2 class="h2 mt-s">Watching the regulator's overall conduct.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Political / executive</h4><p class="dim">Regulators appear before <b>parliamentary or congressional committees</b> (incl. public-accounts committees) to answer oral and written questions. The UK House of Lords ran an ad-hoc review of the economic regulators in 2007.</p></div>
+        <div class="concept-box"><h4>Information &amp; audit</h4><p class="dim">Duties to file <b>annual reports and accounts</b>; performance reviews by the UK <b>NAO</b> and US <b>GAO</b> (e.g. NAO's review of Ofcom; GAO on electricity restructuring &amp; FERC).</p></div>
+        <div class="concept-box"><h4>Peer associations</h4><p class="dim">Bodies like <b>NARUC</b> (USA) and the European regulator associations (CEER, BEREC) set best-practice standards — informal, horizontal accountability.</p></div>
+        <div class="concept-box"><h4>Consumer &amp; user bodies</h4><p class="dim">Counter the risk that a regulator over-attends to well-resourced <em>industry</em> voices. But watch their own limits: politicisation, short-termism.</p></div>
+      </div>
+      <div class="callout"><b>The recurring hazard.</b> Committee scrutiny can backfire — regulators may become "unduly concerned with headlines" and internalise political perceptions, compromising the very independence oversight is meant to protect.</div>
+    </div>
+    <aside class="notes">Section 7.4.2 turns to the other kind of oversight — not of individual decisions, but of the regulator's general conduct and performance, which matters precisely because these are unelected officials with big delegated powers. Four mechanisms. First, political or executive oversight: regulators are hauled before parliamentary or congressional committees, including public-accounts committees, to answer questions — the House of Lords ran a notable ad-hoc review of Britain's economic regulators in 2007. Second, information and audit obligations: annual reports and accounts, plus performance reviews by the National Audit Office in the UK and the Government Accountability Office in the US — the NAO reviewed Ofcom, the GAO reviewed FERC's role in electricity restructuring. Third, and easy to overlook, peer associations like NARUC in America and CEER and BEREC in Europe, which set best-practice standards — a horizontal, informal form of accountability. Fourth, consumer and user representative bodies, which exist to counterbalance the reality that industry interests are usually better organised and better funded than diffuse consumers. But note the callout, and it's the sting in the tail of the whole chapter: scrutiny itself carries a hazard — regulators worried about headlines can internalise political perceptions and lose the very independence the system was built to protect. Accountability and independence are in permanent tension.</aside>
+  </section>
+
+  <!-- 20 · Check understanding -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M07</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain the commitment case for independence</li>
+        <li class="done">Trace the three waves of agency creation</li>
+        <li class="done">Compare agency design choices</li>
+        <li class="done">Map the division of powers</li>
+        <li class="current">Weigh oversight &amp; accountability</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">What is the <em>principal</em> economic rationale for independence?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>Independent agencies are cheaper to run than government departments.</b><p class="dim" style="font-size:13px;margin:4px 0 0">No — the chapter lists <em>high costs of delegation</em> among the risks, not the benefits.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>They solve a <span style="color:var(--accent)">time-inconsistency / commitment</span> problem — a government tying its hands against future opportunistic interference, like an independent central bank.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> This is the principal benefit in the analytical literature; specialisation is the second.</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>Independence guarantees the regulator will never behave opportunistically.</b><p class="dim" style="font-size:13px;margin:4px 0 0">False — insulation creates a <em>secondary agency problem</em>; the regulator itself can ratchet or expropriate.</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">Quick self-check on the chapter's central argument. The tempting wrong answer is A — independence must be about saving money. But the chapter actually lists the high costs of delegation as one of the risks, so A inverts the logic. C is the seductive over-claim: that once you make a regulator independent, opportunism disappears. Section 7.1.4's whole point is that this is false — insulating the regulator creates a secondary agency problem, because now the regulator can be the one who ratchets or expropriates, which is why we need those four restraining levers. The correct answer is B: the principal rationale in the analytical literature is commitment, the solution to a time-inconsistency problem, exactly analogous to delegating monetary policy to an independent central bank. Specialisation and expertise are the important second rationale, but commitment is first. If a learner picks A, revisit the risks slide; if they pick C, revisit the "constraining opportunism" slide. Aim to hold both halves in mind — independence helps commitment, but doesn't guarantee good behaviour.</aside>
+  </section>
+
+  <!-- 21 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 07</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Explain the commitment case</h4><p class="dim">Independence solves a time-inconsistency problem — a government tying its hands against expropriation and the ratchet — plus specialist expertise. But it only <em>relocates</em>, never abolishes, the commitment problem.</p></div>
+      <div class="concept-box"><h4>✓ Trace the three waves</h4><p class="dim">US court-like commissions (1880s–1930s), UK licence-and-DG offices (1980s), then a global wave (1990s–2000s) for market integration, dual-role separation and investor credibility.</p></div>
+      <div class="concept-box"><h4>✓ Compare the design choices</h4><p class="dim">Single DG vs board; industry-specific vs multi-sectoral; the four-way split of policy, implementation, enforcement and adjudication across ministries, regulators, competition authorities and levels of government.</p></div>
+      <div class="concept-box"><h4>✓ Weigh accountability</h4><p class="dim">Merits vs judicial review, specialist tribunals vs courts, standing — and general oversight by committees, NAO/GAO audit and consumer bodies. Always in tension with independence.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 08.</b> With the institutions mapped, the book turns to practice in specific industries. Module 08 opens the sector studies — <em>telecommunications</em> — where interconnection, access pricing and the FCC/Oftel legacy come alive in a real market.
+    </div>
+    <div class="deck-footer"><span>Teaching summary of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 7</span><span class="slide-number" data-current="21" data-total="21"></span></div>
+    <aside class="notes">Recap against the four objectives and set up the sector chapters. The single idea to carry away: the independent regulatory agency is a device for making credible commitments — a government binding itself to the mast so that firms will invest — but it is not a magic bullet. It relocates the commitment problem rather than dissolving it, it introduces a secondary agency problem, and it sits in permanent tension with democratic accountability, since we've handed real power to unelected experts. Everything in the chapter flows from that tension: the design choices are attempts to get the benefits of expertise and insulation without the costs of capture and unaccountability, and the oversight machinery — appeals, judicial review, tribunals, committees, audit — is how we try to close the loop without smothering the independence we deliberately created. From here the book gets concrete: Chapters 8 through 11 apply all of this to telecoms, energy, transport and water. Module 08 begins with telecommunications. End here.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>

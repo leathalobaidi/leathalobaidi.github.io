@@ -1,0 +1,114 @@
+/* ============================================================
+   Modern Economic Regulation — shared course theme
+   (course-module base + figure/diagram primitives)
+   Used by every module-NN/index.html via ../style.css
+   ============================================================ */
+
+/* --- course-module — academic but friendly --- */
+.tpl-course-module{
+  --bg:#fbfaf6;--bg-soft:#f4f1e8;--surface:#ffffff;--surface-2:#f6f3ea;
+  --border:rgba(60,45,20,.12);--border-strong:rgba(60,45,20,.24);
+  --text-1:#2a2418;--text-2:#5a5140;--text-3:#8a7f68;
+  --accent:#2d7d6e;--accent-2:#d88a3a;--accent-3:#c4593f;
+  --grad:linear-gradient(135deg,#2d7d6e,#4ea893);
+  --radius:14px;--radius-lg:20px;
+  --shadow:0 12px 30px rgba(60,45,20,.07);
+  font-family:'Inter','Noto Sans SC',sans-serif;
+}
+.tpl-course-module .slide{padding:56px 72px;background:var(--bg);display:grid;grid-template-columns:260px 1fr;gap:52px;align-content:start}
+.tpl-course-module .slide.full{grid-template-columns:1fr;display:flex;flex-direction:column;justify-content:center}
+.tpl-course-module .sidebar{border-right:1px solid var(--border);padding-right:30px;position:relative}
+.tpl-course-module .sidebar .brand{font-family:'Playfair Display',serif;font-size:21px;font-weight:700;color:var(--accent)}
+.tpl-course-module .sidebar .brand::before{content:"✦ ";color:var(--accent-2)}
+.tpl-course-module .sidebar h5{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--text-3);margin:28px 0 12px}
+.tpl-course-module .obj-list{list-style:none;padding:0;margin:0;font-size:13px;color:var(--text-2);line-height:1.5}
+.tpl-course-module .obj-list li{padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--border)}
+.tpl-course-module .obj-list li::before{content:"○";position:absolute;left:0;top:8px;color:var(--accent)}
+.tpl-course-module .obj-list li.done::before{content:"●";color:var(--accent)}
+.tpl-course-module .obj-list li.current{color:var(--text-1);font-weight:700}
+.tpl-course-module .obj-list li.current::before{content:"▸";color:var(--accent-2)}
+.tpl-course-module .main{min-width:0}
+.tpl-course-module .h1{font-family:'Playfair Display',serif;font-size:68px;line-height:1.03;font-weight:800;letter-spacing:-.02em;color:var(--text-1)}
+.tpl-course-module .h2{font-family:'Playfair Display',serif;font-size:44px;line-height:1.1;font-weight:700;letter-spacing:-.015em;color:var(--text-1)}
+.tpl-course-module h3,.tpl-course-module h4{color:var(--text-1)}
+.tpl-course-module .kicker{color:var(--accent-2);font-size:12px;font-weight:700;letter-spacing:.14em}
+.tpl-course-module .lede{font-size:19px;color:var(--text-2);line-height:1.65}
+.tpl-course-module .callout{border-left:4px solid var(--accent-2);background:var(--surface-2);padding:18px 22px;border-radius:0 var(--radius) var(--radius) 0;margin-top:22px}
+.tpl-course-module .callout b{color:var(--accent-2)}
+.tpl-course-module .concept-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px 24px;box-shadow:var(--shadow)}
+.tpl-course-module .concept-box h4{margin-top:0;color:var(--accent)}
+.tpl-course-module .exercise{background:#fff8ed;border:1.5px dashed var(--accent-2);border-radius:var(--radius);padding:22px 26px}
+.tpl-course-module .exercise::before{content:"✎ Exercise";display:block;font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--accent-2);margin-bottom:10px;text-transform:uppercase}
+.tpl-course-module .code{background:#2a2418;color:#f4f1e8;border-radius:var(--radius);padding:18px 22px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;overflow:auto}
+.tpl-course-module .code .cmt{color:#8a7f68;font-style:italic}
+.tpl-course-module .code .kw{color:#e8a770}
+.tpl-course-module .code .str{color:#8ec6b2}
+.tpl-course-module .mcq{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:10px;display:flex;gap:14px;align-items:flex-start;cursor:pointer}
+.tpl-course-module .mcq .letter{flex:none;width:28px;height:28px;border-radius:50%;border:2px solid var(--text-3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:var(--text-2)}
+.tpl-course-module .mcq.correct{border-color:var(--accent);background:rgba(45,125,110,.06)}
+.tpl-course-module .mcq.correct .letter{border-color:var(--accent);background:var(--accent);color:#fff}
+.tpl-course-module .pill-academic{display:inline-block;padding:4px 12px;border-radius:4px;background:var(--surface-2);border:1px solid var(--border);font-size:12px;color:var(--text-2);font-family:'JetBrains Mono',monospace}
+.tpl-course-module .slide.full .h1{font-size:82px}
+.tpl-course-module .deck-footer{color:var(--text-3)}
+
+/* --- figure / diagram primitives (shared across all modules) --- */
+.tpl-course-module figure.fig{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px 10px;box-shadow:var(--shadow)}
+.tpl-course-module figure.fig figcaption{font-size:12px;color:var(--text-3);margin-top:8px;font-family:'JetBrains Mono',monospace;line-height:1.4}
+.tpl-course-module .fig svg{width:100%;height:auto;display:block}
+.tpl-course-module .fig text{font-family:'Inter',sans-serif;fill:var(--text-2)}
+.tpl-course-module .axis{stroke:var(--text-3);stroke-width:1.5}
+.tpl-course-module .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
+.tpl-course-module .curve-2{fill:none;stroke:var(--accent-3);stroke-width:2.5}
+.tpl-course-module .curve-3{fill:none;stroke:var(--text-2);stroke-width:2}
+.tpl-course-module .curve-4{fill:none;stroke:var(--accent-2);stroke-width:2.5}
+.tpl-course-module .guide{stroke:var(--text-3);stroke-width:1;stroke-dasharray:3 3}
+.tpl-course-module .dwl{fill:var(--accent-3);opacity:.18}
+.tpl-course-module .surplus{fill:var(--accent);opacity:.12}
+.tpl-course-module .loss{fill:var(--accent-2);opacity:.20}
+.tpl-course-module .fillA{fill:var(--accent);opacity:.14}
+.tpl-course-module .fillB{fill:var(--accent-2);opacity:.16}
+.tpl-course-module .fillC{fill:var(--accent-3);opacity:.14}
+.tpl-course-module .lbl{font-size:12px;font-family:'JetBrains Mono',monospace;fill:var(--text-2)}
+.tpl-course-module .lbl-em{font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.tpl-course-module .node{fill:var(--surface);stroke:var(--accent);stroke-width:2}
+.tpl-course-module .node-2{fill:var(--surface);stroke:var(--accent-2);stroke-width:2}
+.tpl-course-module .flow{stroke:var(--text-3);stroke-width:2;fill:none;marker-end:url(#arrow)}
+
+/* --- layout helpers --- */
+.tpl-course-module .stack{display:flex;flex-direction:column;gap:12px}
+.tpl-course-module .grid{display:grid;gap:16px}
+.tpl-course-module .grid.g2{grid-template-columns:1fr 1fr}
+.tpl-course-module .grid.g3{grid-template-columns:repeat(3,1fr)}
+.tpl-course-module .grid.g4{grid-template-columns:repeat(4,1fr)}
+.tpl-course-module .row{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.tpl-course-module .split{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center}
+.tpl-course-module .split.wide-left{grid-template-columns:1.3fr .7fr}
+.tpl-course-module .mini{font-size:15px;line-height:1.55}
+.tpl-course-module .mt-s{margin-top:10px}.tpl-course-module .mt-m{margin-top:18px}.tpl-course-module .mt-l{margin-top:30px}
+.tpl-course-module .dim{color:var(--text-3)}
+.tpl-course-module code{font-family:'JetBrains Mono',monospace;font-size:.9em;background:var(--surface-2);padding:1px 6px;border-radius:4px;color:var(--accent-3)}
+
+/* --- small tags / pills --- */
+.tpl-course-module .tag{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+.tpl-course-module .tag.norm{background:rgba(45,125,110,.12);color:var(--accent)}
+.tpl-course-module .tag.pos{background:rgba(196,89,63,.12);color:var(--accent-3)}
+.tpl-course-module .tag.neu{background:var(--surface-2);color:var(--text-2)}
+
+/* --- data table (for tariff schedules, comparisons) --- */
+.tpl-course-module table.data{width:100%;border-collapse:collapse;font-size:14px;background:var(--surface);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+.tpl-course-module table.data th{background:var(--surface-2);color:var(--text-1);font-weight:700;text-align:left;padding:10px 14px;font-size:12px;text-transform:uppercase;letter-spacing:.06em;border-bottom:2px solid var(--border)}
+.tpl-course-module table.data td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text-2)}
+.tpl-course-module table.data tr:last-child td{border-bottom:none}
+.tpl-course-module table.data td.num{font-family:'JetBrains Mono',monospace;text-align:right}
+
+/* --- box (real-world case study, mirrors the book's shaded boxes) --- */
+.tpl-course-module .casebox{background:linear-gradient(0deg,var(--surface-2),var(--surface));border:1px solid var(--border-strong);border-radius:var(--radius);padding:22px 26px;position:relative}
+.tpl-course-module .casebox::before{content:"◧ CASE STUDY";display:block;font-size:11px;font-weight:700;letter-spacing:.12em;color:var(--accent);margin-bottom:10px}
+.tpl-course-module .casebox h4{margin:0 0 8px}
+
+/* --- timeline (for evolution / history slides) --- */
+.tpl-course-module .timeline{list-style:none;padding:0;margin:0;position:relative}
+.tpl-course-module .timeline li{position:relative;padding:0 0 18px 30px;border-left:2px solid var(--border);margin-left:6px}
+.tpl-course-module .timeline li::before{content:"";position:absolute;left:-7px;top:2px;width:12px;height:12px;border-radius:50%;background:var(--accent);border:2px solid var(--bg)}
+.tpl-course-module .timeline li:last-child{border-left-color:transparent}
+.tpl-course-module .timeline .yr{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent-2);font-size:13px}

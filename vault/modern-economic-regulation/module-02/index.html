@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why Regulate Utilities? · Modern Economic Regulation · Module 02</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 02 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">The recurring question:<br>why regulate <em>utilities</em>?</h1>
+    <p class="lede mt-l" style="max-width:66ch">Chapter 2 is built on one distinction: the <b>normative</b> case (why we <em>should</em> regulate) versus the <b>positive</b> case (why we actually <em>do</em>). Natural monopoly, deadweight loss, the first-best pricing trap, market-power control, externalities — then the uncomfortable interest-group theories that explain regulation warts and all.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 40 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 2</span>
+      <span class="pill-academic">prereq · Module 01</span>
+    </div>
+    <div class="deck-footer"><span>Teaching deck · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="22"></span></div>
+    <aside class="notes">Welcome to Module 02, the heart of Decker's book. Chapter 1 told us what economic regulation is and why utilities are special. Chapter 2 asks the question a good regulator asks before every single action — Alfred Kahn's line, which we'll meet in a moment: "Why am I doing this? Is it really necessary?" The chapter's whole architecture is a split. First, the normative rationales: efficiency, control of monopoly power, and externalities — the reasons regulation ought to exist. Second, the positive or alternative accounts: interest-group theories, long-term contracting, and distributional politics — explanations for why regulation actually exists in the form we observe. Over the next twenty-two slides we build that toolkit, with the cost-curve diagrams drawn out so you can see the economics rather than just take it on faith. Navigate with the arrow keys; press S at any point to open presenter view with these notes.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Split normative vs positive rationales</li>
+        <li>Define natural monopoly &amp; subadditivity</li>
+        <li>Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 22 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Hold the "should vs do" distinction in your head at all times.</h4><p class="dim">Normative accounts justify regulation; positive accounts explain its existence. They answer different questions and imply different yardsticks.</p></div>
+        <div class="concept-box"><h4>② Define natural monopoly the modern way.</h4><p class="dim">Not "average cost always falls" but <em>subadditivity</em> — and why the two are not the same thing.</p></div>
+        <div class="concept-box"><h4>③ Tell the efficiency and power rationales apart.</h4><p class="dim">Allocative, productive (entry), the control of market power (x-inefficiency, hold-up, innovation), and externalities.</p></div>
+        <div class="concept-box"><h4>④ Explain <em>why</em> regulation looks the way it does.</h4><p class="dim">Stigler, Posner, Peltzman, Becker — regulation as a good that groups demand and supply.</p></div>
+      </div>
+    </div>
+    <aside class="notes">These six objectives trace the chapter's shape. The first is the master key: keep asking whether a given argument is telling you why we should regulate or why we do. Objectives two through four are the normative half — the efficiency story built on natural monopoly, the separate case for controlling market power, and externalities. The last two objectives flip to the positive half and to Decker's closing reflection on what the plurality of rationales means for how regulators actually behave. Watch the sidebar: the current-objective marker advances as we move through the deck, so you always know where in the argument we are. And notice the deliberate asymmetry — the normative theories assume regulators are benevolent, well-informed, and able to enforce their decisions perfectly; the positive theories drop every one of those assumptions. That contrast is what makes the second half of the chapter bite.</aside>
+  </section>
+
+  <!-- 3 · The recurring question -->
+  <section class="slide" data-title="The recurring question">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Split normative vs positive rationales</li>
+        <li>Define natural monopoly &amp; subadditivity</li>
+        <li>Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Two families of answer</h5>
+      <p class="dim" style="font-size:13px"><span class="tag norm">normative</span> why we <em>should</em><br><span class="tag pos">positive</span> why we <em>do</em></p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHAPTER 2 · THE RECURRING QUESTION</p>
+      <h2 class="h2 mt-s">"Why am I doing this? Is it really necessary?"</h2>
+      <p class="lede mt-m">Alfred Kahn's single piece of advice to would-be regulators. Decker refuses to conflate the answers into one grand theory — instead he sorts every rationale into two very different kinds.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Normative <span class="tag norm">should</span></h4><p class="dim">Regulation exists to <em>improve welfare</em>. Assumes regulators have good information, can perfectly enforce, and are benevolent and public-spirited.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-3)"><h4>Positive <span class="tag pos">do</span></h4><p class="dim">Regulation exists because groups <em>demand</em> it — drawing on economic, political and legal reasoning. No grand welfare purpose assumed.</p></div>
+      </div>
+      <div class="callout"><b>Why the split matters — two reasons.</b> First, different rationales imply different policies and institutions. Second, you can only assess whether regulation "worked" <em>against the rationale that justified it</em>: judge efficiency regulation on efficiency; don't expect interest-group regulation to lower prices at all.</div>
+    </div>
+    <aside class="notes">This is the pivot of the entire chapter, so put it on the board. Kahn's quote captures the humility Decker wants: never assume intervention is necessary — prove it, action by action. Now the distinction. Normative accounts are about aims — what regulation ought to achieve — and they lean on three heroic assumptions about regulators: good information, perfect enforcement, and benevolence. Positive accounts eschew any grander purpose and simply try to explain why regulation exists in the form it does, drawing on economics, politics and law. Decker gives two concrete reasons the distinction is not academic hair-splitting. One: your rationale dictates your institutions — a natural-monopoly rationale points to price control, an interest-group reality points somewhere else entirely. Two, and this is the killer for any evaluator: you can only measure regulation against its stated purpose. If regulation was really about serving organised interests, you should not be surprised or disappointed to find prices no lower than an unregulated monopolist would set. The yardstick follows from the rationale.</aside>
+  </section>
+
+  <!-- 4 · Section divider: normative -->
+  <section class="slide full" data-title="Part 1 · Normative">
+    <p class="kicker">PART 1 · SECTION 2.1</p>
+    <h1 class="h1 mt-s">Normative rationales:<br>why we <em>should</em> regulate.</h1>
+    <p class="lede mt-l" style="max-width:60ch">Three families of argument, all tied to improving economic welfare: <b>efficiency</b> (built on natural monopoly), the <b>control of monopoly power</b>, and <b>externalities</b>. We start where almost every textbook starts — with the natural monopoly.</p>
+    <div class="row mt-l" style="gap:12px">
+      <span class="tag norm">2.1.1 efficiency</span>
+      <span class="tag norm">2.1.2 monopoly power</span>
+      <span class="tag norm">2.1.3 externalities</span>
+    </div>
+    <aside class="notes">A short divider to orient you. Everything in Part 1 shares a common premise — that regulation is there to make the economy work better, whether by getting prices right, getting the industry structure right, curbing abuse, or handling spillovers. The dominant specific rationale, and the one we tackle first, is natural monopoly: the claim that in these industries one firm is genuinely the cheapest way to serve the market, which then splits into an allocative-efficiency argument about pricing and a productive-efficiency argument about entry. After that we take the two other normative families — controlling monopoly power, which is about conduct rather than the cost curve, and externalities, including the network effects that are special to communications and transport. Keep the three chips in mind; they're the map for the next dozen slides.</aside>
+  </section>
+
+  <!-- 5 · Natural monopoly: economies of scale (Fig 2.1) -->
+  <section class="slide" data-title="Economies of scale">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="current">Define natural monopoly &amp; subadditivity</li>
+        <li>Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">natural monopoly · economies of scale · economies of density · fixed &amp; sunk cost</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.1 · EFFICIENCY · NATURAL MONOPOLY</p>
+      <h2 class="h2 mt-s">When one firm is genuinely cheaper.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">A <b>natural monopoly</b> is a structure where it is most cost-efficient for a <em>single</em> firm rather than two or more to produce a set of outputs. The early, single-product concept: average cost that <b>falls at every level of output</b> — economies of scale.</p>
+          <div class="callout" style="margin-top:16px"><b>The pipeline arithmetic.</b> A gas pipeline costing $100m serves 100,000 users at $1,000 each — or 1,000,000 users at just $100 each. Huge fixed, sunk cost spread over more units drives average cost down; duplicating the pipe wastes money.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Average cost falling for all output under economies of scale">
+            <line class="axis" x1="44" y1="14" x2="44" y2="205"/>
+            <line class="axis" x1="44" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="26" y="20">AC</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <path class="curve" d="M60,40 C110,120 150,165 210,182 C270,196 320,200 356,202"/>
+            <text class="lbl" x="292" y="184">Average cost</text>
+            <line class="guide" x1="132" y1="172" x2="132" y2="205"/>
+            <line class="guide" x1="44" y1="172" x2="132" y2="172"/>
+            <text class="lbl" x="126" y="219">Q′</text>
+            <text class="lbl-em" x="6" y="176" fill="var(--text-1)">AC′</text>
+            <line class="guide" x1="248" y1="188" x2="248" y2="205"/>
+            <line class="guide" x1="44" y1="188" x2="248" y2="188"/>
+            <text class="lbl" x="242" y="219">Q*</text>
+            <text class="lbl-em" x="4" y="192" fill="var(--accent)">AC*</text>
+          </svg>
+          <figcaption>Fig 2.1 — Average cost curve under economies of scale (AC falls for all Q).</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Here is the workhorse diagram, Decker's Figure 2.1. The single message: average cost slopes downward across the whole range, so bigger is always cheaper per unit, so a single firm supplying the whole market always has lower average industry cost than two or more rivals splitting it. In the figure, AC-star at the larger output Q-star lies below AC-prime at the smaller Q-prime, and the curve keeps falling beyond. What drives this is the cost structure of networks — enormous fixed and sunk investment in durable, immobile, long-lived assets, followed by tiny marginal cost per extra unit. The pipeline arithmetic makes it concrete: the same hundred-million-dollar pipe, ten times the users, one tenth the attributed cost each. Two footnotes worth carrying. First, "economies of scale" is broader than "increasing returns to scale" — scale economies just mean falling long-run average cost. Second, "economies of density" — falling cost from heavier use of a given network — is why it's efficient for networks not to overlap: one firm per geographic area, one carrier per airline route.</aside>
+  </section>
+
+  <!-- 6 · Economies of scope & demand-sensitivity (Fig 2.2) -->
+  <section class="slide" data-title="Scope & demand">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="current">Define natural monopoly &amp; subadditivity</li>
+        <li>Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">economies of scope · multi-product · demand-sensitivity</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.1 · SCOPE &amp; THE ROLE OF DEMAND</p>
+      <h2 class="h2 mt-s">Multiple products — and it depends on the size of the market.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini"><b>Economies of scope:</b> one firm supplying two products can be cheaper than two firms — e.g. a telecoms company providing both local and long-distance calls over the <em>same</em> copper. And whether an industry <em>is</em> a natural monopoly depends on how big demand is.</p>
+          <div class="callout" style="margin-top:14px"><b>Demand-sensitivity.</b> Up to 2Q*, one firm is cheapest. Beyond 2Q*, two firms can each produce Q* at the same average cost as one — the industry is no longer a natural monopoly. A dense city may support several firms where a rural area supports one.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="U-shaped average cost with a flat minimum and alternative demand curves">
+            <line class="axis" x1="44" y1="14" x2="44" y2="205"/>
+            <line class="axis" x1="44" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="26" y="20">AC</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- AC: falls to Q*, flat to 2Q*, then rises -->
+            <path class="curve" d="M60,58 C110,150 150,178 176,178 L280,178 C312,178 336,120 352,72"/>
+            <text class="lbl" x="196" y="196">Average cost</text>
+            <!-- min AC flat region markers -->
+            <line class="guide" x1="176" y1="178" x2="176" y2="205"/>
+            <text class="lbl" x="168" y="219">Q*</text>
+            <line class="guide" x1="280" y1="178" x2="280" y2="205"/>
+            <text class="lbl" x="270" y="219">2Q*</text>
+            <line class="guide" x1="118" y1="150" x2="118" y2="205"/>
+            <text class="lbl" x="112" y="219">Q′</text>
+            <!-- alternative demand curves D1, D2, D3 -->
+            <path class="curve-2" d="M118,70 L150,205"/>
+            <text class="lbl" x="120" y="66" fill="var(--accent-3)">D₁</text>
+            <path class="curve-2" d="M210,70 L245,205"/>
+            <text class="lbl" x="212" y="66" fill="var(--accent-3)">D₂</text>
+            <path class="curve-2" d="M300,70 L338,205"/>
+            <text class="lbl" x="302" y="66" fill="var(--accent-3)">D₃</text>
+          </svg>
+          <figcaption>Fig 2.2 — The sensitivity of natural monopoly to market demand.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Two refinements to the natural-monopoly idea, both from Decker's Figure 2.2 and the surrounding text. First, economies of scope. Later research realised utilities usually supply many products, not one, and that it can be cheaper for a single firm to provide them jointly — the standard example being a telecoms company running local and long-distance calls down the same copper wire, rather than two separate wire networks. Scope economies, like scale economies, can make single-firm supply the efficient structure. Second, and more subtle, is demand-sensitivity. Whether an industry is a natural monopoly is not a fixed property of technology — it depends on the size of the market. In the figure, at low demand D-one a single firm is clearly cheapest. The average cost curve reaches its minimum at Q-star and stays flat out to 2Q-star; anywhere in that band one firm still gives least-cost production. But once demand reaches D-three, beyond 2Q-star, two firms can each produce Q-star at the same minimum average cost as one — so the industry is no longer a natural monopoly. Practical upshot: a densely populated city might sustain several suppliers where a thin rural market sustains only one.</aside>
+  </section>
+
+  <!-- 7 · Subadditivity (Fig 2.3) -->
+  <section class="slide" data-title="Subadditivity">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="current">Define natural monopoly &amp; subadditivity</li>
+        <li>Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>The precise test</h5>
+      <p class="dim" style="font-size:13px"><code>C(Q) &lt; C(q¹)+C(q²)+…+C(qⁿ)</code><br>one firm beats <em>any</em> split of output.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.1 · THE MODERN DEFINITION</p>
+      <h2 class="h2 mt-s">Falling cost isn't required — <em>subadditivity</em> is.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">The modern definition of natural monopoly: over the relevant range of demand, the cost function is <b>subadditive</b>. Total cost is minimised if one firm produces the output — <em>however</em> you would divide it among several firms.</p>
+          <div class="callout" style="margin-top:14px"><b>The subtlety.</b> In Fig 2.3 economies of scale run out at Q′, and cost rises thereafter — yet because demand crosses at Q*, one firm is <b>still</b> cheapest. So economies of scale are <em>sufficient but not necessary</em> for a natural monopoly.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="U-shaped average cost with demand crossing on the rising portion">
+            <line class="axis" x1="44" y1="14" x2="44" y2="205"/>
+            <line class="axis" x1="44" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="26" y="20">AC</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- U-shaped AC -->
+            <path class="curve" d="M58,54 C118,150 168,178 210,178 C260,178 300,120 332,60"/>
+            <text class="lbl" x="60" y="48">Average cost</text>
+            <!-- demand crossing on rising part -->
+            <path class="curve-2" d="M150,66 L306,196"/>
+            <text class="lbl" x="300" y="176" fill="var(--accent-3)">Demand</text>
+            <!-- Q' min AC -->
+            <line class="guide" x1="196" y1="178" x2="196" y2="205"/>
+            <line class="guide" x1="44" y1="178" x2="196" y2="178"/>
+            <text class="lbl" x="190" y="219">Q′</text>
+            <text class="lbl-em" x="6" y="182" fill="var(--text-1)">AC′</text>
+            <!-- Q* where demand meets AC on rising part -->
+            <line class="guide" x1="244" y1="150" x2="244" y2="205"/>
+            <line class="guide" x1="44" y1="150" x2="244" y2="150"/>
+            <text class="lbl" x="238" y="219">Q*</text>
+            <text class="lbl-em" x="4" y="154" fill="var(--accent)">AC*</text>
+          </svg>
+          <figcaption>Fig 2.3 — Subadditivity <em>without</em> economies of scale over the whole range.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is the slide that separates a textbook memory of natural monopoly from a real understanding of it. Students often think natural monopoly just means average cost falls forever. That's the early single-product picture, and it's incomplete. The modern, precise concept is subadditivity — the inequality in the sidebar. Cost is subadditive if producing the total output Q in one firm costs less than producing it as any collection of smaller output vectors added together, assuming identical cost functions. Figure 2.3 shows why this is stronger than falling cost. The curve is U-shaped: scale economies exist only up to Q-prime, and diseconomies set in afterwards. Yet market demand crosses the cost curve at Q-star on the rising portion, and because the function is subadditive there, one firm is still the cheapest way to serve the market. If a second firm entered to supply just Q-star minus Q-prime, it would incur very high average cost on that sliver and push total industry cost up. The lesson, stated formally: economies of scale are sufficient but not necessary for a natural monopoly. Subadditivity is the real test.</aside>
+  </section>
+
+  <!-- 8 · Correspondence with utilities + two efficiency arguments -->
+  <section class="slide" data-title="Two efficiency arguments">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="current">Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">core network · restructuring · allocative vs productive efficiency</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.1 · FROM STRUCTURE TO PRESCRIPTION</p>
+      <h2 class="h2 mt-s">Two efficiency arguments, one standard prescription.</h2>
+      <p class="lede mt-m">Utilities — or, more precisely, <em>parts</em> of them — fit the natural-monopoly template: large fixed, sunk investment in wires, pipes and cables, then low variable cost. After restructuring, the supply chain mixes monopoly <b>core network</b> with potentially competitive activities.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>① Allocative efficiency <span class="tag norm">price</span></h4><p class="dim">Regulate <em>prices</em> to maximise total surplus and welfare — get the right quantity produced.</p></div>
+        <div class="concept-box"><h4>② Productive efficiency <span class="tag norm">entry</span></h4><p class="dim">Regulate <em>entry</em> to avoid duplicating fixed costs and to stop cream-skimming.</p></div>
+      </div>
+      <div class="callout"><b>The standard prescription.</b> Where a structure resembles a natural monopoly: <em>restrict entry to one firm</em>, and at the same time <em>impose price regulation</em> to set efficient prices. Chapters 3–4 weigh the alternatives.</div>
+    </div>
+    <aside class="notes">Now we connect the abstract cost curves to real utilities and to what regulators actually do. Decker is careful with language: it is not whole utilities but parts of them — the core network activities — that have natural-monopoly attributes. The provision of these services means durable, immobile, sunk investment in electricity wires and poles, copper or fibre, gas pipelines, water and wastewater mains, followed by low or negligible operating cost per unit. That cost profile produces the declining average cost we saw. After the restructuring wave of the 1980s and 90s, the supply chain in many jurisdictions is a mixture: monopoly-like core networks plus potentially competitive layers around them. From the natural-monopoly structure flow two distinct efficiency arguments. The first is about allocative efficiency and points to price regulation — maximise total surplus. The second is about productive efficiency and points to entry regulation — don't duplicate the fixed costs, don't let cream-skimmers in. Put together, they give the classic regulatory prescription: allow just one firm, and control its prices. The rest of the chapter, and the next two modules, are largely about when that prescription is right and what to do instead.</aside>
+  </section>
+
+  <!-- 9 · Allocative efficiency & DWL (Fig 2.4) -->
+  <section class="slide" data-title="Allocative efficiency">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="current">Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Rule</h5>
+      <p class="dim" style="font-size:13px"><b>Total surplus</b> = area below demand, above MC. Maximised where <code>P = MC</code>.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.1 · RATIONALE ① ALLOCATIVE EFFICIENCY</p>
+      <h2 class="h2 mt-s">Monopoly prices too high — and destroys value.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">A profit-maximising monopolist sets <b>MR = MC</b>, giving lower output Q<sup>Mon</sup> and higher price P<sup>Mon</sup> than a competitive market pricing at marginal cost. The trades between the two that never happen are the shaded <b>deadweight loss</b> — unrealised gains from trade.</p>
+          <div class="callout" style="margin-top:14px"><b>Regulator's aim.</b> Push price down toward marginal cost (P*), so output rises to Q* and the triangle vanishes. Price then equals consumers' willingness to pay for the last unit.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Deadweight loss of monopoly with demand, marginal revenue and marginal cost">
+            <line class="axis" x1="52" y1="14" x2="52" y2="205"/>
+            <line class="axis" x1="52" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="34" y="20">$</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- Demand -->
+            <path class="curve-2" d="M60,40 L330,190"/>
+            <text class="lbl" x="298" y="182" fill="var(--accent-3)">Demand</text>
+            <!-- MR steeper -->
+            <path class="curve-3" d="M60,40 L196,190"/>
+            <text class="lbl" x="150" y="185">MR</text>
+            <!-- MC horizontal -->
+            <line x1="52" y1="150" x2="366" y2="150" class="curve"/>
+            <text class="lbl" x="292" y="145" fill="var(--accent)">Marginal cost</text>
+            <!-- DWL triangle -->
+            <polygon class="dwl" points="164,95 164,150 232,150"/>
+            <!-- Qmon -->
+            <line class="guide" x1="164" y1="95" x2="164" y2="205"/>
+            <text class="lbl" x="150" y="219">Qᴹᵒⁿ</text>
+            <!-- Q* -->
+            <line class="guide" x1="232" y1="150" x2="232" y2="205"/>
+            <text class="lbl" x="226" y="219">Q*</text>
+            <!-- Pmon -->
+            <line class="guide" x1="52" y1="95" x2="164" y2="95"/>
+            <text class="lbl-em" x="16" y="99" fill="var(--accent-3)">Pᴹᵒⁿ</text>
+            <!-- P* -->
+            <text class="lbl-em" x="24" y="147" fill="var(--accent)">P*</text>
+            <text class="lbl" x="176" y="118" fill="var(--accent-3)" font-size="10">dead-<tspan x="176" dy="11">weight</tspan><tspan x="176" dy="11">loss</tspan></text>
+          </svg>
+          <figcaption>Fig 2.4 — The allocative inefficiency of monopoly.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">The first efficiency rationale, and the one that opens almost every regulation textbook. Allocative efficiency is about getting the right quantity produced — the level where the marginal benefit to a consumer, read off the demand curve, equals the marginal cost of producing that unit. That's the condition price equals marginal cost. Total surplus, the measure of allocative efficiency, is the area below the demand curve and above the marginal cost curve. A monopolist does not deliver it. Facing a downward-sloping demand curve, it sets marginal revenue equal to marginal cost — and because marginal revenue lies below demand, that means a lower output, Q-mon, at a higher price, P-mon. Every customer who valued the product somewhere between marginal cost and the monopoly price — people willing to pay more than it costs to serve them — is priced out. That lost, untradeable value is the shaded deadweight-loss triangle. The regulator's textbook move is to force price down to P-star at marginal cost, restoring output to Q-star and eliminating the triangle. Elegant. The next slide shows why, for a real utility, it's a trap.</aside>
+  </section>
+
+  <!-- 10 · First-best & losses (Fig 2.5/2.6) -->
+  <section class="slide" data-title="First-best dilemma">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="current">Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>The trap</h5>
+      <p class="dim" style="font-size:13px">"First-best" <code>P = MC</code> is efficient — but with high fixed costs MC &lt; AC, so the firm can't break even.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.1 · THE FIRST-BEST PRICING DILEMMA</p>
+      <h2 class="h2 mt-s">Perfect pricing bankrupts the firm.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini"><b>First-best</b> pricing sets price = marginal cost, maximising total surplus (Fig 2.5). But with a large fixed-cost base, marginal cost lies <b>below</b> average cost. Charge P⁰ = MC and the firm loses money on every unit — the shaded rectangle in Fig 2.6.</p>
+          <div class="callout" style="margin-top:14px"><b>So regulators compromise.</b> Price near average cost (P′), a subsidy equal to the shaded losses, or non-linear tariffs that recover fixed costs across customers/products — the subject of Chapter 4.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Losses from first-best marginal-cost pricing between average cost and marginal cost">
+            <line class="axis" x1="52" y1="14" x2="52" y2="205"/>
+            <line class="axis" x1="52" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="34" y="20">$</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- Demand -->
+            <path class="curve-2" d="M70,34 L300,182"/>
+            <text class="lbl" x="120" y="56" fill="var(--accent-3)">Demand</text>
+            <!-- AC declining -->
+            <path class="curve-3" d="M70,70 C150,120 220,140 340,150"/>
+            <text class="lbl" x="296" y="140">Average cost</text>
+            <!-- MC declining, below AC -->
+            <path class="curve" d="M70,112 C150,150 230,166 340,172"/>
+            <text class="lbl" x="296" y="188" fill="var(--accent)">Marginal cost</text>
+            <!-- output Q0 where demand meets MC -->
+            <line class="guide" x1="212" y1="126" x2="212" y2="205"/>
+            <text class="lbl" x="206" y="219">Q⁰</text>
+            <!-- loss rectangle between P' (AC) and P0 (MC) -->
+            <rect class="loss" x="52" y="137" width="160" height="24"/>
+            <line class="guide" x1="52" y1="137" x2="212" y2="137"/>
+            <line class="guide" x1="52" y1="161" x2="212" y2="161"/>
+            <text class="lbl-em" x="26" y="141" fill="var(--text-1)">P′</text>
+            <text class="lbl-em" x="24" y="165" fill="var(--accent)">P⁰</text>
+            <text class="lbl" x="92" y="153" font-size="10" fill="var(--accent-2)">losses incurred</text>
+          </svg>
+          <figcaption>Fig 2.6 — Losses which can arise from 'first-best' pricing (P⁰ = MC below AC).</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is the twist that makes utility regulation genuinely hard, and it's why Decker says the deadweight-loss story features in the first pages of almost every textbook but does not survive contact with reality. Figure 2.5, which I've folded into the description, shows first-best pricing: set price equal to marginal cost and total surplus — the area below demand, above marginal cost — is maximised. Every extra unit is worth to consumers exactly what it costs to make. Beautiful in a constant-cost world. But utilities are not constant-cost; they are dominated by fixed, sunk costs. So the marginal cost curve sits below the average cost curve, as drawn in Figure 2.6. The first-best price P-zero at marginal cost is therefore below average cost, and the firm loses money on every single unit — the shaded rectangle between P-zero and P-prime. Force genuine first-best pricing and the utility goes bust. That single dilemma is the reason for the whole apparatus of Chapter 4: average-cost pricing, two-part and non-linear tariffs, Ramsey–Boiteux prices, or an explicit subsidy equal to the shaded losses. And note Decker's empirical aside — in practice regulators mostly do not chase allocative efficiency with clever demand-reflective prices, because of information limits and distributional concerns. Theory says one thing; regulators do another. That gap foreshadows Part 2.</aside>
+  </section>
+
+  <!-- 11 · Productive efficiency & entry -->
+  <section class="slide" data-title="Productive efficiency">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="current">Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">duplication · cream-skimming · destructive competition · sustainability</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.1 · RATIONALE ② PRODUCTIVE EFFICIENCY</p>
+      <h2 class="h2 mt-s">Sometimes you restrict <em>entry</em> — carefully.</h2>
+      <p class="lede mt-m">Where one firm is genuinely cheapest but entry is <em>possible</em>, letting rivals in can raise total industry cost. Three arguments for restricting entry — each contested:</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Avoid duplication</h4><p class="dim">Two competing pipe networks means recovering two sets of sunk fixed costs — lower productive efficiency.</p></div>
+        <div class="concept-box"><h4>Stop cream-skimming</h4><p class="dim">On a non-monotonic AC curve, entrants serve only the slice where price &gt; AC — the "cream" — leaving the incumbent unable to fund the rest. A question of natural-monopoly <em>sustainability</em>.</p></div>
+        <div class="concept-box"><h4>Tame "destructive" competition</h4><p class="dim">Large sunk costs + excess capacity + inelastic demand → boom-bust price swings, entry, then bankruptcies. An older, Kahn-era argument.</p></div>
+      </div>
+      <div class="callout"><b>Health warning.</b> Many economists — Panzar &amp; Willig, Vickers &amp; Yarrow, Armstrong–Cowan–Vickers — distrust automatic entry bans. They shield the "protected firm" from pressure to adopt new technology and cut costs, harming <em>dynamic</em> efficiency. Restrict entry sparingly.</div>
+    </div>
+    <aside class="notes">The second efficiency rationale is productive efficiency — producing at lowest total cost — and it justifies restricting entry rather than controlling price. Decker gives three sub-arguments of increasing controversy. One: duplication. Given the cost profile, competition means two or more sets of fixed sunk costs, which is wasteful when one firm is genuinely cheapest. Two: cream-skimming, tied to the sustainability literature of Faulhaber and of Panzar and Willig. Where the average cost curve isn't monotonically falling, a rival can profitably enter and serve only the part of the market where price exceeds average cost — the cream — leaving the incumbent unable to break even across the whole portfolio. Three, the oldest and most controversial: destructive competition. In industries with big sunk costs, spells of excess capacity, and inelastic demand, unrestricted entry can generate damaging boom-bust cycles — prices spike when capacity is tight, entry floods in, then intense competition drives prices to marginal cost and firms go bankrupt. Helm and Jenkinson note UK utilities were kept monopolised partly to prevent exactly this. But — and Decker is emphatic — this whole rationale is contested. Entry restrictions insulate the protected firm and kill dynamic efficiency. Armstrong, Cowan and Vickers doubt selective entry is a good case for bans in utilities that aren't remotely contestable. Modern consensus: restrict entry only where competition genuinely can't be sustained.</aside>
+  </section>
+
+  <!-- 12 · Section divider: control monopoly power -->
+  <section class="slide" data-title="2.1.2 · Monopoly power">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="current">Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>The shift</h5>
+      <p class="dim" style="font-size:13px">From <em>outcome</em> (efficient prices) to <em>conduct</em> (no abuse). Efficiency + equity.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.2 · CONTROLLING MONOPOLY POWER</p>
+      <h2 class="h2 mt-s">Not just <em>prices</em> — <em>conduct</em>.</h2>
+      <p class="lede mt-m">A distinct rationale. A single supplier — whether from entry restriction, cost or technology — has both the <b>incentive and ability</b> to exploit its position: gouge on price, degrade quality, under-invest. Regulation here controls the firm's <em>conduct</em> so it doesn't harm consumers.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Distinct from allocative efficiency</h4><p class="dim">Not about reaching a specific efficient price, but about preventing <em>"unjust" or "exploitative"</em> pricing and abuse. Brings <b>equity</b> into a story that was purely about efficiency.</p></div>
+        <div class="concept-box"><h4>Explains what natural monopoly can't</h4><p class="dim">Why we price-regulate activities that <em>aren't</em> natural monopolies — electricity generation, mobile telephony, retail supply, some gas pipelines and trunk networks — wherever a firm holds significant market power.</p></div>
+      </div>
+      <div class="callout"><b>The ACCC's candour.</b> "Most Australians… think we regulate to make sure the owners of monopoly infrastructure do not take advantage of their position and 'gouge' consumers" — not, as economists say, to reduce deadweight loss.</div>
+    </div>
+    <aside class="notes">The second normative family shifts the whole target. The efficiency rationale worried about outcomes — is the price allocatively efficient? This rationale worries about conduct — is the firm abusing its position? A monopolist, however it got there, has the incentive and the ability to set prices far above cost, let quality slide, or fail to invest. Decker is explicit that this is analytically distinct from section 2.1.1: it is not primarily about reaching a specific efficient price, but about stopping the firm harming consumers through exploitative pricing or degraded service. That word "exploitative" matters — it smuggles equity and fairness into an argument that up to now was purely about efficiency. Two payoffs. First, this rationale has real explanatory power for practice: it's why we regulate the prices of things that plainly are not natural monopolies — generation, mobile, retail — because the common thread is significant market power, not the cost curve. Second, listen to the ACCC chairman's lovely admission in the footnote: economists say they regulate to cut deadweight loss, but ordinary Australians think regulation exists to stop monopolists gouging them — and the ordinary view captures this rationale exactly. The next slide unpacks the three cost-side mechanisms plus hold-up.</aside>
+  </section>
+
+  <!-- 13 · Mechanisms: x-inefficiency, hold-up, innovation -->
+  <section class="slide" data-title="Power mechanisms">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="current">Work the four efficiency &amp; power cases</li>
+        <li>Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">technical inefficiency · x-inefficiency · hold-up · inverted-U</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.2 · THE MECHANISMS</p>
+      <h2 class="h2 mt-s">Why unchecked power breeds cost — and where it bites investment.</h2>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>X-inefficiency</h4><p class="dim">Beyond pure technical inefficiency: "the best of all monopoly profits is a quiet life" (Hicks). Weak pressure → slack management, bloated cost. Leibenstein: possibly <em>more</em> harmful than allocative loss.</p></div>
+        <div class="concept-box"><h4>Hold-up</h4><p class="dim">Once a party sinks a durable, immobile asset, the other can act opportunistically. Firms build 40-year networks; consumers commit to gas vs electricity. Regulation protects <em>both</em> sides' sunk investments.</p></div>
+        <div class="concept-box"><h4>Innovation</h4><p class="dim">A monopolist innovates only if extra profit beats cost (profits already above competitive). But Schumpeter: monopoly rents can <em>spur</em> R&amp;D. Evidence: an <b>inverted-U</b> between competition and innovation.</p></div>
+      </div>
+      <div class="callout"><b>The unanswered questions.</b> This rationale is powerful — but it doesn't explain why near-monopolies <em>outside</em> the utilities escape this special <em>ex ante</em> regulation, nor why utilities get ex-ante controls rather than <em>ex post</em> competition-law prosecution. Held over to Chapter 3.</div>
+    </div>
+    <aside class="notes">Three cost mechanisms and one investment mechanism sit underneath the control-of-power rationale. First, technical inefficiency versus x-inefficiency. Technical inefficiency is about combining capital and labour on the efficient frontier — sitting on the production possibility boundary — and it drives the cost-control incentives in price caps we'll meet in Chapter 5. X-inefficiency, Leibenstein's coinage, is broader and more human: without competitive pressure, people and organisations simply don't work as hard or as effectively as they could. Hicks's famous line captures it — the best of all monopoly profits is a quiet life — and Adam Smith got there first, calling monopoly a great enemy to good management. Leibenstein even argued x-inefficiency may be more damaging to welfare than allocative inefficiency. Second, hold-up. Once you've sunk a durable, immobile, forty-year asset, your counterparty can behave opportunistically — and this cuts both ways, because consumers also make long-lived choices, like whether to heat with gas or electricity. Regulation provides the stable framework that protects both sides' sunk investments. Third, innovation, which is genuinely contested. A monopolist innovates only when extra profit exceeds the resource cost, since its profits are already high; but Schumpeter argued the prize of monopoly rents can itself spur R&D — think patent-protected pharmaceuticals. The empirical resolution is an inverted-U: some competition helps, too much or too little hurts. Finally, the callout flags the honest gaps Decker leaves for Chapter 3.</aside>
+  </section>
+
+  <!-- 14 · Externalities incl. network effects -->
+  <section class="slide" data-title="Externalities">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="done">Work the four efficiency &amp; power cases</li>
+        <li class="current">Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Two flavours</h5>
+      <p class="dim" style="font-size:13px">negative (pollution) · positive (clean water, networks)</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.3 · RATIONALE ③ EXTERNALITIES</p>
+      <h2 class="h2 mt-s">Costs &amp; benefits that spill onto third parties.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box" style="border-left:4px solid var(--accent-3)"><h4>Negative — pollution</h4><p class="dim">Electricity and wastewater production can harm the environment. Increasingly central: regulators in energy, water and transport now represent <em>future</em> consumers/citizens against today's decisions.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Positive — clean water, connectivity</h4><p class="dim">Clean drinking water and sanitation cut the spread of illness; wide transport and comms networks let more people connect. Wider societal benefits worth securing.</p></div>
+      </div>
+      <div class="callout"><b>Careful, though (Coase).</b> Merely <em>identifying</em> an externality does not automatically justify regulation to subsidise a network. Judgement is needed on <em>which</em> externalities warrant intervention and in what form.</div>
+    </div>
+    <aside class="notes">The third normative rationale is externalities — wider costs or benefits that fall on third parties who are not compensated. They come in two signs. Negative externalities: the familiar one is pollution and environmental harm from electricity generation and wastewater. Decker stresses this has become far more prominent as environmental objectives entered regulators' remits — and note the striking framing that regulators in energy, water and transport increasingly see themselves as representing future generations, trying to identify and address the externalities that today's practices impose on tomorrow's citizens. Positive externalities: clean drinking water and sanitation reduce the spread and cost of illness; extensive transport and communications networks let more people connect. In each case regulation can be premised on securing the wider benefit or avoiding the wider harm. But the caveat is a Coase point and Decker leans on it hard: the mere existence of an externality is not a licence to intervene. Kahn's line — subsidising phone service is in principle no different from providing people with a decent diet, medical care and housing, and we don't regulate those through utility regulators. So the existence of a spillover is the start of the analysis, not the end. The next slide takes the one externality special enough to earn its own discussion — network effects.</aside>
+  </section>
+
+  <!-- 15 · Network externalities (case study) -->
+  <section class="slide" data-title="Network externalities">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="done">Work the four efficiency &amp; power cases</li>
+        <li class="current">Handle externalities &amp; network effects</li>
+        <li>Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">network externality · internalise · externality surcharge</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.1.3 · CASE · NETWORK EXTERNALITIES</p>
+      <h2 class="h2 mt-s">Every extra user makes the network worth more to everyone.</h2>
+      <div class="split mt-m">
+        <div>
+          <div class="casebox"><h4>The mobile take-up surcharge</h4><p>A network externality (Rohlfs 1974): the benefit to one telephone user rises with the number of others connected. As the network grows, its value to <em>every</em> user increases — each new joiner inadvertently benefits existing users. In some jurisdictions regulators raised wholesale <b>mobile termination / interconnection</b> charges as a deliberate "network externality surcharge," letting operators cut retail subscription prices and push up phone penetration.</p></div>
+          <div class="callout" style="margin-top:14px"><b>Two regulatory levers.</b> Restrict entry so one firm <em>internalises</em> the benefit of a large common-standard network; or adjust <em>prices</em> away from cost to reflect the value of network growth.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Network topology: added nodes multiply the connections between users">
+            <text class="lbl" x="70" y="30" text-anchor="middle">3 users</text>
+            <text class="lbl" x="270" y="30" text-anchor="middle">6 users</text>
+            <!-- small network: 3 nodes -->
+            <g>
+              <line class="curve-3" x1="70" y1="60" x2="40" y2="120"/>
+              <line class="curve-3" x1="70" y1="60" x2="100" y2="120"/>
+              <line class="curve-3" x1="40" y1="120" x2="100" y2="120"/>
+              <circle class="node" cx="70" cy="60" r="8"/>
+              <circle class="node" cx="40" cy="120" r="8"/>
+              <circle class="node" cx="100" cy="120" r="8"/>
+              <text class="lbl" x="70" y="150" text-anchor="middle" font-size="10">3 links</text>
+            </g>
+            <!-- large network: 6 nodes ring, more links -->
+            <g transform="translate(270,110)">
+              <g class="guide">
+                <line x1="0" y1="-52" x2="45" y2="-26"/><line x1="0" y1="-52" x2="45" y2="26"/>
+                <line x1="0" y1="-52" x2="0" y2="52"/><line x1="0" y1="-52" x2="-45" y2="26"/>
+                <line x1="0" y1="-52" x2="-45" y2="-26"/>
+                <line x1="45" y1="-26" x2="45" y2="26"/><line x1="45" y1="-26" x2="0" y2="52"/>
+                <line x1="45" y1="-26" x2="-45" y2="26"/><line x1="45" y1="-26" x2="-45" y2="-26"/>
+                <line x1="45" y1="26" x2="0" y2="52"/><line x1="45" y1="26" x2="-45" y2="26"/>
+                <line x1="45" y1="26" x2="-45" y2="-26"/><line x1="0" y1="52" x2="-45" y2="26"/>
+                <line x1="0" y1="52" x2="-45" y2="-26"/><line x1="-45" y1="26" x2="-45" y2="-26"/>
+              </g>
+              <circle class="node-2" cx="0" cy="-52" r="8"/><circle class="node-2" cx="45" cy="-26" r="8"/>
+              <circle class="node-2" cx="45" cy="26" r="8"/><circle class="node-2" cx="0" cy="52" r="8"/>
+              <circle class="node-2" cx="-45" cy="26" r="8"/><circle class="node-2" cx="-45" cy="-26" r="8"/>
+            </g>
+            <text class="lbl" x="270" y="192" text-anchor="middle" font-size="10">15 links</text>
+            <text class="lbl-em" x="190" y="230" text-anchor="middle" fill="var(--accent)">double the users → 5× the connections</text>
+          </svg>
+          <figcaption>Fig 2.7 — Network externality: value rises faster than membership.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Network externalities are a particular kind of positive externality, important enough that Decker treats them separately. The definition: the benefit to one user of a network depends on how many others are connected — classic for communications and transport. The telephone is the canonical example, from Rohlfs's 1974 work: each owner of a phone benefits as the network grows and they can reach more people, so every additional user inadvertently creates value for existing users. My diagram makes the point geometrically — going from three users to six roughly doubles the membership but multiplies the number of possible connections five-fold, because links grow with the square of nodes. That's why network value rises faster than network size. Regulation can harness this in two ways. One, restrict entry so a single firm internalises the benefit of a large network on a common technology, rather than fragmenting into small incompatible networks — note this is a different argument from the productive-efficiency one, it's about compatibility and reach, not the cost curve. Two, adjust prices away from cost: the real-world case is the mobile network externality surcharge, where regulators deliberately raised wholesale interconnection charges so operators would cut retail prices and boost penetration. A neat instance of prices set to reflect an externality rather than pure cost.</aside>
+  </section>
+
+  <!-- 16 · Section divider: positive -->
+  <section class="slide full" data-title="Part 2 · Positive">
+    <p class="kicker">PART 2 · SECTION 2.2</p>
+    <h1 class="h1 mt-s">Alternative accounts:<br>why we <em>do</em> regulate.</h1>
+    <p class="lede mt-l" style="max-width:64ch">The normative rationales all assume regulation improves welfare. But the empirical record is awkward: regulation often <em>doesn't</em> lower prices or profits, and some regulated activities are not natural monopolies at all. So we need a richer, multi-dimensional account of why regulation exists in the form it takes.</p>
+    <div class="row mt-l" style="gap:12px">
+      <span class="tag pos">2.2.1 interest groups</span>
+      <span class="tag pos">2.2.2 long-term contract</span>
+      <span class="tag pos">2.2.3 other explanations</span>
+    </div>
+    <aside class="notes">Now we flip the question, and with it the mood. Part 1 assumed regulation is there to improve welfare. Part 2 confronts the evidence that it often isn't. Joskow and Noll found that, judged as positive theory rather than normative guidance, the public-interest accounts of regulation are simply wrong — generally inconsistent with the evidence. And there's a structural puzzle: plenty of historically regulated activities are neither natural monopolies nor fit any of the other efficiency rationales. So Decker turns to three alternative accounts. First and most important, the economic or interest-group theories — regulation as a good that political and economic actors demand and supply. Second, regulation as the administration of a long-term contract between utilities and their customers. Third, a cluster of other explanations: the special social importance of utilities, the self-interest of regulatory agencies, and distributional fairness. These aren't rival heroes to the normative theories; they're a more honest, if less flattering, account of what regulation actually is.</aside>
+  </section>
+
+  <!-- 17 · The awkward evidence -->
+  <section class="slide" data-title="The awkward evidence">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="done">Work the four efficiency &amp; power cases</li>
+        <li class="done">Handle externalities &amp; network effects</li>
+        <li class="current">Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>The catalyst</h5>
+      <p class="dim" style="font-size:13px">Stigler (1971) · "the beginning of the end" of the public-interest assumption.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.2.1 · WHY THE PUBLIC-INTEREST STORY CRACKED</p>
+      <h2 class="h2 mt-s">Regulation as something groups <em>demand</em>.</h2>
+      <p class="lede mt-m">A wave of papers in the 1960s–70s challenged the idea that regulation exists solely to fix natural monopoly and raise welfare. Regulation, they argued, is demanded and then used by different groups to secure <b>private gains</b> — it protects politically effective groups, not the public at large.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>The demand for regulation by firms</h4><p class="dim">Hayek, Gray, Demsetz: aspiring monopolists sought the state's help. Regulation was in <em>greatest demand</em> by utilities in competitive conditions with low prices — a "haven of refuge." AT&amp;T's Theodore Vail embraced regulation to preserve monopoly.</p></div>
+        <div class="concept-box"><h4>The awkward empirics</h4><p class="dim">Jarrell: US state regulation <em>raised</em> electricity prices and profits. Stigler–Friedland: little price effect. Regulation doesn't reliably cut prices, lift efficiency, or protect consumers — as the public-interest story predicts.</p></div>
+      </div>
+      <div class="callout"><b>The pivot.</b> Stigler's 1971 paper is "the beginning of the end" of the assumption that regulation serves accepted public-interest goals — and shifted the profession toward scepticism about regulation's social value.</div>
+    </div>
+    <aside class="notes">Section 2.2.1 opens with an intellectual earthquake. In the 1960s and early 70s a set of papers — Stigler's 1971 article above all — directly attacked the assumption that regulation exists to fix natural monopoly and compress the gap between price and marginal cost. Their claim: regulation exists because groups in society demand it to capture private benefits, and it protects the politically effective, not the public. Look at the historical evidence Decker marshals. Hayek noted aspiring monopolists routinely sought state power. Gray described state utility regulation in early-twentieth-century America as a haven of refuge for monopolists who couldn't secure monopoly privately. Demsetz said the force behind the regulatory movement came from the utilities themselves. Brock records AT&T's Theodore Vail deliberately embracing regulation as a substitute for competition, to preserve monopoly power. And regulation was in greatest demand precisely where utilities faced competition and low profits — which is the opposite of what a public-interest story predicts. Then the empirics: Jarrell found US state regulation actually raised prices and profits; Stigler and Friedland found only a tiny, insignificant price effect. Peltzman later called Stigler's paper the beginning of the end of the naive public-interest view, and credited it with shifting the whole profession toward scepticism about regulation.</aside>
+  </section>
+
+  <!-- 18 · The four interest-group theorists (flow figure) -->
+  <section class="slide" data-title="Interest-group theories">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="done">Work the four efficiency &amp; power cases</li>
+        <li class="done">Handle externalities &amp; network effects</li>
+        <li class="current">Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">capture · supply &amp; demand for regulation · political support · deadweight loss</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.2.1 · FOUR THEORISTS, ONE FRAMEWORK</p>
+      <h2 class="h2 mt-s">From producer capture to a market for regulation.</h2>
+      <div class="split mt-m">
+        <div>
+          <div class="stack">
+            <div class="concept-box"><h4>Stigler (1971) · capture</h4><p class="dim">Regulation has supply &amp; demand. Small, organised, high-stakes groups — producers — outbid diffuse consumers. Consistent with the <em>capture theory</em>: regulation serves the incumbent.</p></div>
+            <div class="concept-box"><h4>Posner · broader clientele</h4><p class="dim">No single captor. Cross-subsidy can't be pro-producer (the firm would just drop the loss-making service). Regulation performs <em>tax-and-transfer</em> functions; some consumer groups demand it too.</p></div>
+          </div>
+        </div>
+        <div>
+          <div class="stack">
+            <div class="concept-box"><h4>Peltzman (1976) · political support</h4><p class="dim">A budget-constrained regulator makes everyone with political weight "as happy as possible." Prices land <em>between</em> the monopoly and competitive levels — explaining both pro-producer outcomes and cross-subsidy.</p></div>
+            <div class="concept-box"><h4>Becker (1983) · pressure-group competition</h4><p class="dim">Groups compete; the equilibrium turns on the <b>deadweight loss</b> of policy. Efficient policies win where supporters' gains greatly exceed opponents' losses — <em>unifying</em> market-failure correction with favouring the powerful.</p></div>
+          </div>
+        </div>
+      </div>
+      <figure class="fig" data-anim="fade-up" style="margin-top:16px">
+        <svg viewBox="0 0 700 120" role="img" aria-label="Progression from Stigler capture to Becker pressure-group competition">
+          <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+          <g class="node"><rect x="14" y="36" width="140" height="48" rx="6"/></g>
+          <g class="node"><rect x="196" y="36" width="140" height="48" rx="6"/></g>
+          <g class="node"><rect x="378" y="36" width="140" height="48" rx="6"/></g>
+          <g class="node-2"><rect x="560" y="36" width="126" height="48" rx="6"/></g>
+          <text class="lbl-em" x="84" y="56" text-anchor="middle" fill="var(--text-1)">Stigler '71</text>
+          <text class="lbl" x="84" y="72" text-anchor="middle" font-size="10">producers capture</text>
+          <text class="lbl-em" x="266" y="56" text-anchor="middle" fill="var(--text-1)">Posner</text>
+          <text class="lbl" x="266" y="72" text-anchor="middle" font-size="10">broader clientele</text>
+          <text class="lbl-em" x="448" y="56" text-anchor="middle" fill="var(--text-1)">Peltzman '76</text>
+          <text class="lbl" x="448" y="72" text-anchor="middle" font-size="10">political support</text>
+          <text class="lbl-em" x="623" y="56" text-anchor="middle" fill="var(--accent)">Becker '83</text>
+          <text class="lbl" x="623" y="72" text-anchor="middle" font-size="10">group competition</text>
+          <line class="flow" x1="156" y1="60" x2="192" y2="60" stroke="var(--text-3)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line class="flow" x1="338" y1="60" x2="374" y2="60" stroke="var(--text-3)" stroke-width="1.5" marker-end="url(#arrow)"/>
+          <line class="flow" x1="520" y1="60" x2="556" y2="60" stroke="var(--text-3)" stroke-width="1.5" marker-end="url(#arrow)"/>
+        </svg>
+        <figcaption>Fig 2.8 — The interest-group theories: from narrow capture to a general market for regulation.</figcaption>
+      </figure>
+    </div>
+    <aside class="notes">Here are the four theorists, and the arc runs from a narrow theory of producer capture to a general model of a market for regulation. Stigler built on Olson's work on collective action and Buchanan on clubs: regulation has a supply and a demand, and the groups that win it are small, organised, and have high per-capita stakes — which describes producers, not diffuse consumers. That aligns with the older capture theory, that regulation ends up serving the incumbent firm. Posner, working at the same time, found no single captor. His key move: cross-subsidy can't be purely pro-producer, because a firm would rather drop a below-cost service than subsidise it — so cross-subsidy shows regulation performing tax-and-transfer functions, and some consumer groups demand and win regulation too. Peltzman formalised this: a budget-constrained regulator tries to make everyone with political weight as happy as possible, so prices settle between the pure monopoly price and the competitive price — the framework can explain both pro-producer outcomes and cross-subsidy simultaneously. Becker completed the arc: pressure groups compete, and the equilibrium turns on the deadweight loss of policy. Efficient policies win where the winners' gains hugely exceed the losers' losses — which is exactly the natural-monopoly case with big market failures. Becker thus unified the two views: regulation can correct market failures while also favouring the politically powerful. Elegant, and a little cynical.</aside>
+  </section>
+
+  <!-- 19 · Critiques + long-term contract + other explanations -->
+  <section class="slide" data-title="Contract & other accounts">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="done">Work the four efficiency &amp; power cases</li>
+        <li class="done">Handle externalities &amp; network effects</li>
+        <li class="current">Contrast the interest-group theories</li>
+        <li>Draw out the implications for regulators</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">incomplete contract · negotiated settlements · agency self-interest · distribution</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.2.1–2.2.3 · CRITIQUES &amp; FURTHER ACCOUNTS</p>
+      <h2 class="h2 mt-s">Not one theory — a plurality of explanations.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Critiques of the interest-group view</h4><p class="dim">Generalisations more than testable "theory"; ignore information asymmetries and the government–agency relationship; can't say why regulation applies to <em>these</em> industries, is introduced <em>when</em> it is, or is withdrawn where it is. Ideology can override group interests.</p></div>
+        <div class="concept-box"><h4>2.2.2 · Long-term contract</h4><p class="dim">Regulation as <em>administration</em> of an inherently <b>incomplete</b> long-term relationship under uncertainty with relationship-specific investment (Goldberg, Williamson). Rate-making as dispute resolution — hence North American <b>negotiated settlements</b>.</p></div>
+        <div class="concept-box"><h4>2.2.3 · Social importance</h4><p class="dim">Utilities are "too important" to leave to the market (Kahn) — a "public character" tied to growth. Alone it over-explains, but it captures the political salience of these services.</p></div>
+        <div class="concept-box"><h4>2.2.3 · Agency self-interest &amp; fairness</h4><p class="dim">Agencies act to "stay in business" and expand remit (Niskanen) — why regulation isn't withdrawn as competition grows. And <b>distribution/fairness</b>: universal, affordable access — but economists lack agreed "distributive weights," so efficiency–equity trade-offs are real.</p></div>
+      </div>
+    </div>
+    <aside class="notes">This slide clears the remaining ground of Part 2. First, the critiques of the interest-group theories — and Decker is even-handed. Even their proponents concede they are effectively generalisations rather than rigorously testable theory; they've not faced wide empirical testing; they neglect information asymmetries and the agency relationship between legislators and regulators; and, most damningly, they can't explain why regulation applies to specific industries, why it's introduced when it is, or why deregulation happens in some sectors and not others. Ideology can also trump group interest. Still, the paradigm combining economics and politics is enduring and valuable. Second, section 2.2.2: regulation as the administration of a long-term contract. Goldberg and Williamson frame the essential problem as long-term contracting under uncertainty with relationship-specific, sunk investment — you can't write a complete contract at the outset, so you need a body to govern the relationship. Rate-making becomes a form of dispute resolution, which reframes the regulator from decision-maker to facilitator — and explains the North American negotiated-settlements process, which Littlechild argues is now a major part of modern regulation. Third, section 2.2.3's grab-bag: utilities are too important to leave to markets (Kahn's "public character"); agencies pursue their own survival and expansion, à la Niskanen, which explains why regulation persists even as competition develops; and the most controversial, distribution and fairness — the premise that these services should reach everyone affordably, which explains cross-subsidy, but which economists resist because we lack agreed distributive weights and the efficiency–equity trade-off is genuinely sharp.</aside>
+  </section>
+
+  <!-- 20 · Implications (2.3) -->
+  <section class="slide" data-title="Implications">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="done">Work the four efficiency &amp; power cases</li>
+        <li class="done">Handle externalities &amp; network effects</li>
+        <li class="done">Contrast the interest-group theories</li>
+        <li class="current">Draw out the implications for regulators</li>
+      </ul>
+      <h5>The takeaway</h5>
+      <p class="dim" style="font-size:13px">No single account explains regulation — and that pluralism is itself illuminating.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">2.3 · IMPLICATIONS OF THE DIFFERENT RATIONALES</p>
+      <h2 class="h2 mt-s">Why no single answer is itself the answer.</h2>
+      <p class="lede mt-m">Each account explains <em>some</em> of what we observe; none explains it all. Recognising that plurality is illuminating rather than embarrassing — it makes sense of features that a single theory can't.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Explains multiple objectives</h4><p class="dim">Why regulators carry <em>several</em> statutory duties, not the single "maximise efficiency" that pure natural-monopoly theory would imply.</p></div>
+        <div class="concept-box"><h4>Explains persistent cross-subsidy</h4><p class="dim">The tension between efficiency precepts and the ubiquitous practice of cross-subsidisation — visible only once you admit distributional and interest-group forces.</p></div>
+      </div>
+      <div class="callout"><b>Not an endorsement.</b> Recognising that regulation is shaped by many interests is not approving of it. A lack of clarity about purpose creates real problems for regulators — bringing us back to Kahn: what action is <em>"really necessary"?</em></div>
+      <div class="exercise"><b>Think about it.</b> Take a regulator you know — Ofgem, Ofwat, the FCC, the ACCC. List its statutory duties. Which map to a normative rationale, and which look more like interest-group or distributional accommodations?</div>
+    </div>
+    <aside class="notes">Section 2.3 is Decker's synthesis, and it's deliberately unresolved. The chapter has laid out normative rationales grounded in efficiency and positive accounts grounded in the interplay of interests. Each can explain at least some of what we see in practice — but no single account explains fully why regulation exists in the form it does. Crucially, Decker argues that recognising this plurality is not a failure; it's illuminating. It makes sense of two things a single theory struggles with. First, why real regulators are handed multiple objectives rather than the one clean efficiency mandate that pure natural-monopoly theory implies — because regulation is answering several rationales at once. Second, the persistent tension between efficiency precepts and the near-universal practice of cross-subsidisation, which only becomes intelligible when you admit distributional and interest-group forces. But he adds an important caveat: recognising that regulation is shaped by many interests is not an endorsement of that state of affairs. A lack of clarity about purpose creates genuine difficulties, which later chapters explore — and it returns us to Kahn's discipline: before every action, ask whether it is really necessary. The exercise invites you to test all this against a regulator you actually know — try mapping Ofgem's or Ofwat's duties onto the rationales and see which ones don't fit the tidy normative story.</aside>
+  </section>
+
+  <!-- 21 · Check understanding (MCQ) -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M02</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Split normative vs positive rationales</li>
+        <li class="done">Define natural monopoly &amp; subadditivity</li>
+        <li class="done">Work the four efficiency &amp; power cases</li>
+        <li class="done">Handle externalities &amp; network effects</li>
+        <li class="done">Contrast the interest-group theories</li>
+        <li class="current">Draw out the implications for regulators</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">Why can't a regulator just set price = marginal cost?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>Because marginal-cost pricing always creates a deadweight-loss triangle.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Backwards — pricing at MC <em>eliminates</em> the deadweight loss. That's the whole point of first-best.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>Because with large fixed costs marginal cost lies below average cost, so P = MC leaves the firm unable to recover its fixed costs — it makes a loss.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> The first-best dilemma of Fig 2.6. Solutions: average-cost pricing, subsidy, or non-linear/Ramsey tariffs (Ch. 4).</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>Because interest-group theory forbids efficient pricing.</b><p class="dim" style="font-size:13px;margin:4px 0 0">No — interest-group theory <em>explains</em> why efficient pricing is often not pursued; it doesn't "forbid" it. Different kind of claim (positive, not a constraint).</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">A quick self-check that targets the single most important analytical result in the chapter. The trap is answer A, which reverses the logic — marginal-cost pricing removes the deadweight-loss triangle, it doesn't create one, so anyone picking A has the direction of the efficiency argument backwards and should revisit slide 9. The correct answer is B: the first-best dilemma. Because utilities are fixed-cost heavy, the marginal cost curve sits below average cost, so a price equal to marginal cost is below average cost and the firm loses money on every unit — Figure 2.6's shaded rectangle. That's precisely why regulators reach for average-cost pricing, subsidies, or non-linear and Ramsey tariffs, all of which we'll build in Chapter 4. Answer C is a nice distractor because it mixes registers — interest-group theory is a positive account of why efficient pricing often isn't pursued, not a constraint that forbids it. Spotting why C is the wrong <em>type</em> of answer is itself a test of whether the normative-positive distinction has landed. Aim to understand the mechanism, not just tick B.</aside>
+  </section>
+
+  <!-- 22 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 02</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Split "should" from "do"</h4><p class="dim">Normative rationales justify regulation; positive accounts explain its existence — and each implies its own yardstick for success.</p></div>
+      <div class="concept-box"><h4>✓ Define natural monopoly properly</h4><p class="dim">Subadditivity, not just falling cost — scale economies are sufficient but not necessary, and it depends on the size of demand.</p></div>
+      <div class="concept-box"><h4>✓ Work the four normative cases</h4><p class="dim">Allocative efficiency &amp; the first-best trap; productive efficiency &amp; entry; controlling market power (x-inefficiency, hold-up, innovation); externalities incl. networks.</p></div>
+      <div class="concept-box"><h4>✓ Hold the positive theories in mind</h4><p class="dim">Stigler capture → Posner → Peltzman → Becker; long-term contracting; agency self-interest and distribution.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 03.</b> If natural monopoly is the diagnosis, is regulation the only cure? Chapter 3 weighs the <em>alternatives</em> — competition <em>for</em> the market (franchise auctions), contestability, state ownership, negotiated settlements, and relying on <em>ex post</em> competition law instead of a standing regulator.
+    </div>
+    <div class="deck-footer"><span>Teaching deck of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 2</span><span class="slide-number" data-current="22" data-total="22"></span></div>
+    <aside class="notes">Recap against the six objectives, then set up the next module. The single idea to carry out of this chapter: a good regulator always asks Kahn's question first — is this really necessary? — because the normative case for intervention is real but bounded, and the positive theories warn that regulation can drift toward serving whoever lobbies hardest. You should now be able to hold the should-versus-do distinction firmly, define natural monopoly by subadditivity rather than falling cost, work through all four normative rationales including the first-best pricing trap that makes utility regulation hard, and keep the interest-group theories in mind as a humbling counterpoint. Module 03 takes that scepticism seriously and asks whether regulation is even the right tool — versus franchise competition for the market, contestable markets, public ownership, negotiated settlements, or plain ex-post competition law. End here, and read Chapter 3 before the next session.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>

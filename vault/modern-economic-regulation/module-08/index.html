@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Electricity Regulation · Modern Economic Regulation · Ch. 8</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 08 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">Regulating the<br><em>electricity</em> industry.</h1>
+    <p class="lede mt-l" style="max-width:66ch">A commodity you cannot store, that must be balanced second-by-second across a whole network. This module walks the generation–transmission–distribution–supply chain, shows which links are natural monopoly and which can be competitive, and unpacks the wholesale pools, network price controls and live policy fights — from nodal pricing to smart meters to renewables — with GB (Ofgem, the Pool, NETA/BETTA) throughout.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 40 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 8</span>
+      <span class="pill-academic">prereq · Modules 01–07 (rationale, RPI–X, access)</span>
+    </div>
+    <div class="deck-footer"><span>Teaching summary · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="24"></span></div>
+    <aside class="notes">Welcome to Module 8 — electricity, the first of Decker's four industry chapters. Everything from the general theory in Modules 1 to 7 now gets applied to a real, gloriously awkward industry. Electricity is worth dwelling on because it breaks the tidy textbook assumptions: it can't be stored, so supply and demand have to match every instant; the physics won't let you route power down a chosen wire; and a fault in one place can black out a whole region. Those features shape everything the regulator does. Our tour has three legs, mirroring the chapter: first the physical and economic characteristics (8.1), then the standard regulatory approach — unbundling, wholesale markets, network price controls (8.2), and finally the live policy issues (8.3): transmission pricing, system operation, generation adequacy, smart metering and, above all, renewables. I'll keep pulling us back to Great Britain — the 1990 Pool, NETA, BETTA, Ofgem's price controls — because this chapter is directly about the market you and I actually pay bills into.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Characterise electricity as a commodity</li>
+        <li>Walk the four-stage supply chain</li>
+        <li>Split monopoly vs competitive segments</li>
+        <li>Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 24 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Say why electricity is a <em>special</em> commodity.</h4><p class="dim">Non-storable, needs constant real-time balancing, physics-governed flows, inelastic demand, and a big carbon footprint — each with a regulatory consequence.</p></div>
+        <div class="concept-box"><h4>② Locate the monopoly along the supply chain.</h4><p class="dim">Generation and retail can be competitive; transmission and distribution are the natural-monopoly "core network" you must regulate.</p></div>
+        <div class="concept-box"><h4>③ Read a wholesale market.</h4><p class="dim">Gross pools, net/voluntary pools, bilateral trading, balancing markets, capacity markets, FTRs — and the merit-order clearing price.</p></div>
+        <div class="concept-box"><h4>④ Weigh the live policy fights.</h4><p class="dim">Nodal vs zonal transmission pricing, the "missing money" problem, and how decarbonisation is re-writing the regulatory rulebook.</p></div>
+      </div>
+    </div>
+    <aside class="notes">These six sidebar objectives track the chapter's three numbered sections. Notice the arc: we start descriptive — what is this commodity, what does the supply chain look like (8.1) — then turn prescriptive — how do regulators actually intervene (8.2) — and finish with the unresolved arguments (8.3). The single most important idea to hold onto from the start is the split in objective two: unlike the old vertically-integrated utility we regulated as one lump, modern electricity regulation carves the industry up. It rings-fences the wires — transmission and distribution — as the monopoly you price-control, and lets competition loose on the bits either side, generation and retail. Almost everything else in the chapter is a consequence of, or a complication to, that one structural move. Keep the sidebar in view; the marker advances as we go, and I'll flag when we cross from one objective to the next.</aside>
+  </section>
+
+  <!-- 3 · Why electricity matters -->
+  <section class="slide" data-title="Why it matters">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Characterise electricity as a commodity</li>
+        <li>Walk the four-stage supply chain</li>
+        <li>Split monopoly vs competitive segments</li>
+        <li>Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">essential input · reliability · systemic failure</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1 · WHY THIS INDUSTRY</p>
+      <h2 class="h2 mt-s">Keep the lights on — or pay dearly.</h2>
+      <p class="lede mt-m">Electricity is both an essential input to industry and a final commodity for homes and businesses. When it fails, the cost is enormous and immediate.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>2003 blackouts</h4><p class="dim">A "seemingly innocuous" failure of a handful of transmission lines on 14 Aug 2003 cut power to over <b>50 million</b> homes across the northern USA and Canada — plus Italy.</p></div>
+        <div class="concept-box"><h4>Pakistan, 2013</h4><p class="dim">Shortages and inefficiencies estimated to have retarded growth by at least <b>2% a year</b> — roughly 10% over five years.</p></div>
+        <div class="concept-box"><h4>The through-line</h4><p class="dim">Safe, reliable supply is critical to both economic performance <em>and</em> consumer welfare. That's why the state won't leave it alone.</p></div>
+      </div>
+      <div class="callout"><b>The regulatory hook.</b> Because reliability failures spread across the whole network and hit everyone at once, electricity carries a <em>public-interest</em> weight that ordinary commodities don't.</div>
+    </div>
+    <aside class="notes">Decker opens the chapter by making the stakes visceral, and I'd do the same in a lecture. Two anecdotes do the work. The 2003 North-American blackout — Spulber and Yoo's phrase is that a "seemingly innocuous" failure of a few transmission lines cascaded into fifty-million-plus homes losing power. And the Pakistan estimate: chronic electricity problems knocking at least two percent off annual growth. The teaching point isn't the specific numbers, it's the shape of the risk. Electricity isn't just important the way food is important; its failures are systemic and instantaneous. A shortfall on one corner of the grid can destabilise the entire network and hit every customer simultaneously. That combination — an essential service whose failures are contagious — is exactly the "essential service plus vulnerability" pairing that, back in Module 1, we said writes the case for oversight. So before we've discussed a single price control, we already know electricity will be heavily regulated. The rest of the chapter is about how.</aside>
+  </section>
+
+  <!-- 4 · Characteristics of the product -->
+  <section class="slide" data-title="Product traits">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Characterise electricity as a commodity</li>
+        <li>Walk the four-stage supply chain</li>
+        <li>Split monopoly vs competitive segments</li>
+        <li>Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">non-storable · real-time balancing · inelastic demand · line losses</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.1 · CHARACTERISTICS OF THE PRODUCT</p>
+      <h2 class="h2 mt-s">Five features that break the textbook.</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>① Standardised at production</h4><p class="dim">Coal, gas, nuclear, hydro, wind, solar — many inputs, but each yields identical, indistinguishable units of power.</p></div>
+        <div class="concept-box"><h4>② Non-storable</h4><p class="dim">Power must be consumed almost the instant it's made. No inventories (bar costly pumped-storage, batteries, flywheels).</p></div>
+        <div class="concept-box"><h4>③ Constant real-time balancing</h4><p class="dim">Supply must equal demand at every node, every minute — or blackouts. A local imbalance can cascade system-wide.</p></div>
+        <div class="concept-box"><h4>④ Short-run inelastic demand</h4><p class="dim">Most consumers sit on fixed retail tariffs, can't see wholesale prices, and can't easily cut or switch fuel quickly.</p></div>
+      </div>
+      <div class="callout"><b>⑤ A big emitter.</b> Generation is a large source of CO₂, SO₂ and NOₓ — which is why environmental policy (8.3.5) now reaches into every link of the chain.</div>
+    </div>
+    <aside class="notes">Five product characteristics, and each one has a regulatory consequence, so let's tie them together rather than just list them. First, electricity is standardised at the point of production — a megawatt-hour from a wind turbine is physically identical to one from a coal plant, which is what makes a competitive wholesale market even conceivable. Second and third go together and are the crux: it's essentially non-storable, so it has to be consumed the moment it's produced, which means the whole system must be balanced in real time, at every node, minute by minute. That is unlike almost any other market and it's why we need a "system operator." Fourth, short-run demand is highly inelastic — households are on fixed average tariffs, don't see the wholesale price, and can't quickly cut back or switch fuel, though gas heating gives some substitution. Inelastic demand plus no storage is dangerous: it means even small generators can occasionally exercise market power, a theme we'll return to. Fifth, generation is a major polluter, which drags environmental policy into the heart of regulation.</aside>
+  </section>
+
+  <!-- 5 · Supply chain figure (Fig 8.1) -->
+  <section class="slide" data-title="Supply chain">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="current">Walk the four-stage supply chain</li>
+        <li>Split monopoly vs competitive segments</li>
+        <li>Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">generation · transmission · distribution · retail · "load"</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.2 · THE SUPPLY CHAIN</p>
+      <h2 class="h2 mt-s">Four stages — two competitive, two monopoly.</h2>
+      <figure class="fig" data-anim="fade-up">
+        <svg viewBox="0 0 760 250" role="img" aria-label="Electricity supply chain: generation to transmission to distribution to retail, showing competitive versus monopoly segments">
+          <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+          <!-- stage boxes -->
+          <rect class="node" x="20" y="80" width="150" height="70" rx="8"/>
+          <rect class="node-2" x="215" y="80" width="150" height="70" rx="8"/>
+          <rect class="node-2" x="410" y="80" width="150" height="70" rx="8"/>
+          <rect class="node" x="605" y="80" width="150" height="70" rx="8"/>
+          <!-- flows -->
+          <line class="flow" x1="170" y1="115" x2="212" y2="115"/>
+          <line class="flow" x1="365" y1="115" x2="407" y2="115"/>
+          <line class="flow" x1="560" y1="115" x2="602" y2="115"/>
+          <!-- stage labels -->
+          <g text-anchor="middle">
+            <text class="lbl-em" x="95" y="108" fill="var(--accent)">GENERATION</text>
+            <text class="lbl" x="95" y="128" font-size="10">gas · coal · nuclear</text>
+            <text class="lbl" x="95" y="140" font-size="10">hydro · wind · solar</text>
+            <text class="lbl-em" x="290" y="108" fill="var(--accent-2)">TRANSMISSION</text>
+            <text class="lbl" x="290" y="128" font-size="10">high-voltage grid</text>
+            <text class="lbl" x="290" y="140" font-size="10">long distance</text>
+            <text class="lbl-em" x="485" y="108" fill="var(--accent-2)">DISTRIBUTION</text>
+            <text class="lbl" x="485" y="128" font-size="10">low-voltage local</text>
+            <text class="lbl" x="485" y="140" font-size="10">wires to premises</text>
+            <text class="lbl-em" x="680" y="108" fill="var(--accent)">RETAIL SUPPLY</text>
+            <text class="lbl" x="680" y="128" font-size="10">billing &amp; tariffs</text>
+            <text class="lbl" x="680" y="140" font-size="10">to "load" customers</text>
+          </g>
+          <!-- competitive / monopoly banners -->
+          <rect class="fillA" x="20" y="40" width="150" height="24" rx="4"/>
+          <rect class="fillB" x="215" y="40" width="345" height="24" rx="4"/>
+          <rect class="fillA" x="605" y="40" width="150" height="24" rx="4"/>
+          <g text-anchor="middle" font-size="11">
+            <text class="lbl-em" x="95" y="57" fill="var(--accent)">COMPETITIVE</text>
+            <text class="lbl-em" x="387" y="57" fill="var(--accent-2)">NATURAL MONOPOLY · price-controlled</text>
+            <text class="lbl-em" x="680" y="57" fill="var(--accent)">COMPETITIVE</text>
+          </g>
+          <!-- cost share strip -->
+          <g text-anchor="middle" font-size="10">
+            <text class="lbl" x="95" y="180">GB bill share (2012):</text>
+            <text class="lbl" x="290" y="180" fill="var(--accent-2)">~5%</text>
+            <text class="lbl" x="485" y="180" fill="var(--accent-2)">~18%</text>
+            <text class="lbl" x="387" y="205" fill="var(--text-2)">generation + supply ≈ 54% of the household bill</text>
+            <text class="lbl" x="387" y="222" font-size="9">(remainder: 10% environmental, 7% other, 5% VAT)</text>
+          </g>
+          <!-- distributed generation note -->
+          <text class="lbl" x="485" y="238" text-anchor="middle" font-size="9" fill="var(--accent-3)">⊕ distributed generation connects here, not to transmission</text>
+        </svg>
+        <figcaption>Fig 8.1 — The electricity supply chain, marking competitive vs monopoly segments and GB cost shares (Ofgem 2012).</figcaption>
+      </figure>
+    </div>
+    <aside class="notes">This is Decker's Figure 8.1, redrawn to make the economics jump out. Read it left to right. Generation: electricity is made from many inputs — gas, coal, nuclear, hydro, wind, solar. Transmission: it's carried long distances at high voltage to load centres. Distribution: the voltage is stepped down and it travels over local, lower-voltage networks to your street. Retail supply: a supplier bundles all the upstream charges into one tariff and bills you. Now the colour is the whole point. The two ends — generation and retail — are shaded as competitive; the middle two — transmission and distribution — are the natural-monopoly core network that gets price-controlled. Duplicating wires is wasteful; competing to generate or to sell is not. Two GB numbers worth noting from Ofgem's 2012 breakdown: generation and supply are about 54% of a household bill, distribution about 18%, transmission only about 5%. So the monopoly networks we spend most regulatory effort on are actually under a quarter of the bill. And note the caret at the bottom: distributed generation — rooftop solar, small wind — plugs into the distribution network, not transmission, which quietly upends the one-directional design.</aside>
+  </section>
+
+  <!-- 6 · Generation -->
+  <section class="slide" data-title="Generation">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="current">Walk the four-stage supply chain</li>
+        <li>Split monopoly vs competitive segments</li>
+        <li>Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">base-load · intermediate · peaking · variable cost · sunk cost</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.2 · STAGE ①  GENERATION</p>
+      <h2 class="h2 mt-s">A portfolio, not a single plant.</h2>
+      <p class="lede mt-m">Efficient systems mix technologies with different cost shapes. Plants sort into three operating patterns:</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Base-load</h4><p class="dim">Runs most hours; low variable cost but inflexible. <b>Nuclear</b> — big up-front sunk cost, very low marginal cost, then decommissioning liabilities.</p></div>
+        <div class="concept-box"><h4>Peaking</h4><p class="dim">Runs few hours; starts/stops fast; high variable cost. <b>Gas turbines</b> — cheap to build, used to chase peak demand.</p></div>
+        <div class="concept-box"><h4>Intermediate</h4><p class="dim">Between the two — often older, less-efficient former base-load plant.</p></div>
+      </div>
+      <div class="callout"><b>Modest scale economies → open to competition.</b> Global mix (2007): coal 42%, gas 21%, hydro 16%, nuclear 14%, oil 5%, non-hydro renewables ~2.5%. Wind and solar are <em>intermittent</em>, needing conventional reserves alongside them.</div>
+    </div>
+    <aside class="notes">Generation is the first link and the one most obviously suited to competition, because — crucially — its economies of scale are only modest. You don't need a single giant firm; you can have many plants competing. The key concept here is the operating-pattern taxonomy, because it drives the merit order we'll meet in a few slides. Base-load plants run almost continuously — think nuclear, with enormous sunk construction costs, long lead times, but then very low marginal running costs, offset later by expensive decommissioning and waste storage. Peaking plants — typically gas turbines — are cheap to build and can start and stop quickly, so they're switched on only when demand spikes, but their running cost per unit is high. Intermediate plant sits in between. The efficient system holds a portfolio: cheap-to-run base-load for the constant demand, expensive-but-flexible peakers for the spikes. Hold on to the global mix numbers loosely — coal still dominant at 42% in 2007. And note the sting in the tail: wind and solar are intermittent, so you must keep conventional reserves standing by, a cost that becomes central in the renewables discussion.</aside>
+  </section>
+
+  <!-- 7 · Transmission -->
+  <section class="slide" data-title="Transmission">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="current">Walk the four-stage supply chain</li>
+        <li>Split monopoly vs competitive segments</li>
+        <li>Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">node · Kirchhoff's laws · line losses · congestion · system operation</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.2 · STAGE ②  TRANSMISSION</p>
+      <h2 class="h2 mt-s">The "classic natural monopoly" — and physics runs it.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Weiss (1975) called transmission <em>the</em> classic natural monopoly: huge sunk cost, immobile assets, inefficient to duplicate. But it has three quirks a regulator must price.</p>
+          <div class="concept-box mt-m"><h4>You can't route power</h4><p class="dim">Generators inject indistinguishable electrons at a <em>node</em>; buyers withdraw at the nearest node. Flows follow <b>Kirchhoff's laws</b> — path of least resistance — not a chosen wire. France→Germany export can flow via Belgium, NL, Switzerland.</p></div>
+        </div>
+        <div class="stack">
+          <div class="concept-box"><h4>① Line losses</h4><p class="dim">~7% of injected energy is lost as heat in transit. Inject 100 MWh, withdraw ~93 MWh. Longer distance + lower voltage → bigger losses.</p></div>
+          <div class="concept-box"><h4>② Congestion</h4><p class="dim">A line at its limit becomes <em>congested</em>; cheap generators "on the wrong side" can't reach demand, forcing costlier dispatch.</p></div>
+          <div class="concept-box"><h4>③ Local market power</h4><p class="dim">Inside an import-constrained region, even a small generator becomes pivotal — and can raise its price.</p></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">Transmission is the textbook natural monopoly — Weiss literally called it "the classic" one — because of massive sunk costs in immobile towers and cables that it would be daft to build twice. So we'll price-control it. But three physical quirks make that pricing hard, and they'll recur throughout the chapter. First, you cannot direct electricity. A generator injects power at a node, a buyer draws it at the nearest node, and in between the flow obeys Kirchhoff's laws — it takes the path of least resistance regardless of who's trading with whom. Decker's lovely example: exporting from France to Germany sends real power looping through Belgium, the Netherlands and Switzerland. Second, line losses — about 7% of energy injected is lost as heat, more over long, low-voltage runs, and someone has to pay for it. Third and most important economically, congestion: when a line hits its limit, cheap generators stuck behind the constraint can't serve demand, so you dispatch dearer plant, and generators inside an import-constrained pocket become pivotal and can hike prices. Constraints, losses and pockets of market power — remember all three; they're exactly what nodal pricing tries to signal.</aside>
+  </section>
+
+  <!-- 8 · Distribution & retail -->
+  <section class="slide" data-title="Distribution & retail">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="current">Walk the four-stage supply chain</li>
+        <li>Split monopoly vs competitive segments</li>
+        <li>Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">economies of density · DNO · distributed generation · dual-fuel · smart meter</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.2 · STAGES ③ &amp; ④  DISTRIBUTION &amp; RETAIL</p>
+      <h2 class="h2 mt-s">Local wires (monopoly) → your supplier (competitive).</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Distribution — monopoly, many operators</h4><p class="dim">Steps voltage down for local delivery. Sunk, immobile assets → natural-monopoly cost conditions, with strong <b>economies of density</b>. GB has <b>14</b> distribution network operators; Australia 16; Germany/France/Spain <em>hundreds</em>.</p></div>
+        <div class="concept-box"><h4>Retail — competitive where opened</h4><p class="dim">Suppliers bundle wholesale + network + marketing costs into one tariff. Limited sunk cost → potentially competitive. Customers choose supplier where retail competition exists.</p></div>
+      </div>
+      <div class="callout"><b>Two disruptive trends.</b> (1) <em>Distributed generation</em> — rooftop solar, small wind, CHP — connects to the distribution grid, reversing its one-way design and demanding <em>active</em> network management. (2) <em>New tariffs &amp; smart meters</em> — dual-fuel, green, real-time — shifting price risk and information toward consumers (Box 8.3).</p></div>
+    </div>
+    <aside class="notes">The back half of the chain. Distribution is like transmission in kind — sunk, immobile assets, natural-monopoly cost conditions — but different in structure. Where a country has one or a handful of transmission companies, it has many distribution companies each serving a region: fourteen distribution network operators in Great Britain, sixteen in Australia, and in some European countries several hundred small ones, which Growitsch, Jamasb and Pollitt suggest leaves unexploited scale economies. The concept to name is economies of density — cost per customer falls as you pack more customers into the same wires. Retail supply is the fourth stage and the second competitive one: a supplier just aggregates all the upstream charges plus its own marketing into a single tariff, and because trading and billing carry little sunk cost, competition can work. Two trends are quietly reshaping the monopoly end, though. Distributed generation — rooftop solar and the like — plugs into distribution, not transmission, so power now flows both ways on networks designed for one direction, forcing active management. And on the retail side, innovative tariffs and smart meters are starting to push real-time price signals and information out to consumers — which is exactly the California story in Box 8.3.</aside>
+  </section>
+
+  <!-- 9 · Gross pool figure (Fig 8.2) -->
+  <section class="slide" data-title="Gross pool">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="current">Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">pool · pool purchase / selling price · CfD · uplift · gross vs net</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.3 · TRADING ARRANGEMENTS</p>
+      <h2 class="h2 mt-s">The pool: how power got bought and sold.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">The 1990 England &amp; Wales Pool was a <b>gross, compulsory</b> spot market — all generators and all load traded through it. Sellers and buyers never met; the pool sat between them.</p>
+          <div class="concept-box mt-m"><h4>Two prices, one spread</h4><p class="dim">Generators receive the <b>Pool Purchase Price</b> (system marginal price + capacity payment). Suppliers pay the <b>Pool Selling Price</b> (PPP + uplift for reserves &amp; constraints). Volatility is hedged with <b>Contracts for Differences</b>.</p></div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 300" role="img" aria-label="Gross power pool: generators bid in, the pool clears, suppliers buy out and sell on to consumers">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- generators -->
+            <g text-anchor="middle" font-size="9">
+              <rect class="node" x="20" y="16" width="70" height="34" rx="6"/><text class="lbl" x="55" y="30">Gen A</text><text class="lbl" x="55" y="42" font-size="8">coal</text>
+              <rect class="node" x="105" y="16" width="70" height="34" rx="6"/><text class="lbl" x="140" y="30">Gen B</text><text class="lbl" x="140" y="42" font-size="8">CCGT</text>
+              <rect class="node" x="205" y="16" width="70" height="34" rx="6"/><text class="lbl" x="240" y="30">Gen C</text><text class="lbl" x="240" y="42" font-size="8">nuclear</text>
+              <rect class="node" x="290" y="16" width="70" height="34" rx="6"/><text class="lbl" x="325" y="30">Gen D</text><text class="lbl" x="325" y="42" font-size="8">wind</text>
+            </g>
+            <!-- bids down to pool -->
+            <line class="flow" x1="55" y1="50" x2="150" y2="118"/>
+            <line class="flow" x1="140" y1="50" x2="170" y2="118"/>
+            <line class="flow" x1="240" y1="50" x2="210" y2="118"/>
+            <line class="flow" x1="325" y1="50" x2="230" y2="118"/>
+            <text class="lbl" x="60" y="86" font-size="9" fill="var(--accent-2)">bid in power (½-hr) → Pool Purchase Price</text>
+            <!-- pool -->
+            <rect class="fillB" x="120" y="120" width="140" height="48" rx="10"/>
+            <text class="lbl-em" x="190" y="142" text-anchor="middle" fill="var(--accent-2)">ELECTRICITY POOL</text>
+            <text class="lbl" x="190" y="158" text-anchor="middle" font-size="9">merit order · clears ½-hourly</text>
+            <!-- CfD note -->
+            <text class="lbl" x="300" y="146" font-size="8" fill="var(--accent-3)">⇄ CfDs hedge</text>
+            <!-- buy out to suppliers -->
+            <line class="flow" x1="170" y1="168" x2="90" y2="212"/>
+            <line class="flow" x1="190" y1="168" x2="190" y2="212"/>
+            <line class="flow" x1="210" y1="168" x2="290" y2="212"/>
+            <text class="lbl" x="190" y="192" text-anchor="middle" font-size="9" fill="var(--accent)">buy at Pool Selling Price (PPP + uplift)</text>
+            <!-- suppliers -->
+            <g text-anchor="middle" font-size="9">
+              <rect class="node-2" x="55" y="214" width="70" height="30" rx="6"/><text class="lbl" x="90" y="233">Supplier 1</text>
+              <rect class="node-2" x="155" y="214" width="70" height="30" rx="6"/><text class="lbl" x="190" y="233">Supplier 2</text>
+              <rect class="node-2" x="255" y="214" width="70" height="30" rx="6"/><text class="lbl" x="290" y="233">Supplier 3</text>
+            </g>
+            <!-- to consumers -->
+            <line class="flow" x1="90" y1="244" x2="90" y2="272"/>
+            <line class="flow" x1="190" y1="244" x2="190" y2="272"/>
+            <line class="flow" x1="290" y1="244" x2="290" y2="272"/>
+            <text class="lbl" x="190" y="288" text-anchor="middle" font-size="9">consumers pay a retail tariff</text>
+          </svg>
+          <figcaption>Fig 8.2 — Gross power pool (E&amp;W 1990–2001; still used in the Australian NEM &amp; Irish AIM).</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Here's Decker's Figure 8.2 — the gross power pool, and it's worth getting the plumbing right because it's the ancestor of every market we discuss. The England and Wales Pool ran from 1990 to 2001. "Gross" and "compulsory" are the key words: every generator and every load customer had to trade their physical output through the pool — you couldn't go around it. Follow the arrows. Generators bid in power for each half-hour of the following day. Those bids are stacked into a merit order and a market-clearing price is set for each half-hour. Generators get paid the Pool Purchase Price — the system marginal price plus a capacity payment. Suppliers pay a bit more, the Pool Selling Price, which adds an "uplift" for reserves and network constraints; that spread is how the system funds itself. Because half-hourly prices are volatile, players hedge with Contracts for Differences — financial side-bets that lock in a price. Suppliers then sell on to us at a retail tariff. Note the Pool was abolished in 2001 — partly over fears generators were gaming the price — but gross pools live on in the Australian NEM and the Irish market.</aside>
+  </section>
+
+  <!-- 10 · Merit order clearing figure -->
+  <section class="slide" data-title="Merit order">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="current">Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key term</h5>
+      <p class="dim" style="font-size:13px"><b>System marginal price:</b> the running cost of the last plant needed to meet demand.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.3 · MARKET CLEARING</p>
+      <h2 class="h2 mt-s">Stack the bids cheapest-first; demand sets the price.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">If generators bid their marginal costs, the merit order is an <b>efficient dispatch</b>. Demand is near-vertical (inelastic). Where it cuts the supply staircase, the <b>last plant needed</b> sets the price paid to <em>everyone</em>.</p>
+          <div class="callout" style="margin-top:14px"><b>Why the price swings.</b> Because demand is a vertical wall that slides right at peak, a small demand rise can jump you onto a much dearer plant — huge price volatility from small quantity changes.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Merit-order supply staircase meeting inelastic demand to set the system marginal price">
+            <line class="axis" x1="46" y1="14" x2="46" y2="205"/>
+            <line class="axis" x1="46" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="30" y="20">£/MWh</text>
+            <text class="lbl" x="352" y="223">MW</text>
+            <!-- supply staircase (merit order) -->
+            <polyline class="curve" fill="none" points="46,188 110,188 110,168 175,168 175,140 240,140 240,96 300,96 300,40 340,40"/>
+            <!-- step labels -->
+            <g class="lbl" font-size="9" text-anchor="middle">
+              <text x="78" y="200">nuclear</text>
+              <text x="142" y="162">wind</text>
+              <text x="207" y="134">coal</text>
+              <text x="270" y="90">CCGT</text>
+              <text x="320" y="60">peaker</text>
+            </g>
+            <!-- demand (inelastic, vertical) -->
+            <line class="curve-2" x1="240" y1="16" x2="240" y2="205"/>
+            <text class="lbl" x="248" y="28" fill="var(--accent-3)">Demand (inelastic)</text>
+            <!-- clearing price line -->
+            <line class="guide" x1="46" y1="96" x2="300" y2="96"/>
+            <circle cx="240" cy="96" r="4" fill="var(--accent)"/>
+            <text class="lbl-em" x="4" y="100" fill="var(--accent)">SMP</text>
+            <!-- shifted demand at peak -->
+            <line class="curve-2" x1="300" y1="16" x2="300" y2="205" stroke-dasharray="4 3" opacity="0.7"/>
+            <text class="lbl" x="305" y="150" font-size="9" fill="var(--accent-3)">peak →</text>
+            <line class="guide" x1="46" y1="40" x2="300" y2="40"/>
+            <text class="lbl-em" x="2" y="44" fill="var(--accent-3)">SMP′</text>
+          </svg>
+          <figcaption>Fig 8.3 — Merit-order dispatch: cheapest plant first; the marginal plant sets the clearing price.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This figure isn't a literal reproduction of a book diagram — it's the merit order that the pool text describes, and it's the single most useful mental model in electricity economics, so I always draw it. On the horizontal axis, megawatts; vertical, price. The supply curve is a staircase: you rank plants cheapest-running-cost first — nuclear and wind at the bottom with near-zero marginal cost, then coal, then combined-cycle gas, then the expensive peakers on the right. That's the merit order, and if firms bid their true marginal costs it delivers an efficient dispatch. Demand is drawn as a near-vertical line because, as we established, short-run demand is inelastic. Where demand cuts the staircase, the last plant called — the marginal plant — sets the system marginal price, and here's the crucial bit: every generator dispatched gets paid that same clearing price, not their own bid. Now watch what the dashed line shows: at peak, demand slides right and can jump you up a whole step onto a much pricier plant. A tiny change in quantity, a big jump in price. That's why wholesale electricity prices are so violently volatile — and why market power in tight conditions is so lucrative.</aside>
+  </section>
+
+  <!-- 11 · From gross pool to markets -->
+  <section class="slide" data-title="Market evolution">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="current">Explain pools &amp; wholesale market design</li>
+        <li>Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">PURPA · IPP · net pool · NETA · BETTA · single-buyer · FTR · capacity market</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.1.3 · EVOLUTION OF WHOLESALE MARKETS</p>
+      <h2 class="h2 mt-s">From compulsory pool to voluntary trading.</h2>
+      <ul class="timeline mt-m">
+        <li><span class="yr">1978 · USA</span> — <b>PURPA</b> creates "qualifying facilities"; incumbents must buy from them at avoided cost → the first <b>Independent Power Producers</b>.</li>
+        <li><span class="yr">1982 · Chile</span> — early reforms build competition between generators via horizontal + vertical separation.</li>
+        <li><span class="yr">1990–91 · GB &amp; Norway</span> — E&amp;W <b>gross Pool</b>; Norway's spot pool (later NordPool) pioneers the <b>net/voluntary</b> model.</li>
+        <li><span class="yr">2001 · GB</span> — Pool replaced by <b>NETA</b> — bilateral contracts + a real-time <b>balancing market</b> (pay-as-bid). Extended to Scotland as <b>BETTA</b>.</li>
+        <li><span class="yr">Since</span> — layered markets: day-ahead exchanges, ancillary services, <b>FTRs</b> (hedge congestion), <b>capacity markets</b> (pay for availability). Regional pools: NordPool, MIBEL, PJM (13 states), Midwest ISO, NEM.</li>
+      </ul>
+      <div class="callout"><b>Partial alternative: the single-buyer model.</b> Used across Asia, Africa, Eastern Europe — one nominated buyer tenders for all IPP output. Simpler, but risks misallocated risk, monopsony opportunism and stranded contracts.</div>
+    </div>
+    <aside class="notes">Wholesale markets evolved, and the timeline gives GB practitioners their bearings. It starts in the US with PURPA in 1978 — prompted by the oil shocks — which forced incumbents to buy from small "qualifying facilities" at avoided cost, birthing the Independent Power Producer. Chile and then England and Wales ran with generation competition in the early-to-mid 80s. 1990 gives us the gross Pool; 1991, Norway's voluntary spot pool, later NordPool, pioneers the "net" model where you no longer must trade through the pool — you can strike bilateral deals directly and just tell the system operator your positions. Britain made exactly that switch in 2001: the Pool became NETA — the New Electricity Trading Arrangements — bilateral contracting plus a close-to-real-time balancing market, and note it runs pay-as-bid, not a single clearing price. NETA plus Scotland is BETTA. Since then, markets have layered up: day-ahead exchanges, ancillary-services markets, financial transmission rights to hedge congestion, and capacity markets that pay generators just to be available. And note the simpler cousin used across much of the developing world — the single-buyer model, where one entity tenders for all independent output. Cheaper to run, but it concentrates monopsony risk.</aside>
+  </section>
+
+  <!-- 12 · Approach to regulation: unbundling -->
+  <section class="slide" data-title="Unbundling">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="current">Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">standard model · unbundling · ISO · non-discriminatory access · FERC Order 888</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.2.1 · THE STANDARD MODEL</p>
+      <h2 class="h2 mt-s">Unbundle the monopoly; open up the rest.</h2>
+      <p class="lede mt-m">Over half of industrial and developing countries have reformed since the 1980s. The "standard model" runs a recognisable playbook:</p>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Structural steps</h4><p class="dim">Corporatise / privatise → establish an independent regulator → vertical &amp; horizontal restructuring → introduce IPPs → designate an independent <b>system operator</b>.</p></div>
+        <div class="concept-box"><h4>Market steps</h4><p class="dim">Rules for efficient transmission <b>access</b> → unbundle retail tariffs → create wholesale markets and trading arrangements.</p></div>
+      </div>
+      <div class="callout"><b>Reality diverges from the template.</b> Britain and parts of Australia did full horizontal + vertical separation; others kept incumbents intact under access obligations. In the USA, <b>FERC Order 888</b> made transmission-owning utilities open their grids to rivals; the EU's three Electricity Directives (1996, 2003, 2009) ratcheted up "unbundling" from access to full ownership separation.</div>
+    </div>
+    <aside class="notes">Now section 8.2 — how do you actually regulate this thing? There's a recognisable "standard model" of reform, even though, as Decker stresses, every country deviates from it. Think of it in two columns. The structural moves: corporatise or privatise the old integrated utility; set up an independent regulator; restructure the industry both vertically — splitting generation from wires from supply — and horizontally, breaking generation into several competing firms; let independent power producers in; and, critically, designate an independent system operator to balance the grid neutrally. The market moves: write rules for non-discriminatory transmission access, unbundle retail tariffs so customers can see and choose, and stand up wholesale markets. The word to underline is unbundling — separating the competitive activities from the monopoly wires so the incumbent can't quietly favour its own generation or supply arm. Britain went furthest, full separation. The US did it through FERC Order 888, forcing grid owners to carry rivals' power on fair terms. And Europe did it in three Directive waves, escalating from mere access in 1996 to, by 2009, a menu that includes full ownership unbundling of the network.</aside>
+  </section>
+
+  <!-- 13 · Competitive vs regulated activities -->
+  <section class="slide" data-title="What's regulated">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="current">Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">market-based rates · core network · system operation · ISO</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.2.1 · WHO GETS PRICE-CONTROLLED</p>
+      <h2 class="h2 mt-s">Regulate the wires; watch the markets.</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Competitive — price controls lifted</h4><p class="dim"><b>Generation</b> (modest scale economies; UK, Australia, and market-power-cleared US generators are unregulated) and <b>retail supply</b> (low sunk cost). But both stay under <em>oversight</em> — market-power monitoring, transparency rules.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-2)"><h4>Monopoly — price-controlled everywhere</h4><p class="dim"><b>Transmission &amp; distribution</b>: large sunk costs, immobile assets, increasing returns → de facto monopoly. Regulated for price <em>and</em> non-discriminatory access, because competitive segments depend on them.</p></div>
+      </div>
+      <div class="callout"><b>System operation — sometimes separately regulated.</b> In GB, National Grid ran both the England transmission network and system operation, once under a distinct SO price control with incentives to minimise dispatch &amp; constraint costs. In the USA, an <b>ISO</b> — a not-for-profit owning no wires — runs the grid and markets neutrally, its costs recovered via a FERC-approved grid tariff.</div>
+    </div>
+    <aside class="notes">So which activities actually get a price control? The answer follows straight from the cost structures we've built up. On the competitive side — generation and retail — ex-ante price controls have largely been withdrawn. Generation, because scale economies are modest and letting technologies compete drives cost discipline; in the UK, Australia, and for US generators assessed as lacking market power, generation prices are essentially unregulated, sold at "market-based rates." Retail, because trading and billing carry little sunk cost. But — and this matters — "competition" doesn't mean "hands off." Both remain under regulatory oversight for market power and transparency. On the monopoly side, transmission and distribution get price-controlled almost everywhere, and for two reasons: their own cost characteristics make them de facto monopolies, and the competitive segments depend on fair access to them. Then there's a third, subtler category: system operation — the minute-by-minute balancing. In Britain National Grid did this under its own incentivised SO price control. In the US the model is different and cleaner: an Independent System Operator, a not-for-profit that owns no transmission at all, runs both the grid and the markets neutrally.</aside>
+  </section>
+
+  <!-- 14 · Price cap & incentives -->
+  <section class="slide" data-title="Network price control">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="current">Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">price cap · building blocks · menu regulation · TFP · DEA · quality incentive</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.2 · FORM OF PRICE CONTROL ①  PRICE CAP</p>
+      <h2 class="h2 mt-s">Price caps + a toolkit of incentives.</h2>
+      <p class="lede mt-m">The UK, Australia and much of Europe cap the network's average price/revenue for ~5 years (recall RPI–X, Module 5), setting the revenue requirement with the <b>building-block</b> approach: efficient costs + a return on the RAB.</p>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Capex &amp; menus</h4><p class="dim">Ofgem's <b>menu regulation</b>: firms pick a low-allowance/high-powered incentive or a high-allowance/low-powered one, revealing their true cost.</p></div>
+        <div class="concept-box"><h4>Benchmarking</h4><p class="dim">TFP, partial indicators, <b>DEA</b>, econometric models set base-year costs — vital in Europe's many small DNOs.</p></div>
+        <div class="concept-box"><h4>Quality &amp; innovation</h4><p class="dim">GB DNOs face loss, interruption and customer-satisfaction incentives; rewards for connecting distributed generation.</p></div>
+      </div>
+      <div class="callout"><b>The unrealised promise.</b> Price caps were meant to free firms to build <em>efficient price structures</em> — peak-load or time-of-use pricing. In practice, networks haven't, and regulators haven't required it. Efficient pricing remains largely theoretical.</div>
+    </div>
+    <aside class="notes">Now the mechanics of controlling the monopoly wires — and this is where Module 5's RPI-X returns. The dominant approach in the UK, Australia and much of Europe is the price cap: fix a ceiling on the network's average price or revenue for a substantial period, typically five years, then let the firm keep efficiency savings within that window. To set the number, regulators use the building-block approach — forecast the efficient operating and capital costs, add a return on the regulated asset base, sum to a revenue requirement. Around that skeleton hangs a toolkit of incentives. Ofgem's clever "menu regulation" on capex asks firms to self-select from a menu — a low allowance with high-powered incentives, or a high allowance with low-powered ones — which reveals whether the firm privately thinks it can beat the allowance. Benchmarking techniques — TFP, data envelopment analysis, econometrics — anchor the cost estimates, especially useful where Europe has hundreds of comparable distributors. And there are quality and innovation incentives layered on top. But note Decker's disappointment in the callout: the price cap's great theoretical selling point was that firms would develop efficient, demand-reflective price structures — and they simply haven't, and regulators haven't made them.</aside>
+  </section>
+
+  <!-- 15 · Box 8.1 Yardstick / Netherlands -->
+  <section class="slide" data-title="Box 8.1 · Yardstick">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="current">Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">yardstick · Shleifer (1985) · q-factor · DEA · gaming</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CASE STUDY · BOX 8.1</p>
+      <h2 class="h2 mt-s">Yardstick competition in the Netherlands.</h2>
+      <div class="casebox mt-m">
+        <h4>Compete against your peers, not the regulator's guess.</h4>
+        <p>Following <b>Shleifer (1985)</b>, yardstick regulation links a firm's allowed prices to the <em>costs of comparable firms</em>, engineering competition between monopolies serving different regions. The Netherlands has applied it to electricity distributors for over a decade, feeding benchmark efficiency estimates straight into the "X" in its price control.</p>
+      </div>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>The 2000 misfire</h4><p class="dim">Nillesen &amp; Pollitt: the first benchmarking exercise leaned on <em>one</em> method (non-parametric DEA), applied mechanically — estimated to have cost consumers <b>€140 million</b>. A court then ruled the X-factor had to be uniform across firms.</p></div>
+        <div class="concept-box"><h4>The fix</h4><p class="dim">Now all DNOs face a common yardstick (the industry average cost per unit) with an X built on industry-wide TFP growth — plus a distinctive <b>q-factor</b> that rewards or penalises service quality directly in the formula.</p></div>
+      </div>
+      <div class="callout"><b>The health warning.</b> Benchmarking can invite gaming, is criticised as too subjective, and different legitimate methods give different answers with no clear way to choose — so results should <em>inform</em>, not mechanically <em>determine</em>, the price control.</div>
+    </div>
+    <aside class="notes">Box 8.1, the first of our three case studies, is about yardstick competition — a technique we met abstractly in Modules 4 and 5, now shown in practice. The idea is Shleifer's from 1985: if you tie a monopoly's allowed revenue to the costs of firms just like it, you manufacture a kind of competition between regional monopolies who never actually compete for customers. It's attractive because it sidesteps the firm's information advantage — you're not asking the firm what its costs should be, you're reading them off its peers. The Netherlands has run this on its electricity distributors for over a decade. But Box 8.1 is really a cautionary tale. The first exercise in 2000 relied on a single method — DEA — applied mechanically, and Nillesen and Pollitt reckon it cost consumers around €140 million, before a court insisted the X-factor be uniform anyway. The Dutch fixed it: a common industry-average yardstick, an X based on sector-wide productivity growth, and — the interesting innovation — a q-factor that bakes service quality straight into the price formula. The lesson to carry out: benchmarking is powerful but treacherous. Use it as one input, never as an automatic verdict.</aside>
+  </section>
+
+  <!-- 16 · Rate of return -->
+  <section class="slide" data-title="Rate of return">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="current">Regulate networks: price cap, RoR, yardstick</li>
+        <li>Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">fair rate of return · used-and-useful · regulatory lag · PBR</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.2 · FORM OF PRICE CONTROL ②  RATE OF RETURN</p>
+      <h2 class="h2 mt-s">North America's default: cover costs + a fair return.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Still dominant in the USA and Canada, <b>rate-of-return</b> regulation lets the network recover all its costs of supplying regulated services plus an allowed return on the asset base. Two stages: set the revenue requirement, then design the rate structure.</p>
+          <div class="callout" style="margin-top:14px"><b>Sharpening the incentives.</b> Regulatory <b>lag</b>, <b>"used-and-useful"</b> tests on the asset base, and disallowance of inefficiently-incurred costs inject some efficiency pressure into a cost-plus frame.</div>
+        </div>
+        <div class="stack">
+          <div class="concept-box"><h4>The efficiency gap</h4><p class="dim">Pure cost-plus dulls incentives — the classic critique from Module 5. So from the 1980s some US states bolted on <b>performance-based</b> elements.</p></div>
+          <div class="concept-box"><h4>Hybrids</h4><p class="dim">Rate-case moratoria, rate freezes, efficiency-sharing schemes, and quality targets (interruptions, call-centre response). Full incentive regulation has, though, spread slowly in US power.</p></div>
+          <div class="concept-box"><h4>Direction of travel</h4><p class="dim">Rising input prices &amp; new-capacity needs → more costly rate cases → alternatives to RoR gaining traction (indexed caps favoured in CA, ME, MA, Ontario).</p></div>
+        </div>
+      </div>
+    </div>
+    <aside class="notes">The second network-pricing family is rate-of-return regulation, and if the price cap is the British signature, this is the North American one — still the most common approach across the US and Canada. The mechanics: the utility is allowed to recover all the costs of supplying its regulated services plus a "fair" return on its regulated asset base. Two stages, just like the price cap — first pin down the overall revenue requirement, then design the actual rate structure. The well-known weakness, straight from Module 5, is that cost-plus dulls the incentive to cut costs — if you're guaranteed recovery, why economise? So regulators have sharpened it: regulatory lag means you don't get to reset rates instantly, so efficiency gains stick for a while; "used-and-useful" tests stop firms padding the asset base with imprudent spending; and inefficient costs can be disallowed. From the 1980s some states went further, bolting performance-based elements onto rate-of-return — rate freezes, efficiency-sharing, quality targets. Decker's read is that comprehensive incentive regulation has spread slowly in US power, but the pressures of rising costs and new-build are nudging even American regulators toward the indexed-cap approaches Britain pioneered.</aside>
+  </section>
+
+  <!-- 17 · Restructuring effects -->
+  <section class="slide" data-title="Did it work?">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="done">Regulate networks: price cap, RoR, yardstick</li>
+        <li class="current">Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">patchwork reform · re-integration · economies of scope · California crisis</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.3.1–8.3.3 · DID RESTRUCTURING WORK?</p>
+      <h2 class="h2 mt-s">A genuinely mixed scorecard.</h2>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Patchwork, not sweep</h4><p class="dim">Pollitt: "surprisingly mixed." The US is <em>"1/3 reformed, 2/3 stuck"</em> — no mandatory federal programme. The 2000–01 <b>California crisis</b> chilled reform worldwide.</p></div>
+        <div class="concept-box"><h4>Britain shines</h4><p class="dim">Lower generator costs, less congestion/balancing cost, better distribution productivity, workable retail competition — the clearest success story.</p></div>
+        <div class="concept-box"><h4>Re-integration</h4><p class="dim">Despite unbundling, generators &amp; retailers <em>re-merged</em> in GB, Australia, NZ. Stand-alone retail entrants mostly failed — vertical integration hedges wholesale risk.</p></div>
+      </div>
+      <div class="callout"><b>The coordination trade-off.</b> An integrated "one big machine" coordinates generation + transmission and manages price risk cheaply. Unbundling risks <em>hold-up</em> and coordination failure — mitigated by the independent system operator, but the long-run generation–transmission planning problem is unresolved. Whether scope economies outweigh competition's gains remains empirically <em>unclear</em>.</div>
+    </div>
+    <aside class="notes">Section 8.3 turns to the arguments still raging, and it opens honestly: did any of this work? The scorecard is genuinely mixed. Pollitt's word is "surprisingly mixed" — he expected clear econometric evidence of success by now and didn't find it. The US is Joskow's memorable "one-third reformed, two-thirds stuck," because there was never a mandatory federal restructuring programme, so states could opt out, and the 2000-01 California crisis — a Chinese official is quoted saying it "warned us to be very cautious" — froze reform ambitions globally. Britain is the standout success: lower generator costs, dramatically reduced congestion and balancing costs, better distribution productivity, a reasonably functional retail market. But note the fascinating twist in the third box: even where you forcibly unbundle, generation and retail tend to re-merge — it happened in GB, Australia and New Zealand, and stand-alone retail entrants largely failed. Why? Because vertical integration is a natural hedge against wholesale price volatility. That feeds the deep trade-off in the callout: an integrated system is "one big machine" that coordinates and hedges cheaply, while competition needs separation. Whether the gains from competition beat the lost economies of scope is, Decker says, still empirically unresolved.</aside>
+  </section>
+
+  <!-- 18 · Box 8.2 Transmission pricing + nodal figure -->
+  <section class="slide" data-title="Box 8.2 · LMP">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="done">Regulate networks: price cap, RoR, yardstick</li>
+        <li class="current">Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">LMP / nodal · zonal · congestion · FTR · use-of-system charge · TNUoS</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CASE STUDY · BOX 8.2</p>
+      <h2 class="h2 mt-s">Transmission pricing: nodal vs use-of-system.</h2>
+      <div class="split mt-m">
+        <div>
+          <div class="casebox"><h4>Two ways to charge for the grid.</h4><p><b>Locational marginal pricing (LMP / nodal)</b>: no separate transmission charge — the energy price differs at each node, and the transmission "price" between two nodes is just the gap between their energy prices, driven by <em>losses + congestion</em>. Optimal in theory; FTRs let traders hedge congestion. The USA has converged on it (CA, TX latest).</p></div>
+          <div class="concept-box mt-m"><h4>The alternative</h4><p class="dim">Pre-set <b>use-of-system charges</b> on long-run cost, differentiated by zone. GB's <b>TNUoS</b> uses ICRP across 14 demand + 27 generation zones. Better long-run locational signal; worse short-run accuracy. GB &amp; Australia reviewed LMP and <em>declined</em> it.</p></div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Nodal pricing: a congested line makes energy prices differ across nodes">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- node A cheap gen -->
+            <circle class="node" cx="70" cy="70" r="26"/>
+            <text class="lbl-em" x="70" y="66" text-anchor="middle" fill="var(--accent)">A</text>
+            <text class="lbl" x="70" y="80" text-anchor="middle" font-size="9">£30</text>
+            <text class="lbl" x="70" y="118" text-anchor="middle" font-size="9">cheap wind</text>
+            <!-- node B load -->
+            <circle class="node-2" cx="300" cy="70" r="26"/>
+            <text class="lbl-em" x="300" y="66" text-anchor="middle" fill="var(--accent-3)">B</text>
+            <text class="lbl" x="300" y="80" text-anchor="middle" font-size="9">£80</text>
+            <text class="lbl" x="300" y="118" text-anchor="middle" font-size="9">demand centre</text>
+            <!-- congested line -->
+            <line x1="96" y1="70" x2="274" y2="70" class="curve-2" stroke-dasharray="0"/>
+            <path d="M180,58 L192,70 L180,82" fill="none" stroke="var(--accent-2)" stroke-width="2"/>
+            <text class="lbl-em" x="185" y="50" text-anchor="middle" fill="var(--accent-2)">⚡ CONGESTED</text>
+            <!-- node C local gen must run -->
+            <circle class="node" cx="300" cy="180" r="26"/>
+            <text class="lbl-em" x="300" y="176" text-anchor="middle" fill="var(--accent)">C</text>
+            <text class="lbl" x="300" y="190" text-anchor="middle" font-size="9">£80</text>
+            <text class="lbl" x="300" y="228" text-anchor="middle" font-size="9">pricey local gas</text>
+            <line class="flow" x1="300" y1="154" x2="300" y2="98"/>
+            <!-- spread annotation -->
+            <text class="lbl" x="185" y="150" text-anchor="middle" font-size="10" fill="var(--text-2)">Nodal price spread</text>
+            <text class="lbl-em" x="185" y="166" text-anchor="middle" fill="var(--accent-2)">B − A = £50 = congestion cost</text>
+            <text class="lbl" x="185" y="184" text-anchor="middle" font-size="9">= value of transmission A→B</text>
+            <text class="lbl" x="185" y="204" text-anchor="middle" font-size="9" fill="var(--accent-3)">FTR pays holder this £50 spread</text>
+          </svg>
+          <figcaption>Fig 8.4 — Locational marginal pricing: a binding constraint drives a price wedge between nodes.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Box 8.2 is the meatiest of the three, and the figure carries it. The question: how do you charge for using the transmission grid? Two philosophies. Locational marginal pricing — nodal pricing — levies no separate transmission charge at all. Instead the energy price is allowed to differ at every node, and the "price" of transmission between two nodes is simply the difference in their energy prices, driven by losses and congestion. Look at the diagram. Node A has cheap wind and clears at £30; node B is a demand centre. If the line A-to-B is uncongested, prices converge. But when that line is congested — it can't carry any more — B can't get A's cheap power and must instead run pricey local gas at node C, so B's price rises to £80. The £50 spread between B and A is exactly the cost of the congestion, and it is the short-run value of transmission on that path. Traders hedge that risk by holding Financial Transmission Rights, which pay out the spread. The rival approach — used in GB and Australia — sets pre-determined zonal use-of-system charges on long-run cost; Britain's TNUoS runs 14 demand and 27 generation zones. Nodal is theoretically optimal; both GB and Australia looked hard at it and said no.</aside>
+  </section>
+
+  <!-- 19 · Generation adequacy / missing money -->
+  <section class="slide" data-title="Missing money">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="done">Regulate networks: price cap, RoR, yardstick</li>
+        <li class="current">Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">missing money · scarcity rent · capacity market · merchant transmission · shallow/deep connection</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.3.4 · INVESTMENT ISSUES</p>
+      <h2 class="h2 mt-s">Will the market build enough?</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>The "missing money" problem</h4><p class="dim">If competition drives price to marginal cost most hours, peaking plant only earns its fixed costs in the few scarce, high-price hours. Cap those peaks to curb market power and generators can't recover fixed costs — so they under-invest.</p></div>
+        <div class="concept-box"><h4>Capacity markets</h4><p class="dim">Make load buy enough <b>capacity</b> (plus reserves) to cover peak. Pays generators to <em>be available</em>, letting the regulator cap energy prices lower. Controversial — Stoft argues peak prices <em>should</em> suffice; PJM's still may not fully close the gap.</p></div>
+      </div>
+      <div class="callout"><b>Transmission investment is worse.</b> Decentralised generation + transmission decisions create a <em>chicken-and-egg</em> hold-up — neither builds until the other commits. <b>Merchant</b> transmission (build to capture congestion rents) is rare and problematic. Connection charging matters too: <b>shallow</b> (GB/Australia — connector pays only its own link) aids entry but ignores network-wide impact; <b>deep</b> charging + LMP would give fuller locational signals.</div>
+    </div>
+    <aside class="notes">Section 8.3.4 asks the question that keeps energy ministers awake: will a restructured, competitive market actually build enough capacity, in the right places, at the right time? The headline worry is the "missing money" problem, and it's elegant. In a competitive energy-only market, price sits near marginal cost most of the time. A peaking plant that runs only a few hundred hours a year has to earn its entire fixed cost in those few scarce, high-priced hours. But regulators, terrified of market power, often cap prices exactly in those tight peak periods — so the scarcity rents that were meant to fund peakers get chopped off, and generators, unsure they'll ever recover fixed costs, under-invest. The main fix is a capacity market: oblige suppliers to buy enough firm capacity to cover peak plus reserves, paying generators simply to be available. That lets you cap energy prices lower without starving investment. But it's contested — Stoft says done right, peak prices should suffice, and even PJM's capacity payments may not fully close the gap. Transmission investment is arguably harder: a chicken-and-egg hold-up between generators and grid, merchant transmission mostly disappointing, and connection-charge design — shallow versus deep — shaping where generators choose to plug in.</aside>
+  </section>
+
+  <!-- 20 · Environmental / renewables -->
+  <section class="slide" data-title="Decarbonisation">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="done">Regulate networks: price cap, RoR, yardstick</li>
+        <li class="current">Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">intermittency · negative prices · feed-in tariff · ETS · smart grid · re-politicisation</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">8.3.5 · ENVIRONMENTAL POLICY — "THE NEW PARADIGM"</p>
+      <h2 class="h2 mt-s">Carbon is re-writing the rulebook.</h2>
+      <p class="lede mt-m">Generation is ~38% of energy-related CO₂. The UK targets an 80% cut (vs 1990) by 2050; the US 83% (vs 2005). Decarbonisation reaches every link — and strains the market model.</p>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Operational strain</h4><p class="dim">Wind/solar are <b>intermittent</b>: W. Denmark hit &gt;60% of demand in 10% of hours, &lt;2.7% in another 10%. More reserves, pricier balancing, and <b>negative prices</b> when wind floods a low-demand hour.</p></div>
+        <div class="concept-box"><h4>Policy instruments</h4><p class="dim">Renewable targets &amp; obligations, <b>feed-in tariffs</b>, subsidies/tax credits, CCS, new nuclear (UK: up to 16 GW by 2025), and cap-and-trade — the EU <b>ETS</b> covers ~half of Europe's GHGs.</p></div>
+        <div class="concept-box"><h4>Grid &amp; demand side</h4><p class="dim">Remote wind needs new transmission; <b>smart grids</b> "computerise" the network; demand-side management can <em>cut</em> bills, unlike supply-side measures.</p></div>
+      </div>
+      <div class="callout"><b>Re-politicisation risk.</b> Britain's Electricity Market Reform price guarantees for low-carbon generation are read as central planning creeping back. Ofgem-style regulators gain environmental duties — Pollitt warns you can't subsidise low-carbon generation "without also effectively ending competition." Costs: UK household electricity prices +15% (2011), ~+28% by 2030.</div>
+    </div>
+    <aside class="notes">Section 8.3.5 is, Decker says, probably the most significant policy issue of all, and he calls the shift a possible "new paradigm." Start with scale: generation is around 38% of energy-related CO₂, and legally binding targets — Britain's 80% cut by 2050, America's 83% — mean you must decarbonise the generation mix, which strains the very market model we've spent the module building. Three strains. Operationally, wind and solar are intermittent — the Danish figures are striking, wind above 60% of demand in some hours and near-zero in others — so you need more conventional reserves standing by, balancing costs rise, and in windy low-demand hours prices can go negative, which wrecks the "missing money" story for peakers even further. Instrumentally, governments layer on renewable obligations, feed-in tariffs, subsidies, CCS, new nuclear and cap-and-trade, with the EU ETS covering half of Europe's emissions. And on the grid and demand side, remote wind needs new transmission, smart grids computerise the network, and demand-side management uniquely can lower bills. The deep tension in the callout: Britain's Electricity Market Reform guarantees prices for low-carbon plant, which looks like old-style central planning returning — Pollitt's warning is that you can't subsidise low-carbon generation without effectively ending competition.</aside>
+  </section>
+
+  <!-- 21 · Box 8.3 Smart tariffs California -->
+  <section class="slide" data-title="Box 8.3 · Smart tariffs">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="done">Regulate networks: price cap, RoR, yardstick</li>
+        <li class="current">Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">time-of-use vs dynamic · critical-peak pricing · peak-time rebate · opt-out default</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CASE STUDY · BOX 8.3</p>
+      <h2 class="h2 mt-s">Getting smart with tariffs in California.</h2>
+      <div class="casebox mt-m">
+        <h4>Push the price signal all the way to the plug.</h4>
+        <p>Capacity is fixed short-run but demand swings by hour, day and season — the peak-load pricing problem (Module 4). Smart meters let retail prices track real-time system conditions. Key distinction: <b>time-of-use</b> prices vary by fixed peak/off-peak blocks; <b>dynamic</b> prices vary with actual hourly conditions, so customers cut use precisely when the system is stressed.</p>
+      </div>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>The tariff menu</h4><p class="dim">Hourly pricing · <b>critical-peak pricing</b> (high price on 9–15 event days/yr) · <b>peak-time rebates</b> (pay you to stay below a baseline at peaks).</p></div>
+        <div class="concept-box"><h4>The CPUC push</h4><p class="dim">Since the mid-2000s the three big investor-owned utilities run <b>default (opt-out)</b> critical-peak rates for larger peak users; CPP prices must reflect marginal energy + capacity cost.</p></div>
+        <div class="concept-box"><h4>What trials show</h4><p class="dim">Customers <em>do</em> respond and cut demand — but participation hinges on design: <b>opt-out defaults</b> beat opt-in decisively. Residential rollout still capped by statute.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Box 8.3 is the demand-side counterpart, and it closes a loop back to peak-load pricing from Module 4. The problem: network and generation capacity are fixed in the short run, but demand swings enormously across the day and year, so you build expensive capacity that sits idle most of the time. Smart meters offer a fix — let the retail price the customer sees actually track real-time system conditions, so people shift consumption away from stressed peaks. The crucial distinction Decker draws is between time-of-use pricing — a fixed peak and off-peak price, so you have no incentive to respond within those blocks — and dynamic pricing, where the price moves with actual hourly conditions, so you're incentivised to cut back precisely when the system is tight. California's regulator, the CPUC, has been the most aggressive promoter, partly scarred by the 2000-01 crisis when customers couldn't respond to soaring wholesale prices. Its three big utilities now run default, opt-out critical-peak rates for larger users, with prices tied to marginal energy and capacity cost. And the headline finding from the trials — remember this — is behavioural: customers genuinely do respond, but participation depends overwhelmingly on defaults. Opt-out beats opt-in decisively. Design is destiny.</aside>
+  </section>
+
+  <!-- 22 · GB timeline synthesis -->
+  <section class="slide" data-title="GB story">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="done">Regulate networks: price cap, RoR, yardstick</li>
+        <li class="current">Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">Pool · NETA · BETTA · TNUoS · tariff cap · EMR</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">SYNTHESIS · THE GB THREAD</p>
+      <h2 class="h2 mt-s">The chapter, told through Great Britain.</h2>
+      <ul class="timeline mt-m">
+        <li><span class="yr">1990</span> — Privatisation + full unbundling; the <b>gross Pool</b> opens. GB becomes the world's restructuring pioneer.</li>
+        <li><span class="yr">2001</span> — Pool → <b>NETA</b>: bilateral trading + pay-as-bid balancing market, over market-power fears about Pool gaming.</li>
+        <li><span class="yr">2005</span> — NETA extended to Scotland as <b>BETTA</b> — one GB wholesale market.</li>
+        <li><span class="yr">Networks</span> — 14 DNOs + transmission under Ofgem <b>price caps</b>: building blocks, menu regulation, quality &amp; DG-connection incentives; <b>TNUoS</b> zonal charging (reviewed LMP, declined).</li>
+        <li><span class="yr">2011–14</span> — Ofgem finds retail competition "stifled" by tariff complexity → <b>tariff-number caps</b> (Box 9.3) + wholesale price-posting by the "big six".</li>
+        <li><span class="yr">EMR</span> — Electricity Market Reform: low-carbon price guarantees + capacity market — competition meets central planning.</li>
+      </ul>
+    </div>
+    <aside class="notes">Before the check and summary, let me pull the whole chapter together through the Great Britain thread, because for a UK audience it's the connective tissue. 1990 is the founding moment: privatisation, full unbundling, and the gross Pool — Britain genuinely leads the world here. 2001, the Pool is scrapped for NETA, moving to bilateral trading plus a pay-as-bid balancing market, driven by suspicion that generators were gaming the Pool's single clearing price. 2005, NETA plus Scotland becomes BETTA — a single GB-wide wholesale market. On the monopoly side, the fourteen distribution operators and the transmission network sit under Ofgem price caps, complete with the building-block revenue calculation, menu regulation on capex, quality incentives, and rewards for connecting distributed generation — and transmission is charged zonally through TNUoS, after Ofgem examined nodal pricing and declined it. On retail, the arc is sobering: strong switching until 2008, then Ofgem's 2011 verdict that competition was "stifled" by tariff complexity that had "bamboozled" customers, leading to caps on the number of tariffs and forced wholesale price-posting by the big six. And finally EMR — the low-carbon guarantees and capacity market where, as we said, competition and central planning now uneasily coexist. That single timeline is the chapter.</aside>
+  </section>
+
+  <!-- 23 · Check understanding -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M08</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Characterise electricity as a commodity</li>
+        <li class="done">Walk the four-stage supply chain</li>
+        <li class="done">Split monopoly vs competitive segments</li>
+        <li class="done">Explain pools &amp; wholesale market design</li>
+        <li class="done">Regulate networks: price cap, RoR, yardstick</li>
+        <li class="current">Debate transmission pricing, adequacy &amp; carbon</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">What is the "missing money" problem?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>Consumers fail to pay their electricity bills, so generators lack revenue to reinvest.</b><p class="dim" style="font-size:13px;margin:4px 0 0">No — it's nothing to do with bad debt; it's about the <em>structure</em> of wholesale revenues.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>In an energy-only market where price is capped at peaks to curb market power, generators can't earn enough scarcity rent to cover fixed costs — so they under-invest in capacity.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> Capping the very peaks that fund peaking plant creates a revenue gap — the case for a <span style="color:var(--accent)">capacity market</span>.</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>Line losses mean ~7% of injected energy never reaches customers, so generators are underpaid.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Losses are real (~7%) but a separate issue — they're a transmission-cost matter, not the investment-adequacy gap.</p></div></div>
+      </div>
+      <div class="exercise mt-m">Britain runs zonal TNUoS charging, not nodal LMP. Give one advantage GB gains — and one efficiency it sacrifices. (Hint: long-run signal vs short-run congestion accuracy.)</div>
+    </div>
+    <aside class="notes">Quick self-check, aimed at the concept that most often gets muddled. The "missing money" problem. Answer A is the trap for the unwary — it sounds plausible if you half-heard the term, but it has nothing to do with unpaid bills. Answer C is a genuine electricity fact — the roughly 7% line losses are real — but it's a different problem, about transmission cost recovery, not investment adequacy, so it's a distractor for people who've absorbed the detail but not the concept. The correct answer is B: in an energy-only market, capping prices at the peaks — precisely to stop generators exploiting market power — removes the scarcity rents that peaking plant needs to recover fixed costs, so nobody builds enough capacity. That's the whole rationale for capacity markets. If a learner picks A or C, send them back to slide 19. Then the exercise stretches them onto Box 8.2: Britain chose zonal TNUoS over nodal LMP — what's the trade-off? The answer they should reach: zonal gives a stabler long-run locational signal that's easier for investors to plan against, but sacrifices the short-run accuracy of nodal pricing in reflecting real-time congestion at each specific node.</aside>
+  </section>
+
+  <!-- 24 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 08</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Characterise electricity</h4><p class="dim">Non-storable, real-time-balanced, physics-routed (Kirchhoff), inelastic and carbon-heavy — each trait forcing a regulatory response.</p></div>
+      <div class="concept-box"><h4>✓ Locate the monopoly</h4><p class="dim">Generation &amp; retail competitive; transmission &amp; distribution the price-controlled core network — the unbundling that defines modern reform.</p></div>
+      <div class="concept-box"><h4>✓ Read wholesale markets</h4><p class="dim">Merit-order dispatch and system marginal price; gross Pool → NETA/BETTA; balancing, FTRs and capacity markets.</p></div>
+      <div class="concept-box"><h4>✓ Regulate &amp; debate</h4><p class="dim">Price caps, rate of return, yardstick (Box 8.1); nodal vs zonal pricing (Box 8.2); missing money; smart tariffs (Box 8.3); the carbon "new paradigm".</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 09.</b> <em>Gas regulation.</em> Gas shares electricity's network spine — pipelines as the monopoly core, competitive production and supply around them — but the commodity <em>can</em> be stored and physically routed. We'll see how storability, LNG, and the gas-electricity interface reshape the same restructuring playbook, and revisit retail tariff complexity in Box 9.3.
+    </div>
+    <div class="deck-footer"><span>Teaching summary of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 8</span><span class="slide-number" data-current="24" data-total="24"></span></div>
+    <aside class="notes">Let's recap against the objectives and hand off to gas. Four takeaways. One: electricity is a peculiar commodity — non-storable, balanced in real time, routed by physics not by contract, demanded inelastically, and heavily polluting — and every one of those traits generates a regulatory task. Two: the defining structural move of modern reform is unbundling — competition on generation and retail, price control on the transmission and distribution wires. Three: the wholesale market runs on merit-order dispatch and a system marginal price, and Britain's own journey from the 1990 gross Pool to NETA and BETTA is the canonical example, now layered with balancing, financial transmission rights and capacity markets. Four: the open debates — how to price transmission, whether the market will build enough capacity, and above all how decarbonisation is dragging central planning back into a liberalised industry. The one sentence to leave with: restructuring electricity was harder than anyone expected, and climate policy is now rewriting the rules again. Module 9 takes us to gas — same network logic, but a commodity you can store and route, which changes the game in instructive ways.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>

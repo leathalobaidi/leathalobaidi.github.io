@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Telecommunications Regulation · Modern Economic Regulation (Decker) · Ch. 10</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 10 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">Regulating the<br><em>networks</em> we talk on.</h1>
+    <p class="lede mt-l" style="max-width:66ch">A tour of telecommunications regulation — from the copper local loop to all-IP fibre. Why the "last mile" is the bottleneck, how unbundling and interconnection open the network, and the live fights over mobile termination, fibre investment, regulatory holidays and net neutrality.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 40 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 10</span>
+      <span class="pill-academic">prereq · Modules 5 &amp; 6 (price control, access pricing)</span>
+    </div>
+    <div class="deck-footer"><span>Teaching summary · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="25"></span></div>
+    <aside class="notes">Welcome to the longest chapter in the book, and arguably the most consequential — telecommunications is where the modern restructuring era began, with the 1984 AT&amp;T break-up in the US and BT's privatisation in the UK. Decker calls the last thirty years a "revolution", and he means it: thirty years ago the only way to reach a remote person instantly was a fixed-line call, and today you have mobile, SMS, VoIP, video and a dozen internet channels. Over the next twenty-six slides we build the picture in three moves. First, the physical and economic characteristics of these networks — what makes telecoms different from electricity or water. Second, how regulators actually intervene — interconnection, unbundling the local loop, and the significant-market-power framework. Third, the policy fights raging right now: mobile termination and the waterbed, fibre investment and regulatory holidays, and net neutrality. Navigate with the arrow keys; press S to open presenter view with these notes.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li>Locate the bottleneck — the local loop / last mile</li>
+        <li>Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 25 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Read the anatomy of a telecoms network.</h4><p class="dim">Distinguish the circuit-switched PSTN from packet-switched Next-Generation Networks, and fixed from mobile — and see why the "product" is a two-way connection, not a homogeneous flow.</p></div>
+        <div class="concept-box"><h4>② Point to the bottleneck.</h4><p class="dim">The local loop — the "last mile" of copper or fibre into your home — is the enduring choke-point, and the reason regulators still exist here.</p></div>
+        <div class="concept-box"><h4>③ Work the regulatory toolkit.</h4><p class="dim">Interconnection, local-loop unbundling (LLU), the significant-market-power (SMP) framework, and LRIC-based access prices.</p></div>
+        <div class="concept-box"><h4>④ Argue the live controversies.</h4><p class="dim">Mobile termination and the waterbed effect, fibre investment and regulatory holidays, and net neutrality.</p></div>
+      </div>
+    </div>
+    <aside class="notes">These four objectives track the three numbered sections of the chapter plus its conclusion. Notice the arc: we move from description — what these networks physically are — to mechanism — how you regulate them — to judgement — the unresolved policy questions where reasonable economists disagree. Keep the sidebar in view; the arrow marker tracks exactly where we are, and the filled dots show what we've covered. One framing to carry throughout: telecommunications is the utility where competition can, in principle, develop across the whole supply chain — unlike water or the electricity wires, there isn't one obviously non-competitive core. That single fact makes telecoms regulation harder and more contested than any other utility in this book, because you can never quite settle where regulation should stop.</aside>
+  </section>
+
+  <!-- 3 · 10.1.1 Product characteristics -->
+  <section class="slide" data-title="The product">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li>Locate the bottleneck — the local loop / last mile</li>
+        <li>Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">two-way connection · network externality · convergence · triple/quad play</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.1.1 · CHARACTERISTICS OF THE PRODUCT</p>
+      <h2 class="h2 mt-s">Not electrons in a pipe — a two-way handshake.</h2>
+      <p class="lede mt-m">Electricity, gas and water are <b>one-way</b> flows of anonymous, homogeneous units. Telecoms is different: the product is a <b>two-way interconnection between named parties</b>, often across networks of different types.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Two-way, non-anonymous</h4><p class="dim">A call needs a caller <em>and</em> a receiver, sometimes on a fixed net and a mobile net with different quality. Carriage between two identifiable users — not a commodity you can trade wholesale.</p></div>
+        <div class="concept-box"><h4>Network externalities</h4><p class="dim">Each new user makes the network more valuable to everyone already on it. In 1994 there were 2m computers online; by 2012, 2.4bn internet users. This "bandwagon" logic drives some access-price choices.</p></div>
+      </div>
+      <div class="callout"><b>Convergence.</b> Digitisation and IP have split the <em>network</em> from the <em>service</em>. One infrastructure now carries voice, data and TV, so operators sell "triple" or "quadruple play" bundles — and different infrastructures now compete head-to-head.</div>
+    </div>
+    <aside class="notes">Start with what makes telecoms genuinely different from the other utilities in this book. Electricity, gas and water are one-way transport of anonymous units — you don't care which electron reaches your kettle. Telecoms carries a two-way connection between specific, named people, and often across two different networks with different characteristics, which means the "product" can be genuinely heterogeneous. That's why, as we'll see, no wholesale commodity market ever emerged in telecoms the way it did in electricity. Second big idea: network externalities. The value of the network to you rises with the number of people you can reach — the classic telephone example — and regulators have sometimes exploited this by loading access charges to fund subscriber growth. Third, and this is the through-line of the whole chapter: convergence. Digitisation and internet protocol have prised apart the underlying network from the services riding on it, so one pipe now carries voice, data and video, and cable, fixed and mobile networks increasingly compete. Hold "convergence" in your head; it reappears on almost every slide.</aside>
+  </section>
+
+  <!-- 4 · PSTN architecture (Fig 10.1 SVG) -->
+  <section class="slide" data-title="PSTN topology">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li>Locate the bottleneck — the local loop / last mile</li>
+        <li>Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">star topology · local exchange · trunk network · tandem switch · circuit switching</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.1.2 · PSTN ARCHITECTURE</p>
+      <h2 class="h2 mt-s">The old phone network is a star.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">The <b>Public Switched Telephone Network</b> was built for one-to-one voice. Each user is wired to a <b>local exchange</b>; exchanges connect over a <b>trunk network</b> via <b>tandem</b> switches. A star beats a full mesh — far fewer wires.</p>
+          <div class="callout" style="margin-top:14px"><b>Circuit switching.</b> A dedicated calling path is set up at dial-up and held for the whole call. Congestion only bites at set-up — no dial tone — never mid-call.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Traditional PSTN star topology: customers to local exchanges to a trunk network of tandem exchanges to distant customers">
+            <!-- customers left -->
+            <circle class="node" cx="30" cy="55" r="10"/><text class="lbl" x="16" y="38" font-size="9">Cust A</text>
+            <circle class="node" cx="30" cy="120" r="10"/><text class="lbl" x="16" y="150" font-size="9">Cust C</text>
+            <!-- local exchange left -->
+            <rect class="node" x="86" y="70" width="52" height="34" rx="6"/><text class="lbl" x="92" y="91" font-size="9">Local Exch</text>
+            <!-- tandem / trunk core -->
+            <rect class="node-2" x="168" y="52" width="46" height="30" rx="6"/><text class="lbl" x="172" y="71" font-size="9" fill="var(--accent-2)">Tandem</text>
+            <rect class="node-2" x="168" y="118" width="46" height="30" rx="6"/><text class="lbl" x="172" y="137" font-size="9" fill="var(--accent-2)">Tandem</text>
+            <!-- local exchange right -->
+            <rect class="node" x="248" y="70" width="52" height="34" rx="6"/><text class="lbl" x="254" y="91" font-size="9">Local Exch</text>
+            <!-- customers right -->
+            <circle class="node" cx="352" cy="55" r="10"/><text class="lbl" x="336" y="38" font-size="9">Cust B</text>
+            <circle class="node" cx="352" cy="120" r="10"/><text class="lbl" x="336" y="150" font-size="9">Cust D</text>
+            <!-- local loop links (last mile) -->
+            <line class="curve-2" x1="40" y1="55" x2="86" y2="80"/>
+            <line class="curve-2" x1="40" y1="120" x2="86" y2="95"/>
+            <line class="curve-2" x1="300" y1="80" x2="342" y2="55"/>
+            <line class="curve-2" x1="300" y1="95" x2="342" y2="120"/>
+            <text class="lbl-em" x="34" y="200" fill="var(--accent-3)" font-size="10">↑ the "local loop" / last mile</text>
+            <!-- trunk links -->
+            <line class="curve-3" x1="138" y1="82" x2="168" y2="67"/>
+            <line class="curve-3" x1="138" y1="90" x2="168" y2="130"/>
+            <line class="curve-3" x1="214" y1="67" x2="248" y2="82"/>
+            <line class="curve-3" x1="214" y1="130" x2="248" y2="90"/>
+            <line class="curve-3" x1="191" y1="82" x2="191" y2="118"/>
+            <text class="lbl" x="150" y="228" font-size="10">trunk network (long-distance)</text>
+          </svg>
+          <figcaption>Fig 10.1 — Traditional PSTN: a star topology of local exchanges linked by a trunk network.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is Decker's Figure 10.1 and it repays a slow read. The PSTN was designed for one thing — carrying one-to-one human voice — and its whole shape reflects that. Every subscriber runs a wire to a local exchange, the exchange acts as a switchboard connecting your wire to the wire of whoever you're calling, and a second tier of "tandem" switching links exchanges over long distances through the trunk network. Why a star and not a full mesh? Because permanently wiring every phone to every other phone would need an astronomical, impractical number of connections; the star radically cuts the transmission paths and therefore the cost. The other thing to notice is circuit switching: when you dial, the network reserves a dedicated electronic path and holds it for the whole call, so the only place congestion can bite is at set-up — you either get a dial tone or you don't, but once connected the quality is guaranteed. Above all, mark those red links on the left and right — the local loop, the last-mile wire from the exchange to your premises. That is the piece we'll return to again and again: it is the bottleneck of the whole industry.</aside>
+  </section>
+
+  <!-- 5 · NGN vs PSTN -->
+  <section class="slide" data-title="NGN vs PSTN">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li>Locate the bottleneck — the local loop / last mile</li>
+        <li>Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">NGN · packet switching · IP · latency &amp; jitter · managed vs best-efforts</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.1.2 · NGN ARCHITECTURE</p>
+      <h2 class="h2 mt-s">The new network is all packets, all IP.</h2>
+      <p class="lede mt-m">Next-Generation Networks flip the design: the network is built for <b>data</b>, and voice becomes just another data stream. Everything is digital, packet-switched, and routed by the Internet Protocol.</p>
+      <table class="data mt-m">
+        <tr><th>Feature</th><th>Traditional PSTN</th><th>NGN (IP-based)</th></tr>
+        <tr><td>Signal</td><td>Analogue → digital</td><td class="num">All digital</td></tr>
+        <tr><td>Switching</td><td>Circuit (dedicated path)</td><td class="num">Packet (shared bandwidth)</td></tr>
+        <tr><td>Routing</td><td>Single technology</td><td class="num">Internet Protocol (any medium)</td></tr>
+        <tr><td>Efficiency</td><td>Path reserved, idle when silent</td><td class="num">Bandwidth shared → higher</td></tr>
+        <tr><td>Risk</td><td>Busy signal at set-up</td><td class="num">Latency / jitter / lost packets</td></tr>
+      </table>
+      <div class="callout"><b>Managed vs "best-efforts".</b> Managed packet networks prioritise time-sensitive voice packets to hold call quality; "over-the-top" VoIP (Skype, Vonage) rides the public internet on a best-efforts basis — great when uncongested, unreliable when not.</div>
+    </div>
+    <aside class="notes">Now contrast the PSTN with what's replacing it — the Next-Generation Network. There's no single agreed definition, but three features nail it down: NGNs are all-digital, they use packet switching rather than circuit switching, and they route those packets using the Internet Protocol. The intuition for packet switching: instead of reserving a private lane for your call, the network chops everything — including voice — into little addressed envelopes, sends them across shared trunks by whatever route is free, and reassembles them at the far end. That's far more efficient because you're not holding bandwidth idle during the silences in a conversation. The cost is a new kind of risk: at times of congestion packets can be delayed, arrive out of order, or be discarded — latency and jitter — which is fine for email but ruinous for a live voice or video call. The industry's answer is "managed" packet networks that prioritise time-sensitive traffic to preserve quality, versus over-the-top VoIP like Skype, which rides the public internet on a best-efforts basis where every packet is treated alike. Gillan and Malfara put the reversal beautifully: the old network was designed for voice with data bolted on; with IP the roles flip — the network is designed for data, and voice is just an application.</aside>
+  </section>
+
+  <!-- 6 · Transmission mediums & the last mile -->
+  <section class="slide" data-title="The last mile">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="current">Locate the bottleneck — the local loop / last mile</li>
+        <li>Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">twisted copper · DSL · fibre (FTTx) · HFC coax · radio spectrum</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.1.3 · TRANSMISSION MEDIUMS &amp; THE LOCAL LOOP</p>
+      <h2 class="h2 mt-s">Four ways to reach the home — the last mile is the prize.</h2>
+      <div class="grid g4 mt-m">
+        <div class="concept-box"><h4>Copper</h4><p class="dim" style="font-size:13px">Twisted pairs, built for voice. Limited bandwidth, but <code>DSL</code> upgrades it — quality falls with distance to the exchange (~2 miles max).</p></div>
+        <div class="concept-box"><h4>Fibre</h4><p class="dim" style="font-size:13px">Glass, light signals, huge bandwidth. Now replacing copper deeper into the access net — <code>FTTN/C/B/H</code>.</p></div>
+        <div class="concept-box"><h4>HFC coax</h4><p class="dim" style="font-size:13px">Cable operators: fibre to a node, then coaxial to the home. <code>DOCSIS</code> added data &amp; voice.</p></div>
+        <div class="concept-box"><h4>Radio</h4><p class="dim" style="font-size:13px">Mobile: spectrum links handset → base station → switching centre. 3G ~5 Mbps, 4G/LTE 20–30 Mbps.</p></div>
+      </div>
+      <div class="callout"><b>The bottleneck lives here.</b> The <em>local loop</em> — the last mile from exchange to premises — is expensive to duplicate and hard to bypass. Hatfield et&nbsp;al. note all three fixed mediums converge on the same shape: fibre to a node near you, then copper/coax/radio the final stretch.</div>
+    </div>
+    <aside class="notes">To understand where regulation bites, you have to understand the physical mediums that reach the customer, because the economics of the last mile drive everything. Four options. Copper twisted pairs — the legacy of the entire PSTN — were built for narrowband voice, but DSL technology squeezes high-speed data out of them, with the crucial caveat that quality degrades sharply with distance, so DSL only works within a couple of miles of the exchange. Fibre-optic cable carries light, has vastly more bandwidth, and is steadily being pushed closer to the home — the alphabet soup of FTTN, FTTC, FTTB, FTTH just measures how close. Cable companies use hybrid fibre-coaxial: fibre to a neighbourhood node, coax for the final run. And mobile uses radio spectrum from your handset to the nearest base station. Here's the punchline in the callout, and it's the single most important economic fact in the chapter: the local loop, the last mile, is the enduring bottleneck. It's ruinously expensive to lay a second set of wires to every home, so whoever controls the loop controls access to the customer. Notice too the convergence point — all three fixed technologies are evolving toward the same shape: high-capacity fibre to a node near you, then a cheaper medium for the last stretch.</aside>
+  </section>
+
+  <!-- 7 · Switching, services & convergence -->
+  <section class="slide" data-title="Services & convergence">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="current">Locate the bottleneck — the local loop / last mile</li>
+        <li>Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">voice · data · broadcasting · dial-up vs broadband · cord-cutting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.1.3 · SERVICES AND CONVERGENCE</p>
+      <h2 class="h2 mt-s">One pipe, three service families.</h2>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Voice</h4><p class="dim">Fixed PSTN, IP/managed VoIP, over-the-top VoIP, and mobile. In the US ~20% have "cut the cord" — mobile-only, no fixed line.</p></div>
+        <div class="concept-box"><h4>Data</h4><p class="dim">Dial-up narrowband (≤56 Kbps) largely displaced by broadband — DSL, cable modem, fibre, and wireless (Wi-Fi, WiMax, 3G/4G).</p></div>
+        <div class="concept-box"><h4>Broadcasting</h4><p class="dim">Cable TV historically separate; now IPTV and video-on-demand ride the same broadband connection (iPlayer, Hulu, Netflix).</p></div>
+      </div>
+      <div class="callout"><b>Convergence in one sentence.</b> Services are no longer tied to a platform — telephone, cable and wireless firms now all offer voice, data and TV. That's what creates the potential for <em>facilities-based</em> (infrastructure-vs-infrastructure) competition.</div>
+      <p class="mini mt-m dim">Decker's transport analogy: just as freight and passenger trains share one rail network, so voice, data and video "packets" now share one telecoms infrastructure — and, like rail vs road, different infrastructures compete.</p>
+    </div>
+    <aside class="notes">With the mediums in place, look at the services riding on them, which fall into three families. Voice can now travel four ways — traditional fixed PSTN, managed IP telephony, over-the-top VoIP like Skype, and mobile — and the demand shift is dramatic: in the US around a fifth of consumers have cut the cord entirely and gone mobile-only, and in many developing countries mobile leapfrogged fixed altogether. Data has moved from dial-up narrowband, capped around 56 kilobits, to always-on broadband over DSL, cable, fibre and wireless. And broadcasting, once a separate cable product, is dissolving into the broadband connection through IPTV and video-on-demand — iPlayer, Hulu, Netflix. The unifying idea is convergence: services are no longer welded to a particular platform, so a phone company, a cable company and a mobile operator all now sell overlapping bundles. That's what creates the possibility of facilities-based competition — rival infrastructures competing to serve the same customer — which is the central hope of modern telecoms policy. Decker's transport analogy is the one to remember: just as different trains share one rail network and rail competes with road, different data packets now share one telecoms network and different networks compete.</aside>
+  </section>
+
+  <!-- 8 · Service providers -->
+  <section class="slide" data-title="Who supplies">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="current">Locate the bottleneck — the local loop / last mile</li>
+        <li>Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">incumbent · ILEC · CLEC · cable co · MNO · MVNO</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.1.3 · SERVICE PROVIDERS &amp; 10.1.4 TRADING</p>
+      <h2 class="h2 mt-s">Incumbents, entrants, cable and mobile.</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Fixed incumbents</h4><p class="dim">The privatised former monopolies — <b>BT</b> (UK), Verizon &amp; AT&amp;T (US), Deutsche Telekom, France Télécom, Telstra — plus entrant operators who built infrastructure after entry was liberalised.</p></div>
+        <div class="concept-box"><h4>Cable companies</h4><p class="dim">Started in TV, added switching in the 1990s. Comcast and Time Warner Cable are now among the world's largest fixed broadband providers.</p></div>
+        <div class="concept-box"><h4>Mobile operators (MNOs)</h4><p class="dim">Usually an oligopoly of 3–4 nation-wide carriers, gated by spectrum licences.</p></div>
+        <div class="concept-box"><h4>MVNOs &amp; OTT</h4><p class="dim">Virtual operators resell wholesale capacity with no spectrum; over-the-top players (Skype) and IPTV (iPlayer, Hulu) add another layer.</p></div>
+      </div>
+      <div class="callout"><b>No commodity market — plus spectrum.</b> Unlike electricity, no wholesale trading market emerged: the "product" is a connection. Wholesale trade is instead about <em>interconnection terms</em>. The one capacity-type market is radio spectrum — allocated by auction or "beauty contest" (India's 3G auction raised ~$11bn).</p>
+    </div>
+    <aside class="notes">Who actually supplies these services matters, because historically different providers faced very different regulation. Start with the fixed incumbents — the privatised former state monopolies: BT in Britain, Verizon and AT&amp;T in the States, Deutsche Telekom, France Télécom, Telstra. Alongside them sit entrant operators who built their own infrastructure once statutory entry barriers fell. Then cable companies, which began life carrying television, bolted on telephone switching in the 1990s, and today Comcast and Time Warner Cable rank among the biggest fixed broadband providers on earth. Mobile is typically an oligopoly of three or four national carriers, because spectrum licences are scarce, and beneath them sit MVNOs — virtual operators who own no spectrum and simply resell wholesale capacity — plus the over-the-top and IPTV players. Two structural points close section 10.1. First, because the product is a connection between two named users, no wholesale commodity market ever emerged as it did in electricity — wholesale trade is about interconnection terms instead. Second, the one genuine capacity market is radio spectrum, allocated by auction or by "beauty contest"; India's 3G auction alone raised roughly eleven billion dollars, and secondary trading lets new entrants buy their way into the mobile market.</aside>
+  </section>
+
+  <!-- 9 · Regulatory stages of the PSTN (timeline) -->
+  <section class="slide" data-title="Four stages">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="current">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">MFJ 1984 · duopoly policy · Telecom Act 1996 · forbearance</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.2.1 · REGULATION OF THE PSTN</p>
+      <h2 class="h2 mt-s">Four stages: monopoly → duopoly → full competition → forbearance.</h2>
+      <ul class="timeline mt-m">
+        <li><span class="yr">Stage 1 · pre-1984</span> — Classic <b>natural monopoly</b>. A single PSTN operator (state-owned or regulated) with end-to-end responsibility. Focus on retail prices, universal service and cross-subsidy.</li>
+        <li><span class="yr">Stage 2 · mid-1980s</span> — Restructuring. US <b>MFJ 1984</b> breaks up AT&amp;T into seven RBOCs; UK &amp; Australia run a <b>duopoly policy</b> to grow one rival. Interconnection now needs a framework.</li>
+        <li><span class="yr">Stage 3 · mid-1990s</span> — Competition in <b>all</b> activities, including the local loop. US <b>Telecom Act 1996</b> mandates <b>unbundling</b>; UK requires BT to unbundle its loop (1999). Access pricing becomes the battleground.</li>
+        <li><span class="yr">Stage 4 · 2000s+</span> — As competition matures, regulate only residual bottlenecks (the loop), withdraw the rest. UK lifts BT retail price controls (2006); EU halves its list of regulated markets.</li>
+      </ul>
+    </div>
+    <aside class="notes">Now we pivot from description to regulation, and the cleanest way in is Decker's four-stage history of PSTN regulation. Stage one, up to the mid-1980s: the industry is treated as a classic natural monopoly, a single operator either state-owned or regulated, and the regulator's job is mainly setting retail prices, guaranteeing universal service, and running political cross-subsidies — line rentals and local calls kept cheap, long-distance kept dear. Stage two arrives with restructuring: in 1984 the US Modified Final Judgment breaks AT&amp;T into seven Regional Bell Operating Companies, while the UK and Australia instead run a "duopoly policy", licensing one rival to grow into an effective competitor. Suddenly you need a framework for how incumbent and entrant interconnect. Stage three, from the mid-1990s, is the big one: policy pushes competition into every activity, crucially the local loop, via unbundling — the US Telecom Act of 1996, the UK's 1999 requirement that BT unbundle. Here access pricing becomes the central and most contested question in the whole subject. Stage four, the 2000s onward, is a partial retreat: as competition matures, regulate only the residual bottleneck and withdraw elsewhere — Britain scrapped BT's retail price controls in 2006, and the EU halved its list of markets subject to ex-ante regulation.</aside>
+  </section>
+
+  <!-- 10 · Unbundling / interconnection (LLU SVG) -->
+  <section class="slide" data-title="Unbundling the loop">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="current">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">LLU · interconnection · essential facility · margin squeeze</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.2.1 · UNBUNDLING THE LOCAL LOOP</p>
+      <h2 class="h2 mt-s">Make the incumbent rent out its last mile.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">If you can't economically duplicate the loop, force the incumbent to <b>share</b> it. Under <b>LLU</b>, an entrant installs its own kit in the exchange and leases the copper wire to each home — competing on service over the incumbent's bottleneck.</p>
+          <div class="callout" style="margin-top:12px"><b>Watch the squeeze.</b> An incumbent can raise the wholesale loop price while cutting its own retail price, "squeezing" the entrant's margin. Regulating that gap is a core LLU task.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Local-loop unbundling: incumbent and entrant equipment in the local exchange share the copper loop to the customer">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- exchange box -->
+            <rect x="120" y="24" width="150" height="150" rx="10" fill="var(--surface-2)" stroke="var(--border-strong)"/>
+            <text class="lbl-em" x="140" y="44" fill="var(--text-1)" font-size="11">Local exchange (MDF)</text>
+            <!-- incumbent kit -->
+            <rect class="node" x="138" y="58" width="52" height="34" rx="6"/><text class="lbl" x="146" y="79" font-size="9">Incumb.</text>
+            <!-- entrant kit -->
+            <rect class="node-2" x="200" y="58" width="52" height="34" rx="6"/><text class="lbl" x="210" y="79" font-size="9" fill="var(--accent-2)">Entrant</text>
+            <!-- shared loop -->
+            <rect class="fillC" x="150" y="112" width="90" height="26" rx="6"/>
+            <text class="lbl" x="160" y="129" font-size="9">shared copper loop</text>
+            <line class="flow" x1="164" y1="92" x2="180" y2="112"/>
+            <line class="flow" x1="226" y1="92" x2="210" y2="112"/>
+            <!-- to customer -->
+            <line class="flow" x1="195" y1="138" x2="195" y2="196"/>
+            <circle class="node" cx="195" cy="210" r="12"/><text class="lbl" x="176" y="238" font-size="9">Customer (last mile)</text>
+            <!-- backhaul to entrant network -->
+            <line class="flow" x1="252" y1="75" x2="322" y2="75"/>
+            <rect class="node-2" x="322" y="58" width="44" height="34" rx="6"/><text class="lbl" x="326" y="79" font-size="8" fill="var(--accent-2)">Entrant net</text>
+          </svg>
+          <figcaption>Fig 10.2 — Local-loop unbundling: rival kit in the exchange shares the incumbent's copper to the home.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Here is the single most important regulatory mechanism in fixed-line telecoms — local-loop unbundling. The logic follows straight from the bottleneck: you can't sensibly build a second copper network to every home, so instead of forcing wasteful duplication you compel the incumbent to share the loop it already owns. Read the diagram. The entrant places its own electronics inside the incumbent's local exchange — beside the incumbent's kit — and leases the individual copper wire running out to each subscriber. The entrant then hauls the traffic back to its own network and competes on price, service and features, all over the incumbent's last mile. This is quasi-facilities competition: the entrant invests in some kit but rents the bottleneck. In the US it flowed from the 1996 Act, in the UK from Ofcom's 1999 decision requiring BT, and in Europe from the 2000 Local Loop Unbundling Regulation. It rests conceptually on the essential-facilities doctrine — though note the US used a "necessary and impair" standard instead. And flag the callout: unbundling creates a brand-new abuse to police, the margin or price squeeze, where the incumbent jacks up the wholesale loop price while dropping its retail price to crush the entrant's margin. Preventing that squeeze is a permanent part of the regulator's job.</aside>
+  </section>
+
+  <!-- 11 · Ladder of investment (competition ladder SVG) -->
+  <section class="slide" data-title="Ladder of investment">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="current">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">resale · quasi-facilities · facilities-based · stepping stone / ladder</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.2.1 · FROM SERVICE TO INFRASTRUCTURE COMPETITION</p>
+      <h2 class="h2 mt-s">The "ladder of investment".</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Unbundling was meant to be a <b>stepping stone</b>. Entrants start cheap (resale), climb as they invest, and eventually build their own infrastructure. Each rung buys more independence from the incumbent — and more sunk cost.</p>
+          <div class="callout" style="margin-top:12px"><b>Does the ladder work?</b> Europe says entrants are "climbing"; sceptics (Cambini &amp; Jiang) find LRIC-based unbundling <em>dulls</em> investment by both sides. Evidence is genuinely equivocal — the fight of 10.3.1.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="A ladder of investment rising from resale through quasi-facilities to full facilities-based competition">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- rungs, ascending -->
+            <rect class="fillA" x="30" y="182" width="150" height="34" rx="5"/>
+            <text class="lbl-em" x="42" y="204" fill="var(--text-1)" font-size="11">1 · Resale</text>
+            <text class="lbl" x="42" y="230" font-size="9">minimal investment</text>
+            <rect class="fillB" x="110" y="122" width="160" height="34" rx="5"/>
+            <text class="lbl-em" x="122" y="144" fill="var(--text-1)" font-size="11">2 · Quasi-facilities (LLU)</text>
+            <rect class="fillC" x="200" y="62" width="160" height="34" rx="5"/>
+            <text class="lbl-em" x="212" y="84" fill="var(--text-1)" font-size="11">3 · Full facilities</text>
+            <text class="lbl" x="212" y="108" font-size="9">own end-to-end network</text>
+            <!-- ascending arrow -->
+            <line class="flow" x1="50" y1="182" x2="300" y2="70"/>
+            <text class="lbl" x="250" y="200" font-size="10">↑ rising sunk investment</text>
+            <text class="lbl" x="30" y="30" font-size="10" fill="var(--accent)">more independence from incumbent</text>
+          </svg>
+          <figcaption>Fig 10.3 — The ladder of investment: resale → quasi-facilities (LLU) → full infrastructure competition.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Unbundling was never meant to be the destination — it was meant to be a rung. This is the "ladder of investment", in Europe, or the "stepping-stone" hypothesis in the US, and the diagram lays it out. An entrant starts on the bottom rung as a pure reseller, buying the incumbent's service wholesale and rebranding it, with almost no capital at risk. As it wins customers and confidence it climbs to the middle rung — quasi-facilities competition through local-loop unbundling, investing in its own exchange kit while still renting the loop. The hope is that it keeps climbing to the top rung, full facilities-based competition, where it builds its own end-to-end network and needs the incumbent for nothing. Each step up buys more independence but demands more sunk, unrecoverable investment. Two things to stress. First, the whole regulatory bet is that access at regulated prices bootstraps investment rather than substituting for it. Second — and this is the crux of the empirical fight in 10.3.1 — the evidence is genuinely mixed. European regulators report entrants climbing; sceptics like Cambini and Jiang find that cheap LRIC-based unbundling actually dulls the incentive for both incumbents and entrants to build. Keep that tension live; it decides the fibre debate later.</aside>
+  </section>
+
+  <!-- 12 · Cable, mobile & SMP framework -->
+  <section class="slide" data-title="SMP framework">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="current">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">SMP · remedies · common carrier · CPNP · bill &amp; keep</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.2.1 · CABLE, MOBILE &amp; THE SMP FRAMEWORK</p>
+      <h2 class="h2 mt-s">Different networks, different regulatory histories.</h2>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Cable</h4><p class="dim">Lightly regulated, or not at all. In the US, cable modem = "information service", escaping common-carrier unbundling. Constrained instead by inter-platform competition with the PSTN.</p></div>
+        <div class="concept-box"><h4>Mobile</h4><p class="dim">Rarely retail-price-regulated. But where <code>CPNP</code> applies (EU, Australia) wholesale <b>termination</b> rates are capped — the "termination monopoly problem". Elsewhere (US, Canada, Singapore): bill &amp; keep.</p></div>
+        <div class="concept-box"><h4>The SMP test</h4><p class="dim">EU framework, three steps: <b>①</b> define markets open to ex-ante rules; <b>②</b> assess who holds <em>significant market power</em>; <b>③</b> impose remedies only on the SMP operator.</p></div>
+      </div>
+      <div class="callout"><b>Modelled on competition law.</b> The EU Regulatory Framework for Electronic Communications borrows its concepts from competition law. But the two can clash: EU courts allow margin-squeeze cases even on regulator-approved rates; US courts (<em>Trinko</em>) largely shield regulated rates from antitrust.</div>
+    </div>
+    <aside class="notes">Not every network is regulated like the PSTN, and the differences are instructive. Cable, first, is treated far more lightly — in many countries there's no specific oversight at all. In the US, cable modem service was deliberately classified as an "information service" rather than a "telecommunications service", which spared it the common-carrier unbundling obligations that bind the phone companies; the theory is that cable is disciplined by inter-platform competition wherever its footprint overlaps the PSTN. Mobile, second, is rarely subject to retail price control, but wholesale termination is another matter: where the "calling-party-network-pays" principle applies, as in the EU and Australia, regulators cap mobile termination rates to tackle the termination-monopoly problem — the terminating network is a monopolist over reaching its own subscriber. In bill-and-keep jurisdictions like the US and Singapore, operators simply terminate each other's calls for free. Third, and this is the organising device of European telecoms regulation, the significant-market-power framework: a three-step test — define the market, assess whether anyone holds SMP, and impose remedies only on the SMP holder. It's explicitly modelled on competition law, but the two don't always sit comfortably together — European courts allow margin-squeeze antitrust cases even against regulator-approved rates, whereas the US Trinko decision largely immunises regulated rates from antitrust scrutiny.</aside>
+  </section>
+
+  <!-- 13 · Price controls & LRIC -->
+  <section class="slide" data-title="Price controls">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="current">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">price cap · RoR · TSLRIC · TELRIC · FL-LRIC · make-or-buy</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.2.2 · FORM &amp; SCOPE OF PRICE CONTROLS</p>
+      <h2 class="h2 mt-s">Price caps win — priced off incremental cost.</h2>
+      <p class="lede mt-m">Price caps have largely displaced rate-of-return regulation (by 2007 only three US states still used RoR). They suit an industry where falling input costs can be passed on without endless rate hearings.</p>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>The twist vs other utilities</h4><p class="dim">Elsewhere the revenue requirement uses the "building block" approach. In telecoms it's built on <b>long-run incremental cost</b> — the cost of a hypothetical <em>efficient new entrant</em>, replicating a competitive market.</p></div>
+        <div class="concept-box"><h4>The alphabet soup</h4><p class="dim"><code>FL-LRIC</code> (Europe), <code>TELRIC</code> (US, Japan — per network element), <code>TSLRIC</code> (Australia, NZ — per service). Aim: recover efficient cost <em>and</em> signal efficient entry.</p></div>
+      </div>
+      <div class="callout"><b>The hard part.</b> ~80% of BT's costs are joint or common (Newbery). Allocating them across services is unavoidable, contentious, and — done by accounting rules — economically arbitrary. It also shapes the "make-or-buy" decision: price the loop too low and entrants never build.</div>
+    </div>
+    <aside class="notes">How are the regulated prices actually set? Two families from Chapter 5 — price caps and rate-of-return — both appear, but price caps have decisively won: by 2007 only three US states still ran rate-of-return regulation. Caps suit telecoms because rapid technological progress keeps cutting input costs like switches and fibre, and a cap lets those savings flow to consumers without a formal rate hearing every year. But there's a telecoms-specific twist worth flagging. In water or energy the revenue requirement is built bottom-up from a "building block" model; in telecoms it's built on long-run incremental cost — deliberately not the incumbent's actual costs but the costs of a hypothetical, maximally efficient new entrant building on a blank slate, the idea being to replicate what a competitive market would deliver. Hence the alphabet soup: forward-looking LRIC in Europe, TELRIC in the US and Japan measured per network element, TSLRIC in Australia and New Zealand measured per service. The genuinely hard part is in the callout: Newbery estimated something like eighty per cent of BT's costs are joint or common across services, and there's no non-arbitrary economic way to split them — you fall back on accounting allocations. And the split isn't cosmetic: set the loop price too low and you distort the entrant's make-or-buy decision, so they rent forever and never build. That single tension drives the next several slides.</aside>
+  </section>
+
+  <!-- 14 · Box 10.1 -->
+  <section class="slide" data-title="Box 10.1">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="current">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li>Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Case focus</h5>
+      <p class="dim" style="font-size:13px">SAC · DSAC · contestable markets · Ofcom vs BT</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">BOX 10.1 · PRICE–COST TESTS &amp; CONTESTABLE MARKETS</p>
+      <h2 class="h2 mt-s">Are BT's prices "cost-oriented"? Enter the SAC test.</h2>
+      <div class="casebox mt-m">
+        <h4>Stand-alone cost as a price ceiling</h4>
+        <p class="dim">Contestable-markets theory doesn't fit utilities well (sunk costs make entry threats weak), but two of its cost concepts survive as price bounds. A price is "cost-oriented" if it sits between its <b>incremental cost</b> (floor) and its <b>stand-alone cost</b> (ceiling — what a service would cost if produced alone). The SAC test has policed US rail freight since 1985; Ofcom built a <b>Distributed SAC (DSAC)</b> variant to test BT's trunk and wholesale-Ethernet prices.</p>
+      </div>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>The criticisms</h4><p class="dim" style="font-size:13px">DSAC allocates common costs by an equi-proportional accounting rule — "arbitrary" economically. And done properly, the test must cover <em>every combination</em> of services — sometimes over a <b>billion</b> combinations.</p></div>
+        <div class="concept-box"><h4>The stakes</h4><p class="dim" style="font-size:13px">Highly discretionary, so it invites rent-seeking — "a full employment bill for economists". In 2012 Ofcom ordered BT to repay <b>£94m</b> partly on a DSAC analysis; a US case turned on $345m.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Box 10.1 is a beautiful worked example of theory colliding with practice. In Europe some telecoms prices are no longer capped but must still be "cost-oriented", and in the UK Ofcom operationalised that with a price-cost test drawn from contestable-markets theory. Recall from Chapter 3 that contestable markets don't really describe utilities — sunk costs make the hit-and-run entry threat too weak — but two cost concepts from that literature survive as sanity bounds. A service's price should sit above its incremental cost, the floor, and below its stand-alone cost, the ceiling — the stand-alone cost being what it would cost to produce that service all by itself. The stand-alone-cost test has governed US railroad freight since 1985, and Ofcom built a "distributed stand-alone cost", or DSAC, version to test whether BT's prices for things like trunk access and wholesale Ethernet are cost-oriented. Now the critique, and it's damning. DSAC parcels out common costs using an equi-proportional accounting mark-up that has no real economic meaning. Worse, Faulhaber's original insight was that to apply the test properly you must run it over every possible combination of services — which in practice can mean over a billion combinations. The tests are so discretionary, and the sums so large, that they invite rent-seeking; one judge called the exercise "a full employment bill for economists". Yet the results bite: in 2012 Ofcom ordered BT to repay ninety-four million pounds partly on this basis. The lesson: be wary of leaning too hard on a test this fragile.</aside>
+  </section>
+
+  <!-- 15 · Access pricing & mobile termination -->
+  <section class="slide" data-title="Termination rates">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="current">Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">two-way access · termination monopoly · externality surcharge · peering &amp; transit</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.2.2 · ACCESS PRICING</p>
+      <h2 class="h2 mt-s">Fixed loops vs mobile termination vs the internet.</h2>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Fixed line (one-way)</h4><p class="dim">Mostly LRIC-based (TSLRIC/TELRIC), occasionally ECPR or retail-minus. Entrant buys access to the incumbent's loop.</p></div>
+        <div class="concept-box"><h4>Mobile (two-way)</h4><p class="dim">Termination priced at <code>LRIC+</code>. Historically loaded with a <b>network-externality surcharge</b> to fund handset subsidies and boost penetration. The EU now pushes "pure LRIC" — no common-cost mark-up.</p></div>
+        <div class="concept-box"><h4>Internet (unregulated)</h4><p class="dim"><b>Peering</b> and <b>transit</b> deals, privately negotiated, no regulator. No termination monopoly: if one ISP blocks you, a transit route still reaches the customer.</p></div>
+      </div>
+      <div class="callout"><b>Why the internet escapes the trap.</b> In circuit-switched networks the terminating operator is a monopolist over its own subscriber — hence rate regulation. On the IP backbone, indirect transit routes mean no single ISP can hold the connection hostage, so private negotiation suffices. As networks converge to IP, which model wins?</div>
+    </div>
+    <aside class="notes">Access pricing is where the whole subject gets most contentious, and it splits three ways depending on the network. For fixed lines it's a one-way access problem — the entrant needs the incumbent's loop — and it's mostly priced on LRIC, the TSLRIC or TELRIC approaches, occasionally on the efficient-component-pricing rule or a retail-minus rule. Mobile is a two-way problem, because each operator needs to terminate calls on the other's network, and termination is priced at LRIC-plus — LRIC with a mark-up for common costs. Historically some regulators went further and loaded a network-externality surcharge on top, the reasoning being that operators would recycle the extra termination revenue into handset subsidies that grow the network and benefit everyone — remember the network externality from slide three. The EU has since reversed course toward "pure LRIC" with no common-cost allowance at all. The internet is the fascinating outlier: backbone interconnection runs on privately negotiated peering and transit deals with no regulator in sight. Why can it go unregulated? Because there's no termination monopoly — if one ISP refuses you direct access, you can still reach the end customer indirectly through a transit agreement with a third party, so no one can hold the connection hostage. That's the deep question the box on the next slide, and section 10.3.3, keep circling: as all networks converge to IP, do we regulate them like the old telephone network or leave them like the internet?</aside>
+  </section>
+
+  <!-- 16 · Box 10.2 waterbed (SVG) -->
+  <section class="slide" data-title="Box 10.2">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="current">Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Case focus</h5>
+      <p class="dim" style="font-size:13px">competitive bottleneck · two-sided market · waterbed · Genakos &amp; Valletti</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">BOX 10.2 · BOTTLENECKS &amp; WATERBEDS</p>
+      <h2 class="h2 mt-s">Cut the termination rate — and retail prices rise?</h2>
+      <div class="split mt-m">
+        <div>
+          <div class="casebox"><h4>The competitive bottleneck</h4><p class="dim" style="font-size:13px">Armstrong (1996) and Laffont–Rey–Tirole (1998): even with fierce retail competition, freely-negotiated access charges can become a <b>collusion device</b>, keeping wholesale prices — and profits — high. So a case for regulation survives competition.</p></div>
+          <div class="callout" style="margin-top:12px"><b>Genakos &amp; Valletti (20 countries).</b> Cutting termination rates ~10% raised mobile retail prices ~5% — a real but <em>incomplete</em> waterbed. The EU &amp; ACCC still doubt it and keep cutting toward LRIC.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Waterbed effect: regulator cuts wholesale termination rate, operator loses access revenue, and pushes up retail prices to recover it">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- step 1 -->
+            <rect class="node" x="20" y="30" width="150" height="42" rx="8"/>
+            <text class="lbl-em" x="34" y="50" fill="var(--text-1)" font-size="10">Regulator cuts</text>
+            <text class="lbl" x="34" y="64" font-size="10">termination rate ↓</text>
+            <!-- step 2 -->
+            <rect class="node" x="20" y="104" width="150" height="42" rx="8"/>
+            <text class="lbl-em" x="34" y="124" fill="var(--text-1)" font-size="10">Access revenue ↓</text>
+            <text class="lbl" x="34" y="138" font-size="10">cost gap opens</text>
+            <!-- step 3 -->
+            <rect class="node-2" x="20" y="178" width="150" height="42" rx="8"/>
+            <text class="lbl-em" x="34" y="198" fill="var(--accent-3)" font-size="10">Retail prices ↑</text>
+            <text class="lbl" x="34" y="212" font-size="10">rebalance to recover</text>
+            <line class="flow" x1="95" y1="72" x2="95" y2="104"/>
+            <line class="flow" x1="95" y1="146" x2="95" y2="178"/>
+            <!-- waterbed metaphor -->
+            <ellipse cx="285" cy="150" rx="72" ry="20" fill="var(--surface-2)" stroke="var(--border-strong)"/>
+            <path class="curve" d="M218,150 q30,-26 67,0 q30,26 67,-2" fill="none"/>
+            <text class="lbl" x="222" y="120" font-size="10" fill="var(--accent)">push down here…</text>
+            <line class="flow" x1="250" y1="124" x2="250" y2="142"/>
+            <text class="lbl" x="300" y="196" font-size="10" fill="var(--accent-3)">…it rises there</text>
+            <line class="flow" x1="330" y1="180" x2="330" y2="162"/>
+            <text class="lbl" x="240" y="234" font-size="9">the "waterbed" — two-sided market</text>
+          </svg>
+          <figcaption>Fig 10.4 — The waterbed effect: press wholesale down, retail pops up.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Box 10.2 contains two of the most important theoretical results in modern telecoms economics, and they point in opposite directions. First, the competitive-bottleneck insight from Armstrong and from Laffont, Rey and Tirole in the 1990s: in a two-way access setting where operators compete hard for subscribers but must buy termination from each other, the access charges they freely negotiate can actually serve as a collusion device, propping wholesale prices — and profits — up to monopoly levels. The shock was that competition for subscribers does not, by itself, kill the case for regulating wholesale access. That justified capping termination. But then comes the counter-result, the waterbed, and the diagram is the whole idea: this is a two-sided market where wholesale access revenue cross-subsidises the retail side — handset subsidies, cheap calls to win subscribers. So when the regulator presses the wholesale termination rate down, the operator loses that revenue and pushes retail prices back up to recover it. Press the waterbed here, it rises there. Genakos and Valletti tested it across twenty countries and found it real but incomplete — a roughly ten per cent cut in termination rates raised retail prices about five per cent, implying operators keep some termination rent because they have market power. The policy sting: cutting termination rates may not lower prices for consumers overall, which is exactly why the UK Competition Commission believed the waterbed while the EU and Australia kept doubting it and cutting anyway.</aside>
+  </section>
+
+  <!-- 17 · Restructuring effects & ladder evidence -->
+  <section class="slide" data-title="Did it work?">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="current">Weigh mobile termination &amp; the waterbed</li>
+        <li>Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">Openreach · CLEC gold-rush · inter- vs intra-platform · Pindyck</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.3.1 · SCOPE &amp; EFFECTS OF RESTRUCTURING</p>
+      <h2 class="h2 mt-s">Restructuring worked — but did <em>regulation</em>?</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>The good news</h4><p class="dim">OECD calls market-opening a "success": prices fell, penetration rose, tariffs rebalanced (cheap long-distance). BT operationally separated its network into <b>Openreach</b> in 2005 after Ofcom found competition inadequate.</p></div>
+        <div class="concept-box"><h4>The sceptics</h4><p class="dim">Hard to separate policy from raw technology. Hausman &amp; Taylor: below-cost unbundled prices sparked a late-1990s <b>CLEC gold-rush</b>, then mass bankruptcies. "Misguided" regulation cost consumers billions.</p></div>
+      </div>
+      <div class="callout"><b>The verdict on unbundling.</b> Pindyck: entrants renting in small increments bore no sunk cost — an asymmetric risk split that deterred incumbent investment. Studies increasingly credit US facilities competition to <em>inter-platform</em> rivalry (cable, wireless), not the ladder. Europe's evidence stays equivocal.</div>
+    </div>
+    <aside class="notes">So did all this restructuring and regulation actually deliver? The honest answer is: restructuring clearly helped, but the marginal contribution of regulation itself is genuinely disputed. On the positive side, the OECD flatly calls market-opening a success — prices fell, penetration climbed, and tariffs rebalanced so that long-distance and international calls, once kept artificially dear to subsidise local access, became cheap. In the UK, when Ofcom's 2005 strategic review concluded competition was inadequate and unsustainable, BT volunteered to operationally separate its network into Openreach, the arm's-length access provider we still have today. But the sceptics have a serious case. The first problem is attribution: technology was transforming this industry anyway, so how much of the improvement do you credit to regulators versus to Moore's Law? Hausman and Taylor go further — they argue that pricing unbundled elements below cost triggered a speculative gold-rush of competitive local exchange carriers in the late 1990s, followed by a wave of bankruptcies in the early 2000s, and that "misguided" regulatory efforts cost consumers billions. Pindyck's point is the sharpest: entrants could rent network elements in tiny increments for short durations, bearing no sunk cost, which loaded the risk asymmetrically onto the incumbent and blunted its incentive to invest. Increasingly, analysts credit the US shift to facilities-based competition not to the unbundling ladder at all but to inter-platform rivalry from cable and wireless. In Europe the evidence stays stubbornly equivocal.</aside>
+  </section>
+
+  <!-- 18 · Continuing rationale -->
+  <section class="slide" data-title="Still needed?">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="done">Weigh mobile termination &amp; the waterbed</li>
+        <li class="current">Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">natural monopoly? · asymmetric regulation · granularity · geographic markets</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.3.2 · THE CONTINUING RATIONALE FOR REGULATION</p>
+      <h2 class="h2 mt-s">Is it still a natural monopoly at all?</h2>
+      <p class="lede mt-m">The historical rationale — PSTN demand and costs look like natural monopoly — may simply no longer hold. Kahn: the industry "is obviously no longer a natural monopoly", and old-style regulation risks being anti-competitive.</p>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>The asymmetry problem</h4><p class="dim">Heavily regulate the PSTN incumbent while cable and mobile — offering the <em>same converged services</em> — go lightly regulated? That confers an undue advantage by technology, not by economics.</p></div>
+        <div class="concept-box"><h4>The proposed fix: granularity</h4><p class="dim">If ex-ante regulation stays, make it <b>geographically granular</b> — regulate only areas where competition is genuinely absent (e.g. rural single-supplier zones), and lean on ex-post competition law elsewhere.</p></div>
+      </div>
+      <div class="callout"><b>The open question.</b> With IP blurring voice and data, VoIP and mobile substituting for fixed, and inter-platform competition rising, the case for blanket ex-ante price regulation is weaker than ever — but withdrawing it where a bottleneck persists is risky.</div>
+    </div>
+    <aside class="notes">Section 10.3.2 asks the most existential question in the chapter: given everything that's changed, is there still a reason to regulate telecoms at all? The historical rationale was that the PSTN's demand and cost characteristics resembled a natural monopoly — but in many jurisdictions that may simply no longer be true. Alfred Kahn, no radical, states it bluntly: the industry is obviously no longer a natural monopoly, and wherever effective platform competition exists — landline, cable, wireless — historical-style regulation is both unnecessary and likely anti-competitive, because it discourages the heavy investment in new platforms we actually want. Two live problems follow. First, asymmetry: if you heavily regulate the PSTN incumbent while cable and mobile deliver the very same converged bundles under light or no regulation, you're handing an advantage based on which technology a firm happens to use, not on any economic bottleneck. Second, the proposed remedy is granularity. Rather than blanket rules, define geographic markets narrowly and impose ex-ante regulation only where competition is genuinely absent — think a rural exchange with a single supplier — while relying on ex-post competition law everywhere competition has arrived. The unresolved tension in the callout: the case for sweeping price regulation is weaker than it's ever been, yet pulling regulation out of the places where the local-loop bottleneck stubbornly persists remains genuinely risky.</aside>
+  </section>
+
+  <!-- 19 · NGN access & unbundling -->
+  <section class="slide" data-title="Unbundling NGNs">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="done">Weigh mobile termination &amp; the waterbed</li>
+        <li class="current">Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">FTTx · duct/sub-loop/bitstream · forbearance vs ladder</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.3.3 · ACCESS &amp; UNBUNDLING FOR NGNs</p>
+      <h2 class="h2 mt-s">What do you even unbundle in an all-IP network?</h2>
+      <p class="lede mt-m">IP interconnection may dissolve the switched-network bottleneck. And engineering changes: the physical hand-off points of copper networks — exchanges, distribution frames, cabinets — can vanish under Fibre-to-the-X.</p>
+      <div class="grid g2 mt-m">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>US · forbearance</h4><p class="dim">Since 2003 the FCC largely <b>forbears</b> from mandatory unbundling on fibre — deliberately, to spur infrastructure investment.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-2)"><h4>EU · keep the ladder</h4><p class="dim">Access continues via new fibre products — <b>duct, sub-loop, bitstream</b> — and the ladder-of-investment philosophy persists into the NGA world.</p></div>
+      </div>
+      <div class="callout"><b>And which pricing model?</b> As fixed, mobile and internet converge on IP, cost-based termination charges sit awkwardly beside internet-style peering. The EU and FCC signal a drift <em>away</em> from per-minute cost-based charges toward internet interconnection models.</div>
+    </div>
+    <aside class="notes">If we do keep regulating, the shift to all-IP Next-Generation Networks forces us to rethink what unbundling even means. Two distinct issues here — engineering and pricing. On the engineering side: in a copper switched network there are convenient physical hand-off points where a rival can plug in — the exchange, the main distribution frame, the street cabinet. Under Fibre-to-the-X those points can simply cease to exist, so the OECD notes that fibre topologies are much harder, technically and economically, to unbundle. That leaves regulators with a genuine choice, and the two big blocs have gone opposite ways. The US, since the FCC's 2003 decision, largely forbears from mandatory unbundling on new fibre — a deliberate bet that letting incumbents keep their fibre to themselves will spur the huge investment fibre requires. Europe instead preserves unbundling, inventing new fibre-era access products — duct access, sub-loop unbundling, bitstream — and keeping the ladder-of-investment philosophy alive in the NGA environment. On pricing, the convergence pressure is real: as fixed, mobile and internet all become IP, the old cost-based per-minute termination charge sits uneasily next to the internet's peering-and-transit model, and both the European Commission and the FCC are signalling a drift away from cost-based charges toward internet-style interconnection. That transition question is unresolved and consequential.</aside>
+  </section>
+
+  <!-- 20 · Fibre investment & holidays -->
+  <section class="slide" data-title="Fibre & holidays">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="done">Weigh mobile termination &amp; the waterbed</li>
+        <li class="current">Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">NGA · access holiday · forbearance · risk premium · public subsidy</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.3.4 · INVESTMENT IN NEXT-GENERATION INFRASTRUCTURE</p>
+      <h2 class="h2 mt-s">Regulating a network that isn't built yet.</h2>
+      <p class="lede mt-m">Old regulation shaped networks already sunk. Fibre reverses the problem: rules now shape whether the large, risky investment happens <em>at all</em>. Australia's NBN was costed at A$40bn+; each US fibre-to-the-home passing at $700–800.</p>
+      <div class="grid g4 mt-m">
+        <div class="concept-box"><h4>Access holiday</h4><p class="dim" style="font-size:13px">Time-limited right to refuse access to new investment (Gans &amp; King). Encourages the risky build.</p></div>
+        <div class="concept-box"><h4>Forbearance</h4><p class="dim" style="font-size:13px">No fixed time-limit; leaves door open to future regulation. US since 2003.</p></div>
+        <div class="concept-box"><h4>Risk premium</h4><p class="dim" style="font-size:13px">EU-favoured: add a premium to the cost-of-capital in the access price for investment risk.</p></div>
+        <div class="concept-box"><h4>Public subsidy</h4><p class="dim" style="font-size:13px">Broadband as public good — state-funded (NBN, Qatar), PPPs, municipal schemes.</p></div>
+      </div>
+      <div class="callout"><b>The core trade-off.</b> Mandating access delivers short-term price cuts once fibre is built — but the anticipation of that access can kill the incentive to build it in the first place. That tension <em>is</em> the fibre debate.</div>
+    </div>
+    <aside class="notes">Section 10.3.4 is where the whole chapter's tension crystallises around fibre. Notice the fundamental change in the regulator's problem: for thirty years regulation dealt with networks that were already built and whose costs were already sunk — the job was dividing up the spoils. Fibre inverts that. Now regulation has to shape whether an enormous, genuinely risky investment gets made at all. The numbers are sobering — Australia's National Broadband Network was costed north of forty billion Australian dollars, and each fibre-to-the-home connection in the US runs seven to eight hundred dollars per premises passed. The trade-off in the callout is the heart of it: if you mandate that the incumbent share its new fibre at regulated prices, consumers get cheaper access once it's built — but the mere anticipation of forced sharing can destroy the incentive to build in the first place, because rivals reap the upside without bearing the risk. Four proposed fixes. An access holiday, from Gans and King, is a time-limited right to refuse access to new investment. Forbearance is the open-ended version with no fixed clock. The EU prefers a risk premium — bumping the cost-of-capital in the access price to compensate for investment risk. And where the market won't deliver, public subsidy treats broadband as a public good, funded through vehicles like the NBN, public-private partnerships or municipal schemes. Hold the holiday idea — the next slide is the case study of it blowing up in Europe.</aside>
+  </section>
+
+  <!-- 21 · Box 10.3 regulatory holidays -->
+  <section class="slide" data-title="Box 10.3">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="done">Weigh mobile termination &amp; the waterbed</li>
+        <li class="current">Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Case focus</h5>
+      <p class="dim" style="font-size:13px">Deutsche Telekom VDSL · ECJ · Digital Agenda · Netherlands KPN</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">BOX 10.3 · REGULATORY HOLIDAYS IN EUROPE</p>
+      <h2 class="h2 mt-s">Germany tried a holiday. The court said no.</h2>
+      <div class="casebox mt-m">
+        <h4>The Deutsche Telekom VDSL case</h4>
+        <p class="dim">Gans &amp; King (2003) proposed the "regulatory holiday" — commit not to apply ex-ante access regulation to new investment automatically, only later and only if conditions are met. In 2007 Germany amended its Telecommunications Act to exempt <b>Deutsche Telekom's new VDSL network</b> from wholesale-access obligations. The European Commission challenged it as incompatible with the common framework, and the <b>European Court of Justice</b> ultimately deemed it <b>unlawful</b> — DT was already dominant in broadband.</p>
+      </div>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Still a live wire</h4><p class="dim" style="font-size:13px">The Netherlands kept trying to exempt KPN's fibre (2012); Brazil committed to a nine-year holiday to 2021. The idea won't die.</p></div>
+        <div class="concept-box"><h4>The Commission's line</h4><p class="dim" style="font-size:13px">"Any suggestion of regulatory forbearance in Europe has been soundly dismissed." The Digital Agenda goals are to be met by the standard regulatory approach — not holidays.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Box 10.3 turns the abstract holiday debate into a concrete legal showdown. The regulatory holiday, proposed by Gans and King in 2003, is a commitment by the regulator not to apply ex-ante access regulation to new investment automatically — only later, and only once specified conditions are met — so that the investor gets a window to earn a return before rivals can demand access. Germany actually tried it: in 2007 it amended its Telecommunications Act to carve out "new markets", which would have exempted Deutsche Telekom's new high-speed VDSL network from any obligation to provide wholesale access to competitors. The European Commission objected that this was incompatible with the common European regulatory framework — the sticking point being that Deutsche Telekom was already dominant in broadband, so a holiday would entrench that dominance — and the European Court of Justice ultimately struck the exemption down as unlawful. But notice the idea refuses to die: the Netherlands kept trying to exempt KPN's fibre network in 2012, and Brazil, which borrows heavily from the European framework, committed to a nine-year holiday running to 2021. The Commission's own position could not be blunter — one OECD line records that any suggestion of regulatory forbearance in Europe "has been soundly dismissed", and the Commission insists the Digital Agenda's broadband targets will be met by standard regulation, not holidays. It's the clearest live example of the investment-versus-access trade-off playing out in court.</aside>
+  </section>
+
+  <!-- 22 · Net neutrality -->
+  <section class="slide" data-title="Net neutrality">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="done">Weigh mobile termination &amp; the waterbed</li>
+        <li class="current">Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">best-efforts · throttling · access tiering · paid prioritisation · fast lane</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.3.5 · NET NEUTRALITY</p>
+      <h2 class="h2 mt-s">Should every packet be treated equally?</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Neutrality supporters</h4><p class="dim">Google, Facebook, civil-liberty groups. Without rules, a vertically-integrated ISP has an incentive to <b>throttle or block</b> rivals — degrade Skype to push its own voice, or Netflix/BitTorrent to push its own TV. Non-discrimination "subsidised" the internet's innovation.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-2)"><h4>Prioritisation defenders</h4><p class="dim">Absent market power, letting ISPs charge for quality (a "fast lane") is welfare-enhancing price differentiation — and funds network investment. Congestion-sensitive services become viable.</p></div>
+      </div>
+      <div class="callout"><b>The FCC saga.</b> 2010 Order: disclose practices, no blocking of lawful content, no unreasonable discrimination. Struck down by the DC Circuit in Jan 2014, then re-proposed. The fear opponents raise: "specialised services" degrade the free best-efforts internet until content providers are <em>forced</em> to buy the fast lane.</div>
+    </div>
+    <aside class="notes">Net neutrality is the newest and most politically charged issue in the chapter, and it's really a question about traffic management: should ISPs treat every packet equally, or may they speed up, slow down, block or charge for particular traffic? The internet historically ran on a best-efforts basis — all content delivered on equal terms. The neutrality camp — Google, Facebook, civil-liberties groups — worries that a vertically-integrated ISP has an incentive to discriminate against services that compete with its own: a phone company throttling Skype to protect its voice revenue, a cable operator degrading Netflix or BitTorrent to protect its TV. Their deeper claim is that non-discrimination effectively subsidised content creation and drove the internet's extraordinary innovation, and that abandoning it risks a fragmented internet where you can only reach content your ISP has cut a deal with. The other camp argues that, absent genuine market power, letting ISPs charge for higher quality — a fast lane — is just ordinary, welfare-enhancing price differentiation that also funds the network investment we badly need, and makes congestion-sensitive services viable. The regulatory story is the FCC saga: its 2010 Order required disclosure, banned blocking of lawful content, and barred unreasonable discrimination; a court struck the core rules down in January 2014, and the FCC re-proposed them. The sharpest opponent argument — flagged by Economides — is that ISPs could deliberately let the free best-efforts internet rot until content providers are coerced into buying the premium "specialised service", so the fast lane becomes a backdoor toll on the whole internet.</aside>
+  </section>
+
+  <!-- 23 · Universal service -->
+  <section class="slide" data-title="Universal service">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="done">Weigh mobile termination &amp; the waterbed</li>
+        <li class="current">Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">USO · digital divide · broadband gap · functional internet access</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">10.3.6 · THE SCOPE OF UNIVERSAL SERVICE</p>
+      <h2 class="h2 mt-s">Is broadband now a universal right?</h2>
+      <p class="lede mt-m">Universal service obligations historically guaranteed everyone a <b>voice line</b> at an affordable, geographically-uniform price — funded by cross-subsidy. The live question: extend it to <b>broadband internet</b>?</p>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Why it matters now</h4><p class="dim">Fibre is being built mainly in dense urban areas — risking a <b>digital divide</b> or "broadband gap" between town and country. Noam: lack of connectivity retards participation in the economy, politics and culture.</p></div>
+        <div class="concept-box"><h4>Where it stands</h4><p class="dim">EU: "functional internet access" required since 2002 (mostly narrowband so far). US National Broadband Plan (2010): ≥4 Mbps down / 1 Mbps up for all. Finland, Spain, Switzerland &amp; others have folded broadband into their USO.</p></div>
+      </div>
+      <div class="callout"><b>The economics.</b> A uniform tariff across a region ignores that rural supply costs far more than urban — the classic cross-subsidy problem. Extending the USO to fibre broadband makes that cost gap larger and the funding question sharper.</div>
+    </div>
+    <aside class="notes">The last policy issue, 10.3.6, is universal service — and it's the oldest idea in the chapter meeting the newest technology. Historically, universal service obligations guaranteed every household a basic voice telephone line at an affordable, geographically-uniform price, regardless of the fact that serving a remote farm costs far more than serving a city flat; the gap was papered over with cross-subsidy, typically long-distance and business users subsidising local and residential ones. The live question is whether that guarantee should now extend to broadband internet. Why it's urgent: fibre investment naturally concentrates in dense urban areas where the economics work, which threatens a digital divide — a broadband gap between town and country — and, as Noam argues, lack of connectivity increasingly locks people out of economic, political and cultural life, making broadband feel like a political entitlement. Where does it stand? The EU has required "functional internet access" since 2002, though in practice that's often meant only narrowband so far. The US 2010 National Broadband Plan set a target of at least four megabits down and one up for every household. And several countries — Finland, Spain, Switzerland, Malta, Israel — have already folded broadband into their formal universal-service obligations. The economic sting in the callout is the familiar one: a uniform tariff ignores the real cost difference between rural and urban supply, and extending the obligation to expensive fibre only widens that gap and sharpens the question of who pays.</aside>
+  </section>
+
+  <!-- 24 · MCQ -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M10</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Read a telecoms network — PSTN vs NGN, fixed vs mobile</li>
+        <li class="done">Locate the bottleneck — the local loop / last mile</li>
+        <li class="done">Explain the toolkit — interconnection, LLU, SMP</li>
+        <li class="done">Weigh mobile termination &amp; the waterbed</li>
+        <li class="current">Judge fibre investment, holidays &amp; net neutrality</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">What does the "waterbed effect" predict?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>Cutting mobile termination rates always feeds straight through to lower retail prices.</b><p class="dim" style="font-size:13px;margin:4px 0 0">The opposite — this is the naive one-sided-market view the waterbed challenges.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>When a regulator cuts wholesale access revenue, operators <span style="color:var(--accent)">rebalance and push retail prices up</span> to recover it — so retail prices may not fall.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> A two-sided market: press the wholesale side down, the retail side pops up. Genakos &amp; Valletti find it real but incomplete (~10% cut → ~5% retail rise).</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>It describes how fibre investment collapses when access holidays are granted.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Wrong topic — that's the investment/holiday debate (Box 10.3), not the waterbed.</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">Quick self-check on the single most counter-intuitive result in the chapter. Answer A is the trap — the intuitive, one-sided-market assumption that cutting a wholesale price simply flows through to lower retail prices. That's exactly the belief the waterbed literature overturns. The correct answer is B: because mobile is a two-sided market where wholesale termination revenue cross-subsidises the retail side — handset subsidies, cheap calls — cutting that wholesale revenue leads operators to rebalance and raise retail prices to recover the loss, so consumers may see no net benefit. Genakos and Valletti quantified it across twenty countries: a roughly ten per cent cut in termination rates produced about a five per cent retail price rise, a real but incomplete waterbed, which tells you operators retain some termination rent thanks to market power. C is simply the wrong topic — it's describing the fibre-investment and regulatory-holiday debate from Box 10.3, which is a separate strand. If a learner picks A, send them back to Box 10.2 and the two-sided-market intuition; if they pick C, they've conflated two of the chapter's controversies and should re-read the section headers.</aside>
+  </section>
+
+  <!-- 25 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 10</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Read a telecoms network</h4><p class="dim">PSTN's circuit-switched star vs the packet-switched, all-IP NGN; fixed, cable, mobile — converging on one infrastructure carrying every service.</p></div>
+      <div class="concept-box"><h4>✓ Locate the bottleneck</h4><p class="dim">The local loop / last mile is the enduring choke-point — too costly to duplicate, the reason regulators still exist here.</p></div>
+      <div class="concept-box"><h4>✓ Work the toolkit</h4><p class="dim">Interconnection, local-loop unbundling and the ladder of investment, the SMP framework, and LRIC-based access prices (with the SAC/DSAC tests of Box 10.1).</p></div>
+      <div class="concept-box"><h4>✓ Argue the controversies</h4><p class="dim">Mobile termination &amp; the waterbed (Box 10.2), fibre investment &amp; regulatory holidays (Box 10.3), net neutrality, and universal service.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 11.</b> Telecoms showed regulation under technological revolution. The next chapter turns to another network utility with its own restructuring story — carrying the same questions of bottlenecks, access and investment into a different industry.
+    </div>
+    <div class="deck-footer"><span>Teaching summary of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 10</span><span class="slide-number" data-current="25" data-total="25"></span></div>
+    <aside class="notes">Let's recap against the four objectives and close. First, you can read a telecoms network — the circuit-switched star of the PSTN versus the packet-switched, IP-routed NGN, with fixed, cable and mobile all converging onto one infrastructure that carries voice, data and video alike. Second, you can locate the bottleneck: through every twist of technology, the local loop — the last mile into the premises — remains the enduring choke-point, too expensive to duplicate, and that single fact is why regulators persist in this industry. Third, you can work the toolkit: interconnection, local-loop unbundling and the ladder of investment, the significant-market-power framework, and LRIC-based access prices, complete with the fragile SAC and DSAC price-cost tests. Fourth, you can argue the live controversies — mobile termination and the waterbed, fibre investment and the regulatory-holiday fight that reached the European Court of Justice, net neutrality, and whether broadband is now a universal right. The single idea to carry out of this module: telecoms is the utility where competition can reach almost the whole supply chain, which makes the boundary of regulation permanently contested — and where technology keeps redrawing that boundary faster than the rules can follow. End here.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>

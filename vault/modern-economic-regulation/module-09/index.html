@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gas Regulation · Modern Economic Regulation (Decker) · Ch. 9</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+<style>
+  /* deck-local helpers layered on top of the course-module theme */
+  .tpl-course-module figure.fig{margin:0;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px 12px;box-shadow:var(--shadow)}
+  .tpl-course-module figure.fig figcaption{font-size:12.5px;color:var(--text-3);margin-top:8px;font-family:'JetBrains Mono',monospace}
+  .tpl-course-module .fig svg{width:100%;height:auto;display:block}
+  .tpl-course-module .fig text{font-family:'Inter',sans-serif;fill:var(--text-2)}
+  .tpl-course-module .axis{stroke:var(--text-3);stroke-width:1.5}
+  .tpl-course-module .curve{fill:none;stroke:var(--accent);stroke-width:2.5}
+  .tpl-course-module .curve-2{fill:none;stroke:var(--accent-3);stroke-width:2.5}
+  .tpl-course-module .curve-3{fill:none;stroke:var(--text-2);stroke-width:2}
+  .tpl-course-module .curve-4{fill:none;stroke:var(--accent-2);stroke-width:2}
+  .tpl-course-module .guide{stroke:var(--text-3);stroke-width:1;stroke-dasharray:3 3}
+  .tpl-course-module .dwl{fill:var(--accent-3);opacity:.18}
+  .tpl-course-module .surplus{fill:var(--accent);opacity:.12}
+  .tpl-course-module .loss{fill:var(--accent-2);opacity:.20}
+  .tpl-course-module .fillA{fill:var(--accent);opacity:.10}
+  .tpl-course-module .fillB{fill:var(--accent-3);opacity:.12}
+  .tpl-course-module .fillC{fill:var(--text-3);opacity:.10}
+  .tpl-course-module .lbl{font-size:12px;font-family:'JetBrains Mono',monospace;fill:var(--text-2)}
+  .tpl-course-module .lbl-em{font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace}
+  .tpl-course-module .node{fill:var(--surface);stroke:var(--text-3);stroke-width:1.5}
+  .tpl-course-module .node-2{fill:var(--accent);opacity:.14;stroke:var(--accent);stroke-width:1.5}
+  .tpl-course-module .flow{fill:none;stroke:var(--text-3);stroke-width:1.6;marker-end:url(#arrow)}
+  .tpl-course-module .stack{display:flex;flex-direction:column;gap:12px}
+  .tpl-course-module .grid.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .tpl-course-module .grid.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .tpl-course-module .grid.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .tpl-course-module .row{display:flex;flex-wrap:wrap;align-items:center}
+  .tpl-course-module .split{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center}
+  .tpl-course-module .split.wide-left{grid-template-columns:1.4fr .6fr}
+  .tpl-course-module .mini{font-size:15px;line-height:1.55}
+  .tpl-course-module .tag{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;font-family:'JetBrains Mono',monospace;letter-spacing:.04em}
+  .tpl-course-module .tag.norm{background:rgba(45,125,110,.12);color:var(--accent)}
+  .tpl-course-module .tag.pos{background:rgba(196,89,63,.12);color:var(--accent-3)}
+  .tpl-course-module .tag.neu{background:rgba(120,120,120,.14);color:var(--text-2)}
+</style>
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 09 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">Regulating <em>gas</em>:<br>the one you can store.</h1>
+    <p class="lede mt-l" style="max-width:66ch">Natural gas looks like electricity's twin — pipes, transmission, distribution, retail — but one physical fact changes everything: gas can be stored. This module walks the supply chain from wellhead to burner-tip, shows which links are natural monopoly and which are competitive, and unpacks how Britain, the USA and Europe unbundled, auctioned capacity and opened retail to competition.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 35 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 9</span>
+      <span class="pill-academic">prereq · Modules 01, 05, 08</span>
+    </div>
+    <div class="deck-footer"><span>Teaching summary · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="24"></span></div>
+    <aside class="notes">Welcome to Module 9, gas regulation. If you've done the electricity module, most of this will feel familiar — gas is another networked energy commodity with a monopoly transport core and potentially competitive activities at each end. But hold on to one fact from the very start, because it's the organising idea of the whole chapter: gas can be stored, and electricity essentially cannot. Storage is what softens balancing, dampens the market-power problems that make electricity so fiddly, and creates a brand-new economic question — the opportunity cost of gas over time, since gas held today can be sold tomorrow at a different price. Over the next 24 slides we'll trace the supply chain, see how restructuring unbundled it, look at three real case boxes — British entry auctions, North American negotiated settlements, and the Ofgem retail-competition story — and finish with the live policy debates: LNG, shale, security of supply and gas-fired power. Navigate with the arrow keys; press S for the presenter notes.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Map the gas supply chain &amp; its costs</li>
+        <li>Say which segments are natural monopoly</li>
+        <li>Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 24 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Walk the chain from wellhead to burner-tip.</h4><p class="dim">Production → transmission → storage → distribution → retail — and where the money sits (wholesale gas ≈ 69% of a European bill, network ≈ 31%).</p></div>
+        <div class="concept-box"><h4>② Pin the natural-monopoly segments.</h4><p class="dim">Transmission and distribution pipelines — capital-intensive, sunk, economies of density. Production, storage and retail need not be.</p></div>
+        <div class="concept-box"><h4>③ Explain how restructuring re-plumbed the industry.</h4><p class="dim">Unbundling, third-party access, network codes, capacity allocation and balancing at hubs like the NBP.</p></div>
+        <div class="concept-box"><h4>④ Debate the live policy questions.</h4><p class="dim">Entry auctions, storage &amp; LNG treatment, negotiated settlements, retail-tariff complexity, shale and security of supply.</p></div>
+      </div>
+    </div>
+    <aside class="notes">These six objectives frame the module and stay pinned in the sidebar the whole way through, with the marker advancing as we go. Notice the logical flow: first the physical and economic anatomy — objectives one and two — because you cannot regulate sensibly until you know which bits are genuinely monopoly and which can bear competition. Then the machinery of restructuring in objective three: unbundling, access, codes, balancing. Then objectives four to six, the policy arguments where the interesting disagreements live. Decker's own verdict, which we'll reach at the end, is that gas is in some ways the most straightforward of the utilities — the product is commodity-like and the transport physics are more forgiving than electricity's. But "straightforward" is relative; the security-of-supply and environmental debates are anything but settled. Keep the storability point in mind at every stage — it's the thread that ties the objectives together.</aside>
+  </section>
+
+  <!-- 3 · Why gas matters -->
+  <section class="slide" data-title="Why gas matters">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Map the gas supply chain &amp; its costs</li>
+        <li>Say which segments are natural monopoly</li>
+        <li>Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">methane · LNG · security of supply · shale gas</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHAPTER 9 · WHY GAS</p>
+      <h2 class="h2 mt-s">An essential fuel — and a geopolitical one.</h2>
+      <p class="lede mt-m">Gas heats homes, cooks food, and increasingly fires power stations. It is cleaner than coal or oil, can travel across oceans as <b>LNG</b>, and — unlike electricity — is a <em>natural resource</em>, unevenly distributed across the globe.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Essential &amp; substitutable</h4><p class="dim">Domestic heating and cooking, plus industry and gas-fired electricity. Competes with LPG, oil, coal and power — but only over the long run, once appliances are sunk.</p></div>
+        <div class="concept-box"><h4>Import-dependent</h4><p class="dim">The Jan-2009 Russia–Ukraine dispute cut supply in <b>18</b> European countries. Depleting indigenous reserves feed a standing security-of-supply worry.</p></div>
+        <div class="concept-box"><h4>Shale changes the picture</h4><p class="dim">Some estimate <b>46%</b> of US gas could come from shale by 2035 (≈1% in 2000). Big, uncertain implications for regulation.</p></div>
+      </div>
+      <div class="callout"><b>Why the geopolitics matter for a regulator.</b> Because some countries must import gas — Japan and South Korea rely on LNG for virtually all demand — security of supply becomes a regulatory objective in a way it never is for locally-generated electricity.</div>
+    </div>
+    <aside class="notes">Before the economics, set the scene. Gas is an important primary energy source with two faces. Face one: it's an essential consumer good — heating, cooking, and the growing use in electricity generation, where a gas plant will burn gas whenever the gas price sits below the prevailing power price. Face two, and this is what distinguishes gas from electricity: it is a geographically-specific natural resource. Electricity you can generate almost anywhere; gas you have to find, and the big conventional reserves sit in Russia, the Middle East, North Africa. So some economies are structurally dependent on imports, which drags security of supply into the regulator's remit. The January 2009 Russia–Ukraine dispute — supply disruptions across eighteen European countries — is the cautionary tale everyone cites. And then shale: in the space of a decade it flipped the US from a projected LNG importer to a prospective exporter. Hold that tension between dependence and abundance; it recurs in the policy section.</aside>
+  </section>
+
+  <!-- 4 · Gas vs electricity -->
+  <section class="slide" data-title="Gas vs electricity">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="current">Say which segments are natural monopoly</li>
+        <li>Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>The one big difference</h5>
+      <p class="dim" style="font-size:13px"><b>Gas is storable. Electricity is not.</b> That changes balancing, market power &amp; investment.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.1.1 · SISTER INDUSTRIES, ONE KEY DIFFERENCE</p>
+      <h2 class="h2 mt-s">So alike we use one "energy" regulator — yet not the same.</h2>
+      <p class="lede mt-m">Both are networked energy, traded wholesale, delivered via high-pressure transmission then low-pressure distribution. Many jurisdictions fold both into a single regulator (Ofgem) and dual-fuel retailers. But five physical facts set gas apart:</p>
+      <table class="data mt-m">
+        <thead><tr><th>Attribute</th><th>Gas</th><th>Electricity</th></tr></thead>
+        <tbody>
+          <tr><td>Location of source</td><td>Geographically fixed reserves</td><td>Generate almost anywhere</td></tr>
+          <tr><td>Flow control</td><td>Point-to-point; path is choosable</td><td>Flows across whole network</td></tr>
+          <tr><td>Local failure</td><td>Isolate &amp; shut a pipe segment</td><td>One fault hits the whole grid</td></tr>
+          <tr><td class="lbl-em">Storability</td><td class="lbl-em">Yes — even in the pipes (linepack)</td><td class="lbl-em">Effectively no</td></tr>
+          <tr><td>Long-distance transport</td><td>Low losses; LNG by sea</td><td>Meaningful line losses</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><b>The payoff.</b> Because gas is storable, short-term balancing — and the market-power games that plague electricity balancing — matter far less. But storage creates its own economics: the <em>opportunity cost of gas over time</em>.</div>
+    </div>
+    <aside class="notes">This is the conceptual heart of the chapter and worth slowing down on. Gas and electricity are close enough that most jurisdictions regulate them together under one energy regulator, and retailers sell them together as dual-fuel offers. But five physical distinctions matter. First, gas comes from specific fields; electricity can be generated near the load. Second, on a gas network you can send gas point-to-point and determine its physical path, so you can charge for the route; power just flows by Kirchhoff's laws. Third, you can isolate and shut a single gas pipe while the rest keeps running, whereas an electricity fault can cascade instantly across the grid. Fourth, and the headline: gas is storable — in caverns, depleted fields, LNG tanks, even in the pipes themselves as linepack. Electricity essentially isn't. That single fact means short-term balancing is far less fraught for gas, and the market-power problems that make electricity balancing dangerous are muted. Fifth, gas travels long distances with low losses, including by sea as LNG. The twist in the callout: storability isn't free of economics — it introduces the opportunity cost of gas over time, because what you store today you could sell tomorrow at a different price.</aside>
+  </section>
+
+  <!-- 5 · The supply chain (Fig 9.1) -->
+  <section class="slide" data-title="Supply chain">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="current">Say which segments are natural monopoly</li>
+        <li>Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">wellhead · citygate · shipper · linepack</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.1.2 · THE GAS SUPPLY CHAIN</p>
+      <h2 class="h2 mt-s">Wellhead to burner-tip — mark the monopoly links.</h2>
+      <figure class="fig" data-anim="fade-up">
+        <svg viewBox="0 0 780 250" role="img" aria-label="Gas supply chain from production through transmission, storage, distribution to retail, marking competitive versus natural-monopoly segments">
+          <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+          <!-- competitive band -->
+          <rect class="fillA" x="6" y="30" width="150" height="150" rx="8"/>
+          <text class="lbl-em" x="81" y="24" text-anchor="middle" fill="var(--accent)">COMPETITIVE</text>
+          <!-- monopoly band -->
+          <rect class="fillB" x="168" y="30" width="300" height="150" rx="8"/>
+          <text class="lbl-em" x="318" y="24" text-anchor="middle" fill="var(--accent-3)">NATURAL MONOPOLY (regulated)</text>
+          <!-- competitive band 2 -->
+          <rect class="fillA" x="480" y="30" width="290" height="150" rx="8"/>
+          <text class="lbl-em" x="625" y="24" text-anchor="middle" fill="var(--accent)">COMPETITIVE</text>
+          <!-- nodes -->
+          <g font-size="12" text-anchor="middle">
+            <rect class="node" x="18" y="90" width="126" height="44" rx="6"/><text class="lbl" x="81" y="108">Production</text><text class="lbl" x="81" y="123">&amp; processing</text>
+            <rect class="node" x="182" y="90" width="120" height="44" rx="6"/><text class="lbl" x="242" y="108">Transmission</text><text class="lbl" x="242" y="123">(high-pressure)</text>
+            <rect class="node" x="336" y="90" width="120" height="44" rx="6"/><text class="lbl" x="396" y="108">Distribution</text><text class="lbl" x="396" y="123">(low-pressure)</text>
+            <rect class="node" x="494" y="90" width="112" height="44" rx="6"/><text class="lbl" x="550" y="112">Retail</text>
+            <rect class="node" x="640" y="90" width="120" height="44" rx="6"/><text class="lbl" x="700" y="108">End-users</text><text class="lbl" x="700" y="123">home · industry</text>
+          </g>
+          <!-- flows -->
+          <path class="flow" d="M146,112 L178,112"/>
+          <path class="flow" d="M304,112 L332,112"/>
+          <path class="flow" d="M458,112 L490,112"/>
+          <path class="flow" d="M608,112 L636,112"/>
+          <!-- storage + LNG feeding transmission -->
+          <rect class="node-2" x="182" y="156" width="120" height="22" rx="5"/><text class="lbl" x="242" y="171" text-anchor="middle">Storage</text>
+          <path class="flow" d="M242,156 L242,136"/>
+          <rect class="node-2" x="18" y="156" width="126" height="22" rx="5"/><text class="lbl" x="81" y="171" text-anchor="middle">LNG imports</text>
+          <path class="flow" d="M108,156 L182,134"/>
+          <!-- cost split annotation -->
+          <text class="lbl" x="242" y="200" text-anchor="middle" font-size="11">wholesale gas ≈ 69% of bill</text>
+          <text class="lbl" x="242" y="214" text-anchor="middle" font-size="11" fill="var(--accent-3)">network ≈ 31% (EU, 2011)</text>
+        </svg>
+        <figcaption>Fig 9.1 — The gas supply chain. Transmission &amp; distribution pipelines are the regulated natural-monopoly core; production, storage and retail can bear competition. Cost split: ACER (2012).</figcaption>
+      </figure>
+    </div>
+    <aside class="notes">Here's Decker's Figure 9.1, redrawn to do the teaching work the original doesn't. Read it left to right. Production and processing sit in a competitive band — many firms explore, drill and sell. Then the gas enters the natural-monopoly core: high-pressure transmission pipelines carry it over long distances to the citygate, where low-pressure distribution pipes fan it out to end-users. Those two pipeline layers are the regulated monopoly — huge sunk costs, economies of density, wasteful to duplicate. Then on the right, another competitive band: retail supply, where in many jurisdictions you can choose your supplier. Storage and LNG imports feed into the network at various points — I've drawn them in the accent colour because their monopoly status is genuinely contested, and we'll come back to that. Now the numbers along the bottom are the ones to remember: in fourteen European capitals in 2011, the wholesale gas commodity was about 69% of a household bill and network charges about 31%. In the US the wellhead price was around 36% of the residential price. So the regulated monopoly network, though economically critical, is a minority of what the customer pays — most of the bill is the commodity, set in competitive wholesale markets.</aside>
+  </section>
+
+  <!-- 6 · Production & the chain stages -->
+  <section class="slide" data-title="Production & transmission">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="current">Say which segments are natural monopoly</li>
+        <li>Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">conventional vs unconventional · compressor · looping · fracking</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.1.2 · STAGES OF THE CHAIN</p>
+      <h2 class="h2 mt-s">What actually happens at each link.</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Production &amp; processing <span class="tag pos">competitive</span></h4><p class="dim">Explore, drill, separate methane from impurities. Conventional reserves recover 80%+; unconventional (tight, coal-bed, shale) just 15–30% and need <em>fracking</em>. Not a natural monopoly — rising marginal costs, resource rents attract entrants.</p></div>
+        <div class="concept-box"><h4>Transmission <span class="tag pos">monopoly-ish</span></h4><p class="dim">High-pressure pipelines, ~25 mph in Britain. <b>Compressor stations</b> every 40–60 miles restore pressure; <b>looping</b> (parallel pipes) adds capacity &amp; stores gas. Economies of scale at the <em>pipeline</em> level — needn't be one owner.</p></div>
+        <div class="concept-box"><h4>Distribution <span class="tag pos">monopoly</span></h4><p class="dim">Small-diameter pipes from citygate to homes. Economies of <em>density</em> — inefficient to lay two networks. Britain has 8 networks; Germany ≈ 695; the USA ≈ 1,200.</p></div>
+        <div class="concept-box"><h4>Retail supply <span class="tag pos">competitive</span></h4><p class="dim">Marketing and billing to end-users. Low sunk costs, so open to competition and customer choice in Britain, parts of the USA and Australia.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Now walk each link in turn. Production: firms explore — usually alongside oil — then drill and process the gas to strip out impurities and liquids. There are conventional sources, which give up more than 80% of the gas, and unconventional ones — tight gas, coal-bed methane, and shale — which recover only 15 to 30% and need hydraulic fracking. Crucially, production is not a natural monopoly: marginal costs rise as the easy fields deplete, and the prospect of resource rents pulls in competitors, so it's typically left unregulated. Transmission: high-pressure pipes moving gas surprisingly slowly, about 25 miles an hour in Britain, with compressor stations every 40 to 60 miles to rebuild the pressure lost to friction and offtakes. Looping — laying parallel pipes — both adds capacity and doubles as storage. Note the subtle point: economies of scale exist at the individual pipeline level, so you don't need one integrated owner to capture them. Distribution is the clearer monopoly — economies of density mean two networks in one street is waste. And retail, with its low sunk costs, is the competitive tail. Keep the ownership-fragmentation numbers in mind — 8 networks in Britain versus 1,200 in the US — they matter for how you regulate.</aside>
+  </section>
+
+  <!-- 7 · Which segments are natural monopoly -->
+  <section class="slide" data-title="Monopoly segments">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="current">Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>The contested cases</h5>
+      <p class="dim" style="font-size:13px">transmission (usually) · storage (rarely) · pipe-to-pipe competition</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.2.1 · WHERE THE MONOPOLY REALLY IS</p>
+      <h2 class="h2 mt-s">Not every pipe is a monopoly.</h2>
+      <p class="lede mt-m">The textbook answer — transmission and distribution are natural monopolies — mostly holds. But the edges are blurry, and geography decides.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Distribution — yes</h4><p class="dim">Economies of density; duplicating a local network is clearly wasteful. The firmest natural-monopoly case in the chain.</p></div>
+        <div class="concept-box"><h4>Transmission — usually</h4><p class="dim">Highly capital-intensive, big sunk costs. But where pipes are <em>point-to-point</em> (USA, Australia), several can serve one market — <b>pipeline-to-pipeline competition</b>. Some US cities hook to 7 pipelines.</p></div>
+        <div class="concept-box"><h4>Storage — usually not</h4><p class="dim">Multiple owners can build facilities; scale economies are weaker. Only a <em>de facto</em> monopoly where one field is reached by a single pipe.</p></div>
+      </div>
+      <div class="callout"><b>Regulatory consequence.</b> In the USA a pipeline can apply to FERC for <em>market-based rates</em> if it proves it lacks market power — but few succeed, so FERC still sets most transmission rates. Makholm calls major pipelines "rather lousy natural monopolies".</div>
+    </div>
+    <aside class="notes">This slide refines the crude "transmission and distribution are monopolies" line, because the exam-and-practice subtlety is exactly here. Distribution is the safe case: economies of density, two networks in a street is obvious waste. Storage is the surprise on the other end — it's usually NOT a natural monopoly, because different owners can build facilities at different points, and scale economies are weaker; it only becomes a de facto monopoly where a single depleted field is reachable by just one pipeline. Transmission is the genuinely contested middle. In jurisdictions where pipelines run point-to-point — a field to a citygate, as in much of the USA and Australia — several parallel pipelines can compete, so-called pipeline-to-pipeline competition; Littlechild notes some big US cities connect to as many as seven pipelines. That's why US interstate operators can apply to FERC for market-based rates if they can show they lack market power. But — and this is the practical punchline — hardly any succeed, so FERC still sets most transmission rates on a cost basis, and Moselle and colleagues conclude that in most situations economies of scale still make transmission a natural monopoly. Geography decides.</aside>
+  </section>
+
+  <!-- 8 · Demand & balancing -->
+  <section class="slide" data-title="Demand & balancing">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="current">Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">nomination · imbalance charge · NBP · interruptible contract</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.1.1 / 9.2 · MATCHING STEADY SUPPLY TO SPIKY DEMAND</p>
+      <h2 class="h2 mt-s">Fields export steadily; demand swings — storage bridges the gap.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Winter demand can be <b>5×</b> summer; there are daily peaks morning and evening (the <em>diurnal swing</em>). Yet fields produce at a steady rate. The gap is closed by <b>storage</b> and by <b>interruptible contracts</b>. Shippers must keep <em>in balance</em>: gas injected ≈ gas withdrawn, or pay imbalance charges.</p>
+          <div class="callout" style="margin-top:14px"><b>Britain's answer.</b> Balancing happens daily at a single virtual point — the <b>National Balancing Point (NBP)</b>. National Grid Gas keeps the system in balance by trading on the OTC market or calling on storage.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Steady field supply against seasonal demand, with storage filling in summer and drawing in winter">
+            <line class="axis" x1="44" y1="14" x2="44" y2="205"/>
+            <line class="axis" x1="44" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="30" y="20">vol</text>
+            <text class="lbl" x="350" y="223">time →</text>
+            <text class="lbl" x="120" y="222" font-size="10">summer</text>
+            <text class="lbl" x="270" y="222" font-size="10">winter</text>
+            <!-- steady supply line -->
+            <line class="curve" x1="52" y1="128" x2="358" y2="128"/>
+            <text class="lbl" x="300" y="122" fill="var(--accent)">steady supply</text>
+            <!-- seasonal demand wave -->
+            <path class="curve-2" d="M52,150 C120,180 150,182 205,128 C250,86 300,60 358,66"/>
+            <text class="lbl" x="70" y="168" fill="var(--accent-3)">demand</text>
+            <!-- inject region (demand below supply) -->
+            <path class="fillA" d="M52,128 C120,128 150,128 205,128 C150,150 120,180 52,150 Z"/>
+            <text class="lbl" x="120" y="145" font-size="10" fill="var(--accent)">inject → store</text>
+            <!-- withdraw region (demand above supply) -->
+            <path class="fillB" d="M205,128 C250,86 300,60 358,66 L358,128 Z"/>
+            <text class="lbl" x="280" y="100" font-size="10" fill="var(--accent-3)">withdraw</text>
+          </svg>
+          <figcaption>Fig 9.2 — Storage bridges steady field supply and seasonal demand.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is where storability pays off in practice. Non-industrial gas demand is wildly seasonal — up to five times higher on a cold winter day than in summer — and it swings within the day too, the diurnal pattern with morning and evening peaks. But production fields export at a steady rate; you can't ramp a reservoir up and down to chase demand. My figure shows the mismatch: the flat accent line is steady supply, the wave is demand. In summer, demand dips below supply, so you inject the surplus into storage; in winter, demand tops supply, so you withdraw. Storage literally bridges the seasons — and it's only possible because gas, unlike electricity, keeps. On top of that, some jurisdictions use interruptible contracts — cheaper deals where the utility can cut you off at peak. Now the balancing rule: every shipper must keep its injections roughly equal to its customers' withdrawals, or face imbalance charges. In Britain this is elegant — balancing occurs daily at one virtual location, the National Balancing Point, and National Grid Gas squares the system by buying or selling on the OTC market, or calling storage. Contrast that with electricity, where the whole network has to be balanced second by second.</aside>
+  </section>
+
+  <!-- 9 · Unbundling & third-party access -->
+  <section class="slide" data-title="Unbundling & TPA">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="current">Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">unbundling · third-party access · Network Code · Gas Directives</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.2.1 · BREAKING UP THE INTEGRATED UTILITY</p>
+      <h2 class="h2 mt-s">Ring-fence the monopoly pipe; open everything else.</h2>
+      <p class="lede mt-m">Pre-reform, one firm — often state-owned — did it all. Restructuring separated transport from supply, published tariffs, and forced <b>third-party access (TPA)</b> so rivals could ship gas through the incumbent's pipes.</p>
+      <div class="timeline mt-m">
+        <ul>
+          <li><span class="yr">1986</span> British Gas privatised — but <em>vertically integrated</em>. Entry stifled; incumbent could foreclose via access charges.</li>
+          <li><span class="yr">1990s</span> Transport &amp; storage separated; tariffs published; a <b>Network Code</b> sets the multilateral rules for TPA. De-merger in 1997.</li>
+          <li><span class="yr">1998</span> First EU Gas Directive — choice of <em>negotiated</em> or <em>regulated</em> TPA. Germany chose negotiated → no regulator needed.</li>
+          <li><span class="yr">2003</span> Second Directive — negotiated TPA scrapped for networks; regulated access &amp; legal separation required.</li>
+          <li><span class="yr">2009</span> Third Directive — one of three ownership-separation options; ENTSO-G created to write EU network codes.</li>
+        </ul>
+      </div>
+      <div class="callout"><b>The lesson of British Gas.</b> Privatising a monopoly without unbundling it just creates a private monopoly. Competition only took off after the 1997 de-merger split supply from transport.</div>
+    </div>
+    <aside class="notes">Now the machinery of restructuring, and its spine is unbundling plus third-party access. Before reform, a single firm — British Gas, Gaz de France, and so on, often state-owned — owned production contracts, transmission, distribution, storage and retail. That structure makes competition impossible, because the incumbent controls the essential pipe. So restructuring did three things: separated the transport activities from the competitive ones, made the operator publish its tariffs, and imposed third-party access — an obligation to let rivals use the pipes on non-discriminatory terms. Watch the British timeline, because it carries a sharp lesson. British Gas was privatised in 1986 as a fully integrated entity, and — predictably — entry was stifled for a decade; the incumbent could set access charges to foreclose competitors. Real competition only arrived after the 1990s separation and the 1997 de-merger, backed by a Network Code — a multilateral contract defining the access rules. The EU then ratcheted through three Gas Directives: 1998 gave a choice of negotiated or regulated access; 2003 killed the negotiated option for networks; 2009 demanded ownership separation and created ENTSO-G to write the codes. The takeaway in the callout: privatisation without unbundling just hands you a private monopoly.</aside>
+  </section>
+
+  <!-- 10 · Wholesale trading & hubs -->
+  <section class="slide" data-title="Trading & hubs">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="current">Explain unbundling, TPA &amp; balancing</li>
+        <li>Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">spot market · hub · NBP · Henry Hub · take-or-pay</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.1.2 · NEW TRADING ARRANGEMENTS</p>
+      <h2 class="h2 mt-s">From 20-year contracts to liquid hubs.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Restructuring replaced fixed long-term contracts with short, flexible trading at <b>hubs</b> — points where pipelines interconnect, so liquidity is high and transaction costs low. Hubs price gas, host capacity trading and anchor futures.</p>
+          <div class="grid g2 mt-m">
+            <div class="concept-box"><h4>Physical hubs</h4><p class="dim">Gas physically passes through the pipe interchange. <b>Henry Hub</b> (Louisiana) — 16 pipelines, NYMEX delivery point.</p></div>
+            <div class="concept-box"><h4>Virtual hubs</h4><p class="dim">A whole zone, trade anywhere within it. Britain's <b>NBP</b> — Europe's most liquid; the Netherlands' <b>TTF</b>.</p></div>
+          </div>
+          <div class="callout" style="margin-top:14px"><b>Not all gone.</b> Long-term "take-or-pay" contracts still dominate ~75% of continental European procurement, often <em>oil-indexed</em>. Britain &amp; the USA price on "gas-on-gas competition".</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 300 250" role="img" aria-label="A trading hub where multiple pipelines interconnect and buyers and sellers meet">
+            <defs><marker id="arrow2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- hub -->
+            <circle cx="150" cy="125" r="34" class="node-2"/>
+            <text class="lbl-em" x="150" y="123" text-anchor="middle" fill="var(--accent)">HUB</text>
+            <text class="lbl" x="150" y="138" text-anchor="middle" font-size="10">NBP / Henry</text>
+            <!-- incoming pipelines -->
+            <g stroke="var(--text-3)" stroke-width="1.6" fill="none" marker-end="url(#arrow2)">
+              <path d="M40,50 L124,108"/>
+              <path d="M40,200 L124,142"/>
+              <path d="M150,30 L150,88"/>
+            </g>
+            <!-- outgoing -->
+            <g stroke="var(--accent-3)" stroke-width="1.6" fill="none" marker-end="url(#arrow2)">
+              <path d="M176,108 L262,50"/>
+              <path d="M176,142 L262,200"/>
+              <path d="M150,162 L150,220"/>
+            </g>
+            <g class="lbl" font-size="10">
+              <text x="30" y="44">producer</text>
+              <text x="24" y="214">LNG / storage</text>
+              <text x="120" y="24">import pipe</text>
+              <text x="238" y="44">shipper</text>
+              <text x="228" y="214">generator</text>
+              <text x="128" y="236">retailer</text>
+            </g>
+          </svg>
+          <figcaption>Fig 9.3 — A trading hub: many pipelines interconnect → liquidity, price discovery, capacity &amp; futures trading.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Restructuring didn't just unbundle the physical chain; it transformed how gas is bought and sold. The old world ran on long-term contracts — up to twenty or twenty-five years, British Gas with the North Sea producers — which underpinned the huge upfront investments and shared risk. The new world runs on hubs, and the figure shows why they work: a hub is a point where many pipelines interconnect, so lots of buyers and sellers meet there. That concentration gives you liquidity, low transaction costs, transparent price discovery, and a place to trade secondary capacity and futures. Physical hubs, like Henry Hub in Louisiana with sixteen pipelines, are actual pipe interchanges and serve as the NYMEX delivery point. Virtual hubs, like Britain's NBP or the Dutch TTF, are whole zones where you can inject or withdraw anywhere inside — the NBP is the most liquid gas market in Europe. But don't overstate the shift: long-term take-or-pay contracts still cover roughly three-quarters of continental European procurement, and there they're often indexed to oil prices — which sets up the gas-on-gas-versus-oil-linked debate we'll hit later. Britain and the US, by contrast, price gas on gas.</aside>
+  </section>
+
+  <!-- 11 · BOX 9.1 Entry auctions -->
+  <section class="slide" data-title="Box 9.1 · Entry auctions">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="current">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">entry capacity · baseline · firm vs interruptible · clearing price</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">BOX 9.1 · CASE STUDY</p>
+      <div class="casebox">
+        <h4>Allocating capacity: gas entry auctions in Britain</h4>
+        <p>Since <b>1999</b>, Britain has auctioned entry-capacity rights to the National Transmission System (NTS) — replacing unlimited purchase at regulated rates. <b>National Grid Gas</b> must offer a baseline volume at each entry point (set in the price control) plus incremental capacity above it. Reserve prices come from NGG's Transportation Model, reflecting long-run incremental cost.</p>
+        <p><b>The auction ladder.</b> ① Annual auction of <em>quarterly</em> capacity — long-term (2–16 yrs ahead), up to 90% of baseline, allocated at a clearing price and signalling demand for incremental capacity. ② Annual auction of <em>monthly</em> capacity — mid-term, pay-as-bid. ③ Rolling monthly → <em>daily</em> (7 days ahead, pay-as-bid) → <em>on-the-day</em> (6 a.m., no reserve). ④ <em>Interruptible</em> capacity, day-ahead, pay-as-bid, no reserve.</p>
+        <p><b>Two product types.</b> <span class="tag pos">firm</span> a right to flow gas (or compensation if denied) · <span class="tag neu">interruptible</span> flow that NGG can cut, no compensation. Rights are tradable; NGG buys them back at market prices to neutralise. Widely judged a success — ACER now recommends auctions across ~130–150 EU interconnection points.</p>
+      </div>
+    </div>
+    <aside class="notes">Box 9.1, the British entry-capacity auctions, is the chapter's showcase of auctions done well — and it's a UK story, so lean into it. Before 1999, a shipper could buy unlimited entry or exit capacity at a regulated rate meant to reflect long-run marginal cost. Since 1999 that's been replaced by auctions. National Grid Gas is obliged to offer a baseline volume at each entry point — reflecting the network's physical capability, set through the price control — plus incremental capacity above baseline. The design is a laddered sequence, and it's worth knowing the shape: it starts with annual auctions of quarterly capacity that allocate up to 90% of baseline as far as sixteen years ahead, which does double duty by signalling demand for new incremental capacity; then annual monthly auctions, pay-as-bid; then rolling monthly, daily, and finally on-the-day with no reserve price; plus interruptible capacity day-ahead. Two product types: firm rights, which entitle you to flow gas or be compensated if denied, and interruptible rights, which NGG can cut without compensation. Rights are tradable, and if NGG needs the capacity back it buys it at market prices. The verdict is positive — so positive that ACER wants auctions rolled out across 130 to 150 interconnection points Europe-wide. The health warning from Klemperer and Newbery: badly designed auctions can entrench market power, so design matters.</aside>
+  </section>
+
+  <!-- 12 · Capacity allocation mechanics -->
+  <section class="slide" data-title="Capacity allocation">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="current">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">open season · use-it-or-lose-it · capacity release · secondary market</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.2.1 · HOW CAPACITY IS ALLOCATED</p>
+      <h2 class="h2 mt-s">Auctions clear scarce pipe — and reveal who wants new pipe.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Beyond Britain: the USA uses <b>open seasons</b> — sealed-bid sales of capacity on the operator's website — which also test whether enough shippers will commit to justify building new pipe. Unused capacity is resold in a <b>capacity release</b> secondary market. <b>Use-it-or-lose-it</b> rules stop incumbents hoarding to foreclose entrants.</p>
+          <div class="callout" style="margin-top:14px"><b>Entry auction, intuitively.</b> The operator posts price steps ≈ the long-run incremental cost of adding capacity. Shippers bid quantities at each step; the market clears where demand meets available capacity.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="A capacity auction where a stepped supply of capacity meets shipper demand at a clearing price">
+            <line class="axis" x1="48" y1="14" x2="48" y2="205"/>
+            <line class="axis" x1="48" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="34" y="20">£/unit</text>
+            <text class="lbl" x="320" y="223">capacity</text>
+            <!-- stepped capacity supply (reserve price steps) -->
+            <path class="curve" d="M48,180 L110,180 L110,150 L180,150 L180,118 L250,118 L250,80 L320,80 L320,44 L360,44"/>
+            <text class="lbl" x="250" y="72" fill="var(--accent)" font-size="10">reserve-price steps</text>
+            <text class="lbl" x="120" y="196" font-size="10">baseline</text>
+            <text class="lbl" x="286" y="102" font-size="10" fill="var(--accent-3)">incremental</text>
+            <!-- demand curve -->
+            <path class="curve-2" d="M60,50 L340,190"/>
+            <text class="lbl" x="300" y="182" fill="var(--accent-3)">shipper demand</text>
+            <!-- clearing point -->
+            <circle cx="222" cy="118" r="4" fill="var(--accent)"/>
+            <line class="guide" x1="222" y1="118" x2="222" y2="205"/>
+            <line class="guide" x1="48" y1="118" x2="222" y2="118"/>
+            <text class="lbl-em" x="10" y="122" fill="var(--accent)">clear</text>
+            <text class="lbl" x="210" y="219" font-size="10">Q*</text>
+          </svg>
+          <figcaption>Fig 9.4 — Entry-capacity auction: stepped capacity supply meets shipper demand at the clearing price.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This slide makes the auction concrete with a supply-and-demand picture, and generalises beyond Britain. The USA does something related through open seasons — the operator runs a sealed-bid sale of capacity parcels on its website. Open seasons do two jobs at once: they allocate existing capacity, and they test market interest for new pipe — the operator only builds if enough shippers book firm capacity to make the project bankable. That's how the US finances private pipelines without a state guarantee. Two supporting features to know. First, capacity release: whoever holds capacity they aren't using can resell it in a secondary market, hosted on the pipelines' electronic bulletin boards — that keeps scarce pipe from sitting idle. Second, use-it-or-lose-it conditions, which stop a big incumbent buying up capacity purely to keep rivals out. Now the figure: think of the operator posting a stepped supply of capacity, where each step's price roughly equals the long-run incremental cost of providing more — baseline capacity cheap, incremental capacity dearer. Shippers' willingness-to-pay is the downward demand line. The auction clears where they cross, at Q-star and the clearing price. Elegant: the same mechanism both rations today's pipe and signals whether tomorrow's pipe is worth building.</aside>
+  </section>
+
+  <!-- 13 · Entry-exit tariffs -->
+  <section class="slide" data-title="Entry–exit tariffs">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="current">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">postage stamp · point-to-point · entry–exit · virtual pipeline</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.2.2 · TARIFF STRUCTURES</p>
+      <h2 class="h2 mt-s">How you price the pipe shapes the market.</h2>
+      <p class="lede mt-m">Three ways to set the capacity charge — and the choice depends on the network's shape and what kind of trading you want to foster.</p>
+      <div class="grid g3 mt-m">
+        <div class="concept-box"><h4>Postage stamp</h4><p class="dim">Flat charge, distance-blind, levied at entry. Politically easy but <em>not</em> cost-reflective. Denmark, Spain, Finland, Sweden.</p></div>
+        <div class="concept-box"><h4>Point-to-point</h4><p class="dim">Charge ∝ distance from injection to withdrawal. Fits <em>point-to-point</em> merchant-pipeline networks — the US model.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Entry–exit</h4><p class="dim">Separate entry &amp; exit charges; total = entry + exit. Fits <em>meshed</em> networks. EU-wide since the 2009 Gas Regulation; also UK, Italy, Germany, France.</p></div>
+      </div>
+      <div class="callout"><b>Why entry–exit is clever.</b> By de-coupling where gas enters from where it leaves, any two points on the network can trade — creating "<em>virtual pipelines</em>" that promote liquid spot markets. Separately, ~100% of transport cost is <em>fixed</em>, so how you split capacity vs commodity charges has real distributional bite.</div>
+    </div>
+    <aside class="notes">Once you've decided to regulate the pipe, you have to choose how to price it, and there are three methods with genuinely different economics. Postage stamp is the simplest: one flat charge regardless of distance, collected at entry. It's politically attractive — everyone pays the same — but it's not cost-reflective, which distorts location decisions; Denmark, Spain and the Nordics use it. Point-to-point charges by the distance from where you inject to where you withdraw; it suits networks that genuinely are point-to-point, a field to a citygate, which is the American merchant-pipeline pattern. The third, entry–exit, is the one Europe standardised on in the 2009 Gas Regulation and it's the sophisticated choice for meshed, highly-interconnected networks. You pay a separate charge to enter at one point and to exit at another, and — this is the beautiful bit — because entry and exit are de-coupled from any physical route, any two points on the network can effectively trade with each other. That creates virtual pipelines and feeds liquid spot markets. One more thing regulators wrestle with: almost all transmission cost is fixed and sunk, so the split between a fixed capacity charge and a per-unit commodity charge is somewhat arbitrary — but it decides who bears the cost, and residential customers who book lots of peak capacity are especially exposed.</aside>
+  </section>
+
+  <!-- 14 · Price controls -->
+  <section class="slide" data-title="Price controls">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="current">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li>Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">price cap · rate of return · building blocks · benchmarking · pass-through</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.2.2 · FORM OF PRICE CONTROL</p>
+      <h2 class="h2 mt-s">Two families — and a Atlantic divide.</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Price / revenue cap <span class="tag pos">UK · EU · Australia</span></h4><p class="dim">Ceiling on average price or revenue for ~5 years, set with the <b>building-block</b> approach. Layered incentives: efficiency carryover, error-correction, investment incentives, and cost <em>pass-throughs</em> (shrinkage, safety, licence fees). Benchmarking increasingly informs it — Germany used 187 distributors.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-3)"><h4>Rate of return <span class="tag neu">USA</span></h4><p class="dim">Recover prudent costs + a fair return on the asset base, set in a <b>rate case</b>. Adaptations: rate freezes, revenue trackers, multi-year caps, earnings-sharing. But increasingly settled by negotiation (Box 9.2).</p></div>
+      </div>
+      <div class="callout"><b>Quality &amp; safety.</b> Gas outages are rarer and more localised than electricity's, so quality is handled largely through <em>health-and-safety</em> obligations — with some financial service incentives and penalties layered on.</div>
+    </div>
+    <aside class="notes">Price regulation of the monopoly transport core divides neatly along Atlantic lines, and both families should be familiar from the price-control module. Europe, Britain and Australia use price or revenue caps: the regulator sets a ceiling on how fast average prices or revenues can rise over a fixed period, usually five years, computed with the building-block approach — allowed opex, a return on the regulated asset base, depreciation. Britain started with an average revenue cap and moved to a hybrid revenue cap. Onto that base they bolt incentive mechanisms: efficiency carryover so the firm keeps a slice of its savings, error-correction for over- or under-recovery, and specific incentives for interconnector or storage investment. Certain volatile costs — gas lost in transport, called shrinkage, plus safety and licence costs — get passed straight through. And benchmarking is increasingly used to set efficiency targets; Germany benchmarked 187 distributors. The US, by contrast, mostly uses rate-of-return regulation set in a rate case, though with many adaptations — freezes, trackers, earnings-sharing — and, as the next box shows, most cases are now settled by negotiation rather than fought out. One nice gas-specific point: because outages are rare and local, quality is managed mainly through health-and-safety rules rather than the elaborate reliability incentives electricity needs.</aside>
+  </section>
+
+  <!-- 15 · BOX 9.2 Negotiated settlements -->
+  <section class="slide" data-title="Box 9.2 · Negotiated settlements">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="current">Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">negotiated settlement · rate case · FERC · NEB · hold-out</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">BOX 9.2 · CASE STUDY</p>
+      <div class="casebox">
+        <h4>Negotiated settlements in the North American gas industry</h4>
+        <p>Instead of a full rate hearing, pipeline and shippers <b>negotiate</b> the rates. In the US interstate pipeline sector this is now dominant — an estimated <b>90%</b> of FERC rate cases are settled rather than litigated. The pipeline files its rate-of-return calculation; <b>FERC trial staff</b> facilitate, prepare a "first settlement offer", and broker bilateral and multilateral deals.</p>
+        <p><b>Participants:</b> mainly large distribution companies (customers), state PUCs representing final users, sometimes rival pipelines and future customers. A <em>unanimous</em> agreement is accepted as a whole; where consensus fails, consenting parties can be bound while non-consenting parties go to the standard process. Canada's <b>NEB</b> uses it for major pipelines — cutting processing time by ~a third since the mid-1990s.</p>
+        <p><b>Design lessons.</b> The NEB moved from vetting each parameter (which <em>discouraged</em> settlements) to accepting or rejecting the package whole; and it now sets generic default values for the contentious <em>cost of capital</em> so negotiations don't stall.</p>
+      </div>
+    </div>
+    <aside class="notes">Box 9.2 introduces a genuinely different way to regulate, and it connects back to Chapter 3's discussion of alternatives to conventional price control. Instead of the regulator adjudicating a full rate case, the pipeline and its customers negotiate the rates directly, and the regulator ratifies. In the US interstate pipeline sector this is now the norm — around 90% of FERC rate cases settle rather than going to a formal hearing. The process: the pipeline files its conventional rate-of-return numbers, then FERC's trial staff actively broker a deal, even producing a first settlement offer to anchor talks. The parties around the table are the big distribution companies as customers, state utility commissions speaking for final users, and sometimes rival pipelines. If everyone agrees, the package is accepted whole; if not, consenting parties can still be bound while hold-outs go to the standard process. Canada's National Energy Board adopted it too, cutting regulatory processing time by roughly a third. And notice the two design lessons, because they're transferable: the NEB stopped picking apart each parameter — that just gave every party an incentive to hold out — and instead takes or leaves the whole package; and it sets a generic default cost of capital so the single most contentious number can't stall the whole negotiation. Efficient, but you worry about bargaining power imbalances.</aside>
+  </section>
+
+  <!-- 16 · Storage & LNG -->
+  <section class="slide" data-title="Storage & LNG">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="current">Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">salt cavern · depleted field · linepack · regasification · open access</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.1.2 / 9.3.3 · STORAGE &amp; LNG</p>
+      <h2 class="h2 mt-s">Storage: competitive in principle, monopoly in places.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Storage smooths daily and seasonal swings and provides system insurance. Forms range from <b>salt caverns</b> and <b>depleted fields</b> to above-ground <b>LNG tanks</b> and in-pipe <b>linepack</b>. It's generally <em>not</em> a natural monopoly — but a facility reachable by a single pipe, or one owned by an integrated operator, can hold de facto power. Hence open-access oversight.</p>
+          <div class="callout" style="margin-top:14px"><b>The LNG classification puzzle.</b> Is a regasification terminal <em>transport/storage</em> (→ open access) or a <em>supply source</em> (→ exempt)? The USA re-classified LNG as supply in 2002 to spur investment; the EU allows terminals to <em>apply</em> for TPA exemption.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 300 250" role="img" aria-label="Forms of gas storage feeding a transmission pipeline">
+            <defs><marker id="arrow3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <!-- pipeline spine -->
+            <line x1="30" y1="125" x2="270" y2="125" stroke="var(--accent-3)" stroke-width="4"/>
+            <text class="lbl" x="150" y="116" text-anchor="middle" font-size="10" fill="var(--accent-3)">transmission</text>
+            <!-- salt cavern -->
+            <ellipse cx="70" cy="200" rx="28" ry="18" class="node-2"/>
+            <text class="lbl" x="70" y="204" text-anchor="middle" font-size="9">salt cavern</text>
+            <path class="flow" d="M70,182 L70,131" marker-end="url(#arrow3)"/>
+            <!-- depleted field -->
+            <ellipse cx="150" cy="205" rx="30" ry="16" class="node-2"/>
+            <text class="lbl" x="150" y="209" text-anchor="middle" font-size="9">depleted field</text>
+            <path class="flow" d="M150,189 L150,131" marker-end="url(#arrow3)"/>
+            <!-- LNG tank -->
+            <rect x="212" y="184" width="44" height="30" rx="4" class="node-2"/>
+            <text class="lbl" x="234" y="203" text-anchor="middle" font-size="9">LNG tank</text>
+            <path class="flow" d="M234,184 L234,131" marker-end="url(#arrow3)"/>
+            <!-- linepack -->
+            <text class="lbl" x="150" y="60" text-anchor="middle" font-size="10" fill="var(--accent)">linepack: store in the pipe itself</text>
+            <path class="flow" d="M120,68 C140,90 160,90 180,110" marker-end="url(#arrow3)"/>
+          </svg>
+          <figcaption>Fig 9.5 — Storage forms feeding the network; linepack stores gas in the pipe itself.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Storage deserves its own slide because it's where gas is most distinctive and where the monopoly question is genuinely unsettled. It does two jobs: smoothing — daily and seasonal — and system insurance, a public good for anyone not on an interruptible contract, as Newbery puts it. The forms are worth picturing: underground in salt caverns and depleted gas fields; above ground in LNG tanks; and cleverly, linepack — you raise the pressure in the pipeline overnight and effectively store gas in the pipe itself, releasing it at peak. Now the economics: storage is generally NOT a natural monopoly, because rival owners can build facilities in different places and scale economies are modest. But two situations create de facto market power — a facility reachable by only one pipeline, or a store owned by an integrated pipeline operator who might withhold capacity to favour its own affiliate. That's why storage is subject to third-party access oversight in the US and EU even though it isn't a textbook monopoly. Then the LNG classification puzzle in the callout, which is a lovely example of regulatory boundary-drawing having real consequences: if you call a regasification terminal transport-and-storage, it must offer open access; if you call it a supply source, it's exempt and easier to finance. The US re-classified LNG as supply in 2002 precisely to unblock investment.</aside>
+  </section>
+
+  <!-- 17 · Restructuring: US vs Europe -->
+  <section class="slide" data-title="Restructuring outcomes">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="current">Weigh storage, LNG &amp; shale policy</li>
+        <li>Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">FERC Order 636 · gas-on-gas · target model · concentration</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.3.1 · DID RESTRUCTURING WORK?</p>
+      <h2 class="h2 mt-s">The USA nailed it; Europe is still catching up.</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>USA <span class="tag pos">success</span></h4><p class="dim">Federal-led: wellhead deregulation (1978), open access (Order 436, 1985), full restructuring (Order 636, 1992). Liquid hubs, robust secondary capacity market, competitive wholesale prices. Makholm: the "<em>Stradivarius</em> of inland transport regulation". Rocky transition — stranded take-or-pay contracts.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-3)"><h4>Continental Europe <span class="tag neu">lagging</span></h4><p class="dim">Patchy Directive implementation. 2007 Sector Inquiry: high concentration (3 wholesalers &gt;90% supply in 12 countries), illiquid hubs, entrants starved of gas, affiliate favouritism. EC now uses <em>competition law</em> against incumbents (Gazprom).</p></div>
+      </div>
+      <div class="callout"><b>Britain is the European success.</b> After the 1997 de-merger, a liquid NBP, diverse supply (UKCS, Norway, the interconnector, LNG), merchant investment (Langeled) and high switching. The Netherlands and Spain also fare relatively well.</div>
+    </div>
+    <aside class="notes">So did all this restructuring deliver? The honest answer is: spectacularly in North America, patchily in continental Europe, well in Britain. The US story is federal-led and, by Decker's telling, a triumph — Makholm calls it the Stradivarius of inland transport regulation. The sequence: wellhead price deregulation from 1978, then FERC's open-access Order 436 in 1985, then the full restructuring Order 636 in 1992 that forced pipelines to separate sales from transport. The result is deep, liquid hubs, a working secondary market in capacity, and competitive wholesale prices set by many buyers and sellers. It wasn't painless — the take-or-pay contracts signed in the late 1970s were left stranded and spawned years of litigation. Continental Europe is the laggard: Member States implemented the Directives slowly and incompletely, and the 2007 Sector Inquiry found high market concentration — three wholesalers controlling over 90% of supply in twelve countries — illiquid hubs, entrants unable to source gas, and incumbents favouring their own affiliates. So the Commission increasingly reaches for competition law, as in the Gazprom case. Britain, though, is the European bright spot: after the 1997 de-merger it built the liquid NBP, attracted diverse supply and merchant investment like the Langeled pipeline, and enjoys high switching. The lesson: more than one restructuring recipe can work, but you need access to competitive gas supply.</aside>
+  </section>
+
+  <!-- 18 · Retail competition -->
+  <section class="slide" data-title="Retail competition">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="done">Weigh storage, LNG &amp; shale policy</li>
+        <li class="current">Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">customer choice · dual-fuel · bundled vs unbundled · switching</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.2.1 / 9.3.1 · RETAIL SUPPLY</p>
+      <h2 class="h2 mt-s">Let customers choose their supplier.</h2>
+      <p class="lede mt-m">Retail has low sunk costs, so it can bear competition. Full <b>customer choice</b> now reaches households in Britain, ~21 US states, Australia and much of the EU — with <b>dual-fuel</b> gas-and-power offers and innovative tariffs.</p>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Bundled vs unbundled</h4><p class="dim">A <em>bundled</em> price rolls commodity + transport into one. <em>Unbundled</em> lets customers buy the gas commodity separately from transportation — the more competitive form. EU legally unbundled distribution from retail from 2007.</p></div>
+        <div class="concept-box"><h4>Switching rates vary</h4><p class="dim">Britain high (≈17–19%); Netherlands 9%, Spain 6%; but &lt;1% in the Czech Republic, Denmark, Slovakia, Sweden despite rising prices. Concentration stays high — 3 retailers &gt;80% in 14 EU states.</p></div>
+      </div>
+      <div class="callout"><b>The promise.</b> Entrants bring new practices and sharper incentives to learn what customers want — the case for removing entry restrictions from Chapter 3. But does choice actually help consumers? Box 9.3 complicates the picture.</div>
+    </div>
+    <aside class="notes">Retail is the competitive tail of the chain, and its economics are simple: entry costs are low — you mostly need to secure supply and run marketing and billing, no different in scale from other consumer-services retailing. So many jurisdictions opened it to full customer choice: Britain, around twenty-one US states, Australia, and much of the EU, often with dual-fuel offers bundling gas and electricity from one supplier. One technical distinction worth knowing: bundled versus unbundled service. A bundled price rolls the gas commodity and the transport charges into a single number; an unbundled service lets the customer buy the commodity separately and pay transport on its own — that's the more genuinely competitive form, and the EU required legal unbundling of distribution from retail from 2007. But look at the switching data, because it foreshadows the problem: Britain switches a lot, 17 to 19%, the Netherlands and Spain moderately, but under 1% of households switch in the Czech Republic, Denmark, Slovakia and Sweden even as prices rise. And concentration stays stubbornly high — three retailers hold over 80% of the market in fourteen EU states. The theoretical promise, straight from Chapter 3, is that entrants bring innovation and stronger incentives to discover consumer preferences. Whether that promise is kept is exactly what the next box interrogates.</aside>
+  </section>
+
+  <!-- 19 · BOX 9.3 Retail competition perceptions -->
+  <section class="slide" data-title="Box 9.3 · Retail perceptions">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="done">Weigh storage, LNG &amp; shale policy</li>
+        <li class="current">Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">status-quo bias · tariff complexity · behavioural economics · Ofgem</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">BOX 9.3 · CASE STUDY</p>
+      <div class="casebox">
+        <h4>Changing perceptions of retail energy market competition in Britain</h4>
+        <p>Gas retail choice opened 1996–98, electricity 1998–99. The bright side: a flowering of tariffs — dual-fuel, green, wholesale-linked. Ofgem counts tariffs rising from <b>~200 in 2007 to ~400 in 2011</b>. Up to 2007 the regulator saw strong competition and rising switching.</p>
+        <p><b>Then the doubt.</b> Later Ofgem investigations concluded many consumers — especially "vulnerable" ones — weren't fully benefiting, because of <em>tariff complexity</em>. Drawing on <b>behavioural economics</b>, Ofgem found "status-quo bias" and "limited capacity when making decisions", with market features <em>accentuating</em> those biases — and suppliers possibly having an incentive to multiply tariffs to blunt switching.</p>
+        <p><b>The intervention (2013).</b> Limit each supplier to <b>4 core tariffs</b>, standardise structures, simplify bundles — backed by the Prime Minister. <b>The critique:</b> restricting choice may <em>soften</em> competition and reduce firms' incentive to cut prices; an earlier ban on regional price discrimination is thought to have <em>reduced</em> competition.</p>
+      </div>
+    </div>
+    <aside class="notes">Box 9.3 is the intellectually richest of the three, and it's a very British — very Ofgem — story about how confidence in retail competition curdled into doubt. Retail choice opened in the late 1990s, gas first, then electricity, and at first it looked like a textbook success: a proliferation of tariffs — dual-fuel, green, wholesale-price-linked — with the count doubling from about 200 in 2007 to 400 in 2011, and rising switching. Up to 2007 Ofgem was happy. Then the reappraisal. Later investigations found that many consumers, particularly vulnerable ones, weren't actually benefiting, and the culprit was tariff complexity. Ofgem reached for behavioural economics — it found status-quo bias and limited decision-making capacity, and, more damningly, argued the market's features were amplifying those biases; suppliers might even have an incentive to multiply confusing tariffs precisely to blunt switching and keep prices up. So in 2013 Ofgem intervened: cap each supplier at four core tariffs, standardise structures, simplify — and the Prime Minister endorsed it. But — and this is the sting economists flagged — restricting the number of tariffs can soften competition, making it easier for suppliers to all sit at a higher price; and there's real evidence that an earlier ban on regional price discrimination reduced competition. It's a beautiful cautionary tale: choice is not automatically good, but nor is restricting choice. Also note the tension with the smart-meter rollout, which assumes engaged, informed consumers.</aside>
+  </section>
+
+  <!-- 20 · Security of supply & investment -->
+  <section class="slide" data-title="Security & investment">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="done">Weigh storage, LNG &amp; shale policy</li>
+        <li class="current">Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">import dependence · open season · incremental pricing · interconnector</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.3.2 / 9.3.3 · SECURITY OF SUPPLY &amp; INVESTMENT</p>
+      <h2 class="h2 mt-s">Can a competitive market keep the lights on?</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>The worry</h4><p class="dim">Depleting indigenous reserves; rising import dependence (EU ≈64% in 2009 → &gt;80% by 2030) from potentially unstable regions. Gas-fired power ties gas security to <em>electricity</em> security. Does short-term trading under-provide long-term supply?</p></div>
+        <div class="concept-box"><h4>The reassurance</h4><p class="dim">The USA argues security comes <em>from</em> liquid, competitive markets + predictable pipeline regulation — "bankable" networks (Makholm). Shale flipped the US from projected importer to prospective net exporter (~2021).</p></div>
+      </div>
+      <div class="callout"><b>How markets fund the pipe.</b> The <b>open-season</b> process — build only if enough shippers book firm capacity — underpins US pipeline investment and limits stranding. <b>Incremental pricing</b> puts expansion costs on the shippers who cause them (vs "rolled-in" spreading across all). Britain's 16-year entry auctions do the same job; the EU is adopting open seasons for interconnectors.</div>
+    </div>
+    <aside class="notes">Two linked policy anxieties: will supply be secure, and will the private market fund the infrastructure? On security, the fear is real in Europe — indigenous reserves like the UK continental shelf have peaked, import dependence was about 64% in 2009 and heading past 80% by 2030, and much of that gas comes from regions seen as politically risky. And because gas is now the fastest-growing fuel for power generation, a gas supply failure becomes an electricity failure too. There's a deeper worry that a restructured, short-term-trading market simply won't bring forward the long-term supply commitments the old long-term contracts used to guarantee. The American answer is almost the opposite: security comes FROM having deep, liquid, competitive markets plus a predictable regulatory regime that makes pipelines bankable — and shale has turned the US from a projected LNG importer into a prospective net exporter around 2021, dissolving the anxiety entirely. On investment, the key mechanism is the open season: the operator only builds new pipe if enough shippers book firm capacity, which both funds the asset and limits the risk of stranding it. Pair that with incremental pricing — putting the cost of expansion on the shippers who trigger it, rather than rolling it in across all users — and you have a market-based way to grow the network. Britain's sixteen-year entry auctions do the same commitment-signalling job, and the EU is adopting open seasons for cross-border interconnectors.</aside>
+  </section>
+
+  <!-- 21 · Pricing, LNG & the two-tier debate -->
+  <section class="slide" data-title="Gas-on-gas vs oil-linked">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="done">Weigh storage, LNG &amp; shale policy</li>
+        <li class="current">Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">gas-on-gas · oil indexation · two-tier pricing · arbitrage · volatility</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.3.4 · PRICING &amp; CONTRACTING</p>
+      <h2 class="h2 mt-s">Should gas price track gas — or track oil?</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Two philosophies. <b>Gas-on-gas competition</b> (USA, Britain) — price set by gas supply &amp; demand at hubs. <b>Oil indexation</b> (much of Europe &amp; Asia) — contract price escalates with oil, the historic "market-value" rationale to make gas a substitute fuel.</p>
+          <div class="callout" style="margin-top:14px"><b>The tension.</b> Where hubs and oil-linked contracts coexist, a <b>two-tier</b> price emerges. Oil-linking divorces gas from its own fundamentals — leaving generators "at the mercy of an oil cartel." In 2009 spot gas sat well below oil-indexed gas. LNG arbitrage between the Pacific and Atlantic basins may erode the gap toward a <em>global</em> gas price.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Oil-indexed gas price diverging from hub spot gas price over time">
+            <line class="axis" x1="48" y1="14" x2="48" y2="205"/>
+            <line class="axis" x1="48" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="34" y="20">£</text>
+            <text class="lbl" x="350" y="223">time</text>
+            <!-- oil-indexed (volatile, higher) -->
+            <path class="curve-2" d="M52,150 C100,90 130,170 170,110 C210,60 250,120 290,70 C320,40 340,60 358,50"/>
+            <text class="lbl" x="250" y="52" fill="var(--accent-3)" font-size="10">oil-indexed gas</text>
+            <!-- gas-on-gas (lower, own path) -->
+            <path class="curve" d="M52,160 C110,150 160,158 210,150 C260,145 310,150 358,148"/>
+            <text class="lbl" x="250" y="168" fill="var(--accent)" font-size="10">gas-on-gas (hub)</text>
+            <!-- 2009 divergence marker -->
+            <line class="guide" x1="210" y1="110" x2="210" y2="150"/>
+            <text class="lbl-em" x="150" y="128" fill="var(--accent-3)" font-size="10">2009 gap</text>
+          </svg>
+          <figcaption>Fig 9.6 — Oil-indexed gas can diverge sharply from hub-priced gas — the "two-tier" problem.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">A distinct pricing debate, and it's one of the liveliest in European gas policy. There are two philosophies for setting the wholesale gas price. Gas-on-gas competition, used in the US and Britain, means the price emerges from gas supply and demand at the hubs — gas priced against gas. Oil indexation, still dominant in continental Europe and Asia, links the contract price to oil through an escalation clause. The historic rationale — the market-value principle — was to keep gas priced as a substitute for oil so it would sell, and to give producers the confidence to invest. But as hubs have grown, the two systems coexist awkwardly, producing a two-tier market: some gas priced off long-term oil-linked contracts, some off liquid spot hubs. The figure shows the danger — the oil-indexed line, tracking a volatile crude market, can diverge sharply from the hub line, and in 2009 spot gas sat well below oil-indexed gas. The critique is sharp: oil-linking divorces gas from its own fundamentals and, as Hughes puts it, leaves gas users like power generators at the mercy of an oil cartel. And the wildcard is LNG: as shipping costs fall, arbitrage between the Pacific and Atlantic basins could erode regional price gaps and push toward a genuinely global gas price — which would make oil indexation look increasingly indefensible.</aside>
+  </section>
+
+  <!-- 22 · Environmental policy -->
+  <section class="slide" data-title="Environment: gas power & shale">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="done">Weigh storage, LNG &amp; shale policy</li>
+        <li class="current">Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">dash for gas · bridge fuel · fracking · methane leakage</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">9.3.5 · ENVIRONMENTAL POLICY</p>
+      <h2 class="h2 mt-s">Two debates that could remake the industry.</h2>
+      <div class="grid g2 mt-m">
+        <div class="concept-box"><h4>Gas-fired electricity</h4><p class="dim">Gas is the fastest-growing power fuel — UK gas-for-power rose from <b>0.1% (1990) to 47% (2010)</b>, the "dash for gas". Cleaner than coal (~45% of unabated coal's CO₂), flexible to balance renewables. <b>Bridge fuel</b> to a low-carbon future — or a fossil-fuel distraction that misses a "golden opportunity"?</p></div>
+        <div class="concept-box"><h4>Shale &amp; fracking</h4><p class="dim">Transformed US supply and crashed prices. But <b>fracking</b> raises water-contamination and <b>methane-leakage</b> fears — banned in France and Bulgaria. A European Parliament study warned methane emissions could have a "huge impact" on the GHG balance, making benefits "short-lived".</p></div>
+      </div>
+      <div class="callout"><b>Why it matters for the regulator.</b> Both debates bear directly on future <em>supply</em> (shale availability) and <em>demand</em> (gas in the power mix) — and so on the structure and regulation of the whole industry.</div>
+    </div>
+    <aside class="notes">Decker says environmental issues are less pressing for gas than for electricity or water, but two debates could still remake the industry, and both are unresolved. First, gas-fired electricity. Gas is the fastest-growing fuel in the power mix almost everywhere — the UK figure is startling, from 0.1% of gas going to electricity in 1990 to 47% by 2010, the so-called dash for gas. The case for it: gas emits roughly 45% of the CO2 of unabated coal, and gas plants are flexible enough to balance intermittent renewables. So one camp calls gas a bridge fuel to a low-carbon future — switch from coal to gas now, buy a big one-off emissions cut, and use gas flexibility to support wind and solar. The other camp says that's a trap: gas is still a fossil fuel, it deepens import dependence in Europe, and over-investing in gas plant risks missing a golden opportunity to go straight to renewables. Second, shale. It transformed US supply and collapsed prices, but fracking raises fears of groundwater contamination and — the subtler climate point — methane leakage during extraction, which is a potent greenhouse gas. France and Bulgaria have banned it, and a European Parliament study warned the methane emissions could give a huge negative hit to the greenhouse-gas balance, making the benefits short-lived. For a regulator, both debates feed straight into future supply and demand, and hence into how the whole industry is structured.</aside>
+  </section>
+
+  <!-- 23 · Check understanding -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M09</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the gas supply chain &amp; its costs</li>
+        <li class="done">Say which segments are natural monopoly</li>
+        <li class="done">Explain unbundling, TPA &amp; balancing</li>
+        <li class="done">Read capacity auctions &amp; entry–exit tariffs</li>
+        <li class="done">Weigh storage, LNG &amp; shale policy</li>
+        <li class="current">Judge retail competition &amp; its limits</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">Which best captures why gas regulation differs from electricity?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>Gas has no natural-monopoly segments, so it needs no price regulation.</b><p class="dim" style="font-size:13px;margin:4px 0 0">False. Transmission and (especially) distribution pipelines remain regulated natural monopolies in most jurisdictions.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>Gas is <span style="color:var(--accent)">storable</span> — so short-term balancing and its market-power problems are far less acute, but storage adds an opportunity-cost-over-time dimension.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> Storability is the defining physical difference, and it reshapes balancing, investment and pricing.</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>Unlike electricity, gas can be generated close to where it is consumed.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Backwards — it's <em>electricity</em> that can be generated near load; gas comes from geographically-fixed reserves, which is why import dependence is a gas issue.</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">Quick self-check to consolidate the single most important idea of the module. Answer A is wrong and it's the tempting oversimplification — yes, production and retail can be competitive and even some transmission faces pipe-to-pipe competition, but distribution above all remains a textbook natural monopoly, so gas absolutely does need price regulation of its transport core. Answer C is a nice trap because it's half-remembered and reversed: it's electricity you can generate near the load, whereas gas comes from fixed reserves — that asymmetry is precisely why security of supply and import dependence are gas problems and not really electricity problems. The correct answer is B: storability. That's the fact I asked you to hold from slide one. Because gas keeps — in caverns, fields, LNG tanks, even linepack — short-term balancing is far more forgiving than electricity's second-by-second grid balancing, and the associated market-power games are muted. But storage isn't a free lunch: it introduces the opportunity cost of gas over time, since what you store today competes with selling it tomorrow. If a learner picks A, revisit slide 7 on the monopoly segments; if C, revisit slide 4 on the gas-versus-electricity comparison.</aside>
+  </section>
+
+  <!-- 24 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 09</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Walk the gas supply chain</h4><p class="dim">Production → transmission → storage → distribution → retail, with the wholesale commodity ≈ 69% and the regulated network ≈ 31% of the bill.</p></div>
+      <div class="concept-box"><h4>✓ Locate the monopoly</h4><p class="dim">Distribution firmly, transmission usually, storage rarely — geography decides, and pipe-to-pipe competition blurs the edges.</p></div>
+      <div class="concept-box"><h4>✓ Explain the reform machinery</h4><p class="dim">Unbundling, third-party access, Network Codes, entry-capacity auctions, entry–exit tariffs, and NBP balancing.</p></div>
+      <div class="concept-box"><h4>✓ Weigh the live debates</h4><p class="dim">Negotiated settlements, retail-tariff complexity, gas-on-gas vs oil-linking, security of supply, LNG, shale and gas-fired power.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 10.</b> From energy pipes to <em>telecommunications</em> — Chapter 10 tackles the industry that started the whole restructuring wave (the 1984 AT&amp;T break-up): interconnection, access pricing, the local-loop bottleneck, spectrum and the shift from copper monopoly to competitive networks.
+    </div>
+    <div class="deck-footer"><span>Teaching summary of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 9</span><span class="slide-number" data-current="24" data-total="24"></span></div>
+    <aside class="notes">Let's recap against the six objectives, then hand off. The one idea to carry out of this module: gas is electricity's near-twin with one decisive difference — storability — and that single fact ripples through balancing, market power, investment and pricing. Beyond that, remember the shape of modern gas regulation: ring-fence the monopoly transmission-and-distribution core and price-regulate it, while opening production, wholesale trading and retail to competition through unbundling, third-party access and Network Codes. The mechanisms are worth carrying too — entry-capacity auctions and open seasons that both ration and fund the network, entry–exit tariffs that create virtual pipelines and liquid hubs, and the NBP as Europe's balancing benchmark. And keep the humility the case boxes teach: auctions can entrench market power if badly designed, negotiated settlements depend on balanced bargaining, and retail competition can confuse as easily as it empowers — Ofgem's four-tariff intervention is the standing warning. Decker calls gas the most straightforward of the utilities, but the security-of-supply, LNG, shale and gas-for-power debates are anything but settled. Next module: telecommunications, the industry whose 1984 AT&T break-up kicked off this whole restructuring era — where interconnection and the local-loop bottleneck take centre stage. End here.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>

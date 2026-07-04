@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Forms of Price Regulation · Modern Economic Regulation (Decker) · Ch. 5</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 05 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">How do you <em>cap</em><br>a monopoly's prices?</h1>
+    <p class="lede mt-l" style="max-width:66ch">Chapter 4 told us what efficient prices <em>should</em> be. This chapter is about the messy business of setting them when the regulator can't see costs, can't use subsidies freely, and can't perfectly commit. From America's rate-of-return "rate case" to Britain's home-grown RPI–X price cap — and the earnings-sharing hybrids in between.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 40 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 5</span>
+      <span class="pill-academic">prereq · Module 04 (efficient prices)</span>
+    </div>
+    <div class="deck-footer"><span>Teaching summary · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="24"></span></div>
+    <aside class="notes">Welcome to Module 5 — the practical heart of the course. Chapter 4 was theory: if a regulator knew everything and had every tool, here is the optimal price vector. This chapter drops those assumptions. Real regulators face three brutal limits: they don't have full information on the firm's costs and demand; they can't freely hand out subsidies or run multi-part tariffs; and they struggle to commit credibly across periods. Given all that, what price-setting <em>methods</em> actually get used? We'll walk the full spectrum — from traditional US rate-of-return regulation at one end, to high-powered RPI–X price caps at the other, and the earnings-sharing and revenue-cap hybrids that sit between them. For a UK audience this is home turf: RPI–X is a British invention, born in a 1983 report. By the end you'll be able to explain each regime's incentives, advantages, and the settings where each fits best. Arrow keys to navigate; press S any time for these notes.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li>Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 24 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Explain <em>rate-of-return</em> regulation — and its famous bias.</h4><p class="dim">Cost-plus pricing, the US "rate case", and the Averch–Johnson over-capitalisation effect.</p></div>
+        <div class="concept-box"><h4>② Master <em>RPI–X</em> price caps.</h4><p class="dim">The formula, the building-block method, how the regulator sets X, and the five-year regulatory cycle.</p></div>
+        <div class="concept-box"><h4>③ See why the two regimes <em>converge</em> in practice.</h4><p class="dim">The incentives-vs-rent-extraction trade-off, and why "pure" versions of neither exist.</p></div>
+        <div class="concept-box"><h4>④ Read the <em>hybrids</em> and handle <em>emerging competition</em>.</h4><p class="dim">Earnings-sharing sliding scales, revenue caps, menu regulation, yardsticks — and precautionary caps.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Four objectives, mapped to the chapter's structure. Objective 1 is section 5.1 — rate-of-return, the historically dominant approach, still used across US state and federal commissions, and its most famous critique, the Averch–Johnson effect. Objective 2 is section 5.2, the big one — price caps, RPI–X, and the whole apparatus around setting the X factor and running a regulatory review. Objective 3 is section 5.3, which is Decker's key intellectual move: the two approaches look like polar opposites in theory, but in practice differ by degree, not kind. Objective 4 bundles 5.4 and 5.5 — the sharing hybrids and yardstick benchmarking that regulators reach for, plus the special problem of regulating a firm while competition is starting to bite. Keep the sidebar in view; the marker tracks where we are. Notice the recurring theme throughout: every regime is a different answer to the same trade-off between giving firms an incentive to cut costs and clawing back excess profit for consumers.</aside>
+  </section>
+
+  <!-- 3 · Setting the scene: the spectrum (SVG Fig 1 - incentive-power spectrum) -->
+  <section class="slide" data-title="The spectrum">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li>Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">incentive power · residual claimant · rent extraction</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHAPTER 5 · A FRAME OF REFERENCE</p>
+      <h2 class="h2 mt-s">One spectrum, from low-powered to high-powered.</h2>
+      <p class="lede mt-m">Every regime is a point on a single line. The question is: <b>how much of any cost saving does the firm get to keep?</b> That fraction is the regime's <em>incentive power</em>.</p>
+      <figure class="fig" data-anim="fade-up" style="margin-top:12px">
+        <svg viewBox="0 0 700 210" role="img" aria-label="Spectrum of price-control regimes from low-powered rate of return to high-powered price cap">
+          <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+          <!-- spectrum bar -->
+          <rect x="40" y="70" width="620" height="18" rx="9" fill="url(#grad)" opacity="0.18"/>
+          <line class="axis" x1="40" y1="120" x2="660" y2="120" marker-end="url(#arrow)"/>
+          <text class="lbl" x="40" y="150" text-anchor="start">LOW-POWERED · firm keeps little</text>
+          <text class="lbl" x="660" y="150" text-anchor="end">HIGH-POWERED · firm keeps all</text>
+          <!-- ticks -->
+          <g text-anchor="middle">
+            <circle class="node" cx="90"  cy="79" r="8"/><text class="lbl" x="90"  y="52">Rate of</text><text class="lbl" x="90" y="40">return</text>
+            <circle class="node" cx="260" cy="79" r="8"/><text class="lbl" x="260" y="52">Earnings</text><text class="lbl" x="260" y="40">sharing</text>
+            <circle class="node" cx="430" cy="79" r="8"/><text class="lbl" x="430" y="52">Menu /</text><text class="lbl" x="430" y="40">sliding scale</text>
+            <circle class="node-2" cx="610" cy="79" r="8"/><text class="lbl-em" x="610" y="52" fill="var(--accent-2)">RPI–X</text><text class="lbl-em" x="610" y="40" fill="var(--accent-2)">price cap</text>
+          </g>
+          <text class="lbl" x="90"  y="180" text-anchor="middle" font-size="10.5">cost-plus</text>
+          <text class="lbl" x="610" y="180" text-anchor="middle" font-size="10.5">fixed-price</text>
+        </svg>
+        <figcaption>Fig 5.a — The incentive-power spectrum. RoR extracts rent well but dulls incentives; the price cap does the reverse.</figcaption>
+      </figure>
+      <div class="callout"><b>Laffont &amp; Tirole's framing.</b> A scheme is <em>high-powered</em> if the firm is exposed to a high fraction of its own realised costs — so it profits from every efficiency. It is <em>low-powered</em> if prices track costs closely, so gains flow straight to consumers.</div>
+    </div>
+    <aside class="notes">Before any specific method, plant this mental map — it's the through-line of the whole chapter. Picture a single line. At the far left, low-powered regulation: prices are pinned to costs, so any saving the firm makes is immediately passed to consumers as lower prices. The firm keeps almost nothing, so it has weak incentive to try. That's rate-of-return. At the far right, high-powered regulation: prices are fixed in advance and detached from costs, so the firm becomes the residual claimant — it pockets every penny it saves during the period. That's the RPI–X price cap. Everything else — earnings-sharing, menus, sliding scales — sits in between, splitting the saving between firm and consumer in some proportion. Laffont and Tirole gave us the clean vocabulary: a scheme's "power" is just the fraction of its own costs the firm bears at the margin. And here's the tension you'll meet again and again — high power gives great cost-cutting incentives but lets the firm keep the rent; low power extracts the rent for consumers but kills the incentive. No regime escapes that trade-off; they just strike it differently.</aside>
+  </section>
+
+  <!-- 4 · 5.1 Rate of return: the mechanics -->
+  <section class="slide" data-title="Rate of return">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li>Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The formula</h5>
+      <p class="dim" style="font-size:13px"><code>R = Opex + s·(Rate Base)</code><br>R must equal costs → zero economic profit.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.1 · RATE-OF-RETURN REGULATION</p>
+      <h2 class="h2 mt-s">Cost-plus, with a "fair return" on capital.</h2>
+      <p class="lede mt-m">The historically dominant approach, still central in the USA. Revenue is set to recover all prudent costs, <em>plus</em> a fair return on the invested capital base. Prices needn't be efficient — they just have to add up to costs.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Opex</h4><p class="dim">Operating costs — labour, maintenance, depreciation, taxes — from a recent "test year".</p></div>
+        <div class="concept-box"><h4>Rate base</h4><p class="dim">Invested capital (capital stock less accumulated depreciation) on which the firm earns a return.</p></div>
+        <div class="concept-box"><h4>s · the allowed return</h4><p class="dim">The "fair" return, set so revenue equals cost and economic profit is zero.</p></div>
+      </div>
+      <div class="callout"><b>Also called "cost-of-service" regulation.</b> The historical US motivation: balance investors and consumers/voters — let utilities recover costs, but stop them exploiting monopoly to earn excessive profit. The <em>Hope</em> (1944) and <em>Bluefield</em> (1923) Supreme Court cases anchor the "fair return" standard.</div>
+    </div>
+    <aside class="notes">Start at the low-powered end of the spectrum: rate-of-return, or "cost-of-service", regulation. The formula in the sidebar is the whole idea in one line — allowed revenue R equals operating expenses plus an allowed rate of return s applied to the rate base, the value of invested capital. Set s so that revenue exactly covers total cost, and economic profit is zero. Note what's <em>not</em> required: efficient prices. The firm just has to pick a set of prices that add up to allowed cost; how it structures them across customer classes is a second question. Three components to remember — Opex from a recent test year, the capital rate base net of depreciation, and s the fair return. Historically this was America's answer to the utility problem, and the courts shaped it: the 1923 <em>Bluefield</em> and 1944 <em>Hope</em> decisions established that a utility is constitutionally entitled to a return comparable to other businesses of similar risk — enough to maintain its credit and attract capital, but no more. That "fair return" language is doing real legal work; it constrains how low a regulator can push s.</aside>
+  </section>
+
+  <!-- 5 · 5.1.1 The rate case process -->
+  <section class="slide" data-title="The rate case">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li>Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">test year · prudency · used &amp; useful · interveners</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.1.1 · THE RATE CASE PROCESS</p>
+      <h2 class="h2 mt-s">A public hearing, in two stages.</h2>
+      <p class="lede mt-m">In the US, prices change through a "rate case" — usually the firm applies for a rise, and a commission decides through a public process governed by the Administrative Procedures Act 1946.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>① Set the revenue requirement</h4><p class="dim">Assess allowable costs: audit Opex for <em>prudence</em>, value the rate base (usually historic cost), decide depreciation, apply the "used &amp; useful" test, and — controversially — choose the cost of capital via CAPM, DCF, etc.</p></div>
+        <div class="concept-box"><h4>② Set the rates</h4><p class="dim">Split customers (residential / commercial / industrial), allocate joint &amp; common costs (fully-distributed cost — "arbitrary" to economists), and approve relative prices, subject to non-discrimination.</p></div>
+      </div>
+      <div class="callout"><b>The cost of capital is where the fight is.</b> The firm argues for a higher return; the regulator argues it's above comparable-risk returns. Joskow: even decades on, the methods remain "surprisingly unsophisticated" — and it's ultimately a bargaining process, with the regulator as arbitrator.</div>
+    </div>
+    <aside class="notes">How does rate-of-return actually work day to day? Through the rate case — a formal, litigious, public hearing. Typically the firm files for a rate increase, backed by financial evidence, and the commission works through two stages. Stage one: determine the revenue requirement — the firm's allowable costs. This is where the hard graft is. The regulator audits operating costs for prudence, can disallow imprudent or exaggerated spend, values the capital rate base — usually on historic or original cost, though replacement-cost methods exist — picks a depreciation method, and applies the "used and useful" test to decide which assets earn a return. And the single most contested item: the allowed cost of capital, estimated with tools like CAPM and discounted cash flow. Joskow's famous verdict is that despite decades of finance theory, the methods stay surprisingly crude, and in practice it's a bargain with the regulator arbitrating between firm and consumers. Stage two: turn that revenue requirement into actual tariffs for different customer classes — and immediately you hit the joint-and-common-cost allocation problem, which accountants solve with fully-distributed cost methods that economists regard as essentially arbitrary. Political economy leaks in here too: some voters must not see big rises.</aside>
+  </section>
+
+  <!-- 6 · 5.1.2 RoR advantages -->
+  <section class="slide" data-title="RoR: pros">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li>Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">solvency · regulatory risk · financeability · cost of capital</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.1.2 · WHAT RATE-OF-RETURN GETS RIGHT</p>
+      <h2 class="h2 mt-s">Prices track costs — so the firm can't gouge, and can't go bust.</h2>
+      <p class="lede mt-m">As essentially <em>cost-plus</em> pricing, prices stay close to costs. The firm should neither sustain excessive losses nor earn excess profits — the original balancing act.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Attracts capital cheaply</h4><p class="dim">Prudent investment is effectively guaranteed recovery, so investors bear less risk — lowering the cost of capital versus a price cap. Consumers, in effect, carry the stranding risk.</p></div>
+        <div class="concept-box"><h4>Insures against bad luck</h4><p class="dim">"Used &amp; useful" recovery gives insurance against adverse technical progress in exchange for a lower return. Newbery: legal constraints can paradoxically <em>reduce</em> regulatory opportunism.</p></div>
+        <div class="concept-box"><h4>Protects quality</h4><p class="dim">A firm assured of cost recovery has little reason to slash quality (though Laffont–Tirole call this incomplete).</p></div>
+        <div class="concept-box"><h4>A voice for consumers</h4><p class="dim">The public hearing lets interveners — consumer &amp; public-interest groups — challenge prices and past performance.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Rate-of-return has a poor reputation in academic circles, but Decker is careful to give it a fair hearing — many criticisms attack a "pure" textbook version nobody actually runs. So what does it genuinely get right? First and foremost, because it's cost-plus, prices stay tethered to costs — which caps monopoly pricing but also guarantees solvency when unavoidable costs are rising fast. The firm shouldn't earn excess profit or make unsustainable losses; that was the whole historical point, balancing investors against consumer-voters. Second, and this matters for a finance audience: because prudent investment is effectively guaranteed recovery, investors face lower risk, which lowers the firm's cost of capital relative to a price cap. The flip side is that consumers carry more of the stranding risk. Cowan even asks whether the great nineteenth-century infrastructure — railways, water, gas — would ever have been built without such guarantees. Newbery adds a subtle point: constraints like "used and useful" look like they increase regulatory discretion, but actually tie the regulator's hands and reduce opportunism, which reassures long-term investors. And the public hearing gives consumer groups a formal voice. Real strengths — hold them in mind when we reach the convergence argument.</aside>
+  </section>
+
+  <!-- 7 · 5.1.2 RoR disadvantages -->
+  <section class="slide" data-title="RoR: cons">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li>Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The rescue clause</h5>
+      <p class="dim" style="font-size:13px"><b>Regulatory lag:</b> the delay before prices re-set lets the firm <em>keep</em> savings meanwhile — a hidden incentive.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.1.2 · WHAT RATE-OF-RETURN GETS WRONG</p>
+      <h2 class="h2 mt-s">Cost-plus dulls the incentive to cut costs.</h2>
+      <p class="lede mt-m">The headline criticism: if every efficiency gain is instantly passed to consumers as lower prices, why bother finding it? Weak incentives for cost reduction <em>and</em> innovation.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Cost padding</h4><p class="dim">With limited information, the firm may inflate or misrepresent costs — though auditing/prudency tests blunt this in practice.</p></div>
+        <div class="concept-box"><h4>Asymmetric risk</h4><p class="dim">Firms ask for hearings when costs <em>rise</em>, rarely when they fall — loading risk onto consumers.</p></div>
+        <div class="concept-box"><h4>Slow &amp; costly</h4><p class="dim">Lengthy, litigious hearings with expert testimony; the regulator must second-guess the firm at a huge information disadvantage.</p></div>
+        <div class="concept-box"><h4>Inefficient prices</h4><p class="dim">Ramsey–Boiteux and peak-load pricing rarely applied; ageing assets slow to be replaced.</p></div>
+      </div>
+      <div class="callout"><b>But note the escape valve.</b> Real regimes have a <em>regulatory lag</em> — 18–24 months between reviews — during which the firm is residual claimant for any savings. That lag quietly injects the very incentive "pure" cost-plus lacks. There is, Decker stresses, no such thing as pure rate-of-return.</div>
+    </div>
+    <aside class="notes">Now the criticisms — but read them through Decker's lens: most target a "pure" version that instantly passes all costs into prices, which nobody actually operates. The big one is weak incentive: if any efficiency you find is immediately handed to consumers as a price cut, your reward for finding it is nil, so cost-cutting and innovation both suffer. Related worries: with an information asymmetry, the firm can pad or misrepresent costs; risk is asymmetric because firms rush to a hearing when costs rise but sit quietly when they fall, so consumers bear the downside; the process is slow, litigious and expensive; and it hasn't delivered efficient price structures. Here's the crucial rescue clause, though — the regulatory lag. In reality it takes many months to reset prices, and during that window the firm keeps whatever it saves. So even cost-plus, as actually practised, contains a buried incentive to be efficient, because efficiency pays off until the next review. This is the seed of the whole convergence argument in 5.3: there is no pure rate-of-return, and the lag is what makes the real thing more incentive-compatible than the textbook caricature.</aside>
+  </section>
+
+  <!-- 8 · Averch-Johnson over-capitalisation (SVG Fig 2) -->
+  <section class="slide" data-title="Averch–Johnson">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li>Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The A–J effect</h5>
+      <p class="dim" style="font-size:13px">If allowed return <b>&gt;</b> true cost of capital, the firm over-uses capital — a gold-plating bias.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.1.2 · THE AVERCH–JOHNSON EFFECT (1962)</p>
+      <h2 class="h2 mt-s">Guarantee a return on capital → the firm buys too much capital.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">If the allowed "fair" return is set <b>above</b> the true cost of capital, the firm earns on every extra pound of rate base — so it tilts its input mix toward <b>capital</b> and away from labour. Output could be produced more cheaply. Classic "gold-plating".</p>
+          <div class="callout" style="margin-top:14px"><b>The sensitivities.</b> Set the allowed return <em>equal</em> to the cost of capital and the bias vanishes — the firm is indifferent. Add a <em>regulatory lag</em> and it shrinks. Empirical tests for over-capitalisation have been "not particularly successful".</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Averch-Johnson over-capitalisation: isoquant tangent to a distorted input mix">
+            <line class="axis" x1="48" y1="14" x2="48" y2="206"/>
+            <line class="axis" x1="48" y1="206" x2="360" y2="206"/>
+            <text class="lbl" x="20" y="20">Capital K</text>
+            <text class="lbl" x="300" y="224">Labour L</text>
+            <!-- isoquant (same output) -->
+            <path class="curve" d="M78,52 C120,120 180,152 260,168 C300,176 330,180 350,182"/>
+            <text class="lbl" x="250" y="150">isoquant (fixed output)</text>
+            <!-- efficient (cost-min) tangency: lower K, higher L -->
+            <line class="curve-3" x1="120" y1="206" x2="300" y2="70" stroke-dasharray="0"/>
+            <circle cx="215" cy="122" r="5" fill="var(--accent)"/>
+            <text class="lbl-em" x="150" y="120" fill="var(--accent)">E · efficient</text>
+            <line class="guide" x1="48" y1="122" x2="215" y2="122"/>
+            <line class="guide" x1="215" y1="122" x2="215" y2="206"/>
+            <!-- A-J distorted point: higher K, lower L -->
+            <line class="curve-2" x1="70" y1="206" x2="250" y2="42"/>
+            <circle cx="112" cy="98" r="5" fill="var(--accent-3)"/>
+            <text class="lbl-em" x="120" y="70" fill="var(--accent-3)">A · A–J choice</text>
+            <line class="guide" x1="48" y1="98" x2="112" y2="98"/>
+            <line class="guide" x1="112" y1="98" x2="112" y2="206"/>
+            <text class="lbl" x="106" y="220" font-size="10">less L</text>
+            <text class="lbl" x="208" y="220" font-size="10">more L</text>
+            <text class="lbl-em" x="14" y="102" fill="var(--accent-3)" font-size="11">K↑</text>
+          </svg>
+          <figcaption>Fig 5.b — The A–J bias: point A over-uses capital vs the cost-minimising mix at E.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is the single most famous critique of rate-of-return, from Averch and Johnson's 1962 paper. The logic: the regulator guarantees a return on the capital rate base. If that allowed return exceeds the firm's true cost of capital, then every extra pound of capital the firm adds to the rate base earns a margin. So the firm has an incentive to substitute toward capital and away from labour — to produce a given output with too much capital and too little labour. That's the input distortion; economists call it gold-plating. Look at the figure: to make the same output — the isoquant — the cost-minimising firm would sit at E, using relatively more labour. The A–J firm slides up to A, piling on capital it doesn't efficiently need. Crucially, the result is fragile. It depends entirely on the allowed return exceeding the true cost of capital — set them equal and the firm is indifferent among input mixes because profit is zero either way. Add a regulatory lag and the distortion shrinks. And the empirical tests? Decker reports they've been "not particularly successful" at finding over-capitalisation in the wild — partly because the model's assumptions are so far from real practice. Its lasting contribution is conceptual: regulation itself can create perverse incentives. That insight launched incentive regulation.</aside>
+  </section>
+
+  <!-- 9 · 5.2 Price cap: the RPI-X formula -->
+  <section class="slide" data-title="RPI–X">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="current">Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The formula</h5>
+      <p class="dim" style="font-size:13px"><code>Pᵗ = Pᵗ⁻¹·(1+RPI−X)</code><br>prices rise with inflation, minus X.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.2 · PRICE-CAP REGULATION · RPI–X</p>
+      <h2 class="h2 mt-s">A British invention: cap <em>prices</em>, not profits.</h2>
+      <p class="lede mt-m">The defining feature: prices are <b>detached from costs</b> for a set period. That shifts cost-variability risk to the firm and, in Newbery's phrase, "mimics" a competitive market — the only way to profit is to cut costs.</p>
+      <div class="split mt-m">
+        <div>
+          <div class="concept-box"><h4>A worked example</h4><p class="dim">Last period's price = <b>$10</b>. Inflation RPI = <b>4%</b>. The regulator sets <b>X = 5%</b>. Allowed change = 4% − 5% = <b>−1%</b>. So the firm must cut the basket's average price to <b>$9.90</b>.</p></div>
+          <div class="callout"><b>Origins.</b> Stephen Littlechild's 1983 report for the privatisation of British Telecom. Applied to BT in 1984 (RPI−3), then gas (1986), airports (1987), water (1989), electricity (1990) — and copied worldwide.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="RPI-X: allowed price ceiling below inflation over a five-year period">
+            <line class="axis" x1="48" y1="14" x2="48" y2="206"/>
+            <line class="axis" x1="48" y1="206" x2="360" y2="206"/>
+            <text class="lbl" x="20" y="20">Price</text>
+            <text class="lbl" x="330" y="224">year</text>
+            <!-- RPI (inflation) rising line -->
+            <path class="curve-3" d="M60,170 L330,70" />
+            <text class="lbl" x="245" y="88">RPI (inflation)</text>
+            <!-- allowed cap RPI - X, flatter -->
+            <path class="curve" d="M60,170 L330,130"/>
+            <text class="lbl-em" x="250" y="150" fill="var(--accent)">RPI − X (cap)</text>
+            <!-- efficiency gap shading -->
+            <path class="fillA" d="M60,170 L330,70 L330,130 Z"/>
+            <text class="lbl" x="200" y="118" font-size="10">real price fall</text>
+            <!-- year ticks -->
+            <g class="lbl" text-anchor="middle" font-size="10">
+              <text x="60" y="220">t</text><text x="128" y="220">t+1</text><text x="196" y="220">t+2</text><text x="264" y="220">t+3</text><text x="330" y="220">t+4</text>
+            </g>
+          </svg>
+          <figcaption>Fig 5.c — Prices rise with inflation but by X less: a steady real-terms decline over the control.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Now the high-powered end — and for a UK audience, the home team. The price cap's distinctive feature is right there: prices are detached from the firm's costs for a fixed period, usually four or five years. That detachment shifts the risk of cost variability from consumers onto the firm, and — this is Littlechild's whole point — it mimics a competitive market, because once your price is fixed, the only way to make more money is to cut your costs. The formula is RPI minus X: your basket's average price can rise by inflation, RPI, minus an offset X that the regulator sets. Work the example: price was ten dollars, inflation is four percent, X is five, so you're allowed four minus five, negative one percent — you must drop the average price to nine dollars ninety. Over a five-year control that compounds into a steady real-terms price fall, which is the shaded gap in the figure between the inflation line and the flatter cap line. The history is worth stating precisely for this audience: it comes from Stephen Littlechild's 1983 report on how to regulate BT after privatisation, applied to BT in 1984 as RPI−3, then rolled out across gas, airports, water and electricity through the late 1980s, and then exported around the world.</aside>
+  </section>
+
+  <!-- 10 · 5.2.1 Duration & the regulatory cycle (SVG Fig 3 - cycle loop) -->
+  <section class="slide" data-title="Regulatory cycle">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="current">Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">glide path · P₀ adjustment · ratchet effect</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.2.1 · THE REGULATORY CYCLE</p>
+      <h2 class="h2 mt-s">Fix the cap, let the firm run, then re-set.</h2>
+      <div class="split mt-s">
+        <div>
+          <p class="lede mini">Detaching prices <b>institutionalises the regulatory lag</b>: for the fixed period the firm keeps its gains. Then the regulator re-sets — resetting is where the incentive can be undone.</p>
+          <div class="callout" style="margin-top:12px"><b>The core trade-offs.</b> Too <em>short</em> a period → behaves like rate-of-return, incentive fades. Too <em>long</em> → earnings can drift far from costs. And the <em>ratchet effect</em>: cutting costs now is "rewarded" with tougher targets next time, so firms coast in the final year. Fixes: <em>P₀</em> re-sets and <em>glide paths</em>.</p></div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 340 250" role="img" aria-label="The five-year regulatory cycle as a loop">
+            <defs><marker id="arrow2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--accent)"/></marker></defs>
+            <!-- four nodes in a loop -->
+            <g>
+              <rect class="node" x="118" y="18" width="104" height="40" rx="8"/><text class="lbl" x="170" y="35" text-anchor="middle">Set price cap</text><text class="lbl" x="170" y="49" text-anchor="middle" font-size="10">(building blocks, X)</text>
+              <rect class="node" x="238" y="100" width="92" height="42" rx="8"/><text class="lbl" x="284" y="118" text-anchor="middle">Firm operates</text><text class="lbl" x="284" y="132" text-anchor="middle" font-size="10">keeps savings</text>
+              <rect class="node" x="118" y="188" width="104" height="42" rx="8"/><text class="lbl" x="170" y="206" text-anchor="middle">Review &amp; re-set</text><text class="lbl" x="170" y="220" text-anchor="middle" font-size="10">claw back rent</text>
+              <rect class="node-2" x="10" y="100" width="92" height="42" rx="8"/><text class="lbl" x="56" y="118" text-anchor="middle">4–5 yrs</text><text class="lbl" x="56" y="132" text-anchor="middle" font-size="10">fixed period</text>
+            </g>
+            <!-- arrows around the loop -->
+            <path fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow2)" d="M222,40 C270,50 290,72 284,98"/>
+            <path fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow2)" d="M270,142 C250,175 220,185 200,187"/>
+            <path fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow2)" d="M120,208 C70,198 50,176 56,144"/>
+            <path fill="none" stroke="var(--accent)" stroke-width="2" marker-end="url(#arrow2)" d="M70,100 C80,66 108,52 130,46"/>
+          </svg>
+          <figcaption>Fig 5.d — The RPI–X cycle: set → operate → review → re-set, on a fixed clock.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">The price cap isn't a one-off act; it's a cycle, and the cycle is where the economics lives. Setting a fixed period deliberately institutionalises the regulatory lag we met under rate-of-return — but now the lag is a fixed, known length, typically four or five years. During that window the firm is the residual claimant: cut costs, keep the reward. Then comes the review, when the regulator re-sets prices for the next period to reflect actual costs and strip out excess profit. And the re-set is exactly where the high-powered incentive can be quietly destroyed. Two trade-offs to hold. First, period length: too short and you're effectively back to rate-of-return with the incentive gone; too long and earnings can drift a long way from costs, which is politically explosive. Second, and subtler — the ratchet effect: if cutting costs today just earns you a tougher target tomorrow, then in the final year of a control you have every reason to stop trying, because there's no time to bank the gain before it's ratcheted away. Regulators fight this with a P-zero adjustment — a one-off re-set at the start of the next period — or a glide path that lets the firm keep a declining share of its gains into the following period. The loop diagram is the mental model: set, operate, review, re-set, repeat.</aside>
+  </section>
+
+  <!-- 11 · 5.2.2 Building blocks -->
+  <section class="slide" data-title="Building blocks">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="current">Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The formula</h5>
+      <p class="dim" style="font-size:13px"><code>Rᵗ = r·RABᵗ⁻¹ + Opexᵗ + Depᵗ</code></p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.2.2 · DETERMINING THE REVENUE REQUIREMENT</p>
+      <h2 class="h2 mt-s">How X is actually set: the building-block method.</h2>
+      <p class="lede mt-m">In principle prices are detached from costs — but in practice regulators forecast efficient costs, then pick the X that lets revenue cover them. Revenue is built from three blocks:</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>① Return <em>on</em> capital</h4><p class="dim"><code>r · RAB</code> — the allowed cost of capital on the Regulated Asset Base.</p></div>
+        <div class="concept-box"><h4>② Return <em>of</em> capital</h4><p class="dim"><code>Dep</code> — the depreciation allowance over the period.</p></div>
+        <div class="concept-box"><h4>③ Operating cost</h4><p class="dim"><code>Opex</code> — forecast efficient operating expenditure.</p></div>
+      </div>
+      <div class="callout"><b>The RAB is the crux.</b> Financial Capital Maintenance (FCM) fixes an asset's value once "rolled in" — protecting the firm from stranding (used across UK, Australia). Operational Capital Maintenance (OCM) re-values assets for obsolescence, loading more risk on the firm. And roll in <em>forecast</em> or <em>actual</em> capex? Each choice bends the firm's incentives.</div>
+      <div class="callout"><b>Alternative:</b> the <em>LRIC / LRIC+</em> approach — price at the forward-looking long-run incremental cost of a hypothetical efficient entrant. Common in telecoms; gives entry signals but hands the regulator wide discretion.</div>
+    </div>
+    <aside class="notes">Here's the punchline that sets up the whole convergence argument: although in theory the price cap detaches prices from costs, in practice regulators pin the cap firmly to a cost forecast — and the machine they use is the building-block method. You build the firm's allowed revenue from three blocks. Block one, the return <em>on</em> capital: the allowed cost of capital r times the Regulated Asset Base, the RAB. Block two, the return <em>of</em> capital: depreciation. Block three: forecast efficient operating cost. Add them up, that's the revenue requirement; then solve for the X that makes forecast prices deliver exactly that revenue, so the firm breaks even on the forecast — but keeps anything it saves by beating the forecast. Now notice: those are the very same contentious ingredients as a rate case — cost of capital, asset base, efficient cost. The RAB carries two deep design choices. FCM versus OCM: FCM fixes an asset's value once it's rolled in, protecting the firm from stranding — the UK and Australian norm; OCM re-values for obsolescence and loads risk onto the firm. And whether you roll in the forecast or the actual capex changes whether the firm exaggerates its forecasts or skimps on delivery. The telecoms world often uses LRIC instead — pricing off a hypothetical efficient entrant's forward-looking cost — good for entry signals, but heavy on regulatory discretion.</aside>
+  </section>
+
+  <!-- 12 · 5.2.3 Forms of price cap (table.data) -->
+  <section class="slide" data-title="Forms of cap">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="current">Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">basket · rebalancing · volume risk · decoupling</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.2.3 · FORMS OF PRICE CAP</p>
+      <h2 class="h2 mt-s">Not one cap — a family, each with its own incentive quirk.</h2>
+      <table class="data mt-m">
+        <thead><tr><th>Form</th><th>What's capped</th><th>Who bears volume risk</th><th>The incentive quirk</th></tr></thead>
+        <tbody>
+          <tr><td><b>Fixed revenue cap</b></td><td>Total revenue R*</td><td>Consumers (firm insulated)</td><td>Firm wants to <em>suppress</em> demand — less volume, same revenue, lower cost.</td></tr>
+          <tr><td><b>Average revenue</b> (yield)</td><td>Revenue per unit</td><td>Firm</td><td>Firm wants to <em>expand</em> demand; may favour low-cost, high-demand customers.</td></tr>
+          <tr><td><b>Hybrid cap</b></td><td>Fixed + variable drivers</td><td>Shared</td><td><code>R* = F + α(q₁) + β(q₂)</code>; set coefficients so marginal revenue ≈ marginal cost.</td></tr>
+          <tr><td><b>Tariff basket</b> (weighted avg price)</td><td>Weighted avg basket price</td><td>Firm</td><td>Links marginal revenue to each service's price → encourages efficient relative prices.</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><b>Baskets matter.</b> Splitting services into more baskets limits the firm's ability to <em>rebalance</em> prices — useful to stop a margin squeeze against rivals, or cross-subsidy that offends distributional goals. BT's original 1984 cap was a weighted-average tariff basket (RPI−3).</div>
+    </div>
+    <aside class="notes">"Price cap" isn't one thing — it's a family, and the form you pick changes the firm's behaviour in ways worth knowing. Four to remember. The fixed revenue cap fixes total allowed revenue regardless of volume, so the firm faces no volume risk — but watch the perverse incentive: since revenue is fixed, the firm actually wants to <em>suppress</em> demand, because less volume means lower cost and a bigger margin. That's why some US states "decouple" and it's a live issue where you also want energy efficiency. The average revenue, or revenue yield, cap fixes revenue per unit, so now the firm bears volume risk and wants to <em>expand</em> demand — but may cherry-pick low-cost, high-demand customers. The hybrid cap mixes a fixed component with variable drivers like customer numbers and peak demand; the trick is setting each coefficient so marginal revenue roughly equals marginal cost. And the tariff basket, or weighted-average price cap — the one used for BT in 1984 — caps a weighted-average price across a basket, which cleverly links each service's marginal revenue to its own price, so the firm has an incentive to set efficient relative prices: low margins on elastic services, higher on inelastic. One general lever across all of these: the number of baskets. More baskets, less freedom to rebalance — which regulators use to block margin squeezes and unwanted cross-subsidy.</aside>
+  </section>
+
+  <!-- 13 · 5.2.4 price cap pros/cons -->
+  <section class="slide" data-title="Cap: pros &amp; cons">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="current">Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The "Achilles' heel"</h5>
+      <p class="dim" style="font-size:13px">The <b>commitment problem</b> — no assurance the regulator won't opportunistically set a punishing X at review.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.2.4 · WEIGHING THE PRICE CAP</p>
+      <h2 class="h2 mt-s">Great for efficiency — but it has an Achilles' heel.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box" style="border-left:4px solid var(--accent)"><h4>Advantages</h4><p class="dim">Strong cost-cutting incentive · eases information asymmetry (behaviour reveals costs) · pricing flexibility → efficient structures · no A–J over-capitalisation · risk shifted to the party best able to manage it · "simpler", in principle.</p></div>
+        <div class="concept-box" style="border-left:4px solid var(--accent-3)"><h4>Disadvantages</h4><p class="dim">Prices can drift from costs → allocative inefficiency &amp; excess profit · incentive to <em>degrade quality</em> · higher cost of capital (risk shifted to firm) · weaker investment incentives · ratchet effect · flexibility can enable anti-competitive cross-subsidy.</p></div>
+      </div>
+      <div class="callout"><b>The commitment problem.</b> Under RoR the firm is assured of cost recovery; under a price cap, in principle, it isn't. So it fears the regulator will bow to political pressure and set a brutal X at review — Crew &amp; Kleindorfer call the UK firm a "hostage to the regulator". <b>Fixes:</b> published X-setting guidelines, a statutory <em>financeability</em> duty, and efficiency carry-over mechanisms.</div>
+    </div>
+    <aside class="notes">Let's weigh the price cap honestly. The advantages are real and are why it swept the world: a powerful incentive to cut costs; it eases the information asymmetry because the firm's own behaviour over time reveals its true costs; pricing flexibility that should produce efficient structures; no Averch–Johnson gold-plating; and it shifts cost-and-demand risk onto the firm, which is often better placed to manage it. But every advantage has a shadow. Prices can drift from costs, causing allocative inefficiency or politically toxic excess profits. There's a genuine incentive to degrade quality, because cutting quality cuts cost and lifts profit within a fixed revenue — Spence's result. Shifting risk to the firm can raise its cost of capital. Investment incentives can weaken if the firm fears its sunk capital won't be recovered at the next review. And the flexibility can be abused for anti-competitive cross-subsidy. Above all sits the commitment problem — described as the price cap's Achilles' heel. Under rate-of-return the firm has some assurance of cost recovery. Under a price cap, in principle, it has none, so it worries the regulator will cave to consumer or political pressure and set a punishing X at review. Regulators answer with published guidelines, a statutory financeability duty, and efficiency carry-over mechanisms that let the firm keep gains across periods.</aside>
+  </section>
+
+  <!-- 14 · Case study: RPI-X and the Littlechild report -->
+  <section class="slide" data-title="Case · RPI–X">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="current">Master RPI–X and how X is set</li>
+        <li>See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>UK rollout</h5>
+      <p class="dim" style="font-size:13px">telecoms · gas · airports · water · electricity</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CASE STUDY · A BRITISH EXPORT</p>
+      <h2 class="h2 mt-s">RPI–X: from a Whitehall report to a global template.</h2>
+      <div class="casebox">
+        <h4>The birth of the price cap (UK, 1983–90)</h4>
+        <p>Stephen <b>Littlechild's 1983 report</b> on regulating British Telecom after privatisation argued for capping <em>prices, not profits</em> — for stronger efficiency and innovation incentives than US rate-of-return, and to focus control on the services where monopoly power was greatest. Precursors existed: the Monopolies &amp; Mergers Commission's 1982 report on contraceptive sheaths used a "cost index minus 1.5%" cap; and Baumol–Klevorick (1970) and Vogelsang–Finsinger (1979) had shown regulatory lag and constraint could reward efficiency.</p>
+      </div>
+      <ul class="timeline mt-m">
+        <li><span class="yr">1984</span> · British Telecom — RPI−3 on a weighted-average tariff basket.</li>
+        <li><span class="yr">1986–90</span> · Rolled out: gas (1986), airports (1987), water (1989), electricity (1990).</li>
+        <li><span class="yr">1989</span> · USA adopts price caps for telecoms ("performance-based regulation").</li>
+        <li><span class="yr">2010</span> · Ofgem's RPI–X@20 review → the "outputs-based" RIIO framework, 8-year controls.</li>
+      </ul>
+    </div>
+    <aside class="notes">This deserves a case-study slide, and for a UK audience it's a point of national pride. The price cap is a genuinely British regulatory export. It comes out of Stephen Littlechild's 1983 report, commissioned to work out how to regulate British Telecom once it was privatised. Littlechild's argument was pointed: regulate prices, not profits. Rate-of-return, he said, was burdensome, dulled efficiency and innovation, and covered the whole firm rather than targeting the specific services where monopoly power was worst. There were precursors — the Monopolies and Mergers Commission had already used a cost-index-minus cap on, of all things, contraceptive sheaths in 1982, and American theorists Baumol and Klevorick, and later Vogelsang and Finsinger, had shown that regulatory lag and cleverly designed constraints could reward efficiency. But it was the 1984 BT cap, RPI minus 3 on a tariff basket, that launched the model. It rolled across British utilities within six years, the US adopted it for telecoms in 1989, and it spread worldwide. And note the modern coda: Ofgem's 2010 RPI–X@20 review evolved it into the outputs-based RIIO framework with eight-year controls — which is objective 4's territory. The idea keeps mutating.</aside>
+  </section>
+
+  <!-- 15 · 5.3 Convergence in theory (SVG Fig 5 - RoR vs cap comparison) -->
+  <section class="slide" data-title="RoR vs cap">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="current">See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The trade-off</h5>
+      <p class="dim" style="font-size:13px">incentives ↔ rent extraction · and who bears risk.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.3 · RATE OF RETURN vs PRICE CAP · IN THEORY</p>
+      <h2 class="h2 mt-s">The same trade-off, dialled to opposite extremes.</h2>
+      <div class="split mt-s">
+        <div>
+          <p class="lede mini">Laffont &amp; Tirole cast it as <b>cost-plus vs fixed-price</b> contracts. Pure RoR is <em>low-powered</em>: no reward for cost cuts, but excellent at extracting rent for consumers. Pure price cap is <em>high-powered</em>: the firm is residual claimant, so great incentives — but it keeps the rent.</p>
+          <div class="callout" style="margin-top:12px"><b>Three sharper differences.</b> ① RoR sets an exact price; a cap is a <em>ceiling</em>. ② RoR uses <em>historic</em> costs; a cap uses <em>forecast</em> costs. ③ RoR review timing is <em>endogenous</em> (firm can petition anytime); a cap's review date is <em>exogenous</em>, fixed in advance.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 360 250" role="img" aria-label="Two-axis comparison of rate of return and price cap on incentive power and rent extraction">
+            <line class="axis" x1="50" y1="20" x2="50" y2="200"/>
+            <line class="axis" x1="50" y1="200" x2="340" y2="200"/>
+            <text class="lbl" x="14" y="24">rent</text><text class="lbl" x="14" y="36">extracted</text>
+            <text class="lbl" x="230" y="222">incentive power →</text>
+            <!-- trade-off frontier line -->
+            <path class="curve-3" d="M70,44 C160,90 240,150 322,188" stroke-dasharray="4 4"/>
+            <text class="lbl" x="150" y="140">trade-off</text>
+            <!-- RoR: high rent extraction, low power -->
+            <circle class="node" cx="80" cy="52" r="9"/>
+            <text class="lbl-em" x="94" y="50" fill="var(--accent)">Rate of return</text>
+            <text class="lbl" x="94" y="63" font-size="10">low-powered</text>
+            <!-- price cap: low rent extraction, high power -->
+            <circle class="node-2" cx="316" cy="182" r="9"/>
+            <text class="lbl-em" x="230" y="176" fill="var(--accent-2)">Price cap</text>
+            <text class="lbl" x="248" y="189" font-size="10">high-powered</text>
+            <!-- earnings sharing in the middle -->
+            <circle cx="196" cy="118" r="7" fill="var(--accent-3)"/>
+            <text class="lbl" x="150" y="112" fill="var(--accent-3)" font-size="10">sharing hybrids</text>
+          </svg>
+          <figcaption>Fig 5.e — The fundamental trade-off. RoR and the price cap are opposite corners; hybrids sit on the frontier between.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Section 5.3 is the intellectual spine of the chapter, so slow down. Laffont and Tirole gave us the cleanest way to see the two regimes: think of them as two contracts. A pure cost-plus contract — rate-of-return — reimburses costs, so it extracts all the rent for consumers but gives the firm zero incentive to reduce its own costs. A pure fixed-price contract — the price cap — pays a fixed sum regardless of cost, so the firm is residual claimant and has maximum incentive to cut costs, but keeps all the rent. That's the fundamental regulatory trade-off: incentives versus rent extraction. And its corollary is about risk — who bears cost changes. Under RoR, consumers do; under a price cap, the firm does, during the control. Look at the figure: the two regimes are opposite corners of a trade-off frontier, and the sharing hybrids we're about to meet sit on the line between. There are three sharper, more concrete differences worth committing to memory: rate-of-return approves an exact price while a cap is only a ceiling; rate-of-return works off historic costs while a cap works off forecasts; and rate-of-return lets the firm petition for a review at any time — endogenous timing — while a cap fixes the review date in advance. Those three are exam-ready distinctions.</aside>
+  </section>
+
+  <!-- 16 · 5.3.2 Convergence in practice -->
+  <section class="slide" data-title="Convergence">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="current">See why RoR &amp; price caps converge</li>
+        <li>Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>The headline</h5>
+      <p class="dim" style="font-size:13px">In practice the difference is <b>one of degree, not kind</b>.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.3.2 · …BUT IN PRACTICE THEY CONVERGE</p>
+      <h2 class="h2 mt-s">"Pure" versions exist only in textbooks.</h2>
+      <p class="lede mt-m">Portrayed as polar extremes for exposition — but real regimes sit in the middle. Newbery: <em>"many apparent differences disappear at the first regulatory review"</em>, where a price-cap regulator makes the very same cost-of-capital calculation as its rate-of-return counterpart.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>A cap that acts like RoR</h4><p class="dim">Short control period + limited pricing discretion + all gains passed to consumers at review → behaves just like rate-of-return.</p></div>
+        <div class="concept-box"><h4>RoR that acts like a cap</h4><p class="dim">A long regulatory lag lets the firm keep deviations between price and cost — the very incentive a price cap is prized for.</p></div>
+      </div>
+      <div class="callout"><b>The empirical verdict is muted.</b> Studies of the RoR→cap transition (US &amp; UK telecoms) find <em>mixed</em> effects on prices, operating costs, TFP and quality. Sappington: the form of regulation affects performance, but "the impacts are not dramatic" — precisely because the real regimes aren't as far apart as the theory suggests.</div>
+    </div>
+    <aside class="notes">This is the payoff — and it's the most important idea in the module, so make it land. Having drawn rate-of-return and the price cap as opposite extremes, Decker now pulls them back together: in practice, the difference between them is one of degree, not of kind. Why? Because pure versions of either don't exist. Recall the building-block method: a price-cap regulator, to set X, forecasts efficient operating cost, values the asset base, and picks a cost of capital — the identical contentious calculations a rate-case commission performs. Newbery's line captures it exactly: many of the apparent differences disappear at the first regulatory review. And the convergence runs both ways. Take a price cap, make the period short, limit pricing discretion, and hand all the gains back to consumers at review, and you've reinvented rate-of-return. Take rate-of-return and let a long regulatory lag persist, and the firm gets to keep its savings meanwhile — which is precisely the incentive we praise the price cap for. The empirical literature backs this up in the most Decker-ish way possible: the transition from RoR to price caps shows mixed, undramatic effects on prices, costs, productivity and quality — because the two things being compared were never really that far apart on the ground.</aside>
+  </section>
+
+  <!-- 17 · 5.4.1 Earnings sharing / sliding scale (SVG Fig 5.1 equivalent) -->
+  <section class="slide" data-title="Earnings sharing">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="done">See why RoR &amp; price caps converge</li>
+        <li class="current">Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">sliding scale · deadband · 50:50 sharing band</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.4.1 · EARNINGS-SHARING · THE MIDDLE GROUND</p>
+      <h2 class="h2 mt-s">Split the profit: sliding-scale regulation.</h2>
+      <div class="split mt-s">
+        <div>
+          <p class="lede mini">A target return, a <b>deadband</b> where the firm keeps everything (acting like a price cap), and <b>sharing bands</b> outside it where gains and losses are split with consumers (acting like RoR). A dial between the two regimes.</p>
+          <div class="concept-box" style="margin-top:12px"><h4>Reading the plan</h4><p class="dim"><b>12–16%</b>: firm keeps all (deadband). <b>16–18%</b>: firm keeps 50%, shares 50%. <b>&gt;18%</b>: all returned to customers. <b>11–12%</b>: losses shared 50:50. <b>&lt;11%</b>: prices rise until return reaches 11%.</p></div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 260" role="img" aria-label="Earnings sharing mechanism: allowed return after sharing vs actual return before sharing">
+            <line class="axis" x1="52" y1="14" x2="52" y2="214"/>
+            <line class="axis" x1="52" y1="214" x2="364" y2="214"/>
+            <text class="lbl" x="18" y="20">after</text><text class="lbl" x="18" y="32">sharing</text>
+            <text class="lbl" x="250" y="232">actual return before sharing (%)</text>
+            <!-- x ticks 8..20 mapped 60..350 => 24.2px per 2% -->
+            <g class="lbl" text-anchor="middle" font-size="10">
+              <text x="60" y="228">8</text><text x="108" y="228">10</text><text x="132" y="228">11</text><text x="156" y="228">12</text><text x="205" y="228">14</text><text x="253" y="228">16</text><text x="277" y="228">18</text><text x="326" y="228">20</text>
+            </g>
+            <!-- 45-degree reference (deadband slope=1) -->
+            <!-- segment <11: flat floor at 11 (prices rise to hold 11) -->
+            <line class="curve-2" x1="60" y1="150" x2="132" y2="150"/>
+            <!-- 11-12: 50:50 slope -->
+            <line class="curve-2" x1="132" y1="150" x2="156" y2="138"/>
+            <!-- 12-16 deadband: slope 1, firm keeps all -->
+            <line class="curve" x1="156" y1="138" x2="253" y2="90"/>
+            <!-- 16-18: 50:50 slope -->
+            <line class="curve-2" x1="253" y1="90" x2="277" y2="78"/>
+            <!-- >18: flat ceiling -->
+            <line class="curve-2" x1="277" y1="78" x2="350" y2="78"/>
+            <!-- deadband guides -->
+            <line class="guide" x1="156" y1="138" x2="156" y2="214"/>
+            <line class="guide" x1="253" y1="90" x2="253" y2="214"/>
+            <text class="lbl-em" x="205" y="72" text-anchor="middle" fill="var(--accent)">DEADBAND</text>
+            <text class="lbl" x="205" y="84" text-anchor="middle" font-size="9">firm keeps all</text>
+            <text class="lbl" x="300" y="70" fill="var(--accent-3)" font-size="9">cap: all shared</text>
+            <text class="lbl" x="96" y="144" fill="var(--accent-3)" font-size="9">floor</text>
+          </svg>
+          <figcaption>Fig 5.1 — Earnings-sharing plan (after Sappington–Weisman): deadband 12–16%, 50:50 bands to 18% and 11%.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Section 5.4 collects the hybrids, and this is the flagship — earnings-sharing, also called sliding-scale or profit-sharing regulation. It's explicitly the middle ground between our two poles, and the figure is Decker's Figure 5.1, so let's read it carefully. There's a target return, and around it a deadband — here 12 to 16 percent — where the firm keeps every penny of its actual earnings, so inside the band the scheme behaves exactly like a price cap, high-powered. Outside the band, sharing kicks in. Between 16 and 18 percent, the firm keeps only half of the incremental earnings and refunds the other half to customers. Above 18 percent, it keeps nothing — everything goes back. Symmetrically on the downside: between 11 and 12 percent, losses are shared 50:50 with consumers through higher prices; below 11 percent, customers bear all the loss and prices rise until the firm is restored to an 11 percent return. So far out from target, the scheme behaves like rate-of-return. It's genuinely a dial between the two regimes — which is why it appealed to regulators first stepping away from rate-of-return, giving them insurance against excess profits. The catch, per Sappington: sharing blunts the cost-cutting incentive, and near the band edges it warps risk-taking. Despite popularity in 1990s America, these have largely been replaced by plain price caps.</aside>
+  </section>
+
+  <!-- 18 · Revenue sharing + earnings-sharing pitfalls -->
+  <section class="slide" data-title="Revenue sharing">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="done">See why RoR &amp; price caps converge</li>
+        <li class="current">Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">cost-shifting · risk-shifting · gaming</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.4.1 · SHARING'S SIDE-EFFECTS</p>
+      <h2 class="h2 mt-s">Sharing profit fixes one problem, opens others.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Earnings-sharing distortions</h4><p class="dim">Near the <em>floor</em>: take excessive risk — you only bear part of any downside. Near the <em>ceiling</em>: avoid profitable projects that would breach it. Plus incentives to <em>shift costs between years</em>, and to let regulators steer entry via cost dis/allowance.</p></div>
+        <div class="concept-box"><h4>Revenue-sharing: a cleaner cut</h4><p class="dim">Share <em>revenue</em> above a threshold instead of earnings. Because it doesn't touch costs, it <em>preserves</em> the cost-cutting incentive and removes the regulator's temptation to disallow costs — but the firm may then hold demand below the threshold (even by degrading quality).</p></div>
+      </div>
+      <div class="callout"><b>The fundamental trade-off (Sappington).</b> Sharing reduces the incidence of excessive earnings but blunts the incentive to minimise operating costs. Worth it only if the value of preventing excess profit exceeds the value of the lost efficiency drive. In the US, state regulators no longer use earnings-sharing — though it persists in some developing economies.</div>
+    </div>
+    <aside class="notes">Earnings-sharing solves the excess-profit problem, but sharing profit reaches into the firm's costs, and that creates fresh distortions. Watch the band edges. When the firm's earnings are near the floor of the band, it's tempted into riskier projects, because if they fail it only bears part of the loss — consumers share it. When earnings are near the ceiling, the firm will actually decline profitable projects that would push it over the top, since it can't keep the upside. Sharing also invites gaming — shifting costs between years to sit in the sweet spot — and it can even distort the regulator, who might dis-allow an incumbent's costs to help entrants. Revenue-sharing is a cleaner instrument: share revenue above a threshold rather than earnings. Because it never touches the firm's costs, it preserves the incentive to cut them and removes the regulator's temptation to disallow costs — a real improvement. But it has its own quirk: the firm may hold demand just below the sharing threshold, even by quietly degrading quality. The bottom line, per Sappington, is the same trade-off in a new guise: sharing curbs excess earnings but blunts the cost-minimisation drive, so it's only worth it when preventing excess profit matters more than the efficiency you sacrifice. Tellingly, US state regulators have abandoned earnings-sharing, reverting to straight price caps — though it lingers in some developing economies.</aside>
+  </section>
+
+  <!-- 19 · 5.2.5 / 5.4.2 Menu regulation, yardstick, RIIO developments -->
+  <section class="slide" data-title="Menus &amp; yardsticks">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="done">See why RoR &amp; price caps converge</li>
+        <li class="current">Read hybrids: sharing, revenue caps, menus</li>
+        <li>Regulate when competition is emerging</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">menu regulation · yardstick · RIIO · outputs-based</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.2.5 &amp; 5.4.2 · SMARTER ADAPTATIONS</p>
+      <h2 class="h2 mt-s">Menus, yardsticks and outputs — beating information asymmetry.</h2>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Menu regulation</h4><p class="dim">Offer the firm a <em>choice of contracts</em>, each pairing a capex allowance with an incentive rate. Pick low-capex/high-powered or high-capex/low-powered — the firm's choice <em>reveals</em> its true costs. UK electricity &amp; gas since 2004; water since 2010.</p></div>
+        <div class="concept-box"><h4>Yardstick competition</h4><p class="dim">Shleifer (1985): tie a firm's allowed price to <em>rivals'</em> costs, not its own. "If a firm reduces costs when its twins don't, it profits." Used for England &amp; Wales water. Mostly deployed as <em>benchmarking</em> to set X.</p></div>
+        <div class="concept-box"><h4>Outputs-based (RIIO)</h4><p class="dim">Britain's shift from <em>input</em>- to <em>output</em>-based control: the regulator specifies high-level outcomes and lets the firm choose how to hit them. 8-year controls with a mid-period review.</p></div>
+      </div>
+      <div class="callout"><b>Also in the toolkit:</b> automatic cost pass-through (RPI−X+Y, Z-factors), rolling efficiency incentives, capex "trigger" mechanisms, and richer benchmarking of opex &amp; capex. The design space is wide — and every adaptation trades off incentive power against protection.</div>
+    </div>
+    <aside class="notes">Regulators haven't stood still — they've built a toolkit of smarter adaptations, and three deserve names. First, menu regulation, a lovely piece of mechanism design. Instead of guessing the firm's true costs, the regulator offers a menu of contracts, each pairing a capex allowance with an incentive rate. A confident, efficient firm picks the low-capex, high-powered contract because it expects to beat the target and keep the reward; a firm that genuinely needs more capex picks the high-allowance, low-powered one. The firm's own choice reveals its private information — that's the elegance. Britain has used menus in electricity and gas since 2004 and in water since 2010. Second, yardstick competition, Shleifer's 1985 idea: tie each firm's allowed price to the costs of comparable rivals rather than its own, so if you cut costs while your twins don't, you profit — importing competitive pressure into a monopoly. England and Wales water is the classic case, though in practice it's used more as benchmarking to inform X than as a standalone regime. Third, the British move from input- to output-based regulation — the RIIO framework — where the regulator specifies high-level outcomes and lets the firm find its own way there, over eight-year controls. Plus pass-throughs, rolling incentives and capex triggers. Every one of these is another point on our spectrum.</aside>
+  </section>
+
+  <!-- 20 · 5.5 Price regulation when competition is emerging -->
+  <section class="slide" data-title="Emerging competition">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="done">See why RoR &amp; price caps converge</li>
+        <li class="done">Read hybrids: sharing, revenue caps, menus</li>
+        <li class="current">Regulate when competition is emerging</li>
+      </ul>
+      <h5>The risk</h5>
+      <p class="dim" style="font-size:13px">A cap can <b>shield</b> the incumbent and <b>deter</b> the entry it was meant to allow.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">5.5 · WHEN COMPETITION IS EMERGING</p>
+      <h2 class="h2 mt-s">The cap that outstays its welcome.</h2>
+      <p class="lede mt-m">When competition is partial — real, but not yet effective — conventional price control risks <b>shielding the incumbent</b> from competitive pressure, making entry harder and dulling cost incentives. Removing the control can, paradoxically, <em>stimulate</em> competition.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>① Lighter obligations</h4><p class="dim">Drop formal price control; keep non-discrimination, cost-orientation and disclosure duties on the firm with market power.</p></div>
+        <div class="concept-box"><h4>② Monitor, don't set</h4><p class="dim">Replace price-setting with structured oversight, backed by the <em>threat</em> of re-imposing control.</p></div>
+        <div class="concept-box"><h4>③ Shorter periods</h4><p class="dim">Review more often, so you can lift the control the moment competition is effective.</p></div>
+        <div class="concept-box"><h4>④ Precautionary / targeted caps</h4><p class="dim">A loose "safeguard" cap above cost but below excessive — Littlechild's transitional caps in GB retail energy — or caps targeted to only the still-uncompetitive services/areas.</p></div>
+      </div>
+    </div>
+    <aside class="notes">Section 5.5 turns to a different situation: not a permanent monopoly, but a firm that still has significant market power while competition is starting to emerge — partial competition, real but not yet fully effective. Here the standard price cap becomes dangerous in a new way. If you keep a conventional control on the incumbent, you can actually shield it from the competitive pressure you're trying to unleash, make life harder for entrants, and blunt the incumbent's own incentive to cut costs. The paradox Littlechild stresses is that removing the control can stimulate the very competition you want. Decker lays out four graduated responses. One: swap formal price control for lighter obligations — non-discrimination, cost-orientation, disclosure. Two: substitute monitoring for price-setting, holding the threat of re-imposition in reserve. Three: use shorter control periods so you can lift regulation the moment competition is effective. Four: use a precautionary or safeguard cap — set loose, above cost but below anything excessive, on the theory that a firm facing developing competition won't price at the maximum anyway; Littlechild used exactly this in GB residential retail energy. Or target the cap to only the services or geographic areas that are still uncompetitive. The overarching lesson: in a transition, keep reviewing whether the obligations still fit — regulation should retreat as competition arrives.</aside>
+  </section>
+
+  <!-- 21 · Case study: US telecoms transition -->
+  <section class="slide" data-title="Case · US telecoms">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="done">See why RoR &amp; price caps converge</li>
+        <li class="done">Read hybrids: sharing, revenue caps, menus</li>
+        <li class="current">Regulate when competition is emerging</li>
+      </ul>
+      <h5>The survey</h5>
+      <p class="dim" style="font-size:13px">Hauge–Sappington: 17 RoR · 24 cap · 7 sharing (developing/transitional).</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CASE STUDY · THEORY MEETS THE DATA</p>
+      <h2 class="h2 mt-s">Did switching to price caps actually deliver?</h2>
+      <div class="casebox">
+        <h4>The US &amp; UK telecoms transition (1980s–2000s)</h4>
+        <p>When telecoms moved from rate-of-return to price caps, economists finally had a natural experiment. The verdict is bracingly mixed. <b>Prices:</b> some studies find falls, others find higher prices under some incentive schemes. <b>Operating costs &amp; TFP:</b> mixed — some find gains (notably BT), others none. <b>Earnings:</b> some evidence they rose (BT earned "substantial financial returns" for years post-privatisation — prompting the UK <em>windfall tax</em>). <b>Quality:</b> mixed, but the feared collapse in US telecoms quality simply didn't happen. <b>One clear win:</b> higher network modernisation under incentive regulation.</p>
+      </div>
+      <div class="callout"><b>Why so muted?</b> Sappington's explanation ties the chapter together: the real-world regimes being compared "might not be as pronounced as they are in principle." The convergence of 5.3, seen in the data.</div>
+    </div>
+    <aside class="notes">Let's ground the theory in evidence with a second case study — the great telecoms transition from rate-of-return to price caps in the US and UK, which gave economists a natural experiment to test all these claims. And the honest answer, very much in Decker's temperament, is that the results are mixed across the board. On prices, some studies find the switch lowered them, others find higher prices under some incentive schemes. On operating costs and total factor productivity, mixed again — real TFP gains for British Telecom, but no clear effect elsewhere. On earnings, there's evidence they rose — BT earned substantial returns for years after privatisation, which is exactly what fuelled the political backlash that produced the UK windfall tax on privatised utilities. On quality, mixed, though notably the feared quality collapse in US telecoms never materialised — one of the pleasant surprises of price-cap regulation. The one reasonably clear win is higher network modernisation under incentive regulation. Why is the overall picture so muted, when theory predicts dramatic differences? Sappington's answer is the thread that ties this whole module together: in practice the regimes being compared aren't as far apart as the textbook makes them look. This is the convergence argument of 5.3, now visible in the data.</aside>
+  </section>
+
+  <!-- 22 · Check understanding -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="done">See why RoR &amp; price caps converge</li>
+        <li class="done">Read hybrids: sharing, revenue caps, menus</li>
+        <li class="current">Regulate when competition is emerging</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">Which statement about the Averch–Johnson effect is <em>correct</em>?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>Rate-of-return regulation always causes firms to over-capitalise, regardless of how the allowed return is set.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Too strong. The bias only arises if the allowed return <em>exceeds</em> the true cost of capital.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>If the allowed return is set <span style="color:var(--accent)">above</span> the true cost of capital, the firm has an incentive to use too much capital relative to labour.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> Set the allowed return equal to the cost of capital and the bias vanishes; a regulatory lag shrinks it further.</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>Empirical studies have decisively confirmed large over-capitalisation in regulated utilities.</b><p class="dim" style="font-size:13px;margin:4px 0 0">False — the empirical tests have been "not particularly successful", partly because real regimes differ from the A–J model.</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">Quick self-check, and the trap here is answer A — the tempting overstatement that rate-of-return always causes gold-plating. It doesn't; the whole result hinges on one assumption. The correct answer is B: the over-capitalisation bias appears only when the allowed "fair" return is set above the firm's true cost of capital, because only then does adding capital to the rate base earn a margin. Set the allowed return equal to the cost of capital and the firm is indifferent among input mixes — the bias disappears — and a regulatory lag shrinks it further. Answer C is wrong because, despite decades of effort, the empirical tests for over-capitalisation have been famously unsuccessful, largely because the A–J model's assumptions — no lag, an all-knowing profit-maximiser, a regulator who knows nothing — are so far from how rate-of-return actually operates. If a learner picks A, send them back to the Averch–Johnson slide to see the conditionality; if they pick C, revisit the point that the model's lasting value is conceptual, not empirical. The deeper lesson: the A–J effect matters because it showed regulation can itself distort behaviour — the intellectual spark that lit incentive regulation.</aside>
+  </section>
+
+  <!-- 23 · Comparison recap table -->
+  <section class="slide" data-title="Side-by-side">
+    <aside class="sidebar">
+      <div class="brand">Reg · M05</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Explain rate-of-return regulation &amp; the A–J effect</li>
+        <li class="done">Master RPI–X and how X is set</li>
+        <li class="done">See why RoR &amp; price caps converge</li>
+        <li class="done">Read hybrids: sharing, revenue caps, menus</li>
+        <li class="done">Regulate when competition is emerging</li>
+      </ul>
+      <h5>One table to remember</h5>
+      <p class="dim" style="font-size:13px">The two poles, on every dimension that matters.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">SYNTHESIS · RATE OF RETURN vs PRICE CAP</p>
+      <h2 class="h2 mt-s">The whole chapter on one card.</h2>
+      <table class="data mt-m">
+        <thead><tr><th>Dimension</th><th>Rate of return</th><th>Price cap (RPI–X)</th></tr></thead>
+        <tbody>
+          <tr><td>Incentive power</td><td>Low (cost-plus)</td><td>High (fixed-price)</td></tr>
+          <tr><td>What's regulated</td><td>Profit / return</td><td>Prices (a ceiling)</td></tr>
+          <tr><td>Price vs cost</td><td>Tracks costs closely</td><td>Detached for the period</td></tr>
+          <tr><td>Costs used</td><td>Historic</td><td>Forecast (forward-looking)</td></tr>
+          <tr><td>Review timing</td><td>Endogenous (petition anytime)</td><td>Exogenous (fixed date)</td></tr>
+          <tr><td>Who bears cost risk</td><td>Consumers</td><td>The firm</td></tr>
+          <tr><td>Cost of capital</td><td>Lower (recovery assured)</td><td>Higher (risk on firm)</td></tr>
+          <tr><td>Signature weakness</td><td>Weak cost incentives; A–J bias</td><td>Commitment problem; quality risk</td></tr>
+          <tr><td>Home turf</td><td>USA (state &amp; federal)</td><td>UK &amp; the world it copied</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><b>Remember the caveat.</b> These are the <em>pure</em> poles. Every real regime lives somewhere on the line between — the difference is one of degree, not kind.</div>
+    </div>
+    <aside class="notes">Before we close, one consolidation slide — the whole chapter on a single card. Read down the two columns and you've got the module. Incentive power: low for rate-of-return, high for the price cap. What's regulated: the return versus a price ceiling. Relationship to cost: rate-of-return tracks costs closely, the cap detaches from them for the period. Costs used: historic versus forward-looking forecast. Review timing: endogenous, the firm can petition anytime, versus exogenous, a fixed date. Risk: rate-of-return puts cost risk on consumers, the price cap on the firm — which is why rate-of-return delivers a lower cost of capital, because recovery is assured. Signature weaknesses: rate-of-return has weak cost incentives and the Averch–Johnson bias; the price cap has the commitment problem and the temptation to degrade quality. And the geography for our audience: rate-of-return is the American approach, still dominant across state and federal commissions; the price cap is the British invention that conquered the world. But end on the caveat that has run through the entire chapter — these are the pure textbook poles. No real regime is either one. Every actual regulator sits somewhere on the line between them, and the choice is a dial, not a switch.</aside>
+  </section>
+
+  <!-- 24 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 05</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Explain rate-of-return &amp; the A–J effect</h4><p class="dim">Cost-plus with a fair return; the rate case; low-powered but rent-extracting; the over-capitalisation bias when allowed return &gt; cost of capital.</p></div>
+      <div class="concept-box"><h4>✓ Master RPI–X price caps</h4><p class="dim">The formula, the building-block method for setting X, the RAB, and the fixed-period regulatory cycle with its ratchet and glide-path fixes.</p></div>
+      <div class="concept-box"><h4>✓ See why the regimes converge</h4><p class="dim">The incentives-vs-rent trade-off; "pure" versions exist only in textbooks; the difference is degree, not kind — and the data agree.</p></div>
+      <div class="concept-box"><h4>✓ Read hybrids &amp; handle emerging competition</h4><p class="dim">Earnings-sharing sliding scales, revenue caps, menus, yardsticks — and precautionary caps that retreat as competition arrives.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 06.</b> We've regulated the monopoly's <em>prices</em>. But a core network firm doesn't operate alone — entrants in competitive parts of the supply chain need <em>access</em> to its pipes and wires. Chapter 6 tackles the hardest question in the field: what price should the monopolist charge its own rivals for access?
+    </div>
+    <div class="deck-footer"><span>Teaching summary of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 5</span><span class="slide-number" data-current="24" data-total="24"></span></div>
+    <aside class="notes">Let's recap against the four objectives and set up what's next. You can now explain rate-of-return — cost-plus with a fair return, run through the rate case, low-powered so it extracts rent but dulls incentives, and prone to the Averch–Johnson capital bias when the allowed return sits above the true cost of capital. You can master RPI–X — the formula, the building-block method that actually sets X, the RAB choices, and the fixed-period cycle with its ratchet effect and its glide-path and P-zero fixes. You understand the central lesson of 5.3: the two regimes embody the same incentives-versus-rent trade-off dialled to opposite ends, but pure versions exist only in textbooks, so in practice they converge — the difference is one of degree, and the muted empirical results confirm it. And you can read the hybrids — sliding-scale earnings-sharing, revenue caps, menu regulation, yardsticks — and handle the transitional case where competition is emerging and a cap must retreat rather than shield. Next, Module 6 raises the stakes: once you've capped the monopoly's prices, how should it be made to price <em>access</em> to its network for the very rivals competing against it? That access-pricing question is where regulation gets genuinely hard. End here.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>

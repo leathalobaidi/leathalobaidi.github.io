@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pricing the Core Network · Modern Economic Regulation (Decker) · Ch. 4</title>
+<link rel="stylesheet" href="../assets/fonts.css">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="../assets/animations/animations.css">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body class="tpl-course-module">
+<div class="deck">
+
+  <!-- 1 · Cover -->
+  <section class="slide full" data-title="Cover">
+    <p class="kicker">MODULE 04 · MODERN ECONOMIC REGULATION</p>
+    <h1 class="h1 mt-s">How do you <em>price</em><br>a monopoly pipe?</h1>
+    <p class="lede mt-l" style="max-width:66ch">The core network — the wires, mains, rails and local loop — is where competition can't reach. This module builds the regulator's pricing toolkit from the ground up: marginal cost, average cost, Ramsey–Boiteux mark-ups, two-part tariffs, and the incentive schemes that survive when the firm knows more than the regulator.</p>
+    <div class="row mt-l" style="gap:14px">
+      <span class="pill-academic">~ 45 min</span>
+      <span class="pill-academic">source · Decker, <em>Modern Economic Regulation</em> (CUP, 2015), Ch. 4</span>
+      <span class="pill-academic">prereq · Module 01 (natural monopoly, efficiency)</span>
+    </div>
+    <div class="deck-footer"><span>Teaching deck · press <b>S</b> for speaker notes · <b>→</b> to advance</span><span class="slide-number" data-current="1" data-total="23"></span></div>
+    <aside class="notes">Welcome to Module 4 — the analytical heart of the course. Chapters 1 to 3 asked why we regulate and what the alternatives are. From here on the question changes to the "how". This chapter deals only with the core network activities — the bits of the production chain that most resemble natural monopoly and where competition is not an option. Almost everything in the chapter is about pricing, and the storyline is a ladder of increasingly realistic assumptions. We start in a fantasy world of perfect information and a single product, where the answer is elegant and clean. Then we add multiple products, then asymmetric information, then multiple periods, and finally quality and cost reduction. At each rung the clean answer breaks and the regulator has to compromise. By the end you'll understand not just the pricing rules themselves but why real regulators so often refuse to use the theoretically optimal ones. Navigate with the arrow keys; press S for the presenter view.</aside>
+  </section>
+
+  <!-- 2 · Objectives -->
+  <section class="slide" data-title="Objectives">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Map the three industry structures</li>
+        <li>Derive first-best (marginal-cost) pricing</li>
+        <li>Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Module progress</h5>
+      <p class="dim" style="font-size:13px">Page 2 of 23 · just starting</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">OBJECTIVES</p>
+      <h2 class="h2 mt-s">By the end, you'll be able to…</h2>
+      <div class="stack mt-l">
+        <div class="concept-box"><h4>① Locate the core network inside three industry structures.</h4><p class="dim">Vertically integrated monopoly, vertical separation, and integration-with-competition — and where access vs retail pricing bites.</p></div>
+        <div class="concept-box"><h4>② Build the pricing ladder under full information.</h4><p class="dim">From first-best marginal cost, to the fixed-cost problem, to average-cost, Ramsey–Boiteux, peak-load and two-part tariffs.</p></div>
+        <div class="concept-box"><h4>③ See what asymmetric information does to the answer.</h4><p class="dim">The rent-versus-efficiency trade-off; Loeb–Magat, Baron–Myerson, Laffont–Tirole.</p></div>
+        <div class="concept-box"><h4>④ Extend to many periods, and to quality &amp; cost.</h4><p class="dim">Commitment, the ratchet effect, yardstick competition, and why regulators chase cost efficiency above all.</p></div>
+      </div>
+    </div>
+    <aside class="notes">These objectives track the chapter's structure exactly, so keep the sidebar in view — the ✦ marker tells you which rung of the ladder we're on. Notice the deliberate progression from the cleanest possible world to the messiest. Objective one is scene-setting: you can't talk about pricing until you know which part of the industry you're pricing. Objective two is the analytical core — the pricing rules under full information, and it's where most of the SVG diagrams live. Objective three is the pivot to realism: once the firm knows more than the regulator, first-best is usually unattainable and everything becomes a trade-off between allocative efficiency and the information rent the firm can extract. Objectives four rounds it out with time and with the two things regulators actually care most about in practice — quality and cost. Hold onto one recurring theme: high fixed costs plus low marginal costs is the fact that breaks marginal-cost pricing and drives the whole chapter.</aside>
+  </section>
+
+  <!-- 3 · Section 4.1 divider -->
+  <section class="slide full" data-title="4.1 Structures">
+    <p class="kicker">SECTION 4.1</p>
+    <h1 class="h1 mt-s">Where does the<br>core network <em>sit</em>?</h1>
+    <p class="lede mt-l" style="max-width:60ch">Before you can price it, you have to locate it. Three generic industry structures determine whether the regulator is setting <b>retail</b> prices, <b>access</b> prices, or policing an integrated firm that is both monopolist and competitor.</p>
+    <aside class="notes">A short divider to reset attention. The reason Decker opens with industry structure is that the regulatory task — and therefore the relevant pricing principles — depends entirely on the shape of the industry. In a fully integrated monopoly the regulator sets final retail prices and never touches access. In a vertically separated industry, the monopoly network is ring-fenced and the regulator sets access prices for the competitive firms upstream and downstream. In the trickiest case, integration with competition, the network owner also competes in the open markets, so the regulator must both regulate the network and stop the firm leveraging its monopoly. This chapter deals only with the core network activity itself — natural-monopoly pricing. The access-pricing questions that arise in structures two and three are deferred to Chapter 6. But you need the map first, so let's draw all three.</aside>
+  </section>
+
+  <!-- 4 · Fig 4.1 vertically integrated monopoly -->
+  <section class="slide" data-title="Integrated monopoly">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Map the three industry structures</li>
+        <li>Derive first-best (marginal-cost) pricing</li>
+        <li>Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">vertical integration · legal monopoly · retail price regulation</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.1 · STRUCTURE ①</p>
+      <h2 class="h2 mt-s">One firm does everything.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">A single firm — usually a legal monopoly — runs the whole chain: production, transport and retail. Common across Europe, Australia and New Zealand before the 1980s–90s. <b>England &amp; Wales water and wastewater</b> still looks like this.</p>
+          <div class="callout" style="margin-top:14px"><b>Regulator's job.</b> Pure natural-monopoly regulation of the final <em>retail</em> price. No access pricing — there are no rivals needing to plug in.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 300 250" role="img" aria-label="Vertically integrated monopoly production chain">
+            <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <rect class="node" x="70" y="14" width="160" height="34" rx="6"/>
+            <text class="lbl" x="150" y="28" text-anchor="middle">Upstream activity</text>
+            <text class="lbl" x="150" y="42" text-anchor="middle" font-size="10">e.g. abstraction &amp; treatment</text>
+            <path class="flow" d="M150,48 L150,72"/>
+            <rect class="node" x="70" y="74" width="160" height="42" rx="6" stroke-width="3"/>
+            <text class="lbl-em" x="150" y="90" text-anchor="middle" fill="var(--accent)">Core network</text>
+            <text class="lbl" x="150" y="105" text-anchor="middle" font-size="10">mains transport &amp; distribution</text>
+            <path class="flow" d="M150,116 L150,140"/>
+            <rect class="node" x="70" y="142" width="160" height="34" rx="6"/>
+            <text class="lbl" x="150" y="156" text-anchor="middle">Downstream activity</text>
+            <text class="lbl" x="150" y="170" text-anchor="middle" font-size="10">e.g. retailing</text>
+            <path class="flow" d="M150,176 L150,200"/>
+            <rect class="node-2" x="95" y="202" width="110" height="30" rx="6"/>
+            <text class="lbl" x="150" y="221" text-anchor="middle">Consumers</text>
+            <line class="guide" x1="20" y1="14" x2="20" y2="176"/>
+            <text class="lbl" x="15" y="98" text-anchor="middle" transform="rotate(-90 15 98)" fill="var(--accent)">Retail price regulation</text>
+          </svg>
+          <figcaption>Fig 4.1 — Vertically integrated monopoly: one firm, whole chain, retail price regulated.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is Decker's Figure 4.1. One firm sits astride the entire production chain — the upstream activity that makes the product, the core network that transports it, and the downstream activity that retails it — and it typically holds a legal monopoly protecting it from entry at every level. This was the default structure for utilities across most of Europe and the Commonwealth until the restructuring wave. The live UK example to remember is water and wastewater in England and Wales: unlike energy and telecoms, it was never vertically unbundled, so it still looks essentially like this diagram. Implicit in keeping this structure is a judgement that competition isn't feasible or worthwhile anywhere in the chain, or that the efficiencies of integration are worth protecting. For the regulator the task is simple in principle: apply natural-monopoly pricing to the final retail price. Crucially there is no access-pricing problem here — access pricing only arises once you let competitors into one layer of the chain, which is exactly the next two structures.</aside>
+  </section>
+
+  <!-- 5 · Fig 4.2 vertical separation -->
+  <section class="slide" data-title="Vertical separation">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="current">Map the three industry structures</li>
+        <li>Derive first-best (marginal-cost) pricing</li>
+        <li>Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">unbundling · one-way access · access price regulation</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.1 · STRUCTURE ②</p>
+      <h2 class="h2 mt-s">Ring-fence the pipe; compete around it.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Separate the naturally-monopolistic core (transmission &amp; distribution) from the potentially competitive layers (generation, retail). The network firm operates <b>only</b> the network. This is <b>gas and electricity</b> in many jurisdictions.</p>
+          <div class="callout" style="margin-top:14px"><b>Two regulatory jobs.</b> Natural-monopoly pricing of the core network <em>plus</em> the terms and conditions of <b>one-way access</b> for competitors plugging in above and below.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 340 250" role="img" aria-label="Vertical separation with upstream and downstream competition">
+            <defs><marker id="arrow2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <rect class="node-2" x="20" y="14" width="88" height="34" rx="6"/>
+            <rect class="node-2" x="126" y="14" width="88" height="34" rx="6"/>
+            <rect class="node-2" x="232" y="14" width="88" height="34" rx="6"/>
+            <text class="lbl" x="64" y="30" text-anchor="middle" font-size="10">Generator</text>
+            <text class="lbl" x="170" y="30" text-anchor="middle" font-size="10">Generator</text>
+            <text class="lbl" x="276" y="30" text-anchor="middle" font-size="10">Generator</text>
+            <text class="lbl" x="170" y="44" text-anchor="middle" font-size="9" fill="var(--accent-2)">competitive upstream</text>
+            <path class="flow" d="M64,48 L150,72" marker-end="url(#arrow2)"/>
+            <path class="flow" d="M170,48 L170,72" marker-end="url(#arrow2)"/>
+            <path class="flow" d="M276,48 L190,72" marker-end="url(#arrow2)"/>
+            <rect class="node" x="60" y="74" width="220" height="44" rx="6" stroke-width="3"/>
+            <text class="lbl-em" x="170" y="90" text-anchor="middle" fill="var(--accent)">Core network — T&amp;D</text>
+            <text class="lbl" x="170" y="105" text-anchor="middle" font-size="10">transmission &amp; distribution</text>
+            <path class="flow" d="M170,118 L64,142" marker-end="url(#arrow2)"/>
+            <path class="flow" d="M170,118 L170,142" marker-end="url(#arrow2)"/>
+            <path class="flow" d="M170,118 L276,142" marker-end="url(#arrow2)"/>
+            <rect class="node-2" x="20" y="144" width="88" height="34" rx="6"/>
+            <rect class="node-2" x="126" y="144" width="88" height="34" rx="6"/>
+            <rect class="node-2" x="232" y="144" width="88" height="34" rx="6"/>
+            <text class="lbl" x="64" y="164" text-anchor="middle" font-size="10">Retailer</text>
+            <text class="lbl" x="170" y="164" text-anchor="middle" font-size="10">Retailer</text>
+            <text class="lbl" x="276" y="164" text-anchor="middle" font-size="10">Retailer</text>
+            <path class="flow" d="M64,178 L150,202" marker-end="url(#arrow2)"/>
+            <path class="flow" d="M170,178 L170,202" marker-end="url(#arrow2)"/>
+            <path class="flow" d="M276,178 L190,202" marker-end="url(#arrow2)"/>
+            <rect class="node-2" x="120" y="204" width="100" height="28" rx="6"/>
+            <text class="lbl" x="170" y="222" text-anchor="middle">Consumers</text>
+            <text class="lbl" x="300" y="70" text-anchor="middle" font-size="9" fill="var(--accent)">access price</text>
+            <text class="lbl" x="300" y="132" text-anchor="middle" font-size="9" fill="var(--accent)">access price</text>
+          </svg>
+          <figcaption>Fig 4.2 — Vertical separation: competition upstream and downstream, one-way access to the monopoly core.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is Figure 4.2, the structure that restructuring created. The insight of the 1980s–90s reforms was that a utility is not one indivisible monopoly — it's a chain in which only some links are genuinely natural monopolies. In electricity and gas, transmission and distribution — the wires and pipes — have natural-monopoly characteristics, but generation and retail supply do not. So you separate them: the network firm runs only the network and is barred from operating in the competitive markets around it. Multiple generators feed into the shared network at the top; multiple retailers draw from it at the bottom; consumers choose their retailer. Now the regulator has two jobs, not one. It still applies natural-monopoly pricing to the core network. But it must also govern the terms of one-way access — the price and conditions on which competitors plug into the monopoly pipe. Get that access price wrong and you either choke off competition or let the network owner extract a monopoly toll. Those access-pricing principles are the subject of Chapter 6; this chapter stays focused on pricing the network itself.</aside>
+  </section>
+
+  <!-- 6 · Fig 4.3 integration with competition -->
+  <section class="slide" data-title="Integration + competition">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="current">Derive first-best (marginal-cost) pricing</li>
+        <li>Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">local loop · leverage · competitor-and-customer</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.1 · STRUCTURE ③</p>
+      <h2 class="h2 mt-s">The awkward one: monopolist <em>and</em> rival.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">The network owner also competes in the open markets. Classic <b>telecoms</b>: the former incumbent owns the local loop <em>and</em> sells retail services. Entrants must buy access to the loop from the very firm they compete with — both customer and competitor.</p>
+          <div class="callout" style="margin-top:14px"><b>The extra hazard.</b> The firm can <em>leverage</em> its network monopoly into the competitive layer — margin squeeze, discrimination. Regulation must price the network <em>and</em> police that leverage.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 320 250" role="img" aria-label="Vertical integration with competition in some activities">
+            <defs><marker id="arrow3" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6" fill="var(--text-3)"/></marker></defs>
+            <rect class="node" x="90" y="14" width="140" height="42" rx="6" stroke-width="3"/>
+            <text class="lbl-em" x="160" y="30" text-anchor="middle" fill="var(--accent)">Core network</text>
+            <text class="lbl" x="160" y="45" text-anchor="middle" font-size="10">local loop (incumbent-owned)</text>
+            <path class="flow" d="M160,56 L80,96" marker-end="url(#arrow3)"/>
+            <path class="flow" d="M160,56 L160,96" marker-end="url(#arrow3)"/>
+            <path class="flow" d="M160,56 L240,96" marker-end="url(#arrow3)"/>
+            <text class="lbl" x="70" y="80" text-anchor="middle" font-size="9" fill="var(--accent)">access price</text>
+            <rect class="node-2" x="18" y="98" width="86" height="46" rx="6"/>
+            <rect class="node" x="117" y="98" width="86" height="46" rx="6" stroke-dasharray="4 3"/>
+            <rect class="node-2" x="216" y="98" width="86" height="46" rx="6"/>
+            <text class="lbl" x="61" y="116" text-anchor="middle" font-size="10">Entrant</text>
+            <text class="lbl" x="61" y="130" text-anchor="middle" font-size="9">retail voice/data</text>
+            <text class="lbl" x="160" y="116" text-anchor="middle" font-size="10">Incumbent</text>
+            <text class="lbl" x="160" y="130" text-anchor="middle" font-size="9">own retail arm</text>
+            <text class="lbl" x="259" y="116" text-anchor="middle" font-size="10">Entrant</text>
+            <text class="lbl" x="259" y="130" text-anchor="middle" font-size="9">retail voice/data</text>
+            <path class="flow" d="M61,144 L150,196" marker-end="url(#arrow3)"/>
+            <path class="flow" d="M160,144 L160,196" marker-end="url(#arrow3)"/>
+            <path class="flow" d="M259,144 L170,196" marker-end="url(#arrow3)"/>
+            <rect class="node-2" x="110" y="198" width="100" height="30" rx="6"/>
+            <text class="lbl" x="160" y="217" text-anchor="middle">Consumers</text>
+          </svg>
+          <figcaption>Fig 4.3 — Vertical integration with competition: the network owner competes in the retail layer it also supplies.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is Figure 4.3, and it is the structure that gives regulators the biggest headache — the telecoms case above all. Here the network owner has not been separated out. The former incumbent still owns the local loop, which is the natural-monopoly bottleneck, but it also sells retail services in the competitive markets. The dashed box is the incumbent's own retail arm sitting alongside independent entrants. Those entrants face an uncomfortable dependency: to sell to consumers they must buy access to the loop from the incumbent, so they are simultaneously the incumbent's customer for the input and its competitor in the retail market. That dual relationship is the crux. The firm has both the ability and the incentive to leverage its bottleneck monopoly into the competitive layer — by setting a high access price and a low retail price it can squeeze the entrants' margins, or degrade the quality of access it gives rivals. So regulation here is doubled: price the core network on natural-monopoly principles, and separately police the firm's conduct to stop it leaning on its monopoly. Note that our chapter treats only the first job; the leverage question is Chapter 6.</aside>
+  </section>
+
+  <!-- 7 · Section 4.2 divider -->
+  <section class="slide full" data-title="4.2 Full information">
+    <p class="kicker">SECTION 4.2</p>
+    <h1 class="h1 mt-s">The clean world:<br><em>full information</em>, one product</h1>
+    <p class="lede mt-l" style="max-width:62ch">Assume the regulator knows everything — costs, cost-minimising effort, demand — the firm makes one product, and there is only one period. In this fantasy the efficient price is obvious. Then reality intrudes: fixed costs.</p>
+    <aside class="notes">We now start the pricing ladder, and the first rung is deliberately unrealistic. Assume the regulator has perfect information about the firm's costs — including how hard it is trying to minimise them — and about demand. Assume the firm produces a single product, and everything happens in one period, a static setting. These assumptions are false, and we'll relax them one by one, but they give us the clean benchmark against which every messier result is judged. Two vocabulary distinctions to bank before we start, because they run through the next several slides. First, uniform versus discriminatory pricing: one price for everybody, versus different prices for different customer classes by willingness to pay. Second, linear versus non-linear pricing: does the price per unit stay constant as you consume more, or does the average price change with quantity? Standing charges plus per-unit charges are the everyday non-linear example. Hold those four words — you'll need them.</aside>
+  </section>
+
+  <!-- 8 · Marginal cost pricing (first best) -->
+  <section class="slide" data-title="Marginal-cost pricing">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="current">Derive first-best (marginal-cost) pricing</li>
+        <li>Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">first-best · allocative efficiency · SRMC vs LRMC</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.2.1 · THE STARTING PRINCIPLE</p>
+      <h2 class="h2 mt-s">Price = marginal cost. Full stop.</h2>
+      <p class="lede mt-m">Kahn: <em>"The central policy prescription of microeconomics is the equation of price and marginal cost."</em> Set <code>P = MC</code> and total surplus is maximised — every unit worth more than it costs gets made, and no unit that costs more than it's worth. This is <b>first-best</b>.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Why it's optimal</h4><p class="dim">Any deviation — above <em>or</em> below MC — destroys surplus. Traces back to Dupuit (1840s) and Hotelling (1938).</p></div>
+        <div class="concept-box"><h4>Two practical snags</h4><p class="dim">Which MC — short-run or long-run? And what's the "unit"? The answers decide which costs count as fixed vs variable.</p></div>
+      </div>
+      <div class="callout"><b>The second-best caveat.</b> First-best only holds if applied <em>everywhere</em>. Price one product at MC while its substitute is unconstrained and you distort choices — the theorem of the second best (Lipsey–Lancaster 1956).</div>
+    </div>
+    <aside class="notes">Marginal-cost pricing is the benchmark of efficiency and the point at which the whole inquiry begins — that's Kahn's line, worth quoting verbatim. The logic is the one from Module 1: at price equals marginal cost, every trade that is worth more to a consumer than it costs society to produce actually happens, and none that isn't. Deviate in either direction and you lose surplus — price above MC excludes willing buyers, price below MC induces wasteful consumption. That's why it's called first-best. The idea is old, traceable to the French engineer Dupuit in the 1840s and developed by Hotelling in 1938, who argued you should price at marginal cost even in decreasing-cost industries and cover the deficit from general taxation — a claim that ignited the "marginal cost controversy". Flag two caveats. Practically, you have to specify which marginal cost — short-run or long-run — and what increment you're costing, and those choices determine what's fixed and what's variable. Theoretically, the second-best theorem: marginal-cost pricing is only genuinely first-best if it's applied uniformly. Price one good at MC and leave its substitute unconstrained and you've just introduced a new distortion.</aside>
+  </section>
+
+  <!-- 9 · The fixed-cost problem -->
+  <section class="slide" data-title="Fixed-cost problem">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="current">Derive first-best (marginal-cost) pricing</li>
+        <li>Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>The cost function</h5>
+      <p class="dim" style="font-size:13px"><code>TC(Q) = cQ + F</code><br>price = MC = c ⟹ fixed cost F unrecovered</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.2.2 · WHY FIRST-BEST FAILS HERE</p>
+      <h2 class="h2 mt-s">Perfect pricing bankrupts the network.</h2>
+      <p class="lede mt-m">Core networks are nearly all <b>fixed cost</b> (<code>F</code>) and very little variable cost (<code>c</code>). Set <code>P = MC = c</code> and revenue is <code>cQ</code> — it never touches <code>F</code>. The firm makes a loss on every unit and supply becomes unsustainable.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Option A · Transfer subsidy</h4><p class="dim">Government tops up the shortfall <code>= F</code>. But funding it distorts the wider economy, non-users subsidise users, and most independent regulators are <em>barred</em> from subsidising (capture risk).</p></div>
+        <div class="concept-box"><h4>Option B · Deviate from MC</h4><p class="dim">Let prices rise above MC — but cleverly — to recover <code>F</code> with minimum surplus loss. The rest of §4.2–4.3 is variations on this idea.</p></div>
+      </div>
+      <div class="callout"><b>The core conflict.</b> Allocative efficiency (<code>P=MC</code>) vs firm viability (<code>revenue ≥ TC</code>). Economies of scale mean the two can't both hold. Every pricing rule that follows is a compromise.</div>
+    </div>
+    <aside class="notes">This is the hinge of the whole chapter, so slow down. Core network activities have a cost function that looks like total cost equals c times Q plus F — a small constant marginal cost c per unit, and a large fixed cost F that doesn't vary with output. Because of economies of scale, average cost is falling and always sits above marginal cost. Now apply the beautiful first-best rule: set price equal to marginal cost, which here is just c. Revenue is c times Q. But total cost is cQ plus F. So the firm's revenue falls short of its costs by exactly F, the fixed cost, on every unit and in aggregate. Marginal-cost pricing bankrupts the utility. There are only two families of fix. Option A is a transfer subsidy — the state simply hands the firm F. Hotelling loved this; Coase savaged it. The problems are that raising the money distorts the economy, non-users end up subsidising users, and critically most independent regulators are legally forbidden from paying subsidies precisely because it opens the door to capture. So in practice we're pushed to Option B: allow prices to deviate above marginal cost, but do it as cleverly as possible to recover F while sacrificing the least surplus. Everything from here to the end of section 4.3 is a different clever answer to that one question.</aside>
+  </section>
+
+  <!-- 10 · Average cost pricing (Fig 4.4 second-best) -->
+  <section class="slide" data-title="Second-best (AC)">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="current">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Welfare function</h5>
+      <p class="dim" style="font-size:13px"><code>V(P) = CS(P) + α·π(P)</code><br>max s.t. <code>π ≥ 0</code> ⟹ <code>P* = AC</code></p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.2.3 · THE SECOND-BEST</p>
+      <h2 class="h2 mt-s">Charge average cost — the least-bad single price.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Maximise welfare subject to break-even and the answer is a single uniform price at <b>average cost</b> (<code>P* = AC</code>). The firm makes zero profit, the price is as low as break-even allows, and consumer surplus is maximised.</p>
+          <div class="callout" style="margin-top:14px"><b>But it's sub-optimal.</b> At <code>P*=AC</code> output is <code>Q*</code>, short of the first-best <code>Q′</code>. Consumers who'd have paid MC but not AC are shut out — the shaded <b>welfare loss</b>.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Second-best average-cost pricing and output">
+            <line class="axis" x1="52" y1="14" x2="52" y2="205"/>
+            <line class="axis" x1="52" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="38" y="20">$</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- Demand -->
+            <path class="curve-2" d="M60,32 L330,196"/>
+            <text class="lbl" x="292" y="182" fill="var(--accent-3)">Demand</text>
+            <!-- AC declining -->
+            <path class="curve-3" d="M64,74 C150,120 240,138 356,146"/>
+            <text class="lbl" x="300" y="134">Average cost (AC)</text>
+            <!-- MC declining, below AC -->
+            <path class="curve" d="M64,120 C150,152 240,164 356,168"/>
+            <text class="lbl" x="300" y="184" fill="var(--accent)">Marginal cost (MC)</text>
+            <!-- Q* where demand meets AC -->
+            <line class="guide" x1="168" y1="116" x2="168" y2="205"/>
+            <text class="lbl" x="162" y="219">Q*</text>
+            <line class="guide" x1="52" y1="116" x2="168" y2="116"/>
+            <text class="lbl-em" x="24" y="120" fill="var(--accent-3)">P*=AC</text>
+            <!-- Q' first-best where demand meets MC -->
+            <line class="guide" x1="230" y1="152" x2="230" y2="205"/>
+            <text class="lbl" x="224" y="219">Q′</text>
+            <line class="guide" x1="52" y1="152" x2="230" y2="152"/>
+            <text class="lbl-em" x="26" y="156" fill="var(--accent)">P′=MC</text>
+            <!-- welfare-loss triangle between Q* and Q' -->
+            <polygon class="loss" points="168,116 168,152 230,152"/>
+            <text class="lbl" x="196" y="140" font-size="9" fill="var(--accent-2)">welfare<tspan x="196" dy="10">loss</tspan></text>
+          </svg>
+          <figcaption>Fig 4.4 — 'Second-best' pricing: <code>P*=AC</code> breaks even but forgoes the surplus between <code>Q*</code> and <code>Q′</code>.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">This is Figure 4.4, the second-best result, and the first honest compromise. Write the regulator's problem as maximising a welfare function V — a weighted sum of consumer surplus and profit, where alpha between zero and one lets you weight profit less than consumer surplus — subject to the firm making non-negative profit. Solve it and the answer is elegant: set a single uniform price equal to average cost. At that price the firm exactly breaks even, and because break-even is binding, average cost is the lowest uniform price that keeps the firm alive, which is why it maximises consumer surplus. If you set price above AC you could cut it and raise welfare; below AC and the firm can't survive. So AC pricing is the best single price you can charge. But look at what it costs you on the diagram. First-best output is Q-prime, where demand meets the low marginal-cost curve. Average-cost pricing only gets you to Q-star, a smaller output at the higher price P-star equals AC. The consumers sitting between Q-star and Q-prime — the ones who'd happily pay marginal cost, and even a bit above, but not the full average cost — are excluded. That shaded triangle is the allocative inefficiency, the welfare loss, and it's the price of keeping the firm solvent with one uniform price. Every subsequent rule tries to shrink that triangle.</aside>
+  </section>
+
+  <!-- 11 · Ramsey-Boiteux / inverse elasticity -->
+  <section class="slide" data-title="Ramsey–Boiteux">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="current">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Inverse elasticity rule</h5>
+      <p class="dim" style="font-size:13px"><code>(Pᵢ − Cᵢ)/Pᵢ = λ/ηᵢ</code><br>mark-up ∝ 1 / elasticity</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.2.4 &amp; 4.3.2 · RAMSEY–BOITEUX PRICING</p>
+      <h2 class="h2 mt-s">Load the mark-up onto the captive customer.</h2>
+      <p class="lede mt-m">Don't spread the fixed-cost mark-up evenly. Make each product's (or group's) mark-up above MC <b>inversely proportional to its demand elasticity</b>. Inelastic services carry a big mark-up; elastic services price near MC. This minimises the surplus lost while still recovering <code>F</code>.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Single product</h4><p class="dim">Different customer <em>groups</em> get different mark-ups by elasticity — resembles a monopolist's third-degree discrimination, but at a lower price level.</p></div>
+        <div class="concept-box"><h4>Multi-product</h4><p class="dim">Each product's mark-up ∝ 1/ηᵢ. "What the traffic will bear" / value-of-service pricing. λ (the Ramsey number) is tuned so <code>π = 0</code>.</p></div>
+        <div class="concept-box"><h4>Cross-price effects</h4><p class="dim">With substitutes/complements use "super-elasticities": smaller mark-ups for complements, larger for substitutes.</p></div>
+      </div>
+      <div class="callout"><b>The unifying principle.</b> The inverse-elasticity rule underlies <em>all</em> efficient pricing — it even generates optimal non-linear tariffs by treating each consumption increment as a separate "market".</div>
+    </div>
+    <aside class="notes">Ramsey–Boiteux pricing is the most beautiful idea in the chapter and, as we'll see, the one regulators most stubbornly refuse to use. The insight: average-cost pricing spreads the fixed-cost mark-up evenly across all units, which is arbitrary. You can do better. Instead, make the mark-up above marginal cost on each product — or each customer group — inversely proportional to that product's demand elasticity. Charge the big mark-up where demand is inelastic, because those customers barely reduce consumption when the price rises, so you lose little surplus. Charge near marginal cost where demand is elastic, because there a mark-up would drive away lots of trade. Tune a single constant, the Ramsey number lambda, so that the mark-ups collectively just cover the fixed and common costs and the firm breaks even. Regulators nickname this "what the traffic will bear" or value-of-service pricing. Two refinements: name-check that in the single-product case you apply it across customer groups and it looks just like a monopolist price-discriminating, only at a lower overall level; and with substitutes or complements you replace simple elasticities with super-elasticities that fold in cross-price effects — smaller mark-ups for complements, larger for substitutes. The deepest point in the callout: the inverse-elasticity rule is the unifying thread of efficient pricing theory. Even optimal non-linear tariffs are just Ramsey pricing applied to successive increments of a single product.</aside>
+  </section>
+
+  <!-- 12 · Two-part tariff (Fig 4.5) -->
+  <section class="slide" data-title="Two-part tariff">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="current">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>The tariff</h5>
+      <p class="dim" style="font-size:13px"><code>T = A + p·Q</code><br>ideal: <code>A* = F/customer</code>, <code>p* = c</code></p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.2.5 · NON-LINEAR PRICING</p>
+      <h2 class="h2 mt-s">Split the bill: a fixed fee <em>plus</em> marginal cost.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">A two-part tariff <code>T = A + p·Q</code> charges an access fee <code>A</code> once, then <code>p</code> per unit. Under identical consumers the ideal is elegant: set <code>A* = fixed cost per customer</code> and <code>p* = c = MC</code>. You get first-best consumption <em>and</em> full cost recovery — no subsidy.</p>
+          <div class="callout" style="margin-top:14px"><b>"Have your cake and eat it."</b> The per-unit charge delivers allocative efficiency; the access charge covers <code>F</code>. Average outlay <code>(A+p·Q)/Q</code> falls as you consume more.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Average and marginal outlay under a two-part tariff">
+            <line class="axis" x1="52" y1="14" x2="52" y2="205"/>
+            <line class="axis" x1="52" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="34" y="20">$/unit</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- marginal outlay = p (flat) -->
+            <line x1="52" y1="160" x2="356" y2="160" class="curve"/>
+            <text class="lbl-em" x="300" y="154" fill="var(--accent)">marginal outlay = p</text>
+            <text class="lbl" x="34" y="164" fill="var(--accent)">p</text>
+            <!-- average outlay = (A + pQ)/Q  -> asymptotes to p from above -->
+            <path class="curve-2" d="M70,40 C110,96 150,130 210,146 C270,156 320,158 356,159"/>
+            <text class="lbl-em" x="150" y="70" fill="var(--accent-3)">avg outlay = (A+pQ)/Q</text>
+            <!-- annotate the gap = A/Q shrinking -->
+            <line class="guide" x1="120" y1="112" x2="120" y2="160"/>
+            <text class="lbl" x="126" y="108" font-size="9" fill="var(--accent-3)">A/Q</text>
+            <line class="guide" x1="240" y1="150" x2="240" y2="160"/>
+          </svg>
+          <figcaption>Fig 4.5 — Average outlay falls toward the flat marginal outlay <code>p</code> as consumption rises; the gap is the amortised access fee <code>A/Q</code>.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">The two-part tariff is the first rule that lets us reach first-best without a subsidy, and it's the everyday shape of a utility bill — a standing charge plus a per-unit rate. Write the tariff as T equals A plus p times Q: a fixed access charge A levied once, and a variable charge p on every unit. Now here's the trick. The regulator faces two constraints — the firm must break even, and the access charge mustn't be so high that consumers refuse to participate. Under the strong assumption that all consumers are identical, the optimal solution is genuinely lovely: set the access charge equal to the fixed cost per customer, and set the per-unit charge equal to marginal cost. The per-unit price at marginal cost gives you allocative efficiency — first-best consumption, the full Q-prime output — while the fixed access charge quietly recovers F. Berg and Tschirhart call it having your cake and eating it too. Look at the figure. Marginal outlay — what you pay for the next unit — is flat at p, equal to marginal cost. But average outlay, total bill divided by quantity, starts high and falls toward p as you consume more, because the fixed A is being spread over more units — the shrinking gap A over Q. That declining average outlay is the signature of non-linear pricing, and it's the whole reason low-usage and high-usage customers experience the tariff so differently, which is exactly the problem the next slide exposes.</aside>
+  </section>
+
+  <!-- 13 · Self-selecting two-part tariffs (Fig 4.6) -->
+  <section class="slide" data-title="Menus of tariffs">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="current">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">heterogeneity · self-selection · Pareto improvement (Willig)</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.2.6 · MENUS &amp; OPTIMAL NON-LINEAR PRICING</p>
+      <h2 class="h2 mt-s">Real consumers differ — so offer a menu.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">The single two-part tariff assumes identical consumers. Drop that and a high fixed fee <b>excludes low-usage customers</b> who'd happily pay MC. Fix: offer a <b>menu</b> — a low-<code>A</code>/high-<code>p</code> tariff for light users, a high-<code>A</code>/low-<code>p</code> tariff for heavy users.</p>
+          <div class="callout" style="margin-top:14px"><b>Self-selection.</b> Each type picks the tariff that minimises its own bill (the dark line). Below <code>Q*</code> pick tariff 1; above <code>Q*</code> pick tariff 2. Willig (1978): making it optional can make <em>everyone</em> better off — a Pareto improvement.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Self-selecting menu of two two-part tariffs">
+            <line class="axis" x1="52" y1="14" x2="52" y2="205"/>
+            <line class="axis" x1="52" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="38" y="20">$</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- tariff 1: low intercept A1, steep slope p1 -->
+            <line x1="52" y1="150" x2="300" y2="46" class="curve-3"/>
+            <text class="lbl" x="60" y="146" font-size="9">A¹</text>
+            <text class="lbl" x="270" y="52">tariff 1 (low A, high p)</text>
+            <!-- tariff 2: high intercept A2, shallow slope p2 -->
+            <line x1="52" y1="96" x2="330" y2="150" class="curve-4"/>
+            <text class="lbl" x="60" y="92" font-size="9">A²</text>
+            <text class="lbl" x="250" y="164" fill="var(--accent-2)">tariff 2 (high A, low p)</text>
+            <!-- crossing point Q* -->
+            <line class="guide" x1="176" y1="98" x2="176" y2="205"/>
+            <circle cx="176" cy="98" r="3.5" fill="var(--accent)"/>
+            <text class="lbl" x="170" y="219">Q*</text>
+            <!-- dark lower-envelope the rational consumer chooses -->
+            <path d="M52,150 L176,98 L330,128" fill="none" stroke="var(--accent)" stroke-width="3.5"/>
+            <text class="lbl-em" x="120" y="182" fill="var(--accent)">chosen envelope (min spend)</text>
+          </svg>
+          <figcaption>Fig 4.6 — A self-selecting menu: light users take tariff 1, heavy users tariff 2; the bold lower envelope is each consumer's best choice.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Now we break the unrealistic assumption. Consumers are not identical — infrequent users value the service far less than intensive users, largely for income reasons. And that wrecks the single two-part tariff, because the fixed access charge that was fine for the average customer is a deal-breaker for a light user, who then drops out of the market entirely even though they'd gladly have paid marginal cost for a few units. That's a real efficiency loss and, worse, some consumers can be made worse off by the shift to two-part pricing. The fix is a menu. Offer two tariffs: tariff one has a low access charge but a high per-unit rate, designed to attract light users; tariff two has a high access charge but a low per-unit rate, attractive to heavy users. On the diagram each tariff is a line — its intercept is the access charge, its slope the per-unit price. A rational consumer picks whichever tariff minimises their total bill given expected consumption, so below the crossing point Q-star they take tariff one and above it tariff two. The bold lower envelope is what people actually choose. For this to work the light-user tariff's per-unit price must be high enough that heavy users don't defect to grab its low access charge — that's the self-selection constraint, and it's our first glimpse of incentive-compatibility, which dominates the rest of the chapter. Willig's striking result: make the tariff optional and you can make everyone better off — a genuine Pareto improvement over linear average-cost pricing.</aside>
+  </section>
+
+  <!-- 14 · Section 4.3 multi-product + common costs + FDC/EPMU -->
+  <section class="slide" data-title="Multi-product firm">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="current">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">joint vs common costs · FDC · EPMU</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.3 &amp; 4.3.1 · THE MULTI-PRODUCT FIRM</p>
+      <h2 class="h2 mt-s">Real networks make many products — from shared costs.</h2>
+      <p class="lede mt-m">A telecoms loop supplies local calls, long-distance, broadband, TV — from the <em>same</em> assets. That creates <b>common costs</b>: shared, not attributable to any one product. Price each product at MC and the deficit equals exactly the common cost <code>F</code>.</p>
+      <div class="grid g3 mt-l">
+        <div class="concept-box"><h4>Joint vs common</h4><p class="dim"><em>Joint</em>: fixed-proportion co-production. <em>Common</em>: needed for several products but not assignable to one. Both must be recovered somehow.</p></div>
+        <div class="concept-box"><h4>FDC method</h4><p class="dim">Fully Distributed Costs — allocate <code>F</code> by each product's share of attributable cost, revenue or output. Long US history (ICC, FCC).</p></div>
+        <div class="concept-box"><h4>EPMU method</h4><p class="dim">Equi-Proportionate Mark-Up — split <code>F</code> in proportion to each product's marginal cost. Simple, transparent.</p></div>
+      </div>
+      <div class="callout"><b>The regulator's dirty secret.</b> Cost-allocation methods are "simple, practical, gaming-resistant" — but <em>arbitrary</em> and economically inefficient. Prices end up bearing little relation to real costs. Crandall–Waverman put the US telecoms welfare loss at ~<b>$8bn</b> vs Ramsey.</div>
+    </div>
+    <aside class="notes">Now we make the setting realistic in a second way: firms produce many products, not one. A gas or electricity utility differentiates by time of day, season and customer type; a telecoms network uses the very same exchanges, switches and copper to sell local calls, long-distance, mobile termination, broadband and cable TV. Marginal-cost pricing is still the efficient ideal for each product, but the moment products share assets you get common costs — costs necessary for several services but not attributable to any single one — and if you price everything at marginal cost the revenue shortfall equals exactly those common costs. Distinguish two flavours: joint costs, where products are co-produced in fixed proportions, and common costs, shared but not jointly produced. However you classify them, they must be recovered. In practice regulators reach for cost-allocation formulas. Fully Distributed Costs, FDC, shares the common cost out by each product's proportion of attributable cost, revenue or output — a method with a long American pedigree at the ICC and FCC. Equi-Proportionate Mark-Up, EPMU, allocates in proportion to each product's marginal cost. The worked example in the book: ten dollars of common cost, marginal costs of seventy and thirty, gives a uniform ten per cent mark-up. Regulators love these methods because they're simple, transparent and hard to game from accounting data. But — and Brown and Sibley call cost allocation the source of the most muddled proceedings in regulatory history — they are economically arbitrary. They recover the money but they don't maximise welfare, and Crandall and Waverman estimated the US telecoms welfare loss from using them instead of Ramsey pricing at around eight billion dollars.</aside>
+  </section>
+
+  <!-- 15 · Peak-load pricing -->
+  <section class="slide" data-title="Peak-load pricing">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="current">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">firm-peak vs shifting-peak · capacity cost causation</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.3.3 · PEAK-LOAD PRICING</p>
+      <h2 class="h2 mt-s">Whoever causes the capacity, pays for it.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Demand swings by hour and season, but you can't store electricity, water pressure or bandwidth — so capacity is built for the <b>peak</b>. Peak-load pricing charges peak users the marginal <em>operating + capital</em> cost; off-peak users pay only marginal <em>operating</em> cost.</p>
+          <div class="callout" style="margin-top:14px"><b>Firm-peak case.</b> All the extra-capacity cost is recovered from peak prices alone. Off-peak prices fall near zero (operating costs are tiny). Treats peak and off-peak as <em>separate products</em>.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Peak-load pricing: peak vs off-peak prices against a capacity constraint">
+            <line class="axis" x1="52" y1="14" x2="52" y2="205"/>
+            <line class="axis" x1="52" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="38" y="20">$</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- capacity constraint (vertical) -->
+            <line x1="250" y1="20" x2="250" y2="205" class="curve-4"/>
+            <text class="lbl" x="256" y="34" fill="var(--accent-2)">capacity K̄</text>
+            <!-- MC operating (low flat) -->
+            <line x1="52" y1="172" x2="366" y2="172" class="curve"/>
+            <text class="lbl" x="150" y="166" fill="var(--accent)">MC operating</text>
+            <!-- off-peak demand meets MC left of capacity -->
+            <path class="curve-2" d="M60,120 L200,205"/>
+            <text class="lbl" x="90" y="118" fill="var(--accent-3)" font-size="10">off-peak D</text>
+            <!-- peak demand hits capacity wall -->
+            <path class="curve-3" d="M120,34 L300,205"/>
+            <text class="lbl" x="210" y="60">peak D</text>
+            <!-- off-peak price at MC -->
+            <circle cx="151" cy="172" r="3.5" fill="var(--accent-3)"/>
+            <line class="guide" x1="52" y1="172" x2="151" y2="172"/>
+            <!-- peak price on capacity wall (MC + capacity cost) -->
+            <circle cx="250" cy="80" r="3.5" fill="var(--text-2)"/>
+            <line class="guide" x1="52" y1="80" x2="250" y2="80"/>
+            <text class="lbl-em" x="20" y="84">P_pk</text>
+            <text class="lbl-em" x="14" y="176" fill="var(--accent-3)">P_off</text>
+            <!-- capacity-cost bracket -->
+            <text class="lbl" x="300" y="128" font-size="9">capacity<tspan x="300" dy="10">cost</tspan></text>
+          </svg>
+          <figcaption>Fig 4.x — Peak demand hits the capacity wall K̄ and pays operating + capital cost; off-peak demand clears at operating cost only.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">Peak-load pricing is a special, time-based application of the same "differentiate by willingness to pay" idea, and it's been used in electricity for decades. The physical fact driving it: you can't inventory these products. You can't store today's spare electricity, water pressure or midnight bandwidth for tomorrow's rush hour, so the network's physical capacity has to be big enough for the peak — a hot summer afternoon, the evening commute. That's expensive, and the question is who pays for the capacity. Peak-load pricing answers: the peak users, because they're the ones causing the capacity to be built. Peak prices are set to recover both the marginal operating cost and the marginal capital cost of a unit of peak capacity; off-peak prices recover only the marginal operating cost, because off-peak demand fits inside existing capacity. On the diagram the peak demand curve rams into the vertical capacity wall K-bar and clears at the high price P-peak, which includes the capacity cost; the off-peak demand curve clears down at operating cost, P-off, which in networks with tiny running costs is close to zero. In this standard firm-peak case, all the extra-capacity cost is borne by peak users alone. The elegance is that each class pays a price reflecting its own marginal cost, so you get allocative efficiency and cost recovery together — treating peak and off-peak consumption as genuinely separate products. Caveats: it assumes the periods are cleanly separable and demands independent, but if off-peak prices go too low people shift consumption — cheap overnight electricity led households to install storage heaters, blurring the peak.</aside>
+  </section>
+
+  <!-- 16 · CASE — smart meters / real-time pricing -->
+  <section class="slide" data-title="Case · Smart metering">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="current">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li>Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">real-time pricing · smart grid · Vickrey congestion pricing</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.3.3 · IN PRACTICE</p>
+      <h2 class="h2 mt-s">Peak-load pricing needed a technology to arrive.</h2>
+      <div class="casebox">
+        <h4>From tariffs to smart meters &amp; real-time pricing</h4>
+        <p>Efficient time-of-use pricing has always needed one thing regulators lacked: the ability to <b>measure who consumes what, when</b>. In water and energy that was historically hard. Recent smart-meter and smart-grid programmes change the game — jurisdictions now incentivise deployment precisely so marginal costs, which in electricity vary continuously with demand, can finally be reflected in <b>real-time prices</b>. The intellectual roots run to <b>William Vickrey</b>, who proposed congestion pricing for the New York subway in 1952 and later for roads. Peak-load theory sat on the shelf for decades not because it was wrong, but because the metering to implement it didn't exist.</p>
+      </div>
+      <div class="exercise mt-m"><b>Think about it.</b> GB's smart-meter rollout finally makes half-hourly settlement and dynamic tariffs feasible for households. Which of this chapter's pricing rules does that <em>unlock</em> — and which consumer group might lose out if inelastic, low-income users can't shift load?</div>
+    </div>
+    <aside class="notes">This case study makes a point that matters far beyond the textbook: the gap between pricing theory and pricing practice is often a measurement gap, not a theory gap. Peak-load and real-time pricing have been well understood since the 1950s, but implementing them requires knowing exactly who consumed how much at each moment, and for most of the twentieth century that information simply wasn't available in water and energy — meters were read quarterly, if that. What's changed is metering technology. Smart meters and smart-grid investments, which many regulators including Ofgem now actively incentivise, generate the granular, real-time usage data that dynamic pricing has always needed. Electricity is the poster child because its marginal cost genuinely varies minute to minute with demand, so real-time prices can track real-time costs. Vickrey is the intellectual grandfather here — congestion pricing for the New York subway in 1952, later extended to roads, the same idea of charging users the marginal cost they impose at the moment they impose it. The exercise asks students to connect this to Britain's own rollout and, importantly, to the distributional catch: dynamic pricing rewards those who can shift load, and may penalise inelastic, low-income households who can't — a fairness concern that, as we'll see at the end, is exactly why regulators resist efficient-but-inequitable pricing.</aside>
+  </section>
+
+  <!-- 17 · Section 4.4 asymmetric info + Loeb-Magat (Fig 4.7) -->
+  <section class="slide" data-title="Loeb–Magat">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="done">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li class="current">Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">principal–agent · information rent · hidden information</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.4 &amp; 4.4.1 · ASYMMETRIC INFORMATION</p>
+      <h2 class="h2 mt-s">The firm knows its costs. You don't.</h2>
+      <div class="split mt-m">
+        <div>
+          <p class="lede mini">Drop full information — the realistic case. The firm knows more about its costs, technology and effort, creating a <b>principal–agent</b> problem: it can overstate costs to win higher prices. <b>Loeb–Magat (1979)</b>: still reach first-best by letting the firm pick its own price and subsidising it the <em>entire consumer surplus</em> at that price.</p>
+          <div class="callout" style="margin-top:14px"><b>Why it works.</b> Getting the whole surplus, the firm maximises it — which means pricing at MC (<code>P*</code>). Any other price shrinks its own payoff. Cost cuts flow straight to profit, so it minimises cost too. Snag: <b>consumers get nothing</b>.</div>
+        </div>
+        <figure class="fig" data-anim="fade-up">
+          <svg viewBox="0 0 380 250" role="img" aria-label="Loeb-Magat incentive arrangement">
+            <line class="axis" x1="52" y1="14" x2="52" y2="205"/>
+            <line class="axis" x1="52" y1="205" x2="366" y2="205"/>
+            <text class="lbl" x="38" y="20">$</text>
+            <text class="lbl" x="356" y="223">Q</text>
+            <!-- Demand from B (top-left) down to the right -->
+            <path class="curve-2" d="M60,40 L330,196"/>
+            <text class="lbl" x="300" y="188" fill="var(--accent-3)">Demand</text>
+            <text class="lbl-em" x="46" y="44" fill="var(--accent-3)">B</text>
+            <!-- MC flat -->
+            <line x1="52" y1="150" x2="366" y2="150" class="curve"/>
+            <text class="lbl" x="300" y="145" fill="var(--accent)">MC</text>
+            <text class="lbl-em" x="40" y="154" fill="var(--accent)">C</text>
+            <!-- P* where demand meets MC -->
+            <line class="guide" x1="212" y1="150" x2="212" y2="205"/>
+            <text class="lbl" x="206" y="219">Q*</text>
+            <text class="lbl" x="216" y="146" font-size="11">A</text>
+            <!-- P* level marker -->
+            <text class="lbl-em" x="34" y="149" fill="var(--accent)">P*</text>
+            <!-- consumer surplus subsidy triangle P*AB (above MC line up to demand) -->
+            <polygon class="fillA" points="52,150 52,40 212,150"/>
+            <text class="lbl" x="96" y="96" font-size="9" fill="var(--accent)">CS subsidy</text>
+            <!-- variable cost rectangle O Q* A C  -->
+            <polygon class="fillB" points="52,150 212,150 212,205 52,205"/>
+            <text class="lbl" x="120" y="182" font-size="9">variable cost</text>
+          </svg>
+          <figcaption>Fig 4.7 — Loeb–Magat: at <code>P*</code> the firm keeps sales revenue <em>plus</em> a subsidy equal to consumer surplus (triangle P*AB); profit is maximised only at <code>P=MC</code>.</figcaption>
+        </figure>
+      </div>
+    </div>
+    <aside class="notes">We now pull away the biggest fiction of all: that the regulator knows the firm's costs. In reality the firm always knows more — about its costs, its production technology, and crucially how much effort it's putting into cost reduction. That's the principal-agent problem at the heart of modern regulation: the regulator is the principal trying to control an agent who holds superior information and can exploit it, classically by overstating costs to justify higher prices. The information rent is the profit the firm earns purely from that private knowledge, and the central trade-off of the whole literature is between minimising that rent and preserving incentives for efficiency. Loeb and Magat's 1979 model is the surprising opening move: even under hidden cost information you can still hit first-best. Let the firm choose its own price, and have the regulator pay it a subsidy equal to the entire consumer surplus at whatever price it picks. Watch the figure. If the firm captures all the consumer surplus, then maximising its own profit is identical to maximising total surplus — and total surplus is maximised at price equals marginal cost, output Q-star. Charge any higher price and it forfeits the little deadweight triangle, cutting its own payoff, so it voluntarily prices at MC. And because every pound of cost it saves drops straight to its bottom line, it minimises cost too. Allocative and productive efficiency both achieved, and the regulator never has to verify a cost figure. The catch is glaring and fatal for real use: producers scoop the entire surplus and consumers get nothing. It solves efficiency by ignoring distribution entirely.</aside>
+  </section>
+
+  <!-- 18 · Baron-Myerson & Laffont-Tirole (hidden action) & demand asymmetry -->
+  <section class="slide" data-title="Rent vs efficiency">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="done">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li class="current">Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li>Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">adverse selection · moral hazard · menu of contracts</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.4.1–4.4.3 · WHEN DISTRIBUTION MATTERS</p>
+      <h2 class="h2 mt-s">Once the regulator cares about rent, first-best dies.</h2>
+      <p class="lede mt-m">Loeb–Magat only worked because the regulator didn't mind the firm keeping everything. Put weight on consumer surplus (<code>α &lt; 1</code>) and the models bite. The recurring result: to limit the firm's rent, you accept some inefficiency.</p>
+      <table class="data mt-m">
+        <thead><tr><th>Model</th><th>The firm hides…</th><th>Problem type</th><th>What deviates from optimum</th></tr></thead>
+        <tbody>
+          <tr><td>Loeb–Magat (1979)</td><td>Costs</td><td>Hidden info</td><td class="num">Nothing — but firm gets all rent</td></tr>
+          <tr><td>Baron–Myerson (1982)</td><td>Costs</td><td>Adverse selection</td><td class="num">Price set <em>above</em> MC to limit rent</td></tr>
+          <tr><td>Laffont–Tirole (1986)</td><td>Effort</td><td>Moral hazard</td><td class="num">Costs above optimum (menu of contracts)</td></tr>
+          <tr><td>Riordan / Lewis–Sappington</td><td>Demand</td><td>Hidden info</td><td class="num">Depends on whether MC rises or falls</td></tr>
+        </tbody>
+      </table>
+      <div class="callout"><b>The menu insight (Laffont–Tirole).</b> Offer contracts with different cost-sharing: a low-cost firm picks the high-powered <em>fixed-price</em> contract (keeps savings, bears risk); a high-cost firm picks <em>cost-plus</em> (safe, low transfer). The firm reveals its type by <em>choosing</em>.</div>
+    </div>
+    <aside class="notes">Loeb–Magat was a special case that only worked because the regulator was indifferent to who got the surplus. The moment the regulator puts more weight on consumers than on the firm's profit — alpha below one — the clean result collapses and we enter the genuine world of regulatory economics, where every model delivers the same hard message: to claw back the firm's information rent, you must tolerate some inefficiency. Walk the table. Baron and Myerson, 1982: the firm hides its costs, an adverse-selection problem, and the optimal answer is to set price above marginal cost — accepting allocative inefficiency — because that's what limits the rent you have to pay a low-cost firm to reveal itself. Laffont and Tirole, 1986: now the firm hides its effort, a moral-hazard problem, and the regulator observes cost but can't tell whether high cost means a genuinely high-cost firm or a lazy one. The elegant solution is a menu of contracts with different degrees of cost-sharing — that's the callout. An efficient firm self-selects the high-powered fixed-price contract, keeping the savings it generates but bearing the risk; an inefficient firm picks the cost-plus contract, safe but with a low transfer. Here prices track marginal cost but costs themselves sit above the optimum — the deviation moves from price to cost. Finally Riordan and Lewis–Sappington handle hidden demand information, where the optimal policy flips depending on whether marginal costs rise or fall with output. The unifying lesson Armstrong and Sappington draw: optimal regulated prices can end up above, below, or at marginal cost depending entirely on what the firm knows — there is no single right answer, only the trade-off.</aside>
+  </section>
+
+  <!-- 19 · Section 4.5 multi-period -->
+  <section class="slide" data-title="Multi-period">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="done">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li class="done">Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li class="current">Reason across multiple periods</li>
+        <li>Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">SRMC vs LRMC · commitment · ratchet effect · regulatory lag</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.5 · PRICING OVER TIME</p>
+      <h2 class="h2 mt-s">Add time, and expectations change everything.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>SRMC vs LRMC (4.5.1)</h4><p class="dim">SRMC is efficient each period but volatile, and discourages capacity investment when congestion rents are high. <b>LRMC</b> de-links price from short-run cost → steadier signals, better dynamic efficiency. UK energy, telecoms &amp; water lean on LRMC.</p></div>
+        <div class="concept-box"><h4>Incremental Surplus Subsidy (4.5.2)</h4><p class="dim">Sappington–Sibley: pay the firm the <em>change</em> in consumer surplus, minus last period's profit. Firm rents evaporate after period 1; prices converge to MC.</p></div>
+        <div class="concept-box"><h4>Vogelsang–Finsinger (4.5.3)</h4><p class="dim">No transfers needed. Constrain next period's prices so, applied to <em>this</em> period's output, they can't exceed observed cost. Prices ratchet toward Ramsey–Boiteux.</p></div>
+        <div class="concept-box"><h4>Yardstick competition (4.5.4)</h4><p class="dim">Shleifer (1985): tie each firm's allowed price to <em>comparable</em> firms' costs. Regional water/energy DNOs "compete" on paper. Fails if firms aren't truly alike.</p></div>
+      </div>
+      <div class="callout"><b>The commitment problem &amp; the ratchet.</b> If the regulator can't commit to ignore period-1 information, the firm anticipates a future squeeze and <em>overstates costs today</em> — or mimics an efficient rival then "takes the money and runs" (Laffont–Tirole). Commitment is worth its weight in gold.</div>
+    </div>
+    <aside class="notes">Reality intrudes a fourth time: regulation isn't a one-shot game, it runs for decades over repeated reviews, and that transforms the analysis because now expectations drive behaviour. Four ideas. First, the short-run versus long-run marginal cost debate. Short-run MC is the most efficient price in any single period, but in a multi-period world it's volatile and, worse, it discourages investment — when demand is high and capacity tight, SRMC prices spike, and adding capacity would kill those congestion rents, so the firm holds back. Long-run MC deliberately de-links price from short-run cost to give steadier signals and better dynamic efficiency, which is why UK energy, telecoms and water regulators generally price off long-run cost estimates. Second, the incremental surplus subsidy scheme of Sappington and Sibley — a clever fix to Loeb–Magat's giveaway: pay the firm only the change in consumer surplus each period minus last period's profit, and the firm earns rent only in period one, then prices at marginal cost forever after with surplus flowing back to consumers. Third, Vogelsang–Finsinger, which needs no transfers at all: constrain next period's prices so that, valued at this period's output, they can't exceed observed cost, and prices ratchet down toward Ramsey–Boiteux over time. Fourth, yardstick competition — Shleifer's idea of tying each regional monopoly's allowed price to the costs of comparable firms, so England's water companies effectively compete against each other on paper, though it breaks down if they're not genuinely similar. And overarching all of it, the commitment problem in the callout: if the firm believes the regulator will use today's revealed low costs to squeeze it tomorrow — the ratchet effect — it will inflate costs now, or mimic an efficient firm and then quit. The ability to commit not to exploit information is one of the most valuable things a regulator can have.</aside>
+  </section>
+
+  <!-- 20 · Section 4.6 quality & cost reduction -->
+  <section class="slide" data-title="Quality & cost">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="done">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li class="done">Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li class="done">Reason across multiple periods</li>
+        <li class="current">Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Key terms</h5>
+      <p class="dim" style="font-size:13px">endogenous quality · minimum standards · penalties/rewards</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.6 · BEYOND PRICE</p>
+      <h2 class="h2 mt-s">Price isn't the only lever — quality and cost are too.</h2>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>Quality is a choice (4.6.1)</h4><p class="dim">Reliability, safety, responsiveness — all <em>endogenous</em>. An unregulated monopolist may supply too much <em>or</em> too little quality. Regulators use minimum standards and target-linked penalties/rewards.</p></div>
+        <div class="concept-box"><h4>The observability trap</h4><p class="dim">If neither regulator nor consumer can observe quality until after the fact (call clarity, supply reliability), the firm's information advantage means optimal regulation often <em>delegates discretion</em> plus incentive payments.</p></div>
+        <div class="concept-box"><h4>Network-effect quality</h4><p class="dim">When networks interconnect, a firm may under-provide quality because it can't capture the full benefit — the interconnecting network's quality matters too.</p></div>
+        <div class="concept-box"><h4>Cost efficiency is the real prize (4.6.2)</h4><p class="dim">Costs are endogenous too. In practice regulators (and privatisation/restructuring) chase <b>cost reduction</b> far harder than allocative efficiency.</p></div>
+      </div>
+      <div class="callout"><b>Price control shapes quality.</b> When prices track costs (rate-of-return), firms will spend to raise quality. When prices are de-linked (price caps), quality incentives can weaken — a tension Chapter 5 tackles head-on.</div>
+    </div>
+    <aside class="notes">The final section widens the lens beyond pricing, because a monopolist can exploit customers in two other ways the price rules ignore: by letting quality slide and by not bothering to cut costs. Start with quality. Everything so far assumed a fixed, uniform quality of service, but quality is endogenous — the firm chooses it, across dimensions like reliability, safety, responsiveness to complaints and new connections. The theory is genuinely ambiguous: an unregulated monopolist can supply either more or less quality than is socially optimal, depending on how marginal versus infra-marginal customers value it. So regulators intervene with minimum standards and, increasingly, service targets backed by financial penalties and rewards. The deep difficulty is observability — with things like call clarity or supply reliability, neither the regulator nor even the consumer knows the quality until after they've experienced it, so the firm's information advantage is huge, and optimal quality regulation often means delegating discretion to the firm while attaching incentive payments to measurable outcomes. There's also a network-effects wrinkle: when two networks interconnect, each may under-invest in quality because it can't capture the full benefit. Then cost efficiency, and here's the punchline of the whole chapter for a practitioner: although we've spent twenty slides on allocative efficiency and clever prices, in the real world regulators care far more about cost reduction. Privatisation and restructuring were sold overwhelmingly on the promise of lower costs, not textbook-optimal prices. And critically, the form of price control you choose shapes both quality and cost incentives — rate-of-return regulation reimburses cost so it encourages quality spending but dulls cost-cutting, while price caps do the reverse. That trade-off is exactly what Chapter 5, the next module, is about.</aside>
+  </section>
+
+  <!-- 21 · Check understanding -->
+  <section class="slide" data-title="Check">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="done">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li class="done">Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li class="done">Reason across multiple periods</li>
+        <li class="current">Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>Self-assess</h5>
+      <p class="dim" style="font-size:13px">Pick one. Answer revealed below.</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">CHECK YOUR UNDERSTANDING</p>
+      <h2 class="h2 mt-s">Under Ramsey–Boiteux pricing, which product carries the <em>largest</em> mark-up over marginal cost?</h2>
+      <div class="mt-l">
+        <div class="mcq"><div class="letter">A</div><div><b>The product with the most <span style="color:var(--accent-3)">elastic</span> demand.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Backwards. Elastic customers flee a mark-up, so they're priced <em>near</em> marginal cost.</p></div></div>
+        <div class="mcq correct"><div class="letter">B</div><div><b>The product with the most <span style="color:var(--accent)">inelastic</span> demand.</b><p class="dim" style="font-size:13px;margin:4px 0 0"><b style="color:var(--accent)">✓ Correct.</b> Mark-up ∝ 1/η. Inelastic demand barely responds to price, so loading the fixed-cost recovery there minimises the surplus lost — "what the traffic will bear".</p></div></div>
+        <div class="mcq"><div class="letter">C</div><div><b>The product with the highest marginal cost.</b><p class="dim" style="font-size:13px;margin:4px 0 0">Irrelevant. Ramsey mark-ups key off <em>elasticity</em>, not the level of marginal cost.</p></div></div>
+      </div>
+    </div>
+    <aside class="notes">A quick self-check on the single most important pricing rule in the chapter. The inverse-elasticity rule says the mark-up over marginal cost is proportional to one over the elasticity of demand. So the biggest mark-up lands on the most inelastic product — answer B. The intuition is the whole point of Ramsey pricing: if you have to raise prices above marginal cost somewhere to recover fixed costs, do it where consumers respond least, because that's where you destroy the least trade. Answer A gets it exactly backwards — elastic customers would abandon the product if you marked it up, so you price them near marginal cost. Answer C is a classic trap: the level of marginal cost is irrelevant to the size of the Ramsey mark-up; it's the elasticity that matters, not how expensive the product is to make. If a learner picks A, they've inverted the rule — send them back to slide 11. If they pick C, they've confused cost level with cost recovery. The equity sting worth mentioning: the most inelastic customers are often the captive, essential-need, sometimes lower-income users — which is precisely why regulators find Ramsey pricing efficient but politically unpalatable.</aside>
+  </section>
+
+  <!-- 22 · Why regulators resist -->
+  <section class="slide" data-title="Theory vs practice">
+    <aside class="sidebar">
+      <div class="brand">Reg · M04</div>
+      <h5>Learning objectives</h5>
+      <ul class="obj-list">
+        <li class="done">Map the three industry structures</li>
+        <li class="done">Derive first-best (marginal-cost) pricing</li>
+        <li class="done">Recover fixed costs: AC, Ramsey, two-part tariffs</li>
+        <li class="done">Handle asymmetric information (Loeb–Magat &amp; beyond)</li>
+        <li class="done">Reason across multiple periods</li>
+        <li class="done">Add quality &amp; cost-reduction incentives</li>
+      </ul>
+      <h5>4.7 · Conclusion</h5>
+      <p class="dim" style="font-size:13px">efficiency vs equity · information limits · conceptual clarity</p>
+    </aside>
+    <div class="main">
+      <p class="kicker">4.7 · THE PRACTITIONER'S PUZZLE</p>
+      <h2 class="h2 mt-s">If Ramsey is so efficient, why won't regulators use it?</h2>
+      <p class="lede mt-m">Ofgem, Ofcom, the CAA, the ICC and Electricité de France — even with Boiteux himself as chairman — have all resisted Ramsey–Boiteux pricing. The chapter closes by explaining the gap between theory and practice.</p>
+      <div class="grid g2 mt-l">
+        <div class="concept-box"><h4>① Impracticable</h4><p class="dim">It needs reliable demand-elasticity data the regulator rarely has. The ICC: "too difficult and burdensome for universal application."</p></div>
+        <div class="concept-box"><h4>② Equity, not just efficiency</h4><p class="dim">Efficient ≠ fair. Loading mark-ups on inelastic (often captive, essential-need) customers raises distributive objections. Postcomm &amp; Ofgem cite fairness.</p></div>
+        <div class="concept-box"><h4>③ Information asymmetry is severe</h4><p class="dim">The optimal-pricing models assume knowledge regulators simply don't possess in practice.</p></div>
+        <div class="concept-box"><h4>④ Still influential</h4><p class="dim">Even unused, the theory shaped incentive regulation — menu contracts, yardstick competition — and gives conceptual clarity on the trade-offs.</p></div>
+      </div>
+    </div>
+    <aside class="notes">This is Decker's conclusion, and it's the most important practitioner takeaway in the module — the reason a working economist should care about all this theory even though almost none of it is applied literally. Ramsey–Boiteux pricing has, as Decker notes, endeared itself to economists for decades, yet regulator after regulator refuses to use it: Ofgem, Ofcom, the Civil Aviation Authority, the American ICC — and the killer anecdote, even Electricité de France declined to use it despite Marcel Boiteux, co-author of the theory, sitting as its chairman. Why? Four reasons. First, it's impracticable — it demands reliable demand-elasticity estimates that regulators just don't have, which is why the ICC called it too burdensome for universal use. Second, and this is the big one, efficiency is not equity: Ramsey pricing deliberately loads the heaviest mark-ups onto the most inelastic customers, who are frequently the captive, essential-need, sometimes poorest users, and that triggers fairness objections — Postcomm and Ofgem have explicitly rejected it partly on distributive grounds. Third, the information asymmetry in the real world is far more severe than the models assume. But — and here's the redemption — the fourth point is that these theories, even unimplemented, have profoundly shaped practice. Menu regulation, yardstick competition, incentive price caps all descend directly from this analytical work. As Decker puts it, the value of the theory isn't a cookbook of prices; it's conceptual clarity about the trade-offs, and that clarity is exactly what a good regulator carries into every price review.</aside>
+  </section>
+
+  <!-- 23 · Summary -->
+  <section class="slide full" data-title="Summary">
+    <p class="kicker">SUMMARY · MODULE 04</p>
+    <h1 class="h1 mt-s">You can now…</h1>
+    <div class="grid g2 mt-l">
+      <div class="concept-box"><h4>✓ Place the core network in its structure</h4><p class="dim">Integrated monopoly, vertical separation, or integration-with-competition — deciding retail vs access pricing.</p></div>
+      <div class="concept-box"><h4>✓ Climb the full-information pricing ladder</h4><p class="dim">First-best MC → the fixed-cost trap → average cost → Ramsey–Boiteux → peak-load → two-part &amp; self-selecting tariffs.</p></div>
+      <div class="concept-box"><h4>✓ Read the asymmetric-information trade-off</h4><p class="dim">Loeb–Magat, Baron–Myerson, Laffont–Tirole — rent vs efficiency, with prices or costs deviating from optimum.</p></div>
+      <div class="concept-box"><h4>✓ Reason dynamically, and on quality &amp; cost</h4><p class="dim">Commitment, the ratchet, yardstick competition; and why regulators prize cost efficiency above all.</p></div>
+    </div>
+    <div class="callout mt-l">
+      <b>Up next · Module 05.</b> Theory said <em>what</em> the efficient prices are; it couldn't say how to set them without perfect information. Chapter 5 turns to the real instruments — <b>rate-of-return vs RPI–X price caps</b>, the RAB, regulatory lag and menu regulation — the machinery that actually implements everything you've just learned.
+    </div>
+    <div class="deck-footer"><span>Teaching deck of Decker, <em>Modern Economic Regulation</em> (CUP 2015), Ch. 4</span><span class="slide-number" data-current="23" data-total="23"></span></div>
+    <aside class="notes">Let's recap against the six objectives before setting up Chapter 5. The through-line to carry away: efficient core-network pricing is a ladder of compromises forced by one stubborn fact — high fixed costs mean marginal-cost pricing bankrupts the firm. Every rule in this module, from average cost to Ramsey to two-part tariffs, is a different way of recovering those fixed costs while sacrificing the least surplus. Then asymmetric information turns the clean rules into trade-offs between the firm's rent and efficiency, multiple periods add commitment and the ratchet, and quality and cost round it out — with the sobering reminder that regulators chase cost reduction far more than textbook allocative efficiency, and reject efficient-but-unfair pricing like Ramsey on equity grounds. The theory's real payoff is conceptual clarity, not a price list. Module 5 picks up exactly where the information problem left us: since regulators can't compute optimal prices directly, what practical instruments do they actually use? That's rate-of-return regulation versus RPI–X price caps, the regulatory asset base, regulatory lag and menu regulation — the machinery that implements everything you've just learned. End here.</aside>
+  </section>
+
+</div>
+<script src="../assets/runtime.js"></script>
+</body></html>
