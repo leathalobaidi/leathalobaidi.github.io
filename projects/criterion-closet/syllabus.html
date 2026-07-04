@@ -1,0 +1,197 @@
+<meta charset="utf-8">
+<title>A Year in the Closet — 52-Film Syllabus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#121214; --panel:#1d1e22; --line:#2c2d33;
+    --ink:#E9E5DC; --ink-dim:#9a968c; --ink-faint:#6b6b70;
+    --gold:#C9A24B; --gold-dim:#8a7034;
+    --c0:#E8734A; --c1:#C6473F; --c2:#6C8C9C; --c3:#E0B23C; --c4:#A3564E;
+    --c5:#6FA8A0; --c6:#7FB04F; --c7:#B98BC9; --c8:#D98CA6;
+    --gem:#6FA8A0; --wild:#B98BC9;
+    --serif:"Hoefler Text","Iowan Old Style",Georgia,"Times New Roman",serif;
+    --sans:system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono","Menlo",monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  a{color:var(--gold);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:820px;margin:0 auto;padding:40px 22px 80px}
+  .kicker{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(30px,6vw,44px);line-height:1.02;margin:0;letter-spacing:-.015em;text-wrap:balance}
+  .lede{color:var(--ink-dim);font-size:15.5px;max-width:58ch;margin:16px 0 0}
+  /* progress block */
+  .prog{margin:28px 0 8px;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:18px 20px}
+  .prog-top{display:flex;flex-wrap:wrap;gap:18px;align-items:baseline;justify-content:space-between}
+  .prog-n{font-family:var(--serif);font-size:26px;font-weight:600;font-variant-numeric:tabular-nums}
+  .prog-n small{font-size:14px;color:var(--ink-faint);font-family:var(--sans);font-weight:400}
+  .pace{display:flex;gap:6px;align-items:center}
+  .pace button{background:transparent;border:1px solid var(--line);color:var(--ink-dim);
+    border-radius:6px;padding:5px 10px;font-size:12px;cursor:pointer;font-family:var(--sans)}
+  .pace button.on{background:var(--gold);border-color:var(--gold);color:#1a1400;font-weight:600}
+  .bar{height:8px;background:#0d0d0f;border-radius:5px;margin:14px 0 8px;overflow:hidden}
+  .bar i{display:block;height:100%;background:var(--gold);border-radius:5px;transition:width .3s}
+  .prog-sub{display:flex;flex-wrap:wrap;gap:8px 20px;font-size:12.5px;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+  /* legend */
+  .tiers{display:flex;flex-wrap:wrap;gap:8px 16px;margin:20px 0 6px;font-size:12.5px;color:var(--ink-dim)}
+  .tiers b{font-weight:600;color:var(--ink)}
+  .chip{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+    padding:2px 8px;border-radius:999px;border:1px solid;line-height:1.5;vertical-align:1px}
+  /* list */
+  .films{margin-top:18px}
+  .film{display:grid;grid-template-columns:44px 30px 1fr auto;gap:0 14px;align-items:start;
+    padding:14px 4px;border-bottom:1px solid var(--line)}
+  .film.done .t,.film.done .meta,.film.done .why{opacity:.38}
+  .film.done .t{text-decoration:line-through;text-decoration-color:var(--gold-dim);text-decoration-thickness:1px}
+  .wk{font-family:var(--mono);font-size:11px;color:var(--ink-faint);padding-top:5px}
+  .wk b{display:block;font-size:15px;color:var(--ink-dim);font-weight:500}
+  .cb{appearance:none;width:19px;height:19px;margin-top:4px;border:1.5px solid var(--ink-faint);border-radius:5px;
+    cursor:pointer;position:relative;background:transparent;flex:none}
+  .cb:checked{background:var(--gold);border-color:var(--gold)}
+  .cb:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#1a1400;font-size:13px;font-weight:700}
+  .cb:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  .t{font-family:var(--serif);font-size:19px;font-weight:600;line-height:1.2;margin:0}
+  .meta{font-size:12.5px;color:var(--ink-dim);margin-top:2px;font-variant-numeric:tabular-nums}
+  .why{font-size:13px;color:var(--ink-faint);margin-top:5px;font-style:italic}
+  .who{font-size:12px;color:var(--ink-faint);margin-top:2px}
+  .who span{color:var(--ink-dim)}
+  .rt{text-align:right;font-family:var(--mono);font-size:12px;color:var(--ink-faint);padding-top:5px;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .rt b{display:block;color:var(--gold);font-weight:500;font-size:13px}
+  .divider{margin:26px 0 8px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint)}
+  .foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-faint);max-width:64ch}
+  .reset{background:none;border:1px solid var(--line);color:var(--ink-faint);border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;margin-left:8px}
+  .reset:hover{color:var(--ink)}
+  @media (max-width:560px){ .film{grid-template-columns:34px 26px 1fr}.rt{grid-column:3;text-align:left;padding-top:2px}
+    .rt b{display:inline;margin-right:8px} }
+</style>
+
+<div class="wrap">
+  <nav style="display:flex;gap:16px;font-family:var(--mono);font-size:12px;margin-bottom:20px">
+    <a href="index.html">← The Taste Map</a><a href="/#projects">leathalobaidi.com</a></nav>
+  <p class="kicker">Criterion Closet · A Viewing Syllabus</p>
+  <h1>A Year in the Closet</h1>
+  <p class="lede">Fifty-two films, one a week — distilled from 7,360 picks by 477 Closet guests.
+    The canon everyone pulls, the signature films of all nine taste communities, the deep cuts
+    only the Closet knows, and seven one-guest treasures. No director twice in a row.</p>
+
+  <div class="prog">
+    <div class="prog-top">
+      <div class="prog-n"><span id="done">0</span><small> / 52 watched</small></div>
+      <div class="pace" id="pace">
+        <span style="font-size:12px;color:var(--ink-faint)">Pace:</span>
+        <button data-p="7" class="on">1 / week</button>
+        <button data-p="3.5">2 / week</button>
+        <button data-p="1">1 / day</button>
+      </div>
+    </div>
+    <div class="bar"><i id="bar" style="width:0%"></i></div>
+    <div class="prog-sub">
+      <span id="hrs"></span><span id="finish"></span>
+      <span><button class="reset" id="reset">reset progress</button></span>
+    </div>
+  </div>
+
+  <div class="tiers" id="tierlegend"></div>
+  <div class="films" id="films"></div>
+
+  <p class="foot">Built from the community record at letterboxd.com/closetpicks (477 visits, complete to
+    mid-2026), enriched with Letterboxd ratings and official IMDb ratings. Curation rules: canon = most-picked,
+    max two films per director; community picks = most-picked within each detected taste community; deep cuts =
+    picked 3+ times, Letterboxd ≥ 3.9, under 20k IMDb votes; wildcards = single-guest picks rated 4.15+.
+    <em>A Constant Forge</em> (32 picks) is excluded — it's the companion documentary to the Cassavetes box;
+    watch it alongside weeks 1 and 6 if you fall in love. Trilogies enter by their first film only.
+    Progress is saved in your browser.</p>
+</div>
+
+<script id="plan-data" type="application/json">{"films":[{"slug":"a-woman-under-the-influence","title":"A Woman Under the Influence","year":1974,"director":"John Cassavetes","runtime":155,"lb":4.4,"imdb":8,"votes":33524,"picked":40,"tier":"canon","com":null,"why":"Pulled off the shelf by 40 guests","pickers":["RZA","James L. Brooks","Barry Levinson"],"lb_url":"https://letterboxd.com/film/a-woman-under-the-influence/","imdb_url":"https://www.imdb.com/title/tt0072417/","week":1},{"slug":"la-pointe-courte","title":"La Pointe Courte","year":1955,"director":"Agnès Varda","runtime":80,"lb":3.72,"imdb":7,"votes":4927,"picked":26,"tier":"community","com":0,"why":"26 picks from the Varda community","pickers":["Joachim Trier","Payal Kapadia","John David Washington & Malcolm Washington"],"lb_url":"https://letterboxd.com/film/la-pointe-courte/","imdb_url":"https://www.imdb.com/title/tt0048499/","week":2},{"slug":"the-human-condition-i-no-greater-love","title":"The Human Condition I: No Greater Love","year":1959,"director":"Masaki Kobayashi","runtime":204,"lb":4.58,"imdb":8.5,"votes":11389,"picked":3,"tier":"gem","com":null,"why":"LB 4.58 with only 11k IMDb votes — start of a trilogy — the Closet knows","pickers":["Brothers Quay","Veronika Franz and Severin Fiala","The Wolfpack"],"lb_url":"https://letterboxd.com/film/the-human-condition-i-no-greater-love/","imdb_url":"https://www.imdb.com/title/tt0053114/","week":3},{"slug":"z","title":"Z","year":1969,"director":"Costa-Gavras","runtime":122,"lb":4.37,"imdb":8.1,"votes":34147,"picked":1,"tier":"wildcard","com":null,"why":"Tim Robbins's solo treasure — no one else picked it","pickers":["Tim Robbins"],"lb_url":"https://letterboxd.com/film/z/","imdb_url":"https://www.imdb.com/title/tt0065234/","week":4},{"slug":"happiness-1965","title":"Le Bonheur","year":1965,"director":"Agnès Varda","runtime":80,"lb":4.14,"imdb":7.6,"votes":11911,"picked":26,"tier":"community","com":0,"why":"26 picks from the Varda community","pickers":["Joachim Trier","Payal Kapadia","John David Washington & Malcolm Washington"],"lb_url":"https://letterboxd.com/film/happiness-1965/","imdb_url":"https://www.imdb.com/title/tt0058985/","week":5},{"slug":"the-killing-of-a-chinese-bookie","title":"The Killing of a Chinese Bookie","year":1976,"director":"John Cassavetes","runtime":135,"lb":3.9,"imdb":7.2,"votes":16453,"picked":38,"tier":"canon","com":null,"why":"Pulled off the shelf by 38 guests","pickers":["RZA","James L. Brooks","Barry Levinson"],"lb_url":"https://letterboxd.com/film/the-killing-of-a-chinese-bookie/","imdb_url":"https://www.imdb.com/title/tt0074749/","week":6},{"slug":"shoah","title":"Shoah","year":1985,"director":"Claude Lanzmann","runtime":566,"lb":4.53,"imdb":8.7,"votes":11644,"picked":3,"tier":"gem","com":null,"why":"LB 4.53 with only 12k IMDb votes — the Closet knows","pickers":["Ira Sachs","Lav Diaz","Josh and Benny Safdie"],"lb_url":"https://letterboxd.com/film/shoah/","imdb_url":"https://www.imdb.com/title/tt0090015/","week":7},{"slug":"faces-1968","title":"Faces","year":1968,"director":"John Cassavetes","runtime":130,"lb":3.93,"imdb":7.4,"votes":12796,"picked":36,"tier":"community","com":1,"why":"29 picks from the Cassavetes community","pickers":["RZA","James L. Brooks","Barry Levinson"],"lb_url":"https://letterboxd.com/film/faces-1968/","imdb_url":"https://www.imdb.com/title/tt0062952/","week":8},{"slug":"8-half","title":"8½","year":1963,"director":"Federico Fellini","runtime":139,"lb":4.27,"imdb":8,"votes":133067,"picked":35,"tier":"canon","com":null,"why":"Pulled off the shelf by 35 guests","pickers":["Jodie Foster","Bill Hader's Second","Jacques Audiard"],"lb_url":"https://letterboxd.com/film/8-half/","imdb_url":"https://www.imdb.com/title/tt0056801/","week":9},{"slug":"oldboy","title":"Oldboy","year":2003,"director":"Park Chan-wook","runtime":120,"lb":4.36,"imdb":8.3,"votes":723138,"picked":1,"tier":"wildcard","com":null,"why":"Park Chan-wook's solo treasure — no one else picked it","pickers":["Park Chan-wook"],"lb_url":"https://letterboxd.com/film/oldboy/","imdb_url":"https://www.imdb.com/title/tt0364569/","week":10},{"slug":"shadows-1958","title":"Shadows","year":1958,"director":"John Cassavetes","runtime":87,"lb":3.69,"imdb":7.2,"votes":13615,"picked":33,"tier":"community","com":1,"why":"28 picks from the Cassavetes community","pickers":["RZA","James L. Brooks","Barry Levinson"],"lb_url":"https://letterboxd.com/film/shadows-1958/","imdb_url":"https://www.imdb.com/title/tt0053270/","week":11},{"slug":"a-brighter-summer-day","title":"A Brighter Summer Day","year":1991,"director":"Edward Yang","runtime":237,"lb":4.5,"imdb":8.2,"votes":15155,"picked":8,"tier":"gem","com":null,"why":"LB 4.5 with only 15k IMDb votes — the Closet knows","pickers":["Pawo Choyning Dorji","Barry Jenkins","Anthony Chen"],"lb_url":"https://letterboxd.com/film/a-brighter-summer-day/","imdb_url":"https://www.imdb.com/title/tt0101985/","week":12},{"slug":"la-strada","title":"La Strada","year":1954,"director":"Federico Fellini","runtime":115,"lb":4.18,"imdb":8,"votes":70070,"picked":33,"tier":"canon","com":null,"why":"Pulled off the shelf by 33 guests","pickers":["Natasha Lyonne","Jodie Foster","Bill Hader's Second"],"lb_url":"https://letterboxd.com/film/la-strada/","imdb_url":"https://www.imdb.com/title/tt0047528/","week":13},{"slug":"through-a-glass-darkly","title":"Through a Glass Darkly","year":1961,"director":"Ingmar Bergman","runtime":91,"lb":4.16,"imdb":7.9,"votes":29526,"picked":18,"tier":"community","com":2,"why":"17 picks from the Bergman community","pickers":["Nuri Bilge Ceylan","Theodore Witcher","David Cronenberg"],"lb_url":"https://letterboxd.com/film/through-a-glass-darkly/","imdb_url":"https://www.imdb.com/title/tt0055499/","week":14},{"slug":"i-am-cuba","title":"I Am Cuba","year":1964,"director":"Mikhail Kalatozov","runtime":141,"lb":4.46,"imdb":8.2,"votes":12426,"picked":3,"tier":"gem","com":null,"why":"LB 4.46 with only 12k IMDb votes — the Closet knows","pickers":["Danny Boyle","Lav Diaz","Deepa Dhanraj"],"lb_url":"https://letterboxd.com/film/i-am-cuba/","imdb_url":"https://www.imdb.com/title/tt0058604/","week":15},{"slug":"vagabond","title":"Vagabond","year":1985,"director":"Agnès Varda","runtime":106,"lb":4.11,"imdb":7.6,"votes":15950,"picked":27,"tier":"canon","com":null,"why":"Pulled off the shelf by 27 guests","pickers":["Joachim Trier","Payal Kapadia","John David Washington & Malcolm Washington"],"lb_url":"https://letterboxd.com/film/vagabond/","imdb_url":"https://www.imdb.com/title/tt0089960/","week":16},{"slug":"winter-light","title":"Winter Light","year":1963,"director":"Ingmar Bergman","runtime":80,"lb":4.25,"imdb":8,"votes":29631,"picked":18,"tier":"community","com":2,"why":"17 picks from the Bergman community","pickers":["Nuri Bilge Ceylan","Theodore Witcher","David Cronenberg"],"lb_url":"https://letterboxd.com/film/winter-light/","imdb_url":"https://www.imdb.com/title/tt0057358/","week":17},{"slug":"im-still-here-2024","title":"I'm Still Here","year":2024,"director":"Walter Salles","runtime":138,"lb":4.34,"imdb":8.1,"votes":167657,"picked":1,"tier":"wildcard","com":null,"why":"Walter Salles's solo treasure — no one else picked it","pickers":["Walter Salles"],"lb_url":"https://letterboxd.com/film/im-still-here-2024/","imdb_url":"https://www.imdb.com/title/tt14961016/","week":18},{"slug":"cleo-from-5-to-7","title":"Cléo from 5 to 7","year":1962,"director":"Agnès Varda","runtime":90,"lb":4.18,"imdb":7.8,"votes":31836,"picked":27,"tier":"canon","com":null,"why":"Pulled off the shelf by 27 guests","pickers":["Joachim Trier","Payal Kapadia","John David Washington & Malcolm Washington"],"lb_url":"https://letterboxd.com/film/cleo-from-5-to-7/","imdb_url":"https://www.imdb.com/title/tt0055852/","week":19},{"slug":"satyricon-1969","title":"Satyricon","year":1969,"director":"Federico Fellini","runtime":129,"lb":3.71,"imdb":6.8,"votes":18222,"picked":19,"tier":"community","com":3,"why":"15 picks from the Fellini community","pickers":["Jodie Foster","Bill Hader's Second","Jacques Audiard"],"lb_url":"https://letterboxd.com/film/satyricon-1969/","imdb_url":"https://www.imdb.com/title/tt0064940/","week":20},{"slug":"scenes-from-a-marriage-1973-1","title":"Scenes from a Marriage","year":1973,"director":"Ingmar Bergman","runtime":283,"lb":4.45,"imdb":8.5,"votes":17838,"picked":12,"tier":"gem","com":null,"why":"LB 4.45 with only 18k IMDb votes — start of a trilogy — the Closet knows","pickers":["David Cronenberg","Aubrey Plaza and Jeff Baena","Atom Egoyan"],"lb_url":"https://letterboxd.com/film/scenes-from-a-marriage-1973-1/","imdb_url":"https://www.imdb.com/title/tt0070644/","week":21},{"slug":"variety-lights","title":"Variety Lights","year":1950,"director":"Alberto Lattuada, Federico Fellini","runtime":93,"lb":3.48,"imdb":7.1,"votes":4357,"picked":17,"tier":"community","com":3,"why":"14 picks from the Fellini community","pickers":["Jodie Foster","Bill Hader's Second","Jacques Audiard"],"lb_url":"https://letterboxd.com/film/variety-lights/","imdb_url":"https://www.imdb.com/title/tt0042692/","week":22},{"slug":"faces-places","title":"Faces Places","year":2017,"director":"Agnès Varda, JR","runtime":94,"lb":4.15,"imdb":7.8,"votes":14466,"picked":24,"tier":"canon","com":null,"why":"Pulled off the shelf by 24 guests","pickers":["Payal Kapadia","John David Washington & Malcolm Washington","Sara Dosa"],"lb_url":"https://letterboxd.com/film/faces-places/","imdb_url":"https://www.imdb.com/title/tt5598102/","week":23},{"slug":"the-ascent","title":"The Ascent","year":1977,"director":"Larisa Shepitko","runtime":110,"lb":4.44,"imdb":8.2,"votes":12405,"picked":7,"tier":"gem","com":null,"why":"LB 4.44 with only 12k IMDb votes — the Closet knows","pickers":["Alfonso Cuaron and Pawel Pawlikowski","Cate Blanchett and Todd Field","Brady Corbet"],"lb_url":"https://letterboxd.com/film/the-ascent/","imdb_url":"https://www.imdb.com/title/tt0075404/","week":24},{"slug":"minding-the-gap","title":"Minding the Gap","year":2018,"director":"Bing Liu","runtime":93,"lb":4.32,"imdb":8,"votes":11102,"picked":1,"tier":"wildcard","com":null,"why":"Charlotte Wells's solo treasure — no one else picked it","pickers":["Charlotte Wells"],"lb_url":"https://letterboxd.com/film/minding-the-gap/","imdb_url":"https://www.imdb.com/title/tt7476236/","week":25},{"slug":"accattone","title":"Accattone","year":1961,"director":"Pier Paolo Pasolini","runtime":117,"lb":3.91,"imdb":7.6,"votes":11268,"picked":17,"tier":"community","com":4,"why":"14 picks from the Pasolini community","pickers":["Paul B. Preciado","Bertrand Bonello","Jim Jarmusch"],"lb_url":"https://letterboxd.com/film/accattone/","imdb_url":"https://www.imdb.com/title/tt0054599/","week":26},{"slug":"do-the-right-thing","title":"Do the Right Thing","year":1989,"director":"Spike Lee","runtime":120,"lb":4.4,"imdb":7.9,"votes":125027,"picked":22,"tier":"canon","com":null,"why":"Pulled off the shelf by 22 guests","pickers":["Ryan Coogler","Edward Berger","Asif Kapadia"],"lb_url":"https://letterboxd.com/film/do-the-right-thing/","imdb_url":"https://www.imdb.com/title/tt0097216/","week":27},{"slug":"mamma-roma","title":"Mamma Roma","year":1962,"director":"Pier Paolo Pasolini","runtime":110,"lb":4.03,"imdb":7.7,"votes":11460,"picked":18,"tier":"community","com":4,"why":"14 picks from the Pasolini community","pickers":["Paul B. Preciado","Bertrand Bonello","Jim Jarmusch"],"lb_url":"https://letterboxd.com/film/mamma-roma/","imdb_url":"https://www.imdb.com/title/tt0056215/","week":28},{"slug":"mishima-a-life-in-four-chapters","title":"Mishima: A Life in Four Chapters","year":1985,"director":"Paul Schrader","runtime":121,"lb":4.42,"imdb":7.9,"votes":16880,"picked":6,"tier":"gem","com":null,"why":"LB 4.42 with only 17k IMDb votes — the Closet knows","pickers":["Joachim Trier","Gaspar Noé","Ari Aster"],"lb_url":"https://letterboxd.com/film/mishima-a-life-in-four-chapters/","imdb_url":"https://www.imdb.com/title/tt0089603/","week":29},{"slug":"monsieur-hulots-holiday","title":"Monsieur Hulot's Holiday","year":1953,"director":"Jacques Tati","runtime":87,"lb":3.73,"imdb":7.3,"votes":22019,"picked":21,"tier":"canon","com":null,"why":"Pulled off the shelf by 21 guests","pickers":["Ira Sachs","Paul B. Preciado","Claude Lelouch"],"lb_url":"https://letterboxd.com/film/monsieur-hulots-holiday/","imdb_url":"https://www.imdb.com/title/tt0046487/","week":30},{"slug":"mon-oncle","title":"Mon Oncle","year":1958,"director":"Jacques Tati","runtime":118,"lb":4.04,"imdb":7.6,"votes":24937,"picked":21,"tier":"community","com":5,"why":"17 picks from the Tati community","pickers":["Ira Sachs","Paul B. Preciado","Claude Lelouch"],"lb_url":"https://letterboxd.com/film/mon-oncle/","imdb_url":"https://www.imdb.com/title/tt0050706/","week":31},{"slug":"samurai-rebellion","title":"Samurai Rebellion","year":1967,"director":"Masaki Kobayashi","runtime":121,"lb":4.31,"imdb":8.3,"votes":15712,"picked":1,"tier":"wildcard","com":null,"why":"Garrett Bradley's solo treasure — no one else picked it","pickers":["Garrett Bradley"],"lb_url":"https://letterboxd.com/film/samurai-rebellion/","imdb_url":"https://www.imdb.com/title/tt0061847/","week":32},{"slug":"streetwise","title":"Streetwise","year":1984,"director":"Martin Bell","runtime":91,"lb":4.41,"imdb":8.2,"votes":3762,"picked":6,"tier":"gem","com":null,"why":"LB 4.41 with only 4k IMDb votes — the Closet knows","pickers":["Matt Wolf","Sam and Reed Harkness & Jason Reid","Lena Dunham"],"lb_url":"https://letterboxd.com/film/streetwise/","imdb_url":"https://www.imdb.com/title/tt0088196/","week":33},{"slug":"parade","title":"Parade","year":1974,"director":"Jacques Tati","runtime":90,"lb":3.27,"imdb":5.9,"votes":2025,"picked":21,"tier":"canon","com":null,"why":"Pulled off the shelf by 21 guests","pickers":["Ira Sachs","Paul B. Preciado","Claude Lelouch"],"lb_url":"https://letterboxd.com/film/parade/","imdb_url":"https://www.imdb.com/title/tt0071968/","week":34},{"slug":"godzilla","title":"Godzilla","year":1954,"director":"Ishirō Honda","runtime":96,"lb":4.06,"imdb":7.6,"votes":45638,"picked":11,"tier":"community","com":6,"why":"8 picks from the Kaiju / Godzilla community","pickers":["David and Nathan Zellner's Criterion Picks","Daniels","Park Chan-wook"],"lb_url":"https://letterboxd.com/film/godzilla/","imdb_url":"https://www.imdb.com/title/tt0047034/","week":35},{"slug":"all-that-jazz","title":"All That Jazz","year":1979,"director":"Bob Fosse","runtime":123,"lb":4.34,"imdb":7.8,"votes":40780,"picked":21,"tier":"canon","com":null,"why":"Pulled off the shelf by 21 guests","pickers":["Natasha Lyonne","Joachim Trier","Sofia Coppola and Marc Jacobs"],"lb_url":"https://letterboxd.com/film/all-that-jazz/","imdb_url":"https://www.imdb.com/title/tt0078754/","week":36},{"slug":"jour-de-fete","title":"Jour de Fête","year":1949,"director":"Jacques Tati","runtime":86,"lb":3.59,"imdb":7.2,"votes":9704,"picked":21,"tier":"community","com":5,"why":"17 picks from the Tati community","pickers":["Ira Sachs","Paul B. Preciado","Claude Lelouch"],"lb_url":"https://letterboxd.com/film/jour-de-fete/","imdb_url":"https://www.imdb.com/title/tt0040497/","week":37},{"slug":"harlan-county-usa","title":"Harlan County U.S.A.","year":1976,"director":"Barbara Kopple","runtime":105,"lb":4.37,"imdb":8.2,"votes":7553,"picked":6,"tier":"gem","com":null,"why":"LB 4.37 with only 8k IMDb votes — the Closet knows","pickers":["Zoë Kravitz and Channing Tatum","Bill and Turner Ross","Alex Winter"],"lb_url":"https://letterboxd.com/film/harlan-county-usa/","imdb_url":"https://www.imdb.com/title/tt0074605/","week":38},{"slug":"senna","title":"Senna","year":2010,"director":"Asif Kapadia","runtime":106,"lb":4.26,"imdb":8.4,"votes":83818,"picked":1,"tier":"wildcard","com":null,"why":"Asif Kapadia's solo treasure — no one else picked it","pickers":["Asif Kapadia"],"lb_url":"https://letterboxd.com/film/senna/","imdb_url":"https://www.imdb.com/title/tt1424432/","week":39},{"slug":"2046","title":"2046","year":2004,"director":"Wong Kar-Wai","runtime":128,"lb":4.05,"imdb":7.4,"votes":64646,"picked":8,"tier":"community","com":6,"why":"7 picks from the Kaiju / Godzilla community","pickers":["Alessandro Borghi, Felix van Groeningen, and Charlotte Vandermeersch","Lily Gladstone and Erica Tremblay","RaMell Ross"],"lb_url":"https://letterboxd.com/film/2046/","imdb_url":"https://www.imdb.com/title/tt0212712/","week":40},{"slug":"fanny-and-alexander","title":"Fanny and Alexander","year":1982,"director":"Ingmar Bergman","runtime":188,"lb":4.42,"imdb":8.1,"votes":71508,"picked":20,"tier":"canon","com":null,"why":"Pulled off the shelf by 20 guests","pickers":["Edward Berger","Nuri Bilge Ceylan","David Cronenberg"],"lb_url":"https://letterboxd.com/film/fanny-and-alexander/","imdb_url":"https://www.imdb.com/title/tt0083922/","week":41},{"slug":"a-special-day","title":"A Special Day","year":1977,"director":"Ettore Scola","runtime":106,"lb":4.35,"imdb":8.1,"votes":18726,"picked":6,"tier":"gem","com":null,"why":"LB 4.35 with only 19k IMDb votes — the Closet knows","pickers":["Claude Lelouch","Alexander Payne","Griffin Dunne & Amy Robinson"],"lb_url":"https://letterboxd.com/film/a-special-day/","imdb_url":"https://www.imdb.com/title/tt0076085/","week":42},{"slug":"head","title":"Head","year":1968,"director":"Bob Rafelson","runtime":86,"lb":3.64,"imdb":6.4,"votes":7401,"picked":8,"tier":"community","com":7,"why":"5 picks from the New Hollywood community","pickers":["Bob Odenkirk","Edgar Wright's Second","Robert Downey Sr."],"lb_url":"https://letterboxd.com/film/head/","imdb_url":"https://www.imdb.com/title/tt0063049/","week":43},{"slug":"in-the-mood-for-love","title":"In the Mood for Love","year":2000,"director":"Wong Kar-Wai","runtime":99,"lb":4.37,"imdb":8,"votes":189536,"picked":20,"tier":"canon","com":null,"why":"Pulled off the shelf by 20 guests","pickers":["Asif Kapadia","Alessandro Borghi, Felix van Groeningen, and Charlotte Vandermeersch","Gina Prince-Bythewood"],"lb_url":"https://letterboxd.com/film/in-the-mood-for-love/","imdb_url":"https://www.imdb.com/title/tt0118694/","week":44},{"slug":"easy-rider","title":"Easy Rider","year":1969,"director":"Dennis Hopper","runtime":96,"lb":3.77,"imdb":7.2,"votes":122790,"picked":13,"tier":"community","com":7,"why":"5 picks from the New Hollywood community","pickers":["Bob Odenkirk","Edgar Wright's Second","Robert Downey Sr."],"lb_url":"https://letterboxd.com/film/easy-rider/","imdb_url":"https://www.imdb.com/title/tt0064276/","week":45},{"slug":"ordet","title":"Ordet","year":1955,"director":"Carl Theodor Dreyer","runtime":125,"lb":4.35,"imdb":8.2,"votes":19000,"picked":3,"tier":"gem","com":null,"why":"LB 4.35 with only 19k IMDb votes — the Closet knows","pickers":["Jack Garfein","Claire Denis","Slavoj Zizek"],"lb_url":"https://letterboxd.com/film/ordet/","imdb_url":"https://www.imdb.com/title/tt0048452/","week":46},{"slug":"everything-everywhere-all-at-once","title":"Everything Everywhere All at Once","year":2022,"director":"Daniel Scheinert, Daniel Kwan","runtime":140,"lb":4.24,"imdb":7.7,"votes":652040,"picked":1,"tier":"wildcard","com":null,"why":"Daniels's solo treasure — no one else picked it","pickers":["Daniels"],"lb_url":"https://letterboxd.com/film/everything-everywhere-all-at-once/","imdb_url":"https://www.imdb.com/title/tt6710474/","week":47},{"slug":"persona","title":"Persona","year":1966,"director":"Ingmar Bergman","runtime":85,"lb":4.38,"imdb":8,"votes":141092,"picked":18,"tier":"canon","com":null,"why":"Pulled off the shelf by 18 guests","pickers":["Yorgos Lanthimos' Second","Nuri Bilge Ceylan","David Cronenberg"],"lb_url":"https://letterboxd.com/film/persona/","imdb_url":"https://www.imdb.com/title/tt0060827/","week":48},{"slug":"ethnic-notions","title":"Ethnic Notions","year":1986,"director":"Marlon Riggs","runtime":57,"lb":3.99,"imdb":8,"votes":622,"picked":6,"tier":"community","com":8,"why":"4 picks from the Black Queer Cinema community","pickers":["John Greyson","Garrett Bradley","Kleber Mendonça Filho"],"lb_url":"https://letterboxd.com/film/ethnic-notions/","imdb_url":"https://www.imdb.com/title/tt0091018/","week":49},{"slug":"the-beaches-of-agnes","title":"The Beaches of Agnès","year":2008,"director":"Agnès Varda","runtime":110,"lb":4.34,"imdb":8,"votes":5373,"picked":24,"tier":"gem","com":null,"why":"LB 4.34 with only 5k IMDb votes — the Closet knows","pickers":["Payal Kapadia","John David Washington & Malcolm Washington","Sara Dosa"],"lb_url":"https://letterboxd.com/film/the-beaches-of-agnes/","imdb_url":"https://www.imdb.com/title/tt1129435/","week":50},{"slug":"theorem","title":"Theorem","year":1968,"director":"Pier Paolo Pasolini","runtime":95,"lb":3.91,"imdb":7,"votes":17042,"picked":18,"tier":"canon","com":null,"why":"Pulled off the shelf by 18 guests","pickers":["Paul B. Preciado","Bertrand Bonello","Jim Jarmusch"],"lb_url":"https://letterboxd.com/film/theorem/","imdb_url":"https://www.imdb.com/title/tt0063678/","week":51},{"slug":"tongues-untied","title":"Tongues Untied","year":1989,"director":"Marlon Riggs","runtime":55,"lb":4.27,"imdb":7.1,"votes":2160,"picked":6,"tier":"community","com":8,"why":"4 picks from the Black Queer Cinema community","pickers":["John Greyson","Garrett Bradley","Kleber Mendonça Filho"],"lb_url":"https://letterboxd.com/film/tongues-untied/","imdb_url":"https://www.imdb.com/title/tt0103099/","week":52}],"communities":["Varda","Cassavetes","Bergman","Fellini","Pasolini","Tati","Kaiju / Godzilla","New Hollywood","Black Queer Cinema"],"stats":{"count":52,"totalMin":6479,"totalHrs":108}}</script>
+<script>
+(function(){
+"use strict";
+const PLAN=JSON.parse(document.getElementById('plan-data').textContent);
+const COMS=PLAN.communities;
+const CVAR=['--c0','--c1','--c2','--c3','--c4','--c5','--c6','--c7','--c8'];
+const css=getComputedStyle(document.documentElement);
+const TIER={
+  canon:{label:"Canon",color:css.getPropertyValue('--gold').trim(),desc:"the most-pulled discs"},
+  community:{label:"Community",color:"",desc:"signature films of each taste world"},
+  gem:{label:"Deep cut",color:css.getPropertyValue('--gem').trim(),desc:"beloved here, unknown outside"},
+  wildcard:{label:"Wildcard",color:css.getPropertyValue('--wild').trim(),desc:"one guest's solo treasure"}
+};
+function chipFor(f){
+  let color,text;
+  if(f.tier==="community"){ color=css.getPropertyValue(CVAR[f.com]).trim(); text=COMS[f.com]; }
+  else { color=TIER[f.tier].color; text=TIER[f.tier].label; }
+  return '<span class="chip" style="color:'+color+';border-color:'+color+'">'+text+'</span>';
+}
+// legend
+document.getElementById('tierlegend').innerHTML=
+  '<span><span class="chip" style="color:var(--gold);border-color:var(--gold)">Canon</span> '+TIER.canon.desc+' ·</span>'+
+  '<span><span class="chip" style="color:var(--c0);border-color:var(--c0)">Communities</span> '+TIER.community.desc+' ·</span>'+
+  '<span><span class="chip" style="color:var(--gem);border-color:var(--gem)">Deep cuts</span> '+TIER.gem.desc+' ·</span>'+
+  '<span><span class="chip" style="color:var(--wild);border-color:var(--wild)">Wildcards</span> '+TIER.wildcard.desc+'</span>';
+
+// state
+const KEY='yitc-watched';
+let watched=new Set(); try{ watched=new Set(JSON.parse(localStorage.getItem(KEY)||'[]')); }catch(e){}
+let paceDays=7;
+
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const list=document.getElementById('films');
+let html='';
+PLAN.films.forEach((f,i)=>{
+  if(i%4===0){ const q=Math.floor(i/4)+1; html+='<div class="divider">Month '+Math.ceil((i+1)/4.34)+' — weeks '+(i+1)+'–'+Math.min(i+4,52)+'</div>'; }
+  const done=watched.has(f.slug);
+  html+='<div class="film'+(done?' done':'')+'" data-slug="'+f.slug+'">'+
+    '<div class="wk">WK<b>'+f.week+'</b></div>'+
+    '<input type="checkbox" class="cb" aria-label="Mark '+esc(f.title)+' watched"'+(done?' checked':'')+'>'+
+    '<div><p class="t">'+esc(f.title)+' <span style="font-weight:400;color:var(--ink-faint);font-size:15px">('+f.year+')</span> '+chipFor(f)+'</p>'+
+    '<div class="meta">'+esc(f.director||'')+(f.runtime?' · '+f.runtime+' min':'')+
+      (f.lb?' · LB '+f.lb:'')+(f.imdb?' · IMDb '+f.imdb:'')+'</div>'+
+    '<div class="why">'+esc(f.why)+'</div>'+
+    (f.pickers&&f.pickers.length?'<div class="who">picked by <span>'+esc(f.pickers.join(', '))+(f.picked>3?'</span> +'+(f.picked-f.pickers.length)+' more':'</span>')+'</div>':'')+
+    '</div>'+
+    '<div class="rt"><b>'+(f.picked)+'×</b>picked</div>'+
+  '</div>';
+});
+list.innerHTML=html;
+
+function update(){
+  const n=watched.size;
+  document.getElementById('done').textContent=n;
+  document.getElementById('bar').style.width=(n/52*100)+'%';
+  const minLeft=PLAN.films.filter(f=>!watched.has(f.slug)).reduce((a,f)=>a+(f.runtime||110),0);
+  const minDone=PLAN.stats.totalMin-minLeft;
+  document.getElementById('hrs').textContent=(minDone/60).toFixed(0)+' of '+PLAN.stats.totalHrs+' hours watched';
+  const remaining=52-n;
+  if(remaining===0){ document.getElementById('finish').textContent='Finished. Start again with the taste map.'; }
+  else{
+    const d=new Date(Date.now()+remaining*paceDays*864e5);
+    document.getElementById('finish').textContent='finish ≈ '+d.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'})+' at this pace';
+  }
+  localStorage.setItem(KEY,JSON.stringify([...watched]));
+}
+list.addEventListener('change',e=>{
+  const row=e.target.closest('.film'); if(!row)return;
+  const slug=row.dataset.slug;
+  if(e.target.checked){ watched.add(slug); row.classList.add('done'); }
+  else{ watched.delete(slug); row.classList.remove('done'); }
+  update();
+});
+document.getElementById('pace').addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  paceDays=+b.dataset.p;
+  document.querySelectorAll('.pace button').forEach(x=>x.classList.toggle('on',x===b));
+  update();
+});
+document.getElementById('reset').onclick=()=>{
+  if(!confirm('Clear all progress?'))return;
+  watched.clear();
+  document.querySelectorAll('.film').forEach(r=>r.classList.remove('done'));
+  document.querySelectorAll('.cb').forEach(c=>c.checked=false);
+  update();
+};
+update();
+})();
+</script>
