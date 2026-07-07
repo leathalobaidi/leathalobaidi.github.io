@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>S&W REGINT Codex Playbook</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #15212f;
+      --muted: #617085;
+      --line: #d8e0ea;
+      --paper: #f6f8fb;
+      --white: #ffffff;
+      --navy: #12243a;
+      --blue: #2563eb;
+      --teal: #0f766e;
+      --green: #2f855a;
+      --amber: #b7791f;
+      --red: #b83232;
+      --violet: #6b46c1;
+      --shadow: 0 14px 34px rgba(18, 36, 58, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .app {
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      min-height: 100vh;
+    }
+
+    aside {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 22px;
+      background: var(--navy);
+      color: #eef4ff;
+      overflow: auto;
+    }
+
+    .brand {
+      display: grid;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .brand strong {
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+
+    .brand span {
+      color: #b8c7dc;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    nav {
+      display: grid;
+      gap: 6px;
+    }
+
+    nav a {
+      color: #eef4ff;
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.06);
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.14);
+      text-decoration: none;
+    }
+
+    .side-note {
+      margin-top: 24px;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      color: #cfdaea;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    main {
+      padding: 26px clamp(18px, 4vw, 54px) 60px;
+    }
+
+    section {
+      max-width: 1220px;
+      margin: 0 auto 34px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    h1, h2, h3 { margin: 0; letter-spacing: 0; }
+    h1 { font-size: clamp(30px, 4vw, 52px); line-height: 1.02; max-width: 900px; }
+    h2 { font-size: 25px; margin-bottom: 16px; }
+    h3 { font-size: 17px; }
+
+    .lede {
+      max-width: 780px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+      margin: 12px 0 0;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--ink);
+      background: var(--white);
+      box-shadow: 0 4px 14px rgba(18,36,58,0.06);
+      font-weight: 650;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .button.primary { background: var(--blue); color: white; border-color: var(--blue); }
+    .button:hover { text-decoration: none; transform: translateY(-1px); }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .metrics {
+      grid-template-columns: repeat(5, minmax(138px, 1fr));
+      margin-top: 20px;
+    }
+
+    .metric, .panel, .step, .prompt, .shot, .role {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      padding: 16px;
+      min-height: 110px;
+      display: grid;
+      align-content: space-between;
+    }
+
+    .metric b { font-size: 30px; }
+    .metric span { color: var(--muted); font-size: 13px; }
+    .metric .stripe { width: 44px; height: 4px; border-radius: 99px; background: var(--blue); }
+    .metric:nth-child(2) .stripe { background: var(--teal); }
+    .metric:nth-child(3) .stripe { background: var(--green); }
+    .metric:nth-child(4) .stripe { background: var(--amber); }
+    .metric:nth-child(5) .stripe { background: var(--violet); }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(104px, 1fr));
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .pipe-node {
+      padding: 13px 12px;
+      border: 1px solid var(--line);
+      border-top: 5px solid var(--blue);
+      border-radius: 8px;
+      background: var(--white);
+      min-height: 96px;
+      position: relative;
+    }
+
+    .pipe-node:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      right: -10px;
+      top: 44px;
+      width: 10px;
+      height: 2px;
+      background: #a7b4c5;
+    }
+
+    .pipe-node b { display: block; font-size: 13px; margin-bottom: 8px; }
+    .pipe-node span { color: var(--muted); font-size: 12px; line-height: 1.35; display: block; }
+    .pipe-node:nth-child(2) { border-top-color: var(--teal); }
+    .pipe-node:nth-child(3) { border-top-color: var(--green); }
+    .pipe-node:nth-child(4) { border-top-color: var(--amber); }
+    .pipe-node:nth-child(5) { border-top-color: var(--violet); }
+    .pipe-node:nth-child(6) { border-top-color: var(--red); }
+    .pipe-node:nth-child(7) { border-top-color: var(--blue); }
+    .pipe-node:nth-child(8) { border-top-color: var(--teal); }
+    .pipe-node:nth-child(9) { border-top-color: var(--green); }
+
+    .panels-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+    .panels-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .panel { padding: 20px; }
+    .panel p, .step p, .prompt p, .role p { color: var(--muted); line-height: 1.5; }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 14px;
+      padding: 16px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: #e7efff;
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 18px;
+    }
+
+    code, pre {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    }
+
+    pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 12px 0 0;
+      padding: 14px;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #e6edf8;
+      font-size: 13px;
+      line-height: 1.5;
+      overflow: auto;
+    }
+
+    .prompt {
+      padding: 16px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .prompt header {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 99px;
+      background: #eef2ff;
+      color: #3730a3;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .shot {
+      overflow: hidden;
+    }
+
+    .shot img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 14 / 9;
+      object-fit: cover;
+      border-bottom: 1px solid var(--line);
+      background: #dbe4ef;
+    }
+
+    .shot div {
+      padding: 13px;
+    }
+
+    .shot p { margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.4; }
+
+    .role {
+      padding: 18px;
+      border-left: 6px solid var(--blue);
+    }
+
+    .role:nth-child(2) { border-left-color: var(--green); }
+    .role:nth-child(3) { border-left-color: var(--amber); }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 9px;
+    }
+
+    .checklist li {
+      display: grid;
+      grid-template-columns: 22px minmax(0,1fr);
+      gap: 9px;
+      align-items: start;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .checklist li::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      margin-top: 4px;
+      border-radius: 4px;
+      border: 2px solid var(--green);
+      background: #edf7f1;
+    }
+
+    .warn {
+      border-left: 6px solid var(--amber);
+      background: #fffaf0;
+      border-color: #f1d8a8;
+    }
+
+    .footer {
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    @media (max-width: 1040px) {
+      .app { grid-template-columns: 1fr; }
+      aside { position: relative; height: auto; }
+      nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .pipeline { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .pipe-node::after { display: none; }
+      .metrics, .panels-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .panels-2 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      main { padding-inline: 14px; }
+      nav, .metrics, .panels-3, .pipeline { grid-template-columns: 1fr; }
+      .step { grid-template-columns: 1fr; }
+      .toolbar { width: 100%; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside>
+      <div class="brand">
+        <strong>S&W REGINT</strong>
+        <span>Visual Codex playbook for running, explaining and teaching the economic regulation intelligence system.</span>
+      </div>
+      <nav aria-label="Page sections">
+        <a href="#command-centre">Command Centre</a>
+        <a href="#pipeline">System Map</a>
+        <a href="#end-of-day">End-Of-Day</a>
+        <a href="#daily-plan">Daily Plan</a>
+        <a href="#codex">Codex Prompts</a>
+        <a href="#teach">Teach It</a>
+        <a href="#screens">Screens</a>
+        <a href="#operate">Operate</a>
+        <a href="#links">Files</a>
+      </nav>
+      <div class="side-note">
+        Start here when you have end-of-day information, want to paste it into Codex, and need a calm sequence for turning it into a REGINT update.
+      </div>
+    </aside>
+
+    <main>
+      <section id="command-centre">
+        <div class="topbar">
+          <div>
+            <h1>REGINT Operating Playbook</h1>
+            <p class="lede">A visual guide for using REGINT with Codex: paste your end-of-day information, ask Codex to process it, review the 24h report, then teach or repeat the workflow step by step.</p>
+          </div>
+          <div class="toolbar">
+            <a class="button primary" href="regint-24h.html">Open 24h Watch</a>
+            <a class="button" href="/vault/s-and-w/">Back To S&amp;W</a>
+          </div>
+        </div>
+
+        <div class="grid metrics" aria-label="Current sample run metrics">
+          <div class="metric"><span>Stored documents</span><b>367</b><div class="stripe"></div></div>
+          <div class="metric"><span>Last-24h publications</span><b>21</b><div class="stripe"></div></div>
+          <div class="metric"><span>Opportunities</span><b>336</b><div class="stripe"></div></div>
+          <div class="metric"><span>High score items</span><b>39</b><div class="stripe"></div></div>
+          <div class="metric"><span>Outreach drafts</span><b>234</b><div class="stripe"></div></div>
+        </div>
+      </section>
+
+      <section id="end-of-day">
+        <h2>End-Of-Day Copy/Paste Workflow</h2>
+        <div class="grid panels-2">
+          <article class="panel">
+            <h3>What You Do</h3>
+            <ul class="checklist">
+              <li>Collect the links, notes, article text, regulator pages or screenshots you found during the day.</li>
+              <li>Open Codex in `/Users/leath/Documents/S&amp;W/regint`.</li>
+              <li>Paste the prompt on the right, then paste your raw information underneath it.</li>
+              <li>Ask Codex to update the REGINT 24h report and the vault-safe page.</li>
+            </ul>
+          </article>
+          <article class="prompt">
+            <header><h3>Paste This Into Codex</h3><span class="tag">Daily</span></header>
+            <p>This is the practical bridge between your manual end-of-day copy/paste habit and the REGINT system.</p>
+            <pre data-copy>In /Users/leath/Documents/S&amp;W/regint, treat the material I paste below as today's end-of-day regulatory intelligence.
+
+Do this without asking follow-up questions:
+1. extract each source title, URL, organisation, date, sector and document type
+2. add or update the REGINT data where appropriate
+3. identify duplicates against the existing database
+4. score consulting opportunities and flag urgent deadlines
+5. produce a short S&amp;W partner summary in plain English
+6. update /Users/leath/Documents/leathalobaidi.github.io/vault/s-and-w/regint-24h.html as a vault-safe static page
+7. verify the page locally, then tell me what changed
+
+Do not send outreach. Drafts only.
+
+Here is the material:
+
+[PASTE MY END-OF-DAY INFORMATION HERE]</pre>
+          </article>
+        </div>
+      </section>
+
+      <section id="pipeline">
+        <h2>System Map</h2>
+        <div class="pipeline" aria-label="REGINT pipeline">
+          <div class="pipe-node"><b>1. Sources</b><span>GOV.UK API, RSS feeds and YAML-configured listing pages.</span></div>
+          <div class="pipe-node"><b>2. Crawl</b><span>Polite HTTP, per-source isolation, raw cache and URL dedupe.</span></div>
+          <div class="pipe-node"><b>3. Parse</b><span>Clean HTML/PDF text, classify sector, doc type and deadlines.</span></div>
+          <div class="pipe-node"><b>4. Embed</b><span>Local vectors for search, with deterministic fallback if needed.</span></div>
+          <div class="pipe-node"><b>5. Analyse</b><span>LLM JSON when a key exists; pending placeholders when it does not.</span></div>
+          <div class="pipe-node"><b>6. Score</b><span>Opportunity score, fee band and next action.</span></div>
+          <div class="pipe-node"><b>7. Match</b><span>CRM fit by sector, regulator and keywords.</span></div>
+          <div class="pipe-node"><b>8. Draft</b><span>Briefings, proposals and outreach drafts only.</span></div>
+          <div class="pipe-node"><b>9. Review</b><span>Dashboard, digest, search and partner actions.</span></div>
+        </div>
+      </section>
+
+      <section id="daily-plan">
+        <h2>Step By Step Plan</h2>
+        <div class="steps">
+          <article class="step">
+            <div>
+              <h3>Start the workspace</h3>
+              <p>Open Codex in the REGINT folder. If it is the first time on a machine, run setup once. After that, most days are just paste, run, review.</p>
+              <pre data-copy>cd /Users/leath/Documents/S&amp;W/regint
+make setup</pre>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>Run the daily intelligence job</h3>
+              <p>This fetches new publications, parses them, scores opportunities, matches CRM entities, drafts outputs and writes a digest. Use this before or after your manual paste.</p>
+              <pre data-copy>cd /Users/leath/Documents/S&amp;W/regint
+make daily</pre>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>Open the local dashboard</h3>
+              <p>The live vault is static. The interactive dashboard runs locally on your machine when you want filters, status buttons and search.</p>
+              <pre data-copy>cd /Users/leath/Documents/S&amp;W/regint
+make dashboard</pre>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>Open the online 24h watch</h3>
+              <p>This is the vault-safe public page showing the latest 24h source mix, top opportunities, publications and caveats.</p>
+              <pre data-copy>https://leathalobaidi.com/vault/s-and-w/regint-24h.html</pre>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>Review the top opportunities</h3>
+              <p>Start with score, title, service, fee range and next action. Then open the source link before using any draft externally.</p>
+              <pre data-copy>PYTHONPATH=src .venv/bin/regint search "price control cost of capital" --top-k 5</pre>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>Use Codex for maintenance</h3>
+              <p>Ask Codex to add sources, tighten selectors, explain a result, verify a digest, or turn an opportunity into a client-ready note.</p>
+              <pre data-copy>Ask Codex: "In /Users/leath/Documents/S&amp;W/regint, inspect today's REGINT run and my pasted material, summarize the top opportunities, note failed sources, update the vault-safe 24h page, and suggest the safest next action. Do not send outreach."</pre>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="codex">
+        <h2>Codex Prompt Cards</h2>
+        <div class="grid panels-3">
+          <article class="prompt">
+            <header><h3>Daily Operator</h3><span class="tag">Run</span></header>
+            <p>Use when you want Codex to run and explain the system for the day.</p>
+            <pre data-copy>In /Users/leath/Documents/S&amp;W/regint, run the REGINT daily workflow, then report:
+1. source counts and failures
+2. parsed document count
+3. top 5 opportunities
+4. urgent deadlines
+5. what I should review before using any draft
+Do not send outreach.</pre>
+          </article>
+          <article class="prompt">
+            <header><h3>Paste-And-Process</h3><span class="tag">Paste</span></header>
+            <p>Use when you already have the information and just want Codex to turn it into the daily update.</p>
+            <pre data-copy>In /Users/leath/Documents/S&amp;W/regint, process the pasted end-of-day material below. Extract structured sources, dedupe against the database, score opportunities, summarize what matters for S&amp;W, and update the vault-safe REGINT 24h page in /Users/leath/Documents/leathalobaidi.github.io/vault/s-and-w/regint-24h.html. Do not send outreach.
+
+[PASTE MATERIAL HERE]</pre>
+          </article>
+          <article class="prompt">
+            <header><h3>Teacher Mode</h3><span class="tag">Teach</span></header>
+            <p>Use when you want a plain-English lesson for someone new to the system.</p>
+            <pre data-copy>Using /Users/leath/Documents/S&amp;W/regint, teach REGINT to a new user in 20 minutes. Explain the pipeline, show which files matter, run one search, and end with a checklist for safe use.</pre>
+          </article>
+          <article class="prompt">
+            <header><h3>Fix Or Improve</h3><span class="tag">Maintain</span></header>
+            <p>Use when a source fails or a public site changes markup.</p>
+            <pre data-copy>In /Users/leath/Documents/S&amp;W/regint, inspect the latest crawl failures and logs. If a YAML source selector is stale, patch config/sources.yaml only where possible, rerun the affected source, and update DECISIONS.md with evidence.</pre>
+          </article>
+        </div>
+      </section>
+
+      <section id="teach">
+        <h2>How To Teach It</h2>
+        <div class="grid panels-3">
+          <article class="role">
+            <h3>Five-minute version</h3>
+            <p>REGINT watches regulatory sources, turns publications into searchable evidence, scores commercial opportunities and drafts review material. Nothing is sent automatically.</p>
+            <ul class="checklist">
+              <li>Show the pipeline map.</li>
+              <li>Open the Today and Opportunities dashboard pages.</li>
+              <li>Explain the difference between pending analysis and paid LLM analysis.</li>
+            </ul>
+          </article>
+          <article class="role">
+            <h3>Twenty-minute walkthrough</h3>
+            <p>Run `make daily`, open the digest, search for a known topic, then trace one opportunity from publication to CRM match to outreach draft.</p>
+            <ul class="checklist">
+              <li>Use `price control cost of capital` as the search example.</li>
+              <li>Open the UKRN cost-of-capital result.</li>
+              <li>Ask what evidence a client would need before acting.</li>
+            </ul>
+          </article>
+          <article class="role">
+            <h3>One-hour workshop</h3>
+            <p>Assign roles: operator, reviewer and maintainer. The operator runs the job, the reviewer challenges outputs, and the maintainer patches one source or CRM row.</p>
+            <ul class="checklist">
+              <li>Operator checks counts and source failures.</li>
+              <li>Reviewer opens source links before trusting drafts.</li>
+              <li>Maintainer edits YAML, reruns tests and records decisions.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="screens">
+        <h2>Dashboard Screens</h2>
+        <div class="grid panels-3">
+          <article class="shot"><img src="regint-assets/screenshots/today.png" alt="Today dashboard screenshot"><div><h3>Today</h3><p>New publications, source, type, sector, deadline and status.</p></div></article>
+          <article class="shot"><img src="regint-assets/screenshots/opportunities.png" alt="Opportunities dashboard screenshot"><div><h3>Opportunities</h3><p>Scores, services, fee ranges, next actions and review status.</p></div></article>
+          <article class="shot"><img src="regint-assets/screenshots/deadlines.png" alt="Deadlines dashboard screenshot"><div><h3>Deadlines</h3><p>Consultations ordered by date, with short-fuse items easy to spot.</p></div></article>
+          <article class="shot"><img src="regint-assets/screenshots/pipeline.png" alt="Pipeline dashboard screenshot"><div><h3>Pipeline</h3><p>Fee midpoint and high-score opportunity view by sector.</p></div></article>
+          <article class="shot"><img src="regint-assets/screenshots/sectors.png" alt="Sectors dashboard screenshot"><div><h3>Sectors</h3><p>Seven-day and thirty-day sector activity checks.</p></div></article>
+          <article class="shot"><img src="regint-assets/screenshots/search.png" alt="Search dashboard screenshot"><div><h3>Search</h3><p>Semantic search over the local document store.</p></div></article>
+          <article class="shot"><img src="regint-assets/screenshots/outreach-drafts.png" alt="Outreach drafts screenshot"><div><h3>Outreach Drafts</h3><p>Drafts to review and copy. Never auto-send.</p></div></article>
+        </div>
+      </section>
+
+      <section id="operate">
+        <h2>Safe Operating Rules</h2>
+        <div class="grid panels-2">
+          <article class="panel">
+            <h3>Use This Order</h3>
+            <ul class="checklist">
+              <li>If you have copied information manually, paste it into Codex with the end-of-day prompt first.</li>
+              <li>Run `make daily` before reviewing anything current when you want a source refresh too.</li>
+              <li>Check source failures in the terminal and digest run notes.</li>
+              <li>Open source links before relying on a score or draft.</li>
+              <li>Use the dashboard status buttons to mark reviewed/actioned/dismissed.</li>
+              <li>Ask Codex to update YAML sources or CRM rows when something is stale.</li>
+            </ul>
+          </article>
+          <article class="panel warn">
+            <h3>Important Caveats</h3>
+            <ul class="checklist">
+              <li>No API key means analysis rows are placeholders, not full model analysis.</li>
+              <li>Outreach is drafts-only. Nothing is sent by the tool.</li>
+              <li>Some public sites block or change markup. Fix selectors in `config/sources.yaml` first.</li>
+              <li>First crawls can be noisy. Use source links and dashboard review before client use.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="links">
+        <h2>Files And Links</h2>
+        <div class="grid panels-3">
+          <article class="panel">
+            <h3>Core Docs</h3>
+            <ul class="checklist">
+              <li>Local project: `/Users/leath/Documents/S&amp;W/regint`</li>
+              <li>Local README: `/Users/leath/Documents/S&amp;W/regint/README.md`</li>
+              <li>Local acceptance notes: `/Users/leath/Documents/S&amp;W/regint/ACCEPTANCE.md`</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Config</h3>
+            <ul class="checklist">
+              <li>`config/sources.yaml` controls crawled sources.</li>
+              <li>`config/scoring.yaml` controls opportunity weights.</li>
+              <li>`config/crm_seed.csv` controls matching targets.</li>
+            </ul>
+          </article>
+          <article class="panel">
+            <h3>Outputs</h3>
+            <ul class="checklist">
+              <li><a href="regint-24h.html">Online 24h watch</a></li>
+              <li><a href="regint-assets/screenshots/today.png">Dashboard screenshot pack</a></li>
+              <li>Local database: `/Users/leath/Documents/S&amp;W/regint/data/regint.db`</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="footer">
+        Built as an online mirror of the local visual guide for `/Users/leath/Documents/S&amp;W/regint`. Use it as the public-friendly instruction layer; use Codex locally for the actual database/dashboard updates.
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const copyBlocks = document.querySelectorAll("pre[data-copy]");
+    copyBlocks.forEach((block) => {
+      const button = document.createElement("button");
+      button.className = "button";
+      button.type = "button";
+      button.textContent = "Copy";
+      button.style.marginTop = "10px";
+      button.addEventListener("click", async () => {
+        await navigator.clipboard.writeText(block.innerText.trim());
+        button.textContent = "Copied";
+        setTimeout(() => { button.textContent = "Copy"; }, 1200);
+      });
+      block.insertAdjacentElement("afterend", button);
+    });
+  </script>
+</body>
+</html>
