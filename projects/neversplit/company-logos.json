@@ -1,0 +1,4666 @@
+{
+  "meta": {
+    "asOf": "2026-07-25",
+    "coverage": 503,
+    "issuerIconCoverage": 362,
+    "simpleIconsCoverage": 17,
+    "faviconResolverCoverage": 114,
+    "documentedLogoCoverage": 10,
+    "fallbackCoverage": 0,
+    "method": "Cached from icon metadata published on each company's public website; CC0 Simple Icons and locally cached Favicon.im resolutions are used next, followed by documented issuer or public-domain logo sources and generated ticker-badge fallbacks.",
+    "rights": "Company names, logos and trademarks belong to their respective owners and are shown for identification."
+  },
+  "logos": [
+    {
+      "symbol": "MMM",
+      "company": "3M",
+      "website": "https://www.3m.com",
+      "path": "company-logos/mmm.png",
+      "sourceUrl": "https://www.3m.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AOS",
+      "company": "A. O. Smith",
+      "website": "https://www.aosmith.com",
+      "path": "company-logos/aos.png",
+      "sourceUrl": "https://www.aosmith.com/on/demandware.static/Sites-aosmith-Site/-/default/dwb5194dad/images/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ABT",
+      "company": "Abbott Laboratories",
+      "website": "https://www.abbott.com",
+      "path": "company-logos/abt.png",
+      "sourceUrl": "https://www.abbott.com/etc.clientlibs/abbott-core/clientlibs/favicons/clientlib-favicon-abbottcore/resources/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ABBV",
+      "company": "AbbVie",
+      "website": "https://www.abbvie.com",
+      "path": "company-logos/abbv.png",
+      "sourceUrl": "https://www.abbvie.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ACN",
+      "company": "Accenture",
+      "website": "https://www.accenture.com",
+      "path": "company-logos/acn.png",
+      "sourceUrl": "https://www.accenture.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ADBE",
+      "company": "Adobe Inc.",
+      "website": "https://www.adobe.com",
+      "path": "company-logos/adbe.png",
+      "sourceUrl": "https://www.adobe.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AMD",
+      "company": "Advanced Micro Devices",
+      "website": "https://www.amd.com",
+      "path": "company-logos/amd.png",
+      "sourceUrl": "https://www.amd.com",
+      "resolverUrl": "https://a.favicon.im/amd.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AES",
+      "company": "AES Corporation",
+      "website": "https://www.aes.com",
+      "path": "company-logos/aes.png",
+      "sourceUrl": "https://www.aes.com/themes/custom/aes_ds/public/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AFL",
+      "company": "Aflac",
+      "website": "https://www.aflac.com",
+      "path": "company-logos/afl.png",
+      "sourceUrl": "https://www.aflac.com/_Global-Assets/images/favicons/apple_touch_icon_152x152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "A",
+      "company": "Agilent Technologies",
+      "website": "https://www.agilent.com",
+      "path": "company-logos/a.png",
+      "sourceUrl": "https://www.agilent.com",
+      "resolverUrl": "https://a.favicon.im/agilent.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "APD",
+      "company": "Air Products",
+      "website": "https://www.airproducts.com",
+      "path": "company-logos/apd.png",
+      "sourceUrl": "https://www.airproducts.com",
+      "resolverUrl": "https://a.favicon.im/airproducts.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ABNB",
+      "company": "Airbnb",
+      "website": "https://www.airbnb.com",
+      "path": "company-logos/abnb.png",
+      "sourceUrl": "https://www.airbnb.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AKAM",
+      "company": "Akamai Technologies",
+      "website": "https://www.akamai.com",
+      "path": "company-logos/akam.png",
+      "sourceUrl": "https://www.akamai.com",
+      "resolverUrl": "https://a.favicon.im/akamai.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ALB",
+      "company": "Albemarle Corporation",
+      "website": "https://www.albemarle.com",
+      "path": "company-logos/alb.png",
+      "sourceUrl": "https://www.albemarle.com/themes/custom/alb/icons/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ARE",
+      "company": "Alexandria Real Estate Equities",
+      "website": "https://www.are.com",
+      "path": "company-logos/are.png",
+      "sourceUrl": "https://www.are.com",
+      "resolverUrl": "https://a.favicon.im/are.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ALGN",
+      "company": "Align Technology",
+      "website": "https://www.aligntech.com",
+      "path": "company-logos/algn.png",
+      "sourceUrl": "https://www.aligntech.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ALLE",
+      "company": "Allegion",
+      "website": "https://www.allegion.com",
+      "path": "company-logos/alle.png",
+      "sourceUrl": "https://www.allegion.com/content/dam/allegion-corp/Allegion-Favicon.svg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LNT",
+      "company": "Alliant Energy",
+      "website": "https://www.alliantenergy.com",
+      "path": "company-logos/lnt.png",
+      "sourceUrl": "https://www.alliantenergy.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ALL",
+      "company": "Allstate",
+      "website": "https://www.allstate.com",
+      "path": "company-logos/all.png",
+      "sourceUrl": "https://www.allstate.com",
+      "resolverUrl": "https://a.favicon.im/allstate.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GOOGL",
+      "company": "Alphabet Inc. (Class A)",
+      "website": "https://abc.xyz",
+      "path": "company-logos/googl.png",
+      "sourceUrl": "https://abc.xyz",
+      "resolverUrl": "https://a.favicon.im/abc.xyz?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GOOG",
+      "company": "Alphabet Inc. (Class C)",
+      "website": "https://abc.xyz",
+      "path": "company-logos/goog.png",
+      "sourceUrl": "https://abc.xyz",
+      "resolverUrl": "https://a.favicon.im/abc.xyz?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MO",
+      "company": "Altria",
+      "website": "https://www.altria.com",
+      "path": "company-logos/mo.png",
+      "sourceUrl": "https://www.altria.com/favicons/altria/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AMZN",
+      "company": "Amazon",
+      "website": "https://www.amazon.com",
+      "path": "company-logos/amzn.png",
+      "sourceUrl": "https://www.amazon.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AMCR",
+      "company": "Amcor",
+      "website": "https://www.amcor.com",
+      "path": "company-logos/amcr.png",
+      "sourceUrl": "https://www.amcor.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AEE",
+      "company": "Ameren",
+      "website": "https://www.amereninvestors.com",
+      "path": "company-logos/aee.png",
+      "sourceUrl": "https://www.amereninvestors.com",
+      "resolverUrl": "https://a.favicon.im/amereninvestors.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AEP",
+      "company": "American Electric Power",
+      "website": "https://www.aep.com",
+      "path": "company-logos/aep.png",
+      "sourceUrl": "https://www.aep.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AXP",
+      "company": "American Express",
+      "website": "https://www.americanexpress.com",
+      "path": "company-logos/axp.png",
+      "sourceUrl": "https://www.americanexpress.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AIG",
+      "company": "American International Group",
+      "website": "https://www.aig.com",
+      "path": "company-logos/aig.png",
+      "sourceUrl": "https://www.aig.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AMT",
+      "company": "American Tower",
+      "website": "https://www.americantower.com",
+      "path": "company-logos/amt.png",
+      "sourceUrl": "https://www.americantower.com",
+      "resolverUrl": "https://a.favicon.im/americantower.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AWK",
+      "company": "American Water Works",
+      "website": "https://www.amwater.com",
+      "path": "company-logos/awk.png",
+      "sourceUrl": "https://www.amwater.com/application/themes/base/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AMP",
+      "company": "Ameriprise Financial",
+      "website": "https://www.ameriprise.com",
+      "path": "company-logos/amp.png",
+      "sourceUrl": "https://www.ameriprise.com/webfiles/1784777475791/assets/ampcom/images/ameriprise-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AME",
+      "company": "Ametek",
+      "website": "https://www.ametek.com",
+      "path": "company-logos/ame.png",
+      "sourceUrl": "https://www.ametek.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AMGN",
+      "company": "Amgen",
+      "website": "https://www.amgen.com",
+      "path": "company-logos/amgn.png",
+      "sourceUrl": "https://www.amgen.com/-/media/Themes/Global/Global/Global/images/migration/Common/Icon/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "APH",
+      "company": "Amphenol",
+      "website": "https://www.amphenol.com",
+      "path": "company-logos/aph.png",
+      "sourceUrl": "https://www.amphenol.com",
+      "resolverUrl": "https://a.favicon.im/amphenol.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ADI",
+      "company": "Analog Devices",
+      "website": "https://www.analog.com",
+      "path": "company-logos/adi.png",
+      "sourceUrl": "https://www.analog.com",
+      "resolverUrl": "https://a.favicon.im/analog.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AON",
+      "company": "Aon plc",
+      "website": "https://www.aon.com",
+      "path": "company-logos/aon.png",
+      "sourceUrl": "https://www.aon.com/lib/icons/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "APA",
+      "company": "APA Corporation",
+      "website": "https://www.apacorp.com",
+      "path": "company-logos/apa.png",
+      "sourceUrl": "https://apacorp.com/wp-content/uploads/2021/02/APACorp_Favicon_32x32_Color.jpg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "APO",
+      "company": "Apollo Global Management",
+      "website": "https://www.apollo.com/",
+      "path": "company-logos/apo.png",
+      "sourceUrl": "https://www.apollo.com/etc.clientlibs/apolloaem/clientlibs/clientlib-site/resources/icons/apollo.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AAPL",
+      "company": "Apple Inc.",
+      "website": "https://www.apple.com",
+      "path": "company-logos/aapl.png",
+      "sourceUrl": "https://www.apple.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AMAT",
+      "company": "Applied Materials",
+      "website": "https://www.appliedmaterials.com",
+      "path": "company-logos/amat.png",
+      "sourceUrl": "https://www.appliedmaterials.com",
+      "resolverUrl": "https://a.favicon.im/appliedmaterials.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "APP",
+      "company": "AppLovin",
+      "website": "https://www.applovin.com",
+      "path": "company-logos/app.png",
+      "sourceUrl": "https://www.applovin.com/icon.svg?088bdaa79f9e2de9",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "APTV",
+      "company": "Aptiv",
+      "website": "https://www.aptiv.com",
+      "path": "company-logos/aptv.png",
+      "sourceUrl": "https://www.aptiv.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ACGL",
+      "company": "Arch Capital Group",
+      "website": "https://www.archgroup.com",
+      "path": "company-logos/acgl.png",
+      "sourceUrl": "https://www.archgroup.com/wp-content/uploads/2020/11/cropped-Arch-site-icon-512-192x192.jpg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ADM",
+      "company": "Archer Daniels Midland",
+      "website": "https://www.adm.com",
+      "path": "company-logos/adm.png",
+      "sourceUrl": "https://www.adm.com/dist/assets/images/ADM_Primary_favicon_32x32.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ARES",
+      "company": "Ares Management",
+      "website": "https://www.ares.com",
+      "path": "company-logos/ares.png",
+      "sourceUrl": "https://www.ares.com/etc.clientlibs/aresmgmt/clientlibs/clientlib-site/resources/images/ARES_LOGO_RGB_BLUE-Favicon_0.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ANET",
+      "company": "Arista Networks",
+      "website": "https://www.arista.com",
+      "path": "company-logos/anet.png",
+      "sourceUrl": "https://www.arista.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AJG",
+      "company": "Arthur J. Gallagher & Co.",
+      "website": "https://www.ajg.com",
+      "path": "company-logos/ajg.png",
+      "sourceUrl": "https://www.ajg.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AIZ",
+      "company": "Assurant",
+      "website": "https://www.assurant.com",
+      "path": "company-logos/aiz.png",
+      "sourceUrl": "https://www.assurant.com/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "T",
+      "company": "AT&T",
+      "website": "https://www.att.com",
+      "path": "company-logos/t.png",
+      "sourceUrl": "https://www.att.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ATO",
+      "company": "Atmos Energy",
+      "website": "https://www.atmosenergy.com",
+      "path": "company-logos/ato.png",
+      "sourceUrl": "https://www.atmosenergy.com/favicon-32x32.png?v=89e5585280cc5b3cf4367a1ab50af831",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ADSK",
+      "company": "Autodesk",
+      "website": "https://www.autodesk.com",
+      "path": "company-logos/adsk.png",
+      "sourceUrl": "https://brand.autodesk.com/brand-system/logo",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ADP",
+      "company": "Automatic Data Processing",
+      "website": "https://www.adp.com",
+      "path": "company-logos/adp.png",
+      "sourceUrl": "https://www.adp.com/-/media/adp2022/ui/touch-icons/ios_adplogo_180x180_en.png?rev=30676d9224214b1792885f6c111e8330",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AZO",
+      "company": "AutoZone",
+      "website": "https://www.autozone.com",
+      "path": "company-logos/azo.png",
+      "sourceUrl": "https://www.autozone.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AVB",
+      "company": "AvalonBay Communities",
+      "website": "https://www.avaloncommunities.com",
+      "path": "company-logos/avb.png",
+      "sourceUrl": "https://www.avaloncommunities.com/pf/resources/icons/favicon.ico?d=344",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AVY",
+      "company": "Avery Dennison",
+      "website": "https://www.averydennison.com",
+      "path": "company-logos/avy.png",
+      "sourceUrl": "https://www.averydennison.com/etc.clientlibs/avery-responsive/clientlibs/avery-responsive/main/resources/img/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AXON",
+      "company": "Axon Enterprise",
+      "website": "https://www.axon.com",
+      "path": "company-logos/axon.png",
+      "sourceUrl": "https://www.axon.com/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BKR",
+      "company": "Baker Hughes",
+      "website": "https://www.bakerhughes.com",
+      "path": "company-logos/bkr.png",
+      "sourceUrl": "https://www.bakerhughes.com/themes/custom/bh/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BALL",
+      "company": "Ball Corporation",
+      "website": "https://www.ball.com",
+      "path": "company-logos/ball.png",
+      "sourceUrl": "https://www.ball.com",
+      "resolverUrl": "https://a.favicon.im/ball.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BAC",
+      "company": "Bank of America",
+      "website": "https://www.bankofamerica.com",
+      "path": "company-logos/bac.png",
+      "sourceUrl": "https://www.bankofamerica.com/homepage/spa-assets/images/assets-images-global-favicon-apple-touch-icon-CSX889b28c.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BAX",
+      "company": "Baxter International",
+      "website": "https://www.baxter.com",
+      "path": "company-logos/bax.png",
+      "sourceUrl": "https://www.baxter.com/themes/custom/cosmos/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BDX",
+      "company": "Becton Dickinson",
+      "website": "https://www.bd.com",
+      "path": "company-logos/bdx.png",
+      "sourceUrl": "https://www.bd.com/etc.clientlibs/bd-com/clientlibs/clientlib-site/resources/image/favicon/favicon_96.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BRK.B",
+      "company": "Berkshire Hathaway",
+      "website": "https://www.berkshirehathaway.com/",
+      "path": "company-logos/brk-b.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Berkshire-Hathaway-Logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikimedia Commons: public-domain text logo; trademark notice applies."
+    },
+    {
+      "symbol": "BBY",
+      "company": "Best Buy",
+      "website": "https://corporate.bestbuy.com",
+      "path": "company-logos/bby.png",
+      "sourceUrl": "https://corporate.bestbuy.com/wp-content/uploads/2021/03/bby-favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TECH",
+      "company": "Bio-Techne",
+      "website": "https://www.bio-techne.com",
+      "path": "company-logos/tech.png",
+      "sourceUrl": "https://www.bio-techne.com",
+      "resolverUrl": "https://a.favicon.im/bio-techne.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BIIB",
+      "company": "Biogen",
+      "website": "https://www.biogen.com",
+      "path": "company-logos/biib.png",
+      "sourceUrl": "https://www.biogen.com/content/dam/corporate/international/global/en-US/www/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BLK",
+      "company": "BlackRock",
+      "website": "https://www.blackrock.com",
+      "path": "company-logos/blk.png",
+      "sourceUrl": "https://www.blackrock.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BX",
+      "company": "Blackstone Inc.",
+      "website": "https://www.blackstone.com",
+      "path": "company-logos/bx.png",
+      "sourceUrl": "https://www.blackstone.com",
+      "resolverUrl": "https://a.favicon.im/blackstone.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "XYZ",
+      "company": "Block, Inc.",
+      "website": "https://www.block.xyz",
+      "path": "company-logos/xyz.png",
+      "sourceUrl": "https://block.xyz/apple-touch-icon-reskin.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BNY",
+      "company": "BNY Mellon",
+      "website": "https://www.bny.com",
+      "path": "company-logos/bny.png",
+      "sourceUrl": "https://www.bny.com/content/dam/bnymellon/web/favicons/favicon-152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BA",
+      "company": "Boeing",
+      "website": "https://www.boeing.com",
+      "path": "company-logos/ba.png",
+      "sourceUrl": "https://www.boeing.com/favicon.ico?v=1",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BKNG",
+      "company": "Booking Holdings",
+      "website": "https://www.bookingholdings.com",
+      "path": "company-logos/bkng.png",
+      "sourceUrl": "https://www.bookingholdings.com/wp-content/uploads/2018/02/cropped-b-favicon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BSX",
+      "company": "Boston Scientific",
+      "website": "https://www.bostonscientific.com",
+      "path": "company-logos/bsx.png",
+      "sourceUrl": "https://www.bostonscientific.com/etc.clientlibs/ewp/clientlibs/clientlib-corporate/resources/images/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BMY",
+      "company": "Bristol Myers Squibb",
+      "website": "https://www.bms.com",
+      "path": "company-logos/bmy.png",
+      "sourceUrl": "https://www.bms.com/etc.clientlibs/bmscorpredesign/clientlibs/clientlib-site/resources/_icons/bms.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "AVGO",
+      "company": "Broadcom",
+      "website": "https://www.broadcom.com",
+      "path": "company-logos/avgo.png",
+      "sourceUrl": "https://www.broadcom.com/favicon-96x96.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BR",
+      "company": "Broadridge Financial Solutions",
+      "website": "https://www.broadridge.com",
+      "path": "company-logos/br.png",
+      "sourceUrl": "https://www.broadridge.com/_Static-Assets/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BRO",
+      "company": "Brown & Brown",
+      "website": "https://www.bbrown.com",
+      "path": "company-logos/bro.png",
+      "sourceUrl": "https://bbrown.com/wp-content/uploads/2021/12/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BF.B",
+      "company": "Brown–Forman",
+      "website": "https://www.brown-forman.com/",
+      "path": "company-logos/bf-b.png",
+      "sourceUrl": "https://www.brown-forman.com/themes/custom/bf/assets/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BLDR",
+      "company": "Builders FirstSource",
+      "website": "https://www.bldr.com",
+      "path": "company-logos/bldr.png",
+      "sourceUrl": "https://www.bldr.com/_ui/responsive/theme-bldr/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BG",
+      "company": "Bunge Global",
+      "website": "https://www.bunge.com",
+      "path": "company-logos/bg.png",
+      "sourceUrl": "https://www.bunge.com",
+      "resolverUrl": "https://a.favicon.im/bunge.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BXP",
+      "company": "BXP, Inc.",
+      "website": "https://www.bxp.com",
+      "path": "company-logos/bxp.png",
+      "sourceUrl": "https://www.bxp.com/wp-content/uploads/2021/04/cropped-BXP_Favicon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CHRW",
+      "company": "C.H. Robinson",
+      "website": "https://www.chrobinson.com",
+      "path": "company-logos/chrw.png",
+      "sourceUrl": "https://www.chrobinson.com/-/media/chrglobal/logos/chr-logos/fav-icon-48x48.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CDNS",
+      "company": "Cadence Design Systems",
+      "website": "https://www.cadence.com",
+      "path": "company-logos/cdns.png",
+      "sourceUrl": "https://www.cadence.com",
+      "resolverUrl": "https://a.favicon.im/cadence.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CPT",
+      "company": "Camden Property Trust",
+      "website": "https://www.camdenliving.com",
+      "path": "company-logos/cpt.png",
+      "sourceUrl": "https://www.camdenliving.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "COF",
+      "company": "Capital One",
+      "website": "https://www.capitalone.com",
+      "path": "company-logos/cof.png",
+      "sourceUrl": "https://www.capitalone.com/assets/shell/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CAH",
+      "company": "Cardinal Health",
+      "website": "https://www.cardinalhealth.com",
+      "path": "company-logos/cah.png",
+      "sourceUrl": "https://www.cardinalhealth.com",
+      "resolverUrl": "https://a.favicon.im/cardinalhealth.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CCL",
+      "company": "Carnival Corporation",
+      "website": "https://www.carnivalcorp.com",
+      "path": "company-logos/ccl.png",
+      "sourceUrl": "https://www.carnivalcorp.com/wp-content/uploads/2026/05/cropped-carnival-corp-favicon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CARR",
+      "company": "Carrier Global",
+      "website": "https://www.carrier.com",
+      "path": "company-logos/carr.png",
+      "sourceUrl": "https://www.carrier.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CVNA",
+      "company": "Carvana",
+      "website": "https://www.carvana.com",
+      "path": "company-logos/cvna.png",
+      "sourceUrl": "https://www.carvana.com",
+      "resolverUrl": "https://a.favicon.im/carvana.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CASY",
+      "company": "Casey's",
+      "website": "https://www.caseys.com",
+      "path": "company-logos/casy.png",
+      "sourceUrl": "https://www.caseys.com",
+      "resolverUrl": "https://a.favicon.im/caseys.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CAT",
+      "company": "Caterpillar Inc.",
+      "website": "https://www.caterpillar.com",
+      "path": "company-logos/cat.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Caterpillar_logo.svg",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CBOE",
+      "company": "Cboe Global Markets",
+      "website": "https://www.cboe.com",
+      "path": "company-logos/cboe.png",
+      "sourceUrl": "https://www.cboe.com/apple-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CBRE",
+      "company": "CBRE Group",
+      "website": "https://www.cbre.com",
+      "path": "company-logos/cbre.png",
+      "sourceUrl": "https://www.cbre.com",
+      "resolverUrl": "https://a.favicon.im/cbre.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CDW",
+      "company": "CDW Corporation",
+      "website": "https://www.cdw.com",
+      "path": "company-logos/cdw.png",
+      "sourceUrl": "https://www.cdw.com/assets/1.0/dist/images/cdw-logo-180x180-favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "COR",
+      "company": "Cencora",
+      "website": "https://www.cencora.com",
+      "path": "company-logos/cor.png",
+      "sourceUrl": "https://www.cencora.com/-/media/assets/corporate/global/icons/cencora_favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CNC",
+      "company": "Centene Corporation",
+      "website": "https://www.centene.com",
+      "path": "company-logos/cnc.png",
+      "sourceUrl": "https://www.centene.com/content/dam/centenedotcom/logos/centene-favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CNP",
+      "company": "CenterPoint Energy",
+      "website": "https://www.centerpointenergy.com",
+      "path": "company-logos/cnp.png",
+      "sourceUrl": "https://www.centerpointenergy.com/_catalogs/masterpage/CNPGallery/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CF",
+      "company": "CF Industries",
+      "website": "https://www.cfindustries.com",
+      "path": "company-logos/cf.png",
+      "sourceUrl": "https://www.cfindustries.com",
+      "resolverUrl": "https://a.favicon.im/cfindustries.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CRL",
+      "company": "Charles River Laboratories",
+      "website": "https://www.criver.com",
+      "path": "company-logos/crl.png",
+      "sourceUrl": "https://www.criver.com/themes/charlesriver/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SCHW",
+      "company": "Charles Schwab Corporation",
+      "website": "https://www.aboutschwab.com",
+      "path": "company-logos/schw.png",
+      "sourceUrl": "https://www.aboutschwab.com",
+      "resolverUrl": "https://a.favicon.im/aboutschwab.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CHTR",
+      "company": "Charter Communications",
+      "website": "https://corporate.charter.com",
+      "path": "company-logos/chtr.png",
+      "sourceUrl": "https://corporate.charter.com/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CVX",
+      "company": "Chevron Corporation",
+      "website": "https://www.chevron.com",
+      "path": "company-logos/cvx.png",
+      "sourceUrl": "https://www.chevron.com",
+      "resolverUrl": "https://a.favicon.im/chevron.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CMG",
+      "company": "Chipotle Mexican Grill",
+      "website": "https://www.chipotle.com",
+      "path": "company-logos/cmg.png",
+      "sourceUrl": "https://www.chipotle.com/etc.clientlibs/cmgaemacs/clientlibs/clientlib-base/resources/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CB",
+      "company": "Chubb Limited",
+      "website": "https://www.chubb.com",
+      "path": "company-logos/cb.png",
+      "sourceUrl": "https://www.chubb.com/content/dam/aem-chubb-global/logo/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CHD",
+      "company": "Church & Dwight",
+      "website": "https://www.churchdwight.com",
+      "path": "company-logos/chd.png",
+      "sourceUrl": "https://www.churchdwight.com/",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
+    },
+    {
+      "symbol": "CIEN",
+      "company": "Ciena",
+      "website": "https://www.ciena.com",
+      "path": "company-logos/cien.png",
+      "sourceUrl": "https://www.ciena.com",
+      "resolverUrl": "https://a.favicon.im/ciena.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CI",
+      "company": "Cigna",
+      "website": "https://www.thecignagroup.com",
+      "path": "company-logos/ci.png",
+      "sourceUrl": "https://www.thecignagroup.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CINF",
+      "company": "Cincinnati Financial",
+      "website": "https://www.cinfin.com",
+      "path": "company-logos/cinf.png",
+      "sourceUrl": "https://www.cinfin.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CTAS",
+      "company": "Cintas",
+      "website": "https://www.cintas.com",
+      "path": "company-logos/ctas.png",
+      "sourceUrl": "https://www.cintas.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CSCO",
+      "company": "Cisco",
+      "website": "https://www.cisco.com",
+      "path": "company-logos/csco.png",
+      "sourceUrl": "https://www.cisco.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "C",
+      "company": "Citigroup",
+      "website": "https://www.citigroup.com",
+      "path": "company-logos/c.png",
+      "sourceUrl": "https://www.citigroup.com/global/citigroup-ui/akpublic/images/gpa_favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CFG",
+      "company": "Citizens Financial Group",
+      "website": "https://www.citizensbank.com",
+      "path": "company-logos/cfg.png",
+      "sourceUrl": "https://www.citizensbank.com",
+      "resolverUrl": "https://a.favicon.im/citizensbank.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CLX",
+      "company": "Clorox",
+      "website": "https://www.thecloroxcompany.com",
+      "path": "company-logos/clx.png",
+      "sourceUrl": "https://www.thecloroxcompany.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CME",
+      "company": "CME Group",
+      "website": "https://www.cmegroup.com",
+      "path": "company-logos/cme.png",
+      "sourceUrl": "https://www.cmegroup.com",
+      "resolverUrl": "https://a.favicon.im/cmegroup.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CMS",
+      "company": "CMS Energy",
+      "website": "https://www.cmsenergy.com",
+      "path": "company-logos/cms.png",
+      "sourceUrl": "https://www.cmsenergy.com",
+      "resolverUrl": "https://a.favicon.im/cmsenergy.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KO",
+      "company": "Coca-Cola Company (The)",
+      "website": "https://www.coca-colacompany.com",
+      "path": "company-logos/ko.png",
+      "sourceUrl": "https://static-p58902-e658605.adobeaemcloud.com/903ad4a68c76031083429e58f2360cbafc8167e588b49bbe9dddbff990c89e9a/resources/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CTSH",
+      "company": "Cognizant",
+      "website": "https://www.cognizant.com",
+      "path": "company-logos/ctsh.png",
+      "sourceUrl": "https://www.cognizant.com/content/dam/cognizant-dot-com/favicon/default-favicon/180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "COHR",
+      "company": "Coherent Corp.",
+      "website": "https://www.coherent.com",
+      "path": "company-logos/cohr.png",
+      "sourceUrl": "https://www.coherent.com/content/dam/coherent/site/en/images/icons/favicons/apple-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "COIN",
+      "company": "Coinbase",
+      "website": "https://www.coinbase.com",
+      "path": "company-logos/coin.png",
+      "sourceUrl": "https://www.coinbase.com/press",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CL",
+      "company": "Colgate-Palmolive",
+      "website": "https://www.colgatepalmolive.com",
+      "path": "company-logos/cl.png",
+      "sourceUrl": "https://www.colgatepalmolive.co.uk/content/dam/cp-sites-aem/corporate/corporate/favicon/dark/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CMCSA",
+      "company": "Comcast",
+      "website": "https://corporate.comcast.com",
+      "path": "company-logos/cmcsa.png",
+      "sourceUrl": "https://corporate.comcast.com",
+      "resolverUrl": "https://a.favicon.im/corporate.comcast.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FIX",
+      "company": "Comfort Systems USA",
+      "website": "https://comfortsystemsusa.com",
+      "path": "company-logos/fix.png",
+      "sourceUrl": "https://comfortsystemsusa.com/wp-content/themes/BackBone/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "COP",
+      "company": "ConocoPhillips",
+      "website": "https://www.conocophillips.com",
+      "path": "company-logos/cop.png",
+      "sourceUrl": "https://www.conocophillips.com/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ED",
+      "company": "Consolidated Edison",
+      "website": "https://www.conedison.com",
+      "path": "company-logos/ed.png",
+      "sourceUrl": "https://edge-c-dcxprod-web-enfbhbfkb2fghhey.a03.azurefd.net/-/media/images/conedison/common/apple-touch-icon.png?rev=72095ad8ef2f4d07851169335f091d64",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "STZ",
+      "company": "Constellation Brands",
+      "website": "https://www.cbrands.com",
+      "path": "company-logos/stz.png",
+      "sourceUrl": "https://cdn.shopify.com/s/files/1/0614/2797/4201/files/logo-48.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CEG",
+      "company": "Constellation Energy",
+      "website": "https://www.constellationenergy.com",
+      "path": "company-logos/ceg.png",
+      "sourceUrl": "https://www.constellationenergy.com/content/dam/constellationenergy/icons/miscellaneous/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "COO",
+      "company": "Cooper Companies (The)",
+      "website": "https://www.coopercos.com",
+      "path": "company-logos/coo.png",
+      "sourceUrl": "https://www.coopercos.com/wp-content/uploads/2022/04/cropped-fav-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CPRT",
+      "company": "Copart",
+      "website": "https://www.copart.com",
+      "path": "company-logos/cprt.png",
+      "sourceUrl": "https://www.copart.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GLW",
+      "company": "Corning Inc.",
+      "website": "https://www.corning.com",
+      "path": "company-logos/glw.png",
+      "sourceUrl": "https://www.corning.com",
+      "resolverUrl": "https://a.favicon.im/corning.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CPAY",
+      "company": "Corpay",
+      "website": "https://www.corpay.com",
+      "path": "company-logos/cpay.png",
+      "sourceUrl": "https://www.corpay.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CTVA",
+      "company": "Corteva",
+      "website": "https://www.corteva.com",
+      "path": "company-logos/ctva.png",
+      "sourceUrl": "https://www.corteva.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CSGP",
+      "company": "CoStar Group",
+      "website": "https://www.costargroup.com",
+      "path": "company-logos/csgp.png",
+      "sourceUrl": "https://www.costargroup.com",
+      "resolverUrl": "https://a.favicon.im/costargroup.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "COST",
+      "company": "Costco",
+      "website": "https://www.costco.com",
+      "path": "company-logos/cost.png",
+      "sourceUrl": "https://www.costco.com",
+      "resolverUrl": "https://a.favicon.im/costco.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CRH",
+      "company": "CRH plc",
+      "website": "https://www.crh.com",
+      "path": "company-logos/crh.png",
+      "sourceUrl": "https://www.crh.com/wp-content/uploads/2025/09/favicon.png?w=192",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CRWD",
+      "company": "CrowdStrike",
+      "website": "https://www.crowdstrike.com",
+      "path": "company-logos/crwd.png",
+      "sourceUrl": "https://www.crowdstrike.com/etc.clientlibs/crowdstrike/clientlibs/crowdstrike-common/resources/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CCI",
+      "company": "Crown Castle",
+      "website": "https://www.crowncastle.com",
+      "path": "company-logos/cci.png",
+      "sourceUrl": "https://www.crowncastle.com/images/favicons/apple-touch-icon-152x152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CSX",
+      "company": "CSX Corporation",
+      "website": "https://www.csx.com",
+      "path": "company-logos/csx.png",
+      "sourceUrl": "https://www.csx.com",
+      "resolverUrl": "https://a.favicon.im/csx.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CMI",
+      "company": "Cummins",
+      "website": "https://www.cummins.com",
+      "path": "company-logos/cmi.png",
+      "sourceUrl": "https://www.cummins.com",
+      "resolverUrl": "https://a.favicon.im/cummins.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CVS",
+      "company": "CVS Health",
+      "website": "https://www.cvshealth.com",
+      "path": "company-logos/cvs.png",
+      "sourceUrl": "https://www.cvshealth.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DHR",
+      "company": "Danaher Corporation",
+      "website": "https://www.danaher.com",
+      "path": "company-logos/dhr.png",
+      "sourceUrl": "https://www.danaher.com/themes/custom/danaher/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DRI",
+      "company": "Darden Restaurants",
+      "website": "https://www.darden.com",
+      "path": "company-logos/dri.png",
+      "sourceUrl": "https://www.darden.com/sites/default/files/favicon_0.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DDOG",
+      "company": "Datadog",
+      "website": "https://www.datadoghq.com",
+      "path": "company-logos/ddog.png",
+      "sourceUrl": "https://corp.dd-static.net/img/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DVA",
+      "company": "DaVita",
+      "website": "https://www.davita.com",
+      "path": "company-logos/dva.png",
+      "sourceUrl": "https://davita.com/wp-content/themes/davita-multisite/dist/images/apple-touch-icon-152x152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DECK",
+      "company": "Deckers Brands",
+      "website": "https://www.deckers.com",
+      "path": "company-logos/deck.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Deckers_Outdoor_Corporation_logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikimedia Commons source; rights and attribution are documented on the file page."
+    },
+    {
+      "symbol": "DE",
+      "company": "Deere & Company",
+      "website": "https://www.deere.com",
+      "path": "company-logos/de.png",
+      "sourceUrl": "https://www.deere.com/resource/crblob/5408/ddcaf6f7a329f3673dbdda0cffb240d8/favicon-ico-data.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DELL",
+      "company": "Dell Technologies",
+      "website": "https://www.dell.com",
+      "path": "company-logos/dell.png",
+      "sourceUrl": "https://www.dell.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DAL",
+      "company": "Delta Air Lines",
+      "website": "https://www.delta.com",
+      "path": "company-logos/dal.png",
+      "sourceUrl": "https://www.delta.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DVN",
+      "company": "Devon Energy",
+      "website": "https://www.devonenergy.com",
+      "path": "company-logos/dvn.png",
+      "sourceUrl": "https://www.devonenergy.com/favicons/apple-touch-icon-152x152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DXCM",
+      "company": "Dexcom",
+      "website": "https://www.dexcom.com",
+      "path": "company-logos/dxcm.png",
+      "sourceUrl": "https://dexcom.a.bigcontent.io/v1/static/apple-touch-icon",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FANG",
+      "company": "Diamondback Energy",
+      "website": "https://www.diamondbackenergy.com",
+      "path": "company-logos/fang.png",
+      "sourceUrl": "https://en.wikipedia.org/wiki/File:Diamondback_Energy,_Logo_2022.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikipedia non-free identification image; locally resized for editorial company identification."
+    },
+    {
+      "symbol": "DLR",
+      "company": "Digital Realty",
+      "website": "https://www.digitalrealty.com",
+      "path": "company-logos/dlr.png",
+      "sourceUrl": "https://www.digitalrealty.com/favicon/favicon1.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DG",
+      "company": "Dollar General",
+      "website": "https://www.dollargeneral.com",
+      "path": "company-logos/dg.png",
+      "sourceUrl": "https://www.dollargeneral.com",
+      "resolverUrl": "https://a.favicon.im/dollargeneral.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DLTR",
+      "company": "Dollar Tree",
+      "website": "https://www.dollartree.com",
+      "path": "company-logos/dltr.png",
+      "sourceUrl": "https://www.dollartree.com/file/v8569639453284500459/general/Dollar-Tree-Icon-RGB-SM.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "D",
+      "company": "Dominion Energy",
+      "website": "https://www.dominionenergy.com",
+      "path": "company-logos/d.png",
+      "sourceUrl": "https://www.dominionenergy.com",
+      "resolverUrl": "https://a.favicon.im/dominionenergy.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DPZ",
+      "company": "Domino's",
+      "website": "https://biz.dominos.com",
+      "path": "company-logos/dpz.png",
+      "sourceUrl": "http://biz.dominos.com/content/images/size/w256h256/2025/10/publication-icon_2025_new-ci.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DASH",
+      "company": "DoorDash",
+      "website": "https://www.doordash.com",
+      "path": "company-logos/dash.png",
+      "sourceUrl": "https://www.doordash.com/about/",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DOV",
+      "company": "Dover Corporation",
+      "website": "https://www.dovercorporation.com",
+      "path": "company-logos/dov.png",
+      "sourceUrl": "https://www.dovercorporation.com",
+      "resolverUrl": "https://a.favicon.im/dovercorporation.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DOW",
+      "company": "Dow Inc.",
+      "website": "https://www.dow.com",
+      "path": "company-logos/dow.png",
+      "sourceUrl": "https://www.dow.com/content/dam/images/public-images/web/favicons/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DHI",
+      "company": "D. R. Horton",
+      "website": "https://www.drhorton.com",
+      "path": "company-logos/dhi.png",
+      "sourceUrl": "https://www.drhorton.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DTE",
+      "company": "DTE Energy",
+      "website": "https://www.dteenergy.com",
+      "path": "company-logos/dte.png",
+      "sourceUrl": "https://www.dteenergy.com/etc.clientlibs/dte-website/clientlibs/clientlib-site/resources/images/apple-touch-icon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DUK",
+      "company": "Duke Energy",
+      "website": "https://www.duke-energy.com",
+      "path": "company-logos/duk.png",
+      "sourceUrl": "https://www.duke-energy.com",
+      "resolverUrl": "https://a.favicon.im/duke-energy.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DD",
+      "company": "DuPont",
+      "website": "https://www.dupont.com",
+      "path": "company-logos/dd.png",
+      "sourceUrl": "https://www.dupont.com/content/dam/dupont/global-assets/icons/DuPont_favicon_Shorthand.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ETN",
+      "company": "Eaton Corporation",
+      "website": "https://www.eaton.com",
+      "path": "company-logos/etn.png",
+      "sourceUrl": "https://www.eaton.com",
+      "resolverUrl": "https://a.favicon.im/eaton.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EBAY",
+      "company": "eBay Inc.",
+      "website": "https://www.ebayinc.com",
+      "path": "company-logos/ebay.png",
+      "sourceUrl": "https://go.developer.ebay.com/logos",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ECHO",
+      "company": "EchoStar",
+      "website": "https://www.echostar.com",
+      "path": "company-logos/echo.png",
+      "sourceUrl": "https://www.echostar.com/content/dam/echostar/favicon/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ECL",
+      "company": "Ecolab",
+      "website": "https://www.ecolab.com",
+      "path": "company-logos/ecl.png",
+      "sourceUrl": "https://www.ecolab.com/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EIX",
+      "company": "Edison International",
+      "website": "https://www.edison.com",
+      "path": "company-logos/eix.png",
+      "sourceUrl": "https://www.edison.com/media/sites/406/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EW",
+      "company": "Edwards Lifesciences",
+      "website": "https://www.edwards.com",
+      "path": "company-logos/ew.png",
+      "sourceUrl": "https://www.edwards.com/default.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EA",
+      "company": "Electronic Arts",
+      "website": "https://www.ea.com",
+      "path": "company-logos/ea.png",
+      "sourceUrl": "https://www.ea.com/assets/images/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ELV",
+      "company": "Elevance Health",
+      "website": "https://www.elevancehealth.com",
+      "path": "company-logos/elv.png",
+      "sourceUrl": "https://www.elevancehealth.com/content/dam/elevance-health-non-index/logos/Elevance_Health_Avatar_1200x1200.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EME",
+      "company": "Emcor",
+      "website": "https://emcorgroup.com",
+      "path": "company-logos/eme.png",
+      "sourceUrl": "https://emcorgroup.com/application/files/9616/8183/6859/fav2.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EMR",
+      "company": "Emerson Electric",
+      "website": "https://www.emerson.com",
+      "path": "company-logos/emr.png",
+      "sourceUrl": "https://www.emerson.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ETR",
+      "company": "Entergy",
+      "website": "https://www.entergy.com",
+      "path": "company-logos/etr.png",
+      "sourceUrl": "https://www.entergy.com/wp-content/uploads/2024/06/FavIcon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EOG",
+      "company": "EOG Resources",
+      "website": "https://www.eogresources.com",
+      "path": "company-logos/eog.png",
+      "sourceUrl": "https://www.eogresources.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EQT",
+      "company": "EQT Corporation",
+      "website": "https://www.eqt.com",
+      "path": "company-logos/eqt.png",
+      "sourceUrl": "https://cdn.prod.website-files.com/6751b0d7add5edb1f0141aef/6751c26411436aeeac615cbb_Webclip.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EFX",
+      "company": "Equifax",
+      "website": "https://www.equifax.com",
+      "path": "company-logos/efx.png",
+      "sourceUrl": "https://assets.equifax.com/global/images/icons/apple-touch-icon-57x57.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EQIX",
+      "company": "Equinix",
+      "website": "https://www.equinix.com",
+      "path": "company-logos/eqix.png",
+      "sourceUrl": "https://www.equinix.com",
+      "resolverUrl": "https://a.favicon.im/equinix.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EQR",
+      "company": "Equity Residential",
+      "website": "https://www.equityapartments.com",
+      "path": "company-logos/eqr.png",
+      "sourceUrl": "https://www.equityapartments.com",
+      "resolverUrl": "https://a.favicon.im/equityapartments.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ERIE",
+      "company": "Erie Indemnity",
+      "website": "https://www.erieinsurance.com",
+      "path": "company-logos/erie.png",
+      "sourceUrl": "https://www.erieinsurance.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ESS",
+      "company": "Essex Property Trust",
+      "website": "https://www.essexapartmenthomes.com",
+      "path": "company-logos/ess.png",
+      "sourceUrl": "https://www.essexapartmenthomes.com",
+      "resolverUrl": "https://a.favicon.im/essexapartmenthomes.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EL",
+      "company": "Estée Lauder Companies (The)",
+      "website": "https://www.elcompanies.com",
+      "path": "company-logos/el.png",
+      "sourceUrl": "https://www.elcompanies.com/en/~/media/C5FE6C0A62AF490992D3C1A07F6E2D0E.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EG",
+      "company": "Everest Group",
+      "website": "https://www.everestglobal.com",
+      "path": "company-logos/eg.png",
+      "sourceUrl": "https://www.everestglobal.com/images/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EVRG",
+      "company": "Evergy",
+      "website": "https://investors.evergy.com",
+      "path": "company-logos/evrg.png",
+      "sourceUrl": "https://investors.evergy.com",
+      "resolverUrl": "https://a.favicon.im/investors.evergy.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ES",
+      "company": "Eversource Energy",
+      "website": "https://www.eversource.com",
+      "path": "company-logos/es.png",
+      "sourceUrl": "https://www.eversource.com/assets/frontend/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EXC",
+      "company": "Exelon",
+      "website": "https://www.exeloncorp.com",
+      "path": "company-logos/exc.png",
+      "sourceUrl": "https://www.exeloncorp.com/content/dam/exelon/favicons/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EXE",
+      "company": "Expand Energy",
+      "website": "https://www.expandenergy.com",
+      "path": "company-logos/exe.png",
+      "sourceUrl": "https://www.expandenergy.com/wp-content/uploads/2024/09/cropped-site-icon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EXPE",
+      "company": "Expedia Group",
+      "website": "https://www.expediagroup.com",
+      "path": "company-logos/expe.png",
+      "sourceUrl": "https://www.expediagroup.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EXPD",
+      "company": "Expeditors International",
+      "website": "https://www.expeditors.com",
+      "path": "company-logos/expd.png",
+      "sourceUrl": "https://www.expeditors.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "EXR",
+      "company": "Extra Space Storage",
+      "website": "https://www.extraspace.com",
+      "path": "company-logos/exr.png",
+      "sourceUrl": "https://www.extraspace.com",
+      "resolverUrl": "https://a.favicon.im/extraspace.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "XOM",
+      "company": "ExxonMobil",
+      "website": "https://corporate.exxonmobil.com",
+      "path": "company-logos/xom.png",
+      "sourceUrl": "https://corporate.exxonmobil.com/-/media/global/icons/xx-favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FFIV",
+      "company": "F5, Inc.",
+      "website": "https://www.f5.com",
+      "path": "company-logos/ffiv.png",
+      "sourceUrl": "https://www.f5.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FDS",
+      "company": "FactSet",
+      "website": "https://www.factset.com",
+      "path": "company-logos/fds.png",
+      "sourceUrl": "https://www.factset.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FICO",
+      "company": "Fair Isaac",
+      "website": "https://www.fico.com",
+      "path": "company-logos/fico.png",
+      "sourceUrl": "https://www.fico.com/assets/favicons/apple-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FAST",
+      "company": "Fastenal",
+      "website": "https://www.fastenal.com",
+      "path": "company-logos/fast.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fastenal_logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikimedia Commons: public-domain text logo; trademark notice applies."
+    },
+    {
+      "symbol": "FRT",
+      "company": "Federal Realty Investment Trust",
+      "website": "https://www.federalrealty.com",
+      "path": "company-logos/frt.png",
+      "sourceUrl": "https://www.federalrealty.com/wp-content/uploads/2024/06/cropped-FRT_Favicon-192x192.png?x55408",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FDX",
+      "company": "FedEx",
+      "website": "https://www.fedex.com",
+      "path": "company-logos/fdx.png",
+      "sourceUrl": "https://newsroom.fedex.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FDXF",
+      "company": "FedEx Freight",
+      "website": "https://www.fedexfreight.com",
+      "path": "company-logos/fdxf.png",
+      "sourceUrl": "https://www.fedexfreight.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FIS",
+      "company": "Fidelity National Information Services",
+      "website": "https://www.fisglobal.com",
+      "path": "company-logos/fis.png",
+      "sourceUrl": "https://www.fisglobal.com/Assets/fisglobal/images/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FITB",
+      "company": "Fifth Third Bancorp",
+      "website": "https://www.53.com",
+      "path": "company-logos/fitb.png",
+      "sourceUrl": "https://www.53.com",
+      "resolverUrl": "https://a.favicon.im/53.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FSLR",
+      "company": "First Solar",
+      "website": "https://www.firstsolar.com",
+      "path": "company-logos/fslr.png",
+      "sourceUrl": "https://www.firstsolar.com/-/media/First-Solar/Logo/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FE",
+      "company": "FirstEnergy",
+      "website": "https://www.firstenergycorp.com",
+      "path": "company-logos/fe.png",
+      "sourceUrl": "https://www.firstenergycorp.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FISV",
+      "company": "Fiserv",
+      "website": "https://www.fiserv.com",
+      "path": "company-logos/fisv.png",
+      "sourceUrl": "https://www.fiserv.com/content/dam/fiserv-com/favicon-med.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FLEX",
+      "company": "Flex Ltd.",
+      "website": "https://www.flex.com",
+      "path": "company-logos/flex.png",
+      "sourceUrl": "https://www.flex.com",
+      "resolverUrl": "https://a.favicon.im/flex.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "F",
+      "company": "Ford Motor Company",
+      "website": "https://www.ford.com",
+      "path": "company-logos/f.png",
+      "sourceUrl": "https://www.ford.com",
+      "resolverUrl": "https://a.favicon.im/ford.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FTNT",
+      "company": "Fortinet",
+      "website": "https://www.fortinet.com",
+      "path": "company-logos/ftnt.png",
+      "sourceUrl": "https://www.fortinet.com/content/dam/fortinet/images/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FTV",
+      "company": "Fortive",
+      "website": "https://www.fortive.com",
+      "path": "company-logos/ftv.png",
+      "sourceUrl": "https://fortive.com/themes/fortive/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FOXA",
+      "company": "Fox Corporation (Class A)",
+      "website": "https://www.foxcorporation.com",
+      "path": "company-logos/foxa.png",
+      "sourceUrl": "https://www.foxcorporation.com/wp-content/themes/foxcorporation/images/icon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FOX",
+      "company": "Fox Corporation (Class B)",
+      "website": "https://www.foxcorporation.com",
+      "path": "company-logos/fox.png",
+      "sourceUrl": "https://www.foxcorporation.com/wp-content/themes/foxcorporation/images/icon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "BEN",
+      "company": "Franklin Resources",
+      "website": "https://www.franklinresources.com",
+      "path": "company-logos/ben.png",
+      "sourceUrl": "https://www.franklinresources.com",
+      "resolverUrl": "https://a.favicon.im/franklinresources.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "FCX",
+      "company": "Freeport-McMoRan",
+      "website": "https://fcx.com",
+      "path": "company-logos/fcx.png",
+      "sourceUrl": "https://fcx.com/themes/fcx/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GRMN",
+      "company": "Garmin",
+      "website": "https://www.garmin.com",
+      "path": "company-logos/grmn.png",
+      "sourceUrl": "https://static.garmincdn.com/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IT",
+      "company": "Gartner",
+      "website": "https://www.gartner.com",
+      "path": "company-logos/it.png",
+      "sourceUrl": "https://www.gartner.com",
+      "resolverUrl": "https://a.favicon.im/gartner.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GE",
+      "company": "GE Aerospace",
+      "website": "https://www.geaerospace.com",
+      "path": "company-logos/ge.png",
+      "sourceUrl": "https://www.geaerospace.com/themes/custom/aero_sub_theme/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GEHC",
+      "company": "GE HealthCare",
+      "website": "https://www.gehealthcare.com",
+      "path": "company-logos/gehc.png",
+      "sourceUrl": "https://www.gehealthcare.com/etc.clientlibs/gehealthcare/clientlibs/clientlib-site/resources/favicons/favicon-300x300.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GEV",
+      "company": "GE Vernova",
+      "website": "https://www.gevernova.com",
+      "path": "company-logos/gev.png",
+      "sourceUrl": "https://www.gevernova.com/themes/custom/ge_vernova_unified/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GEN",
+      "company": "Gen Digital",
+      "website": "https://www.gendigital.com",
+      "path": "company-logos/gen.png",
+      "sourceUrl": "https://www.gendigital.com/assets/GenDigital/images/gen_fav.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GNRC",
+      "company": "Generac",
+      "website": "https://www.generac.com",
+      "path": "company-logos/gnrc.png",
+      "sourceUrl": "https://www.generac.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GD",
+      "company": "General Dynamics",
+      "website": "https://www.gd.com",
+      "path": "company-logos/gd.png",
+      "sourceUrl": "https://www.gd.com",
+      "resolverUrl": "https://a.favicon.im/gd.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GIS",
+      "company": "General Mills",
+      "website": "https://www.generalmills.com",
+      "path": "company-logos/gis.png",
+      "sourceUrl": "https://edge.sitecorecloud.io/generalmill1621-cmsplatforme170-production28a1-f426/media/Project/GMI/Corporate/GeneralMills/GMI-favicon.png?h=32&amp;iar=0&amp;w=32",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GM",
+      "company": "General Motors",
+      "website": "https://www.gm.com",
+      "path": "company-logos/gm.png",
+      "sourceUrl": "https://www.gm.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GPC",
+      "company": "Genuine Parts Company",
+      "website": "https://www.genpt.com",
+      "path": "company-logos/gpc.png",
+      "sourceUrl": "https://www.genpt.com/images/GPC-Favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GILD",
+      "company": "Gilead Sciences",
+      "website": "https://www.gilead.com",
+      "path": "company-logos/gild.png",
+      "sourceUrl": "https://www.gilead.com/-/media/gileadcorpredesign/images/favicon_180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GPN",
+      "company": "Global Payments",
+      "website": "https://www.globalpayments.com",
+      "path": "company-logos/gpn.png",
+      "sourceUrl": "https://www.globalpayments.com",
+      "resolverUrl": "https://a.favicon.im/globalpayments.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GL",
+      "company": "Globe Life",
+      "website": "https://home.globelifeinsurance.com",
+      "path": "company-logos/gl.png",
+      "sourceUrl": "https://home.globelifeinsurance.com/GlobeLifeHome/media/images/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GDDY",
+      "company": "GoDaddy",
+      "website": "https://www.godaddy.com",
+      "path": "company-logos/gddy.png",
+      "sourceUrl": "https://aboutus.godaddy.net/newsroom/media-resources/",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GS",
+      "company": "Goldman Sachs",
+      "website": "https://www.goldmansachs.com",
+      "path": "company-logos/gs.png",
+      "sourceUrl": "https://cdn.gs.com/images/goldman-sachs/v2/gs-favicon-180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HAL",
+      "company": "Halliburton",
+      "website": "https://www.halliburton.com",
+      "path": "company-logos/hal.png",
+      "sourceUrl": "https://www.halliburton.com/content/dam/halliburton/assets/icons/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HIG",
+      "company": "Hartford (The)",
+      "website": "https://www.thehartford.com",
+      "path": "company-logos/hig.png",
+      "sourceUrl": "https://www.thehartford.com",
+      "resolverUrl": "https://a.favicon.im/thehartford.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HAS",
+      "company": "Hasbro",
+      "website": "https://corporate.hasbro.com",
+      "path": "company-logos/has.png",
+      "sourceUrl": "https://corporate.hasbro.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HCA",
+      "company": "HCA Healthcare",
+      "website": "https://www.hcahealthcare.com",
+      "path": "company-logos/hca.png",
+      "sourceUrl": "https://www.hcadam.com/api/public/content/eb4dd04f3072447280d1c6cf21419289?v=4b6211f0",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DOC",
+      "company": "Healthpeak Properties",
+      "website": "https://www.healthpeak.com",
+      "path": "company-logos/doc.png",
+      "sourceUrl": "https://healthpeak.com/wp-content/uploads/2025/07/DOC_NYSE_Gold.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HSIC",
+      "company": "Henry Schein",
+      "website": "https://www.henryschein.com",
+      "path": "company-logos/hsic.png",
+      "sourceUrl": "https://www.henryschein.com/App_Themes/Harmony/images/ico/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HSY",
+      "company": "Hershey Company (The)",
+      "website": "https://www.thehersheycompany.com",
+      "path": "company-logos/hsy.png",
+      "sourceUrl": "https://www.thehersheycompany.com/etc.clientlibs/hershey/clientlibs/clientlib-site-revised/resources/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HPE",
+      "company": "Hewlett Packard Enterprise",
+      "website": "https://www.hpe.com",
+      "path": "company-logos/hpe.png",
+      "sourceUrl": "https://www.hpe.com",
+      "resolverUrl": "https://a.favicon.im/hpe.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HLT",
+      "company": "Hilton Worldwide",
+      "website": "https://www.hilton.com",
+      "path": "company-logos/hlt.png",
+      "sourceUrl": "https://www.hilton.com",
+      "resolverUrl": "https://a.favicon.im/hilton.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HD",
+      "company": "Home Depot (The)",
+      "website": "https://www.homedepot.com",
+      "path": "company-logos/hd.png",
+      "sourceUrl": "https://www.homedepot.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HONA",
+      "company": "Honeywell Aerospace",
+      "website": "https://www.honeywellaerospace.com",
+      "path": "company-logos/hona.png",
+      "sourceUrl": "https://www.honeywellaerospace.com/content/dam/aero/icons/Aerospace-logo.svg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HON",
+      "company": "Honeywell Technologies",
+      "website": "https://www.honeywell.com",
+      "path": "company-logos/hon.png",
+      "sourceUrl": "https://www.honeywell.com/content/dam/honcorp/us-en/common-assets/logos/hon-honeywell-technologies-logo-mini.svg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HRL",
+      "company": "Hormel Foods",
+      "website": "https://www.hormelfoods.com",
+      "path": "company-logos/hrl.png",
+      "sourceUrl": "https://www.hormelfoods.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HST",
+      "company": "Host Hotels & Resorts",
+      "website": "https://www.hosthotels.com",
+      "path": "company-logos/hst.png",
+      "sourceUrl": "https://www.hosthotels.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HWM",
+      "company": "Howmet Aerospace",
+      "website": "https://www.howmet.com",
+      "path": "company-logos/hwm.png",
+      "sourceUrl": "https://www.howmet.com/wp-content/uploads/sites/3/2023/05/fav-icon.png?w=145",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HPQ",
+      "company": "HP Inc.",
+      "website": "https://www.hp.com",
+      "path": "company-logos/hpq.png",
+      "sourceUrl": "https://www.hp.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HUBB",
+      "company": "Hubbell Incorporated",
+      "website": "https://www.hubbell.com",
+      "path": "company-logos/hubb.png",
+      "sourceUrl": "https://www.hubbell.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HUM",
+      "company": "Humana",
+      "website": "https://www.humana.com",
+      "path": "company-logos/hum.png",
+      "sourceUrl": "https://www.humana.com/assets/icons/apple-touch-icon-152x152-precomposed.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HBAN",
+      "company": "Huntington Bancshares",
+      "website": "https://www.huntington.com",
+      "path": "company-logos/hban.png",
+      "sourceUrl": "https://www.huntington.com",
+      "resolverUrl": "https://a.favicon.im/huntington.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HII",
+      "company": "Huntington Ingalls Industries",
+      "website": "https://www.hii.com",
+      "path": "company-logos/hii.png",
+      "sourceUrl": "https://www.hii.com/favicon-32.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IBM",
+      "company": "IBM",
+      "website": "https://www.ibm.com",
+      "path": "company-logos/ibm.png",
+      "sourceUrl": "https://www.ibm.com",
+      "resolverUrl": "https://a.favicon.im/ibm.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IEX",
+      "company": "IDEX Corporation",
+      "website": "https://www.idexcorp.com",
+      "path": "company-logos/iex.png",
+      "sourceUrl": "https://idexcorp.com/wp-content/uploads/2022/09/cropped-idex-favicon-32x32-1.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IDXX",
+      "company": "Idexx Laboratories",
+      "website": "https://www.idexx.com",
+      "path": "company-logos/idxx.png",
+      "sourceUrl": "https://www.idexx.com/static/favicon/idexxcom/apple-touch-icon.da9ef6b0be65.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ITW",
+      "company": "Illinois Tool Works",
+      "website": "https://www.itw.com",
+      "path": "company-logos/itw.png",
+      "sourceUrl": "https://www.itw.com/icons/apple-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "INCY",
+      "company": "Incyte",
+      "website": "https://www.incyte.com",
+      "path": "company-logos/incy.png",
+      "sourceUrl": "https://incyte.com/themes/custom/incyte2026/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IR",
+      "company": "Ingersoll Rand",
+      "website": "https://www.irco.com",
+      "path": "company-logos/ir.png",
+      "sourceUrl": "https://www.irco.com",
+      "resolverUrl": "https://a.favicon.im/irco.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PODD",
+      "company": "Insulet Corporation",
+      "website": "https://www.insulet.com",
+      "path": "company-logos/podd.png",
+      "sourceUrl": "https://www.insulet.com/themes/custom/insulet/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "INTC",
+      "company": "Intel",
+      "website": "https://www.intel.com",
+      "path": "company-logos/intc.png",
+      "sourceUrl": "https://www.intel.com/sites/sitewide/pix/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IBKR",
+      "company": "Interactive Brokers",
+      "website": "https://www.interactivebrokers.com",
+      "path": "company-logos/ibkr.png",
+      "sourceUrl": "https://www.interactivebrokers.com/images/web/favicons/apple-touch-icon-144x144.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ICE",
+      "company": "Intercontinental Exchange",
+      "website": "https://www.ice.com",
+      "path": "company-logos/ice.png",
+      "sourceUrl": "https://www.ice.com/publicdocs/images/favicon_ice.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IFF",
+      "company": "International Flavors & Fragrances",
+      "website": "https://www.iff.com",
+      "path": "company-logos/iff.png",
+      "sourceUrl": "https://www.iff.com",
+      "resolverUrl": "https://a.favicon.im/iff.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IP",
+      "company": "International Paper",
+      "website": "https://www.internationalpaper.com",
+      "path": "company-logos/ip.png",
+      "sourceUrl": "https://www.internationalpaper.com/themes/custom/themekit/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "INTU",
+      "company": "Intuit",
+      "website": "https://www.intuit.com",
+      "path": "company-logos/intu.png",
+      "sourceUrl": "https://www.intuit.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ISRG",
+      "company": "Intuitive Surgical",
+      "website": "https://www.intuitive.com",
+      "path": "company-logos/isrg.png",
+      "sourceUrl": "https://www.intuitive.com",
+      "resolverUrl": "https://a.favicon.im/intuitive.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IVZ",
+      "company": "Invesco",
+      "website": "https://www.invesco.com/",
+      "path": "company-logos/ivz.png",
+      "sourceUrl": "https://www.invesco.com/etc.clientlibs/invesco/clientlibs/main/resources/images/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "INVH",
+      "company": "Invitation Homes",
+      "website": "https://www.invitationhomes.com",
+      "path": "company-logos/invh.png",
+      "sourceUrl": "https://www.invitationhomes.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IQV",
+      "company": "IQVIA",
+      "website": "https://www.iqvia.com",
+      "path": "company-logos/iqv.png",
+      "sourceUrl": "https://www.iqvia.com/Content/Shotgun/img/favicon/apple-icon-precomposed.png?v=4",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "IRM",
+      "company": "Iron Mountain",
+      "website": "https://www.ironmountain.com",
+      "path": "company-logos/irm.png",
+      "sourceUrl": "https://www.ironmountain.com",
+      "resolverUrl": "https://a.favicon.im/ironmountain.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "JBHT",
+      "company": "J.B. Hunt",
+      "website": "https://www.jbhunt.com",
+      "path": "company-logos/jbht.png",
+      "sourceUrl": "https://www.jbhunt.com/etc.clientlibs/jbhunt/clientlibs/clientlib-site/resources/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "JBL",
+      "company": "Jabil",
+      "website": "https://www.jabil.com",
+      "path": "company-logos/jbl.png",
+      "sourceUrl": "https://www.jabil.com/.resources/jabil-main/themes/jabil-one-26/src/img/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "JKHY",
+      "company": "Jack Henry & Associates",
+      "website": "https://www.jackhenry.com",
+      "path": "company-logos/jkhy.png",
+      "sourceUrl": "https://www.jackhenry.com/hubfs/favicon_navy%20(1)-1.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "J",
+      "company": "Jacobs Solutions",
+      "website": "https://www.jacobs.com",
+      "path": "company-logos/j.png",
+      "sourceUrl": "https://www.jacobs.com/themes/custom/jacobs/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "JNJ",
+      "company": "Johnson & Johnson",
+      "website": "https://www.jnj.com",
+      "path": "company-logos/jnj.png",
+      "sourceUrl": "https://www.jnj.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "JCI",
+      "company": "Johnson Controls",
+      "website": "https://www.johnsoncontrols.com",
+      "path": "company-logos/jci.png",
+      "sourceUrl": "https://www.johnsoncontrols.com/-/media/project/jci-global/johnson-controls/us-region/united-states-johnson-controls/favicon/jci.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "JPM",
+      "company": "JPMorgan Chase",
+      "website": "https://www.jpmorganchase.com",
+      "path": "company-logos/jpm.png",
+      "sourceUrl": "https://www.jpmorganchase.com/etc.clientlibs/cws/clientlibs/clientlib-base/resources/jpmc/images/jpmc-favicon-152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KVUE",
+      "company": "Kenvue",
+      "website": "https://www.kenvue.com",
+      "path": "company-logos/kvue.png",
+      "sourceUrl": "https://www.kenvue.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KDP",
+      "company": "Keurig Dr Pepper",
+      "website": "https://www.keurigdrpepper.com",
+      "path": "company-logos/kdp.png",
+      "sourceUrl": "https://www.keurigdrpepper.com/wp-content/themes/keurigdrpepper/img/favicons/apple-icon-180x180.png?2",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KEY",
+      "company": "KeyCorp",
+      "website": "https://www.key.com",
+      "path": "company-logos/key.png",
+      "sourceUrl": "https://www.key.com",
+      "resolverUrl": "https://a.favicon.im/key.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KEYS",
+      "company": "Keysight Technologies",
+      "website": "https://www.keysight.com",
+      "path": "company-logos/keys.png",
+      "sourceUrl": "https://www.keysight.com",
+      "resolverUrl": "https://a.favicon.im/keysight.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KMB",
+      "company": "Kimberly-Clark",
+      "website": "https://www.kimberly-clark.com",
+      "path": "company-logos/kmb.png",
+      "sourceUrl": "https://www.kimberly-clark.com",
+      "resolverUrl": "https://a.favicon.im/kimberly-clark.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KIM",
+      "company": "Kimco Realty",
+      "website": "https://www.kimcorealty.com",
+      "path": "company-logos/kim.png",
+      "sourceUrl": "https://www.kimcorealty.com",
+      "resolverUrl": "https://a.favicon.im/kimcorealty.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KMI",
+      "company": "Kinder Morgan",
+      "website": "https://www.kindermorgan.com",
+      "path": "company-logos/kmi.png",
+      "sourceUrl": "https://www.kindermorgan.com/metadata/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KKR",
+      "company": "KKR & Co.",
+      "website": "https://www.kkr.com",
+      "path": "company-logos/kkr.png",
+      "sourceUrl": "https://www.kkr.com/etc.clientlibs/kkr/clientlibs/clientlib-site/resources/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KLAC",
+      "company": "KLA Corporation",
+      "website": "https://www.kla.com",
+      "path": "company-logos/klac.png",
+      "sourceUrl": "https://www.kla.com/wp-content/uploads/android-chrome-256x256.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "KHC",
+      "company": "Kraft Heinz",
+      "website": "https://www.kraftheinzcompany.com",
+      "path": "company-logos/khc.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:KraftHeinz.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikimedia Commons: public-domain text logo; trademark notice applies."
+    },
+    {
+      "symbol": "KR",
+      "company": "Kroger",
+      "website": "https://www.thekrogerco.com",
+      "path": "company-logos/kr.png",
+      "sourceUrl": "https://www.thekrogerco.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LHX",
+      "company": "L3Harris",
+      "website": "https://www.l3harris.com",
+      "path": "company-logos/lhx.png",
+      "sourceUrl": "https://www.l3harris.com/themes/custom/l3harris/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LH",
+      "company": "Labcorp",
+      "website": "https://www.labcorp.com",
+      "path": "company-logos/lh.png",
+      "sourceUrl": "https://www.labcorp.com/etc.clientlibs/labcorpfuturevisionaem/clientlibs/clientlib-sitebase/resources/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LRCX",
+      "company": "Lam Research",
+      "website": "https://www.lamresearch.com",
+      "path": "company-logos/lrcx.png",
+      "sourceUrl": "https://www.lamresearch.com/wp-content/uploads/2021/07/cropped-Favicon_512-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LVS",
+      "company": "Las Vegas Sands",
+      "website": "https://www.sands.com",
+      "path": "company-logos/lvs.png",
+      "sourceUrl": "https://www.sands.com",
+      "resolverUrl": "https://a.favicon.im/sands.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LDOS",
+      "company": "Leidos",
+      "website": "https://www.leidos.com",
+      "path": "company-logos/ldos.png",
+      "sourceUrl": "https://www.leidos.com/themes/custom/lp/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LEN",
+      "company": "Lennar",
+      "website": "https://www.lennar.com",
+      "path": "company-logos/len.png",
+      "sourceUrl": "https://www.lennar.com",
+      "resolverUrl": "https://a.favicon.im/lennar.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LII",
+      "company": "Lennox International",
+      "website": "https://www.lennox.com",
+      "path": "company-logos/lii.png",
+      "sourceUrl": "https://www.lennox.com/application/themes/lennox/assets/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LLY",
+      "company": "Lilly (Eli)",
+      "website": "https://www.lilly.com",
+      "path": "company-logos/lly.png",
+      "sourceUrl": "https://www.lilly.com",
+      "resolverUrl": "https://a.favicon.im/lilly.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LIN",
+      "company": "Linde plc",
+      "website": "https://www.linde.com",
+      "path": "company-logos/lin.png",
+      "sourceUrl": "https://assets.linde.com/-/media/shared/favicon/apple-touch-icon-64x64.png?r=9626e16d64",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LYV",
+      "company": "Live Nation Entertainment",
+      "website": "https://www.livenationentertainment.com/",
+      "path": "company-logos/lyv.png",
+      "sourceUrl": "https://assets.livenationcdn.com/uploads/ff23638e-77ee-40db-8117-d668e910939a.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LMT",
+      "company": "Lockheed Martin",
+      "website": "https://www.lockheedmartin.com",
+      "path": "company-logos/lmt.png",
+      "sourceUrl": "https://www.lockheedmartin.com",
+      "resolverUrl": "https://a.favicon.im/lockheedmartin.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "L",
+      "company": "Loews Corporation",
+      "website": "https://www.loews.com",
+      "path": "company-logos/l.png",
+      "sourceUrl": "https://www.loews.com",
+      "resolverUrl": "https://a.favicon.im/loews.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LOW",
+      "company": "Lowe's",
+      "website": "https://corporate.lowes.com",
+      "path": "company-logos/low.png",
+      "sourceUrl": "https://corporate.lowes.com/sites/lowes-corp/files/lowes-favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LULU",
+      "company": "Lululemon Athletica",
+      "website": "https://corporate.lululemon.com",
+      "path": "company-logos/lulu.png",
+      "sourceUrl": "https://corporate.lululemon.com/~/media/999A1852270C43649D5B3C17AFB1FC4D.svg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LITE",
+      "company": "Lumentum",
+      "website": "https://www.lumentum.com",
+      "path": "company-logos/lite.png",
+      "sourceUrl": "https://www.lumentum.com/images/favicon/Favicon-192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LYB",
+      "company": "LyondellBasell",
+      "website": "https://www.lyondellbasell.com",
+      "path": "company-logos/lyb.png",
+      "sourceUrl": "https://www.lyondellbasell.com/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MTB",
+      "company": "M&T Bank",
+      "website": "https://www.mtb.com",
+      "path": "company-logos/mtb.png",
+      "sourceUrl": "https://www.mtb.com/content/dam/mtb-web/mtb-icon-library/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MPC",
+      "company": "Marathon Petroleum",
+      "website": "https://www.marathonpetroleum.com",
+      "path": "company-logos/mpc.png",
+      "sourceUrl": "https://www.marathonpetroleum.com",
+      "resolverUrl": "https://a.favicon.im/marathonpetroleum.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MAR",
+      "company": "Marriott International",
+      "website": "https://www.marriott.com",
+      "path": "company-logos/mar.png",
+      "sourceUrl": "https://www.marriott.com",
+      "resolverUrl": "https://a.favicon.im/marriott.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MRSH",
+      "company": "Marsh McLennan",
+      "website": "https://www.corporate.marsh.com",
+      "path": "company-logos/mrsh.png",
+      "sourceUrl": "https://www.corporate.marsh.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MLM",
+      "company": "Martin Marietta Materials",
+      "website": "https://www.martinmarietta.com",
+      "path": "company-logos/mlm.png",
+      "sourceUrl": "https://www.martinmarietta.com/favicon.ico?favicon.90f28a0c.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MRVL",
+      "company": "Marvell Technology",
+      "website": "https://www.marvell.com",
+      "path": "company-logos/mrvl.png",
+      "sourceUrl": "https://www.marvell.com",
+      "resolverUrl": "https://a.favicon.im/marvell.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MAS",
+      "company": "Masco",
+      "website": "https://masco.com",
+      "path": "company-logos/mas.png",
+      "sourceUrl": "https://masco.com/wp-content/uploads/2019/11/android-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MA",
+      "company": "Mastercard",
+      "website": "https://www.mastercard.com",
+      "path": "company-logos/ma.png",
+      "sourceUrl": "https://www.mastercard.com/brandcenter/us/en/download-artwork.html",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MKC",
+      "company": "McCormick & Company",
+      "website": "https://www.mccormickcorporation.com",
+      "path": "company-logos/mkc.png",
+      "sourceUrl": "https://www.mccormickcorporation.com/-/media/corporate/icons/favicon.png?rev=b2b70bebc1c94d1c8368c0746df3a47c&amp;vd=20250225T180525Z&amp;extension=webp&amp;hash=5F2809207ECFB8ADA2E1E5006328A8BE",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MCD",
+      "company": "McDonald's",
+      "website": "https://www.mcdonalds.com",
+      "path": "company-logos/mcd.png",
+      "sourceUrl": "https://www.mcdonalds.com/content/dam/sites/uk/nfl/icons/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MCK",
+      "company": "McKesson Corporation",
+      "website": "https://www.mckesson.com",
+      "path": "company-logos/mck.png",
+      "sourceUrl": "https://www.mckesson.com/siteassets/images/z-mckesson-logosicons/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MDT",
+      "company": "Medtronic",
+      "website": "https://www.medtronic.com",
+      "path": "company-logos/mdt.png",
+      "sourceUrl": "https://www.medtronic.com/content/dam/medtronic-wide/public/channel-configuration/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MRK",
+      "company": "Merck & Co.",
+      "website": "https://www.merck.com",
+      "path": "company-logos/mrk.png",
+      "sourceUrl": "https://www.merck.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "META",
+      "company": "Meta Platforms",
+      "website": "https://www.meta.com",
+      "path": "company-logos/meta.png",
+      "sourceUrl": "https://static.xx.fbcdn.net/rsrc.php/yQ/r/0eWKxz9kEoF.webp",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MET",
+      "company": "MetLife",
+      "website": "https://www.metlife.com",
+      "path": "company-logos/met.png",
+      "sourceUrl": "https://www.metlife.com/content/dam/globalMarketingPlatformAssets/images/social/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MTD",
+      "company": "Mettler Toledo",
+      "website": "https://www.mt.com",
+      "path": "company-logos/mtd.png",
+      "sourceUrl": "https://www.mt.com",
+      "resolverUrl": "https://a.favicon.im/mt.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MGM",
+      "company": "MGM Resorts",
+      "website": "https://www.mgmresorts.com",
+      "path": "company-logos/mgm.png",
+      "sourceUrl": "https://www.mgmresorts.com",
+      "resolverUrl": "https://a.favicon.im/mgmresorts.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MCHP",
+      "company": "Microchip Technology",
+      "website": "https://www.microchip.com",
+      "path": "company-logos/mchp.png",
+      "sourceUrl": "https://www.microchip.com",
+      "resolverUrl": "https://a.favicon.im/microchip.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MU",
+      "company": "Micron Technology",
+      "website": "https://www.micron.com",
+      "path": "company-logos/mu.png",
+      "sourceUrl": "https://www.micron.com/content/dam/micron/global/favicon/apple-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MSFT",
+      "company": "Microsoft",
+      "website": "https://www.microsoft.com",
+      "path": "company-logos/msft.png",
+      "sourceUrl": "https://www.microsoft.com/favicon.ico?v2",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MAA",
+      "company": "Mid-America Apartment Communities",
+      "website": "https://www.maac.com",
+      "path": "company-logos/maa.png",
+      "sourceUrl": "https://www.maac.com",
+      "resolverUrl": "https://a.favicon.im/maac.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MRNA",
+      "company": "Moderna",
+      "website": "https://www.modernatx.com",
+      "path": "company-logos/mrna.png",
+      "sourceUrl": "https://www.modernatx.com/assets/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TAP",
+      "company": "Molson Coors Beverage Company",
+      "website": "https://www.molsoncoors.com",
+      "path": "company-logos/tap.png",
+      "sourceUrl": "https://www.molsoncoors.com/sites/molsonco/files/MolsonCoors-Logo-Favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MDLZ",
+      "company": "Mondelez International",
+      "website": "https://www.mondelezinternational.com",
+      "path": "company-logos/mdlz.png",
+      "sourceUrl": "https://www.mondelezinternational.com/icons/icon-256x256.png?v=af2d837f687754a78d28edb596b45c6c",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MPWR",
+      "company": "Monolithic Power Systems",
+      "website": "https://www.monolithicpower.com",
+      "path": "company-logos/mpwr.png",
+      "sourceUrl": "https://www.monolithicpower.com",
+      "resolverUrl": "https://a.favicon.im/monolithicpower.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MNST",
+      "company": "Monster Beverage",
+      "website": "https://www.monsterbevcorp.com",
+      "path": "company-logos/mnst.png",
+      "sourceUrl": "https://www.monsterbevcorp.com",
+      "resolverUrl": "https://a.favicon.im/monsterbevcorp.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MCO",
+      "company": "Moody's Corporation",
+      "website": "https://www.moodys.com",
+      "path": "company-logos/mco.png",
+      "sourceUrl": "https://www.moodys.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MS",
+      "company": "Morgan Stanley",
+      "website": "https://www.morganstanley.com",
+      "path": "company-logos/ms.png",
+      "sourceUrl": "https://www.morganstanley.com",
+      "resolverUrl": "https://a.favicon.im/morganstanley.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MOS",
+      "company": "Mosaic Company (The)",
+      "website": "https://www.mosaicco.com",
+      "path": "company-logos/mos.png",
+      "sourceUrl": "https://mosaicco.com/images/favicons/favicon-196x196.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MSI",
+      "company": "Motorola Solutions",
+      "website": "https://www.motorolasolutions.com",
+      "path": "company-logos/msi.png",
+      "sourceUrl": "https://www.motorolasolutions.com/etc/designs/msi/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "MSCI",
+      "company": "MSCI Inc.",
+      "website": "https://www.msci.com",
+      "path": "company-logos/msci.png",
+      "sourceUrl": "https://www.msci.com/_next/static/media/apple-touch-icon.c2c8d0a3.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NDAQ",
+      "company": "Nasdaq, Inc.",
+      "website": "https://www.nasdaq.com",
+      "path": "company-logos/ndaq.png",
+      "sourceUrl": "https://www.nasdaq.com",
+      "resolverUrl": "https://a.favicon.im/nasdaq.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NTAP",
+      "company": "NetApp",
+      "website": "https://www.netapp.com",
+      "path": "company-logos/ntap.png",
+      "sourceUrl": "https://www.netapp.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NFLX",
+      "company": "Netflix",
+      "website": "https://www.netflix.com",
+      "path": "company-logos/nflx.png",
+      "sourceUrl": "https://assets.nflxext.com/us/ffe/siteui/common/icons/nficon2016.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NEM",
+      "company": "Newmont",
+      "website": "https://www.newmont.com",
+      "path": "company-logos/nem.png",
+      "sourceUrl": "https://www.newmont.com",
+      "resolverUrl": "https://a.favicon.im/newmont.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NWSA",
+      "company": "News Corp (Class A)",
+      "website": "https://newscorp.com",
+      "path": "company-logos/nwsa.png",
+      "sourceUrl": "https://newscorp.com/wp-content/uploads/2021/06/cropped-favicon-192x192.jpg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NWS",
+      "company": "News Corp (Class B)",
+      "website": "https://newscorp.com",
+      "path": "company-logos/nws.png",
+      "sourceUrl": "https://newscorp.com/wp-content/uploads/2021/06/cropped-favicon-192x192.jpg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NEE",
+      "company": "NextEra Energy",
+      "website": "https://www.nexteraenergy.com",
+      "path": "company-logos/nee.png",
+      "sourceUrl": "https://www.nexteraenergy.com/etc.clientlibs/nee-mobility/clientlibs/clientlib-base/resources/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NKE",
+      "company": "Nike, Inc.",
+      "website": "https://www.nike.com",
+      "path": "company-logos/nke.png",
+      "sourceUrl": "https://www.nike.com/apple-touch-icon-152x152-precomposed.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NI",
+      "company": "NiSource",
+      "website": "https://www.nisource.com",
+      "path": "company-logos/ni.png",
+      "sourceUrl": "https://www.nisource.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NDSN",
+      "company": "Nordson Corporation",
+      "website": "https://www.nordson.com",
+      "path": "company-logos/ndsn.png",
+      "sourceUrl": "https://www.nordson.com",
+      "resolverUrl": "https://a.favicon.im/nordson.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NSC",
+      "company": "Norfolk Southern",
+      "website": "https://www.norfolksouthern.com",
+      "path": "company-logos/nsc.png",
+      "sourceUrl": "https://www.norfolksouthern.com/etc.clientlibs/nscorp/clientlibs/clientlib-site/resources/images/favicons/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NTRS",
+      "company": "Northern Trust",
+      "website": "https://www.northerntrust.com",
+      "path": "company-logos/ntrs.png",
+      "sourceUrl": "https://www.northerntrust.com",
+      "resolverUrl": "https://a.favicon.im/northerntrust.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NOC",
+      "company": "Northrop Grumman",
+      "website": "https://www.northropgrumman.com",
+      "path": "company-logos/noc.png",
+      "sourceUrl": "https://www.northropgrumman.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NCLH",
+      "company": "Norwegian Cruise Line Holdings",
+      "website": "https://www.nclhltd.com",
+      "path": "company-logos/nclh.png",
+      "sourceUrl": "https://d1io3yog0oux5.cloudfront.net/_c2df6b2254110bfec5507f078bada635/nclhltd/files/theme/images/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NRG",
+      "company": "NRG Energy",
+      "website": "https://www.nrg.com",
+      "path": "company-logos/nrg.png",
+      "sourceUrl": "https://www.nrg.com/assets/static/touch-icon_152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NUE",
+      "company": "Nucor",
+      "website": "https://www.nucor.com",
+      "path": "company-logos/nue.png",
+      "sourceUrl": "https://nucor.com/wp-content/uploads/cropped-favicon-1-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NVDA",
+      "company": "Nvidia",
+      "website": "https://www.nvidia.com",
+      "path": "company-logos/nvda.png",
+      "sourceUrl": "https://www.nvidia.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NVR",
+      "company": "NVR, Inc.",
+      "website": "https://www.nvrinc.com",
+      "path": "company-logos/nvr.png",
+      "sourceUrl": "https://www.nvrinc.com/",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
+    },
+    {
+      "symbol": "NXPI",
+      "company": "NXP Semiconductors",
+      "website": "https://www.nxp.com",
+      "path": "company-logos/nxpi.png",
+      "sourceUrl": "https://www.nxp.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ORLY",
+      "company": "O’Reilly Automotive",
+      "website": "https://www.oreillyauto.com",
+      "path": "company-logos/orly.png",
+      "sourceUrl": "https://www.oreillyauto.com",
+      "resolverUrl": "https://a.favicon.im/oreillyauto.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "OXY",
+      "company": "Occidental Petroleum",
+      "website": "https://www.oxy.com",
+      "path": "company-logos/oxy.png",
+      "sourceUrl": "https://www.oxy.com/siteassets/images/logos/logo.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ODFL",
+      "company": "Old Dominion",
+      "website": "https://www.odfl.com",
+      "path": "company-logos/odfl.png",
+      "sourceUrl": "https://www.odfl.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "OMC",
+      "company": "Omnicom Group",
+      "website": "https://www.omc.com",
+      "path": "company-logos/omc.png",
+      "sourceUrl": "https://www.omc.com/wp-content/uploads/2025/12/cropped-OMNICOM-LOGO-03-1-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ON",
+      "company": "ON Semiconductor",
+      "website": "https://www.onsemi.com",
+      "path": "company-logos/on.png",
+      "sourceUrl": "https://www.onsemi.com/images/logo/onsemi_favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "OKE",
+      "company": "Oneok",
+      "website": "https://www.oneok.com",
+      "path": "company-logos/oke.png",
+      "sourceUrl": "https://www.oneok.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ORCL",
+      "company": "Oracle Corporation",
+      "website": "https://www.oracle.com",
+      "path": "company-logos/orcl.png",
+      "sourceUrl": "https://www.oracle.com",
+      "resolverUrl": "https://a.favicon.im/oracle.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "OTIS",
+      "company": "Otis Worldwide",
+      "website": "https://www.otis.com",
+      "path": "company-logos/otis.png",
+      "sourceUrl": "https://www.otis.com/o/Otis-New-theme/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PCAR",
+      "company": "Paccar",
+      "website": "https://www.paccar.com",
+      "path": "company-logos/pcar.png",
+      "sourceUrl": "https://www.paccar.com",
+      "resolverUrl": "https://a.favicon.im/paccar.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PKG",
+      "company": "Packaging Corporation of America",
+      "website": "https://www.packagingcorp.com",
+      "path": "company-logos/pkg.png",
+      "sourceUrl": "https://www.packagingcorp.com/wp-content/uploads/2022/08/cropped-PCA-Fav-Icon-1-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PLTR",
+      "company": "Palantir Technologies",
+      "website": "https://www.palantir.com",
+      "path": "company-logos/pltr.png",
+      "sourceUrl": "https://www.palantir.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PANW",
+      "company": "Palo Alto Networks",
+      "website": "https://www.paloaltonetworks.com",
+      "path": "company-logos/panw.png",
+      "sourceUrl": "https://www.paloaltonetworks.com/etc/clientlibs/pan/img/favicons2020/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PSKY",
+      "company": "Paramount Skydance Corporation",
+      "website": "https://www.paramount.com",
+      "path": "company-logos/psky.png",
+      "sourceUrl": "https://www.paramount.com/themes/custom/paramount/images/favicon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PH",
+      "company": "Parker Hannifin",
+      "website": "https://www.parker.com",
+      "path": "company-logos/ph.png",
+      "sourceUrl": "https://www.parker.com",
+      "resolverUrl": "https://a.favicon.im/parker.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PAYX",
+      "company": "Paychex",
+      "website": "https://www.paychex.com",
+      "path": "company-logos/payx.png",
+      "sourceUrl": "https://www.paychex.com/themes/custom/paychex2/favicon/paychex-favicon-196x196.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PYPL",
+      "company": "PayPal",
+      "website": "https://www.paypal.com",
+      "path": "company-logos/pypl.png",
+      "sourceUrl": "https://www.paypalobjects.com/marketing/web/icons/monogram/pp258.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PNR",
+      "company": "Pentair",
+      "website": "https://www.pentair.com",
+      "path": "company-logos/pnr.png",
+      "sourceUrl": "https://www.pentair.com/content/dam/extranet/enterprise/images/logos/pentair-logo-color-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PEP",
+      "company": "PepsiCo",
+      "website": "https://www.pepsico.com",
+      "path": "company-logos/pep.png",
+      "sourceUrl": "https://www.pepsico.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PFE",
+      "company": "Pfizer",
+      "website": "https://www.pfizer.com",
+      "path": "company-logos/pfe.png",
+      "sourceUrl": "https://www.pfizer.com/profiles/pfecpfizercomus_profile/themes/pfecpfizercomus/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PCG",
+      "company": "PG&E Corporation",
+      "website": "https://www.pgecorp.com",
+      "path": "company-logos/pcg.png",
+      "sourceUrl": "https://www.pgecorp.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PM",
+      "company": "Philip Morris International",
+      "website": "https://www.pmi.com",
+      "path": "company-logos/pm.png",
+      "sourceUrl": "https://www.pmi.com/etc.clientlibs/pmicom/clientlibs/clientlib-site/resources/icons/apple-icon-512x512.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PSX",
+      "company": "Phillips 66",
+      "website": "https://www.phillips66.com",
+      "path": "company-logos/psx.png",
+      "sourceUrl": "https://www.phillips66.com/wp-content/uploads/sites/2/2022/08/cropped-icon-512.png?w=192",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PNW",
+      "company": "Pinnacle West Capital",
+      "website": "https://www.pinnaclewest.com",
+      "path": "company-logos/pnw.png",
+      "sourceUrl": "https://www.pinnaclewest.com",
+      "resolverUrl": "https://a.favicon.im/pinnaclewest.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PNC",
+      "company": "PNC Financial Services",
+      "website": "https://www.pnc.com",
+      "path": "company-logos/pnc.png",
+      "sourceUrl": "https://www.pnc.com/etc.clientlibs/pnc-aem-base/clientlibs/clientlib-site/resources/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PPG",
+      "company": "PPG Industries",
+      "website": "https://www.ppg.com",
+      "path": "company-logos/ppg.png",
+      "sourceUrl": "https://assets-eu-01.kc-usercontent.com/cce44467-0106-013b-6c0b-26132a361492/445a8b54-75a8-45b7-9777-0ffab2bbf30c/favicon_ppg.svg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PPL",
+      "company": "PPL Corporation",
+      "website": "https://www.pplweb.com",
+      "path": "company-logos/ppl.png",
+      "sourceUrl": "https://www.pplweb.com/wp-content/themes/ppl/dist/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PFG",
+      "company": "Principal Financial Group",
+      "website": "https://www.principal.com",
+      "path": "company-logos/pfg.png",
+      "sourceUrl": "https://www.principal.com/themes/custom/principalcom/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PG",
+      "company": "Procter & Gamble",
+      "website": "https://www.pginvestor.com",
+      "path": "company-logos/pg.png",
+      "sourceUrl": "https://s204.q4cdn.com/332108499/files/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PGR",
+      "company": "Progressive Corporation",
+      "website": "https://www.progressive.com",
+      "path": "company-logos/pgr.png",
+      "sourceUrl": "https://www.progressive.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PLD",
+      "company": "Prologis",
+      "website": "https://www.prologis.com",
+      "path": "company-logos/pld.png",
+      "sourceUrl": "https://www.prologis.com",
+      "resolverUrl": "https://a.favicon.im/prologis.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PRU",
+      "company": "Prudential Financial",
+      "website": "https://www.prudential.com",
+      "path": "company-logos/pru.png",
+      "sourceUrl": "https://www.prudential.com",
+      "resolverUrl": "https://a.favicon.im/prudential.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PEG",
+      "company": "Public Service Enterprise Group",
+      "website": "https://investor.pseg.com",
+      "path": "company-logos/peg.png",
+      "sourceUrl": "https://investor.pseg.com",
+      "resolverUrl": "https://a.favicon.im/investor.pseg.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PTC",
+      "company": "PTC Inc.",
+      "website": "https://www.ptc.com",
+      "path": "company-logos/ptc.png",
+      "sourceUrl": "https://www.ptc.com",
+      "resolverUrl": "https://a.favicon.im/ptc.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PSA",
+      "company": "Public Storage",
+      "website": "https://www.publicstorage.com",
+      "path": "company-logos/psa.png",
+      "sourceUrl": "https://images.publicstorage.com/Branding/svg/ps-favicon-150x150.svg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PHM",
+      "company": "PulteGroup",
+      "website": "https://pultegroupinc.com",
+      "path": "company-logos/phm.png",
+      "sourceUrl": "https://pultegroupinc.com",
+      "resolverUrl": "https://a.favicon.im/pultegroupinc.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "PWR",
+      "company": "Quanta Services",
+      "website": "https://www.quantaservices.com",
+      "path": "company-logos/pwr.png",
+      "sourceUrl": "https://www.quantaservices.com/images/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "QCOM",
+      "company": "Qualcomm",
+      "website": "https://www.qualcomm.com",
+      "path": "company-logos/qcom.png",
+      "sourceUrl": "https://www.qualcomm.com/etc.clientlibs/qcomm-martech/clientlibs/clientlib-react/resources/favicon/qualcomm/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DGX",
+      "company": "Quest Diagnostics",
+      "website": "https://www.questdiagnostics.com",
+      "path": "company-logos/dgx.png",
+      "sourceUrl": "https://www.questdiagnostics.com/etc.clientlibs/corporate/clientlibs/clientlib-site/resources/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "Q",
+      "company": "Qnity Electronics",
+      "website": "https://www.qnityelectronics.com",
+      "path": "company-logos/q.png",
+      "sourceUrl": "https://s7d9.scene7.com/is/image/ekctechinc/favicon",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RL",
+      "company": "Ralph Lauren Corporation",
+      "website": "https://www.ralphlauren.com",
+      "path": "company-logos/rl.png",
+      "sourceUrl": "https://www.ralphlauren.co.uk/on/demandware.static/Sites-RalphLauren_GB-Site/-/default/dwd8f03e2c/images/favicon_rl.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RJF",
+      "company": "Raymond James Financial",
+      "website": "https://www.raymondjames.com",
+      "path": "company-logos/rjf.png",
+      "sourceUrl": "https://www.raymondjames.com",
+      "resolverUrl": "https://a.favicon.im/raymondjames.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RTX",
+      "company": "RTX Corporation",
+      "website": "https://www.rtx.com",
+      "path": "company-logos/rtx.png",
+      "sourceUrl": "https://www.rtx.com/-/media/themes/raytheon-technologies/rtx-shared/rtx-theme/images/rtx-balck-favicon.png?rev=3da99ab1a2a54dca92c98a2ede690339&amp;rid=e3e3f4840c2742cc9f36e2d33430c8cd",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "O",
+      "company": "Realty Income",
+      "website": "https://www.realtyincome.com",
+      "path": "company-logos/o.png",
+      "sourceUrl": "https://www.realtyincome.com/sites/realty-income/files/realty-income/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "REG",
+      "company": "Regency Centers",
+      "website": "https://www.regencycenters.com",
+      "path": "company-logos/reg.png",
+      "sourceUrl": "https://www.regencycenters.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "REGN",
+      "company": "Regeneron Pharmaceuticals",
+      "website": "https://www.regeneron.com",
+      "path": "company-logos/regn.png",
+      "sourceUrl": "https://www.regeneron.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RF",
+      "company": "Regions Financial Corporation",
+      "website": "https://www.regions.com",
+      "path": "company-logos/rf.png",
+      "sourceUrl": "https://www.regions.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RSG",
+      "company": "Republic Services",
+      "website": "https://www.republicservices.com",
+      "path": "company-logos/rsg.png",
+      "sourceUrl": "https://www.republicservices.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RMD",
+      "company": "ResMed",
+      "website": "https://www.resmed.com",
+      "path": "company-logos/rmd.png",
+      "sourceUrl": "https://www.resmed.com",
+      "resolverUrl": "https://a.favicon.im/resmed.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RVTY",
+      "company": "Revvity",
+      "website": "https://www.revvity.com",
+      "path": "company-logos/rvty.png",
+      "sourceUrl": "https://www.revvity.com",
+      "resolverUrl": "https://a.favicon.im/revvity.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "HOOD",
+      "company": "Robinhood Markets",
+      "website": "https://robinhood.com",
+      "path": "company-logos/hood.png",
+      "sourceUrl": "https://robinhood.com/us/en/rh_favicon_152.png?v=2024",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ROK",
+      "company": "Rockwell Automation",
+      "website": "https://www.rockwellautomation.com",
+      "path": "company-logos/rok.png",
+      "sourceUrl": "https://www.rockwellautomation.com/etc.clientlibs/rockwell-aem-base/clientlibs/clientlib-base/resources/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ROL",
+      "company": "Rollins, Inc.",
+      "website": "https://www.rollins.com",
+      "path": "company-logos/rol.png",
+      "sourceUrl": "https://d1io3yog0oux5.cloudfront.net/_367eb5fae88a4fc496ee3bf950de9ba0/rollins/files/theme/images/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ROP",
+      "company": "Roper Technologies",
+      "website": "https://www.ropertech.com",
+      "path": "company-logos/rop.png",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Roper_Technologies_logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikimedia Commons: public-domain text logo; trademark notice applies."
+    },
+    {
+      "symbol": "ROST",
+      "company": "Ross Stores",
+      "website": "https://www.rossstores.com",
+      "path": "company-logos/rost.png",
+      "sourceUrl": "https://www.rossstores.com/wp-content/uploads/2021/03/cropped-cropped-ross_favicon_master-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "RCL",
+      "company": "Royal Caribbean Group",
+      "website": "https://www.rclinvestor.com",
+      "path": "company-logos/rcl.png",
+      "sourceUrl": "https://www.rclinvestor.com/content/themes/base/img/fav/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SPGI",
+      "company": "S&P Global",
+      "website": "https://www.spglobal.com",
+      "path": "company-logos/spgi.png",
+      "sourceUrl": "https://www.spglobal.com",
+      "resolverUrl": "https://a.favicon.im/spglobal.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "CRM",
+      "company": "Salesforce",
+      "website": "https://www.salesforce.com",
+      "path": "company-logos/crm.png",
+      "sourceUrl": "https://www.salesforce.com/c2/public/app/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SNDK",
+      "company": "Sandisk",
+      "website": "https://www.sandisk.com",
+      "path": "company-logos/sndk.png",
+      "sourceUrl": "https://www.sandisk.com/content/dam/sandisk/en-us/portal-assets/logos/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SBAC",
+      "company": "SBA Communications",
+      "website": "https://www.sbasite.com",
+      "path": "company-logos/sbac.png",
+      "sourceUrl": "https://www.sbasite.com",
+      "resolverUrl": "https://a.favicon.im/sbasite.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SLB",
+      "company": "Schlumberger",
+      "website": "https://www.slb.com",
+      "path": "company-logos/slb.png",
+      "sourceUrl": "https://www.slb.com/-/media/images/favicons/favicon-180x180.ashx",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "STX",
+      "company": "Seagate Technology",
+      "website": "https://www.seagate.com",
+      "path": "company-logos/stx.png",
+      "sourceUrl": "https://www.seagate.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SRE",
+      "company": "Sempra",
+      "website": "https://www.sempra.com",
+      "path": "company-logos/sre.png",
+      "sourceUrl": "https://www.sempra.com",
+      "resolverUrl": "https://a.favicon.im/sempra.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "NOW",
+      "company": "ServiceNow",
+      "website": "https://www.servicenow.com",
+      "path": "company-logos/now.png",
+      "sourceUrl": "https://www.servicenow.com",
+      "resolverUrl": "https://a.favicon.im/servicenow.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SHW",
+      "company": "Sherwin-Williams",
+      "website": "https://www.sherwin-williams.com",
+      "path": "company-logos/shw.png",
+      "sourceUrl": "https://www.sherwin-williams.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SPG",
+      "company": "Simon Property Group",
+      "website": "https://www.simon.com",
+      "path": "company-logos/spg.png",
+      "sourceUrl": "https://assets.simon.com/SimonWebAssets_Images/favicons/apple-touch-icon-180x180.png?v=A0v9Gll6ga",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SWKS",
+      "company": "Skyworks Solutions",
+      "website": "https://www.skyworksinc.com",
+      "path": "company-logos/swks.png",
+      "sourceUrl": "https://www.skyworksinc.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SJM",
+      "company": "J.M. Smucker Company (The)",
+      "website": "https://www.jmsmucker.com",
+      "path": "company-logos/sjm.png",
+      "sourceUrl": "https://en.wikipedia.org/wiki/File:The_J.M._Smucker_Company_logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikipedia non-free identification image; locally resized for editorial company identification."
+    },
+    {
+      "symbol": "SW",
+      "company": "Smurfit Westrock",
+      "website": "https://www.smurfitwestrock.com",
+      "path": "company-logos/sw.png",
+      "sourceUrl": "https://www.smurfitwestrock.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SNA",
+      "company": "Snap-on",
+      "website": "https://www.snapon.com",
+      "path": "company-logos/sna.png",
+      "sourceUrl": "https://www.snapon.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SOLV",
+      "company": "Solventum",
+      "website": "https://www.solventum.com",
+      "path": "company-logos/solv.png",
+      "sourceUrl": "https://www.solventum.com/etc.clientlibs/healthcareweb/clientlibs/clientlib-site/resources/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SO",
+      "company": "Southern Company",
+      "website": "https://www.southerncompany.com",
+      "path": "company-logos/so.png",
+      "sourceUrl": "https://www.southerncompany.com/etc.clientlibs/global/clientlibs/clientlib-site/resources/apple-touch-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "LUV",
+      "company": "Southwest Airlines",
+      "website": "https://www.southwest.com",
+      "path": "company-logos/luv.png",
+      "sourceUrl": "https://www.southwest.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SWK",
+      "company": "Stanley Black & Decker",
+      "website": "https://www.stanleyblackanddecker.com",
+      "path": "company-logos/swk.png",
+      "sourceUrl": "https://www.stanleyblackanddecker.com/themes/custom/stanley_default/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SBUX",
+      "company": "Starbucks",
+      "website": "https://www.starbucks.com",
+      "path": "company-logos/sbux.png",
+      "sourceUrl": "https://www.starbucks.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "STT",
+      "company": "State Street Corporation",
+      "website": "https://www.statestreet.com",
+      "path": "company-logos/stt.png",
+      "sourceUrl": "https://www.statestreet.com/content/dam/stt/ST_Circle-16-16.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "STLD",
+      "company": "Steel Dynamics",
+      "website": "https://www.steeldynamics.com",
+      "path": "company-logos/stld.png",
+      "sourceUrl": "https://www.steeldynamics.com/wp-content/uploads/2021/06/cropped-favicon2-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "STE",
+      "company": "Steris",
+      "website": "https://www.steris.com",
+      "path": "company-logos/ste.png",
+      "sourceUrl": "https://www.steris.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SYK",
+      "company": "Stryker Corporation",
+      "website": "https://www.stryker.com",
+      "path": "company-logos/syk.png",
+      "sourceUrl": "https://www.stryker.com/content/dam/stryker/global/icons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SMCI",
+      "company": "Supermicro",
+      "website": "https://www.supermicro.com",
+      "path": "company-logos/smci.png",
+      "sourceUrl": "https://www.supermicro.com/sites/default/files/favicon_0.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SYF",
+      "company": "Synchrony Financial",
+      "website": "https://www.synchrony.com",
+      "path": "company-logos/syf.png",
+      "sourceUrl": "https://www.synchrony.com/syc/img/apple-touch-icon-precomposed.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SNPS",
+      "company": "Synopsys",
+      "website": "https://www.synopsys.com",
+      "path": "company-logos/snps.png",
+      "sourceUrl": "https://www.synopsys.com/etc.clientlibs/synopsys/clientlibs/synopsys-pagelibs/resources/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "SYY",
+      "company": "Sysco",
+      "website": "https://www.sysco.com",
+      "path": "company-logos/syy.png",
+      "sourceUrl": "https://www.sysco.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TMUS",
+      "company": "T-Mobile US",
+      "website": "https://www.t-mobile.com",
+      "path": "company-logos/tmus.png",
+      "sourceUrl": "https://www.t-mobile.com",
+      "resolverUrl": "https://a.favicon.im/t-mobile.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TROW",
+      "company": "T. Rowe Price",
+      "website": "https://www.troweprice.com",
+      "path": "company-logos/trow.png",
+      "sourceUrl": "https://www.troweprice.com/content/dam/public/enterprise/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TTWO",
+      "company": "Take-Two Interactive",
+      "website": "https://www.take2games.com",
+      "path": "company-logos/ttwo.png",
+      "sourceUrl": "https://images.ctfassets.net/wn7ipiv9ue5v/1DxCIrUbhWllnMBuMyCje5/546552d68f1324b54b89d733f40f2d8f/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TPR",
+      "company": "Tapestry, Inc.",
+      "website": "https://www.tapestry.com",
+      "path": "company-logos/tpr.png",
+      "sourceUrl": "https://www.tapestry.com/wp-content/themes/bootscore-child-main/img/favicon/cropped-tapestry-favicon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TRGP",
+      "company": "Targa Resources",
+      "website": "https://www.targaresources.com",
+      "path": "company-logos/trgp.png",
+      "sourceUrl": "https://en.wikipedia.org/wiki/File:Targa_Resources_logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T20:50:01.076Z",
+      "rightsNote": "Wikipedia non-free identification image; locally resized for editorial company identification."
+    },
+    {
+      "symbol": "TGT",
+      "company": "Target Corporation",
+      "website": "https://corporate.target.com",
+      "path": "company-logos/tgt.png",
+      "sourceUrl": "https://corporate.target.com/assets/images/apple-touch-icon-152x152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TEL",
+      "company": "TE Connectivity",
+      "website": "https://www.te.com",
+      "path": "company-logos/tel.png",
+      "sourceUrl": "https://www.te.com/_TEincludes/ver/1698/v2/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TDY",
+      "company": "Teledyne Technologies",
+      "website": "https://www.teledyne.com",
+      "path": "company-logos/tdy.png",
+      "sourceUrl": "https://cdn.teledyne.com/assets/common/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TER",
+      "company": "Teradyne",
+      "website": "https://www.teradyne.com",
+      "path": "company-logos/ter.png",
+      "sourceUrl": "https://www.teradyne.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TSLA",
+      "company": "Tesla, Inc.",
+      "website": "https://www.tesla.com",
+      "path": "company-logos/tsla.png",
+      "sourceUrl": "https://www.tesla.com/tesla-gallery",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TXN",
+      "company": "Texas Instruments",
+      "website": "https://www.ti.com",
+      "path": "company-logos/txn.png",
+      "sourceUrl": "https://www.ti.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TPL",
+      "company": "Texas Pacific Land Corporation",
+      "website": "https://www.texaspacific.com",
+      "path": "company-logos/tpl.png",
+      "sourceUrl": "https://d1io3yog0oux5.cloudfront.net/_386da32e18dbdb840fcb345a16c0c521/texaspacific/files/theme/images/favicons/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TXT",
+      "company": "Textron",
+      "website": "https://www.textron.com",
+      "path": "company-logos/txt.png",
+      "sourceUrl": "https://www.textron.com/sites/default/files/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TMO",
+      "company": "Thermo Fisher Scientific",
+      "website": "https://www.thermofisher.com",
+      "path": "company-logos/tmo.png",
+      "sourceUrl": "https://www.thermofisher.com",
+      "resolverUrl": "https://a.favicon.im/thermofisher.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TJX",
+      "company": "TJX Companies",
+      "website": "https://www.tjx.com",
+      "path": "company-logos/tjx.png",
+      "sourceUrl": "https://www.tjx.com/ResourcePackages/Bootstrap5/assets/dist/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TKO",
+      "company": "TKO Group Holdings",
+      "website": "https://tkogrp.com",
+      "path": "company-logos/tko.png",
+      "sourceUrl": "https://tkogrp.com/wp-content/uploads/2024/02/cropped-cropped-Favicon_TKO_platinum-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TTD",
+      "company": "Trade Desk (The)",
+      "website": "https://www.thetradedesk.com",
+      "path": "company-logos/ttd.png",
+      "sourceUrl": "https://www.thetradedesk.com/icon-512.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TSCO",
+      "company": "Tractor Supply",
+      "website": "https://www.tractorsupply.com",
+      "path": "company-logos/tsco.png",
+      "sourceUrl": "https://www.tractorsupply.com",
+      "resolverUrl": "https://a.favicon.im/tractorsupply.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TT",
+      "company": "Trane Technologies",
+      "website": "https://www.tranetechnologies.com",
+      "path": "company-logos/tt.png",
+      "sourceUrl": "https://www.tranetechnologies.com/content/dam/cs-corporate/images/logos/favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TDG",
+      "company": "TransDigm Group",
+      "website": "https://www.transdigm.com",
+      "path": "company-logos/tdg.png",
+      "sourceUrl": "https://www.transdigm.com/wp-content/uploads/2018/07/cropped-cropped-transdigm-favicon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TRV",
+      "company": "Travelers Companies (The)",
+      "website": "https://www.travelers.com",
+      "path": "company-logos/trv.png",
+      "sourceUrl": "https://www.travelers.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TRMB",
+      "company": "Trimble Inc.",
+      "website": "https://www.trimble.com",
+      "path": "company-logos/trmb.png",
+      "sourceUrl": "https://www.trimble.com/favicons/android-chrome-512x512.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TFC",
+      "company": "Truist Financial",
+      "website": "https://www.truist.com",
+      "path": "company-logos/tfc.png",
+      "sourceUrl": "https://www.truist.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TYL",
+      "company": "Tyler Technologies",
+      "website": "https://www.tylertech.com",
+      "path": "company-logos/tyl.png",
+      "sourceUrl": "https://www.tylertech.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "TSN",
+      "company": "Tyson Foods",
+      "website": "https://www.tysonfoods.com",
+      "path": "company-logos/tsn.png",
+      "sourceUrl": "https://www.tysonfoods.com/themes/custom/tyson/favicons/apple-touch-icon.png?v=9lM4OcB0LR",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "USB",
+      "company": "U.S. Bancorp",
+      "website": "https://www.usbank.com",
+      "path": "company-logos/usb.png",
+      "sourceUrl": "https://www.usbank.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "UBER",
+      "company": "Uber",
+      "website": "https://www.uber.com",
+      "path": "company-logos/uber.png",
+      "sourceUrl": "https://www.uber.com/_static/de0e97ed977ad313.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "UDR",
+      "company": "UDR, Inc.",
+      "website": "https://www.udr.com",
+      "path": "company-logos/udr.png",
+      "sourceUrl": "https://www.udr.com/images/icons/144.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ULTA",
+      "company": "Ulta Beauty",
+      "website": "https://www.ulta.com",
+      "path": "company-logos/ulta.png",
+      "sourceUrl": "https://www.ulta.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "UNP",
+      "company": "Union Pacific Corporation",
+      "website": "https://www.up.com",
+      "path": "company-logos/unp.png",
+      "sourceUrl": "https://www.up.com/etc.clientlibs/upcom/clientlibs/clientlib-site/resources/favicon/apple-icon-180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "UAL",
+      "company": "United Airlines Holdings",
+      "website": "https://www.united.com",
+      "path": "company-logos/ual.png",
+      "sourceUrl": "https://www.united.com",
+      "kind": "simple-icons",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "UPS",
+      "company": "United Parcel Service",
+      "website": "https://www.ups.com",
+      "path": "company-logos/ups.png",
+      "sourceUrl": "https://www.ups.com",
+      "resolverUrl": "https://a.favicon.im/ups.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "URI",
+      "company": "United Rentals",
+      "website": "https://www.unitedrentals.com",
+      "path": "company-logos/uri.png",
+      "sourceUrl": "https://www.unitedrentals.com",
+      "resolverUrl": "https://a.favicon.im/unitedrentals.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "UNH",
+      "company": "UnitedHealth Group",
+      "website": "https://www.unitedhealthgroup.com",
+      "path": "company-logos/unh.png",
+      "sourceUrl": "https://www.unitedhealthgroup.com/etc.clientlibs/uhg/clientlibs/clientlib-site/resources/images/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "UHS",
+      "company": "Universal Health Services",
+      "website": "https://uhs.com",
+      "path": "company-logos/uhs.png",
+      "sourceUrl": "https://uhs.com",
+      "resolverUrl": "https://a.favicon.im/uhs.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VLO",
+      "company": "Valero Energy",
+      "website": "https://www.valero.com",
+      "path": "company-logos/vlo.png",
+      "sourceUrl": "https://www.valero.com/themes/custom/valero/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VEEV",
+      "company": "Veeva Systems",
+      "website": "https://www.veeva.com",
+      "path": "company-logos/veev.png",
+      "sourceUrl": "https://www.veeva.com/wp-content/themes/veeva2015/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VTR",
+      "company": "Ventas",
+      "website": "https://www.ventasreit.com",
+      "path": "company-logos/vtr.png",
+      "sourceUrl": "https://www.ventasreit.com/sites/default/files/favicon_1.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VLTO",
+      "company": "Veralto",
+      "website": "https://www.veralto.com",
+      "path": "company-logos/vlto.png",
+      "sourceUrl": "https://www.veralto.com/wp-content/uploads/2023/07/cropped-veralto_favicon_300x300-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VRSN",
+      "company": "Verisign",
+      "website": "https://www.verisign.com",
+      "path": "company-logos/vrsn.png",
+      "sourceUrl": "https://www.verisign.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VRSK",
+      "company": "Verisk Analytics",
+      "website": "https://www.verisk.com",
+      "path": "company-logos/vrsk.png",
+      "sourceUrl": "https://www.verisk.com/4a7dd9/contentassets/814105e257b64e3ca01c36bfdfaa155c/verisk_favicon_4.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VZ",
+      "company": "Verizon",
+      "website": "https://www.verizon.com",
+      "path": "company-logos/vz.png",
+      "sourceUrl": "https://www.verizon.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VRTX",
+      "company": "Vertex Pharmaceuticals",
+      "website": "https://www.vrtx.com",
+      "path": "company-logos/vrtx.png",
+      "sourceUrl": "https://www.vrtx.com",
+      "resolverUrl": "https://a.favicon.im/vrtx.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VRT",
+      "company": "Vertiv",
+      "website": "https://www.vertiv.com",
+      "path": "company-logos/vrt.png",
+      "sourceUrl": "https://www.vertiv.com/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VTRS",
+      "company": "Viatris",
+      "website": "https://www.viatris.com",
+      "path": "company-logos/vtrs.png",
+      "sourceUrl": "https://www.viatris.com/-/media/project/common/viatris/favicon_32x32.jpg",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VICI",
+      "company": "Vici Properties",
+      "website": "https://www.viciproperties.com",
+      "path": "company-logos/vici.png",
+      "sourceUrl": "https://viciproperties.com/wp-content/uploads/2022/01/cropped-Vici-favicon-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "V",
+      "company": "Visa Inc.",
+      "website": "https://www.visa.com",
+      "path": "company-logos/v.png",
+      "sourceUrl": "https://www.visa.co.uk/content/dam/VCOM/Brand/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VST",
+      "company": "Vistra Corp.",
+      "website": "https://vistracorp.com",
+      "path": "company-logos/vst.png",
+      "sourceUrl": "https://cdn-ilbfedf.nitrocdn.com/cCNHxjYMANxnjJnUBmcCqmSHlJrNjtdQ/assets/images/optimized/rev-0c0e8b9/vistracorp.com/wp-content/uploads/2016/10/cropped-cropped-site-icon-1-192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "VMC",
+      "company": "Vulcan Materials Company",
+      "website": "https://www.vulcanmaterials.com",
+      "path": "company-logos/vmc.png",
+      "sourceUrl": "https://www.vulcanmaterials.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WRB",
+      "company": "W. R. Berkley Corporation",
+      "website": "https://www.berkley.com",
+      "path": "company-logos/wrb.png",
+      "sourceUrl": "https://www.berkley.com/themes/custom/cohesion-theme/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "GWW",
+      "company": "W. W. Grainger",
+      "website": "https://www.grainger.com",
+      "path": "company-logos/gww.png",
+      "sourceUrl": "https://www.grainger.com",
+      "resolverUrl": "https://a.favicon.im/grainger.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WAB",
+      "company": "Wabtec",
+      "website": "https://www.wabteccorp.com",
+      "path": "company-logos/wab.png",
+      "sourceUrl": "https://www.wabteccorp.com/themes/custom/wabtec/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WMT",
+      "company": "Walmart",
+      "website": "https://www.stock.walmart.com",
+      "path": "company-logos/wmt.png",
+      "sourceUrl": "https://www.stock.walmart.com",
+      "resolverUrl": "https://a.favicon.im/stock.walmart.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "DIS",
+      "company": "Walt Disney Company (The)",
+      "website": "https://thewaltdisneycompany.com",
+      "path": "company-logos/dis.png",
+      "sourceUrl": "https://thewaltdisneycompany.com/app/uploads/2026/01/icon-512x512-1.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WBD",
+      "company": "Warner Bros. Discovery",
+      "website": "https://www.wbd.com",
+      "path": "company-logos/wbd.png",
+      "sourceUrl": "https://www.wbd.com/themes/custom/wbdcom/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WM",
+      "company": "Waste Management",
+      "website": "https://www.wm.com",
+      "path": "company-logos/wm.png",
+      "sourceUrl": "https://www.wm.com/content/dam/wm/icons/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WAT",
+      "company": "Waters Corporation",
+      "website": "https://www.waters.com",
+      "path": "company-logos/wat.png",
+      "sourceUrl": "https://www.waters.com",
+      "resolverUrl": "https://a.favicon.im/waters.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WEC",
+      "company": "WEC Energy Group",
+      "website": "https://www.wecenergygroup.com",
+      "path": "company-logos/wec.png",
+      "sourceUrl": "https://www.wecenergygroup.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WFC",
+      "company": "Wells Fargo",
+      "website": "https://www.wellsfargo.com",
+      "path": "company-logos/wfc.png",
+      "sourceUrl": "https://www17.wellsfargomedia.com/assets/images/icons/apple-touch-icon_180x180.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WELL",
+      "company": "Welltower",
+      "website": "https://www.welltower.com",
+      "path": "company-logos/well.png",
+      "sourceUrl": "https://welltower.com/wp-content/uploads/2024/08/Favicon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WST",
+      "company": "West Pharmaceutical Services",
+      "website": "https://www.westpharma.com",
+      "path": "company-logos/wst.png",
+      "sourceUrl": "https://www.westpharma.com/assets/WestPharma/images/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WDC",
+      "company": "Western Digital",
+      "website": "https://www.westerndigital.com",
+      "path": "company-logos/wdc.png",
+      "sourceUrl": "https://www.westerndigital.com/content/dam/store/en-us/portal-assets/logos/wd-icon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WY",
+      "company": "Weyerhaeuser",
+      "website": "https://www.weyerhaeuser.com",
+      "path": "company-logos/wy.png",
+      "sourceUrl": "https://www.weyerhaeuser.com/application/files/4917/5440/8891/triangle-logo-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WSM",
+      "company": "Williams-Sonoma, Inc.",
+      "website": "https://www.williams-sonomainc.com",
+      "path": "company-logos/wsm.png",
+      "sourceUrl": "https://www.williams-sonomainc.com/corpimgs/i/202629/0035/images/apple-icon-144x144.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WMB",
+      "company": "Williams Companies",
+      "website": "https://www.williams.com",
+      "path": "company-logos/wmb.png",
+      "sourceUrl": "https://www.williams.com/wp-content/uploads/sites/14/2019/11/williams_logo_favicon.jpg?w=108",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WTW",
+      "company": "Willis Towers Watson",
+      "website": "https://www.wtwco.com",
+      "path": "company-logos/wtw.png",
+      "sourceUrl": "https://www.wtwco.com",
+      "resolverUrl": "https://a.favicon.im/wtwco.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WDAY",
+      "company": "Workday, Inc.",
+      "website": "https://www.workday.com",
+      "path": "company-logos/wday.png",
+      "sourceUrl": "https://www.workday.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "WYNN",
+      "company": "Wynn Resorts",
+      "website": "https://www.wynnresorts.com",
+      "path": "company-logos/wynn.png",
+      "sourceUrl": "https://cdn.wynnresorts.com/image/upload/v1746165894/Wynn%20Las%20Vegas/Fav%20Icon/apple-touch-icon.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "XEL",
+      "company": "Xcel Energy",
+      "website": "https://www.my.xcelenergy.com/s",
+      "path": "company-logos/xel.png",
+      "sourceUrl": "https://www.my.xcelenergy.com/s",
+      "resolverUrl": "https://a.favicon.im/my.xcelenergy.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "XYL",
+      "company": "Xylem Inc.",
+      "website": "https://www.xylem.com",
+      "path": "company-logos/xyl.png",
+      "sourceUrl": "https://www.xylem.com/favicon.ico",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "YUM",
+      "company": "Yum! Brands",
+      "website": "https://www.yum.com",
+      "path": "company-logos/yum.png",
+      "sourceUrl": "https://www.yum.com",
+      "resolverUrl": "https://a.favicon.im/yum.com?larger=true&throw-error-on-404=true",
+      "kind": "favicon-im-cache",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ZBRA",
+      "company": "Zebra Technologies",
+      "website": "https://www.zebra.com",
+      "path": "company-logos/zbra.png",
+      "sourceUrl": "https://www.zebra.com/etc.clientlibs/zebra-web/clientlibs/clientlib-site/resources/images/favicons/192x192.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ZBH",
+      "company": "Zimmer Biomet",
+      "website": "https://www.zimmerbiomet.com",
+      "path": "company-logos/zbh.png",
+      "sourceUrl": "https://www.zimmerbiomet.com/etc.clientlibs/zb-common/clientlibs/clientlib-base/resources/img/favicon-48x48.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    },
+    {
+      "symbol": "ZTS",
+      "company": "Zoetis",
+      "website": "https://www.zoetis.com",
+      "path": "company-logos/zts.png",
+      "sourceUrl": "https://www.zoetis.com/global-assets/favicons/apple-touch-icon-152x152.png",
+      "kind": "issuer-site-icon",
+      "retrievedAt": "2026-07-25T20:50:01.076Z"
+    }
+  ]
+}
