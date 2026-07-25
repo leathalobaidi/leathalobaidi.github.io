@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Leath Al Obaidi">
-    <meta name="description" content="UK Economics Consultancy: A Historical Series. 11 pieces on the £2.48bn disclosed-revenue floor in a 90-firm curated universe, 25 years.">
+    <meta name="description" content="UK Economics Consultancy: A Historical Series. Eleven pieces covering 2000–2026, built around a curated 90-firm project catalogue and dated public sources.">
     <meta property="og:title" content="UK Economics Consultancy: A Historical Series, Leath Al Obaidi">
-    <meta property="og:description" content="11 pieces on the £2.48bn disclosed-revenue floor in a 90-firm curated universe, 25 years.">
+    <meta property="og:description" content="Eleven pieces covering 2000–2026, built around a curated 90-firm project catalogue and dated public sources.">
     <meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Leath Al Obaidi">
     <meta property="og:image" content="https://leathalobaidi.com/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="UK Economics Consultancy: A Historical Series">
-    <meta name="twitter:description" content="11 pieces on the £2.5bn industry nobody writes about.">
+    <meta name="twitter:description" content="Eleven pieces on the history and structure of UK economics consultancy, 2000–2026.">
     <meta name="twitter:image" content="https://leathalobaidi.com/og-image.png">
     <link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series">
     <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -196,10 +196,22 @@
             color: var(--color-text);
             transition: var(--transition);
         }
+        .piece-title a {
+            color: inherit;
+            font-weight: inherit;
+            border-bottom: none;
+        }
+        .piece-title a:hover {
+            color: var(--color-primary);
+            opacity: 1;
+        }
         .piece-excerpt {
             color: var(--color-text-light);
             font-size: 0.95rem;
             line-height: 1.65;
+        }
+        .piece-excerpt a {
+            font-weight: 500;
         }
 
         .about {
@@ -238,96 +250,98 @@
     <div class="container">
 
         <header class="page-header">
-            <div class="eyebrow">Series &middot; April 2026</div>
+            <div class="eyebrow">Series &middot; Updated July 2026</div>
             <h1>UK Economics Consultancy: A Historical Series</h1>
-            <p class="standfirst">11 pieces on the UK economics consultancy industry. 90 firms in the curated universe; the latest disclosed turnover rows in the working database sum to &pound;2.48bn across 30 firms. 25 years of filings and source notes.</p>
+            <p class="standfirst">Eleven pieces on UK economics consultancy from 2000 to 2026, built around a curated 90-firm project catalogue, filed accounts where available, and dated public sources.</p>
         </header>
 
         <section class="intro">
-            <p>There are roughly 90 economics-consultancy firms in the United Kingdom. The public directory gives 81 of them a direct Companies House number; the working database also carries registered, parent and brand rows for analytical continuity. Across the latest turnover disclosures in that database, 30 firms sum to &pound;2.48bn in the latest filed year (FX-adjusted) &mdash; an observed floor; Cebr&rsquo;s 2018 extrapolation puts the upper bound near &pound;3.6bn. They advise competition authorities, price regulators, government departments, law firms, and corporate clients on the most consequential economic decisions in Britain, CMA merger clearances, Ofwat and Ofgem price reviews, CAT damages awards, Treasury fiscal policy. Much of their work happens behind closed doors. Very little of it is written about.</p>
-            <p>This series traces the industry's history from 2000 to 2025. It is built on filed Companies House accounts and source rows for the active firms in the dataset, where separate accounts exist, plus 25 years of <em>Global Competition Review</em> coverage, press cuttings, obituaries, and firm histories. The dataset, the code, and the source PDFs are open, and the review workflow maps quantitative, dated, people, deal and source-dependent claims to named sources that a reader can check. Interpretation is labelled as interpretation. Start anywhere.</p>
+            <p>The project catalogue tracks 90 firms associated with UK economics consultancy. It is a curated research directory, not a census of every firm operating in the sector. The industry serves corporate clients, law firms, regulators and government bodies, a client base also described in <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr&rsquo;s 2018 sector study</a>. The series examines competition, regulation, litigation and public-policy work through selected firms, people and events; it does not treat those examples as a complete measure of the market.</p>
+            <p>In the interactive explorer, 30 selected legal entities with positive turnover observations total &pound;2.4418bn (&pound;2.44bn). These are the latest available figures for each selected entity, with year-ends from July 2024 to December 2025, not one common filed year. Two foreign-currency rows use analytical conversion assumptions of &euro;1=&pound;0.85 and $1=&pound;0.78. The result is gross reported turnover of the selected entities, including non-economics activity inside broad and litigation consultancies; it is neither UK sector revenue nor a lower bound for it.</p>
+            <p>For comparison, <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr reported</a> &pound;1.53bn of sector revenue for 2016/17 and an 11.3% nominal three-year average growth rate. Mechanically extending that historical rate for eight years gives &pound;3.60bn for 2024/25. That calculation is the author&rsquo;s scenario, not a Cebr forecast or an upper bound.</p>
+            <p>The history runs from 2000 to 2026. It uses filed Companies House accounts where separate accounts are available, together with cited announcements, firm histories, obituaries, press coverage and selected <em>Global Competition Review</em> material. The supporting dataset, code and source archive are not yet available as a complete public release. Interpretive descriptions below are identified as the article&rsquo;s thesis, hypothesis or commentary. Start anywhere.</p>
         </section>
 
         <section class="series-section">
             <div class="section-label">Visual introductions</div>
 
-            <a href="part0.1-visual-story" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Opening &middot; Visual</div>
-                <h2 class="piece-title">A Visual Story</h2>
-                <p class="piece-excerpt">13 charts, one market. The shape of UK economics consulting in 2025, &pound;2.48bn of disclosed revenue (floor), 90 firms, one 56-per-cent profit margin at the top.</p>
-            </a>
+                <h2 class="piece-title"><a href="part0.1-visual-story">A Visual Story</a></h2>
+                <p class="piece-excerpt">Thirteen charts across the 90-firm project catalogue, using the latest available 2024&ndash;25 disclosures rather than a single-year market snapshot. The 30 positive-turnover entities total &pound;2.4418bn in gross reported turnover. RBB&rsquo;s FY2025 operating margin was 56.26%, the highest disclosed margin in the published sample; see its <a href="https://find-and-update.company-information.service.gov.uk/company/OC315356/filing-history">Companies House filing history</a>.</p>
+            </article>
 
-            <a href="part0.2-uk-and-global-map" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Opening &middot; Maps</div>
-                <h2 class="piece-title">Where the Economists Actually Are</h2>
-                <p class="piece-excerpt">Three interactive maps and one force-directed graph. Begin in Britain; then step back for the world. A ~90-firm dataset, ~80 pinned to postcodes, wired to a single filter panel.</p>
-            </a>
+                <h2 class="piece-title"><a href="part0.2-uk-and-global-map">Where the Economists Actually Are</a></h2>
+                <p class="piece-excerpt">Two interactive Leaflet maps and one force-directed graph. The UK view contains 80 office/entity rows, including legal or brand duplicates; it is not a count of 80 distinct active catalogue firms. The global network and world map share a filter panel, while the UK registered-office map is separate.</p>
+            </article>
 
-            <a href="part0.3-the-full-market" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Opening &middot; Data</div>
-                <h2 class="piece-title">The Whole Market, Your Way</h2>
-                <p class="piece-excerpt">An interactive explorer for all 90 firms. Filter by segment and structure, switch between staff, turnover, margin and top-earner pay, toggle firms in and out, and watch the chart and totals recompute live.</p>
-            </a>
+                <h2 class="piece-title"><a href="part0.3-the-full-market">The Whole Market, Your Way</a></h2>
+                <p class="piece-excerpt">An interactive explorer for the 90-firm project catalogue. Filter by segment and structure, switch between staff, turnover, margin and top-earner pay, toggle firms in and out, and watch the chart and totals recompute live.</p>
+            </article>
         </section>
 
         <section class="series-section">
             <div class="section-label">The numbered history (seven parts)</div>
 
-            <a href="part1-who-was-here-in-2000" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Part 1 &middot; 2000</div>
-                <h2 class="piece-title">Who Was Here in 2000</h2>
-                <p class="piece-excerpt">The year the UK economics-consultancy market did not yet exist in its modern shape. A portrait of the four firms, 14 people, and three cases that seeded the industry.</p>
-            </a>
+                <h2 class="piece-title"><a href="part1-who-was-here-in-2000">Who Was Here in 2000</a></h2>
+                <p class="piece-excerpt">The article&rsquo;s thesis is that the market had not yet taken its modern shape. It develops that interpretation through a selected portrait of four firms, 14 people and three influential cases; those counts are not market totals.</p>
+            </article>
 
-            <a href="part2-founders-decade" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Part 2 &middot; 2000&ndash;2010</div>
-                <h2 class="piece-title">The Founders' Decade</h2>
-                <p class="piece-excerpt">In January 2000, NERA was a central incumbent in the UK economics market; by 2010, three defectors had built a rival that would eventually post the highest profit-per-partner visible in this project's detailed-account LLP sample.</p>
-            </a>
+                <h2 class="piece-title"><a href="part2-founders-decade">The Founders' Decade</a></h2>
+                <p class="piece-excerpt">NERA was one of the established firms. Derek Ridyard, Simon Bishop and Simon Baker went on to establish RBB Economics in 2002, as <a href="https://www.rbbecon.com/about/">RBB&rsquo;s history</a> records. In the project&rsquo;s small comparable LLP sample, RBB&rsquo;s FY2025 profit available to members of &pound;60.226m divided by 18 average members gives &pound;3.346m per member, the highest disclosed row.</p>
+            </article>
 
-            <a href="part3-professionalisation" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Part 3 &middot; 2010&ndash;2015</div>
-                <h2 class="piece-title">The Professionalisation, PE Arrives</h2>
-                <p class="piece-excerpt">LECG imploded, its European economists scattered across three doors, and a patient English private equity house backed a macro-research boutique at a reported four-times-revenue valuation. The money had begun to arrive.</p>
-            </a>
+                <h2 class="piece-title"><a href="part3-professionalisation">The Professionalisation, PE Arrives</a></h2>
+                <p class="piece-excerpt">LECG collapsed in 2011; <a href="https://www.compasslexecon.com/insights/news/compass-lexecon-to-acquire-european-competition-practice-from-lecg">Compass Lexecon announced</a> that it would acquire LECG&rsquo;s European competition team of more than 40. In October 2014, <a href="https://www.ldc.co.uk/news/capital-economics-exit/">LDC invested in Capital Economics</a>. The article interprets that transaction as an early sign of greater investor interest.</p>
+            </article>
 
-            <a href="part4-global-arms-race" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Part 4 &middot; 2015&ndash;2020</div>
-                <h2 class="piece-title">The Global Arms Race</h2>
-                <p class="piece-excerpt">US-owned advisory groups expand in London; private equity's arrival in UK economics research accelerates; Brexit throws off a regulatory advisory boom; and one firm quietly posts the highest profit-per-partner visible in this project's detailed-account LLP sample.</p>
-            </a>
+                <h2 class="piece-title"><a href="part4-global-arms-race">The Global Arms Race</a></h2>
+                <p class="piece-excerpt">The article documents London expansion by US-linked advisory groups and a second major private-equity transaction in 2018, after LDC&rsquo;s 2014 investment in Capital Economics. It treats a possible link between Brexit and regulatory-advisory growth as a hypothesis, not a demonstrated sector-wide causal effect.</p>
+            </article>
 
-            <a href="part5-profit-machine" class="piece-card">
-                <div class="piece-meta">Part 5 &middot; 2020&ndash;2025</div>
-                <h2 class="piece-title">The Profit Machine</h2>
-                <p class="piece-excerpt">An 18-partner competition-economics firm on a single floor of 199 Bishopsgate booked the highest profit-per-partner visible in this project's detailed-account LLP sample. McKinsey, Jacobs, and Econic show three different buyer or financing routes: acqui-hire, full strategic ownership, and funded breakaway.</p>
-            </a>
+            <article class="piece-card">
+                <div class="piece-meta">Part 5 &middot; 2020&ndash;2026</div>
+                <h2 class="piece-title"><a href="part5-profit-machine">The Profit Machine</a></h2>
+                <p class="piece-excerpt">RBB&rsquo;s FY2025 accounts report 18 average members and a registered office at 199 Bishopsgate; they do not establish exclusive occupancy of a whole floor. <a href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-acquires-vivid-economics-and-planetrics">McKinsey&rsquo;s acquisition of Vivid Economics and Planetrics</a>, <a href="https://www.jacobs.com/newsroom/press-release/jacobs-completes-acquisition-remaining-stake-pa-consulting">Jacobs&rsquo; acquisition of the remaining PA Consulting shares</a> in March 2026, and <a href="https://econicpartners.com/newsroom/announcements/econic-partners-launches-as-premier-economic-consulting-firm-for-complex-antitrust-regulatory-litigation-and-policy-matters/">Econic&rsquo;s disclosed financing</a> show three distinct ownership or funding routes. The article labels &ldquo;acqui-hire&rdquo; and &ldquo;breakaway&rdquo; as interpretations.</p>
+            </article>
 
-            <a href="part6-the-cma-drain" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Part 6 &middot; CMA &rarr; private sector</div>
-                <h2 class="piece-title">The CMA Drain</h2>
-                <p class="piece-excerpt">Five senior economists walked out of the CMA in three years; Stefan Hunt appears at three institutions. Here is where they went, and which platforms hired or financed the moves.</p>
-            </a>
+                <h2 class="piece-title"><a href="part6-the-cma-drain">The CMA Drain</a></h2>
+                <p class="piece-excerpt">Five named senior Competition and Markets Authority economists moved to private-sector roles between January 2023 and January 2026. The documented sequence for Stefan Hunt is CMA, Keystone Strategy and AlixPartners. Examples include <a href="https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i21944-frontier-economics-hires-cma-chief-economic-advisor/">Frontier Economics&rsquo; announcement of Mike Walker</a> and <a href="https://www.alixpartners.com/newsroom/julie-bon-former-cma-economist-joins-alixpartners-in-senior-advisory-role/">AlixPartners&rsquo; announcement of Julie Bon</a>.</p>
+            </article>
 
-            <a href="part7-the-people-network" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">Part 7 &middot; Network</div>
-                <h2 class="piece-title">The People Network</h2>
-                <p class="piece-excerpt">A sourced chord diagram of around 30 documented senior cross-firm moves in the UK economics consultancy market, 2000&ndash;2026. Who came from where. Who went where. The visible senior-move layer, not every career move in the market.</p>
-            </a>
+                <h2 class="piece-title"><a href="part7-the-people-network">The People Network</a></h2>
+                <p class="piece-excerpt">A chord diagram of 19 aggregated firm-to-firm ribbons covering selected senior moves, 2000&ndash;2026. Ribbon weights can combine more than one person and seniority, so the chart does not claim a reproducible count of individual moves. It is the visible senior-move layer, not every career move in the market.</p>
+            </article>
         </section>
 
         <section class="series-section">
             <div class="section-label">Methodology</div>
 
-            <a href="methodology-claude-code" class="piece-card">
+            <article class="piece-card">
                 <div class="piece-meta">How it was built</div>
-                <h2 class="piece-title">Claude Code for an Economist</h2>
-                <p class="piece-excerpt">How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for public release.</p>
-            </a>
+                <h2 class="piece-title"><a href="methodology-claude-code">Claude Code for an Economist</a></h2>
+                <p class="piece-excerpt">The author&rsquo;s account of learning to build a 90-firm Companies House pipeline over ten days and roughly 60 interactive hours, then turning it into an eleven-piece series. The article describes how the material was assembled and reviewed; it does not claim that a complete public release is currently available.</p>
+            </article>
         </section>
 
         <section class="about">
-            <p><strong>About the series.</strong> Written by Leath Al Obaidi in a private capacity. Independent research, not commissioned work. The dataset is a snapshot of the UK economics-consultancy market as of April 2026; the prose is narrative-led, with quantitative claims grounded in named sources (mostly filed Companies House accounts, plus <em>Global Competition Review</em> coverage, press releases, and obituaries). Corrections welcome, contact via <a href="/">leathalobaidi.com</a>.</p>
+            <p><strong>About the series.</strong> Written by Leath Al Obaidi in a private capacity. The statement that this is independent research and not commissioned work is the author&rsquo;s declaration. The catalogue and prose are living research materials; no immutable public dataset release or April 2026 snapshot is currently published. Dates and coverage limits therefore appear with the relevant figures and articles. Corrections are welcome; contact via <a href="/">leathalobaidi.com</a>.</p>
         </section>
 
     </div>

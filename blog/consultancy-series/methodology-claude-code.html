@@ -100,7 +100,7 @@
     "I want to understand why a small UK economics consultancy in the City makes its partners more money than a Magic Circle law-firm partner."
   </blockquote>
 
-  <p>There was no list of firms. There was no database. There were no scripts. Python had been left untouched for seven years. What the researcher had, rather, was a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, a local SQLite binary, and a working hunch, unglamorous but stubborn, that much of the answer was hiding in the public filings of the UK's corporate registry, if anyone could be bothered to pull them together. Ten days later a 90-firm dataset existed, the first Substack drafts had been written, dozens of chart variants had been rendered, and a <a href="#">public GitHub repository</a> stood ready for anyone to clone and replicate. The interactive work added up to roughly 60 hours. The same task done manually, pulling 8,293 filing records, mapping account PDFs, building the financial time series, cross-referencing officer appointments, and chasing the press trail across 90 firms, would have taken materially longer; no published benchmark is claimed here.</p>
+  <p>There was no list of firms. There was no database. There were no scripts. Python had been left untouched for seven years. What the researcher had, rather, was a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, a local SQLite binary, and a working hunch, unglamorous but stubborn, that much of the answer was hiding in the public filings of the UK's corporate registry, if anyone could be bothered to pull them together. Ten days later a 90-firm dataset and a local project repository existed, the first Substack drafts had been written, and dozens of chart variants had been rendered; no public dataset repository had yet been released. The interactive work added up to roughly 60 hours. The same task done manually, pulling 8,293 filing records, mapping account PDFs, building the financial time series, cross-referencing officer appointments, and chasing the press trail across 90 firms, would have taken materially longer; no published benchmark is claimed here.</p>
 
   <p>What follows is the story of how that happened: what worked, what failed, what the tooling still cannot do, and what another economist or analyst might try next.</p>
 
@@ -516,7 +516,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h3>Reading a room</h3>
 
-  <p>It cannot sit at a GCR awards dinner in Brussels and detect which partners are about to walk. It cannot hear the tone in which Mark Israel says "we are very committed to Compass Lexecon" six months before he founds Econic Partners. Leading indicators in a professional-services market live in hallway conversations, and hallway conversations leave no Companies House trail.</p>
+  <p>It cannot sit at a GCR awards dinner in Brussels and detect which partners are about to walk. It cannot hear the tone in which Mark Israel says "we are very committed to Compass Lexecon" six months before he founds Econic Partners. This project treats hallway conversations as a possible source of leading indicators in a professional-services market, while recognising that they leave no Companies House trail.</p>
 
   <h3>Legal risk</h3>
 
@@ -524,7 +524,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h3>Deal structure</h3>
 
-  <p>The valuations in Part 6's PE table are reported figures, not Companies House values. Flint Global is the clearest example: <a href="https://www.cinven.com/news-insights/cinven-to-invest-in-flint-global/">Cinven announced the majority investment</a>, but the deal structure and valuation detail are press-reported rather than official. The actual deal structure, ratchets, earn-outs, vendor loans, warranty caps, is not public and cannot be inferred from Companies House.</p>
+  <p>The valuations in Part 6's PE table are reported figures, not Companies House values. Flint Global is the clearest example: <a href="https://www.cinven.com/news-insights/cinven-to-invest-in-flint-global/">Cinven announced the majority investment</a>, but the deal structure and valuation detail are press-reported rather than official. The public sources reviewed for this series do not disclose the underlying deal structures, including ratchets, earn-outs, vendor loans or warranty caps; those terms cannot be inferred from Companies House filings alone.</p>
 
   <h3>Judgment</h3>
 
@@ -583,7 +583,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
   <p>For any reader with access to a Companies House API key, a Claude Code subscription and a free weekend, the tools are now sufficient to build a serious public-filings map of a neglected market. The markets that remain unmapped are often the ones whose participants file boring accounts that few outsiders have bothered to read. Go find one.</p>
 
   <div class="footer">
-    <p><strong>The full dataset</strong> backing this series will be published on GitHub alongside the Substack first-post go-live; the repository URL will be inserted here on publication. 90 public-catalogue firms, 87 internal firm rows, 1,885 officer appointments, 8,293 historical filing records, 16 dated private-equity and strategic-acquisition deals, 30 dated founder-timeline events. Dual-licensed under the Open Government Licence v3.0 (for the Companies House-derived data) and CC-BY-4.0 (for analysis, scripts and charts).</p>
+    <p><strong>The full dataset</strong> has not yet been released in a public repository, and this article does not claim that one is currently available. The reviewed project files contain 90 public-catalogue firms, 87 internal firm rows, 1,885 officer appointments, 8,293 historical filing records, 15 dated private-equity and strategic-acquisition deals, and 30 dated founder-timeline events. The intended licensing is the Open Government Licence v3.0 for Companies House-derived data and CC BY 4.0 for original analysis, scripts and charts.</p>
 
     <p><strong>Tools referenced in this article:</strong></p>
     <ul>
@@ -601,7 +601,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
       <li><a href="https://github.com/hardikpandya/stop-slop">stop-slop</a> (Hardik Pandya)</li>
     </ul>
     <p style="margin-top:16px;padding-top:16px;border-top:1px solid #d2d2d7;"><strong>Leath Al Obaidi</strong>, independent research on the UK economics consultancy industry.</p>
-    <p style="font-size:12px;opacity:.75;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. Underlying Companies House data is &copy; Crown copyright, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3.0/">Open Government Licence v3.0</a>.</p>
+    <p style="font-size:12px;opacity:.75;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. Underlying Companies House data is &copy; Crown copyright, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.</p>
     <p style="font-size:12px;opacity:.75;">Cite as: Al Obaidi, L. (2026). <em>UK Economics Consultancy: A Historical Series</em>. leathalobaidi.com</p>
     <p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. The author holds no financial position in any firm discussed. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
   </div>

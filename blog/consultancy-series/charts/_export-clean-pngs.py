@@ -33,7 +33,6 @@ TARGETS = [
     ('part0.2-uk-and-global-map.html', 'chart-network', 'echarts'),
     ('part5-profit-machine.html', 'chart-deals', 'echarts'),
     ('part7-the-people-network.html', 'chord', 'chord-svg'),
-    ('rbb-2m-to-108m.html', 'chart-rbb', 'echarts'),
 ]
 
 
