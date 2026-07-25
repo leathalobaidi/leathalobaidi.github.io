@@ -2,12 +2,12 @@
   "meta": {
     "asOf": "2026-07-25",
     "coverage": 503,
-    "issuerIconCoverage": 362,
+    "issuerIconCoverage": 342,
     "simpleIconsCoverage": 17,
-    "faviconResolverCoverage": 113,
-    "documentedLogoCoverage": 11,
+    "faviconResolverCoverage": 95,
+    "documentedLogoCoverage": 49,
     "fallbackCoverage": 0,
-    "method": "Cached from icon metadata published on each company's public website; CC0 Simple Icons and locally cached Favicon.im resolutions are used next, followed by documented issuer or public-domain logo sources and generated ticker-badge fallbacks.",
+    "method": "One hundred independent audit batches reviewed all 503 marks. Confirmed corrections use documented issuer or public identification assets; remaining marks use issuer-published icon metadata, CC0 Simple Icons, or locally cached Favicon.im resolutions, followed by generated ticker-badge fallbacks.",
     "rights": "Company names, logos and trademarks belong to their respective owners and are shown for identification."
   },
   "logos": [
@@ -193,20 +193,22 @@
       "company": "Alphabet Inc. (Class A)",
       "website": "https://abc.xyz",
       "path": "company-logos/googl.png",
-      "sourceUrl": "https://abc.xyz",
-      "resolverUrl": "https://a.favicon.im/abc.xyz?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://abc.xyz/",
+      "assetUrl": "https://s206.q4cdn.com/479360582/files/design/alphabet_logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "GOOG",
       "company": "Alphabet Inc. (Class C)",
       "website": "https://abc.xyz",
       "path": "company-logos/goog.png",
-      "sourceUrl": "https://abc.xyz",
-      "resolverUrl": "https://a.favicon.im/abc.xyz?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://abc.xyz/",
+      "assetUrl": "https://s206.q4cdn.com/479360582/files/design/alphabet_logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted Alphabet mark; shown for company identification."
     },
     {
       "symbol": "MO",
@@ -240,10 +242,11 @@
       "company": "Ameren",
       "website": "https://www.amereninvestors.com",
       "path": "company-logos/aee.png",
-      "sourceUrl": "https://www.amereninvestors.com",
-      "resolverUrl": "https://a.favicon.im/amereninvestors.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.ameren.com/",
+      "assetUrl": "https://filecache.mediaroom.com/mr5mr_ameren/202532/Ameren%20logo.JPG",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "AEP",
@@ -259,18 +262,22 @@
       "company": "American Express",
       "website": "https://www.americanexpress.com",
       "path": "company-logos/axp.png",
-      "sourceUrl": "https://www.americanexpress.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.americanexpress.com/en-us/company/who-we-are/",
+      "assetUrl": "https://www.aexp-static.com/cdaas/one/statics/axp-static-assets/1.8.0/package/dist/img/logos/dls-logo-bluebox-solid.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "AIG",
       "company": "American International Group",
       "website": "https://www.aig.com",
       "path": "company-logos/aig.png",
-      "sourceUrl": "https://www.aig.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.aig.com/home",
+      "assetUrl": "https://www.aig.com/content/experience-fragments/aig/america-canada/us_aig/en/footer/master/_jcr_content/root/responsivegrid_1958828262/container/teaserflex.coreimg.png/1707751299817/aig-logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "AMT",
@@ -323,10 +330,11 @@
       "company": "Amphenol",
       "website": "https://www.amphenol.com",
       "path": "company-logos/aph.png",
-      "sourceUrl": "https://www.amphenol.com",
-      "resolverUrl": "https://a.favicon.im/amphenol.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://amphenol.com/",
+      "assetUrl": "https://aphstprime.blob.core.windows.net/images-layout/logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "ADI",
@@ -398,9 +406,11 @@
       "company": "Aptiv",
       "website": "https://www.aptiv.com",
       "path": "company-logos/aptv.png",
-      "sourceUrl": "https://www.aptiv.com/apple-touch-icon.png",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.aptiv.com/en/aptiv-brand-guidelines",
+      "assetUrl": "https://www.aptiv.com/Assets/aptiv-logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:56:39.098Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "ACGL",
@@ -533,19 +543,22 @@
       "company": "Baker Hughes",
       "website": "https://www.bakerhughes.com",
       "path": "company-logos/bkr.png",
-      "sourceUrl": "https://www.bakerhughes.com/themes/custom/bh/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.bakerhughes.com/",
+      "assetUrl": "https://www.bakerhughes.com/sites/bakerhughes/files/header-logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "BALL",
       "company": "Ball Corporation",
       "website": "https://www.ball.com",
       "path": "company-logos/ball.png",
-      "sourceUrl": "https://www.ball.com",
-      "resolverUrl": "https://a.favicon.im/ball.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://investors.ball.com/",
+      "assetUrl": "https://d1io3yog0oux5.cloudfront.net/_0452a1657f7f65063fd122d03f19e9e1/ball/logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "BAC",
@@ -617,19 +630,22 @@
       "company": "BlackRock",
       "website": "https://www.blackrock.com",
       "path": "company-logos/blk.png",
-      "sourceUrl": "https://www.blackrock.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.blackrock.com/corporate",
+      "assetUrl": "https://www.blackrock.com/blk-corp-assets/cache-1542297736000/images/media-bin/web/global/wordmark/blackrock-logo-nav.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "BX",
       "company": "Blackstone Inc.",
       "website": "https://www.blackstone.com",
       "path": "company-logos/bx.png",
-      "sourceUrl": "https://www.blackstone.com",
-      "resolverUrl": "https://a.favicon.im/blackstone.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.blackstone.com/",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5b/The_Blackstone_Group_logo_%282%29.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Wikimedia Commons public-domain text logo; trademark notice applies; checked against Blackstone's current issuer identity."
     },
     {
       "symbol": "XYZ",
@@ -735,10 +751,11 @@
       "company": "Bunge Global",
       "website": "https://www.bunge.com",
       "path": "company-logos/bg.png",
-      "sourceUrl": "https://www.bunge.com",
-      "resolverUrl": "https://a.favicon.im/bunge.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.bunge.com/",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Bunge-Limited-Logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Wikimedia Commons public-domain text logo; trademark notice applies; checked against Bunge's current issuer identity."
     },
     {
       "symbol": "BXP",
@@ -903,10 +920,11 @@
       "company": "CF Industries",
       "website": "https://www.cfindustries.com",
       "path": "company-logos/cf.png",
-      "sourceUrl": "https://www.cfindustries.com",
-      "resolverUrl": "https://a.favicon.im/cfindustries.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.cfindustries.com/newsroom/2021/brand-refresh",
+      "assetUrl": "https://www.cfindustries.com/globalassets/cf-industries/media/images/cfi_logo_rgb_color_pos.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "CRL",
@@ -932,9 +950,11 @@
       "company": "Charter Communications",
       "website": "https://corporate.charter.com",
       "path": "company-logos/chtr.png",
-      "sourceUrl": "https://corporate.charter.com/favicon.png",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://corporate.charter.com/media-library/logos",
+      "assetUrl": "https://corporate.charter.com/static/d617519f6e8ec1333149b2e86dd914fb/58aae/Charter_Communications_Logo_Preview_0.jpg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "CVX",
@@ -1331,10 +1351,11 @@
       "company": "Deckers Brands",
       "website": "https://www.deckers.com",
       "path": "company-logos/deck.png",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Deckers_Outdoor_Corporation_logo.svg",
+      "sourceUrl": "https://www.deckers.com",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Deckers_Brands_logo.png",
       "kind": "documented-logo-source",
-      "retrievedAt": "2026-07-25T20:50:01.076Z",
-      "rightsNote": "Wikimedia Commons source; rights and attribution are documented on the file page."
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Wikimedia Commons identification image; checked against Deckers Brands' current issuer identity."
     },
     {
       "symbol": "DE",
@@ -1508,10 +1529,11 @@
       "company": "Eaton Corporation",
       "website": "https://www.eaton.com",
       "path": "company-logos/etn.png",
-      "sourceUrl": "https://www.eaton.com",
-      "resolverUrl": "https://a.favicon.im/eaton.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.eaton.com/us/en-us/company/news-insights/media-resources.html",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/2/2b/Eaton_Corporation_logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:53:13.779Z",
+      "rightsNote": "Wikimedia Commons public-domain text logo; trademark notice applies; checked against Eaton's official current logomark."
     },
     {
       "symbol": "EBAY",
@@ -1821,9 +1843,11 @@
       "company": "FedEx Freight",
       "website": "https://www.fedexfreight.com",
       "path": "company-logos/fdxf.png",
-      "sourceUrl": "https://www.fedexfreight.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.fedexfreight.com/en-us/nav",
+      "assetUrl": "https://www.fedexfreight.com/en-us/media_13a53b86c559d3a55ed83f8019eb328d0288b3736.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:56:39.772Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "FIS",
@@ -1858,18 +1882,22 @@
       "company": "FirstEnergy",
       "website": "https://www.firstenergycorp.com",
       "path": "company-logos/fe.png",
-      "sourceUrl": "https://www.firstenergycorp.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.firstenergycorp.com/newsroom.html",
+      "assetUrl": "https://www.firstenergycorp.com/content/dam/opcologos/header/small/fe.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "FISV",
       "company": "Fiserv",
       "website": "https://www.fiserv.com",
       "path": "company-logos/fisv.png",
-      "sourceUrl": "https://www.fiserv.com/content/dam/fiserv-com/favicon-med.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://investors.fiserv.com/news-events/media-assets",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/0/00/Fiserv_Logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:53:24.037Z",
+      "rightsNote": "Wikimedia Commons public-domain text logo; trademark notice applies; checked against Fiserv's official current wordmark."
     },
     {
       "symbol": "FLEX",
@@ -2135,9 +2163,11 @@
       "company": "Healthpeak Properties",
       "website": "https://www.healthpeak.com",
       "path": "company-logos/doc.png",
-      "sourceUrl": "https://healthpeak.com/wp-content/uploads/2025/07/DOC_NYSE_Gold.png",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://healthpeak.com/",
+      "assetUrl": "https://healthpeak.com/wp-content/themes/dash-10/img/healthpeak-logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "HSIC",
@@ -2338,9 +2368,11 @@
       "company": "Insulet Corporation",
       "website": "https://www.insulet.com",
       "path": "company-logos/podd.png",
-      "sourceUrl": "https://www.insulet.com/themes/custom/insulet/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.insulet.com/",
+      "assetUrl": "https://www.insulet.com/themes/custom/insulet/logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:56:40.353Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "INTC",
@@ -2485,9 +2517,11 @@
       "company": "Johnson & Johnson",
       "website": "https://www.jnj.com",
       "path": "company-logos/jnj.png",
-      "sourceUrl": "https://www.jnj.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.investor.jnj.com/investor-news/news-details/2023/Johnson--Johnson-Marks-New-Era-as-Global-Healthcare-Company-With-Updated-Visual-Identity/default.aspx",
+      "assetUrl": "https://jnj-content-lab2.brightspotcdn.com/ac/25/bd2078f54d5992dd486ed26140ce/johnson-johnson-logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "JCI",
@@ -2662,10 +2696,11 @@
       "company": "Lennar",
       "website": "https://www.lennar.com",
       "path": "company-logos/len.png",
-      "sourceUrl": "https://www.lennar.com",
-      "resolverUrl": "https://a.favicon.im/lennar.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://investors.lennar.com/company-profile",
+      "assetUrl": "https://investors.lennar.com/~/media/Images/L/Lennar-IR-V3/logo/lennar-logo-blue.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:53:24.982Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "LII",
@@ -2719,10 +2754,11 @@
       "company": "Loews Corporation",
       "website": "https://www.loews.com",
       "path": "company-logos/l.png",
-      "sourceUrl": "https://www.loews.com",
-      "resolverUrl": "https://a.favicon.im/loews.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://loews.com/about/about-us/default.aspx",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e0/Loews-Corporation-Logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "LOW",
@@ -2784,10 +2820,11 @@
       "company": "Marriott International",
       "website": "https://www.marriott.com",
       "path": "company-logos/mar.png",
-      "sourceUrl": "https://www.marriott.com",
-      "resolverUrl": "https://a.favicon.im/marriott.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://marriott.gcs-web.com/news-releases/news-release-details/marriott-international-completes-transaction-bring-lefay-its",
+      "assetUrl": "https://mmx.prnewswire.com/media/MS201796/Marriott-International-logo-black.jpg?id=OA2695800",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "MRSH",
@@ -3432,10 +3469,11 @@
       "company": "Pinnacle West Capital",
       "website": "https://www.pinnaclewest.com",
       "path": "company-logos/pnw.png",
-      "sourceUrl": "https://www.pinnaclewest.com",
-      "resolverUrl": "https://a.favicon.im/pinnaclewest.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.pinnaclewest.com/Home/default.aspx",
+      "assetUrl": "https://s22.q4cdn.com/464697698/files/design/logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "PNC",
@@ -3460,9 +3498,11 @@
       "company": "PPL Corporation",
       "website": "https://www.pplweb.com",
       "path": "company-logos/ppl.png",
-      "sourceUrl": "https://www.pplweb.com/wp-content/themes/ppl/dist/images/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.pplweb.com/logo-downloads/",
+      "assetUrl": "https://www.pplweb.com/wp-content/uploads/2023/01/PPL_LOGO-Registered-Color.jpg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "PFG",
@@ -3516,10 +3556,11 @@
       "company": "Public Service Enterprise Group",
       "website": "https://investor.pseg.com",
       "path": "company-logos/peg.png",
-      "sourceUrl": "https://investor.pseg.com",
-      "resolverUrl": "https://a.favicon.im/investor.pseg.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://investor.pseg.com/financial-information/fixed-income/default.aspx",
+      "assetUrl": "https://s24.q4cdn.com/601515617/files/images/fixed_income/pseg-income-logo.jpg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "PTC",
@@ -3545,10 +3586,11 @@
       "company": "PulteGroup",
       "website": "https://pultegroupinc.com",
       "path": "company-logos/phm.png",
-      "sourceUrl": "https://pultegroupinc.com",
-      "resolverUrl": "https://a.favicon.im/pultegroupinc.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://pultegroupinc.com/about/overview/default.aspx",
+      "assetUrl": "https://s204.q4cdn.com/680895981/files/design/logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "PWR",
@@ -3628,9 +3670,11 @@
       "company": "Regency Centers",
       "website": "https://www.regencycenters.com",
       "path": "company-logos/reg.png",
-      "sourceUrl": "https://www.regencycenters.com/apple-touch-icon.png",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.regencycenters.com/contact/media-kit",
+      "assetUrl": "https://stregcorpweb.blob.core.windows.net/sitefinityfiles/images/default-source/regency-images/regency-centers-color-logo.jpg?sfvrsn=5ad9eb27_0",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "REGN",
@@ -3767,10 +3811,11 @@
       "company": "SBA Communications",
       "website": "https://www.sbasite.com",
       "path": "company-logos/sbac.png",
-      "sourceUrl": "https://www.sbasite.com",
-      "resolverUrl": "https://a.favicon.im/sbasite.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://s201.q4cdn.com/321536525/files/doc_financials/2024/ar/sbac_2024_annual_report.pdf",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/b/bd/SBA_Communications_Logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "SLB",
@@ -3833,9 +3878,11 @@
       "company": "Skyworks Solutions",
       "website": "https://www.skyworksinc.com",
       "path": "company-logos/swks.png",
-      "sourceUrl": "https://www.skyworksinc.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.skyworksinc.com/Press/Logos",
+      "assetUrl": "https://www.skyworksinc.com/-/media/SkyWorks/Images/Logo/Skyworks-Vector-Logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "SJM",
@@ -3852,9 +3899,11 @@
       "company": "Smurfit Westrock",
       "website": "https://www.smurfitwestrock.com",
       "path": "company-logos/sw.png",
-      "sourceUrl": "https://www.smurfitwestrock.com/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.smurfitwestrock.com",
+      "assetUrl": "https://www.smurfitwestrock.com/-/m/Images/Shared%20Assets/SW_LOGO_2COL.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "SNA",
@@ -3897,18 +3946,22 @@
       "company": "Stanley Black & Decker",
       "website": "https://www.stanleyblackanddecker.com",
       "path": "company-logos/swk.png",
-      "sourceUrl": "https://www.stanleyblackanddecker.com/themes/custom/stanley_default/favicon.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.stanleyblackanddecker.com/brand-guidelines/visual-elements",
+      "assetUrl": "https://www.stanleyblackanddecker.com/sites/default/files/inline-images/logo_full_color.jpg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "SBUX",
       "company": "Starbucks",
       "website": "https://www.starbucks.com",
       "path": "company-logos/sbux.png",
-      "sourceUrl": "https://www.starbucks.com/apple-touch-icon.png",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://creative.starbucks.com/logos/",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/en/d/d3/Starbucks_Corporation_Logo_2011.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Wikipedia non-free identification image; checked against Starbucks' official current Siren mark."
     },
     {
       "symbol": "STT",
@@ -3951,9 +4004,11 @@
       "company": "Supermicro",
       "website": "https://www.supermicro.com",
       "path": "company-logos/smci.png",
-      "sourceUrl": "https://www.supermicro.com/sites/default/files/favicon_0.ico",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.supermicro.com/en/supermicro-logos",
+      "assetUrl": "https://www.supermicro.com/sites/default/files/content_resources/static_resources/logos/Supermicro_GreenC_NewLogo_WhiteBackground.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "SYF",
@@ -4088,9 +4143,11 @@
       "company": "Texas Pacific Land Corporation",
       "website": "https://www.texaspacific.com",
       "path": "company-logos/tpl.png",
-      "sourceUrl": "https://d1io3yog0oux5.cloudfront.net/_386da32e18dbdb840fcb345a16c0c521/texaspacific/files/theme/images/favicons/apple-touch-icon.png",
-      "kind": "issuer-site-icon",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.texaspacific.com/",
+      "assetUrl": "https://d1io3yog0oux5.cloudfront.net/texaspacific/files/pages/texaspacific/db/760/description/tpl-flag-logo.png",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:42:05.761Z",
+      "rightsNote": "Issuer-hosted mark; shown for company identification."
     },
     {
       "symbol": "TXT",
@@ -4465,8 +4522,9 @@
       "website": "https://www.stock.walmart.com",
       "path": "company-logos/wmt.png",
       "sourceUrl": "https://brandcenter.walmart.com/brand/brand-identity/spark",
+      "assetUrl": "https://brandcenter.walmart.com/content/experience-fragments/brand/us/en/site/header/master/_jcr_content/root/header/logo.coreimg.svg/1736219693255/spark.svg",
       "kind": "documented-logo-source",
-      "retrievedAt": "2026-07-25T21:22:03.803Z",
+      "retrievedAt": "2026-07-25T22:58:35.928Z",
       "rightsNote": "Walmart Spark Design © 2008 Walmart Apollo, LLC; shown for company identification."
     },
     {
@@ -4501,10 +4559,11 @@
       "company": "Waters Corporation",
       "website": "https://www.waters.com",
       "path": "company-logos/wat.png",
-      "sourceUrl": "https://www.waters.com",
-      "resolverUrl": "https://a.favicon.im/waters.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.waters.com/content/dam/waters/en/brand-assets/logos/waters-logo-black.svg",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Waters_Corporation_Logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:53:25.529Z",
+      "rightsNote": "Wikimedia Commons public-domain text logo; trademark notice applies; checked against Waters' official current wordmark."
     },
     {
       "symbol": "WEC",
@@ -4630,10 +4689,11 @@
       "company": "Yum! Brands",
       "website": "https://www.yum.com",
       "path": "company-logos/yum.png",
-      "sourceUrl": "https://www.yum.com",
-      "resolverUrl": "https://a.favicon.im/yum.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://www.yum.com/wps/portal/yumbrands/Yumbrands/media-library",
+      "assetUrl": "https://upload.wikimedia.org/wikipedia/commons/5/59/Yum%21_Brands_logo.svg",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T22:55:38.393Z",
+      "rightsNote": "Wikimedia Commons public-domain text logo; trademark notice applies; checked against Yum! Brands' official media-library bubble mark."
     },
     {
       "symbol": "ZBRA",
