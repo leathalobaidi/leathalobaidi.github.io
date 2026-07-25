@@ -4,8 +4,8 @@
     "coverage": 503,
     "issuerIconCoverage": 362,
     "simpleIconsCoverage": 17,
-    "faviconResolverCoverage": 114,
-    "documentedLogoCoverage": 10,
+    "faviconResolverCoverage": 113,
+    "documentedLogoCoverage": 11,
     "fallbackCoverage": 0,
     "method": "Cached from icon metadata published on each company's public website; CC0 Simple Icons and locally cached Favicon.im resolutions are used next, followed by documented issuer or public-domain logo sources and generated ticker-badge fallbacks.",
     "rights": "Company names, logos and trademarks belong to their respective owners and are shown for identification."
@@ -4464,10 +4464,10 @@
       "company": "Walmart",
       "website": "https://www.stock.walmart.com",
       "path": "company-logos/wmt.png",
-      "sourceUrl": "https://www.stock.walmart.com",
-      "resolverUrl": "https://a.favicon.im/stock.walmart.com?larger=true&throw-error-on-404=true",
-      "kind": "favicon-im-cache",
-      "retrievedAt": "2026-07-25T20:50:01.076Z"
+      "sourceUrl": "https://brandcenter.walmart.com/brand/brand-identity/spark",
+      "kind": "documented-logo-source",
+      "retrievedAt": "2026-07-25T21:22:03.803Z",
+      "rightsNote": "Walmart Spark Design © 2008 Walmart Apollo, LLC; shown for company identification."
     },
     {
       "symbol": "DIS",
