@@ -1,0 +1,25 @@
+name: Validate NeverSplit publish
+
+on:
+  pull_request:
+    paths:
+      - "projects/neversplit/**"
+  push:
+    branches: [master, main]
+    paths:
+      - "projects/neversplit/**"
+  schedule:
+    - cron: "31 7 1 * *"
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python3 projects/neversplit/neversplit_validator.py projects/neversplit/market-research.json
+      - run: test -f projects/neversplit/market-research.schema.json
+      - run: test -f projects/neversplit/data/latest.json
+      - run: grep -q '"datasetLicense": "NOASSERTION"' projects/neversplit/market-research.json

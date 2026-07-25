@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://leathalobaidi.com/projects/neversplit/market-research.schema.json",
+  "title": "NeverSplit market research snapshot",
+  "type": "object",
+  "required": ["meta", "quality", "securities"],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "asOf",
+        "marketDate",
+        "generatedAt",
+        "currency",
+        "constituentCount",
+        "datasetLicense",
+        "rights"
+      ],
+      "properties": {
+        "asOf": { "type": "string", "format": "date" },
+        "marketDate": { "type": "string", "format": "date" },
+        "generatedAt": { "type": "string", "format": "date-time" },
+        "currency": { "const": "USD" },
+        "constituentCount": { "const": 503 },
+        "datasetLicense": { "const": "NOASSERTION" },
+        "rights": { "type": "object" }
+      },
+      "additionalProperties": true
+    },
+    "quality": { "type": "object" },
+    "securities": {
+      "type": "array",
+      "minItems": 503,
+      "maxItems": 503,
+      "items": {
+        "type": "object",
+        "required": [
+          "symbol",
+          "price",
+          "marketCap",
+          "indexWeight",
+          "marketDate",
+          "currency",
+          "factor",
+          "factorFraction",
+          "factorState",
+          "factorPrecision",
+          "factorRationale",
+          "factorCandidates",
+          "splitConflict",
+          "splitConflictResolved",
+          "broadFactor",
+          "basket",
+          "splitCount",
+          "splitEvents",
+          "firstRecordedSplitDate",
+          "historyGapYears",
+          "historyCoverage",
+          "historyTruncated",
+          "splitEvidence",
+          "ipoDate",
+          "ipoMonthYear",
+          "ipoPrice",
+          "ipoState",
+          "ipoEvidence",
+          "listingEvent",
+          "listingClaims",
+          "confidenceScore",
+          "confidenceLabel",
+          "provenance",
+          "kaggle",
+          "sources"
+        ],
+        "properties": {
+          "symbol": { "type": "string", "minLength": 1 },
+          "price": { "type": "number", "exclusiveMinimum": 0 },
+          "marketCap": { "type": "number", "exclusiveMinimum": 0 },
+          "indexWeight": { "type": "number", "minimum": 0 },
+          "marketDate": { "type": "string", "format": "date" },
+          "currency": { "const": "USD" },
+          "factor": {
+            "oneOf": [
+              { "type": "number", "exclusiveMinimum": 0 },
+              { "type": "null" }
+            ]
+          },
+          "factorFraction": { "type": ["object", "null"] },
+          "factorState": { "type": "string", "minLength": 1 },
+          "factorPrecision": {
+            "enum": ["exact", "reported", "unresolved"]
+          },
+          "factorRationale": { "type": "string", "minLength": 1 },
+          "factorCandidates": { "type": "array" },
+          "splitConflict": { "type": "boolean" },
+          "splitConflictResolved": { "type": "boolean" },
+          "broadFactor": { "type": ["number", "null"] },
+          "basket": { "type": ["array", "null"] },
+          "splitCount": { "type": ["integer", "null"], "minimum": 0 },
+          "splitEvents": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["date", "numerator", "denominator", "ratio"],
+              "properties": {
+                "date": { "type": "string", "format": "date" },
+                "numerator": { "type": "number", "exclusiveMinimum": 0 },
+                "denominator": { "type": "number", "exclusiveMinimum": 0 },
+                "ratio": { "type": "string", "minLength": 1 }
+              },
+              "additionalProperties": true
+            }
+          },
+          "firstRecordedSplitDate": { "type": ["string", "null"] },
+          "historyGapYears": { "type": ["number", "null"] },
+          "historyCoverage": {
+            "enum": [
+              "issuer-complete",
+              "bounded",
+              "truncated",
+              "unknown",
+              "no-events-found"
+            ]
+          },
+          "historyTruncated": {
+            "type": ["boolean", "null"]
+          },
+          "splitEvidence": { "type": "string" },
+          "ipoDate": { "type": ["string", "null"] },
+          "ipoMonthYear": { "type": ["string", "null"] },
+          "ipoPrice": { "type": ["number", "null"] },
+          "ipoState": {
+            "enum": ["offering-sourced", "date-only", "not-comparable"]
+          },
+          "ipoEvidence": { "type": "string" },
+          "listingEvent": { "type": "object" },
+          "listingClaims": { "type": "array" },
+          "confidenceScore": { "type": "number", "minimum": 0, "maximum": 100 },
+          "confidenceLabel": {
+            "enum": ["High", "Medium", "Low", "Review"]
+          },
+          "provenance": {
+            "type": "array",
+            "minItems": 1
+          },
+          "kaggle": { "type": ["object", "null"] },
+          "sources": { "type": "object" }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}
