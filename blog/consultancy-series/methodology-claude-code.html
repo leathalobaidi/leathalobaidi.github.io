@@ -84,7 +84,7 @@
 
   <h1>Claude Code for an Economist</h1>
 
-  <p class="subtitle">How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series (three opening visual and data pieces, seven numbered parts, and this methodology article), and prepared the entire dataset for GitHub release.</p>
+  <p class="subtitle">How one researcher with no programming background built a 90-firm Companies House pipeline, then turned it into eleven pieces: three visual and data openers, seven numbered parts and this methodology.</p>
 
   <p class="byline"><strong>Leath</strong> &middot; April 2026 &middot; 12 min read</p>
 
@@ -94,15 +94,16 @@
 
   <h2>The prompt</h2>
 
-  <p>In the first week of April 2026, one sentence was typed into <a href="https://claude.com/code">Claude Code</a>.</p>
+  <p>In the first week of April 2026, the project began with one sentence typed into <a href="https://claude.com/code">Claude Code</a>.</p>
 
   <blockquote>
     "I want to understand why a small UK economics consultancy in the City makes its partners more money than a Magic Circle law-firm partner."
   </blockquote>
 
-  <p>There was no list of firms. There was no database. There were no scripts. Python had been left untouched for seven years. What the researcher had, rather, was a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, a local SQLite binary, and a working hunch, unglamorous but stubborn, that much of the answer was hiding in the public filings of the UK's corporate registry, if anyone could be bothered to pull them together. Ten days later a 90-firm dataset and a local project repository existed, the first Substack drafts had been written, and dozens of chart variants had been rendered; no public dataset repository had yet been released. The interactive work added up to roughly 60 hours. The same task done manually, pulling 8,293 filing records, mapping account PDFs, building the financial time series, cross-referencing officer appointments, and chasing the press trail across 90 firms, would have taken materially longer; no published benchmark is claimed here.</p>
+  <p>There was no firm list, database or script. Python had sat untouched for seven years. There was only a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, SQLite and a hunch: much of the answer was buried in Britain&rsquo;s corporate registry.</p>
+  <p>Ten days later, a 90-firm dataset and local repository existed. The first Substack drafts were written and dozens of chart variants rendered, though no public dataset repository had been released. The interactive work took roughly 60 hours. Doing it by hand would have meant pulling 8,293 filing records, matching account PDFs, building financial series, checking officer appointments and tracing the press record across 90 firms. It would plainly have taken longer, but this article claims no benchmark.</p>
 
-  <p>What follows is the story of how that happened: what worked, what failed, what the tooling still cannot do, and what another economist or analyst might try next.</p>
+  <p>This is what worked, what failed, what the tools still cannot do and what another analyst might try next.</p>
 
   <div class="pull-quote">
     <div class="number">60 hours</div>
@@ -117,7 +118,7 @@
 
   <h2>What Claude Code actually is</h2>
 
-  <p>First, a definition, because this article distinguishes between <strong>Claude.ai</strong> and <strong>Claude Code</strong>. Claude.ai is the chat product: open a browser, type at a model, receive prose back. Claude Code is different. It runs in a terminal on a Mac or PC; with permission, it can read and write files in the working directory, run shell commands, query APIs through <a href="https://modelcontextprotocol.io">Model Context Protocol</a> servers, and iterate on its own output. In this project it functioned as a local coding collaborator rather than a chat window. Everything described below happened inside a Claude Code session running against a folder on a Mac called <code>CH Econ Consultancy /</code>. The SQLite database, the Companies House API calls, the PDF downloads, the chart-rendering HTML, and the Substack drafts lived in that project directory.</p>
+  <p><strong>Claude.ai</strong> is a chat product: ask in a browser and receive prose. <strong>Claude Code</strong> runs in a terminal. With permission it can read and write working files, run shell commands, query APIs through <a href="https://modelcontextprotocol.io">Model Context Protocol</a> servers and test its output. Here it served as a local coding collaborator. One Mac folder, <code>CH Econ Consultancy /</code>, held the SQLite database, API calls, downloaded PDFs, chart HTML and Substack drafts.</p>
 
   <hr>
 
@@ -127,7 +128,7 @@
 
   <h2>The first hour</h2>
 
-  <p>Claude Code received the one-sentence prompt. In the 60 minutes that followed, it did the following.</p>
+  <p>The one-sentence prompt produced this first 60 minutes of work.</p>
 
   <ol style="margin-left: 20px; margin-bottom: 24px;">
     <li style="margin-bottom: 12px;"><strong>Searched the web for UK economics consultancies</strong> and returned a seed list of 20 firms, including expected names such as Frontier, Oxera, RBB, Compass Lexecon and Capital Economics, plus less familiar candidates for review.</li>
@@ -138,7 +139,7 @@
     <li><strong>Built the first chart</strong>, a rough treemap of the market by revenue, and displayed it.</li>
   </ol>
 
-  <p>The important distinction is workflow, not magic. The chat product can describe how one might pull Companies House data. Claude Code could run the local scripts, write to the database, and render the first chart in the same working directory.</p>
+  <p>The difference is workflow, not magic. A chat can explain how to pull Companies House data. Claude Code ran the scripts, wrote the database and rendered a chart in the same directory.</p>
 
   <hr>
 
@@ -146,13 +147,13 @@
   <!-- PARALLEL AGENTS -->
   <!-- ============================================ -->
 
-  <h2>The largest workflow speed-up in this project: parallel research agents</h2>
+  <h2>The largest speed-up: parallel research</h2>
 
-  <p>The Companies House data was the easy part. The hard part was chasing the press story behind each firm. Who founded Keystone Europe? When did Phoenix Equity Partners buy Capital Economics? What happened to Vivid Economics after <a href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-acquires-vivid-economics-and-planetrics">McKinsey acquired it in 2021</a>? The same questions, repeated across 90 firms, meant many searches across GCR, Bloomberg, Concurrences, PYMNTS, FT, Reuters, consultancy.uk and firm press releases. Done serially, it is the sort of task that turns a researcher into a typist.</p>
+  <p>Companies House was the easy part. The press record was harder. Who founded Keystone Europe? When did Phoenix Equity Partners buy Capital Economics? What followed when <a href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-acquires-vivid-economics-and-planetrics">McKinsey acquired Vivid Economics in 2021</a>? Repeating such questions across 90 firms meant searching GCR, Bloomberg, Concurrences, PYMNTS, the FT, Reuters, consultancy.uk and company releases. Done serially, research becomes typing.</p>
 
-  <p>In this project, Claude Code was used to spawn sub-agents. Four prompts were written for four batches of firms and dispatched in parallel as background tasks. Each agent was given its batch, told to search a specific list of publications, GCR, Concurrences, PYMNTS, Bloomberg, FT, Reuters, consultancy.uk, LinkedIn press releases, and instructed to find dated events: foundings, hires, departures, acquisitions, roll-ups. Every claim had to carry a URL. The output was structured Markdown written to <code>research/press_coverage/batch[N].md</code>. The four agents ran simultaneously. Total elapsed time from dispatch to all four finished was roughly 12 minutes. The consolidated press-coverage file now runs to more than 1,300 lines of structured research with citations.</p>
+  <p>Claude Code split the firms into four batches and ran four research agents at once. Each searched a fixed publication list: GCR, Concurrences, PYMNTS, Bloomberg, the FT, Reuters, consultancy.uk, LinkedIn and firm releases. The brief asked for dated foundings, hires, departures, acquisitions and roll-ups; every claim required a URL. Each agent wrote structured Markdown to <code>research/press_coverage/batch[N].md</code>. All four finished in roughly 12 minutes. Their consolidated file exceeds 1,300 cited lines.</p>
 
-  <p>This is the part where the arithmetic of AI-assisted research actually bites. Four agents in parallel compress a serial search-and-note-taking task into a short review queue. The time saved is then spent checking the sources, not admiring the automation.</p>
+  <p>Parallelism turned a serial search into a short review queue. The saved time went into checking sources, where it belonged.</p>
 
   <div class="pull-quote">
     <div class="number">12 min</div>
@@ -167,7 +168,7 @@
 
   <h2>What the published record already contained</h2>
 
-  <p>The project source search found one dedicated published estimate of the UK economics consultancy market. <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr's March 2018 report</a> put the sector at &pound;1.53 billion in 2016/17, growing at 11.3% a year, across 108 UK firms employing around 7,100 people. The project has not identified a comparable public update. The table below shows what else is out there, and where the gaps sit.</p>
+  <p>The search found one dedicated estimate of the UK economics-consultancy market. <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr&rsquo;s March 2018 report</a> put 2016/17 sector revenue at &pound;1.53 billion, growing by 11.3% a year, across 108 firms employing around 7,100 people. The project found no comparable public update. The table shows the remaining record, and its gaps.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <div class="table-wrap">
@@ -220,9 +221,9 @@
   </div>
   </div>
 
-  <p>Several obvious things are missing from that public record. The CMA does not publish data on its spending with external economics advisors. The project has not found a private-equity or M&amp;A advisory report specifically mapping the economics consulting sector, nor a firm-authored public analysis of the industry's structure. On that basis, this series is presented as a publicly available supply-side map of the UK economics consultancy market since the Cebr report of 2018.</p>
+  <p>The gaps are substantial. The CMA does not publish spending on external economics advisers. The project found neither a private-equity or M&amp;A report devoted to the sector nor a firm-authored public analysis of its structure. This series therefore offers a public supply-side map after Cebr&rsquo;s 2018 report.</p>
 
-  <p>One methodological footnote. Cebr found 108 firms in 2018; this local public catalogue currently tracks 90. The gap probably reflects three things in combination: firms dissolved between 2018 and 2025; scope differences in what counts as "economics consultancy", Cebr may have included policy and forecasting firms that this series classifies separately; and firms filing under names the Companies House API search did not match.</p>
+  <p>Cebr found 108 firms in 2018; this catalogue tracks 90. Three factors probably explain the gap: dissolutions between 2018 and 2025; different definitions of economics consultancy, particularly for policy and forecasting; and filings under names missed by the API search.</p>
 
   <hr>
 
@@ -232,21 +233,22 @@
 
   <h2>What went wrong the first time</h2>
 
-  <p>The first version of the dataset contained mistakes. They are set out below because they are the most useful part of this article for anyone planning to do the same thing.</p>
+  <p>The first dataset was wrong in useful ways. Its mistakes reveal more about the method than its successes.</p>
 
   <h3>The Arup mistake</h3>
 
-  <p>The seed list included Arup, the engineering consultancy, on the grounds that Arup has an embedded economics practice that shows up in public-sector policy work. Within a few hours Arup was removed. Its primary activity is civil engineering, not economic evidence. A firm with an economics practice is not the same thing as an economics consultancy, and blurring the definition inflates the market size in a way that is not honest. The rule after the Arup correction became this: a firm enters the dataset only if economic analysis is the product, not a supporting service.</p>
+  <p>The seed list included Arup because the engineering group has an economics practice visible in public-sector policy work. It was removed within hours. Arup&rsquo;s main product is civil engineering, not economic evidence. Confusing a firm that has economists with an economics consultancy inflates the market. The corrected rule is blunt: economic analysis must be the product, not a supporting service.</p>
 
   <h3>The full firm list</h3>
 
-  <p>The dataset contains ninety entries across seven categories (80 active, 2 dissolved, 8 parent-filed practices), matching the canonical `data/firms.csv` export. Firms that appear on both the global network map and the UK office map are listed once. Category assignment reflects the firm's primary UK activity; several firms &mdash; particularly US-origin multi-practice outfits &mdash; could reasonably sit in more than one category.</p>
+  <p>The canonical <code>data/firms.csv</code> export contains ninety entries in seven categories: 80 active, 2 dissolved and 8 parent-filed practices. A firm appearing on both maps is counted once. Categories follow the main UK activity, though several US multi-practice firms could reasonably occupy more than one.</p>
 
   <h3>A note on the two denominators</h3>
 
-  <p>Two firm-counts run through this series and they should be kept distinct. The <strong>curated universe is 90 firms</strong> &mdash; the public-facing catalogue of UK economics consultancies, used in headlines, treemaps and category counts. The public directory gives <strong>81 firms a direct Companies House number</strong>. The remaining nine are sub-practices, academic or charity arms, overseas branches, or parent-filed practices: <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong>; <strong>E.CA Economics (UK)</strong>; the <strong>Fraser of Allander Institute</strong>; <strong>PA Consulting</strong>; and <strong>Keystone Strategy</strong> (US-headquartered, no UK-filed entity). Separately, the working database carries <strong>87 internal firm rows</strong> for analytical continuity, including registered entities and a brand-of-parent pointer for <strong>Compass Lexecon</strong> to FTI Consulting LLP (CH OC372614). That internal row count is not the same thing as 87 public-catalogue firms with standalone CH filings.</p>
+  <p>Two firm counts recur and must not be confused. The <strong>public catalogue contains 90 firms</strong>, the number used in headlines, treemaps and categories. Of these, <strong>81 have a direct Companies House number</strong>. The other nine fall into sub-practices, academic or charity arms, overseas branches or parent-filed practices. They are <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong>; <strong>E.CA Economics (UK)</strong>; the <strong>Fraser of Allander Institute</strong>; <strong>PA Consulting</strong>; and <strong>Keystone Strategy</strong>, an American firm without a UK-filed entity.</p>
+  <p>The working database separately carries <strong>87 internal firm rows</strong> for analytical continuity. These include registered entities and a pointer from <strong>Compass Lexecon</strong> to its parent, FTI Consulting LLP (CH OC372614). The number does not mean that 87 catalogue firms have standalone filings.</p>
 
-  <p><strong>Quantitative slices in this series &mdash; disclosed-turnover totals, ownership segmentation, small-company-exemption counts, league-table coverage &mdash; state their basis: the 90-row public catalogue, the 81 direct-CH public directory rows, or the 87-row internal tracking table.</strong> Where an earlier draft blurred those denominators, it has been corrected; the band of estimates does not move materially but the arithmetic now reconciles.</p>
+  <p><strong>Every quantitative slice states its denominator: the 90-row catalogue, 81 direct-Companies-House rows or 87-row internal table.</strong> Earlier drafts blurred them. The correction did not materially shift the estimates, but it made the arithmetic reconcile.</p>
 
   <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
   <div class="table-wrap">
@@ -285,7 +287,7 @@
       </tr>
       <tr>
         <td colspan="2" style="font-size:12px;color:#8e8e93;border-top:2px solid #d2d2d7;padding-top:12px;">
-          <strong>Also excluded from this dataset:</strong> Bain &amp; Company, BCG, Kearney, Arthur D. Little, Roland Berger, KPMG Economics, EY-Parthenon, LSE Consulting, and Arup &mdash; all visible in rankings or public-sector economics work, but excluded here because economics is a supporting service rather than the core product, or because no separate UK economics-consultancy filing is tracked in the canonical directory. McKinsey appears in the series narrative as the acquirer of Vivid Economics but is not tracked as a firm in the dataset for the same reason.
+          <strong>Also excluded from this dataset:</strong> Bain &amp; Company, BCG, Kearney, Arthur D. Little, Roland Berger, KPMG Economics, EY-Parthenon, LSE Consulting, and Arup. All appear in rankings or public-sector economics work. Here, however, economics is a supporting service rather than the core product, or the canonical directory tracks no separate UK economics-consultancy filing. McKinsey appears in the series narrative as the acquirer of Vivid Economics but is not tracked as a firm in the dataset for the same reason.
         </td>
       </tr>
     </tbody>
@@ -293,27 +295,27 @@
   </div>
   </div>
 
-  <p>The <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr March 2018 report</a> identified 108 UK firms using a similar Companies House methodology. The 90-firm public catalogue here is lower, likely reflecting firms dissolved between 2018 and 2025, minor scope differences in what counts as "economics consultancy", and firms filing under names the API search did not match. The difference between the Cebr list and this catalogue should be read as boundary uncertainty, not a precise statement that one list is correct and the other is wrong.</p>
+  <p>The <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr report of March 2018</a> used a similar Companies House method and found 108 firms. This catalogue&rsquo;s 90 probably reflects dissolutions between 2018 and 2025, modest scope differences and names missed by the API search. The gap measures boundary uncertainty; it does not prove that either list is uniquely correct.</p>
 
   <h3>The BRG placement</h3>
 
-  <p>Berkeley Research Group was categorised in the first pass as Litigation. That is partly true, BRG does heavy disputes work, but BRG is a multi-practice US firm with finance, restructuring and technology practices alongside economics. Slotting it into Litigation misrepresented the Litigation segment's footprint. BRG was moved to Overlap, the label reserved for US-origin firms that split themselves roughly evenly between competition and litigation.</p>
+  <p>The first pass put Berkeley Research Group in Litigation. BRG does much disputes work, but the American group also covers finance, restructuring and technology. The label overstated the segment. BRG moved to Overlap, reserved here for US firms spanning competition and litigation.</p>
 
   <h3>The Caffarra error</h3>
 
-  <p>This was the mistake that almost went to print. The first research pass described Cristina Caffarra as still at Keystone Europe in 2025, co-head of Europe alongside Andrea Coscelli. That had been the story in November 2022, when Keystone announced her. It was not the story in 2025. Caffarra had in fact left Keystone in 2023, about a year after joining, and had moved into an academic-plus-policy posture: Honorary Professor at UCL, co-founder of the <a href="https://cepr.org/research/research-policy-networks/competition-policy">CEPR Competition Research Policy Network</a>, lead of EuroStack. (The UCL profile URL previously cited here has been removed because the page does not render a substantive profile as of April 2026.)</p>
+  <p>This error nearly reached print. The first pass described Cristina Caffarra as Keystone Europe&rsquo;s co-head in 2025 alongside Andrea Coscelli. That was true in November 2022, when Keystone announced her, but stale by 2025. Caffarra left in 2023, about a year after arriving. She became an Honorary Professor at UCL, co-founded the <a href="https://cepr.org/research/research-policy-networks/competition-policy">CEPR Competition Research Policy Network</a> and led EuroStack. (A previously cited UCL URL was removed because it showed no substantive profile in April 2026.)</p>
 
-  <p>The error surfaced only because a second research agent was dispatched to check two residual questions still nagging at the draft: what had actually happened to Caffarra after Keystone, and what was the nature of the Faten Sabry hire at Compass Lexecon. The Caffarra correction came back first. The draft was edited before publication.</p>
+  <p>A second research pass caught the error while checking two loose ends: Caffarra&rsquo;s path after Keystone and the nature of Faten Sabry&rsquo;s hire at Compass Lexecon. The draft was corrected before publication.</p>
 
-  <p>The broader lesson is simple. <strong>Do not rely on a single research pass for any claim about a named individual.</strong> Verify against the person's own public profile, their current LinkedIn headline, or an authoritative third-party listing. The cost of a wrong personnel claim in a public piece is reputational and potentially legal, so the standard has to be higher than "the first agent found it."</p>
+  <p><strong>Never rely on one research pass for a claim about a named person.</strong> Check the person&rsquo;s public profile, current LinkedIn headline or an authoritative third-party listing. A wrong career claim creates reputational and possibly legal risk. &ldquo;The first agent found it&rdquo; is not a standard.</p>
 
   <h3>The Sabry misframing</h3>
 
-  <p>Faten Sabry was initially described as a London antitrust counter-hire by Compass Lexecon, framed as the firm's defensive response to the Econic Partners exodus. Wrong on two counts. Sabry sits in New York, not London. Her practice is securities valuation and financial-damages testimony, not antitrust. She came from NERA after 27 years, where she had chaired the Global Securities and Finance Practice. She is a US financial-litigation hire, not a London competition backfill. The correction went into both the text and the visual-story commentary before publication.</p>
+  <p>Faten Sabry was first cast as Compass Lexecon&rsquo;s London antitrust counter-hire after the Econic Partners exodus. Both location and practice were wrong. Sabry is in New York and works on securities valuation and financial damages, not antitrust. She joined from NERA after 27 years, having chaired its Global Securities and Finance Practice. This was an American financial-litigation hire, not London competition backfill. Both text and visual commentary were corrected.</p>
 
   <h3>The Fingleton / LECG confusion</h3>
 
-  <p>An early draft of the founder tree presented two 2011&ndash;2013 events, "LECG collapses" and "Fingleton Ltd", side by side on the timeline, without distinguishing them. A reader flagged the framing as confusing: were the two events connected? They were not. LECG was a US firm whose 2011 bankruptcy scattered its London economists to Berkeley Research Group and Compass Lexecon. Fingleton Ltd is a boutique founded in 2013 by John Fingleton, the former head of the Office of Fair Trading, named after him. Different people, different years, different stories. The two timeline entries were rewritten to make the lack of connection explicit.</p>
+  <p>An early founder tree placed two 2011&ndash;2013 entries side by side: &ldquo;LECG collapses&rdquo; and &ldquo;Fingleton Ltd&rdquo;. A reader reasonably wondered whether they were connected. They were not. The American firm LECG went bankrupt in 2011, scattering London economists to Berkeley Research Group and Compass Lexecon. John Fingleton, a former Office of Fair Trading head, founded his namesake boutique in 2013. Different people, years and stories. The timeline now says so.</p>
 
   <div class="warning">
     <strong>The pattern across all five mistakes:</strong> AI research tools are good at surface-level summarisation and bad at drawing distinctions. The model will happily merge two unrelated events into one narrative if the narrative reads well. It is on the human to notice when the story is too tidy and go check.
@@ -327,7 +329,7 @@
 
   <h2>The tooling stack</h2>
 
-  <p>The complete inventory of what was used is set out below. The stack is mostly public infrastructure, open-source software and subscription tools already noted.</p>
+  <p>The stack was mostly public infrastructure, open-source software and one subscription.</p>
 
   <div class="table-wrap">
     <table class="stage-table">
@@ -341,7 +343,7 @@
     <tbody>
       <tr>
         <td><strong>Claude Code</strong> (desktop terminal)</td>
-        <td>Primary interface. Everything else happened inside a single Claude Code session.</td>
+        <td>Main tool. Everything else happened inside a single Claude Code session.</td>
         <td>Subscription</td>
       </tr>
       <tr>
@@ -378,7 +380,7 @@
   </table>
   </div>
 
-  <p>No paid data subscriptions. No commercial databases. No proprietary research platforms. The working stack is public infrastructure plus a Claude Code subscription.</p>
+  <p>There were no paid data feeds, commercial databases or proprietary research platforms. Public infrastructure and a Claude Code subscription did the work.</p>
 
   <hr>
 
@@ -388,9 +390,9 @@
 
   <h2>The single pattern that made the rest work: SQLite as project database</h2>
 
-  <p>The key architectural decision of the first hour was to put structured facts into a SQLite database rather than keep them only in a spreadsheet. It sounds obvious to a developer. It is not obvious to an economist. SQLite gave the project one place to correct firm names, incorporation dates, categories and financial fields. Corrections such as CEPA incorporated September 2000 not 1993, A&amp;M consolidated, and BRG moved to Overlap went into the database first; the Substack HTML and chart files then read from the corrected source where possible. Corrections still required review, but they no longer depended on hunting through multiple copied tables.</p>
+  <p>The best decision came in the first hour: put structured facts in SQLite, not only in a spreadsheet. Developers may find this obvious; economists often do not. The database became the one place to correct names, dates, categories and financial fields. CEPA&rsquo;s incorporation changed to September 2000 from 1993; A&amp;M was consolidated; BRG moved to Overlap. Each correction entered the database first, then flowed into HTML and charts where possible. Review remained necessary, but searching copied tables did not.</p>
 
-  <p>The schema is deliberately small. Nine core tables, about 20 useful columns across them. Anyone can reproduce it:</p>
+  <p>The schema is deliberately small: nine core tables and about 20 useful columns. Anyone can reproduce it.</p>
 
   <pre><code>firms              (id, name, ch_number, category, year_founded, founders, ...)
 financials         (firm_id, year_end, turnover, operating_profit, num_members, ...)
@@ -402,7 +404,7 @@ derived_metrics    (firm_id, metric, year, value)
 pe_deals           (year, firm, investor, deal_type, value, source_url)
 founder_timeline   (year, event, firm, people, description, source_url)</code></pre>
 
-  <p>Nothing in that schema is clever. What made it work was the rule that structured facts should have a database home or an explicit source-note caveat.</p>
+  <p>The schema is ordinary. The rule matters: every structured fact needs a database home or an explicit source caveat.</p>
 
   <hr>
 
@@ -412,13 +414,14 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>Where the tooling is still not good enough: chart labels</h2>
 
-  <p>The most avoidable time sink was getting scatter-plot labels to sit next to their data points without overlapping each other. This sounds trivial. It is not. The operating-margin-versus-revenue scatter carries 24 firms; 16 of them cluster into a 400 &times; 200 pixel region in the lower-left quadrant; and <a href="https://echarts.apache.org">ECharts</a>' <code>labelLayout</code> with <code>hideOverlap: true</code> hid some of them, while adding <code>moveOverlap: 'shiftY'</code> moved some of them. Neither option actually solved the problem. The result was hard to read.</p>
+  <p>Scatter-plot labels consumed absurd amounts of time. The margin-versus-revenue chart contains 24 firms, 16 squeezed into a 400 &times; 200-pixel patch in the lower-left corner. <a href="https://echarts.apache.org">ECharts</a>&rsquo; <code>labelLayout</code> with <code>hideOverlap: true</code> hid labels; <code>moveOverlap: 'shiftY'</code> merely moved them. Neither made the chart readable.</p>
 
-  <p>The approaches tried, and the fate of each, ran as follows. ECharts' built-in label placement was insufficient for 16 overlapping points. Hiding labels for small bubbles while keeping them for big ones lost information. Alternating labels above and below the bubble helped a little. Layering d3-svg-annotation callouts as an SVG overlay on top of the ECharts canvas, driven by <code>chart.convertToPixel</code>, was the approach eventually shipped. labella.js force-based placement along the right edge of the chart worked for timelines; its verdict on scatter remained open. And inlining <a href="https://github.com/tinker10/D3-Labeler">D3-Labeler</a>'s simulated-annealing algorithm, roughly 90 lines of JavaScript, on top of a plain d3 scatter gave the best overall result.</p>
+  <p>ECharts&rsquo; built-in placement failed on the 16 overlapping points. Hiding small-bubble labels discarded information; alternating labels above and below helped only slightly. The shipped version layers d3-svg-annotation callouts over the ECharts canvas using <code>chart.convertToPixel</code>. Force-based labella.js worked on timelines but remained unproven on the scatter. A roughly 90-line implementation of <a href="https://github.com/tinker10/D3-Labeler">D3-Labeler</a>&rsquo;s simulated annealing over a plain d3 chart worked best overall.</p>
 
-  <p>The honest conclusion: <strong>for this project, none of the JavaScript approaches I tried handled the "show every data point with a label and no overlaps" problem as cleanly as <a href="https://github.com/slowkow/ggrepel">ggrepel</a> handles it in R.</strong> For this project's dense scatter plots, R remained the cleaner final-rendering tool. Or accept a hybrid: ECharts for the axes and data, d3 for the labels.</p>
+  <p><strong>For this project, no JavaScript method handled &ldquo;label every point without overlap&rdquo; as cleanly as <a href="https://github.com/slowkow/ggrepel">ggrepel</a> in R.</strong> Dense final scatters were cleaner in R. The alternative is a hybrid: ECharts for axes and data, d3 for labels.</p>
 
-  <p>Three chart idioms ended up shipping across the eight charts in the Substack. ECharts was used for axis-bound, tooltip-heavy work, the treemap, the bar, the sankey, the stacked bar. ECharts plus a d3-svg-annotation overlay was used for story charts with three to six highlighted points, such as the scatter and the PE deals. And a hand-tuned two-lane ECharts layout with curved arrows was used for the founder-tree timeline. Alongside these, 15-variant gallery pages were built for the scatter, the treemap and the PE timeline, one HTML file per chart, showing 15 rendering approaches on a white background. The final versions were selected from those alternatives. The gallery is included in the companion GitHub repository.</p>
+  <p>Three idioms shipped across eight Substack charts. ECharts handled axis-bound, tooltip-heavy work: treemap, bar, sankey and stacked bar. ECharts plus d3-svg-annotation handled stories with three to six highlighted points, including the scatter and PE deals. A hand-tuned two-lane ECharts layout with curved arrows handled the founder tree.</p>
+  <p>For the scatter, treemap and PE timeline, 15-variant gallery pages compared 15 approaches on a white background, one HTML file per chart. The final charts came from those trials. The companion GitHub repository includes the gallery.</p>
 
   <hr>
 
@@ -428,9 +431,9 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>The stop-slop pass</h2>
 
-  <p>After the third draft of Part 6 (The CMA Drain), the prose was run through <a href="https://github.com/hardikpandya/stop-slop">stop-slop</a>, a small post-editor skill that strips the predictable patterns of AI writing. Stop-slop kills em-dashes, replaced with commas or full stops; it kills throat-clearing openers like "Here's the thing", "It turns out", and "The real X is"; it kills binary contrasts of the "Not X. Y." and "The answer isn't X. It's Y." variety; it kills false-agency constructions such as "the decision emerges" and "the market rewards"; it kills adverbs like "really", "simply", "actually", and "literally"; and it kills the narrator-from-a-distance voice that reaches for lines like "Nobody designed this".</p>
+  <p>After the third draft of Part 6, &ldquo;The CMA Drain&rdquo;, <a href="https://github.com/hardikpandya/stop-slop">stop-slop</a> searched for predictable AI habits. It replaces gratuitous em dashes; cuts throat-clearing such as &ldquo;Here&rsquo;s the thing&rdquo;, &ldquo;It turns out&rdquo; and &ldquo;The real X is&rdquo;; rejects binary &ldquo;Not X. Y.&rdquo; and &ldquo;The answer isn&rsquo;t X. It&rsquo;s Y.&rdquo; constructions; and flags false agency such as &ldquo;the decision emerges&rdquo; or &ldquo;the market rewards&rdquo;. It also hunts weak adverbs, including &ldquo;really&rdquo;, &ldquo;simply&rdquo;, &ldquo;actually&rdquo; and &ldquo;literally&rdquo;, and the distant narrator who says &ldquo;Nobody designed this&rdquo;.</p>
 
-  <p>The pre-stop-slop and post-stop-slop drafts were compared side by side before publication. The difference is visible. The post-stop-slop version reads tighter and sounds less like an AI. It is also, in places, harsher: stop-slop strips the hedges and softening that make technical writing palatable. The version actually published is usually the tighter draft with a handful of earlier hedges restored by hand. For anyone using Claude Code to draft articles, stop-slop belongs in the workflow as a required second pass. In this project the first draft was not publication-ready. The edited draft is the one that ships.</p>
+  <p>The before-and-after drafts were compared side by side. The edited version was tighter and less synthetic, but sometimes too harsh: a mechanical cleaner can remove honest qualification along with padding. The published text therefore kept the tighter draft and restored a few necessary hedges by hand. In this project the first draft was not fit to publish. Editing, not generation, produced the article.</p>
 
   <hr>
 
@@ -498,7 +501,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
   </table>
   </div>
 
-  <p>The largest line item is financial extraction from PDFs, 12 hours of manual reading. This is the one part of the project that would be automated differently next time. PDF extraction with a model-based parser, letting the model read the PDFs directly through an API, should reduce that line item, but the saving should be benchmarked rather than asserted. It was not used on the first pass because the model was not yet trusted to read account notes correctly. It would be trusted more now, having been seen to work on the manual-review gaps.</p>
+  <p>Financial extraction was the largest item: 12 hours of reading PDFs. Next time a model-based parser could read them through an API. It should save time, but the saving needs a benchmark. The first pass stayed manual because the model had not earned trust on account notes. Later gap checks made a stronger case for using it, with review.</p>
 
   <hr>
 
@@ -508,27 +511,27 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>What the tooling cannot do, even now</h2>
 
-  <p>The limitations are real and worth stating explicitly.</p>
+  <p>The limits are as important as the speed.</p>
 
   <h3>Primary interviews</h3>
 
-  <p>Claude Code cannot ring up John Vickers and ask him what happened in 2002. Every quotation in this series comes from a published source. A data journalist with Vickers's mobile number would produce a different piece. The shape of this project is desk research, not fieldwork.</p>
+  <p>Claude Code cannot ring John Vickers and ask what happened in 2002. Every quotation here comes from a published source. A reporter with Vickers&rsquo;s number would write a different piece. This is desk research, not fieldwork.</p>
 
   <h3>Reading a room</h3>
 
-  <p>It cannot sit at a GCR awards dinner in Brussels and detect which partners are about to walk. It cannot hear the tone in which Mark Israel says "we are very committed to Compass Lexecon" six months before he founds Econic Partners. This project treats hallway conversations as a possible source of leading indicators in a professional-services market, while recognising that they leave no Companies House trail.</p>
+  <p>Nor can it sit at a GCR dinner in Brussels and sense which partners are preparing to leave. It cannot hear Mark Israel say &ldquo;we are very committed to Compass Lexecon&rdquo; six months before founding Econic Partners. Hallway talk may lead the filings in professional services, but leaves no Companies House trail.</p>
 
   <h3>Legal risk</h3>
 
-  <p>Anything defamatory, anything about named individuals, anything that implies a firm is in trouble, it all has to be checked by a human. The model can too easily write "X firm is in financial difficulty" if the research agent turned up three press mentions of late filings. Late filings are not financial difficulty; late filings are often just administrative lag. Personnel claims in this series were checked against the project people ledger and source files before publication, with named career-move claims cross-checked against multiple sources where available, because errors about someone's career on the public record would be unfair and hard to undo.</p>
+  <p>A human must check anything defamatory, personal or suggestive of financial trouble. Three reports of late filings can tempt a model to write &ldquo;X firm is in financial difficulty&rdquo;. Late filing often means administrative delay, nothing more. Before publication, personnel claims were checked against the people ledger and source files; named career moves used several sources where available. A public error about someone&rsquo;s career would be unfair and hard to repair.</p>
 
   <h3>Deal structure</h3>
 
-  <p>The valuations in Part 6's PE table are reported figures, not Companies House values. Flint Global is the clearest example: <a href="https://www.cinven.com/news-insights/cinven-to-invest-in-flint-global/">Cinven announced the majority investment</a>, but the deal structure and valuation detail are press-reported rather than official. The public sources reviewed for this series do not disclose the underlying deal structures, including ratchets, earn-outs, vendor loans or warranty caps; those terms cannot be inferred from Companies House filings alone.</p>
+  <p>Part 6&rsquo;s private-equity valuations are reported figures, not Companies House values. For Flint Global, <a href="https://www.cinven.com/news-insights/cinven-to-invest-in-flint-global/">Cinven announced a majority investment</a>; the press supplied the valuation and structural detail. The reviewed public sources do not reveal ratchets, earn-outs, vendor loans or warranty caps. Filings alone cannot supply them.</p>
 
   <h3>Judgment</h3>
 
-  <p>The hardest thing to automate is deciding what the story is. The model can find facts, group them, and draft prose about them. It cannot own the editorial choice that the Stefan Hunt three-firm journey is a better opener for Part 6 than the Econic Partners launch, or that "the CMA drain" is a better framing than "partner pay in UK economics consulting". Those decisions came from the human, and they are the decisions that turn a database into an article.</p>
+  <p>The hardest task is deciding what the story is. A model can find and group facts, then draft around them. It cannot own the choice to open Part 6 with Stefan Hunt&rsquo;s three-firm route rather than Econic Partners, or to call the piece &ldquo;the CMA drain&rdquo; instead of &ldquo;partner pay in UK economics consulting&rdquo;. Such choices turn a database into an article. They remain the author&rsquo;s.</p>
 
   <hr>
 
@@ -538,7 +541,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>What another economist should try next</h2>
 
-  <p>The most useful move, for any reader who has got this far and is wondering whether they could do the same, is this: <strong>pick a small, well-bounded industry where most participants file public accounts, and build a replica database in a weekend.</strong> Water utilities. Energy traders. Football clubs. Drinks companies. Private schools. Care homes. Veterinary practices. Funeral services. Abattoirs. Many of them are 90-to-five-hundred-firm universes with public financials and stories that have not been connected up in one place.</p>
+  <p><strong>Pick a small, bounded industry whose members file public accounts. Build its database in a weekend.</strong> Try water utilities, energy traders, football clubs, drinks companies, private schools, care homes, vets, funeral directors or abattoirs. Many contain 90-to-five-hundred firms, public financials and stories nobody has yet joined together.</p>
 
   <p>The recipe runs as follows.</p>
 
@@ -564,7 +567,7 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
   <div class="takeaways">
     <h3>Key takeaways</h3>
     <ol>
-      <li>A single 60-hour Claude Code project, run by one person with no prior programming, produced a 90-firm Companies House dataset and an eleven-article series (seven numbered parts, three opening visual and data pieces, and this methodology article). The same work done by hand would have taken materially longer, but no precise manual benchmark is claimed.</li>
+      <li>One person with no prior programming used a single 60-hour Claude Code project to produce a 90-firm Companies House dataset. The same project produced eleven articles: seven numbered parts, three opening visual and data pieces, and this methodology. Doing the work by hand would have taken materially longer, though no precise benchmark is claimed.</li>
       <li>The biggest speed-up was the dispatch of four parallel research agents across four firm batches. Total elapsed time was roughly 12 minutes; the time saved still had to be spent on verification.</li>
       <li>The most important architectural choice was SQLite as project database, rather than a spreadsheet. Corrections went into one structured source first.</li>
       <li>Five errors made it into early drafts and were caught before publication. In each case the model had summarised across unrelated facts into a tidy narrative. The human's job is to notice when the story is too tidy.</li>
@@ -578,12 +581,12 @@ founder_timeline   (year, event, firm, people, description, source_url)</code></
 
   <h2>A final observation</h2>
 
-  <p>The researcher behind this project is not a developer. Python had been untouched for seven years when the prompt was first typed. Everything Claude Code did, it did while the work was described to it in plain English and corrected when it went wrong. The economist's skill that turned out to matter most was not coding. It was knowing which questions were worth asking, and which numbers to distrust. Claude Code compressed the data-cleaning stage that normally sits between a research question and a first chart. It did not replace the question. It did not replace the judgment. It did not replace the decision as to whether a story was interesting enough to publish. Those are still the researcher's to make.</p>
+  <p>The researcher is not a developer; Python had gone untouched for seven years. Claude Code received instructions in plain English and corrections when it failed. Coding mattered less than knowing which questions deserved asking and which numbers deserved suspicion. The tool shortened the cleaning between question and chart. It could not choose the question, exercise judgment or decide whether the result deserved publication. Those tasks remained human.</p>
 
-  <p>For any reader with access to a Companies House API key, a Claude Code subscription and a free weekend, the tools are now sufficient to build a serious public-filings map of a neglected market. The markets that remain unmapped are often the ones whose participants file boring accounts that few outsiders have bothered to read. Go find one.</p>
+  <p>A Companies House API key, a Claude Code subscription and a free weekend are enough to map a neglected market seriously. The best candidates often file the dullest accounts. Few outsiders bother to read them. Go and find one.</p>
 
   <div class="footer">
-    <p><strong>The full dataset</strong> has not yet been released in a public repository, and this article does not claim that one is currently available. The reviewed project files contain 90 public-catalogue firms, 87 internal firm rows, 1,885 officer appointments, 8,293 historical filing records, 15 dated private-equity and strategic-acquisition deals, and 30 dated founder-timeline events. The intended licensing is the Open Government Licence v3.0 for Companies House-derived data and CC BY 4.0 for original analysis, scripts and charts.</p>
+    <p><strong>The full dataset</strong> has not yet been released in a public repository, and this article does not claim that one is currently available. The reviewed files contain 90 public-catalogue firms and 87 internal firm rows. They also contain 1,885 officer appointments, 8,293 historical filings, 15 dated private-equity and strategic-acquisition deals, and 30 founder-timeline events. The intended licensing is the Open Government Licence v3.0 for Companies House-derived data and CC BY 4.0 for original analysis, scripts and charts.</p>
 
     <p><strong>Tools referenced in this article:</strong></p>
     <ul>
