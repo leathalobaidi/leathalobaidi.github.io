@@ -1,418 +1,53 @@
-<!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal site of Leath Al Obaidi. Economist working in regulatory finance. Projects, works in progress, and writing on economics, business, and ideas.">
-    <meta property="og:title" content="Leath Al Obaidi — Economist &amp; Writer">
-    <meta property="og:description" content="Personal site of Leath Al Obaidi. Economist working in regulatory finance. Projects, works in progress, and writing on economics, business, and ideas.">
-    <meta property="og:url" content="https://leathalobaidi.com">
-    <meta property="og:type" content="website">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@pluckup_courage">
-    <link rel="canonical" href="https://leathalobaidi.com/">
-    <title>Leath Al Obaidi — Economist &amp; Writer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com/">
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --color-primary: #c45d3e;
-            --color-text: #2a2a2a;
-            --color-text-light: #666666;
-            --color-background: #fafafa;
-            --color-border: #e8e8e8;
-            --color-card-bg: #ffffff;
-            --color-callout-bg: #fef4f1;
-            --font-serif: 'Newsreader', Georgia, serif;
-            --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 1.5rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 3rem;
-            --max-width: 680px;
-            --transition: all 0.3s ease;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: var(--font-sans);
-            color: var(--color-text);
-            background-color: var(--color-background);
-            line-height: 1.6;
-            font-size: 16px;
-        }
-
-        @media (max-width: 640px) {
-            body { font-size: 15px; }
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-serif);
-            font-weight: 600;
-            line-height: 1.3;
-            margin-top: var(--spacing-lg);
-            margin-bottom: var(--spacing-md);
-        }
-
-        h1 { font-size: 2.5rem; margin-top: 0; }
-        h2 { font-size: 1.8rem; }
-        h3 { font-size: 1.3rem; }
-        p { margin-bottom: var(--spacing-md); }
-
-        a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            border-bottom: 1px solid transparent;
-        }
-
-        a:hover {
-            opacity: 0.75;
-            border-bottom-color: var(--color-primary);
-        }
-
-        .container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-        }
-
-        /* Navigation */
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: var(--color-background);
-            z-index: 100;
-            border-bottom: 1px solid var(--color-border);
-            padding: var(--spacing-md) 0;
-        }
-
-        .nav-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            font-family: var(--font-serif);
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--color-text);
-            text-decoration: none;
-            border-bottom: none;
-            cursor: pointer;
-        }
-
-        .nav-brand:hover { color: var(--color-primary); }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: var(--spacing-lg);
-        }
-
-        .nav-links a {
-            color: var(--color-text);
-            border-bottom: none;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--color-primary);
-            border-bottom: 1px solid var(--color-primary);
-            opacity: 1;
-        }
-
-        @media (max-width: 640px) {
-            .nav-links { gap: var(--spacing-sm); font-size: 0.9rem; }
-        }
-
-        /* Page Section */
-        .page-section {
-            padding-top: var(--spacing-xl);
-            padding-bottom: var(--spacing-xl);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        .page-section:last-of-type { border-bottom: none; }
-
-        /* ===== HOME ===== */
-        .hero { margin-bottom: var(--spacing-xl); }
-
-        .hero-name {
-            font-size: 2.2rem;
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .hero-name strong {
-            color: var(--color-primary);
-            font-weight: 600;
-            font-style: italic;
-        }
-
-        .hero-pronunciation {
-            color: var(--color-text-light);
-            font-style: italic;
-            margin-bottom: var(--spacing-lg);
-            font-size: 0.95rem;
-        }
-
-        .hero-bio { color: var(--color-text); line-height: 1.8; }
-        .hero-bio p { margin-bottom: var(--spacing-lg); }
-
-        .explore-heading {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--color-text-light);
-            margin-bottom: var(--spacing-lg);
-            font-weight: 600;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .card {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            padding: var(--spacing-lg);
-            border-radius: 4px;
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .card:hover {
-            border-color: var(--color-primary);
-            box-shadow: 0 2px 8px rgba(196, 93, 62, 0.08);
-        }
-
-        .card h3 { margin-top: 0; color: var(--color-text); }
-        .card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
-
-        /* ===== PROJECTS ===== */
-        .project-card {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-radius: 4px; padding: var(--spacing-lg);
-            margin-bottom: var(--spacing-lg); transition: var(--transition);
-        }
-
-        .project-card:hover {
-            border-color: var(--color-primary);
-            box-shadow: 0 2px 12px rgba(196, 93, 62, 0.08);
-        }
-
-        .project-header {
-            display: flex; align-items: flex-start;
-            justify-content: space-between; gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .project-header h2 { margin: 0; font-size: 1.5rem; }
-
-        .project-badges { display: flex; gap: var(--spacing-xs); flex-shrink: 0; flex-wrap: wrap; }
-
-        .badge {
-            display: inline-block; font-size: 0.75rem; font-weight: 600;
-            padding: 0.25rem 0.6rem; border-radius: 3px; letter-spacing: 0.02em; white-space: nowrap;
-        }
-
-        .badge-chrome { background-color: #e8f5e9; color: #2e7d32; }
-        .badge-mit { background-color: #fff8e1; color: #f57f17; }
-        .badge-v3 { background-color: #e3f2fd; color: #1565c0; }
-
-        .project-description { color: var(--color-text); line-height: 1.8; margin-bottom: var(--spacing-md); }
-
-        .project-features { margin-bottom: var(--spacing-lg); }
-
-        .project-features h3 {
-            font-size: 1rem; margin-top: 0; margin-bottom: var(--spacing-sm);
-            font-family: var(--font-sans); text-transform: uppercase; letter-spacing: 0.05em;
-        }
-
-        .feature-list { list-style: none; }
-
-        .feature-list li {
-            padding: var(--spacing-xs) 0; padding-left: 1.2rem;
-            position: relative; color: var(--color-text); line-height: 1.6;
-        }
-
-        .feature-list li::before {
-            content: '\2014'; position: absolute; left: 0;
-            color: var(--color-primary); font-weight: 600;
-        }
-
-        .project-tech { display: flex; gap: var(--spacing-xs); flex-wrap: wrap; margin-bottom: var(--spacing-md); }
-
-        .tech-tag {
-            font-size: 0.8rem; padding: 0.2rem 0.5rem;
-            background-color: #f5f5f5; border: 1px solid var(--color-border);
-            border-radius: 3px; color: var(--color-text-light);
-        }
-
-        .project-links {
-            display: flex; gap: var(--spacing-md); flex-wrap: wrap;
-            padding-top: var(--spacing-md); border-top: 1px solid var(--color-border);
-        }
-
-        .project-link {
-            display: inline-flex; align-items: center;
-            gap: 0.4rem; font-size: 0.9rem; font-weight: 600;
-        }
-
-        .project-link svg { width: 16px; height: 16px; flex-shrink: 0; }
-
-        .project-link-store {
-            background: var(--color-primary); color: #fff;
-            padding: 0.45rem 0.85rem; border-radius: 4px; border-bottom: none;
-        }
-        .project-link-store:hover { opacity: 0.88; border-bottom: none; }
-
-        .wip-section { margin-top: var(--spacing-xl); }
-
-        .wip-label {
-            display: inline-block; font-family: var(--font-sans);
-            font-size: 0.7rem; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.08em; padding: 0.2rem 0.6rem;
-            background-color: #fff3cd; color: #856404;
-            border-radius: 3px; vertical-align: middle;
-        }
-
-        .wip-card {
-            background-color: var(--color-card-bg);
-            border: 1px solid var(--color-border);
-            border-left: 3px solid #e8b931;
-            border-radius: 4px; padding: var(--spacing-lg);
-            margin-bottom: var(--spacing-md); transition: var(--transition);
-        }
-
-        .wip-card:hover { border-left-color: var(--color-primary); box-shadow: 0 2px 8px rgba(196, 93, 62, 0.06); }
-        .wip-card h3 { margin-top: 0; margin-bottom: var(--spacing-xs); font-size: 1.2rem; }
-
-        .wip-card .wip-type {
-            display: inline-block; font-size: 0.75rem; font-weight: 600;
-            padding: 0.15rem 0.5rem; border-radius: 3px; margin-bottom: var(--spacing-sm);
-        }
-
-        .type-community { background-color: #e3f2fd; color: #1565c0; }
-
-        .wip-card p { color: var(--color-text-light); font-size: 0.95rem; line-height: 1.7; margin-bottom: 0; }
-
-        .wip-divider { border: none; border-top: 1px solid var(--color-border); margin: var(--spacing-xl) 0; }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--color-border);
-            padding: var(--spacing-lg) 0;
-            text-align: center;
-            color: var(--color-text-light);
-            font-size: 0.9rem;
-            margin-top: var(--spacing-xl);
-        }
-
-        .footer-content {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-        }
-
-        .footer-social {
-            display: flex; justify-content: center;
-            gap: var(--spacing-md); margin-top: var(--spacing-md);
-        }
-
-        .footer-social a { color: var(--color-text-light); font-size: 0.85rem; }
-
-        /* Responsive */
-        @media (max-width: 640px) {
-            h1 { font-size: 1.8rem; }
-            h2 { font-size: 1.4rem; }
-            h3 { font-size: 1.1rem; }
-            .container { padding: 0 var(--spacing-sm); }
-            .nav-container { padding: 0 var(--spacing-sm); }
-            .cards-grid { grid-template-columns: 1fr; }
-            .project-header { flex-direction: column; }
-            .project-links { flex-direction: column; gap: var(--spacing-sm); }
-        }
-    </style>
-    <!-- Cloudflare Web Analytics -->
-    <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c045cecc3f64da1a64ad3f146a11977"}'></script>
-    <!-- End Cloudflare Web Analytics -->
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Leath Al Obaidi. Economist in London. A collection of projects, writing and things I’m curious about.">
+  <meta property="og:title" content="Leath Al Obaidi | Economist & Writer">
+  <meta property="og:description" content="Projects, writing and things I’m curious about. Economics, cinema, useful tools and the occasional rabbit hole.">
+  <meta property="og:url" content="https://leathalobaidi.com/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@pluckup_courage">
+  <meta name="theme-color" content="#bfbfbf">
+  <link rel="canonical" href="https://leathalobaidi.com/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/gallery.css">
+  <script src="assets/gallery.js" defer></script>
+  <title>Leath Al Obaidi | Economist & Writer</title>
 </head>
 <body>
-
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <a href="#home" class="nav-brand">Leath</a>
-            <ul class="nav-links">
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="/blog">Blog</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-
-        <!-- ==================== HOME ==================== -->
-        <section id="home" class="page-section">
-            <div class="hero">
-                <h1 class="hero-name">Hello, I'm <strong>Leath</strong></h1>
-                <p class="hero-pronunciation">/leɪθ/ — rhymes with faith</p>
-                <div class="hero-bio">
-                    <p>I'm an economist working in regulatory finance at Smart DCC, the company running Britain's smart meter data network. Previously, I spent six years at the British Business Bank, where I helped secure over £1bn in government funding and led programmes that supported over a million businesses during the pandemic. I also serve as a Non-Executive Director at Wenta, a social enterprise supporting small businesses, and sit on the Council of the Society of Professional Economists.</p>
-                    <p>I grew up in Austria, studied economics in Vienna and Nottingham, and now live in London. This site is where I share what I'm reading, thinking about, and working on. I'm interested in economics, regulation, business, language, history, and philosophy.</p>
-                </div>
-            </div>
-
-            <p class="explore-heading">Explore</p>
-            <div class="cards-grid">
-                <div class="card" onclick="document.getElementById(&#39;projects&#39;).scrollIntoView({behavior:&#39;smooth&#39;})">
-                    <h3>Projects</h3>
-                    <p>Practical tools, translations, Chrome extensions, and data dashboards — spanning family logistics, the Financial Times, YouTube, Letterboxd, used-car markets, and Soviet textbooks.</p>
-                </div>
-            </div>
-
-            <h2>Latest Writing</h2>
-            <a href="/blog/competition-and-rivalry" style="display:block;padding:var(--spacing-lg);border:1px solid var(--color-border);border-radius:4px;margin-bottom:var(--spacing-xl);text-decoration:none;color:inherit;transition:all 0.3s ease;" onmouseover="this.style.borderColor='var(--color-primary)'" onmouseout="this.style.borderColor='var(--color-border)'">
-                <h3 style="margin-top:0;color:var(--color-text);">Competition and Rivalry</h3>
-                <p style="color:var(--color-text-light);font-family:var(--font-serif);font-style:italic;margin-bottom:0.5rem;">The fire that never sleeps &mdash; and the question of whether we should let it burn</p>
-                <p style="color:var(--color-text-light);font-size:0.9rem;margin-bottom:0;">From Peter Thiel's contrarian take on monopolies to Girard's mimetic desire &mdash; an essay on competition across sport, philosophy, economics, and everyday life.</p>
-            </a>
-
-
-
-        </section>
-
-        <!-- ==================== PROJECTS ==================== -->
-        <section id="projects" class="page-section">
-            <h1>Projects</h1>
-            <p style="color:var(--color-text-light);margin-bottom:var(--spacing-xl);">Things I've built — practical tools, translations, Chrome extensions, and data projects.</p>
-
-            <!-- KidSorted -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>KidSorted — Holiday Camp Planner</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-mit">Data</span>
-                        <span class="badge badge-v3">Interactive</span>
-                        <span class="badge badge-chrome">Summer 2026</span>
-                    </div>
-                </div>
-                <p class="project-description">A week-by-week summer holiday planner for families in and around Walthamstow. KidSorted brings 47 local camps into one searchable directory with verified dates, prices, hours and free HAF places — then helps parents turn a shortlist into a complete six-week plan and budget.</p>
-                <div class="project-features">
+  <a class="skip-link" href="#collection">Skip to collection</a>
+  <header class="site-header" id="home">
+    <a class="identity" href="#home" aria-label="Leath Al Obaidi, home"><span class="monogram" aria-hidden="true">lao.</span><h1>leath al obaidi</h1></a>
+    <button class="text-button about-toggle" type="button" aria-haspopup="dialog">about me <span aria-hidden="true">↗</span></button>
+  </header>
+  <main id="projects">
+    <div class="collection-heading"><p>projects, writing & things i’m curious about</p><span class="collection-count" aria-live="polite">all · 12</span></div>
+    <div class="gallery-viewport" id="collection" tabindex="-1">
+      <div class="gallery-frame" aria-hidden="true"><span class="frame-label">collection / 001–012</span><i></i><i></i><i></i><i></i><span class="frame-coordinate">london, uk</span></div>
+      <section class="gallery" aria-label="Projects and writing">
+      <article class="piece" data-id="criterion" data-category="projects" data-tag="film · data" style="--accent:#b78049">
+  <a class="piece-open" href="projects/criterion-closet/" aria-label="Explore the shape of taste">
+    <span class="piece-visual"><img src="assets/gallery/criterion-closet.webp" alt="" width="1100" height="760" draggable="false" decoding="async"></span>
+    <span class="piece-caption"><span class="piece-title">the shape of taste</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>For fifteen years, filmmakers, actors and musicians have been filmed picking favourites from the Criterion Collection's closet. I turned all <strong>477 visits</strong> into a database of <strong>7,360 picks</strong> across 1,658 films — enriched with Letterboxd and IMDb ratings — then built two things from it. A <strong>taste map</strong> links every guest to those they share films with, revealing nine communities of taste that map onto auteur canons (Varda, Cassavetes, Bergman… and a Godzilla cluster). A <strong>52-week syllabus</strong> distils the data into an actual viewing plan.</p>
+                    <h3>What's in it</h3>
+                    <ul class="feature-list">
+                        <li><strong>The Shape of Taste</strong> — an interactive network of all 477 guests, coloured by community, click any for their picks and taste twins</li>
+                        <li><strong>A Year in the Closet</strong> — 52 films, one a week, with progress tracking and pace planning</li>
+                        <li><strong>Open dataset</strong> — the full guests / picks / films tables as CSV and SQLite</li>
+                    </ul>
+                <nav class="project-links" aria-label="Project links"><a href="projects/criterion-closet/">Open the Taste Map <span aria-hidden="true">↗</span></a><a href="projects/criterion-closet/syllabus.html">52-Week Syllabus <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="kidsorted" data-category="projects" data-tag="family · planning" style="--accent:#bd431f">
+  <a class="piece-open" href="https://kidsorted.co.uk/" aria-label="Explore KidSorted">
+    <span class="piece-visual"><img src="assets/gallery/kidsorted.webp" alt="" width="1100" height="760" draggable="false" decoding="async"></span>
+    <span class="piece-caption"><span class="piece-title">KidSorted</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A week-by-week summer holiday planner for families in and around Walthamstow. KidSorted brings 47 local camps into one searchable directory with verified dates, prices, hours and free HAF places — then helps parents turn a shortlist into a complete six-week plan and budget.</p>
                     <h3>What's in it</h3>
                     <ul class="feature-list">
                         <li><strong>Searchable local directory</strong> — filter camps by age, area, activity, funding, day length, price and confirmed 2026 dates</li>
@@ -420,199 +55,49 @@
                         <li><strong>Six-week family planner</strong> — assign camps, annual leave or grandparents, total the cost and spot uncovered weeks</li>
                         <li><strong>Private by design</strong> — names and plans are saved only in your browser</li>
                     </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">Walthamstow &amp; nearby</span>
-                    <span class="tech-tag">47 camps</span>
-                    <span class="tech-tag">HAF places</span>
-                    <span class="tech-tag">Budget planner</span>
-                    <span class="tech-tag">Browser-local data</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://kidsorted.co.uk/" target="_blank" rel="noopener" class="project-link project-link-store">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 012-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open KidSorted
-                    </a>
-                </div>
-            </article>
-
-            <!-- NeverSplit -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>NeverSplit — Original Share Intelligence</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-mit">Data</span>
-                        <span class="badge badge-v3">Interactive</span>
-                        <span class="badge badge-v3">Research preview</span>
-                    </div>
-                </div>
-                <p class="project-description">What would one original S&amp;P 500 share be worth today if every later stock split were reassembled? NeverSplit connects issuer-backed split histories, raw IPO share prices, market capitalisation, index weight and an attributed Kaggle history into one traceable research interface.</p>
-                <div class="project-features">
+                <nav class="project-links" aria-label="Project links"><a href="https://kidsorted.co.uk/">Open KidSorted <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="competition" data-category="writing" data-tag="essay · economics" style="--accent:#4c56a9">
+  <a class="piece-open" href="/blog/competition-and-rivalry/" aria-label="Explore competition &amp; rivalry">
+    <span class="piece-visual"><img src="assets/gallery/competition.webp" alt="" width="1100" height="760" draggable="false" decoding="async"></span>
+    <span class="piece-caption"><span class="piece-title">competition &amp; rivalry</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>On Peter Thiel, René Girard and the force of rivalry in sport, economics and everyday life.</p><nav class="project-links" aria-label="Project links"><a href="/blog/competition-and-rivalry/">Read the essay <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="neversplit" data-category="projects" data-tag="finance · research" style="--accent:#535c00">
+  <a class="piece-open" href="projects/neversplit/" aria-label="Explore NeverSplit">
+    <span class="piece-visual"><img src="assets/gallery/neversplit.webp" alt="" width="1100" height="760" draggable="false" decoding="async"></span>
+    <span class="piece-caption"><span class="piece-title">NeverSplit</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>What would one original S&amp;P 500 share be worth today if every later stock split were reassembled? NeverSplit connects issuer-backed split histories, raw IPO share prices, market capitalisation, index weight and an attributed Kaggle history into one traceable research interface.</p>
                     <h3>What's in it</h3>
                     <ul class="feature-list">
                         <li><strong>Original-share leaderboard</strong> — rank by market cap, S&amp;P 500 weight, share price, split count, cumulative factor or reconstructed value</li>
                         <li><strong>Full constituent directory</strong> — search and sort 503 securities by company, ticker or sector</li>
                         <li><strong>Visible evidence states</strong> — source freshness, verified histories and unresolved data conflicts stay explicit</li>
                     </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">S&amp;P 500</span>
-                    <span class="tech-tag">Corporate actions</span>
-                    <span class="tech-tag">Kaggle</span>
-                    <span class="tech-tag">Graph engineering</span>
-                    <span class="tech-tag">Mobile-first</span>
-                </div>
-                <div class="project-links">
-                    <a href="projects/neversplit/" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 012-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open NeverSplit
-                    </a>
-                </div>
-            </article>
-
-            <!-- Criterion Closet -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>The Criterion Closet — A Map of Cinephile Taste</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-mit">Data</span>
-                        <span class="badge badge-v3">Interactive</span>
-                    </div>
-                </div>
-                <p class="project-description">For fifteen years, filmmakers, actors and musicians have been filmed picking favourites from the Criterion Collection's closet. I turned all <strong>477 visits</strong> into a database of <strong>7,360 picks</strong> across 1,658 films — enriched with Letterboxd and IMDb ratings — then built two things from it. A <strong>taste map</strong> links every guest to those they share films with, revealing nine communities of taste that map onto auteur canons (Varda, Cassavetes, Bergman… and a Godzilla cluster). A <strong>52-week syllabus</strong> distils the data into an actual viewing plan.</p>
-                <div class="project-features">
-                    <h3>What's in it</h3>
-                    <ul class="feature-list">
-                        <li><strong>The Shape of Taste</strong> — an interactive network of all 477 guests, coloured by community, click any for their picks and taste twins</li>
-                        <li><strong>A Year in the Closet</strong> — 52 films, one a week, with progress tracking and pace planning</li>
-                        <li><strong>Open dataset</strong> — the full guests / picks / films tables as CSV and SQLite</li>
-                    </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Canvas</span>
-                    <span class="tech-tag">Network analysis</span>
-                    <span class="tech-tag">Letterboxd</span>
-                    <span class="tech-tag">IMDb</span>
-                </div>
-                <div class="project-links">
-                    <a href="projects/criterion-closet/" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open the Taste Map
-                    </a>
-                    <a href="projects/criterion-closet/syllabus.html" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        52-Week Syllabus
-                    </a>
-                </div>
-            </article>
-
-            <!-- Kiselev's Arithmetic -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>Kiselev's Arithmetic — English Translation</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-mit">Translation</span>
-                    </div>
-                </div>
-                <p class="project-description">A complete English digitisation of A.P. Kiselev's <em>Arithmetic</em> (1938 edition) — the standard Soviet mathematics textbook used across Russia for decades. Translated from Russian and formatted as a navigable web document with sidebar table of contents.</p>
-                <div class="project-features">
+                <nav class="project-links" aria-label="Project links"><a href="projects/neversplit/">Open NeverSplit <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="kiselev" data-category="projects" data-tag="translation · mathematics" style="--accent:#8d342c">
+  <a class="piece-open" href="projects/kiselev/" aria-label="Explore Kiselev’s Arithmetic">
+    <span class="piece-visual"><img src="assets/gallery/kiselev.webp" alt="" width="1100" height="760" draggable="false" decoding="async"></span>
+    <span class="piece-caption"><span class="piece-title">Kiselev’s Arithmetic</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A complete English digitisation of A.P. Kiselev's <em>Arithmetic</em> (1938 edition) — the standard Soviet mathematics textbook used across Russia for decades. Translated from Russian and formatted as a navigable web document with sidebar table of contents.</p>
                     <h3>Contents</h3>
                     <ul class="feature-list">
                         <li><strong>Part I — Integers</strong> — numeration, four operations, divisibility, measures and weights</li>
                         <li><strong>Part II — Fractions</strong> — common fractions, decimal fractions, proportional quantities, percentages</li>
                         <li><strong>Appendix</strong> — counting devices, supplementary material, tables</li>
                     </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">Russian → English</span>
-                    <span class="tech-tag">HTML</span>
-                    <span class="tech-tag">Mathematics</span>
-                </div>
-                <div class="project-links">
-                    <a href="projects/kiselev/" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Read the Translation
-                    </a>
-                </div>
-            </article>
-
-            <!-- Škoda Octavia — Value Analysis -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>Škoda Octavia — UK Approved Used Stock</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-mit">Data</span>
-                        <span class="badge badge-v3">v2</span>
-                    </div>
-                </div>
-                <p class="project-description">An interactive value-for-money analysis of 499 used Škoda Octavias on sale at UK approved retailers. Two takes on the same dataset: a regression-residual ranking (v1) that flags cars priced below their predicted value, and a weighted-preference dashboard (v2) that lets you tune what matters — body, trim, fuel, gearbox, mileage, age, dealer location.</p>
-                <div class="project-features">
-                    <h3>Versions</h3>
-                    <ul class="feature-list">
-                        <li><strong>v1 — Regression residuals</strong> — ranks cars by how far their price sits below the predicted value</li>
-                        <li><strong>v2 — Weighted preference</strong> — tune your filters and weights interactively to find the best match</li>
-                    </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Regression</span>
-                    <span class="tech-tag">Used cars</span>
-                    <span class="tech-tag">UK market</span>
-                </div>
-                <div class="project-links">
-                    <a href="projects/skoda-octavia/" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open Hub
-                    </a>
-                    <a href="projects/skoda-octavia/v1.html" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        v1
-                    </a>
-                    <a href="projects/skoda-octavia/v2.html" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        v2
-                    </a>
-                </div>
-            </article>
-
-            <!-- Škoda UK Used — Marketcheck dashboard -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>Škoda UK Used — Marketcheck Dashboard</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-mit">Data</span>
-                        <span class="badge badge-v3">v1</span>
-                    </div>
-                </div>
-                <p class="project-description">A wider browser across the full Škoda UK used market, sourced from Marketcheck. Filter by model, trim, body, fuel, transmission, price, mileage, model year, and dealer/city — then layer on weighted preferences to surface what matters most.</p>
-                <div class="project-tech">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Marketcheck</span>
-                    <span class="tech-tag">Used cars</span>
-                    <span class="tech-tag">UK market</span>
-                </div>
-                <div class="project-links">
-                    <a href="projects/skoda-uk-used/v1.html" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                        Open Dashboard (v1)
-                    </a>
-                </div>
-            </article>
-
-            <!-- FT Expand All Comments -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>FT Expand All Comments</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-chrome">Chrome Extension</span>
-                        <span class="badge badge-v3">Manifest V3</span>
-                        <span class="badge badge-v3">v2.3</span>
-                        <span class="badge badge-mit">MIT</span>
-                    </div>
-                </div>
-                <p class="project-description">A Chrome extension that brings back the classic Financial Times comment experience. The FT's current comment system collapses all replies by default, making it tedious to follow discussions. This extension lets you expand or collapse all comments with one click, or set it to auto-expand every time.</p>
-                <div class="project-features">
+                <nav class="project-links" aria-label="Project links"><a href="projects/kiselev/">Read the Translation <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="ft" data-category="projects" data-tag="browser extension" style="--accent:#ad4636">
+  <a class="piece-open" href="https://chromewebstore.google.com/detail/ft-expand-all-comments/kgplhlkmifpiaeggbfomcimllnhcjnil" aria-label="Explore expand all comments">
+    <span class="piece-visual"><span class="poster poster-ft" aria-hidden="true"><span class="poster-top">FT · comments</span><strong>Let the<br>conversation<br>unfold.</strong><span class="poster-symbol">↳</span><span class="poster-bottom">expand all comments</span></span></span>
+    <span class="piece-caption"><span class="piece-title">expand all comments</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A Chrome extension that brings back the classic Financial Times comment experience. The FT's current comment system collapses all replies by default, making it tedious to follow discussions. This extension lets you expand or collapse all comments with one click, or set it to auto-expand every time.</p>
                     <h3>Features</h3>
                     <ul class="feature-list">
                         <li><strong>Expand All</strong> — instantly expand every comment and reply with one click</li>
@@ -620,38 +105,41 @@
                         <li><strong>Always Expand</strong> — toggle on to auto-expand comments on every FT article you visit</li>
                         <li><strong>Never Misses Late Comments</strong> — v2.3 keeps watching so auto-expand still arms when the comment widget loads long after the page, works on already-open tabs without a reload, and pauses politely in background tabs</li>
                     </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Chrome Extensions API</span>
-                    <span class="tech-tag">Shadow DOM</span>
-                    <span class="tech-tag">MutationObserver</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://chromewebstore.google.com/detail/ft-expand-all-comments/kgplhlkmifpiaeggbfomcimllnhcjnil" target="_blank" rel="noopener" class="project-link project-link-store">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z"></path></svg>
-                        Install from Chrome Web Store
-                    </a>
-                    <a href="https://github.com/leathalobaidi/ft-expand-comments" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-                        View on GitHub
-                    </a>
-                </div>
-            </article>
-
-            <!-- YouTube Tab Sorter -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>YouTube Tab Sorter</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-chrome">Chrome Extension</span>
-                        <span class="badge badge-v3">Manifest V3</span>
-                        <span class="badge badge-v3">v1.2</span>
-                        <span class="badge badge-mit">MIT</span>
-                    </div>
-                </div>
-                <p class="project-description">A Chrome extension that sorts your YouTube video tabs by duration — shortest videos on the left, longest on the right. Built for those moments when you have a dozen YouTube tabs open and only a few minutes to spare.</p>
-                <div class="project-features">
+                <nav class="project-links" aria-label="Project links"><a href="https://chromewebstore.google.com/detail/ft-expand-all-comments/kgplhlkmifpiaeggbfomcimllnhcjnil">Install from Chrome Web Store <span aria-hidden="true">↗</span></a><a href="https://github.com/leathalobaidi/ft-expand-comments">View on GitHub <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="syllabus" data-category="projects" data-tag="film · syllabus" style="--accent:#776628">
+  <a class="piece-open" href="projects/criterion-closet/syllabus.html" aria-label="Explore a year in the closet">
+    <span class="piece-visual"><img src="assets/gallery/criterion-syllabus.webp" alt="" width="1100" height="760" draggable="false" decoding="async"></span>
+    <span class="piece-caption"><span class="piece-title">a year in the closet</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A year of cinema drawn from the Criterion Closet. One film a week, with progress tracking and pace planning.</p><nav class="project-links" aria-label="Project links"><a href="projects/criterion-closet/syllabus.html">52-Week Syllabus <span aria-hidden="true">↗</span></a><a href="projects/criterion-closet/">Open the Taste Map <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="octavia" data-category="projects" data-tag="data · decisions" style="--accent:#176046">
+  <a class="piece-open" href="projects/skoda-octavia/" aria-label="Explore finding an Octavia">
+    <span class="piece-visual"><span class="poster poster-octavia" aria-hidden="true"><span class="poster-top">Škoda Octavia</span><strong>What makes<br>a good deal?</strong><span class="road-lines"><i></i><i></i><i></i><i></i></span><span class="poster-bottom">price · mileage · preference</span></span></span>
+    <span class="piece-caption"><span class="piece-title">finding an Octavia</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>An interactive value-for-money analysis of 499 used Škoda Octavias on sale at UK approved retailers. Two takes on the same dataset: a regression-residual ranking (v1) that flags cars priced below their predicted value, and a weighted-preference dashboard (v2) that lets you tune what matters — body, trim, fuel, gearbox, mileage, age, dealer location.</p>
+                    <h3>Versions</h3>
+                    <ul class="feature-list">
+                        <li><strong>v1 — Regression residuals</strong> — ranks cars by how far their price sits below the predicted value</li>
+                        <li><strong>v2 — Weighted preference</strong> — tune your filters and weights interactively to find the best match</li>
+                    </ul>
+                <nav class="project-links" aria-label="Project links"><a href="projects/skoda-octavia/">Open Hub <span aria-hidden="true">↗</span></a><a href="projects/skoda-octavia/v1.html">v1 <span aria-hidden="true">↗</span></a><a href="projects/skoda-octavia/v2.html">v2 <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="aihero" data-category="writing" data-tag="learning · code" style="--accent:#5836a0">
+  <a class="piece-open" href="/blog/aihero-self-study/" aria-label="Explore AI Hero">
+    <span class="piece-visual"><span class="poster poster-aihero" aria-hidden="true"><span class="poster-top">a self study syllabus</span><strong>AI<br>Hero<span class="code-cursor">▍</span></strong><span class="poster-bottom">learn by building ↗</span></span></span>
+    <span class="piece-caption"><span class="piece-title">AI Hero</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A self study syllabus for Claude Code, based on Matt Pocock’s AI Hero and Anthropic’s documentation. Ten modules, practical patches and a skills appendix.</p><nav class="project-links" aria-label="Project links"><a href="/blog/aihero-self-study/">Open the syllabus <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="youtube" data-category="projects" data-tag="browser extension" style="--accent:#ae242c">
+  <a class="piece-open" href="https://chromewebstore.google.com/detail/youtube-tab-sorter/ihmkpakgndhkgdmimgklcfdgonbhelfe" aria-label="Explore YouTube tab sorter">
+    <span class="piece-visual"><span class="poster poster-youtube" aria-hidden="true"><span class="poster-top">YouTube tab sorter</span><strong>short.<br>longer.<br>longest.</strong><span class="poster-bottom">a little order for your tabs →</span></span></span>
+    <span class="piece-caption"><span class="piece-title">YouTube tab sorter</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A Chrome extension that sorts your YouTube video tabs by duration — shortest videos on the left, longest on the right. Built for those moments when you have a dozen YouTube tabs open and only a few minutes to spare.</p>
                     <h3>Features</h3>
                     <ul class="feature-list">
                         <li><strong>One-Click Sort</strong> — click the toolbar icon to instantly organise all your YouTube tabs</li>
@@ -659,38 +147,21 @@
                         <li><strong>Clean Organisation</strong> — YouTube videos sorted by length, other tabs moved to the right</li>
                         <li><strong>Ad-Proof &amp; Group-Aware</strong> — v1.2 anchors durations to the video ID (a pre-roll ad can never skew the sort), keeps tab groups intact, measures sleeping tabs, and adds a keyboard shortcut plus right-click options</li>
                     </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">Chrome Extensions API</span>
-                    <span class="tech-tag">YouTube Data API</span>
-                    <span class="tech-tag">ISO 8601</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://chromewebstore.google.com/detail/youtube-tab-sorter/ihmkpakgndhkgdmimgklcfdgonbhelfe" target="_blank" rel="noopener" class="project-link project-link-store">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z"></path></svg>
-                        Install from Chrome Web Store
-                    </a>
-                    <a href="https://github.com/leathalobaidi/youtube-tab-sorter" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-                        View on GitHub
-                    </a>
-                </div>
-            </article>
-
-            <!-- Swipe for Letterboxd -->
-            <article class="project-card">
-                <div class="project-header">
-                    <h2>Swipe for Letterboxd</h2>
-                    <div class="project-badges">
-                        <span class="badge badge-chrome">Chrome Extension</span>
-                        <span class="badge badge-v3">Manifest V3</span>
-                        <span class="badge badge-v3">v6.2</span>
-                        <span class="badge badge-mit">MIT</span>
-                    </div>
-                </div>
-                <p class="project-description">A swipe-style interface and local profile database for Letterboxd (formerly <em>Vypode</em>). Browse films as a card deck — swipe to mark as watched, like, watchlist, or skip — while a local-only, searchable database of your watched history builds on your device. Actions happen in the background so you never leave the deck.</p>
-                <div class="project-features">
+                <nav class="project-links" aria-label="Project links"><a href="https://chromewebstore.google.com/detail/youtube-tab-sorter/ihmkpakgndhkgdmimgklcfdgonbhelfe">Install from Chrome Web Store <span aria-hidden="true">↗</span></a><a href="https://github.com/leathalobaidi/youtube-tab-sorter">View on GitHub <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="skoda" data-category="projects" data-tag="data · exploration" style="--accent:#29607b">
+  <a class="piece-open" href="projects/skoda-uk-used/v1.html" aria-label="Explore the used car market">
+    <span class="piece-visual"><span class="poster poster-skoda" aria-hidden="true"><span class="poster-top">Škoda · UK used</span><strong>A market.<br>Your<br>priorities.</strong><span class="poster-bottom">explore & compare ↗</span></span></span>
+    <span class="piece-caption"><span class="piece-title">the used car market</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A wider browser across the full Škoda UK used market, sourced from Marketcheck. Filter by model, trim, body, fuel, transmission, price, mileage, model year, and dealer/city — then layer on weighted preferences to surface what matters most.</p><nav class="project-links" aria-label="Project links"><a href="projects/skoda-uk-used/v1.html">Open Dashboard (v1) <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+<article class="piece" data-id="letterboxd" data-category="projects" data-tag="browser extension" style="--accent:#2d7647">
+  <a class="piece-open" href="https://chromewebstore.google.com/detail/swipe-for-letterboxd/ohbelhoiflmpgbboihmjnbdbpgojjdhm" aria-label="Explore swipe for Letterboxd">
+    <span class="piece-visual"><span class="poster poster-letterboxd" aria-hidden="true"><span class="poster-top">Swipe for Letterboxd</span><span class="film-dots"><i></i><i></i><i></i></span><strong>One more<br>film.</strong><span class="poster-bottom">watch · like · save</span></span></span>
+    <span class="piece-caption"><span class="piece-title">swipe for Letterboxd</span><span aria-hidden="true">↗</span></span>
+  </a>
+  <template class="piece-detail"><p>A swipe-style interface and local profile database for Letterboxd (formerly <em>Vypode</em>). Browse films as a card deck — swipe to mark as watched, like, watchlist, or skip — while a local-only, searchable database of your watched history builds on your device. Actions happen in the background so you never leave the deck.</p>
                     <h3>Features</h3>
                     <ul class="feature-list">
                         <li><strong>Swipe Deck</strong> — browse films as cards with mouse or keyboard controls</li>
@@ -701,8 +172,7 @@
                         <li><strong>Local Profile Database</strong> — sync your watched, liked, and watchlist collections into a local-only database, searchable by title, rating, and review text</li>
                         <li><strong>CSV Export</strong> — v6.2 exports your watched history in Letterboxd's official import format, so your local data is fully portable</li>
                     </ul>
-                </div>
-                <div class="project-features">
+
                     <h3>Controls</h3>
                     <ul class="feature-list">
                         <li><strong>Mark as Watched</strong> — left zone or left arrow key</li>
@@ -710,76 +180,52 @@
                         <li><strong>Add to Watchlist</strong> — right zone or right arrow key</li>
                         <li><strong>Skip</strong> — bottom zone or down arrow key</li>
                     </ul>
-                </div>
-                <div class="project-tech">
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">CSS Animations</span>
-                    <span class="tech-tag">Chrome Extensions API</span>
-                    <span class="tech-tag">Letterboxd</span>
-                </div>
-                <div class="project-links">
-                    <a href="https://chromewebstore.google.com/detail/swipe-for-letterboxd/ohbelhoiflmpgbboihmjnbdbpgojjdhm" target="_blank" rel="noopener" class="project-link project-link-store">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.21 0 4.831 1.757 2.632 4.501l3.953 6.848A5.454 5.454 0 0 1 12 6.545h10.691A12 12 0 0 0 12 0zM1.931 5.47A11.943 11.943 0 0 0 0 12c0 6.012 4.42 10.991 10.189 11.864l3.953-6.847a5.45 5.45 0 0 1-6.865-2.29zm13.342 2.166a5.446 5.446 0 0 1 1.45 7.09l.002.001h-.002l-5.344 9.257c.206.01.413.016.621.016 6.627 0 12-5.373 12-12 0-1.54-.29-3.011-.818-4.364zM12 16.364a4.364 4.364 0 1 1 0-8.728 4.364 4.364 0 0 1 0 8.728Z"></path></svg>
-                        Install from Chrome Web Store
-                    </a>
-                    <a href="https://github.com/leathalobaidi/vypode-letterboxd" class="project-link">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
-                        View on GitHub
-                    </a>
-                </div>
-            </article>
-
-            <hr class="wip-divider">
-
-            <div class="wip-section">
-                <h2>Work in Progress <span class="wip-label">In Progress</span></h2>
-                <p style="color:var(--color-text-light);margin-bottom:var(--spacing-lg);line-height:1.8;">Things I'm actively building, writing, or training for. Some are close to launch, others are still taking shape.</p>
-
-                <article class="wip-card">
-                    <h3>Stripe Press Book Club</h3>
-                    <span class="wip-type type-community">Community</span>
-                    <p>A reading community built around Stripe Press titles — 19 books on technology, economics, science, and civilisation, read across four seasonal quarters in 2026.</p>
-                </article>
-            </div>
-        </section>
-
+                <nav class="project-links" aria-label="Project links"><a href="https://chromewebstore.google.com/detail/swipe-for-letterboxd/ohbelhoiflmpgbboihmjnbdbpgojjdhm">Install from Chrome Web Store <span aria-hidden="true">↗</span></a><a href="https://github.com/leathalobaidi/vypode-letterboxd">View on GitHub <span aria-hidden="true">↗</span></a></nav></template>
+</article>
+      </section>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-social">
-                <a href="https://leathalobaidi.substack.com/">Substack</a>
-                <a href="https://linkedin.com/in/leath-al-obaidi/">LinkedIn</a>
-                <a href="https://x.com/pluckup_courage">X</a>
-                <a href="https://github.com/leathalobaidi">GitHub</a>
-            </div>
-            <p style="margin-top:var(--spacing-md);">&copy; 2026 Leath Al Obaidi</p>
+    <p class="interaction-hint">drag to rotate · select to explore</p>
+    <noscript><p class="noscript-note">Explore the collection above, or visit <a href="/blog/">my writing</a>. I’m an economist working in regulatory finance at Smart DCC, based in London.</p></noscript>
+  </main>
+  <footer class="gallery-controls">
+    <div class="view-controls" aria-label="Gallery layout">
+      <button class="icon-button previous-mode" type="button" aria-label="Previous gallery layout">←</button>
+      <div class="mode-selector">
+        <button class="text-button mode-toggle" type="button" aria-expanded="false" aria-controls="mode-menu">sphere <span aria-hidden="true">⌃</span></button>
+        <div class="mode-menu" id="mode-menu" role="group" aria-label="Choose a layout" hidden>
+          <button type="button" data-mode="sphere" aria-pressed="true">sphere</button>
+          <button type="button" data-mode="heart" aria-pressed="false">heart</button>
+          <button type="button" data-mode="smiley" aria-pressed="false">smiley</button>
+          <button type="button" data-mode="star" aria-pressed="false">star</button>
+          <button type="button" data-mode="grid" aria-pressed="false">grid</button>
         </div>
-    </footer>
-
-    <script>
-        // Highlight the active nav link as you scroll (rAF-throttled)
-        const sections = document.querySelectorAll('.page-section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-        let ticking = false;
-
-        function updateActiveLink() {
-            let current = 'home';
-            sections.forEach(section => {
-                if (window.scrollY >= section.offsetTop - 80) current = section.id;
-            });
-            navLinks.forEach(link => {
-                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
-            });
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) { requestAnimationFrame(updateActiveLink); ticking = true; }
-        }, { passive: true });
-        updateActiveLink();
-    </script>
-
-
-</body></html>
+      </div>
+      <button class="icon-button next-mode" type="button" aria-label="Next gallery layout">→</button>
+      <button class="text-button motion-toggle" type="button" aria-pressed="false" aria-label="Pause gallery motion">pause</button>
+    </div>
+    <nav class="filters" aria-label="Filter collection">
+      <button type="button" data-filter="all" aria-pressed="true">all</button>
+      <button type="button" data-filter="projects" aria-pressed="false">projects</button>
+      <button type="button" data-filter="writing" aria-pressed="false">writing</button>
+    </nav>
+  </footer>
+  <dialog class="project-dialog" aria-labelledby="project-title">
+    <div class="dialog-toolbar"><span class="project-meta"></span><button class="text-button close-project" type="button" autofocus>close <span aria-hidden="true">×</span></button></div>
+    <div class="project-layout"><div class="project-preview"></div><div class="project-copy"><h2 id="project-title"></h2><div class="project-body"></div></div></div>
+    <nav class="project-navigation" aria-label="Browse collection"><button class="text-button previous-project" type="button">← previous</button><span class="project-position"></span><button class="text-button next-project" type="button">next →</button></nav>
+  </dialog>
+  <dialog class="about-dialog" aria-labelledby="about-title">
+    <div class="dialog-toolbar"><span>about me</span><button class="text-button close-about" type="button" autofocus>close <span aria-hidden="true">×</span></button></div>
+    <div class="about-content">
+      <h2 id="about-title">leath al obaidi<span class="pronunciation">/leɪθ/ · rhymes with faith</span></h2>
+      <section class="bio-note" style="--note:#285cba"><span class="note-label">now · london</span><p>I’m an economist working in regulatory finance at Smart DCC, the company running Britain’s smart meter data network.</p><p>I also serve as a Non Executive Director at Wenta and sit on the Council of the Society of Professional Economists.</p></section>
+      <section class="bio-note" style="--note:#9b3974"><span class="note-label">before · british business bank</span><p>I spent six years at the British Business Bank, helping secure over £1bn in government funding and leading programmes that supported over a million businesses during the pandemic.</p></section>
+      <section class="bio-note" style="--note:#286441"><span class="note-label">a little further back · austria → london</span><p>I grew up in Austria and studied economics in Vienna and Nottingham. I now live in London.</p></section>
+      <section class="bio-note" style="--note:#875000"><span class="note-label">always · curious</span><p>Economics, regulation, business, language, history and philosophy. Also cinema, useful tools and questions that turn into projects.</p><p>This is a place for what I’m reading, thinking about and working on. You can find my essays in <a href="/blog/">the writing archive</a>.</p></section>
+      <section class="bio-note" style="--note:#585454"><span class="note-label">in progress · stripe press book club</span><p>A reading community working through the Stripe Press catalogue, organised into four quarters of reading and discussion.</p></section>
+      <nav class="social-links" aria-label="Find me elsewhere"><a href="https://leathalobaidi.substack.com/">Substack ↗</a><a href="https://linkedin.com/in/leath-al-obaidi/">LinkedIn ↗</a><a href="https://x.com/pluckup_courage">X ↗</a><a href="https://github.com/leathalobaidi">GitHub ↗</a></nav>
+    </div>
+  </dialog>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"1c045cecc3f64da1a64ad3f146a11977"}'></script>
+</body>
+</html>
