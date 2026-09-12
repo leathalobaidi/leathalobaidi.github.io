@@ -1,0 +1,190 @@
+{
+  "README.md": {
+    "bytes": 7830,
+    "sha256": "4b7e5338b53eb767396472e02de4660e701a7e25add8cb57d1cb849b0a594496"
+  },
+  "catalogue.csv": {
+    "bytes": 544910,
+    "sha256": "c213ddaf4f4bf2532e117cd9f4c5fca0e4cffa7f145f4080c0a9627485dddf27"
+  },
+  "choices.csv": {
+    "bytes": 1004416,
+    "sha256": "04ab67259f8c2f30f527a9f0b0a81c4e2764e056904283fcaa80d6310dd77dd3"
+  },
+  "criterion-explorer.html": {
+    "bytes": 12327507,
+    "sha256": "702de9f29f5f5252f32563dbf25dc759dc3ca2b06ea9c37ae43b4dc3ad2bb182"
+  },
+  "criterion-public-sources.sqlite": {
+    "bytes": 8069120,
+    "sha256": "e958fab66d08b2eb5796fe8eb9489ff29f10bb8501bedc0f06cff8ba5212ec37"
+  },
+  "events.csv": {
+    "bytes": 263811,
+    "sha256": "c4a039ecaa56625247bbb6b4485a13846cefee595128c1373fd221bfb555a2c1"
+  },
+  "explorer-data.json": {
+    "bytes": 1930202,
+    "sha256": "aa97034dec85b8e1d72764816076e4af3d5646fd4f3c40c1055facb9dfeb968a"
+  },
+  "official-closet-pages.json": {
+    "bytes": 627506,
+    "sha256": "bd9d2073bab3cc11e172c0ecef737b20b82fe1a41e492704161890d219f5b445"
+  },
+  "role-reviews.json": {
+    "bytes": 17475,
+    "sha256": "bf50f7863286b9831dabaa7df574335ce9a739673573918a434686cc8bbd2f31"
+  },
+  "source-manifest.json": {
+    "bytes": 4720,
+    "sha256": "c339317bd28b955fc5e06ebe31df3a18288164a2bec7ba22aa75c807f7850288"
+  },
+  "sources/arrismo_catalogue.csv": {
+    "bytes": 105075,
+    "sha256": "b8f1a655e0e921c8e6fba698f8d6ba7b21d5d23375466b09ac61df54ecd29f53"
+  },
+  "sources/arrismo_catalogue.json": {
+    "bytes": 183969,
+    "sha256": "43a7c59133f728a826e50d6107f7a5ebb4fef6250221b6bbad5b7b91e86469e7"
+  },
+  "sources/arrismo_set_members.csv": {
+    "bytes": 31384,
+    "sha256": "5197c893359e3e550923cbf8cf7db18a682a1f57551f0a714547a56050cbaf5e"
+  },
+  "sources/arrismo_set_members.json": {
+    "bytes": 61913,
+    "sha256": "b5b7e65cada330ff197d5cb182c23d5e3dff749213d05d1b56bd00af7b98a8e5"
+  },
+  "sources/baronia_film_observations.csv": {
+    "bytes": 1108742,
+    "sha256": "8bf247e47bd3f69685e923ed81688fe8d440079bf460a71723fc6bda62df0fb1"
+  },
+  "sources/baronia_film_observations.json": {
+    "bytes": 1682947,
+    "sha256": "87c43b23956fd7a84f10fb54ee26e4cace2ea622a4f7dc3d33d4414eaa12b8f3"
+  },
+  "sources/baronia_visit_metadata.csv": {
+    "bytes": 84725,
+    "sha256": "e035a311cf5bab5c376a2e25970a1add383847f485fa771a906a3fa25ae34ef5"
+  },
+  "sources/baronia_visit_metadata.json": {
+    "bytes": 118021,
+    "sha256": "622db49a7c80832e8548b294ffa4b74d2d79cdd54c7d4ee2ee48cc0cb3b2a0dd"
+  },
+  "sources/catalogue.csv": {
+    "bytes": 276333,
+    "sha256": "573698dc00952fc87b6897b65aae6810799662d311d8e04c98e1f8875fb02e6a"
+  },
+  "sources/catalogue.json": {
+    "bytes": 491502,
+    "sha256": "529062f1f81239070c8a6e13482a9c3d2c9e67ad0df298e96c5e55ab079836a1"
+  },
+  "sources/closet_visit_index.csv": {
+    "bytes": 54657,
+    "sha256": "2fd1519a36436c54578b204d48188ad9d78772a88b0efda788dfdd174e367c72"
+  },
+  "sources/closet_visit_index.json": {
+    "bytes": 77974,
+    "sha256": "d36bf132366d5ebc15fbd850bc14e12f0f0325ad4f7da8e0ab9249714d521e8e"
+  },
+  "sources/legacy_films.csv": {
+    "bytes": 300019,
+    "sha256": "c2798512fac26b85728bcc1deea4138dde8c77c42bea5f237d10f3b498e6c6db"
+  },
+  "sources/legacy_films.json": {
+    "bytes": 445909,
+    "sha256": "10bcb1acd4b5c7951e83c6e906a63044463098f4f72fccdcdc772f36fae2e7cc"
+  },
+  "sources/legacy_guests.csv": {
+    "bytes": 106530,
+    "sha256": "5c4f385934ce0fa3404172a2ef482393afaa96b879412fb90f2067822bfa23bb"
+  },
+  "sources/legacy_guests.json": {
+    "bytes": 149556,
+    "sha256": "8789bdb2408dc1f60414dc3a37293ea9582c30f706c5b1ae4688f926faec8d5a"
+  },
+  "sources/legacy_picks.csv": {
+    "bytes": 799088,
+    "sha256": "99d151617b67bd9543dd168cf02f888a7d85457c9f9d680d34568a30d93ec6b5"
+  },
+  "sources/legacy_picks.json": {
+    "bytes": 1306859,
+    "sha256": "6e7fdac338f0361616e822da0609544a74f816468b82344209a1ff2098be1ada"
+  },
+  "sources/official_closet_choices.csv": {
+    "bytes": 699188,
+    "sha256": "3549e7392b4e68343391cee784781d17e3632c93d173bafff725031622f71f58"
+  },
+  "sources/official_closet_choices.json": {
+    "bytes": 932410,
+    "sha256": "b49ecb4e56b13fb769976fa4f1fbd08896c5e9cf22ad1d705f3f81c73455204e"
+  },
+  "sources/official_new_choices.csv": {
+    "bytes": 93965,
+    "sha256": "60110ca761b8406c9129e65be8ef968e5f136dda7312e0db4e84df63928ee2be"
+  },
+  "sources/official_new_choices.json": {
+    "bytes": 139188,
+    "sha256": "c30e8a586ab85cf67e7e6c28ead66a7263d778bcd3d0e3ca585accf6506dda0b"
+  },
+  "sources/official_written_choices.csv": {
+    "bytes": 729515,
+    "sha256": "b7693b4998f8168cd2894628f59498fad54bc84531a21ad6b2ac43ebd0b379d4"
+  },
+  "sources/official_written_choices.json": {
+    "bytes": 1242875,
+    "sha256": "91dbb7b95864f4c0fe0e88f8e5b24bf708515356c1ee9f80347ab6981a16d6a4"
+  },
+  "sources/walker_list_index.csv": {
+    "bytes": 25428,
+    "sha256": "3ebfc894f0322e3be12d42111a3550093cd868f3409a3fc16bdca6124f9e6514"
+  },
+  "sources/walker_list_index.json": {
+    "bytes": 30580,
+    "sha256": "90ca467d6d10e42a305978fdaaf60e58c1daa1cbafce18bfe658c8ec355c830b"
+  },
+  "sources/walker_recommendations.csv": {
+    "bytes": 440819,
+    "sha256": "0c8d6b514f777f854b87a578a9135eda9ee64b7f65f2abf15c6b716c4bfda527"
+  },
+  "sources/walker_recommendations.json": {
+    "bytes": 660913,
+    "sha256": "e04680815686032de585cf389d4ab598905ac497501e50d0aa2f5ac2da8d4e2d"
+  },
+  "sources/westen_films.csv": {
+    "bytes": 1046640,
+    "sha256": "b831de6e3855d1ae6cac39f5887fc0008a948217667f60035d31b5a73a7dc893"
+  },
+  "sources/westen_films.json": {
+    "bytes": 1213057,
+    "sha256": "d1263658813a7eea47dc333a2140377cbfff6f8b308aa2b26e0f761287d7f810"
+  },
+  "sources/westen_guests.csv": {
+    "bytes": 95088,
+    "sha256": "3ce2689a00964b35b62761b0411c16168f08d2e775bf2de3fb2b22c4e1354342"
+  },
+  "sources/westen_guests.json": {
+    "bytes": 195068,
+    "sha256": "4108a3633bb45991e1d42e08163522d8f13758976039ccaebe2008e6bb6713ab"
+  },
+  "sources/westen_picks.csv": {
+    "bytes": 516188,
+    "sha256": "7207913f4258a53f13b570c2695aba72057b6e382b0c127daef4c42f77ecbba5"
+  },
+  "sources/westen_picks.json": {
+    "bytes": 1377180,
+    "sha256": "84a60bf01064ac5fbcbf9d95b274562ac96c24cb2293cff96736ef6fae3d8619"
+  },
+  "sources/written_list_index.csv": {
+    "bytes": 29741,
+    "sha256": "25d77430593dd2ac331f51100f18c7c58043b354e63ae8ad802ae9927a3820db"
+  },
+  "sources/written_list_index.json": {
+    "bytes": 39501,
+    "sha256": "09bfc441a48a844faa701ce0f4ce97d65525f47fe9ef69d3a6abbab33e5b675b"
+  },
+  "written-guest-metadata.json": {
+    "bytes": 49588,
+    "sha256": "ecbe9a467351656e17079ea4aa560b7bb90b9163e2fcef175330174900df43e5"
+  }
+}

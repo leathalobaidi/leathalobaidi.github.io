@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Criterion Explorer — Leath Al Obaidi</title>
+  <meta name="description" content="Explore the Criterion catalogue, 410 Closet visits and 272 guest Top 10 lists. Filter films and recommendations by guest, profession, filmmaker and decade.">
+  <link rel="canonical" href="https://leathalobaidi.com/projects/criterion-closet/explorer/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="explorer.css">
+  <script src="model.js" defer></script>
+  <script src="explorer.js" defer></script>
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c045cecc3f64da1a64ad3f146a11977"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+<a class="skip" href="#results">Skip to results</a>
+<header class="site-nav"><a class="identity" href="/">Leath Al Obaidi<span> / Projects</span></a><nav aria-label="Criterion pages"><a href="../">Taste map</a><a href="../syllabus.html">Viewing syllabus</a><a href="#about">About the data ↗</a></nav></header>
+<main class="shell">
+  <section class="hero" aria-labelledby="page-title">
+    <div><p class="eyebrow"><span class="roundel" aria-hidden="true">C</span> An independent Criterion project</p><h1 id="page-title">A collection<br>of <em>choices.</em></h1></div>
+    <div class="intro"><p>Find your next film through the people who love it.</p><p class="muted">Browse the collection, step inside the Closet, or read a filmmaker’s Top 10. Follow every selection back to its source.</p><a class="text-link" href="#explorer">Explore the dataset <span aria-hidden="true">↓</span></a></div>
+  </section>
+  <div class="inventory" aria-label="Dataset coverage">
+    <button data-view="catalogue"><strong>1,872</strong><span>Catalogue entries <small>1,718 film entries · 154 box sets</small></span><b aria-hidden="true">↗</b></button>
+    <button data-view="closet"><strong>410</strong><span>Closet visits <small>Guests and their selected releases</small></span><b aria-hidden="true">↗</b></button>
+    <button data-view="top10"><strong>272</strong><span>Written Top 10 lists <small>3,075 listed titles</small></span><b aria-hidden="true">↗</b></button>
+  </div>
+  <section id="explorer" aria-label="Dataset explorer">
+    <div class="section-heading"><h2>Explore the collection</h2><span class="snapshot">Snapshot · 12 Sep 2026</span></div>
+    <nav class="views" aria-label="Dataset view">
+      <button data-view="catalogue" aria-pressed="true">All catalogue entries</button>
+      <button data-view="closet" aria-pressed="false">Closet visits</button>
+      <button data-view="top10" aria-pressed="false">Written Top 10s</button>
+      <button data-view="popular" aria-pressed="false">Most picked</button>
+      <button data-view="sources" aria-pressed="false">Source tables</button>
+    </nav>
+    <p id="view-description" class="view-description">All entries in the current Criterion catalogue, including films, compilations and box sets.</p>
+    <form id="filters" autocomplete="off">
+      <div class="filter-grid">
+        <label class="search-label"><span>Search the dataset</span><input id="search" type="search" placeholder="Film, guest, director…" spellcheck="false"></label>
+        <label class="standard-filter"><span>Chosen by</span><select id="role"><option value="">All professions</option></select></label>
+        <label class="standard-filter"><span>Guest</span><select id="person"><option value="">All guests</option></select></label>
+        <label class="standard-filter"><span>Sort</span><select id="sort"><option value="title">Title A–Z</option><option value="popular">Most picked</option><option value="year-new">Newest year</option><option value="year-old">Oldest year</option><option value="spine">Spine number</option></select></label>
+        <label id="source-table-label" hidden><span>Source table</span><select id="source-table"></select></label>
+      </div>
+      <details id="more-filters" class="standard-filter"><summary>More filters <span id="filter-count"></span></summary>
+        <div class="filter-grid extra">
+          <label><span>Film director</span><select id="director"><option value="">All film directors</option></select></label>
+          <label><span>Release type</span><select id="kind"><option value="">Films and box sets</option><option value="film">Film / compilation entries</option><option value="set">Box sets</option><option value="other">Other recorded items</option></select></label>
+          <label><span>Film decade</span><select id="decade"><option value="">All decades</option></select></label>
+          <label><span>Country</span><select id="country"><option value="">All countries</option></select></label>
+          <label id="format-label"><span>Selection source</span><select id="format"><option value="">Closet + written lists</option><option value="closet">Closet visits only</option><option value="top10">Written lists only</option></select></label>
+          <label><span>Count by</span><select id="unit"><option value="events">Visits / written lists</option><option value="selectors">Distinct guest names</option></select></label>
+        </div>
+        <label class="checkbox"><input id="expand" type="checkbox"> Include known box-set contents in film counts</label>
+        <p class="filter-help">Profession describes the guest choosing the film. Joint selections stay together. Box-set contents are indirect selections and their mappings are incomplete.</p>
+      </details>
+    </form>
+    <div class="result-toolbar"><p id="result-count" role="status" aria-live="polite">Loading the dataset…</p><div><button id="reset" class="subtle">Reset filters</button><button id="export" class="outline" disabled>Export results ↓</button></div></div>
+    <p id="count-note" class="count-note"></p>
+    <div id="results" tabindex="-1" aria-busy="true"><div class="loading">Opening the collection…</div></div>
+    <div class="pagination" id="pagination" hidden><button id="previous" class="outline">← Previous</button><span id="page-info"></span><button id="next" class="outline">Next →</button></div>
+  </section>
+  <section id="about" class="about" aria-labelledby="about-title">
+    <div><p class="eyebrow">A note on the collection</p><h2 id="about-title">Two ways to<br>share a favourite.</h2><p>Criterion invites artists into its physical <strong>Closet</strong> to choose releases and talk about them on video. Its <strong>written Top 10 lists</strong> are a separate editorial series: guests publish film selections with commentary.</p><p>The 272 is the number of articles in Criterion’s written-list index on 12 September 2026. Ties and grouped choices mean an article can contain more than ten titles.</p><a class="text-link" href="https://www.criterion.com/current/top-10-lists" target="_blank" rel="noopener noreferrer">Visit Criterion’s written Top 10 archive ↗</a></div>
+    <div class="method"><h3>Read the numbers with the choices.</h3><p>One selected box set counts as one release. The optional contents view adds known films reached through sets. Each title counts at most once per visit or written list. “Distinct guest names” combines repeat appearances under the same normalized name; joint guests count as one group.</p><p>Profession filters use sourced public roles. People may have several roles; joint choices and unknown professions have their own filters. The catalogue includes compilations, series and entries without spine numbers.</p><p id="role-coverage"></p><p>IMDb and Letterboxd links open the matched film page where available, or a labelled search. Numeric ratings are not included in this public release.</p><details><summary>Coverage and source notes</summary><p>All 410 indexed Closet pages and 272 written lists have structured selections. Spoken recommendations, prose-only mentions, other editorial series and the changing Criterion Channel catalogue are not exhaustively transcribed here. Dates are shown only when sourced.</p><p>The source tables preserve all imported records, including overlapping historical data. They are reference tables, not extra votes in the rankings. Legacy ratings and personal demographic fields are omitted from this public export.</p><ul><li><a href="https://www.criterion.com/shop/browse/list?sort=spine_number">Criterion catalogue</a> and <a href="https://www.criterion.com/closet-picks/search">Closet index</a></li><li><a href="https://github.com/neelbaronia/criterion-closet-explorer">Neel Baronia’s Closet dataset</a></li><li><a href="https://github.com/brittonwalker/criterion-top-ten">Britton Walker’s written-list dataset</a></li><li><a href="https://closetpicks.westenb.org/llm-export/">Weston Westenborg’s exports</a></li><li><a href="https://github.com/arrismo/criterioncollection">arrismo’s catalogue and sets</a></li></ul></details></div>
+  </section>
+  <section class="downloads" aria-labelledby="download-title"><div><p class="eyebrow">Take the data with you</p><h2 id="download-title">For your own discoveries.</h2><p>Catalogue, events, choices and every imported source table.</p></div><div class="download-links"><a href="data/criterion-explorer.html" download>Filterable HTML copy ↓</a><a href="data/criterion-public-dataset.zip" download>Full public dataset ZIP ↓</a><a href="data/criterion-public-sources.sqlite" download>SQLite database ↓</a><a href="data/explorer-data.json" download>Explorer JSON ↓</a><a href="data/README.md">Data dictionary &amp; method ↗</a></div></section>
+</main>
+<footer><p>Built by <a href="/">Leath Al Obaidi</a>. An independent project, unaffiliated with the Criterion Collection.</p><a href="#page-title">Back to top ↑</a></footer>
+<dialog id="detail"><div class="dialog-header"><span class="eyebrow" id="detail-type"></span><button id="close-detail" aria-label="Close details">×</button></div><div id="detail-body"></div></dialog>
+<noscript><p class="no-script">Enable JavaScript to filter the collection. You can also <a href="data/catalogue.csv">download the catalogue CSV</a>, <a href="data/events.csv">events CSV</a>, or <a href="data/choices.csv">choices CSV</a>.</p></noscript>
+</body>
+</html>

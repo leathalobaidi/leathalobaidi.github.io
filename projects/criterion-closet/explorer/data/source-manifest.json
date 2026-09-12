@@ -1,0 +1,121 @@
+[
+  {
+    "file": "neel-films.json",
+    "source_url": "https://raw.githubusercontent.com/neelbaronia/criterion-closet-explorer/main/data/films.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 2920247,
+    "sha256": "ac1df642030b11d4fdd6ba32f8256ed932c259813073283e725d2a73fa5a94a2"
+  },
+  {
+    "file": "neel-videos.json",
+    "source_url": "https://raw.githubusercontent.com/neelbaronia/criterion-closet-explorer/main/data/closet-videos.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 204307,
+    "sha256": "c9acc24f0365818d3ab26a3d68757874bcd125319b2066d28d1b1c9b29443db7"
+  },
+  {
+    "file": "neel-stats.json",
+    "source_url": "https://raw.githubusercontent.com/neelbaronia/criterion-closet-explorer/main/data/archive-stats.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 241,
+    "sha256": "3e75e8ecc39f6659c4b50c7342b98db0e5aa78ab9b8a88b41e02a67717b44aab"
+  },
+  {
+    "file": "walker-films.json",
+    "source_url": "https://raw.githubusercontent.com/brittonwalker/criterion-top-ten/main/data/films.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 488082,
+    "sha256": "1beff3028ef2e23fe7073f21706069ae14ec424e3190218dcb875a3ffc530143"
+  },
+  {
+    "file": "walker-posts.json",
+    "source_url": "https://raw.githubusercontent.com/brittonwalker/criterion-top-ten/main/data/initialPosts.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 36220,
+    "sha256": "13d5014263d16849fcd40b1171f84329b3ba61b673f69277d9b52edf2e9c86be"
+  },
+  {
+    "file": "arrismo-catalogue.csv",
+    "source_url": "https://raw.githubusercontent.com/arrismo/criterioncollection/main/data-raw/criterion.csv",
+    "retrieved_date": "2026-09-12",
+    "bytes": 154920,
+    "sha256": "2bfbc1d0a1904eaa8c1cd181c86f4e4b408794a3910ae1827c9e1e690ecec8b2"
+  },
+  {
+    "file": "arrismo-boxsets.csv",
+    "source_url": "https://raw.githubusercontent.com/arrismo/criterioncollection/main/data-raw/boxsets.csv",
+    "retrieved_date": "2026-09-12",
+    "bytes": 31383,
+    "sha256": "fc63ea030623f1477cabb79f3d8cc24875bbadd9c2d71fd603db802f36292e50"
+  },
+  {
+    "file": "westen-guests.json",
+    "source_url": "https://closetpicks.westenb.org/exports/guests.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 182346,
+    "sha256": "19cbfe9fdead9a0ecb68e2fada0d380b75282d41e6bf3a00af43d13a845c8fa7"
+  },
+  {
+    "file": "westen-films.json",
+    "source_url": "https://closetpicks.westenb.org/exports/films.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 1217879,
+    "sha256": "4330425e1643d2c6bd9e5d72f947f29f331440ff000f03a5a949aba3d6ddb272"
+  },
+  {
+    "file": "westen-picks.json",
+    "source_url": "https://closetpicks.westenb.org/exports/picks.json",
+    "retrieved_date": "2026-09-12",
+    "bytes": 2039890,
+    "sha256": "639a882bf22a051de3ed0b3ec3654e925944711842d50866b5a2a5dc7ed0aeef"
+  },
+  {
+    "file": "official-catalogue.csv",
+    "source_url": "https://www.criterion.com/shop/browse/list?sort=spine_number",
+    "retrieved_date": "2026-09-12",
+    "bytes": 222176,
+    "sha256": "226545a6d97d918a8656f411fd88684721518bd1bb52a64c9d8100aeedcde85a"
+  },
+  {
+    "file": "official-indexes.json",
+    "source_url": "https://www.criterion.com/closet-picks/search ; https://www.criterion.com/current/top-10-lists",
+    "retrieved_date": "2026-09-12",
+    "bytes": 134965,
+    "sha256": "5cad8892d682110f930de49c2750fb70eff4e413325a442e7bcd56d5ae1504a1"
+  },
+  {
+    "file": "official-additions.json",
+    "source_url": "individual source URLs in records",
+    "retrieved_date": "2026-09-12",
+    "bytes": 110530,
+    "sha256": "5bdede03d9ab789bc3fcfc9dea61adc606b9a905b788eed447defe1ea04f460d"
+  },
+  {
+    "file": "live-criterion_closet.db",
+    "source_url": "https://leathalobaidi.com/projects/criterion-closet/data/criterion_closet.db",
+    "retrieved_date": "2026-09-12",
+    "bytes": 1826816,
+    "sha256": "1108f05441571edca6ac124c43f214e8e771ce2c1d196d6bc44fbaeaa236ca4c"
+  },
+  {
+    "file": "official-top-ten-pages.json",
+    "source_url": "https://www.criterion.com/current/top-10-lists ; individual page URLs in records",
+    "retrieved_date": "2026-09-12",
+    "bytes": 803635,
+    "sha256": "c2fdfc745bc9b4eaa6e1a8f2e59427d0176ee1d3ddf682dbde02cd54489c6226"
+  },
+  {
+    "file": "official-closet-pages.json",
+    "source_url": "Individual official Criterion URLs in records",
+    "retrieved_date": "2026-09-12",
+    "bytes": 960661,
+    "sha256": "a0e53bb1e752659962ef379dcf7a2b22a7a293aaa95791bf6b5171605c7cc8bb"
+  },
+  {
+    "file": "written-guest-metadata.json",
+    "source_url": "Individual official Criterion URLs in records",
+    "retrieved_date": "2026-09-12",
+    "bytes": 191568,
+    "sha256": "efdc0455473570e410450a6269867b12d92326a8bb34417867e16fab89ecbfab"
+  }
+]
