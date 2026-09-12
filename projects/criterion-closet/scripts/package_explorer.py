@@ -16,6 +16,7 @@ html = re.sub(r'^[ \t]+$', '', html, flags=re.M)
 html = re.sub(r'<!-- Cloudflare Web Analytics -->.*?<!-- End Cloudflare Web Analytics -->', '', html, flags=re.S)
 html = html.replace('href="data/', 'href="https://leathalobaidi.com/projects/criterion-closet/explorer/data/')
 html = html.replace('href="../syllabus.html"', 'href="https://leathalobaidi.com/projects/criterion-closet/syllabus.html"')
+html = html.replace('href="../discover/"', 'href="https://leathalobaidi.com/projects/criterion-closet/discover/"')
 html = html.replace('href="../"', 'href="https://leathalobaidi.com/projects/criterion-closet/"')
 html = html.replace('href="/"', 'href="https://leathalobaidi.com/"').replace('href="/favicon.svg"', 'href="https://leathalobaidi.com/favicon.svg"')
 source_data = {p.stem: json.loads(p.read_text()) for p in sorted((data / 'sources').glob('*.json'))}

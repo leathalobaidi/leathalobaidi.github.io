@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#202723">
+  <title>A Collection of Choices — A Criterion story</title>
+  <meta name="description" content="A visual journey through the Criterion Collection. Discover what film people choose, how tastes overlap, and where your next film might be hiding.">
+  <link rel="canonical" href="https://leathalobaidi.com/projects/criterion-closet/discover/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="story.css">
+  <script src="../explorer/model.js" defer></script>
+  <script src="story-model.js" defer></script>
+  <script src="story.js" defer></script>
+<!-- Cloudflare Web Analytics -->
+<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1c045cecc3f64da1a64ad3f146a11977"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</head>
+<body>
+<a class="skip" href="#collection">Skip to the story</a>
+<header class="site-header"><a href="/" class="identity">Leath Al Obaidi<span> / An independent Criterion project</span></a><a href="../explorer/" class="header-link">Explore the data <span aria-hidden="true">↗</span></a><div class="reading-progress" aria-hidden="true"><span id="progress"></span></div></header>
+<nav class="chapter-nav" aria-label="Story chapters">
+  <a href="#collection" aria-label="Chapter 1: The collection"><span>01</span><b>The collection</b></a>
+  <a href="#invitations" aria-label="Chapter 2: The invitations"><span>02</span><b>The invitations</b></a>
+  <a href="#favourites" aria-label="Chapter 3: The favourites"><span>03</span><b>The favourites</b></a>
+  <a href="#professions" aria-label="Chapter 4: The people"><span>04</span><b>The people</b></a>
+  <a href="#decades" aria-label="Chapter 5: The decades"><span>05</span><b>The decades</b></a>
+  <a href="#boxsets" aria-label="Chapter 6: The box sets"><span>06</span><b>The box sets</b></a>
+  <a href="#your-turn" aria-label="Chapter 7: Your next film"><span>07</span><b>Your next film</b></a>
+</nav>
+<main>
+  <section class="hero" id="top" aria-labelledby="page-title">
+    <div class="hero-art" aria-hidden="true"><canvas id="hero-field"></canvas></div>
+    <div class="hero-content"><p class="eyebrow"><span class="tiny-star">✳</span> Cinema, through other people’s eyes</p><h1 id="page-title">A collection<br>of <em>choices.</em></h1><p class="hero-deck">Every film is a possibility.<br>Someone else’s favourite might be your next.</p><a class="round-link" href="#collection"><span class="circle-arrow" aria-hidden="true">↓</span> Follow the choices</a></div>
+    <div class="hero-bottom"><p><strong>1,872</strong> catalogue entries</p><p><strong>682</strong> visits &amp; written lists</p><p class="hero-caption">One mark for every catalogue entry.<br>A snapshot of a collection, and the people drawn to it.</p></div>
+  </section>
+  <div id="load-status" class="load-status" role="status">Opening the collection… <button id="retry" hidden>Try again</button></div>
+  <noscript><p class="notice">The story’s interactive charts need JavaScript. <a href="../explorer/data/README.md">Read the data notes</a> or <a href="../explorer/data/criterion-public-dataset.zip">download the complete public dataset</a>.</p></noscript>
+
+  <section class="shelf-section wrap chapter" id="collection" aria-labelledby="shelf-heading">
+    <div class="shelf-copy">
+      <article class="scroll-step" data-shelf="all"><p class="eyebrow">01 / The collection</p><h2 id="shelf-heading">A whole shelf<br>of <em>possibilities.</em></h2><p>Before anyone makes a choice, there is the collection. Films, shorts, series, compilations. And boxes that hold entire worlds.</p><p class="large-number" data-count="catalogue">1,872</p><p class="number-caption">entries in the Criterion catalogue<br><span class="muted">1,718 film entries · 154 box sets</span></p><a class="under-link" href="../explorer/?view=catalogue">Browse every entry ↗</a></article>
+      <article class="scroll-step" data-shelf="picked"><p class="eyebrow">A selection leaves a trace</p><h2>Some titles<br>keep getting<br><em>passed along.</em></h2><p>Across the indexed Closet visits and written lists, <strong data-count="picked">1,199</strong> current catalogue entries were selected directly at least once.</p><p>Each lit mark is a release someone chose. A box set stays one choice here.</p><a class="under-link" href="../explorer/?view=popular">Follow the recorded choices ↗</a></article>
+      <article class="scroll-step" data-shelf="unpicked"><p class="eyebrow">And there is room to wander</p><h2>The quieter<br>part of<br><em>the shelf.</em></h2><p><strong data-count="unpicked">673</strong> catalogue entries have no direct selection in these sources. Some are included inside selected sets; others are simply waiting off the beaten path.</p><p class="muted">No recorded choice does not mean no admirers. It describes the coverage of this dataset.</p></article>
+    </div>
+    <figure class="shelf-stage"><div class="figure-head"><span>The entire catalogue</span><span>1 mark = 1 entry</span></div><fieldset class="segmented shelf-controls" disabled aria-label="Highlight catalogue entries"><button data-mode="all" aria-pressed="true">All entries</button><button data-mode="picked" aria-pressed="false">Chosen</button><button data-mode="unpicked" aria-pressed="false">No direct choice</button></fieldset><div class="canvas-wrap"><canvas id="shelf-field" role="img" aria-label="Mosaic of 1,872 catalogue entries. Use the highlight buttons to show entries with and without recorded direct choices." aria-describedby="shelf-summary"></canvas></div><figcaption><div id="shelf-summary">1,872 entries · film entries and box sets</div><p id="shelf-selection">Tap a mark to meet a film. <a href="../explorer/?view=catalogue">Or browse the full catalogue ↗</a></p></figcaption></figure>
+  </section>
+
+  <section class="invitations chapter" id="invitations" aria-labelledby="invitations-heading"><div class="wrap">
+    <div class="section-intro reveal"><p class="eyebrow">02 / The invitations</p><h2 id="invitations-heading">Two ways to say<br><em>“you have to see this.”</em></h2><p>A camera in the Closet. A list on a page. Two different occasions for people to share the films that stay with them.</p></div>
+    <div class="format-cards"><a class="format-card closet-card" href="../explorer/?view=closet"><span class="format-symbol" aria-hidden="true">▶</span><div><p class="eyebrow">Inside the Closet</p><h3><span data-count="closet">410</span><small>visits</small></h3><p>Guests choose releases from Criterion’s shelves and talk about what they mean to them.</p></div><div class="card-foot"><span>3,381 displayed choices*</span><span aria-hidden="true">↗</span></div></a><a class="format-card written-card" href="../explorer/?view=top10"><span class="format-symbol handwritten" aria-hidden="true">10</span><div><p class="eyebrow">On the page</p><h3><span data-count="top10">272</span><small>written lists</small></h3><p>Criterion’s guest Top 10 series: personal selections accompanied by written commentary.</p></div><div class="card-foot"><span>3,075 listed title entries</span><span aria-hidden="true">↗</span></div></a></div>
+    <div class="aside-note"><span class="note-mark" aria-hidden="true">↳</span><p><strong>Why do 272 Top 10s contain 3,075 titles?</strong><br>The number 272 counts articles, not films. Ties and grouped selections let a guest fit several titles into one position. These lists are separate from the Closet videos.</p><p class="fine-print">*The Closet source rows include one Criterion tote bag. It stays in the archive and is excluded from film rankings. These are structured page selections, not exhaustive transcripts of everything said on video.</p></div>
+  </div></section>
+
+  <section class="favourites wrap chapter" id="favourites" aria-labelledby="favourites-heading">
+    <div class="section-intro reveal"><p class="eyebrow">03 / The favourites</p><h2 id="favourites-heading">A shared love.<br><em>No single consensus.</em></h2><p>Even the most frequently chosen film appears in a small share of all visits and lists. There are many ways into cinema.</p></div>
+    <fieldset class="segmented" id="rank-controls" disabled aria-label="Ranking source"><button data-format="" aria-pressed="true">Both formats</button><button data-format="closet" aria-pressed="false">Closet visits</button><button data-format="top10" aria-pressed="false">Written Top 10s</button></fieldset>
+    <div class="ranking-layout"><div class="leader-card" aria-live="polite"><span class="eyebrow">The most directly picked film entry</span><h3 id="leader-title">8½</h3><p id="leader-meta">Federico Fellini · 1963</p><div class="leader-stat"><strong id="leader-share">6.0<span>%</span></strong><p id="leader-count">41 of 682 visits &amp; lists</p></div><p class="fine-print">Selection frequency describes this archive of guests. It is not an audience rating or a vote on the “best” film.</p></div><div class="rank-chart"><div class="figure-head"><span>Film entries · direct choices only</span><span>Number of visits / lists</span></div><ol id="rank-bars" class="rank-bars" aria-label="Most directly selected films"></ol><p id="rank-note" class="fine-print"></p><a id="rank-explore" class="under-link" href="../explorer/?view=popular&kind=film">Explore the full ranking ↗</a></div></div>
+  </section>
+
+  <section class="professions chapter dark-section" id="professions" aria-labelledby="professions-heading"><div class="wrap">
+    <div class="section-intro reveal"><p class="eyebrow">04 / The people</p><h2 id="professions-heading">Change the guest.<br><em>Change the picture.</em></h2><p>An actor, a writer, a filmmaker. Different creative lives, sometimes the same favourite. Compare how often each group chooses a film.</p></div>
+    <fieldset class="cohort-controls" disabled><label><span><i class="legend-dot left" aria-hidden="true"></i> First group</span><select id="cohort-a" aria-label="First profession group"></select><small id="cohort-a-count"></small></label><span class="versus" aria-hidden="true">&amp;</span><label><span><i class="legend-dot right" aria-hidden="true"></i> Second group</span><select id="cohort-b" aria-label="Second profession group"></select><small id="cohort-b-count"></small></label></fieldset>
+    <div id="cohort-chart" class="cohort-chart" aria-label="Film selection shares by profession"></div><p id="cohort-caption" class="fine-print"></p><details class="data-details"><summary>Read the comparison as a table</summary><div id="cohort-table" class="table-wrap"></div></details><p class="method-note">These groups can overlap: an actor may also be a director. Professional cohorts exclude joint and unknown-role events; “all events” includes them. Repeat appearances count as separate visits or lists. Differences here describe recorded choices, not a general rule about a profession.</p>
+  </div></section>
+
+  <section class="decades wrap chapter" id="decades" aria-labelledby="decades-heading">
+    <div class="section-intro reveal"><p class="eyebrow">05 / The decades</p><h2 id="decades-heading">A century on<br><em>the shelf.</em></h2><p>The collection is its own kind of film history. See where the catalogue is deepest, and which corners these guests have explored.</p></div>
+    <div class="decade-legend"><span><i class="legend-dot picked" aria-hidden="true"></i> At least one direct choice</span><span><i class="legend-dot quiet" aria-hidden="true"></i> No direct choice</span><span>Height = catalogue film entries</span></div>
+    <div id="decade-chart" class="decade-chart" aria-label="Catalogue film entries by decade"></div><p class="fine-print" id="decade-note"></p>
+    <div class="decade-result" aria-live="polite"><div><p class="eyebrow">Step into a decade</p><h3 id="decade-title">The 1960s.</h3><p id="decade-summary"></p><a class="under-link" id="decade-explore" href="../explorer/?view=catalogue&decade=1960">Explore this decade ↗</a></div><div id="decade-films" class="mini-films"></div></div>
+    <details class="data-details"><summary>Read the decade counts as a table</summary><div id="decade-table" class="table-wrap"></div></details>
+  </section>
+
+  <section class="boxsets chapter" id="boxsets" aria-labelledby="box-heading"><div class="wrap box-layout">
+    <div class="box-copy reveal"><p class="eyebrow">06 / The box sets</p><h2 id="box-heading">One box.<br><em id="box-heading-count">Forty films.</em></h2><p>A guest can choose a whole body of work in one gesture. How you count that choice changes the story.</p><label class="set-label" for="set-select">Choose a box set with mapped contents</label><select id="set-select" disabled></select><p id="box-context"></p><button id="open-box" class="solid-button" disabled aria-expanded="false" aria-controls="box-contents">Open the box <span aria-hidden="true">↗</span></button><p class="fine-print">The default rankings count the selected set once. Opening it here adds this set’s selections to its mapped films, at most once per event.</p></div>
+    <div class="box-stage"><div id="box-art" class="box-art" aria-hidden="true"><div class="box-cover"><span class="eyebrow">The Criterion Collection</span><p id="box-cover-title">Ingmar Bergman’s<br>Cinema</p><span id="box-cover-count">40 mapped film entries</span></div><div id="box-spines" class="box-spines"></div></div><div id="box-contents" hidden><p class="eyebrow">The same archive, a different counting rule</p><div class="box-impact-head"><span>Film entry</span><span>Direct</span><span>+ this set</span></div><div id="box-impact"></div><details class="data-details"><summary id="box-all-label">See all mapped contents</summary><ul id="box-all" class="contents-list"></ul></details></div><p id="box-closed-note" class="box-caption">One selected release on the outside.<br>A small film history on the inside.</p></div>
+    <p class="box-method fine-print">Contents are mapped for 101 selected sets, with incomplete coverage. “Mapped films” may include different versions, shorts or supplements. Adding set contents is indirect inclusion, not proof that each film was individually praised.</p>
+  </div></section>
+
+  <section class="your-turn wrap chapter" id="your-turn" aria-labelledby="your-turn-heading">
+    <div class="section-intro reveal"><p class="eyebrow">07 / Your next film</p><h2 id="your-turn-heading">Follow someone<br><em>down a rabbit hole.</em></h2><p>Behind every number is a person and a choice. Start with someone you know. Or let an unfamiliar guest open a new door.</p></div>
+    <fieldset class="guest-controls" disabled><label for="guest-select"><span>Choose any indexed visit or written list</span><select id="guest-select"></select></label><button class="outline-button" id="shuffle-guest">Meet someone else <span aria-hidden="true">↻</span></button></fieldset>
+    <article class="guest-result"><div class="guest-heading" aria-live="polite"><div><p class="eyebrow" id="guest-format"></p><h3 id="guest-name"></h3><p id="guest-meta"></p></div><a id="guest-source" class="under-link" href="https://www.criterion.com/closet-picks/search" target="_blank" rel="noopener noreferrer">The original selection ↗</a></div><div id="guest-films" class="guest-films"></div><p id="guest-note" class="fine-print"></p><a id="guest-explore" class="under-link" href="../explorer/">More from this guest ↗</a></article>
+  </section>
+
+  <section class="ending"><div class="wrap"><p class="eyebrow">A place to begin, not an answer</p><h2>The next choice<br>is <em>yours.</em></h2><p>Follow a favourite. Question a ranking. Find something you would never have found alone.</p><div class="ending-links"><a class="solid-button" href="../explorer/">Open the full explorer ↗</a><a class="under-link" href="../explorer/data/criterion-public-dataset.zip" download>Download the dataset ↓</a><a class="under-link" href="criterion-visual-story.html" download>Save this story as HTML ↓</a></div><div class="ending-notes"><p><strong>About this story</strong><br>Based on the Criterion catalogue and all 410 Closet pages and 272 written lists in the indexes checked on 12 September 2026. All comparisons use this dated snapshot. Guest lists reflect the people Criterion invited and the releases they could choose.</p><p><strong>Keep looking</strong><br><a href="../explorer/#about">Sources, coverage &amp; counting methods ↗</a><br><a href="../">The original taste map ↗</a><br><a href="../syllabus.html">A year in the Closet ↗</a><br>IMDb and Letterboxd links are available in the explorer. Numeric ratings are not part of this release.</p></div></div></section>
+</main>
+<footer><a href="/">Leath Al Obaidi</a><span>Independent project · Unaffiliated with the Criterion Collection</span><a href="#top">Back to the beginning ↑</a></footer>
+</body>
+</html>
