@@ -1,0 +1,17 @@
+{
+  "README.md": "b75916710fa6c92496070f6b42f9ac3393fbb6dc98c97f47a1246db1a0c93a19",
+  "csv/affiliations.csv": "8876dbffcf1783624dd8801fcfb195e05fdfac85dfe9bf13031e98a5a207a76f",
+  "csv/events.csv": "4a7d0b0c1bd45dd73349267ee7020801fcd12ea577e38a7a8ebd8f91763f86cd",
+  "csv/financials.csv": "0ca91de0ae4c4676976725db3e54812535275fa0802db307d5f0f8d6161e28a9",
+  "csv/firms.csv": "b29aa8a33249c063fb94e0d8581ed35c2a088d8afbc2210e8a733f40b34c6626",
+  "csv/offices.csv": "ff0e87386edf03647a173c4baf4e455c7361ab4cc39d61cdf283d2e0a78ecaba",
+  "csv/organisations.csv": "55d0f9c4f45f59c37cd6588f71d1e193713d5cbbe26c6e229a7ab0f32469c2a4",
+  "csv/people.csv": "8a933fd1f05f13046d4b09e7a1449eecb4b14a6094df1f0675b124d797122811",
+  "csv/registered_addresses.csv": "2125bbf289fda1a7623b960a86ecc660b19c24fcf2841988c2721f32f2b284dc",
+  "csv/sources.csv": "c9b102c80fa2c8c1b880ae7ba7c956e395945f5e1a1cdab77fbdbc28a7ec0085",
+  "csv-tables.zip": "03b7372f184385de994b4fea80681140db1e82399468e81e8957323c4f72062d",
+  "economics-consultancy-public.sqlite": "c4162532c7c15c310755f45994d007f707ecab04027365a421abf088195d3f7f",
+  "economics-consultancy-public.zip": "1c96667b7796d9aa7f0539eec240c6098b5d2c0dae23fe081deeaa94139e1891",
+  "field-dictionary.json": "983814640831303218ed82fb42cdfe85c9b139d5ca0a2d407f2f69e4c7e2b44f",
+  "public-data.json": "fba9c1d6b003feec93c4e4121dcccedcdaf801066eead1d49ba64db77244cd04"
+}

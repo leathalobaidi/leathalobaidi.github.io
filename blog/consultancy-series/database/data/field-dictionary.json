@@ -1,0 +1,138 @@
+{
+  "firms": {
+    "grain": "One record per firm id",
+    "fields": {
+      "id": "TEXT",
+      "name": "TEXT",
+      "scope_type": "TEXT",
+      "identity_status": "TEXT",
+      "number_assignment_status": "TEXT",
+      "scope_note": "TEXT",
+      "scope_limit": "TEXT",
+      "company_references": "TEXT",
+      "source_refs": "TEXT",
+      "checked_financial_field_count": "INTEGER",
+      "latest_checked_financial_field_count": "INTEGER"
+    }
+  },
+  "people": {
+    "grain": "One record per people id",
+    "fields": {
+      "id": "TEXT",
+      "name": "TEXT",
+      "in_research_scope": "INTEGER",
+      "in_candidate_roster": "INTEGER",
+      "has_research_dossier": "INTEGER",
+      "coverage_status": "TEXT",
+      "checked_affiliation_count": "INTEGER",
+      "related_professional_claim_count": "INTEGER",
+      "source_refs": "TEXT",
+      "coverage_limit": "TEXT"
+    }
+  },
+  "organisations": {
+    "grain": "One record per organisation id",
+    "fields": {
+      "id": "TEXT",
+      "name": "TEXT",
+      "type": "TEXT",
+      "company_number": "TEXT",
+      "registered_name": "TEXT",
+      "firm_id": "TEXT"
+    }
+  },
+  "financials": {
+    "grain": "One record per financial id",
+    "fields": {
+      "id": "TEXT",
+      "firm_id": "TEXT",
+      "legal_entity_id": "TEXT",
+      "year_end": "TEXT",
+      "period_months": "INTEGER",
+      "currency": "TEXT",
+      "metric": "TEXT",
+      "value": "REAL",
+      "value_exact": "TEXT",
+      "missingness": "TEXT",
+      "accounting_basis": "TEXT",
+      "metric_basis": "TEXT",
+      "estimated": "INTEGER",
+      "is_latest": "INTEGER",
+      "source_refs": "TEXT"
+    }
+  },
+  "affiliations": {
+    "grain": "One record per affiliation id",
+    "fields": {
+      "id": "TEXT",
+      "person_id": "TEXT",
+      "organisation_id": "TEXT",
+      "organisation_name": "TEXT",
+      "firm_id": "TEXT",
+      "role": "TEXT",
+      "date": "TEXT",
+      "end_date": "TEXT",
+      "date_basis": "TEXT",
+      "limit": "TEXT",
+      "source_refs": "TEXT"
+    }
+  },
+  "events": {
+    "grain": "One record per event id",
+    "fields": {
+      "id": "TEXT",
+      "event_type": "TEXT",
+      "label": "TEXT",
+      "subject_id": "TEXT",
+      "date": "TEXT",
+      "end_date": "TEXT",
+      "date_basis": "TEXT",
+      "announcement_date": "TEXT",
+      "geography": "TEXT",
+      "qualification": "TEXT",
+      "participants": "TEXT",
+      "source_refs": "TEXT"
+    }
+  },
+  "registered_addresses": {
+    "grain": "One record per registered_addresse id",
+    "fields": {
+      "id": "TEXT",
+      "firm_id": "TEXT",
+      "legal_entity_id": "TEXT",
+      "organisation_name": "TEXT",
+      "address": "TEXT",
+      "observed_on": "TEXT",
+      "effective_from": "TEXT",
+      "legal_status": "TEXT",
+      "legal_status_observed_on": "TEXT",
+      "dissolved_on": "TEXT",
+      "included_in_latest_reader_selection": "INTEGER",
+      "address_type": "TEXT",
+      "limit": "TEXT",
+      "source_refs": "TEXT"
+    }
+  },
+  "offices": {
+    "grain": "One record per office id",
+    "fields": {
+      "id": "TEXT",
+      "organisation_id": "TEXT",
+      "organisation_name": "TEXT",
+      "firm_id": "TEXT",
+      "city": "TEXT",
+      "observed_on": "TEXT",
+      "observation_type": "TEXT",
+      "limit": "TEXT",
+      "source_refs": "TEXT"
+    }
+  },
+  "sources": {
+    "grain": "One record per source id",
+    "fields": {
+      "id": "TEXT",
+      "url": "TEXT",
+      "kind": "TEXT"
+    }
+  }
+}

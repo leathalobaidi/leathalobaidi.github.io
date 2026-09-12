@@ -1,0 +1,108 @@
+id,name,type,company_number,registered_name,firm_id
+brand-06592b63bc49211d7b1c,Capital Economics,brand,,,
+brand-0baf4683816040c123f4,Oxera,brand,,,
+brand-138991c77bdae120e791,NERA,brand,,,
+brand-344bff8b2788383a072d,KPMG,brand,,,
+brand-4cc7a4b341d8ce3315ea,Keystone,brand,,,
+brand-4df3b4731df01cdb3cff,AlixPartners,brand,,,
+brand-63bf08dcfacaeac5dcc7,CEPA,brand,,,
+brand-6e5bbd1d3ce20033623e,RBB Economics,brand,,,
+brand-8a4e7df0a4e90b7852e0,Analysis Group,brand,,,
+brand-ab874965c9dde7ac651f,CRA,brand,,,
+brand-c3328e267cf6da135e0a,Frontier Economics,brand,,,
+brand-d35886e8a667371cc05f,Economist Intelligence Unit,brand,,,
+brand-d4d3fb41b82bea2ab0f9,Cambridge Econometrics,brand,,,
+brand-e335536431cb4864a462,Compass Lexecon,brand,,,
+establishment-GB-BR021155,UK establishment BR021155,registered_establishment,,,
+firm-18,Capital Economics Ltd,catalogue_firm,,,firm-18
+firm-40,Keystone Strategy Ltd,catalogue_firm,,,firm-40
+institution-611182849ff8a2b77800,Ofgem,institution,,,
+institution-7e63db9187c65c433f37,Competition and Markets Authority,institution,,,
+legal-GB-00414220,UK registered entity 00414220,legal_entity,00414220,,
+legal-GB-01196703,UK registered entity 01196703,legal_entity,01196703,,firm-64
+legal-GB-01557776,UK registered entity 01557776,legal_entity,01557776,,firm-17
+legal-GB-01650169,UK registered entity 01650169,legal_entity,01650169,,firm-32
+legal-GB-01701564,UK registered entity 01701564,legal_entity,01701564,,firm-30
+legal-GB-01762617,UK registered entity 01762617,legal_entity,01762617,,firm-91
+legal-GB-01883830,UK registered entity 01883830,legal_entity,01883830,,firm-31
+legal-GB-01916825,UK registered entity 01916825,legal_entity,01916825,,firm-16
+legal-GB-02474302,UK registered entity 02474302,legal_entity,02474302,,firm-77
+legal-GB-02484735,UK registered entity 02484735,legal_entity,02484735,,firm-18
+legal-GB-02573801,UK registered entity 02573801,legal_entity,02573801,,firm-87
+legal-GB-02592404,UK registered entity 02592404,legal_entity,02592404,,firm-21
+legal-GB-02711701,UK registered entity 02711701,legal_entity,02711701,,firm-46
+legal-GB-02728021,UK registered entity 02728021,legal_entity,02728021,,
+legal-GB-02917907,UK registered entity 02917907,legal_entity,02917907,,firm-39
+legal-GB-02967706,UK registered entity 02967706,legal_entity,02967706,,firm-82
+legal-GB-03157633,UK registered entity 03157633,legal_entity,03157633,,firm-48
+legal-GB-03362992,UK registered entity 03362992,legal_entity,03362992,,firm-33
+legal-GB-03378171,UK registered entity 03378171,legal_entity,03378171,,firm-6
+legal-GB-03752719,UK registered entity 03752719,legal_entity,03752719,,firm-2
+legal-GB-03756030,UK registered entity 03756030,legal_entity,03756030,,firm-56
+legal-GB-03783016,UK registered entity 03783016,legal_entity,03783016,,firm-62
+legal-GB-03909897,UK registered entity 03909897,legal_entity,03909897,,firm-79
+legal-GB-03974527,UK registered entity 03974527,legal_entity,03974527,,firm-5
+legal-GB-04007726,UK registered entity 04007726,legal_entity,04007726,,firm-4
+legal-GB-04077684,UK registered entity 04077684,legal_entity,04077684,,firm-76
+legal-GB-04083204,UK registered entity 04083204,legal_entity,04083204,,firm-19
+legal-GB-04161656,UK registered entity 04161656,legal_entity,04161656,,firm-86
+legal-GB-04942817,UK registered entity 04942817,legal_entity,04942817,,firm-25
+legal-GB-05000218,UK registered entity 05000218,legal_entity,05000218,,firm-42
+legal-GB-05840846,UK registered entity 05840846,legal_entity,05840846,,firm-92
+legal-GB-06570398,UK registered entity 06570398,legal_entity,06570398,,firm-88
+legal-GB-06872377,UK registered entity 06872377,legal_entity,06872377,,firm-84
+legal-GB-07076751,UK registered entity 07076751,legal_entity,07076751,,firm-43
+legal-GB-07245710,UK registered entity 07245710,legal_entity,07245710,,firm-7
+legal-GB-07531279,UK registered entity 07531279,legal_entity,07531279,,firm-49
+legal-GB-07608279,Economic Insight Limited,legal_entity,07608279,Economic Insight Limited,firm-22
+legal-GB-07858218,UK registered entity 07858218,legal_entity,07858218,,firm-95
+legal-GB-07884615,UK registered entity 07884615,legal_entity,07884615,,firm-26
+legal-GB-08035566,UK registered entity 08035566,legal_entity,08035566,,firm-51
+legal-GB-08331277,UK registered entity 08331277,legal_entity,08331277,,firm-41
+legal-GB-08371505,UK registered entity 08371505,legal_entity,08371505,,firm-37
+legal-GB-08719788,UK registered entity 08719788,legal_entity,08719788,,firm-54
+legal-GB-09035322,UK registered entity 09035322,legal_entity,09035322,,firm-90
+legal-GB-09174489,UK registered entity 09174489,legal_entity,09174489,,firm-8
+legal-GB-09242255,UK registered entity 09242255,legal_entity,09242255,,firm-93
+legal-GB-09325127,UK registered entity 09325127,legal_entity,09325127,,firm-55
+legal-GB-09325261,UK registered entity 09325261,legal_entity,09325261,,firm-53
+legal-GB-09391354,UK registered entity 09391354,legal_entity,09391354,,firm-20
+legal-GB-09404977,UK registered entity 09404977,legal_entity,09404977,,firm-44
+legal-GB-09692990,UK registered entity 09692990,legal_entity,09692990,,firm-38
+legal-GB-09766786,UK registered entity 09766786,legal_entity,09766786,,firm-85
+legal-GB-10086986,UK registered entity 10086986,legal_entity,10086986,,firm-24
+legal-GB-10149826,UK registered entity 10149826,legal_entity,10149826,,firm-50
+legal-GB-10373577,UK registered entity 10373577,legal_entity,10373577,,firm-47
+legal-GB-10629120,UK registered entity 10629120,legal_entity,10629120,,firm-9
+legal-GB-10785846,UK registered entity 10785846,legal_entity,10785846,,firm-34
+legal-GB-10883299,UK registered entity 10883299,legal_entity,10883299,,firm-75
+legal-GB-11372815,UK registered entity 11372815,legal_entity,11372815,,firm-83
+legal-GB-11545550,UK registered entity 11545550,legal_entity,11545550,,firm-59
+legal-GB-11641409,UK registered entity 11641409,legal_entity,11641409,,firm-58
+legal-GB-12003121,UK registered entity 12003121,legal_entity,12003121,,firm-45
+legal-GB-12403422,UK registered entity 12403422,legal_entity,12403422,,firm-29
+legal-GB-12589870,UK registered entity 12589870,legal_entity,12589870,,firm-94
+legal-GB-13681146,UK registered entity 13681146,legal_entity,13681146,,firm-52
+legal-GB-16147541,UK registered entity 16147541,legal_entity,16147541,,firm-60
+legal-GB-FC036069,UK registered entity FC036069,legal_entity,FC036069,,
+legal-GB-OC303471,UK registered entity OC303471,legal_entity,OC303471,,firm-12
+legal-GB-OC303525,UK registered entity OC303525,legal_entity,OC303525,,
+legal-GB-OC303675,UK registered entity OC303675,legal_entity,OC303675,,
+legal-GB-OC305127,UK registered entity OC305127,legal_entity,OC305127,,
+legal-GB-OC307526,UK registered entity OC307526,legal_entity,OC307526,,firm-81
+legal-GB-OC307897,UK registered entity OC307897,legal_entity,OC307897,,firm-74
+legal-GB-OC315356,UK registered entity OC315356,legal_entity,OC315356,,firm-1
+legal-GB-OC330414,UK registered entity OC330414,legal_entity,OC330414,,firm-13
+legal-GB-OC331411,UK registered entity OC331411,legal_entity,OC331411,,firm-15
+legal-GB-OC332081,UK registered entity OC332081,legal_entity,OC332081,,firm-14
+legal-GB-OC342697,UK registered entity OC342697,legal_entity,OC342697,,firm-36
+legal-GB-OC344021,UK registered entity OC344021,legal_entity,OC344021,,firm-61
+legal-GB-OC360308,UK registered entity OC360308,legal_entity,OC360308,,firm-10
+legal-GB-OC361729,UK registered entity OC361729,legal_entity,OC361729,,firm-23
+legal-GB-OC372614,UK registered entity OC372614,legal_entity,OC372614,,firm-11
+legal-GB-OC377350,UK registered entity OC377350,legal_entity,OC377350,,firm-28
+legal-GB-OC385173,UK registered entity OC385173,legal_entity,OC385173,,firm-35
+legal-GB-OC392464,UK registered entity OC392464,legal_entity,OC392464,,firm-3
+legal-GB-OC397475,UK registered entity OC397475,legal_entity,OC397475,,
+legal-GB-SC229257,UK registered entity SC229257,legal_entity,SC229257,,firm-78
+legal-GB-SC253093,UK registered entity SC253093,legal_entity,SC253093,,firm-27

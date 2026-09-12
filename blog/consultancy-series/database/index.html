@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Economics consultancy database | Leath Al Obaidi</title>
+<meta name="description" content="Explore economics consultancy firms, people, checked financial observations and dated office records, with primary sources and downloadable data.">
+<link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/database/">
+<meta property="og:title" content="Economics consultancy database">
+<meta property="og:description" content="Firm identities, people and checked observations, with sources and downloadable data.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/database/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="database.css">
+<script defer src="database.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to database</a>
+<header class="site-nav"><a class="brand" href="/">Leath Al Obaidi</a><nav aria-label="Website"><a href="/#projects">Projects</a><a href="/blog/">Writing</a><a href="../">The series</a></nav></header>
+<main id="main">
+<div class="edition">Research edition · <time datetime="2026-09-12">12 September 2026</time></div>
+<h1>Economics consultancy database</h1>
+<p class="intro">Explore the firms, people and filed accounts behind the research. Each observation keeps its source and date; gaps remain visible.</p>
+<div id="loading" role="status">Loading the database…</div>
+<noscript><p>Enable JavaScript to search the directory, or <a href="data/economics-consultancy-public.sqlite">download the SQLite database</a>.</p></noscript>
+<div id="app" hidden>
+<div class="stats" aria-label="Database coverage"><div><strong id="firmTotal"></strong><span>firm and practice entries</span></div><div><strong id="peopleTotal"></strong><span>person entries</span></div><div><strong id="revenueTotal"></strong><span>entities with checked revenue</span></div><div><strong id="observationDate">12 Sep 2026</strong><span>edition date</span></div></div>
+<nav class="sections" aria-label="Database sections"><button type="button" data-view="firms" aria-pressed="true">Firms</button><button type="button" data-view="people" aria-pressed="false">People</button><button type="button" data-view="financials" aria-pressed="false">Accounts</button><button type="button" data-view="locations" aria-pressed="false">Locations</button><button type="button" data-view="sources" aria-pressed="false">Sources &amp; downloads</button></nav>
+<section id="view-firms" aria-labelledby="firmsHeading">
+<h2 id="firmsHeading">Firm identities</h2><p class="note">The catalogue includes companies, partnerships, practices, brands and historical entities. An entry does not establish that a whole group operates through one legal company, or that a historical business is still active.</p>
+<div class="controls"><label class="search">Find a firm<input type="search" id="firmSearch" placeholder="Name or company number"></label><label>Financial coverage<select id="firmCoverage"><option value="all">All entries</option><option value="checked">With checked financials</option><option value="missing">Without checked financials</option></select></label><button type="button" class="reset" data-reset="firms">Reset</button></div>
+<p class="count" id="firmCount" role="status"></p><div class="table-wrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Scope / identifier</th><th scope="col">Financial coverage</th><th scope="col">Evidence</th></tr></thead><tbody id="firmRows"></tbody></table></div>
+</section>
+<section id="view-people" aria-labelledby="peopleHeading" hidden>
+<h2 id="peopleHeading">People</h2><p class="note">Name-only entries remain research leads. Profiles show related professional sources and checked appointment observations where available. An announcement or a missing end date does not establish current employment.</p>
+<div class="controls"><label class="search">Find a person<input type="search" id="personSearch" placeholder="Name"></label><label>Coverage<select id="personCoverage"><option value="all">All entries</option><option value="scope">Main research scope</option><option value="appointments">With checked appointments</option></select></label><button type="button" class="reset" data-reset="people">Reset</button></div>
+<p class="count" id="peopleCount" role="status"></p><div class="table-wrap"><table><thead><tr><th scope="col">Name</th><th scope="col">Research coverage</th><th scope="col">Checked appointments</th><th scope="col">Evidence</th></tr></thead><tbody id="peopleRows"></tbody></table></div>
+</section>
+<section id="view-financials" aria-labelledby="accountsHeading" hidden>
+<h2 id="accountsHeading">Filed accounts</h2><p class="note">Values retain their original currency and accounting period. Company and group boundaries differ; AlixPartners reports net revenue. These observations do not measure the UK market’s size. “Profit available to members” is an accounting pool, not individual take-home pay.</p>
+<div class="controls"><label class="search">Find an entity<input type="search" id="financeSearch" placeholder="Firm name"></label><label>Metric<select id="financeMetric"><option value="turnover">Revenue</option><option value="operating_profit">Operating profit</option><option value="profit_before_tax">Profit before tax</option><option value="profit_after_tax">Profit after tax</option><option value="num_staff">Staff / persons</option><option value="num_members">Average members</option><option value="profit_to_members">Profit available to members</option><option value="highest_paid_member">Highest-paid member amount</option></select></label><label>Periods<select id="financePeriod"><option value="latest">Latest period in this edition</option><option value="all">All checked periods</option></select></label><label>Currency<select id="financeCurrency"><option value="all">All currencies</option><option value="GBP">GBP</option><option value="EUR">EUR</option><option value="USD">USD</option></select></label><button type="button" class="reset" data-reset="financials">Reset</button></div>
+<p class="count" id="financeCount" role="status"></p><div class="table-wrap"><table><thead><tr><th scope="col">Entity</th><th scope="col">Period end</th><th scope="col">Amount / count</th><th scope="col">Basis and source</th></tr></thead><tbody id="financeRows"></tbody></table></div>
+</section>
+<section id="view-locations" aria-labelledby="locationsHeading" hidden>
+<h2 id="locationsHeading">Dated locations</h2><p class="note">Registered addresses may differ from workplaces. International records reproduce firm-published city listings at the date checked. Neither set establishes staff numbers, headquarters or a complete worldwide footprint.</p>
+<div class="controls"><label class="search">Find a location<input type="search" id="locationSearch" placeholder="Firm, city, address or postcode"></label><label>Directory<select id="locationType"><option value="registered">UK registered addresses</option><option value="international">International city listings</option></select></label><button type="button" class="reset" data-reset="locations">Reset</button></div>
+<p class="count" id="locationCount" role="status"></p><div class="table-wrap"><table><thead><tr><th scope="col">Entry</th><th scope="col">Location</th><th scope="col">Observation date</th><th scope="col">Scope and source</th></tr></thead><tbody id="locationRows"></tbody></table></div>
+</section>
+<section id="view-sources" aria-labelledby="sourcesHeading" hidden>
+<h2 id="sourcesHeading">Sources and downloads</h2>
+<div class="download-grid"><a class="download" href="data/economics-consultancy-public.sqlite" download><strong>SQLite database</strong><span>Query the public tables and their source links.</span></a><a class="download" href="data/economics-consultancy-public.zip" download><strong>CSV &amp; JSON bundle</strong><span>Open the tables in a spreadsheet or your own code.</span></a><a class="download" href="data/README.md"><strong>Data guide</strong><span>Definitions, coverage and known limits.</span></a></div>
+<details class="method"><summary>How to read this edition</summary><div class="prose"><p>This is a dated research catalogue. Financial and appointment observations in the public tables were checked against the cited sources. A catalogue name or a research-profile flag does not establish a verified biography, a current role or every inherited firm attribute.</p><p>Research and source review used AI assistance. Original-source links, accounting boundaries and remaining uncertainty are retained so readers can assess the observations. The main research scope contains 106 people; 65 lack an inherited research dossier. Education and specialisms have not been comprehensively collected.</p><p>Financial figures mix periods and legal entities. Missing values remain missing, estimates stay labelled, and original currencies are retained. No total across these rows is presented as UK sector revenue.</p><p id="publicLimits"></p><p><a href="data/public-data.json">Public JSON</a> · <a href="data/checksums.json">Download checksums</a></p></div></details>
+<div class="controls"><label class="search">Find a source<input type="search" id="sourceSearch" placeholder="Organisation or website"></label></div><p class="count" id="sourceCount" role="status"></p><div id="sourceRows" class="source-list"></div><button type="button" id="moreSources">Show more sources</button>
+</section>
+</div>
+<footer><p>© Leath Al Obaidi · <a href="../">Economics consultancy series</a></p><p>Sources retain their original publication terms. Dates and verification apply to the observations shown, not to every aspect of a firm or person.</p></footer>
+</main>
+<dialog id="profile" aria-labelledby="profileTitle"><div class="dialog-top"><span id="profileKind"></span><button type="button" id="closeProfile" aria-label="Close profile">Close ×</button></div><h2 id="profileTitle"></h2><div id="profileBody"></div></dialog>
+</body></html>
