@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4",
+  "schema_version": "1.5",
   "updated_on": "2026-11-14",
   "title": "UK economics consultancy research catalogue",
   "summary": {
@@ -11,7 +11,7 @@
     "events": 15,
     "registered_addresses": 84,
     "offices": 109,
-    "sources": 1426,
+    "sources": 1402,
     "firm_identity_links": 92,
     "people_affiliation_observations": 327,
     "people_alias_crosswalk": 11,
@@ -13012,10 +13012,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-d2e3db3681df0f3b5d57",
+          "locator": "About page identifies Capital Economics and describes its research.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-0baf4683816040c123f4",
@@ -13029,10 +13038,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-7ea6c26ea1d2277f26ba",
+          "locator": "About page identifies the Oxera consultancy.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-138991c77bdae120e791",
@@ -13046,10 +13064,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-532540a074b6f89989fd",
+          "locator": "About page identifies the NERA business.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-344bff8b2788383a072d",
@@ -13063,10 +13090,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-d5f612acf9b9fd323d46",
+          "locator": "UK About page identifies the KPMG brand in its UK context.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-4cc7a4b341d8ce3315ea",
@@ -13080,10 +13116,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-79ade8c1b91a2d16a40a",
+          "locator": "Firm site identifies Keystone and lists its economics practice.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-4df3b4731df01cdb3cff",
@@ -13097,10 +13142,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-97a0b148463bcd21a466",
+          "locator": "Our firm page identifies AlixPartners.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-63bf08dcfacaeac5dcc7",
@@ -13114,10 +13168,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-d96b233b4af73a2e5ae7",
+          "locator": "What we do page identifies CEPA and its economic advisory work.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-6e5bbd1d3ce20033623e",
@@ -13131,10 +13194,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-3e03802af64a021197a7",
+          "locator": "Our history identifies RBB Economics.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-8a4e7df0a4e90b7852e0",
@@ -13148,10 +13220,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-5bd31efcb03d492dc99c",
+          "locator": "About page identifies Analysis Group.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-ab874965c9dde7ac651f",
@@ -13165,10 +13246,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-2d356b1c834e8cc60c0e",
+          "locator": "About page explicitly pairs CRA with Charles River Associates.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-c3328e267cf6da135e0a",
@@ -13182,10 +13272,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-0a1f7141809cb0fdec57",
+          "locator": "Who we are page identifies Frontier Economics.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-d35886e8a667371cc05f",
@@ -13199,10 +13298,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-f3eee6eedc96abbb9c9a",
+          "locator": "The Economist Intelligence Unit identifies itself as EIU in the About page.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-d4d3fb41b82bea2ab0f9",
@@ -13216,10 +13324,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-472b7154069ab958e6b6",
+          "locator": "About page identifies Cambridge Econometrics.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "brand-e335536431cb4864a462",
@@ -13233,10 +13350,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-38ad88ae27004638cb6b",
+          "locator": "About page identifies Compass Lexecon.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "establishment-GB-BR021155",
@@ -13360,10 +13486,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-1e9fa24b18130a1ee438",
+          "locator": "Regulator’s About page identifies Ofgem.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "institution-7e63db9187c65c433f37",
@@ -13377,10 +13512,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-9be01cba49fd1e77520d",
+          "locator": "Government page gives the authority’s name and abbreviation.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "institution-92aa90da30ebab341aa5",
@@ -13394,10 +13538,19 @@
       "register_status": null,
       "ceased_on": null,
       "home_register_number": null,
-      "checked_on": null,
+      "checked_on": "2026-11-14",
       "establishment_number": null,
       "foreign_company_number": null,
-      "source_refs": []
+      "source_refs": [
+        {
+          "source_id": "source-9b0ba399a8a4f72daef5",
+          "locator": "University page identifies the University of Strathclyde.",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "brand_or_institution_name"
+        }
+      ]
     },
     {
       "id": "legal-GB-00414220",
@@ -16504,7 +16657,9 @@
         {
           "source_id": "source-04ce7df0e450e2bc8db1",
           "locator": "Accounts filed 2026-01-23 · PDF page 23 / printed page 21 · Note 8: Largest profit entitlement: 4,520,380 GBP · 2024 comparative · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16527,7 +16682,9 @@
         {
           "source_id": "source-04ce7df0e450e2bc8db1",
           "locator": "Accounts filed 2026-01-23 · PDF page 23 / printed page 21 · Note 8: Average LLP members: 18 persons · 2024 comparative · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16550,7 +16707,9 @@
         {
           "source_id": "source-b4bcd2f531cc347cbad4",
           "locator": "Accounts filed 2026-01-23 · PDF page 11 / printed page 9 · Operating profit or loss: 43,977,171 GBP · 2024 comparative · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16573,7 +16732,9 @@
         {
           "source_id": "source-b4bcd2f531cc347cbad4",
           "locator": "Accounts filed 2026-01-23 · PDF page 11 / printed page 9 · Profit available for discretionary division among members: 43,273,610 GBP · 2024 comparative · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16596,7 +16757,9 @@
         {
           "source_id": "source-b4bcd2f531cc347cbad4",
           "locator": "Accounts filed 2026-01-23 · PDF page 11 / printed page 9 · Turnover: 82,006,377 GBP · 2024 comparative · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16619,7 +16782,9 @@
         {
           "source_id": "source-04ce7df0e450e2bc8db1",
           "locator": "Accounts filed 2026-01-23 · PDF page 23 / printed page 21 · Note 8: Largest profit entitlement: 5,771,775 GBP · 2025 current period · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16642,7 +16807,9 @@
         {
           "source_id": "source-04ce7df0e450e2bc8db1",
           "locator": "Accounts filed 2026-01-23 · PDF page 23 / printed page 21 · Note 8: Average LLP members: 18 persons · 2025 current period · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16665,7 +16832,9 @@
         {
           "source_id": "source-6635fe2eb203cabf94ce",
           "locator": "Accounts filed 2026-01-23 · PDF page 22 / printed page 20 · Note 6: average monthly group employees excluding members (247 consultants and 22 support staff); parent LLP: 181: 269 persons · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16688,7 +16857,9 @@
         {
           "source_id": "source-b4bcd2f531cc347cbad4",
           "locator": "Accounts filed 2026-01-23 · PDF page 11 / printed page 9 · Operating profit or loss: 60,988,932 GBP · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16711,7 +16882,9 @@
         {
           "source_id": "source-b4bcd2f531cc347cbad4",
           "locator": "Accounts filed 2026-01-23 · PDF page 11 / printed page 9 · Profit available for discretionary division among members: 60,226,315 GBP · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16734,7 +16907,9 @@
         {
           "source_id": "source-b4bcd2f531cc347cbad4",
           "locator": "Accounts filed 2026-01-23 · PDF page 11 / printed page 9 · Turnover (note 3) · 108,402,487 GBP · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16757,7 +16932,9 @@
         {
           "source_id": "source-d18ad077c78b52267d85",
           "locator": "Accounts filed 2026-01-08 · PDF page 13 / printed page 13 · Operating profit or loss: 52,799 GBP thousands · 2024 current period · LLP entity. Net of client expenses and disbursements.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-08",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16780,7 +16957,9 @@
         {
           "source_id": "source-d18ad077c78b52267d85",
           "locator": "Accounts filed 2026-01-08 · PDF page 13 / printed page 13 · Net revenue (note 3) · 273,190 GBP thousands · LLP entity. Net of client expenses and disbursements",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-08",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16803,7 +16982,9 @@
         {
           "source_id": "source-dbae8b8493755511b405",
           "locator": "Accounts filed 2025-11-14 · PDF page 10 / printed page 8 · Operating profit or loss: 109,481 GBP thousands · 2025 current period · LLP entity. The current column covers 12 months and the comparative covers 15.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-11-14",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16826,7 +17007,9 @@
         {
           "source_id": "source-dbae8b8493755511b405",
           "locator": "Accounts filed 2025-11-14 · PDF page 10 / printed page 8 · Turnover (note 4) · 460,840 GBP thousands · LLP entity. The current column covers 12 months and the comparative covers 15",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-11-14",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16849,7 +17032,9 @@
         {
           "source_id": "source-2bbfd265d000c23d3b24",
           "locator": "Accounts filed 2025-12-21 · PDF page 34 / printed page 30 · Note 12: Average LLP members: 180 persons · 2024 comparative · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16872,7 +17057,9 @@
         {
           "source_id": "source-f82adc05ed61335614dc",
           "locator": "Accounts filed 2025-12-21 · PDF page 16 / printed page 12 · Operating profit or loss: 157,631,353 GBP · 2024 comparative · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16895,7 +17082,9 @@
         {
           "source_id": "source-f82adc05ed61335614dc",
           "locator": "Accounts filed 2025-12-21 · PDF page 16 / printed page 12 · Profit available for discretionary division among members: 153,622,612 GBP · 2024 comparative · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16918,7 +17107,9 @@
         {
           "source_id": "source-f82adc05ed61335614dc",
           "locator": "Accounts filed 2025-12-21 · PDF page 16 / printed page 12 · Turnover: 432,772,334 GBP · 2024 comparative · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16941,12 +17132,16 @@
         {
           "source_id": "source-2bbfd265d000c23d3b24",
           "locator": "Accounts filed 2025-12-21 · PDF page 34 / printed page 30 · Note 12: 7% of the year's profit; a separate 8% entitlement on qualifying disposal cash is excluded · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         },
         {
           "source_id": "source-f82adc05ed61335614dc",
           "locator": "Accounts filed 2025-12-21 · PDF page 16 / printed page 12 · Profit available for discretionary division: GBP 161,901,443",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16969,7 +17164,9 @@
         {
           "source_id": "source-2bbfd265d000c23d3b24",
           "locator": "Accounts filed 2025-12-21 · PDF page 34 / printed page 30 · Note 12: Average LLP members: 178 persons · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -16992,7 +17189,9 @@
         {
           "source_id": "source-f82adc05ed61335614dc",
           "locator": "Accounts filed 2025-12-21 · PDF page 16 / printed page 12 · Operating profit or loss: 165,657,141 GBP · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17015,7 +17214,9 @@
         {
           "source_id": "source-f82adc05ed61335614dc",
           "locator": "Accounts filed 2025-12-21 · PDF page 16 / printed page 12 · Profit available for discretionary division among members: 161,901,443 GBP · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17038,7 +17239,9 @@
         {
           "source_id": "source-f82adc05ed61335614dc",
           "locator": "Accounts filed 2025-12-21 · PDF page 16 / printed page 12 · Turnover (note 4) · 449,800,556 GBP · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-21",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17061,7 +17264,9 @@
         {
           "source_id": "source-ba6b78fa826826ca7cd7",
           "locator": "Accounts filed 2025-10-04 · PDF page 14 / printed page 12 · Operating profit or loss: 116,180,777 EUR · 2024 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17084,7 +17289,9 @@
         {
           "source_id": "source-ba6b78fa826826ca7cd7",
           "locator": "Accounts filed 2025-10-04 · PDF page 14 / printed page 12 · Turnover (note 3) · 301,347,207 EUR · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17107,7 +17314,9 @@
         {
           "source_id": "source-15dcefc03c11b2011b9f",
           "locator": "Accounts filed 2025-10-06 · PDF page 14 / printed page 12 · Operating profit or loss: 28,864,415 GBP · 2024 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-06",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17130,7 +17339,9 @@
         {
           "source_id": "source-15dcefc03c11b2011b9f",
           "locator": "Accounts filed 2025-10-06 · PDF page 14 / printed page 12 · Profit or loss before tax: 29,015,270 GBP · 2024 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-06",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17153,7 +17364,9 @@
         {
           "source_id": "source-15dcefc03c11b2011b9f",
           "locator": "Accounts filed 2025-10-06 · PDF page 14 / printed page 12 · Turnover (note 3) · 71,623,909 GBP · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-06",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17176,7 +17389,9 @@
         {
           "source_id": "source-8fe9c29d52e1bdc9056f",
           "locator": "Accounts filed 2025-10-04 · PDF page 13 / printed page 11 · Operating profit or loss: 8,034,957 GBP · 2024 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17199,7 +17414,9 @@
         {
           "source_id": "source-8fe9c29d52e1bdc9056f",
           "locator": "Accounts filed 2025-10-04 · PDF page 13 / printed page 11 · Profit or loss before tax: 8,149,017 GBP · 2024 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17222,7 +17439,9 @@
         {
           "source_id": "source-8fe9c29d52e1bdc9056f",
           "locator": "Accounts filed 2025-10-04 · PDF page 13 / printed page 11 · Turnover (note 3) · 29,532,028 GBP · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17245,7 +17464,9 @@
         {
           "source_id": "source-9bd08cf86dc8a416925c",
           "locator": "Accounts filed 2026-03-31 · PDF page 12 / printed page 9 · Operating profit or loss: 35,526 GBP · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-03-31",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17268,7 +17489,9 @@
         {
           "source_id": "source-9bd08cf86dc8a416925c",
           "locator": "Accounts filed 2026-03-31 · PDF page 12 / printed page 9 · Profit or loss for the period after tax: 23,114 GBP · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-03-31",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17291,7 +17514,9 @@
         {
           "source_id": "source-9bd08cf86dc8a416925c",
           "locator": "Accounts filed 2026-03-31 · PDF page 12 / printed page 9 · Profit or loss before tax: 35,758 GBP · 2025 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-03-31",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17314,7 +17539,9 @@
         {
           "source_id": "source-9bd08cf86dc8a416925c",
           "locator": "Accounts filed 2026-03-31 · PDF page 12 / printed page 9 · Turnover · 5,353,205 GBP · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-03-31",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17337,7 +17564,9 @@
         {
           "source_id": "source-1a5d76208a9d1ee0d8b3",
           "locator": "Accounts filed 2025-12-08 · PDF page 15 / printed page 13 · Operating profit or loss: 1,485,347 GBP · 2024 current period · Company entity. Used the 2024 current column. The restatement label applies to the 2023 comparative.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-08",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17360,7 +17589,9 @@
         {
           "source_id": "source-1a5d76208a9d1ee0d8b3",
           "locator": "Accounts filed 2025-12-08 · PDF page 15 / printed page 13 · Loss for the year: -332,111 GBP · 2024 current period · Company entity. Used the 2024 current column. The restatement label applies to the 2023 comparative.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-08",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17383,7 +17614,9 @@
         {
           "source_id": "source-1a5d76208a9d1ee0d8b3",
           "locator": "Accounts filed 2025-12-08 · PDF page 15 / printed page 13 · Profit or loss before tax: 1,614,257 GBP · 2024 current period · Company entity. Used the 2024 current column. The restatement label applies to the 2023 comparative.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-08",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17406,7 +17639,9 @@
         {
           "source_id": "source-1a5d76208a9d1ee0d8b3",
           "locator": "Accounts filed 2025-12-08 · PDF page 15 / printed page 13 · Revenue (note 4) · 74,225,193 GBP · Company entity. Used the 2024 current column. The restatement label applies to the 2023 comparative",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-08",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17429,7 +17664,9 @@
         {
           "source_id": "source-0f418f4f96beb5eccfeb",
           "locator": "Accounts filed 2025-10-01 · PDF page 14 / printed page 11 · Operating profit or loss: 4,340,824 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-01",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17452,7 +17689,9 @@
         {
           "source_id": "source-0f418f4f96beb5eccfeb",
           "locator": "Accounts filed 2025-10-01 · PDF page 14 / printed page 11 · Profit or loss for the period after tax: 3,689,142 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-01",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17475,7 +17714,9 @@
         {
           "source_id": "source-0f418f4f96beb5eccfeb",
           "locator": "Accounts filed 2025-10-01 · PDF page 14 / printed page 11 · Profit or loss before tax: 4,317,147 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-01",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17498,7 +17739,9 @@
         {
           "source_id": "source-0f418f4f96beb5eccfeb",
           "locator": "Accounts filed 2025-10-01 · PDF page 14 / printed page 11 · Turnover (note 4) · 21,972,609 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-01",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17521,7 +17764,9 @@
         {
           "source_id": "source-a030ffd5b316922a9e8e",
           "locator": "Accounts filed 2025-12-23 · PDF page 22 / printed page 22 · Operating profit or loss: 1,441,210 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17544,7 +17789,9 @@
         {
           "source_id": "source-a030ffd5b316922a9e8e",
           "locator": "Accounts filed 2025-12-23 · PDF page 22 / printed page 22 · Profit for the financial year and total comprehensive income: 238,827 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17567,7 +17814,9 @@
         {
           "source_id": "source-a030ffd5b316922a9e8e",
           "locator": "Accounts filed 2025-12-23 · PDF page 22 / printed page 22 · Profit or loss before tax: 1,354,454 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17590,7 +17839,9 @@
         {
           "source_id": "source-a030ffd5b316922a9e8e",
           "locator": "Accounts filed 2025-12-23 · PDF page 22 / printed page 22 · Turnover (note 3) · 97,073,286 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17613,7 +17864,9 @@
         {
           "source_id": "source-177b8d2f22b388c08999",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 21 / printed page 19 · Note 6: Largest profit entitlement: 2,027,212 GBP · 2024 comparative · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17636,7 +17889,9 @@
         {
           "source_id": "source-177b8d2f22b388c08999",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 21 / printed page 19 · Note 6: Average LLP members: 34 persons · 2024 comparative · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17659,7 +17914,9 @@
         {
           "source_id": "source-177b8d2f22b388c08999",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 21 / printed page 19 · Note 5: average group employees; the LLP-only column is a different reporting scope: 223 persons · 2024 comparative · Consolidated group. Amended accounts.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17682,7 +17939,9 @@
         {
           "source_id": "source-8ce53d416a422f024928",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 11 / printed page 9 · Operating profit or loss: 24,131,072 GBP · 2024 comparative · Consolidated group. Amended accounts.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17705,7 +17964,9 @@
         {
           "source_id": "source-8ce53d416a422f024928",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 11 / printed page 9 · Profit available for discretionary division among members: 16,427,748 GBP · 2024 comparative · Consolidated group. Amended accounts.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17728,7 +17989,9 @@
         {
           "source_id": "source-8ce53d416a422f024928",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 11 / printed page 9 · Turnover: 60,808,661 GBP · 2024 comparative · Consolidated group. Amended accounts.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17751,7 +18014,9 @@
         {
           "source_id": "source-177b8d2f22b388c08999",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 21 / printed page 19 · Note 6: Largest profit entitlement: 2,093,956 GBP · 2025 current period · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17774,7 +18039,9 @@
         {
           "source_id": "source-177b8d2f22b388c08999",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 21 / printed page 19 · Note 6: Average LLP members: 38 persons · 2025 current period · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17797,7 +18064,9 @@
         {
           "source_id": "source-177b8d2f22b388c08999",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 21 / printed page 19 · Note 5: average group employees; the LLP-only column is a different reporting scope: 274 persons · 2025 current period · Consolidated group. Amended accounts.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17820,7 +18089,9 @@
         {
           "source_id": "source-8ce53d416a422f024928",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 11 / printed page 9 · Operating profit or loss: 27,156,134 GBP · 2025 current period · Consolidated group. Amended accounts.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17843,7 +18114,9 @@
         {
           "source_id": "source-8ce53d416a422f024928",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 11 / printed page 9 · Profit available for discretionary division among members: 18,700,697 GBP · 2025 current period · Consolidated group. Amended accounts.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17866,7 +18139,9 @@
         {
           "source_id": "source-8ce53d416a422f024928",
           "locator": "Amended accounts filed 2026-01-16 · PDF page 11 / printed page 9 · Turnover (note 3) · 70,692,013 GBP · Consolidated group. Amended accounts",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17889,7 +18164,9 @@
         {
           "source_id": "source-7b9a9ba52d97cb71da84",
           "locator": "Accounts filed 2025-08-14 · PDF page 12 / printed page 8 · Operating profit or loss: 226,131 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-14",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17912,7 +18189,9 @@
         {
           "source_id": "source-7b9a9ba52d97cb71da84",
           "locator": "Accounts filed 2025-08-14 · PDF page 12 / printed page 8 · Profit or loss for the period after tax: 164,617 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-14",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17935,7 +18214,9 @@
         {
           "source_id": "source-7b9a9ba52d97cb71da84",
           "locator": "Accounts filed 2025-08-14 · PDF page 12 / printed page 8 · Profit or loss before tax: 228,629 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-14",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17958,7 +18239,9 @@
         {
           "source_id": "source-7b9a9ba52d97cb71da84",
           "locator": "Accounts filed 2025-08-14 · PDF page 12 / printed page 8 · Turnover (note 4) · 5,691,694 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-14",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -17981,7 +18264,9 @@
         {
           "source_id": "source-13868c70dad34f07e4af",
           "locator": "Accounts filed 2025-11-24 · PDF page 18 / printed page 16 · Operating profit or loss: 2,563 GBP thousands · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-11-24",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18004,7 +18289,9 @@
         {
           "source_id": "source-13868c70dad34f07e4af",
           "locator": "Accounts filed 2025-11-24 · PDF page 18 / printed page 16 · Retained profit after tax: 1,684 GBP thousands · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-11-24",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18027,7 +18314,9 @@
         {
           "source_id": "source-13868c70dad34f07e4af",
           "locator": "Accounts filed 2025-11-24 · PDF page 18 / printed page 16 · Profit or loss before tax: 2,560 GBP thousands · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-11-24",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18050,7 +18339,9 @@
         {
           "source_id": "source-13868c70dad34f07e4af",
           "locator": "Accounts filed 2025-11-24 · PDF page 18 / printed page 16 · Turnover (note 2) · 39,673 GBP thousands · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-11-24",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18073,7 +18364,9 @@
         {
           "source_id": "source-85037a0664dae49db6d6",
           "locator": "Accounts filed 2026-07-16 · PDF page 29 / printed page 29 · Note 8: average monthly company employees after net staff recharges (139 fee earners + 35 support + 20 recharged in − 39 recharged out): 155 persons · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18096,7 +18389,9 @@
         {
           "source_id": "source-c0afa7161b65432d86b0",
           "locator": "Accounts filed 2026-07-16 · PDF page 15 / printed page 15 · Operating profit or loss: 1,470,164 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18119,7 +18414,9 @@
         {
           "source_id": "source-c0afa7161b65432d86b0",
           "locator": "Accounts filed 2026-07-16 · PDF page 15 / printed page 15 · Profit or loss for the period after tax: 1,142,874 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18142,7 +18439,9 @@
         {
           "source_id": "source-c0afa7161b65432d86b0",
           "locator": "Accounts filed 2026-07-16 · PDF page 15 / printed page 15 · Profit or loss before tax: 1,543,308 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18165,7 +18464,9 @@
         {
           "source_id": "source-c0afa7161b65432d86b0",
           "locator": "Accounts filed 2026-07-16 · PDF page 15 / printed page 15 · Turnover (note 3) · 21,994,142 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18188,7 +18489,9 @@
         {
           "source_id": "source-b094f86ae4e7a201a5eb",
           "locator": "Accounts filed 2025-10-09 · PDF page 24 / printed page 21 · Note 9: Average LLP members: 2 persons · 2024 current period · LLP member note from the consolidated filing",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-09",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18211,7 +18514,9 @@
         {
           "source_id": "source-b094f86ae4e7a201a5eb",
           "locator": "Accounts filed 2025-10-09 · PDF page 24 / printed page 21 · Note 8: average monthly group persons (6 directors and partners and 33 employees); parent LLP: 21: 39 persons · 2024 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-09",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18234,7 +18539,9 @@
         {
           "source_id": "source-3889092b5262b160e32a",
           "locator": "Accounts filed 2025-10-09 · PDF page 10 / printed page 7 · Operating profit or loss: 4,313 GBP thousands · 2024 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-09",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18257,7 +18564,9 @@
         {
           "source_id": "source-3889092b5262b160e32a",
           "locator": "Accounts filed 2025-10-09 · PDF page 10 / printed page 7 · Profit available for discretionary division among members: 312 GBP thousands · 2024 current period · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-09",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18280,7 +18589,9 @@
         {
           "source_id": "source-3889092b5262b160e32a",
           "locator": "Accounts filed 2025-10-09 · PDF page 10 / printed page 7 · Turnover (note 5) · 22,475 GBP thousands · Consolidated group",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-09",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18303,7 +18614,9 @@
         {
           "source_id": "source-a56029b63d5e16c8f26c",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Operating profit or loss: 2,507,770 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18326,7 +18639,9 @@
         {
           "source_id": "source-a56029b63d5e16c8f26c",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Profit or loss for the period after tax: 1,887,132 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18349,7 +18664,9 @@
         {
           "source_id": "source-a56029b63d5e16c8f26c",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Profit or loss before tax: 2,507,787 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18372,7 +18689,9 @@
         {
           "source_id": "source-a56029b63d5e16c8f26c",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Turnover (note 3) · 9,317,804 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18395,7 +18714,9 @@
         {
           "source_id": "source-dce171524de004c11cb4",
           "locator": "Accounts filed 2025-08-04 · PDF page 14 / printed page 12 · Operating profit or loss: 8,294,581 GBP · 2024 current period · Company entity. 52-week reporting period.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18418,7 +18739,9 @@
         {
           "source_id": "source-dce171524de004c11cb4",
           "locator": "Accounts filed 2025-08-04 · PDF page 14 / printed page 12 · Profit or loss for the period after tax: 5,974,319 GBP · 2024 current period · Company entity. 52-week reporting period.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18441,7 +18764,9 @@
         {
           "source_id": "source-dce171524de004c11cb4",
           "locator": "Accounts filed 2025-08-04 · PDF page 14 / printed page 12 · Profit or loss before tax: 8,297,728 GBP · 2024 current period · Company entity. 52-week reporting period.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18464,7 +18789,9 @@
         {
           "source_id": "source-dce171524de004c11cb4",
           "locator": "Accounts filed 2025-08-04 · PDF page 14 / printed page 12 · Turnover (note 2) · 82,396,636 GBP · Company entity. 52-week reporting period",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18487,7 +18814,9 @@
         {
           "source_id": "source-0515796e4fb28c6941af",
           "locator": "Accounts filed 2025-09-26 · PDF page 15 / printed page 12 · Operating profit or loss: 3,080 GBP thousands · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-26",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18510,7 +18839,9 @@
         {
           "source_id": "source-0515796e4fb28c6941af",
           "locator": "Accounts filed 2025-09-26 · PDF page 15 / printed page 12 · Profit or loss for the period after tax: 2,851 GBP thousands · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-26",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18533,7 +18864,9 @@
         {
           "source_id": "source-0515796e4fb28c6941af",
           "locator": "Accounts filed 2025-09-26 · PDF page 15 / printed page 12 · Profit or loss before tax: 4,088 GBP thousands · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-26",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18556,7 +18889,9 @@
         {
           "source_id": "source-0515796e4fb28c6941af",
           "locator": "Accounts filed 2025-09-26 · PDF page 15 / printed page 12 · Turnover (note 4) · 24,891 GBP thousands · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-26",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18579,7 +18914,9 @@
         {
           "source_id": "source-39022b2dba83fbbc6c5e",
           "locator": "Accounts filed 2025-06-23 · PDF page 11 / printed page 9 · Operating profit or loss: -862,453 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-06-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18602,7 +18939,9 @@
         {
           "source_id": "source-39022b2dba83fbbc6c5e",
           "locator": "Accounts filed 2025-06-23 · PDF page 11 / printed page 9 · Profit or loss for the period after tax: -1,076,957 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-06-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18625,7 +18964,9 @@
         {
           "source_id": "source-39022b2dba83fbbc6c5e",
           "locator": "Accounts filed 2025-06-23 · PDF page 11 / printed page 9 · Profit or loss before tax: -978,725 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-06-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18648,7 +18989,9 @@
         {
           "source_id": "source-39022b2dba83fbbc6c5e",
           "locator": "Accounts filed 2025-06-23 · PDF page 11 / printed page 9 · Turnover (note 6) · 39,437,293 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-06-23",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18671,12 +19014,16 @@
         {
           "source_id": "source-6b18588ba78c729924d8",
           "locator": "Accounts filed 2025-12-18 · PDF page 8 / printed page 6 · Note 3 counts employees excluding members; no member count found in the filing · 2025 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-18",
+          "date_basis": "Accounts filing date"
         },
         {
           "source_id": "source-9ed51ab87c40d3d791aa",
           "locator": "Accounts filed 2025-12-18 · PDF page 2 / unnumbered contents page · Contents: balance sheet and notes",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-18",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18699,7 +19046,9 @@
         {
           "source_id": "source-6b18588ba78c729924d8",
           "locator": "Accounts filed 2025-12-18 · PDF page 8 / printed page 6 · Note 3: average LLP employees, excluding members: 0 persons · 2025 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-18",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18722,12 +19071,16 @@
         {
           "source_id": "source-701a2f15ae4eb26ba2dc",
           "locator": "Accounts filed 2025-12-18 · PDF page 4 / printed page 2 · The LLP elected to omit its profit and loss account · 2025 current period · LLP entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-18",
+          "date_basis": "Accounts filing date"
         },
         {
           "source_id": "source-b92b66f7867cd498b13f",
           "locator": "Accounts filed 2025-12-18 · PDF page 3 / printed page 1 · Balance-sheet amount due in respect of profits: GBP 2,386,060; a liability at the reporting date",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-18",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18750,7 +19103,9 @@
         {
           "source_id": "source-3fa074234d9a56952d24",
           "locator": "Accounts filed 2025-10-03 · PDF page 14 / printed page 11 · Operating profit or loss: 4,522,342 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-03",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18773,7 +19128,9 @@
         {
           "source_id": "source-3fa074234d9a56952d24",
           "locator": "Accounts filed 2025-10-03 · PDF page 14 / printed page 11 · Profit or loss for the period after tax: 4,099,601 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-03",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18796,7 +19153,9 @@
         {
           "source_id": "source-3fa074234d9a56952d24",
           "locator": "Accounts filed 2025-10-03 · PDF page 14 / printed page 11 · Profit or loss before tax: 4,456,646 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-03",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18819,7 +19178,9 @@
         {
           "source_id": "source-3fa074234d9a56952d24",
           "locator": "Accounts filed 2025-10-03 · PDF page 14 / printed page 11 · Turnover (note 3) · 41,823,755 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-03",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18842,7 +19203,9 @@
         {
           "source_id": "source-341a1f8de1bbc70c5e79",
           "locator": "Accounts filed 2026-01-06 · PDF page 5 / printed page 4 · Total comprehensive income; equals profit after tax (48 − 13, in GBP thousands): 35 GBP thousands · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-06",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18865,7 +19228,9 @@
         {
           "source_id": "source-341a1f8de1bbc70c5e79",
           "locator": "Accounts filed 2026-01-06 · PDF page 5 / printed page 4 · Profit or loss before tax: 48 GBP thousands · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-06",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18888,7 +19253,9 @@
         {
           "source_id": "source-341a1f8de1bbc70c5e79",
           "locator": "Accounts filed 2026-01-06 · PDF page 5 / printed page 4 · Turnover · 2,221 GBP thousands · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-06",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18911,7 +19278,9 @@
         {
           "source_id": "source-aad1d6bb619ac4e2c47d",
           "locator": "Accounts filed 2026-04-29 · PDF page 25 / printed page 22 · Note 7: average monthly company employees, including directors (57 consulting and 18 administration): 75 persons · 2025 current period · Company entity. Filed in US dollars.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-04-29",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18934,7 +19303,9 @@
         {
           "source_id": "source-5e255df81fc958a3b2df",
           "locator": "Accounts filed 2026-04-29 · PDF page 13 / printed page 10 · Operating profit or loss: 1,964,911 USD · 2025 current period · Company entity. Filed in US dollars.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-04-29",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18957,7 +19328,9 @@
         {
           "source_id": "source-5e255df81fc958a3b2df",
           "locator": "Accounts filed 2026-04-29 · PDF page 13 / printed page 10 · Profit or loss for the period after tax: 1,447,630 USD · 2025 current period · Company entity. Filed in US dollars.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-04-29",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -18980,7 +19353,9 @@
         {
           "source_id": "source-5e255df81fc958a3b2df",
           "locator": "Accounts filed 2026-04-29 · PDF page 13 / printed page 10 · Profit or loss before tax: 1,997,993 USD · 2025 current period · Company entity. Filed in US dollars.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-04-29",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19003,7 +19378,9 @@
         {
           "source_id": "source-5e255df81fc958a3b2df",
           "locator": "Accounts filed 2026-04-29 · PDF page 13 / printed page 10 · Turnover (note 4) · 49,746,184 USD · Company entity. Filed in US dollars",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-04-29",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19026,7 +19403,9 @@
         {
           "source_id": "source-12123dd33fd26ddc68d0",
           "locator": "Accounts filed 2026-05-16 · PDF page 22 / printed page 21 · Note 3: average company employees (77 consultants and 8 administration): 85 persons · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-05-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19049,7 +19428,9 @@
         {
           "source_id": "source-0771994feab99318d2f4",
           "locator": "Accounts filed 2026-05-16 · PDF page 12 / printed page 11 · Operating profit or loss: -563,002 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-05-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19072,7 +19453,9 @@
         {
           "source_id": "source-0771994feab99318d2f4",
           "locator": "Accounts filed 2026-05-16 · PDF page 12 / printed page 11 · Profit or loss for the period after tax: -554,750 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-05-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19095,7 +19478,9 @@
         {
           "source_id": "source-0771994feab99318d2f4",
           "locator": "Accounts filed 2026-05-16 · PDF page 12 / printed page 11 · Profit or loss before tax: -641,533 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-05-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19118,7 +19503,9 @@
         {
           "source_id": "source-0771994feab99318d2f4",
           "locator": "Accounts filed 2026-05-16 · PDF page 12 / printed page 11 · Turnover (note 4) · 18,453,630 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-05-16",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19141,7 +19528,9 @@
         {
           "source_id": "source-1659a351b05171f56daf",
           "locator": "Accounts filed 2025-10-04 · PDF page 13 / printed page 10 · Operating profit or loss: 9,208,643 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19164,7 +19553,9 @@
         {
           "source_id": "source-1659a351b05171f56daf",
           "locator": "Accounts filed 2025-10-04 · PDF page 13 / printed page 10 · Profit or loss for the period after tax: 7,653,760 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19187,7 +19578,9 @@
         {
           "source_id": "source-1659a351b05171f56daf",
           "locator": "Accounts filed 2025-10-04 · PDF page 13 / printed page 10 · Profit or loss before tax: 9,217,771 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19210,7 +19603,9 @@
         {
           "source_id": "source-1659a351b05171f56daf",
           "locator": "Accounts filed 2025-10-04 · PDF page 13 / printed page 10 · Turnover (note 3) · 30,646,613 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19233,7 +19628,9 @@
         {
           "source_id": "source-4ffd70838803de122b85",
           "locator": "Accounts filed 2026-07-10 · PDF page 23 / printed page 22 · Note 8: average company employees including directors (4 directors, 163 technical and 72 administration): 239 persons · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-10",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19256,7 +19653,9 @@
         {
           "source_id": "source-21484349497d40967b30",
           "locator": "Accounts filed 2026-07-10 · PDF page 12 / printed page 11 · Operating profit or loss: 2,094,376 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-10",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19279,7 +19678,9 @@
         {
           "source_id": "source-21484349497d40967b30",
           "locator": "Accounts filed 2026-07-10 · PDF page 12 / printed page 11 · Profit or loss for the period after tax: 8,554,842 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-10",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19302,7 +19703,9 @@
         {
           "source_id": "source-21484349497d40967b30",
           "locator": "Accounts filed 2026-07-10 · PDF page 12 / printed page 11 · Profit or loss before tax: 9,172,006 GBP · 2025 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-10",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19325,7 +19728,9 @@
         {
           "source_id": "source-21484349497d40967b30",
           "locator": "Accounts filed 2026-07-10 · PDF page 12 / printed page 11 · Turnover (note 5) · 32,526,902 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-07-10",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19348,7 +19753,9 @@
         {
           "source_id": "source-d95bc31ab3a17171d6c9",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Operating profit or loss: 6,070,401 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19371,7 +19778,9 @@
         {
           "source_id": "source-d95bc31ab3a17171d6c9",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Profit or loss for the period after tax: 4,493,631 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19394,7 +19803,9 @@
         {
           "source_id": "source-d95bc31ab3a17171d6c9",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Profit or loss before tax: 6,249,677 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19417,7 +19828,9 @@
         {
           "source_id": "source-d95bc31ab3a17171d6c9",
           "locator": "Accounts filed 2025-09-30 · PDF page 11 / printed page 8 · Turnover (note 4) · 43,803,152 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-30",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19440,7 +19853,9 @@
         {
           "source_id": "source-7efcabccf74d887dbfbb",
           "locator": "Accounts filed 2025-07-17 · PDF page 10 / printed page 8 · Operating profit or loss: 465,658 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-07-17",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19463,7 +19878,9 @@
         {
           "source_id": "source-7efcabccf74d887dbfbb",
           "locator": "Accounts filed 2025-07-17 · PDF page 10 / printed page 8 · Profit or loss for the period after tax: 282,046 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-07-17",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19486,7 +19903,9 @@
         {
           "source_id": "source-7efcabccf74d887dbfbb",
           "locator": "Accounts filed 2025-07-17 · PDF page 10 / printed page 8 · Profit or loss before tax: 459,471 GBP · 2024 current period · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-07-17",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19509,7 +19928,9 @@
         {
           "source_id": "source-7efcabccf74d887dbfbb",
           "locator": "Accounts filed 2025-07-17 · PDF page 10 / printed page 8 · Turnover (note 3) · 13,392,822 GBP · Company entity",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-07-17",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19532,7 +19953,9 @@
         {
           "source_id": "source-d2f881b6aaa41a98e417",
           "locator": "Accounts filed 2026-06-19 · PDF page 17 / printed page 14 · Note 4: average company employees (10 operations and 2 administration): 12 persons · 2025 current period · Company entity. 52-week reporting period.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-06-19",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19555,7 +19978,9 @@
         {
           "source_id": "source-e7f06f15abd5c93bd912",
           "locator": "Accounts filed 2026-06-19 · PDF page 12 / printed page 9 · Operating profit or loss: -97,938 GBP · 2025 current period · Company entity. 52-week reporting period.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-06-19",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19578,7 +20003,9 @@
         {
           "source_id": "source-e7f06f15abd5c93bd912",
           "locator": "Accounts filed 2026-06-19 · PDF page 12 / printed page 9 · Profit or loss for the period after tax: -113,915 GBP · 2025 current period · Company entity. 52-week reporting period.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-06-19",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19601,7 +20028,9 @@
         {
           "source_id": "source-e7f06f15abd5c93bd912",
           "locator": "Accounts filed 2026-06-19 · PDF page 12 / printed page 9 · Profit or loss before tax: -151,839 GBP · 2025 current period · Company entity. 52-week reporting period.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-06-19",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19624,7 +20053,9 @@
         {
           "source_id": "source-e7f06f15abd5c93bd912",
           "locator": "Accounts filed 2026-06-19 · PDF page 12 / printed page 9 · Turnover (note 2) · 836,561 GBP · Company entity. 52-week reporting period",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-06-19",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19647,7 +20078,9 @@
         {
           "source_id": "source-4859d705fc19e4fbcbf1",
           "locator": "Accounts filed 2025-08-05 · PDF page 16 / printed page 15 · Operating profit or loss: 4,125 GBP thousands · 2025 current period · Company entity. Used the current column. The restatement label applies to the 2024 comparative.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-05",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19670,7 +20103,9 @@
         {
           "source_id": "source-4859d705fc19e4fbcbf1",
           "locator": "Accounts filed 2025-08-05 · PDF page 16 / printed page 15 · Profit or loss for the period after tax: 2,612 GBP thousands · 2025 current period · Company entity. Used the current column. The restatement label applies to the 2024 comparative.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-05",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19693,7 +20128,9 @@
         {
           "source_id": "source-4859d705fc19e4fbcbf1",
           "locator": "Accounts filed 2025-08-05 · PDF page 16 / printed page 15 · Profit or loss before tax: 4,050 GBP thousands · 2025 current period · Company entity. Used the current column. The restatement label applies to the 2024 comparative.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-05",
+          "date_basis": "Accounts filing date"
         }
       ]
     },
@@ -19716,7 +20153,9 @@
         {
           "source_id": "source-4859d705fc19e4fbcbf1",
           "locator": "Accounts filed 2025-08-05 · PDF page 16 / printed page 15 · Revenue (note 2) · 54,278 GBP thousands · Company entity. Used the current column. The restatement label applies to the 2024 comparative",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-08-05",
+          "date_basis": "Accounts filing date"
         }
       ]
     }
@@ -19737,7 +20176,9 @@
         {
           "source_id": "source-8cd354f0fdc23f69d131",
           "locator": "Dated header and opening paragraphs: London appointment, role, 6 January start and previous AlixPartners role. Source dated 20 January 2020.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2020-01-20",
+          "date_basis": "Publication date"
         }
       ],
       "announcement_date": "2020-01-20",
@@ -19758,17 +20199,23 @@
         {
           "source_id": "source-ab439f6c51d8cea727f7",
           "locator": "Dated header, title and opening paragraph: Ofgem to Compass Lexecon, London, intended June start. Source dated 14 April 2020.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2020-04-14",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-155f25840d0c7915bb86",
           "locator": "Dateline and opening paragraph corroborate the role and intended June start. Source dated 22 April 2020.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2020-04-22",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-d2d76e142671b7c87a61",
           "locator": "LLAP01, PDF page 1: date of appointment 4 June 2024; received for filing 12 July 2024. Source dated 12 July 2024.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2024-07-12",
+          "date_basis": "Companies House filing date"
         }
       ],
       "announcement_date": "2020-04-14",
@@ -19789,12 +20236,16 @@
         {
           "source_id": "source-5d1e1357170c096f50e9",
           "locator": "Lead and biographical paragraphs: CMA origin, European practice role and intended 3 January 2023 start. Source dated 29 November 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-11-29",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-15c0e40bfd53d6b265f3",
           "locator": "Issuer byline and 29 November 2022 dateline; the same Keystone announcement. Source dated 29 November 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-11-29",
+          "date_basis": "Publication date"
         }
       ],
       "announcement_date": "2022-11-29",
@@ -19815,12 +20266,16 @@
         {
           "source_id": "source-97af0c5d383c36501fc5",
           "locator": "Subheading and opening paragraph: CMA origin, European technology role and intended 24 January 2023 start. Publication date from the issuer’s newsroom listing. Source dated 16 December 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-12-16",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-2ae40a9778c2e25c16a4",
           "locator": "The card bearing the exact release title displays 16 December 2022. Source dated 16 December 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-12-16",
+          "date_basis": "Publication date"
         }
       ],
       "announcement_date": "2022-12-16",
@@ -19841,7 +20296,9 @@
         {
           "source_id": "source-6e5d9231f8b434543f7a",
           "locator": "Dated header and opening paragraphs: both recruits came from KPMG to the London economics practice. The date is the announcement day. Source dated 3 October 2024.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2024-10-03",
+          "date_basis": "Publication date"
         }
       ],
       "announcement_date": "2024-10-03",
@@ -19862,7 +20319,9 @@
         {
           "source_id": "source-6e5d9231f8b434543f7a",
           "locator": "Dated header and opening paragraphs: both recruits came from KPMG to the London economics practice. The date is the announcement day. Source dated 3 October 2024.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2024-10-03",
+          "date_basis": "Publication date"
         }
       ],
       "announcement_date": "2024-10-03",
@@ -19883,12 +20342,16 @@
         {
           "source_id": "source-ac7357aab506f020fc90",
           "locator": "Dated header and first paragraph: Senior Managing Director in the New York office. Source dated 16 April 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-04-16",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-8ecfa4f455fb93e65af7",
           "locator": "Career paragraph names NERA and her role in its Global Securities and Finance Practice.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null
         }
       ],
       "announcement_date": "2025-04-16",
@@ -19909,7 +20372,9 @@
         {
           "source_id": "source-62076c660b2156fdb9fe",
           "locator": "Dated header and first paragraph: senior advisory role and former CMA Deputy Chief Economist. Source dated 19 June 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-06-19",
+          "date_basis": "Publication date"
         }
       ],
       "announcement_date": "2025-06-19",
@@ -19930,12 +20395,16 @@
         {
           "source_id": "source-31e0e8f1131cf10f483e",
           "locator": "Francesca Sala section, New Appointment/Employment: partner at Oxera; the recorded start is September 2025, without a day. Source dated 25 September 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-25",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-2b89364c1e0dae2fc75d",
           "locator": "Dated header and opening paragraphs: London competition partner; previously CMA Director of Economics. Source dated 16 September 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-16",
+          "date_basis": "Publication date"
         }
       ],
       "announcement_date": "2025-09-16",
@@ -19956,17 +20425,23 @@
         {
           "source_id": "source-fc08c1776b148c5def76",
           "locator": "Dateline and opening paragraphs: Partner and Managing Director, new team remit and Keystone origin. Source dated 3 December 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-03",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-a6e104430a946014cfea",
           "locator": "Heading and opening biography confirm the role and sequence of CMA, Keystone and AlixPartners.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null
         },
         {
           "source_id": "source-44231b9a7b1c852bb542",
           "locator": "LLAP01, PDF page 1: date of appointment 2 December 2025; received for filing 9 December 2025. Source dated 9 December 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-09",
+          "date_basis": "Companies House filing date"
         }
       ],
       "announcement_date": "2025-12-03",
@@ -19987,17 +20462,23 @@
         {
           "source_id": "source-b4ae6023406dac626d3b",
           "locator": "Mike Walker section, New appointment or employment: Senior Adviser at Frontier Economics; taken up 5 January 2026. Source dated 24 March 2026.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-03-24",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-18bcddb4a383ff25e88c",
           "locator": "Dated header and lead paragraphs: intended 5 January start; the announcement was subject to final conflict checks. Source dated 24 October 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-24",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-8529e38451271193bc1b",
           "locator": "Opening paragraph corroborates the role and January 2026 start month.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null
         }
       ],
       "announcement_date": "2025-10-24",
@@ -20021,7 +20502,9 @@
         {
           "source_id": "source-a46b28effe52408bfd31",
           "locator": "Dated heading and lead: LDC exited and Phoenix had acquired a controlling stake; no separate closing date stated. Source dated 27 March 2018.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2018-03-27",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20060,7 +20543,9 @@
         {
           "source_id": "source-8cd354f0fdc23f69d131",
           "locator": "Dated header and opening paragraphs: London appointment, role, 6 January start and previous AlixPartners role. Source dated 20 January 2020.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2020-01-20",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20099,17 +20584,23 @@
         {
           "source_id": "source-ab439f6c51d8cea727f7",
           "locator": "Dated header, title and opening paragraph: Ofgem to Compass Lexecon, London, intended June start. Source dated 14 April 2020.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2020-04-14",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-155f25840d0c7915bb86",
           "locator": "Dateline and opening paragraph corroborate the role and intended June start. Source dated 22 April 2020.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2020-04-22",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-d2d76e142671b7c87a61",
           "locator": "LLAP01, PDF page 1: date of appointment 4 June 2024; received for filing 12 July 2024. Source dated 12 July 2024.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2024-07-12",
+          "date_basis": "Companies House filing date"
         }
       ]
     },
@@ -20148,12 +20639,16 @@
         {
           "source_id": "source-5d1e1357170c096f50e9",
           "locator": "Lead and biographical paragraphs: CMA origin, European practice role and intended 3 January 2023 start. Source dated 29 November 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-11-29",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-15c0e40bfd53d6b265f3",
           "locator": "Issuer byline and 29 November 2022 dateline; the same Keystone announcement. Source dated 29 November 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-11-29",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20192,12 +20687,16 @@
         {
           "source_id": "source-97af0c5d383c36501fc5",
           "locator": "Subheading and opening paragraph: CMA origin, European technology role and intended 24 January 2023 start. Publication date from the issuer’s newsroom listing. Source dated 16 December 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-12-16",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-2ae40a9778c2e25c16a4",
           "locator": "The card bearing the exact release title displays 16 December 2022. Source dated 16 December 2022.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2022-12-16",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20230,7 +20729,9 @@
         {
           "source_id": "source-d2d76e142671b7c87a61",
           "locator": "LLAP01, PDF page 1: date of appointment 4 June 2024; received for filing 12 July 2024. Source dated 12 July 2024.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2024-07-12",
+          "date_basis": "Companies House filing date"
         }
       ]
     },
@@ -20269,7 +20770,9 @@
         {
           "source_id": "source-6e5d9231f8b434543f7a",
           "locator": "Dated header and opening paragraphs: both recruits came from KPMG to the London economics practice. The date is the announcement day. Source dated 3 October 2024.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2024-10-03",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20308,7 +20811,9 @@
         {
           "source_id": "source-6e5d9231f8b434543f7a",
           "locator": "Dated header and opening paragraphs: both recruits came from KPMG to the London economics practice. The date is the announcement day. Source dated 3 October 2024.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2024-10-03",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20347,12 +20852,16 @@
         {
           "source_id": "source-ac7357aab506f020fc90",
           "locator": "Dated header and first paragraph: Senior Managing Director in the New York office. Source dated 16 April 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-04-16",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-8ecfa4f455fb93e65af7",
           "locator": "Career paragraph names NERA and her role in its Global Securities and Finance Practice.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null
         }
       ]
     },
@@ -20391,7 +20900,9 @@
         {
           "source_id": "source-62076c660b2156fdb9fe",
           "locator": "Dated header and first paragraph: senior advisory role and former CMA Deputy Chief Economist. Source dated 19 June 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-06-19",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20430,12 +20941,16 @@
         {
           "source_id": "source-31e0e8f1131cf10f483e",
           "locator": "Francesca Sala section, New Appointment/Employment: partner at Oxera; the recorded start is September 2025, without a day. Source dated 25 September 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-25",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-2b89364c1e0dae2fc75d",
           "locator": "Dated header and opening paragraphs: London competition partner; previously CMA Director of Economics. Source dated 16 September 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-09-16",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20468,7 +20983,9 @@
         {
           "source_id": "source-44231b9a7b1c852bb542",
           "locator": "LLAP01, PDF page 1: date of appointment 2 December 2025; received for filing 9 December 2025. Source dated 9 December 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-09",
+          "date_basis": "Companies House filing date"
         }
       ]
     },
@@ -20507,17 +21024,23 @@
         {
           "source_id": "source-fc08c1776b148c5def76",
           "locator": "Dateline and opening paragraphs: Partner and Managing Director, new team remit and Keystone origin. Source dated 3 December 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-03",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-a6e104430a946014cfea",
           "locator": "Heading and opening biography confirm the role and sequence of CMA, Keystone and AlixPartners.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null
         },
         {
           "source_id": "source-44231b9a7b1c852bb542",
           "locator": "LLAP01, PDF page 1: date of appointment 2 December 2025; received for filing 9 December 2025. Source dated 9 December 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-09",
+          "date_basis": "Companies House filing date"
         }
       ]
     },
@@ -20537,12 +21060,16 @@
         {
           "source_id": "source-528902186587a9473d4d",
           "locator": "Lead identifies a majority stake; closing paragraph explicitly says 2 January 2026. The page dates itself to January 2026.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01",
+          "date_basis": "Publication month"
         },
         {
           "source_id": "source-d8932f24364298a5cbde",
           "locator": "Dateline: 8 January 2026. Transaction paragraph confirms investment completion on 2 January. Source dated 8 January 2026.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-01-08",
+          "date_basis": "Publication date"
         }
       ]
     },
@@ -20581,17 +21108,23 @@
         {
           "source_id": "source-b4ae6023406dac626d3b",
           "locator": "Mike Walker section, New appointment or employment: Senior Adviser at Frontier Economics; taken up 5 January 2026. Source dated 24 March 2026.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2026-03-24",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-18bcddb4a383ff25e88c",
           "locator": "Dated header and lead paragraphs: intended 5 January start; the announcement was subject to final conflict checks. Source dated 24 October 2025.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": "2025-10-24",
+          "date_basis": "Publication date"
         },
         {
           "source_id": "source-8529e38451271193bc1b",
           "locator": "Opening paragraph corroborates the role and January 2026 start month.",
-          "checked_on": "2026-11-14"
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null
         }
       ]
     }
@@ -25754,16 +26287,6 @@
       "kind": "Primary identity source"
     },
     {
-      "id": "source-ce2a52b4d87995a43074",
-      "url": "https://assets.pc.gov.au/inquiries/completed/airport-regulation/public-hearings/airport-regulation-transcript-melbourne-6oct.pdf",
-      "kind": "primary"
-    },
-    {
-      "id": "source-37bce3b6c4db045b8539",
-      "url": "https://assets.publishing.service.gov.uk/media/64d2248ea4045e0011a84bf1/5gtt_interim_evaluation_2023.pdf",
-      "kind": "archived primary source"
-    },
-    {
       "id": "source-9cef5cff15426794bf33",
       "url": "https://assets.publishing.service.gov.uk/media/64d2248ea4045e0011a84bf1/5gtt_interim_evaluation_2023.pdf#page=106",
       "kind": "Primary identity source"
@@ -25819,16 +26342,6 @@
       "kind": "Primary identity source"
     },
     {
-      "id": "source-b08cbdcd8ccecef554d6",
-      "url": "https://committees.parliament.uk/oralevidence/4044/html/",
-      "kind": "primary"
-    },
-    {
-      "id": "source-0f920e59a0bc1099c191",
-      "url": "https://crainternationalinc.gcs-web.com/news-releases/news-release-details/charles-river-associates-announces-opening-london-office",
-      "kind": "primary"
-    },
-    {
       "id": "source-8ee72b2411ca6c770817",
       "url": "https://crainternationalinc.gcs-web.com/news-releases/news-release-details/charles-river-associates-announces-opening-london-office#:~:text=Christopher%20Doyle",
       "kind": "Original professional source"
@@ -25862,11 +26375,6 @@
       "id": "source-c6624b0cd2853d289d93",
       "url": "https://econicpartners.com/newsroom/announcements/dr-mark-israel-joins-econic-partners/#:~:text=Mark%20Israel",
       "kind": "Original professional source"
-    },
-    {
-      "id": "source-3de3af358281622cbe6d",
-      "url": "https://econicpartners.com/newsroom/announcements/econic-partners-launches-as-premier-economic-consulting-firm-for-complex-antitrust-regulatory-litigation-and-policy-matters/",
-      "kind": "issuer launch announcement"
     },
     {
       "id": "source-ccb69726716934259d17",
@@ -25927,11 +26435,6 @@
       "id": "source-234181e3f1e4cccfc3a4",
       "url": "https://econicpartners.com/wp-content/uploads/2025/07/Catherine-Barron-CV-July-2025.pdf#page=1",
       "kind": "Original professional source"
-    },
-    {
-      "id": "source-77f7e9716f51c7c948f3",
-      "url": "https://endeavour.com/portfolio/berkeley-research-group-2/",
-      "kind": "primary"
     },
     {
       "id": "source-c0310dbffaa5e9ff288c",
@@ -27307,11 +27810,6 @@
       "id": "source-0fe98b50e305f802331c",
       "url": "https://find-and-update.company-information.service.gov.uk/company/05840846/filing-history/MzUyMzg4MjY3N2FkaXF6a2N4/document?format=pdf&download=0#page=1",
       "kind": "Companies House location filing"
-    },
-    {
-      "id": "source-4516861dc6f55e6c3864",
-      "url": "https://find-and-update.company-information.service.gov.uk/company/05840846/insolvency",
-      "kind": "primary registry"
     },
     {
       "id": "source-b6825454cca5859a9850",
@@ -28807,11 +29305,6 @@
       "id": "source-55bef36eef17e3271fbc",
       "url": "https://find-and-update.company-information.service.gov.uk/company/16880268/persons-with-significant-control#psc-statement-2",
       "kind": "Companies House control register"
-    },
-    {
-      "id": "source-8166c06c4e4eddf3569c",
-      "url": "https://find-and-update.company-information.service.gov.uk/company/BR021155",
-      "kind": "primary identity source"
     },
     {
       "id": "source-1b590ee75a43901e44bc",
@@ -30649,11 +31142,6 @@
       "kind": "Companies House appointment filing"
     },
     {
-      "id": "source-bebf4d3be816989ae630",
-      "url": "https://find-and-update.company-information.service.gov.uk/company/OC372614/officers?page=3",
-      "kind": "primary registry"
-    },
-    {
       "id": "source-2d84a450732db1d7380f",
       "url": "https://find-and-update.company-information.service.gov.uk/company/OC372614/officers?page=3#officer-name-19",
       "kind": "Companies House officer register"
@@ -31014,21 +31502,6 @@
       "kind": "Companies House control register"
     },
     {
-      "id": "source-ac4cbf6f2b2bf03b5f8d",
-      "url": "https://find-and-update.company-information.service.gov.uk/officers/07oDguI2hqgxzwurJGLzWcljLR8/appointments",
-      "kind": "primary registry"
-    },
-    {
-      "id": "source-0c3af99731cbbe6ede38",
-      "url": "https://fingleton.com/our-story/",
-      "kind": "primary"
-    },
-    {
-      "id": "source-b7ad4f9516269514578f",
-      "url": "https://fingleton.com/who-we-are/john-fingleton/",
-      "kind": "primary"
-    },
-    {
       "id": "source-27b9e9cebe456d5652ca",
       "url": "https://fingleton.com/who-we-are/john-fingleton/#:~:text=John%20Fingleton",
       "kind": "Original professional source"
@@ -31054,11 +31527,6 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-625211be1accaa95b513",
-      "url": "https://flint-global.com/our-story/",
-      "kind": "primary"
-    },
-    {
       "id": "source-bb9bde16dda03873eeb7",
       "url": "https://flint-global.com/our-story/#:~:text=Ed%20Richards",
       "kind": "Original professional source"
@@ -31077,11 +31545,6 @@
       "id": "source-12ac50b57ee521388fde",
       "url": "https://ftalphaville-cdn.ft.com/wp-content/uploads/2016/06/EVENT-SCHEDULE.pdf#page=2",
       "kind": "Original professional source"
-    },
-    {
-      "id": "source-050cd3894cd710b76f8b",
-      "url": "https://haas.berkeley.edu/faculty/teece-david/",
-      "kind": "primary"
     },
     {
       "id": "source-1b97c347b5237bda2c63",
@@ -31112,6 +31575,11 @@
       "id": "source-c6e4b4eaad7f3f89af50",
       "url": "https://ir.fticonsulting.com/analyst/tobey-sommer#:~:text=Tobey%20Sommer",
       "kind": "Original professional source"
+    },
+    {
+      "id": "source-d5f612acf9b9fd323d46",
+      "url": "https://kpmg.com/uk/en/about.html#:~:text=KPMG%20in%20the%20UK%20is%20a%20provider",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-1df3be4348ba9faf8f85",
@@ -31179,11 +31647,6 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-0b8f2d54d157e9754488",
-      "url": "https://renewableenergy.ox.ac.uk/cameron-hepburn/",
-      "kind": "primary"
-    },
-    {
       "id": "source-6c6f63acda1985b87d84",
       "url": "https://research-portal.uea.ac.uk/en/persons/amelia-fletcher/#:~:text=Amelia%20Fletcher",
       "kind": "Original professional source"
@@ -31197,11 +31660,6 @@
       "id": "source-897de3e476d602a06f62",
       "url": "https://secretariat-intl.com/insights/secretariat-acquires-economists-incorporated/#:~:text=today%20announced%20the%20acquisition",
       "kind": "Original issuer or transaction participant"
-    },
-    {
-      "id": "source-b04d30d28c697b5f4d6d",
-      "url": "https://senate.universityofcalifornia.edu/_files/news/notice/pdf/may98notc.pdf",
-      "kind": "primary"
     },
     {
       "id": "source-ffa5c9572dd0f56bc0b7",
@@ -31219,24 +31677,9 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-30b5fe80cc6347d2f520",
-      "url": "https://timcongdon.com/articles/A_2009_A01_Monetary%20policy_IEA_Foreword.pdf",
-      "kind": "primary"
-    },
-    {
       "id": "source-4cf905b3fccac150c4bf",
       "url": "https://tu-dresden.de/bu/wirtschaft/bwl/ee2/ressourcen/dateien/lehrstuhlseiten/ordner_veranstaltungen_alt/ordner_enerday/ordner_enerday_2006/ordner_download_enerday_06/Makholm_paper.pdf?lang=de#page=27",
       "kind": "Original professional source"
-    },
-    {
-      "id": "source-5167afe3e172ae547d8d",
-      "url": "https://tu-dresden.de/bu/wirtschaft/ee2/ressourcen/dateien/lehrstuhlseiten/ordner_veranstaltungen_alt/ordner_enerday/ordner_enerday_2006/ordner_download_enerday_06/Makholm_paper.pdf",
-      "kind": "primary"
-    },
-    {
-      "id": "source-a6a24fcc00951c786116",
-      "url": "https://volterra.co.uk/volterras-story/",
-      "kind": "primary"
     },
     {
       "id": "source-67477294f835aeaed861",
@@ -31294,9 +31737,19 @@
       "kind": "Original professional source"
     },
     {
+      "id": "source-97a0b148463bcd21a466",
+      "url": "https://www.alixpartners.com/our-firm/#:~:text=Jay%20Alix%20founded%20AlixPartners",
+      "kind": "Official firm profile"
+    },
+    {
       "id": "source-a6e104430a946014cfea",
       "url": "https://www.alixpartners.com/our-people/32991/stefan-hunt/",
       "kind": "Employer biography"
+    },
+    {
+      "id": "source-5bd31efcb03d492dc99c",
+      "url": "https://www.analysisgroup.com/about/#:~:text=Analysis%20Group%20is%20one%20of%20the%20largest%20international%20economics%20consulting%20firms",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-bf52bbd18b78fce1446f",
@@ -31434,6 +31887,11 @@
       "kind": "Original professional source"
     },
     {
+      "id": "source-472b7154069ab958e6b6",
+      "url": "https://www.camecon.com/about-us#:~:text=Cambridge%20Econometrics%20was%20founded%20in%201985",
+      "kind": "Official firm profile"
+    },
+    {
       "id": "source-ea65a47151df908edaa0",
       "url": "https://www.camecon.com/about-us#:~:text=Majority-owned%20by%20The%20Cambridge%20Trust",
       "kind": "Original issuer or transaction participant"
@@ -31464,14 +31922,14 @@
       "kind": "Firm statement"
     },
     {
+      "id": "source-d2e3db3681df0f3b5d57",
+      "url": "https://www.capitaleconomics.com/about#:~:text=Delivering%20Independent%20Insight",
+      "kind": "Official firm profile"
+    },
+    {
       "id": "source-ff96f3a0cb8f9e987486",
       "url": "https://www.capitaleconomics.com/about-us/our-team/neil-shearing?page=1#:~:text=Neil%20Shearing",
       "kind": "Original professional source"
-    },
-    {
-      "id": "source-6fc558443c5a4b644b1d",
-      "url": "https://www.capitaleconomics.com/about-us/our-team/roger-bootle",
-      "kind": "primary"
     },
     {
       "id": "source-d0c2396cb74b09b84f91",
@@ -31504,9 +31962,9 @@
       "kind": "Original issuer or transaction participant"
     },
     {
-      "id": "source-c36c734bd20cc8b93310",
-      "url": "https://www.catribunal.org.uk/sites/cat/files/2023-02/2023.02.07_NON-CONFIDENTIAL_Trucks_1284_90_Final.pdf",
-      "kind": "original tribunal judgment"
+      "id": "source-d96b233b4af73a2e5ae7",
+      "url": "https://www.cepa.co.uk/about/what-we-do/1000#:~:text=impartially%20apply%20sound%20economic%20concepts",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-6fe184aba63e12e21589",
@@ -31544,9 +32002,9 @@
       "kind": "Original issuer or transaction participant"
     },
     {
-      "id": "source-3e6f4fab9bc961ec24dd",
-      "url": "https://www.compasslexecon.com/about/our-story",
-      "kind": "primary"
+      "id": "source-38ad88ae27004638cb6b",
+      "url": "https://www.compasslexecon.com/about/#:~:text=Compass%20Lexecon%20provides%20law%20firms",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-845da6c7c2629a7ae669",
@@ -31602,11 +32060,6 @@
       "id": "source-ab439f6c51d8cea727f7",
       "url": "https://www.compasslexecon.com/insights/news/compass-lexecon-appoints-chief-economist-at-ofgem-as-senior-vice-president-and-head-of-research",
       "kind": "Issuer announcement"
-    },
-    {
-      "id": "source-147a99e8fc85cd6142b4",
-      "url": "https://www.compasslexecon.com/insights/news/compass-lexecon-to-acquire-european-competition-practice-from-lecg",
-      "kind": "primary"
     },
     {
       "id": "source-9c15f07d07a5b088fc1d",
@@ -31689,9 +32142,9 @@
       "kind": "Original issuer or transaction participant"
     },
     {
-      "id": "source-d76b96d4bf4cf37b171f",
-      "url": "https://www.crai.com/locations/",
-      "kind": "official office/contact page"
+      "id": "source-2d356b1c834e8cc60c0e",
+      "url": "https://www.crai.com/about-us/#:~:text=Charles%20River%20Associates%20%28CRA%29%20is%20a%20leading%20global%20consulting%20firm",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-52bb8de85e8d309b3aa9",
@@ -31804,11 +32257,6 @@
       "kind": "Primary identity source"
     },
     {
-      "id": "source-c9940782b57fffef0d14",
-      "url": "https://www.deloitte.com/uk/en/services/consulting-financial/services/economic-advisory.html",
-      "kind": "primary identity source"
-    },
-    {
       "id": "source-577f4330711afc249b7c",
       "url": "https://www.deloitte.com/uk/en/services/consulting-financial/services/economic-advisory.html#:~:text=Economic%20Advisory",
       "kind": "Primary identity source"
@@ -31849,6 +32297,11 @@
       "kind": "Original issuer or transaction participant"
     },
     {
+      "id": "source-f3eee6eedc96abbb9c9a",
+      "url": "https://www.eiu.com/n/about/#:~:text=Leader%20in%20business%20intelligence",
+      "kind": "Official firm profile"
+    },
+    {
       "id": "source-21f5406cbf48f0ea1b22",
       "url": "https://www.eiu.com/n/contact-us/#:~:text=Dubai",
       "kind": "Firm office directory"
@@ -31872,11 +32325,6 @@
       "id": "source-2ba8e04293c04bc9054a",
       "url": "https://www.fathom-consulting.com/wp-content/uploads/2024/09/UK-Media-Relations-Specialist-job-description-Sept-2024.pdf#page=3",
       "kind": "Primary identity source"
-    },
-    {
-      "id": "source-3385aeba307a6adf0749",
-      "url": "https://www.fideres.com/about-us/",
-      "kind": "primary"
     },
     {
       "id": "source-eeaeed2bbeecc4bb8d5e",
@@ -31932,6 +32380,11 @@
       "id": "source-8529e38451271193bc1b",
       "url": "https://www.frontier-economics.com/uk/en/about/people/people-i21943-mike-walker/",
       "kind": "Employer biography"
+    },
+    {
+      "id": "source-0a1f7141809cb0fdec57",
+      "url": "https://www.frontier-economics.com/uk/en/about/who-we-are/#:~:text=Frontier%20Economics%20was%20founded%20by%20a%20team%20of%20economists",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-babf6c7ca177627cf18b",
@@ -32009,16 +32462,6 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-5d9b6866537dc443dce8",
-      "url": "https://www.fticonsulting.com/saudi-arabia/newsroom/compass-lexecon-appoints-ofgem-chief-economist-senior-vice-president-head-research",
-      "kind": "receiving-firm announcement"
-    },
-    {
-      "id": "source-1da72f8a009a97724402",
-      "url": "https://www.gbv.de/dms/spk/sbb/toc/226695999.pdf",
-      "kind": "primary"
-    },
-    {
       "id": "source-57ffae33a186354e59fe",
       "url": "https://www.globenewswire.com/news-release/2024/02/15/2829868/33891/en/Compass-Lexecon-Announces-Executive-Leadership-Appointments.html#:~:text=Kirsten%20Edwards-Warren",
       "kind": "Original professional source"
@@ -32039,9 +32482,9 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-2dea151c4eb699f34658",
-      "url": "https://www.gov.uk/government/news/new-competition-authority-completes-leadership-team",
-      "kind": "primary identity source"
+      "id": "source-9be01cba49fd1e77520d",
+      "url": "https://www.gov.uk/government/organisations/competition-and-markets-authority/about#:~:text=The%20Competition%20and%20Markets%20Authority%20%28CMA%29%20is%20an%20independent%20non%2Dministerial%20department",
+      "kind": "Official institutional profile"
     },
     {
       "id": "source-593de5fa87dee8f1768c",
@@ -32139,11 +32582,6 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-ea214dfd8a4d507b57d6",
-      "url": "https://www.johnkay.com/about/?am9ob=354723",
-      "kind": "primary"
-    },
-    {
       "id": "source-9fb7b0641a716111773b",
       "url": "https://www.johnkay.com/about/?am9ob=354723#:~:text=London%20Economics",
       "kind": "Original professional source"
@@ -32162,6 +32600,11 @@
       "id": "source-088eb94d61f22f449041",
       "url": "https://www.justice.gov/archives/atr/margaret-bloom-biography#:~:text=Margaret%20Bloom",
       "kind": "Original professional source"
+    },
+    {
+      "id": "source-79ade8c1b91a2d16a40a",
+      "url": "https://www.keystone.com/#:~:text=Keystone%20Economists",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-5d1e1357170c096f50e9",
@@ -32224,11 +32667,6 @@
       "kind": "Original issuer or transaction participant"
     },
     {
-      "id": "source-14678cd3d72e061f2cd7",
-      "url": "https://www.london.edu/news/remembering-sir-james-ball-1393?entry=true",
-      "kind": "primary"
-    },
-    {
       "id": "source-784d8163216d18fcc1cd",
       "url": "https://www.london.edu/news/remembering-sir-james-ball-1393?entry=true#:~:text=Sir%20James%20Ball",
       "kind": "Original professional source"
@@ -32257,6 +32695,11 @@
       "id": "source-41d0fa4b31db5a9bd043",
       "url": "https://www.nefconsulting.com/#:~:text=Company%20Number%206570398",
       "kind": "Primary identity source"
+    },
+    {
+      "id": "source-532540a074b6f89989fd",
+      "url": "https://www.nera.com/about.html#:~:text=About%20NERA",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-8dd6205b0583f5fd91f2",
@@ -32379,14 +32822,14 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-bd12bccea531f8fbde1e",
-      "url": "https://www.ofgem.gov.uk/sites/default/files/docs/2009/02/principles-processes-and-issues-con-doc_final---270209.pdf",
-      "kind": "primary regulator retrospective"
+      "id": "source-1e9fa24b18130a1ee438",
+      "url": "https://www.ofgem.gov.uk/about-us#:~:text=About%20Ofgem%20and%20what%20we%20do",
+      "kind": "Official institutional profile"
     },
     {
-      "id": "source-b4f6ac6ea88797ea03e5",
-      "url": "https://www.oxera.com/about-us/media-centre/dr-helen-jenkins-appointed-as-oxeras-first-managing-partner/",
-      "kind": "primary"
+      "id": "source-7ea6c26ea1d2277f26ba",
+      "url": "https://www.oxera.com/about-us/#:~:text=Oxera%20was%20founded%20on%20a%20single%20principle",
+      "kind": "Official firm profile"
     },
     {
       "id": "source-f948350d88b07acbb8ed",
@@ -32402,11 +32845,6 @@
       "id": "source-94601569a9741af008a8",
       "url": "https://www.oxera.com/fr/people/dr-helene-bourguignon/#:~:text=H%C3%A9l%C3%A8ne%20Bourguignon",
       "kind": "Original professional source"
-    },
-    {
-      "id": "source-cbfb744fcb4575aed806",
-      "url": "https://www.oxera.com/locations/",
-      "kind": "official office/contact page"
     },
     {
       "id": "source-459408bda0f92641e5c1",
@@ -32479,11 +32917,6 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-3e7e3f4cb7ed5445c2e9",
-      "url": "https://www.oxfordeconomics.com/about-us/",
-      "kind": "primary"
-    },
-    {
       "id": "source-c45243850e2972758540",
       "url": "https://www.oxfordeconomics.com/de/profile/neil-walker/#:~:text=Neil%20Walker",
       "kind": "Original professional source"
@@ -32519,11 +32952,6 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-d0004a374eb7abcfcafe",
-      "url": "https://www.paconsulting.com/about/legal/pa-consulting-group-companies-details",
-      "kind": "primary identity source"
-    },
-    {
       "id": "source-bff1c8e62670057c9672",
       "url": "https://www.paconsulting.com/about/legal/pa-consulting-group-companies-details#:~:text=00414220",
       "kind": "Primary identity source"
@@ -32532,11 +32960,6 @@
       "id": "source-60cb487e571297ef9cbb",
       "url": "https://www.pagefield.com/news-insight/pagefield-welcomes-wpi-strategy-to-the-family/#:~:text=Sean%20Worth",
       "kind": "Original professional source"
-    },
-    {
-      "id": "source-7b913117d1360b5ace48",
-      "url": "https://www.pantheonmacro.com/en-us/about-us",
-      "kind": "primary"
     },
     {
       "id": "source-61fbc11a44b15ffabaab",
@@ -32587,11 +33010,6 @@
       "id": "source-a9fee117c8fce6c5a280",
       "url": "https://www.pwc.co.uk/who-we-are/governance/about-site-provider.html#:~:text=OC303525",
       "kind": "Primary identity source"
-    },
-    {
-      "id": "source-443857f813a7446987e8",
-      "url": "https://www.rbbecon.com/about/",
-      "kind": "primary"
     },
     {
       "id": "source-faa58fdcd58f001f978e",
@@ -32794,11 +33212,6 @@
       "kind": "SEC filing"
     },
     {
-      "id": "source-a1e6e965ccd576838307",
-      "url": "https://www.seh.ox.ac.uk/people/colin-mayer",
-      "kind": "primary"
-    },
-    {
       "id": "source-631555dc46f3f7f275a5",
       "url": "https://www.skylarkcg.com/contact-us#:~:text=Skylark%20Consulting%20Group%20Limited",
       "kind": "Primary identity source"
@@ -32814,9 +33227,9 @@
       "kind": "Primary identity source"
     },
     {
-      "id": "source-217322c98a451afdcdf9",
-      "url": "https://www.thegazette.co.uk/London/issue/59864",
-      "kind": "primary_address_context"
+      "id": "source-9b0ba399a8a4f72daef5",
+      "url": "https://www.strath.ac.uk/whystrathclyde/#:~:text=research%20produced%20by%20the%20University%20of%20Strathclyde",
+      "kind": "Official institutional profile"
     },
     {
       "id": "source-da567155bbb1da30caec",
@@ -41739,47 +42152,245 @@
   "people_alias_crosswalk": [
     {
       "id": "external-adrian-john-cooper",
-      "person_id": "02c97e19-9b3f-59e8-9fde-691854347be8"
+      "person_id": "02c97e19-9b3f-59e8-9fde-691854347be8",
+      "source_refs": [
+        {
+          "source_id": "source-6b834451d009921e6a1e",
+          "locator": "Adrian Cooper · Named Executive Chairman in the CEO succession announcement",
+          "checked_on": "2026-11-14",
+          "source_date": "2025-12-04",
+          "date_basis": "Source date",
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-08d9a331b2ef3788952c",
+          "locator": "COOPER, Adrian John · Director. The register gives appointment 1996-04-19.",
+          "checked_on": "2026-11-14",
+          "source_date": "1996-04-19",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-bridget-rosewell",
-      "person_id": "narrative-339a6fd8c7d6332fd84a"
+      "person_id": "narrative-339a6fd8c7d6332fd84a",
+      "source_refs": [
+        {
+          "source_id": "source-67477294f835aeaed861",
+          "locator": "Bridget Rosewell · Co-founder",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-bcbd3e9f936b6c1f8453",
+          "locator": "ROSEWELL, Bridget Clare · LLP Designated Member. The register gives appointment 2011-02-10. Resignation 2014-09-15.",
+          "checked_on": "2026-11-14",
+          "source_date": "2011-02-10",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-daniel-maldoom",
-      "person_id": "14db5843-ce3e-5787-af52-dd66cee62cad"
+      "person_id": "14db5843-ce3e-5787-af52-dd66cee62cad",
+      "source_refs": [
+        {
+          "source_id": "source-d9f2b301a6142e0fd8ab",
+          "locator": "Dr Dan Maldoom is a Partner of DotEcon Ltd · Co-founder",
+          "checked_on": "2026-11-14",
+          "source_date": "2012-02",
+          "date_basis": "Source date",
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-de584fddef77bfc7ef02",
+          "locator": "MALDOOM, Daniel James Parry, Dr · Director. The register gives appointment 1999-06-01.",
+          "checked_on": "2026-11-14",
+          "source_date": "1999-06-01",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-gunnar-thorvald-niels",
-      "person_id": "edfb3774-f97c-5d1c-a55a-7d8a97d57143"
+      "person_id": "edfb3774-f97c-5d1c-a55a-7d8a97d57143",
+      "source_refs": [
+        {
+          "source_id": "source-ff9bbbaa7dc147295b20",
+          "locator": "Gunnar Niels · Managing Partner",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-7ba90b9f0c8a44c92b31",
+          "locator": "NIELS, Gunnar Thorvald, Dr · LLP Designated Member. The register gives appointment 2014-05-13.",
+          "checked_on": "2026-11-14",
+          "source_date": "2014-05-13",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-helen-elizabeth-jenkins",
-      "person_id": "a8649d79-577c-5674-b7eb-7e54c427ef32"
+      "person_id": "a8649d79-577c-5674-b7eb-7e54c427ef32",
+      "source_refs": [
+        {
+          "source_id": "source-f948350d88b07acbb8ed",
+          "locator": "Helen Jenkins · First Managing Partner",
+          "checked_on": "2026-11-14",
+          "source_date": "2016-12-06",
+          "date_basis": "Source date",
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-b444541645ade39f4627",
+          "locator": "JENKINS, Helen Elizabeth, Dr. · LLP Designated Member. The register gives appointment 2014-05-13.",
+          "checked_on": "2026-11-14",
+          "source_date": "2014-05-13",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-ian-charles-shepherdson",
-      "person_id": "72215f1b-36e0-5934-809e-5e83795d7e79"
+      "person_id": "72215f1b-36e0-5934-809e-5e83795d7e79",
+      "source_refs": [
+        {
+          "source_id": "source-61fbc11a44b15ffabaab",
+          "locator": "Ian Shepherdson · Founder",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-4700c66a888de1d168c3",
+          "locator": "SHEPHERDSON, Ian Charles · Director. The register gives appointment 2009-11-14.",
+          "checked_on": "2026-11-14",
+          "source_date": "2009-11-14",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-luis-miguel-correia-da-silva-domingos",
-      "person_id": "6b03b74d-4a43-505e-b113-4c1c0e6785d2"
+      "person_id": "6b03b74d-4a43-505e-b113-4c1c0e6785d2",
+      "source_refs": [
+        {
+          "source_id": "source-67d13dd8db6b2a13f8b9",
+          "locator": "Luis Correia da Silva · Chair and Partner",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-8976f3d08e168131e944",
+          "locator": "CORREIA DA SILVA DOMINGOS, Luis Miguel, Dr · LLP Designated Member. The register gives appointment 2014-04-03.",
+          "checked_on": "2026-11-14",
+          "source_date": "2014-04-03",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-mark-andrew-pragnell",
-      "person_id": "410ae7d4-ee65-51c4-921b-ce6038a70f76"
+      "person_id": "410ae7d4-ee65-51c4-921b-ce6038a70f76",
+      "source_refs": [
+        {
+          "source_id": "source-50a412fb3c2226f8d0f0",
+          "locator": "Mark Pragnell · Named on the firm’s leadership page",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-6ce89c9e0a0954d1362f",
+          "locator": "PRAGNELL, Mark Andrew · Director. The register gives appointment 2024-01-01. Resignation 2024-10-29.",
+          "checked_on": "2026-11-14",
+          "source_date": "2024-01-01",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-neil-christopher-shearing",
-      "person_id": "ec4169e0-e81f-5ae0-b665-eeab943d2be5"
+      "person_id": "ec4169e0-e81f-5ae0-b665-eeab943d2be5",
+      "source_refs": [
+        {
+          "source_id": "source-ff96f3a0cb8f9e987486",
+          "locator": "Neil Shearing · Group Chief Economist",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-42e1628da2c8035e117e",
+          "locator": "SHEARING, Neil Christopher · Director. The register gives appointment 2020-07-21.",
+          "checked_on": "2026-11-14",
+          "source_date": "2020-07-21",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-owen-montgomery-good",
-      "person_id": "686c9592-ee42-52eb-b7cb-49c6fbc95bee"
+      "person_id": "686c9592-ee42-52eb-b7cb-49c6fbc95bee",
+      "source_refs": [
+        {
+          "source_id": "source-5ac0cd2f9cc01ab27be2",
+          "locator": "Owen Good · Named in the Cebr brochure",
+          "checked_on": "2026-11-14",
+          "source_date": "2024",
+          "date_basis": "Source date",
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-9397abf0946258aa6453",
+          "locator": "GOOD, Owen Montgomery · Director. The register gives appointment 2023-10-01.",
+          "checked_on": "2026-11-14",
+          "source_date": "2023-10-01",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     },
     {
       "id": "external-paul-ormerod",
-      "person_id": "narrative-8f376c4edda42ccde960"
+      "person_id": "narrative-8f376c4edda42ccde960",
+      "source_refs": [
+        {
+          "source_id": "source-33fa58d38d27c04c7ed3",
+          "locator": "Paul Ormerod · Co-founder",
+          "checked_on": "2026-11-14",
+          "source_date": null,
+          "date_basis": null,
+          "field": "published_name"
+        },
+        {
+          "source_id": "source-94ebe006a0e44f5624a6",
+          "locator": "ORMEROD, Paul Andrew · LLP Designated Member. The register gives appointment 2011-02-10. Resignation 2025-10-31.",
+          "checked_on": "2026-11-14",
+          "source_date": "2011-02-10",
+          "date_basis": "Statutory appointment date",
+          "field": "statutory_name"
+        }
+      ]
     }
   ],
   "ownership_transactions": [
@@ -41800,8 +42411,8 @@
           "source_id": "source-b33bc47b998f71881230",
           "locator": "Issuer release, background to the rights issue.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2019-03-20",
+          "date_basis": "Publication date",
           "field": "transaction_or_report"
         },
         {
@@ -41831,8 +42442,8 @@
           "source_id": "source-c1b0d497c13844e50ed9",
           "locator": "FY2024 accounts, PDF page 24, Note 20.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2025-07-17",
+          "date_basis": "Accounts filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -41877,8 +42488,8 @@
           "source_id": "source-5754d70705969c3a5202",
           "locator": "FY2024 accounts, PDF page 23, Note 16.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2025-06-23",
+          "date_basis": "Accounts filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42101,8 +42712,8 @@
           "source_id": "source-86ca3bd5c6138f01f950",
           "locator": "FY2025 accounts, PDF page 4, strategic report.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2026-04-29",
+          "date_basis": "Accounts filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42124,16 +42735,16 @@
           "source_id": "source-2763b0c530dc9045c202",
           "locator": "Form 10-Q, Note 8, Business Acquisitions.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2006-03-29",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
           "source_id": "source-a0d44e44b89b6d052adc",
           "locator": "Form 10-Q, Note 16, Subsequent Events; records £8.4m in cash and loan notes before any performance-linked consideration.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2005-06-21",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42155,8 +42766,8 @@
           "source_id": "source-8c8f3bd1ff348c80bab2",
           "locator": "FY2024 accounts, PDF page 29, controlling-party note.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2025-08-04",
+          "date_basis": "Accounts filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42224,8 +42835,8 @@
           "source_id": "source-7343bd80cf03d110f3e4",
           "locator": "Annual Report 2024, PDF page 25, group structure table with ownership/voting power.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2025-05-21",
+          "date_basis": "Annual report signing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42271,8 +42882,8 @@
           "source_id": "source-e4fed0093ef8f6215c66",
           "locator": "Control register: notified 23 December 2025.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2025-12-23",
+          "date_basis": "Statutory notification date",
           "field": "transaction_or_report"
         }
       ]
@@ -42317,8 +42928,8 @@
           "source_id": "source-35c9ca499958434e91ab",
           "locator": "Form 10-K, Note 15, Subsequent Event.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2006-03-07",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42340,8 +42951,8 @@
           "source_id": "source-62adc2ac9dc752a751da",
           "locator": "Form 8-K, Item 2, acquisition of substantially all assets.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2003-12-12",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
@@ -42433,16 +43044,16 @@
           "source_id": "source-50385fb63d3959db7692",
           "locator": "FTI annual report, Economic Consulting segment and acquisitions note.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2012-02-24",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
           "source_id": "source-e4a1ac6113da5333b63d",
           "locator": "FTI quarterly report confirms month and regional scope.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2012-05-09",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42464,8 +43075,8 @@
           "source_id": "source-8acae04ba25866058166",
           "locator": "LECG annual report, discussion of the merger and concurrent investment.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2010-03-15",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42533,8 +43144,8 @@
           "source_id": "source-5b171139ab22ec851d77",
           "locator": "Executed agreement, preamble and recitals.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2025-02-24",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
@@ -42564,8 +43175,8 @@
           "source_id": "source-6206c347dd4043c64e31",
           "locator": "FiscalNote SEC exhibit, description of the dispositions.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2026-03-24",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
@@ -42595,8 +43206,8 @@
           "source_id": "source-b11138d07517ce9a8595",
           "locator": "Prospectus, 2021 acquisitions and considerations.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2022-11-14",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
@@ -42649,16 +43260,16 @@
           "source_id": "source-07e17f36d20f54adc665",
           "locator": "LLP first accounts, PDF page 3, business review.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2016-01-11",
+          "date_basis": "Accounts filing date",
           "field": "transaction_or_report"
         },
         {
           "source_id": "source-342265d46c05a544c67a",
           "locator": "Predecessor’s filed accounts, PDF page 4, change in activities.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2015-12-15",
+          "date_basis": "Accounts filing date",
           "field": "transaction_or_report"
         }
       ]
@@ -42703,8 +43314,8 @@
           "source_id": "source-f0b896e056c7a01ff7c9",
           "locator": "Form 8-K, Item 1.01 and Purchase Agreement fields.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2026-09-02",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
@@ -42765,8 +43376,8 @@
           "source_id": "source-5bad9052690efda85580",
           "locator": "Form 8-K, Item 2.01 names the purchaser and gives the completion date.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2021-03-03",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
@@ -42796,8 +43407,8 @@
           "source_id": "source-8f00fcb1b5672fc9ed02",
           "locator": "Jacobs SEC quarterly filing names the acquiring subsidiary and dates the completion.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2026-05-05",
+          "date_basis": "SEC filing date",
           "field": "transaction_or_report"
         },
         {
@@ -42874,8 +43485,8 @@
           "source_id": "source-eaa08d0129ceba4f7ad8",
           "locator": "Company 16880268, separate PSC notice dated 1 April 2026.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2026-04-01",
+          "date_basis": "Statutory notification date",
           "field": "transaction_or_report"
         }
       ]
@@ -42905,8 +43516,8 @@
           "source_id": "source-083ff93ae73628bd7041",
           "locator": "Original Companies House corporate PSC entry; notified 24 March 2025.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2025-03-24",
+          "date_basis": "Statutory notification date",
           "field": "transaction_or_report"
         }
       ]
@@ -42951,8 +43562,8 @@
           "source_id": "source-c3bbe67706626699a46a",
           "locator": "FY2007 filed accounts, PDF page 12, investments note.",
           "checked_on": "2026-11-14",
-          "source_date": null,
-          "date_basis": null,
+          "source_date": "2008-02-01",
+          "date_basis": "Accounts filing date",
           "field": "transaction_or_report"
         }
       ]

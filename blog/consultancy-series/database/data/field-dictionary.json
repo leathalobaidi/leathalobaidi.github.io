@@ -190,7 +190,8 @@
     "grain": "One record per people_alias_crosswalk id",
     "fields": {
       "id": "TEXT",
-      "person_id": "TEXT"
+      "person_id": "TEXT",
+      "source_refs": "TEXT"
     }
   },
   "ownership_transactions": {

@@ -2,7 +2,7 @@
 
 November 2026 correction. Mike Walker and Michael Walker are one professional identity. The directory records the name used in the 2000 CRA release and the January 2026 start month confirmed by Frontier. The original Frontier announcement gave 5 January as the intended date, subject to final conflict checks. The accounts selection was frozen on 24 July 2026 and checked against the accounts, with exact references in the November edition.
 
-This edition contains 90 firm catalogue entries and 229 professional or research person entries. The People review introduces schema 1.3.
+This edition contains 90 firm catalogue entries and 229 professional or research person entries. This export uses schema 1.5.
 
 The download includes 140 individually checked financial field observations, including comparative years and two explicit non-disclosures; 11 appointment/advisory relationships; 15 dated events; 84 dated registered-office observations across 80 legal entities and 109 office or contact-city observations from ten firms. Four registered addresses are superseded. Two city listings are historical. A dated observation can be historical even when it is the latest available record.
 
@@ -66,3 +66,8 @@ The `people` table includes an identity review status, review date, professional
 Schema 1.4 adds `ownership_transactions` and `ownership_control_observations`. A transaction row records the correct perimeter (company, brand, group or practice), relevant stage, date precision and any supported terms. The control table contains point-in-time UK register entries, statutory bands, notifications and cessations. Read the date basis before comparing rows; a filing period end, a public announcement and a control notification do not establish the day of a closing. The previously released event table remains a small set of dated career and ownership examples. Use the Ownership tables for this review.
 
 See the [ownership provenance notes](../ownership-provenance.html) and the [source register CSV](../ownership-provenance.csv) for original passages and filing pages. The joint Oxford Analytica and Dragonfly consideration applies to both businesses.
+
+
+## Final provenance review
+
+The [review notes](../final-provenance.html) and [change register](../final-provenance.csv) give the source and date added for each affected record. Brand and institution rows cite the original publisher. The alias crosswalk carries sources for both the professional and statutory names. Where available, accounts, career and ownership citations include filing or publication dates in `record_sources.source_date`. `date_basis` identifies the date type and `checked_on` records when the source was reviewed.
