@@ -12,7 +12,9 @@ const date=value=>{if(!value)return 'Date not supplied';if(/^\d{4}-\d{2}-\d{2}$/
 const textQuery=id=>$(id).value.trim().toLocaleLowerCase('en-GB');
 const matches=(q,...values)=>!q||values.join(' ').toLocaleLowerCase('en-GB').includes(q);
 const alpha=(a,b)=>String(a.name??a.organisation_name??'').localeCompare(String(b.name??b.organisation_name??''),'en-GB');
+const foldName=value=>String(value??"").normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase("en-GB");
 let D,F,P,S,O,sourceLimit=35;
+const peopleRelationships=new Map();
 const valueOf=f=>f.value_exact??f.value??null;
 const hasValue=f=>valueOf(f)!==null&&valueOf(f)!=='';
 const refsOf=r=>Array.isArray(r?.source_refs)?r.source_refs:[];
@@ -45,10 +47,13 @@ function renderFirms(){const q=textQuery('firmSearch'),coverage=$('firmCoverage'
  $('firmCount').textContent=`${rows.length} of ${D.firms.length} catalogue entries`;
  $('firmRows').innerHTML=rows.map(f=>{const fs=D.financials.filter(x=>x.firm_id===f.id&&hasValue(x));const metrics=new Set(fs.map(x=>x.metric));return `<tr><td><button class="name" type="button" data-firm="${esc(f.id)}">${esc(f.name)}</button></td><td>${esc(scopeName(f.scope_type))}${identitySummary(f)}</td><td>${fs.length?`${metrics.size} checked metric${metrics.size===1?'':'s'}`:'No checked values'}<p class="sub">${fs.length?'Open profile for dates and accounting scope':'Missing information is not zero'}</p></td><td>${sourceList(refsOf(f),'Identity sources')}</td></tr>`}).join('')||empty(4,'No matching firms. Try another name or reset the filters.');
 }
-function personAffiliations(p){return D.affiliations.filter(a=>a.person_id===p.id)}
-function appointmentEvent(a){return D.events.find(e=>e.subject_id===a.person_id&&e.date===a.date&&e.participants.some(p=>p.role==='destination'&&p.entity_id===a.organisation_id))}
+function personAffiliations(p){return peopleRelationships.get(p.id)||[]}
 function eventRecord(e){return `<div class="record"><p><strong>${esc(e.label)}</strong></p><p class="sub">${esc(date(e.date))} · ${esc(dateBasis(e.date_basis))}</p><p class="sub">${esc(e.qualification)}</p>${sourceList(refsOf(e))}</div>`}
-function affiliationRecord(a){const ev=appointmentEvent(a),origin=ev?.participants.find(p=>p.role==='origin');return `<div class="record"><p><strong>${esc(a.organisation_name)}</strong> · ${esc(a.role)}</p><p class="sub">${esc(date(a.date))} · ${esc(dateBasis(a.date_basis))}</p>${ev?.announcement_date&&ev.announcement_date!==a.date?`<p class="sub">Announced ${esc(date(ev.announcement_date))}</p>`:''}${origin?`<p class="sub">Previous organisation: ${esc(origin.name)}</p>`:''}${ev?.geography?`<p class="sub">Scope: ${esc(ev.geography)}</p>`:''}<p class="sub">${esc(ev?.qualification||a.limit)}</p>${sourceList(refsOf(a))}</div>`}
+function affiliationRecord(a){
+ const dates=[a.date?a.date_basis+' '+date(a.date):a.date_basis+' · Date not supplied'];
+ if(a.end_date&&a.end_date!==a.date)dates.push('Ended '+date(a.end_date));
+ return `<div class="record"><p><strong>${esc(a.organisation_name)}</strong> · ${esc(a.role)}</p><p class="sub">${esc(a.evidence_type)} · ${esc(dates.join(' · '))}</p>${sourceList(refsOf(a),'Original source')}</div>`;
+}
 function renderCareers(){
  const q=textQuery('careerSearch'),type=$('careerType').value,byEvent=new Map(D.affiliations.map(a=>[a.event_id,a]));
  const group=e=>e.id.startsWith('appointment-')?'moves':e.id.startsWith('statutory-')?'statutory':'ownership';
@@ -60,9 +65,19 @@ function renderCareers(){
    return `<tr><td><strong>${esc(e.label)}</strong><p class="sub">${esc(route)}</p>${record?`<p class="sub">${esc(record.role)}</p>`:''}</td><td>${esc(date(e.date))}<p class="sub">${esc(dateBasis(e.date_basis))}</p>${e.announcement_date&&e.announcement_date!==e.date?`<p class="sub">Announced ${esc(date(e.announcement_date))}</p>`:''}</td><td><p class="sub">${esc(e.qualification)}</p>${sourceList(refsOf(e))}</td></tr>`;
  }).join('')||empty(3,'No checked events match these filters.');
 }
-function renderPeople(){const q=textQuery('personSearch'),coverage=$('personCoverage').value,rows=D.people.filter(p=>matches(q,p.name,...(p.professional_aliases||[]))&&(coverage==='all'||(coverage==='scope'?p.in_research_scope:personAffiliations(p).length>0))).sort(alpha);
+function renderPeople(){
+ const q=foldName(textQuery('personSearch')),coverage=$('personCoverage').value;
+ const rows=D.people.filter(p=>{
+  const names=[p.name,...p.professional_aliases,...personAffiliations(p).map(a=>a.organisation_name)];
+  return names.some(n=>foldName(n).includes(q))&&(coverage==='all'||(coverage==='scope'?p.in_research_scope:p.identity_status===coverage));
+ }).sort(alpha);
  $('peopleCount').textContent=`${rows.length} of ${D.people.length} person entries`;
- $('peopleRows').innerHTML=rows.map(p=>`<tr><td><button class="name" type="button" data-person="${esc(p.id)}">${esc(p.name)}</button></td><td>${p.in_research_scope?'Main research scope':p.in_candidate_roster?'Additional research candidate':'Historical / professional context'}<p class="sub">${p.has_research_dossier?'Inherited research profile exists':'Background coverage is limited'}</p></td><td>${personAffiliations(p).length||'None in this edition'}</td><td>${sourceList(refsOf(p),'Related professional sources')}</td></tr>`).join('')||empty(4,'No matching people. Try another name or reset the filters.');
+ $('peopleRows').innerHTML=rows.map(p=>{
+  const label=p.identity_status==='source_checked'?'Source checked':'Unresolved';
+  const scope=p.in_research_scope?'Main research scope':p.in_candidate_roster?'Additional research candidate':'Professional or historical context';
+  const variants=p.professional_aliases.length?`<p class="sub">Also recorded as ${esc(p.professional_aliases.join(', '))}</p>`:'';
+  return `<tr><td><button class="name" type="button" data-person="${esc(p.id)}">${esc(p.name)}</button>${variants}</td><td>${scope}</td><td>${personAffiliations(p).length||'None in this edition'}</td><td><a href="people-provenance.html#${esc(p.id)}">${label}</a></td></tr>`;
+ }).join('')||empty(4,'No matching people. Try another name or reset the filters.');
 }
 function renderFinancials(){const q=textQuery('financeSearch'),metric=$('financeMetric').value,currency=$('financeCurrency').value;let rows=D.financials.filter(f=>f.metric===metric);if($('financePeriod').value==='latest')rows=currentFinancials(rows);rows=rows.filter(f=>matches(q,firmName(f.firm_id,f.firm_name))&&(currency==='all'||f.currency===currency)).sort((a,b)=>firmName(a.firm_id).localeCompare(firmName(b.firm_id))||b.year_end.localeCompare(a.year_end));
  $('financeCurrency').disabled=countMetrics.has(metric);
@@ -105,17 +120,23 @@ function openProfile(kind,id){
    ${offices.length?`<h3>Published city listings</h3><p>${esc(offices.map(o=>o.city+(o.listing_status==='Historical listing'?' (historical listing)':'')).join(', '))}</p><p class="sub">Firm-published observations; not a count of staff or headquarters.</p>${sourceList(offices.flatMap(refsOf),'Office sources')}`:''}`;
  }else{
   const affiliations=personAffiliations(record),statutory=D.events.filter(e=>e.subject_id===id&&e.event_type==='LLP member appointment');
-  $('profileBody').innerHTML=`<p class="profile-intro">${record.in_research_scope?'Part of the 106-person main research scope.':'Additional research or professional-context entry.'} ${record.has_research_dossier?'An inherited research profile exists; it is not a verified biography.':'Background coverage is limited.'}</p>
-   ${record.professional_aliases?.length?`<p class="sub">Also published as ${esc(record.professional_aliases.join(', '))}.</p>`:''}
-   <h3>Checked appointment observations</h3>${affiliations.length?affiliations.map(affiliationRecord).join(''):'<p class="sub">No checked appointment observations in this edition. This does not mean the person has no professional role.</p>'}
-   ${statutory.length?`<h3>Supporting statutory appointments</h3>${statutory.map(eventRecord).join('')}`:''}
-   <h3>Related professional sources</h3><p class="sub">These sources relate to the person’s professional context. They do not verify every possible biographical claim.</p>${sourceList(refsOf(record),'Professional sources')}`;
+  const names=refsOf(record).filter(r=>['published_name_variant','statutory_name'].includes(r.field));
+  $('profileBody').innerHTML=`<p class="profile-intro">${esc(record.coverage_limit)}</p>
+   <p class="sub">${record.identity_status==='source_checked'?'Source checked':'Unresolved'} · Reviewed ${esc(date(record.identity_checked_on))} · <a href="people-provenance.html#${esc(id)}">Provenance notes</a></p>
+   ${record.professional_aliases.length?`<p>Also recorded as ${esc(record.professional_aliases.join(', '))}.</p>`:''}
+   ${names.length?sourceList(names,'Original name sources'):''}
+   <h3>Checked affiliations</h3>${affiliations.length?affiliations.map(affiliationRecord).join(''):'<p class="sub">No checked affiliation in this edition.</p>'}
+   ${statutory.length?`<h3>Filed appointment documents</h3>${statutory.map(eventRecord).join('')}`:''}`;
  }
  $('profile').showModal();
 }
 function showView(view){document.querySelectorAll('section[id^="view-"]').forEach(s=>s.hidden=s.id!=='view-'+view);document.querySelectorAll('.sections button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)))}
 function reset(view){const controls={firms:[['firmSearch',''],['firmCoverage','all']],people:[['personSearch',''],['personCoverage','all']],careers:[['careerSearch',''],['careerType','moves']],financials:[['financeSearch',''],['financeMetric','turnover'],['financePeriod','latest'],['financeCurrency','all']],locations:[['locationSearch',''],['locationType','registered']]};for(const [id,val]of controls[view])$(id).value=val;({firms:renderFirms,people:renderPeople,careers:renderCareers,financials:renderFinancials,locations:renderLocations})[view]()}
-async function init(){try{const response=await fetch('data/public-data.json');if(!response.ok)throw new Error('Data request failed');D=await response.json();for(const name of ['firms','people','financials','affiliations','events','registered_addresses','offices','sources'])if(!Array.isArray(D[name]))throw new Error('Incomplete data file');F=new Map(D.firms.map(f=>[f.id,f]));P=new Map(D.people.map(p=>[p.id,p]));S=new Map(D.sources.map(s=>[s.id,s]));O=new Map((D.organisations||[]).map(o=>[o.id,o]));
+async function init(){try{const response=await fetch('data/public-data.json');if(!response.ok)throw new Error('Data request failed');D=await response.json();for(const name of ['firms','people','financials','affiliations','events','registered_addresses','offices','sources','people_affiliation_observations'])if(!Array.isArray(D[name]))throw new Error('Incomplete data file');F=new Map(D.firms.map(f=>[f.id,f]));P=new Map(D.people.map(p=>[p.id,p]));S=new Map(D.sources.map(s=>[s.id,s]));O=new Map((D.organisations||[]).map(o=>[o.id,o]));
+ for(const a of D.people_affiliation_observations){
+  if(!peopleRelationships.has(a.person_id))peopleRelationships.set(a.person_id,[]);
+  peopleRelationships.get(a.person_id).push(a);
+ }
  $('firmTotal').textContent=D.firms.length;$('peopleTotal').textContent=D.people.length;$('revenueTotal').textContent=new Set(D.financials.filter(f=>f.metric==='turnover'&&hasValue(f)).map(f=>f.firm_id)).size;
  $('publicLimits').textContent='The public download contains the catalogue and source-linked observations. Unreviewed career claims, private research files and original third-party documents are excluded. Sources remain available through their public links.';
  renderFirms();renderPeople();renderCareers();renderFinancials();renderLocations();renderSources();$('loading').hidden=true;$('app').hidden=false;

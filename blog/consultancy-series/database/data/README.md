@@ -2,7 +2,7 @@
 
 November 2026 correction. Mike Walker and Michael Walker are one professional identity. The directory records the name used in the 2000 CRA release and the January 2026 start month confirmed by Frontier. The original Frontier announcement gave 5 January as the intended date, subject to final conflict checks. The accounts selection was frozen on 24 July 2026 and checked against the accounts, with exact references in the November edition.
 
-This edition contains 90 firm catalogue entries and 240 professional or research person entries. The people table includes a source-checked professional alias for Mike Walker.
+This edition contains 90 firm catalogue entries and 229 professional or research person entries. The People review introduces schema 1.3.
 
 The download includes 140 individually checked financial field observations, including comparative years and two explicit non-disclosures; 11 appointment/advisory relationships; 15 dated events; 84 dated registered-office observations across 80 legal entities and 109 office or contact-city observations from ten firms. Four registered addresses are superseded. Two city listings are historical. A dated observation can be historical even when it is the latest available record.
 
@@ -52,3 +52,10 @@ The companion location CSV lists source URLs and dates, passage locators and PDF
 The Firms view gives the registered name and number as observed at Companies House on 14 November 2026. `organisations` carries register status, incorporation or establishment-opening date, and the source links for those fields. The `firm_identity_links` table links catalogue entries to their registered entities, UK legal context, group companies or university. The relation and source locators describe the scope of the evidence. The company and establishment numbers occupy separate fields. The E.CA overseas-company record also carries the German home register number. Individual engagements may identify a specific contracting entity.
 
 A source date describes a filing, publication or event, as identified by its date basis. Every identity citation records its checking date. The separate [identity source register](../identity-provenance.csv) lists one row per catalogue link and supporting citation.
+
+
+## People provenance
+
+The `people` table includes an identity review status, review date, professional name variants and a count of checked affiliations. `people_affiliation_observations` gives each relationship, its role, the kind of evidence, the date and basis, and any recorded end date. Some rows give an observation date or preserve the month or year given by the original; some historical sources provide no role date. `record_sources` joins observations to their exact URLs, locators and source dates where supplied. An undated role or a missing end date does not establish current employment.
+
+`people_alias_crosswalk` maps retired duplicate person IDs to a retained ID. The other public observations and event tables retain their existing scope. Unresolved identity entries stay visible; inherited affiliation claims without direct evidence remain in the research archive. See [People provenance](../people-provenance.html) for the review and [its source register](../people-provenance.csv) for the row-level citations.

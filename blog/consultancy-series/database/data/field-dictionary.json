@@ -29,7 +29,10 @@
       "related_professional_claim_count": "INTEGER",
       "source_refs": "TEXT",
       "coverage_limit": "TEXT",
-      "professional_aliases": "TEXT"
+      "professional_aliases": "TEXT",
+      "identity_status": "TEXT",
+      "identity_checked_on": "TEXT",
+      "verified_relationship_count": "INTEGER"
     }
   },
   "organisations": {
@@ -165,6 +168,29 @@
       "relationship": "TEXT",
       "checked_on": "TEXT",
       "source_refs": "TEXT"
+    }
+  },
+  "people_affiliation_observations": {
+    "grain": "One record per people_affiliation_observation id",
+    "fields": {
+      "id": "TEXT",
+      "person_id": "TEXT",
+      "organisation_id": "TEXT",
+      "organisation_name": "TEXT",
+      "role": "TEXT",
+      "evidence_type": "TEXT",
+      "date": "TEXT",
+      "date_basis": "TEXT",
+      "end_date": "TEXT",
+      "checked_on": "TEXT",
+      "source_refs": "TEXT"
+    }
+  },
+  "people_alias_crosswalk": {
+    "grain": "One record per people_alias_crosswalk id",
+    "fields": {
+      "id": "TEXT",
+      "person_id": "TEXT"
     }
   }
 }
