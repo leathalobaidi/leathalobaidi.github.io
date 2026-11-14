@@ -800,11 +800,9 @@ const map = L.map('city-map', {
   tap: true,
   dragging: true,
 });
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png', {
-  attribution: '© OpenStreetMap · CARTO', subdomains: 'abcd', maxZoom: 10
-}).addTo(map);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/light_only_labels/{z}/{x}/{y}{r}.png', {
-  subdomains: 'abcd', maxZoom: 10, pane: 'shadowPane'
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
+  maxZoom: 10
 }).addTo(map);
 
 const arcLayer = L.layerGroup().addTo(map);
@@ -1865,8 +1863,8 @@ setTimeout(() => map.invalidateSize(), 100);
   }).setView([53.0, -2.2], window.innerWidth <= 480 ? 7 : 6);
   // Expose so the global resize handler can call invalidateSize() on rotate.
   window.__ukMap = ukMap;
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>',
     maxZoom: 19
   }).addTo(ukMap);
 
