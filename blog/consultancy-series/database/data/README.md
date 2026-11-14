@@ -30,6 +30,6 @@ SELECT r.table_name, r.record_id, s.url, r.locator, r.checked_on
 FROM record_sources r JOIN sources s ON s.id=r.source_id;
 ```
 
-## Revenue filing provenance
+## Financial filing provenance
 
-For each of the 30 checked revenue rows in the July snapshot, the financial table links to the exact Companies House filing. The locator records the filing date, PDF and printed page, statement line and filed units. The companion provenance register on the database page gives the filing ID, SHA-256 and the figures as printed and after unit conversion. The trailing PDF page fragment requests the cited page. If a PDF viewer ignores the fragment, use the PDF page in the locator.
+All 140 public financial observations link to specific Companies House PDF pages. Each locator records the filing date, PDF page, printed page where present and the cited line or statement. The database page makes the 110-row financial register and 30-row revenue register available as separate CSV downloads. Comparative values point to the column in the cited filing. Baringa's estimate and both Fideres non-disclosures also have a second source page. If your PDF viewer ignores the page fragment, go to the PDF page in the locator.
