@@ -192,5 +192,43 @@
       "id": "TEXT",
       "person_id": "TEXT"
     }
+  },
+  "ownership_transactions": {
+    "grain": "One record per ownership_transaction id",
+    "fields": {
+      "id": "TEXT",
+      "firm_id": "TEXT",
+      "record_type": "TEXT",
+      "subject": "TEXT",
+      "counterparty": "TEXT",
+      "date": "TEXT",
+      "date_basis": "TEXT",
+      "status": "TEXT",
+      "observation": "TEXT",
+      "qualification": "TEXT",
+      "checked_on": "TEXT",
+      "source_refs": "TEXT"
+    }
+  },
+  "ownership_control_observations": {
+    "grain": "One record per ownership_control_observation id",
+    "fields": {
+      "firm_id": "TEXT",
+      "organisation_id": "TEXT",
+      "subject": "TEXT",
+      "company_number": "TEXT",
+      "checked_on": "TEXT",
+      "register_status": "TEXT",
+      "id": "TEXT",
+      "controller": "TEXT",
+      "controller_number": "TEXT",
+      "record_type": "TEXT",
+      "status": "TEXT",
+      "notified_on": "TEXT",
+      "ceased_on": "TEXT",
+      "control_basis": "TEXT",
+      "note": "TEXT",
+      "source_refs": "TEXT"
+    }
   }
 }

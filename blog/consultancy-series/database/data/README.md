@@ -59,3 +59,10 @@ A source date describes a filing, publication or event, as identified by its dat
 The `people` table includes an identity review status, review date, professional name variants and a count of checked affiliations. `people_affiliation_observations` gives each relationship, its role, the kind of evidence, the date and basis, and any recorded end date. Some rows give an observation date or preserve the month or year given by the original; some historical sources provide no role date. `record_sources` joins observations to their exact URLs, locators and source dates where supplied. An undated role or a missing end date does not establish current employment.
 
 `people_alias_crosswalk` maps retired duplicate person IDs to a retained ID. The other public observations and event tables retain their existing scope. Unresolved identity entries stay visible; inherited affiliation claims without direct evidence remain in the research archive. See [People provenance](../people-provenance.html) for the review and [its source register](../people-provenance.csv) for the row-level citations.
+
+
+## Ownership and acquisition provenance
+
+Schema 1.4 adds `ownership_transactions` and `ownership_control_observations`. A transaction row records the correct perimeter (company, brand, group or practice), relevant stage, date precision and any supported terms. The control table contains point-in-time UK register entries, statutory bands, notifications and cessations. Read the date basis before comparing rows; a filing period end, a public announcement and a control notification do not establish the day of a closing. The previously released event table remains a small set of dated career and ownership examples. Use the Ownership tables for this review.
+
+See the [ownership provenance notes](../ownership-provenance.html) and the [source register CSV](../ownership-provenance.csv) for original passages and filing pages. The joint Oxford Analytica and Dragonfly consideration applies to both businesses.

@@ -13,7 +13,7 @@ const textQuery=id=>$(id).value.trim().toLocaleLowerCase('en-GB');
 const matches=(q,...values)=>!q||values.join(' ').toLocaleLowerCase('en-GB').includes(q);
 const alpha=(a,b)=>String(a.name??a.organisation_name??'').localeCompare(String(b.name??b.organisation_name??''),'en-GB');
 const foldName=value=>String(value??"").normalize("NFD").replace(/\p{M}/gu,"").toLocaleLowerCase("en-GB");
-let D,F,P,S,O,sourceLimit=35;
+let D,F,P,S,O,sourceLimit=35,ownershipFirm='';
 const peopleRelationships=new Map();
 const valueOf=f=>f.value_exact??f.value??null;
 const hasValue=f=>valueOf(f)!==null&&valueOf(f)!=='';
@@ -79,6 +79,22 @@ function renderPeople(){
   return `<tr><td><button class="name" type="button" data-person="${esc(p.id)}">${esc(p.name)}</button>${variants}</td><td>${scope}</td><td>${personAffiliations(p).length||'None in this edition'}</td><td><a href="people-provenance.html#${esc(p.id)}">${label}</a></td></tr>`;
  }).join('')||empty(4,'No matching people. Try another name or reset the filters.');
 }
+function renderOwnership(){
+ const q=foldName(textQuery('ownershipSearch')),type=$('ownershipType').value,register=type!=='transactions';
+ const entries=register?D.ownership_control_observations:D.ownership_transactions;
+ const rows=entries.filter(r=>{
+  const text=foldName([r.subject,r.counterparty,r.controller,r.company_number,r.controller_number,firmName(r.firm_id,''),r.record_type].filter(Boolean).join(' '));
+  return (!ownershipFirm||r.firm_id===ownershipFirm)&&(!q||text.includes(q))&&(!register||type==='register'||
+    (type==='current'&&r.status==='Active'&&r.register_status!=='Dissolved')||(type==='historical'&&r.status!=='Active'&&r.status!=='No entry shown'));
+ }).sort((a,b)=>(register?a.subject.localeCompare(b.subject):(b.date||'').localeCompare(a.date||''))||a.id.localeCompare(b.id));
+ const noun=register?'register observation':'transaction or ownership observation';
+ $('ownershipCount').textContent=`${rows.length} ${noun}${rows.length===1?'':'s'}${ownershipFirm?' · '+firmName(ownershipFirm):''}`;
+ $('ownershipRows').innerHTML=rows.map(r=>{
+  const party=r.counterparty||r.controller,when=register?r.notified_on:r.date;
+  const basis=register?(when?'Register notification':'Register observation'):r.date_basis;
+  return `<tr><td><strong>${esc(r.subject)}</strong>${r.company_number?`<p class="sub">Company ${esc(r.company_number)}</p>`:''}${party?`<p>${esc(party)}${r.controller_number?` <span class="sub">· ${esc(r.controller_number)}</span>`:''}</p>`:''}</td><td>${esc(date(when))}<p class="sub">${esc(basis)} · ${esc(r.status)}${r.register_status==='Dissolved'?' · Entity dissolved':''}</p>${r.ceased_on?`<p class="sub">Ceased or withdrawn ${esc(date(r.ceased_on))}</p>`:''}</td><td><p>${esc(r.observation||r.control_basis)}</p><p class="sub">${esc(r.qualification||r.note)}</p>${sourceList(refsOf(r),'Original sources')} <a class="sub" href="ownership-provenance.html#${esc(r.id)}">Provenance notes</a></td></tr>`;
+ }).join('')||empty(3,'No records match these filters. Try another name or record type.');
+}
 function renderFinancials(){const q=textQuery('financeSearch'),metric=$('financeMetric').value,currency=$('financeCurrency').value;let rows=D.financials.filter(f=>f.metric===metric);if($('financePeriod').value==='latest')rows=currentFinancials(rows);rows=rows.filter(f=>matches(q,firmName(f.firm_id,f.firm_name))&&(currency==='all'||f.currency===currency)).sort((a,b)=>firmName(a.firm_id).localeCompare(firmName(b.firm_id))||b.year_end.localeCompare(a.year_end));
  $('financeCurrency').disabled=countMetrics.has(metric);
  $('financeCount').textContent=`${rows.length} checked observation${rows.length===1?'':'s'} · ${labels[metric]||plain(metric)} · original currencies and periods`;
@@ -114,6 +130,7 @@ function openProfile(kind,id){
   const offices=D.offices.filter(o=>o.firm_id===id),addresses=D.registered_addresses.filter(a=>a.firm_id===id),transactions=D.events.filter(e=>e.subject_id===id&&e.event_type==='dated_ownership_transaction');
   $('profileBody').innerHTML=`<p class="profile-intro">${esc(record.scope_note||'')}</p><p class="sub">Identity checked ${esc(date(record.identity_checked_on))} · <a href="identity-provenance.html#${esc(id)}">Provenance notes</a></p>
    ${identityProfile(record)||sourceList(refsOf(record),'Identity sources')}
+   <p><button type="button" class="name" data-firm-ownership="${esc(id)}">See ownership evidence for this firm</button></p>
    <h3>Checked financial observations</h3>${fs.length?fs.map(financialRecord).join(''):'<p class="sub">No checked financial values in this edition.</p>'}
    ${transactions.length?`<h3>Dated ownership observations</h3>${transactions.map(eventRecord).join('')}`:''}
    ${addresses.length?`<h3>Dated registered addresses</h3>${addresses.map(a=>`<div class="record"><p>${esc(locationText(a,false))}</p><p class="sub">${esc(locationStatus(a))}</p>${locationDates(a)}<p class="sub">${esc(locationLimits(a))}</p>${sourceList(refsOf(a))}</div>`).join('')}`:''}
@@ -131,22 +148,27 @@ function openProfile(kind,id){
  $('profile').showModal();
 }
 function showView(view){document.querySelectorAll('section[id^="view-"]').forEach(s=>s.hidden=s.id!=='view-'+view);document.querySelectorAll('.sections button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)))}
-function reset(view){const controls={firms:[['firmSearch',''],['firmCoverage','all']],people:[['personSearch',''],['personCoverage','all']],careers:[['careerSearch',''],['careerType','moves']],financials:[['financeSearch',''],['financeMetric','turnover'],['financePeriod','latest'],['financeCurrency','all']],locations:[['locationSearch',''],['locationType','registered']]};for(const [id,val]of controls[view])$(id).value=val;({firms:renderFirms,people:renderPeople,careers:renderCareers,financials:renderFinancials,locations:renderLocations})[view]()}
-async function init(){try{const response=await fetch('data/public-data.json');if(!response.ok)throw new Error('Data request failed');D=await response.json();for(const name of ['firms','people','financials','affiliations','events','registered_addresses','offices','sources','people_affiliation_observations'])if(!Array.isArray(D[name]))throw new Error('Incomplete data file');F=new Map(D.firms.map(f=>[f.id,f]));P=new Map(D.people.map(p=>[p.id,p]));S=new Map(D.sources.map(s=>[s.id,s]));O=new Map((D.organisations||[]).map(o=>[o.id,o]));
+function reset(view){if(view==='ownership')ownershipFirm='';const controls={firms:[['firmSearch',''],['firmCoverage','all']],people:[['personSearch',''],['personCoverage','all']],careers:[['careerSearch',''],['careerType','moves']],ownership:[['ownershipSearch',''],['ownershipType','transactions']],financials:[['financeSearch',''],['financeMetric','turnover'],['financePeriod','latest'],['financeCurrency','all']],locations:[['locationSearch',''],['locationType','registered']]};for(const [id,val]of controls[view])$(id).value=val;({firms:renderFirms,people:renderPeople,careers:renderCareers,ownership:renderOwnership,financials:renderFinancials,locations:renderLocations})[view]()}
+async function init(){try{const response=await fetch('data/public-data.json');if(!response.ok)throw new Error('Data request failed');D=await response.json();for(const name of ['firms','people','financials','affiliations','events','registered_addresses','offices','sources','people_affiliation_observations','ownership_transactions','ownership_control_observations'])if(!Array.isArray(D[name]))throw new Error('Incomplete data file');F=new Map(D.firms.map(f=>[f.id,f]));P=new Map(D.people.map(p=>[p.id,p]));S=new Map(D.sources.map(s=>[s.id,s]));O=new Map((D.organisations||[]).map(o=>[o.id,o]));
  for(const a of D.people_affiliation_observations){
   if(!peopleRelationships.has(a.person_id))peopleRelationships.set(a.person_id,[]);
   peopleRelationships.get(a.person_id).push(a);
  }
  $('firmTotal').textContent=D.firms.length;$('peopleTotal').textContent=D.people.length;$('revenueTotal').textContent=new Set(D.financials.filter(f=>f.metric==='turnover'&&hasValue(f)).map(f=>f.firm_id)).size;
  $('publicLimits').textContent='The public download contains the catalogue and source-linked observations. Unreviewed career claims, private research files and original third-party documents are excluded. Sources remain available through their public links.';
- renderFirms();renderPeople();renderCareers();renderFinancials();renderLocations();renderSources();$('loading').hidden=true;$('app').hidden=false;
+ renderFirms();renderPeople();renderCareers();renderOwnership();renderFinancials();renderLocations();renderSources();$('loading').hidden=true;$('app').hidden=false;
  const sections=document.querySelectorAll('.sections button');
  sections.forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
  const initialView=[...sections].find(b=>location.hash==='#view-'+b.dataset.view);
  if(initialView)showView(initialView.dataset.view);
- for(const [ids,fn]of [[['firmSearch','firmCoverage'],renderFirms],[['personSearch','personCoverage'],renderPeople],[['careerSearch','careerType'],renderCareers],[['financeSearch','financeMetric','financePeriod','financeCurrency'],renderFinancials],[['locationSearch','locationType'],renderLocations]])for(const id of ids)$(id).addEventListener('input',()=>{if(id==='financeMetric'&&countMetrics.has($('financeMetric').value))$('financeCurrency').value='all';fn()});
+ for(const [ids,fn]of [[['firmSearch','firmCoverage'],renderFirms],[['personSearch','personCoverage'],renderPeople],[['careerSearch','careerType'],renderCareers],[['ownershipSearch','ownershipType'],renderOwnership],[['financeSearch','financeMetric','financePeriod','financeCurrency'],renderFinancials],[['locationSearch','locationType'],renderLocations]])for(const id of ids)$(id).addEventListener('input',()=>{if(id==='financeMetric'&&countMetrics.has($('financeMetric').value))$('financeCurrency').value='all';fn()});
  $('sourceSearch').addEventListener('input',()=>{sourceLimit=35;renderSources()});$('moreSources').addEventListener('click',()=>{sourceLimit+=35;renderSources()});document.querySelectorAll('[data-reset]').forEach(b=>b.addEventListener('click',()=>reset(b.dataset.reset)));
- document.addEventListener('click',ev=>{const f=ev.target.closest('button[data-firm]'),p=ev.target.closest('button[data-person]');if(f)openProfile('firm',f.dataset.firm);if(p)openProfile('person',p.dataset.person)});$('closeProfile').addEventListener('click',()=>$('profile').close());
+ document.addEventListener('click',ev=>{const f=ev.target.closest('button[data-firm]'),p=ev.target.closest('button[data-person]');if(f)openProfile('firm',f.dataset.firm);if(p)openProfile('person',p.dataset.person);
+ const own=ev.target.closest('button[data-firm-ownership]');
+ if(own){ownershipFirm=own.dataset.firmOwnership;$('ownershipSearch').value='';
+  $('ownershipType').value=D.ownership_transactions.some(r=>r.firm_id===ownershipFirm)?'transactions':'register';
+  $('profile').close();showView('ownership');renderOwnership();$('ownershipHeading').scrollIntoView({block:'start'});}
+});$('closeProfile').addEventListener('click',()=>$('profile').close());
  }catch(error){$('loading').innerHTML='The interactive view could not load. Please reload, or <a href="data/economics-consultancy-public.sqlite">download the database</a>.';console.error('Database load failed:',error.message)}}
 init();
 })();
