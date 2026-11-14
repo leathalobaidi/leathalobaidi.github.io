@@ -1,17 +1,17 @@
 {
-  "README.md": "b2b6c47975c22a89d9403bc078e2cd7eb471ac358f6e034275c877aa162dfc6b",
+  "README.md": "da84cf21ade9fb932d8429e7829bb781d2190fbb9ba144dc770c6bd3c3b949fa",
   "csv/affiliations.csv": "3e20768019406e233d14c1bda576c42a3896fa16adb5d5cbbb404914b223b243",
   "csv/events.csv": "d229b984d425796f3cd50743525e613e65ce9c6d366bf93a8eb00d90557272d1",
   "csv/financials.csv": "798097f4d4c4487f96a9d8a02c90909b388a59a8ae23963a2b158aa81a3663f0",
   "csv/firms.csv": "b29aa8a33249c063fb94e0d8581ed35c2a088d8afbc2210e8a733f40b34c6626",
-  "csv/offices.csv": "ff0e87386edf03647a173c4baf4e455c7361ab4cc39d61cdf283d2e0a78ecaba",
+  "csv/offices.csv": "d806e158b02d6d7bb141093119e256a032a8dfa94229713b81a2f442a798768e",
   "csv/organisations.csv": "55d0f9c4f45f59c37cd6588f71d1e193713d5cbbe26c6e229a7ab0f32469c2a4",
   "csv/people.csv": "3cd90a2c75ea775792fe433d3e54bed83f635136d8f7080fa699c7d86869aff4",
-  "csv/registered_addresses.csv": "2125bbf289fda1a7623b960a86ecc660b19c24fcf2841988c2721f32f2b284dc",
-  "csv/sources.csv": "d53636c5deefae20848166539084c07820c396d5590809bb6d658849fbb57e2b",
-  "csv-tables.zip": "af6469a9f2d28468734acfe972d79e8c90f91ad21190bf8d0c7361a5f0fd7948",
-  "economics-consultancy-public.sqlite": "c2a77ae0494c75b88fbd9525ecd2f3f8e5a8094bf9fef1b23bf29be0fadb8815",
-  "economics-consultancy-public.zip": "b38907d74fe4e0f8a7e70a0f0154d716ffc0aa698cbbd026105cb0004dafc41b",
-  "field-dictionary.json": "2df507fb3226729cc893569e36e399de11c1c4319f5b6b108fa07e2721406789",
-  "public-data.json": "312691845781c806c2d71acc2917956ccde72e7e4a0f587f9eacc5590b597a1a"
+  "csv/registered_addresses.csv": "8fb67112ec3b9c6894243c0f85fa73070e1d6ce08a4ae941a480cab95e8d6275",
+  "csv/sources.csv": "32ac72233d60f3ac115d2d1b3ad0b2948c18bab7d27bd64d81ec4721d1cac037",
+  "csv-tables.zip": "412568f70686b3d1d11b4777e6d4b4eba04bd3d34485c454662ec3015a240ee4",
+  "economics-consultancy-public.sqlite": "6ec45bcf6a9ca7c92f6777949b034f9fb17610212743d4fb58ae9f7749e5dd71",
+  "economics-consultancy-public.zip": "0778b19b7866be62ab2ff312d6035ef82047e7ac03e4fa26771e7f859f55f205",
+  "field-dictionary.json": "df993b0b6ae78717b8ea9b5f4bc6a03bb405110dfed0354ee48706f3041532f7",
+  "public-data.json": "ffff7b46ac5ac076983d1c178a6e3099a3dbbaf7771d1beec3c2d60a449b58a2"
 }

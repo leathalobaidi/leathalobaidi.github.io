@@ -18,7 +18,7 @@ const hasValue=f=>valueOf(f)!==null&&valueOf(f)!=='';
 const refsOf=r=>Array.isArray(r?.source_refs)?r.source_refs:[];
 function sourceList(refs,label='Sources'){
  const distinct=[...new Map(refs.map(r=>[[r.source_id,r.locator,r.checked_on].join('|'),r])).values()];
- const items=distinct.map(r=>{const s=S.get(r.source_id??r.id);const url=safeUrl(s?.url??r.url);if(!url)return '';const parsed=new URL(url);const host=parsed.hostname.replace(/^www\./,'');const filingPage=host==='find-and-update.company-information.service.gov.uk'&&parsed.pathname.endsWith('/document')?parsed.hash.match(/^#page=(\d+)$/)?.[1]:null;const title=filingPage?(s?.kind==='Companies House appointment filing'?'LLP appointment filing':'Filed accounts')+' (PDF page '+filingPage+')':s?.title||s?.kind||host;return `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a>${r.locator?`<p>${esc(r.locator)}</p>`:''}${r.checked_on?`<p class="sub">Checked ${esc(date(r.checked_on))}</p>`:''}</li>`}).filter(Boolean);
+ const items=distinct.map(r=>{const s=S.get(r.source_id??r.id);const url=safeUrl(s?.url??r.url);if(!url)return '';const parsed=new URL(url);const host=parsed.hostname.replace(/^www\./,'');const filingPage=host==='find-and-update.company-information.service.gov.uk'&&parsed.pathname.endsWith('/document')?parsed.hash.match(/^#page=(\d+)$/)?.[1]:null;const title=filingPage?(s?.kind==='Companies House appointment filing'?'LLP appointment filing':s?.kind==='Companies House location filing'?'Companies House filing':'Filed accounts')+' (PDF page '+filingPage+')':s?.title||s?.kind||host;return `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a>${r.locator?`<p>${esc(r.locator)}</p>`:''}${r.source_date?`<p class="sub">Source dated ${esc(date(r.source_date))}</p>`:''}${r.checked_on?`<p class="sub">Checked ${esc(date(r.checked_on))}</p>`:''}</li>`}).filter(Boolean);
  return items.length?`<details class="evidence"><summary>${esc(label)} (${items.length})</summary><ul>${items.join('')}</ul></details>`:'<span class="sub">No public source link supplied</span>';
 }
 function firmName(id,fallback){return F.get(id)?.name||fallback||'Organisation not linked to catalogue'}
@@ -61,9 +61,23 @@ function renderFinancials(){const q=textQuery('financeSearch'),metric=$('finance
 function locationText(r,international){return international?[r.city,r.country].filter(Boolean).join(', '):(r.address||r.registered_address||'Address not supplied')}
 function locationDate(r){return r.as_of||r.observed_on||r.checked_on||r.capture_date}
 function locationLimits(r){return r.limit||r.limits||r.notes||r.scope_note||plain(r.address_type)||''}
-function renderLocations(){const international=$('locationType').value==='international',q=textQuery('locationSearch'),all=international?D.offices:D.registered_addresses,rows=all.filter(r=>matches(q,organisationName(r),locationText(r,international))).sort((a,b)=>organisationName(a).localeCompare(organisationName(b))||locationText(a,international).localeCompare(locationText(b,international)));
- $('locationCount').textContent=`${rows.length} of ${all.length} ${international?'firm–city observations':'dated address observations'}`;
- $('locationRows').innerHTML=rows.map(r=>`<tr><td>${esc(organisationName(r))}</td><td>${esc(locationText(r,international))}</td><td>${esc(date(locationDate(r)))}${r.included_in_latest_reader_selection===false?'<p class="sub">Superseded address</p>':''}</td><td><p class="sub">${esc(locationLimits(r))}</p>${sourceList(refsOf(r))}</td></tr>`).join('')||empty(4,'No matching locations. Try a different name, city or postcode.');
+function locationStatus(r) {
+ if (r.superseded_on) return 'Superseded address';
+ if (r.legal_status==='Dissolved') return 'Dissolved · last registered address';
+ return r.listing_status || r.legal_status || '';
+}
+function locationDates(r) {
+ const items=[['Observed',locationDate(r)],['Effective',r.effective_from],['Replaced',r.superseded_on],['Dissolved',r.dissolved_on]];
+ if (r.checked_on && r.checked_on!==locationDate(r)) items.push(['Rechecked',r.checked_on]);
+ return items.filter(([,value])=>value).map(([label,value])=>`<p class="sub">${label} ${esc(date(value))}</p>`).join('');
+}
+function renderLocations(){
+ const type=$('locationType').value, international=type==='international',q=textQuery('locationSearch');
+ const all=international?D.offices:D.registered_addresses.filter(r=>type==='registered-all'||(r.in_latest_register_snapshot??r.included_in_latest_reader_selection));
+ const rows=all.filter(r=>matches(q,organisationName(r),locationText(r,international),O.get(r.legal_entity_id)?.company_number,r.source_label))
+   .sort((a,b)=>organisationName(a).localeCompare(organisationName(b))||locationText(a,international).localeCompare(locationText(b,international)));
+ $('locationCount').textContent=`${rows.length} of ${all.length} ${international?'firm–city observations':'registered address observations'}`;
+ $('locationRows').innerHTML=rows.map(r=>`<tr><td>${esc(organisationName(r))}</td><td>${esc(locationText(r,international))}<p class="sub">${esc(locationStatus(r))}</p></td><td>${locationDates(r)}</td><td><p class="sub">${esc(locationLimits(r))}</p>${sourceList(refsOf(r))}</td></tr>`).join('')||empty(4,'No matching locations. Try a different name, city or postcode.');
 }
 function renderSources(){const q=textQuery('sourceSearch'),rows=D.sources.filter(s=>safeUrl(s.url)&&matches(q,s.url,s.title,s.kind));$('sourceCount').textContent=`${rows.length} linked sources; ${Math.min(sourceLimit,rows.length)} shown`;$('sourceRows').innerHTML=rows.slice(0,sourceLimit).map(s=>`<div class="source-item"><a href="${esc(safeUrl(s.url))}" target="_blank" rel="noopener noreferrer">${esc(s.title||s.url)}</a><p class="sub">${esc(plain(s.kind))}</p></div>`).join('')||'<p class="empty">No matching sources.</p>';$('moreSources').hidden=rows.length<=sourceLimit}
 function openProfile(kind,id){
@@ -75,8 +89,8 @@ function openProfile(kind,id){
   $('profileBody').innerHTML=`<p class="profile-intro">${esc(scopeName(record.scope_type))} · ${esc(companyReferences(record).join(' · ')||'No separate UK company number assigned')}</p><p class="profile-intro">${esc(record.scope_note||'')}</p><p class="sub">${esc(record.scope_limit||'')}</p>${sourceList(refsOf(record),'Identity sources')}
    <h3>Checked financial observations</h3>${fs.length?fs.map(financialRecord).join(''):'<p class="sub">No checked financial values in this edition.</p>'}
    ${transactions.length?`<h3>Dated ownership observations</h3>${transactions.map(eventRecord).join('')}`:''}
-   ${addresses.length?`<h3>Dated registered addresses</h3>${addresses.map(a=>`<div class="record"><p>${esc(locationText(a,false))}</p><p class="sub">${esc(date(locationDate(a)))}${a.included_in_latest_reader_selection===false?' · Superseded address':''}</p><p class="sub">${esc(locationLimits(a))}</p>${sourceList(refsOf(a))}</div>`).join('')}`:''}
-   ${offices.length?`<h3>Published city listings</h3><p>${esc(offices.map(o=>o.city).join(', '))}</p><p class="sub">Firm-published observations; not a count of staff or headquarters.</p>${sourceList(offices.flatMap(refsOf),'Office sources')}`:''}`;
+   ${addresses.length?`<h3>Dated registered addresses</h3>${addresses.map(a=>`<div class="record"><p>${esc(locationText(a,false))}</p><p class="sub">${esc(locationStatus(a))}</p>${locationDates(a)}<p class="sub">${esc(locationLimits(a))}</p>${sourceList(refsOf(a))}</div>`).join('')}`:''}
+   ${offices.length?`<h3>Published city listings</h3><p>${esc(offices.map(o=>o.city+(o.listing_status==='Historical listing'?' (historical listing)':'')).join(', '))}</p><p class="sub">Firm-published observations; not a count of staff or headquarters.</p>${sourceList(offices.flatMap(refsOf),'Office sources')}`:''}`;
  }else{
   const affiliations=personAffiliations(record),statutory=D.events.filter(e=>e.subject_id===id&&e.event_type==='LLP member appointment');
   $('profileBody').innerHTML=`<p class="profile-intro">${record.in_research_scope?'Part of the 106-person main research scope.':'Additional research or professional-context entry.'} ${record.has_research_dossier?'An inherited research profile exists; it is not a verified biography.':'Background coverage is limited.'}</p>

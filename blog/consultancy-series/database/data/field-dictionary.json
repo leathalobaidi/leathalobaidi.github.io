@@ -113,7 +113,11 @@
       "included_in_latest_reader_selection": "INTEGER",
       "address_type": "TEXT",
       "limit": "TEXT",
-      "source_refs": "TEXT"
+      "source_refs": "TEXT",
+      "checked_on": "TEXT",
+      "prior_observed_on": "TEXT",
+      "superseded_on": "TEXT",
+      "in_latest_register_snapshot": "TEXT"
     }
   },
   "offices": {
@@ -127,7 +131,11 @@
       "observed_on": "TEXT",
       "observation_type": "TEXT",
       "limit": "TEXT",
-      "source_refs": "TEXT"
+      "source_refs": "TEXT",
+      "checked_on": "TEXT",
+      "prior_observed_on": "TEXT",
+      "source_label": "TEXT",
+      "listing_status": "TEXT"
     }
   },
   "sources": {
