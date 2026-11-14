@@ -1,17 +1,17 @@
 {
-  "README.md": "deab9de203579cc3c172a96c54f6640ae4a1896694c5b5259a66b70bcb1636ed",
-  "csv/affiliations.csv": "5424bc86092421dc9b149c36527cab1f071a30fb0d5f3721d43b087db14b2548",
-  "csv/events.csv": "636981682e52afeddb8af987ce8c8c614aac0f21b326ea792dac168110f018a5",
+  "README.md": "b2b6c47975c22a89d9403bc078e2cd7eb471ac358f6e034275c877aa162dfc6b",
+  "csv/affiliations.csv": "3e20768019406e233d14c1bda576c42a3896fa16adb5d5cbbb404914b223b243",
+  "csv/events.csv": "d229b984d425796f3cd50743525e613e65ce9c6d366bf93a8eb00d90557272d1",
   "csv/financials.csv": "798097f4d4c4487f96a9d8a02c90909b388a59a8ae23963a2b158aa81a3663f0",
   "csv/firms.csv": "b29aa8a33249c063fb94e0d8581ed35c2a088d8afbc2210e8a733f40b34c6626",
   "csv/offices.csv": "ff0e87386edf03647a173c4baf4e455c7361ab4cc39d61cdf283d2e0a78ecaba",
   "csv/organisations.csv": "55d0f9c4f45f59c37cd6588f71d1e193713d5cbbe26c6e229a7ab0f32469c2a4",
-  "csv/people.csv": "aeb4dca8fe35fb73efa89ed5f03cc6d01bb78f9c86e6f14b0827c17bfc5602a3",
+  "csv/people.csv": "3cd90a2c75ea775792fe433d3e54bed83f635136d8f7080fa699c7d86869aff4",
   "csv/registered_addresses.csv": "2125bbf289fda1a7623b960a86ecc660b19c24fcf2841988c2721f32f2b284dc",
-  "csv/sources.csv": "7f4b651d5790c5163d7bdad7503fc0ceceac2f73224ff8015dd48974c708debd",
-  "csv-tables.zip": "c54b7d1de831e88d1264f330e5204d35aee24d3bddcd7a50a04c8145cdded5f6",
-  "economics-consultancy-public.sqlite": "4a6a35f46ae52d4472c8db85cbd4acf5d7908e0edb85dd1d9da19d5794e0bd04",
-  "economics-consultancy-public.zip": "c026ddb1a209644e02b12f65acfe160d0c831e4598eca177bad6aab8ae6299fd",
-  "field-dictionary.json": "020d3c14f7cde78f3476004a4851d60b1ad6e6534ffa55085abb582d9601db26",
-  "public-data.json": "31f5b44d6c5687420eae08b7f27b663da85ffc9c6211ea777e5198393977cd8c"
+  "csv/sources.csv": "d53636c5deefae20848166539084c07820c396d5590809bb6d658849fbb57e2b",
+  "csv-tables.zip": "af6469a9f2d28468734acfe972d79e8c90f91ad21190bf8d0c7361a5f0fd7948",
+  "economics-consultancy-public.sqlite": "c2a77ae0494c75b88fbd9525ecd2f3f8e5a8094bf9fef1b23bf29be0fadb8815",
+  "economics-consultancy-public.zip": "b38907d74fe4e0f8a7e70a0f0154d716ffc0aa698cbbd026105cb0004dafc41b",
+  "field-dictionary.json": "2df507fb3226729cc893569e36e399de11c1c4319f5b6b108fa07e2721406789",
+  "public-data.json": "312691845781c806c2d71acc2917956ccde72e7e4a0f587f9eacc5590b597a1a"
 }

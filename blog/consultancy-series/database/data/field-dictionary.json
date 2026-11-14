@@ -75,7 +75,9 @@
       "end_date": "TEXT",
       "date_basis": "TEXT",
       "limit": "TEXT",
-      "source_refs": "TEXT"
+      "source_refs": "TEXT",
+      "announcement_date": "TEXT",
+      "event_id": "TEXT"
     }
   },
   "events": {

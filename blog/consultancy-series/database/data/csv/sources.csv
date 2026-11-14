@@ -1,7 +1,7 @@
 id,url,kind
 source-ce2a52b4d87995a43074,https://assets.pc.gov.au/inquiries/completed/airport-regulation/public-hearings/airport-regulation-transcript-melbourne-6oct.pdf,primary
 source-37bce3b6c4db045b8539,https://assets.publishing.service.gov.uk/media/64d2248ea4045e0011a84bf1/5gtt_interim_evaluation_2023.pdf,archived primary source
-source-528902186587a9473d4d,https://audaxprivateequity.com/news/audax-private-equity-completes-strategic-investment-in-keystone,issuer transaction announcement
+source-528902186587a9473d4d,https://audaxprivateequity.com/news/audax-private-equity-completes-strategic-investment-in-keystone,Investor announcement
 source-b08cbdcd8ccecef554d6,https://committees.parliament.uk/oralevidence/4044/html/,primary
 source-0f920e59a0bc1099c191,https://crainternationalinc.gcs-web.com/news-releases/news-release-details/charles-river-associates-announces-opening-london-office,primary
 source-3de3af358281622cbe6d,https://econicpartners.com/newsroom/announcements/econic-partners-launches-as-premier-economic-consulting-firm-for-complex-antitrust-regulatory-litigation-and-policy-matters/,issuer launch announcement
@@ -121,10 +121,12 @@ source-701a2f15ae4eb26ba2dc,https://find-and-update.company-information.service.
 source-6b18588ba78c729924d8,https://find-and-update.company-information.service.gov.uk/company/OC344021/filing-history/MzQ5NTE2NTQ4MGFkaXF6a2N4/document?format=pdf&download=0#page=8,Companies House financial filing
 source-c201465043b8f1e3e528,https://find-and-update.company-information.service.gov.uk/company/OC360308,archived primary source
 source-e2572c3fb8f49eec3305,https://find-and-update.company-information.service.gov.uk/company/OC360308/filing-history,registered-address filing
+source-44231b9a7b1c852bb542,https://find-and-update.company-information.service.gov.uk/company/OC360308/filing-history/MzQ5MzE3MDQ3N2FkaXF6a2N4/document?format=pdf&download=0#page=1,Companies House appointment filing
 source-d18ad077c78b52267d85,https://find-and-update.company-information.service.gov.uk/company/OC360308/filing-history/MzQ5NzQ4ODk5OGFkaXF6a2N4/document?format=pdf&download=0#page=13,Companies House revenue filing
 source-4aec3103e5537679c8d7,https://find-and-update.company-information.service.gov.uk/company/OC361729,archived primary source
 source-0ca79db229eff8f83513,https://find-and-update.company-information.service.gov.uk/company/OC372614,archived primary source
 source-dbae8b8493755511b405,https://find-and-update.company-information.service.gov.uk/company/OC372614/filing-history/MzQ4ODc5MDczNmFkaXF6a2N4/document?format=pdf&download=0#page=10,Companies House revenue filing
+source-d2d76e142671b7c87a61,https://find-and-update.company-information.service.gov.uk/company/OC372614/filing-history/MzQyODUxNjcwN2FkaXF6a2N4/document?format=pdf&download=0#page=1,Companies House appointment filing
 source-bebf4d3be816989ae630,https://find-and-update.company-information.service.gov.uk/company/OC372614/officers?page=3,primary registry
 source-01a1664171f8b4d3ce6a,https://find-and-update.company-information.service.gov.uk/company/OC377350,primary registry overview
 source-91e4cbf811d83ccf1e34,https://find-and-update.company-information.service.gov.uk/company/OC385173,archived primary source
@@ -146,10 +148,10 @@ source-b04d30d28c697b5f4d6d,https://senate.universityofcalifornia.edu/_files/new
 source-30b5fe80cc6347d2f520,https://timcongdon.com/articles/A_2009_A01_Monetary%20policy_IEA_Foreword.pdf,primary
 source-5167afe3e172ae547d8d,https://tu-dresden.de/bu/wirtschaft/ee2/ressourcen/dateien/lehrstuhlseiten/ordner_veranstaltungen_alt/ordner_enerday/ordner_enerday_2006/ordner_download_enerday_06/Makholm_paper.pdf,primary
 source-a6a24fcc00951c786116,https://volterra.co.uk/volterras-story/,primary
-source-fc08c1776b148c5def76,https://www.alixpartners.com/newsroom/alixpartners-appoints-former-cma-data-technology-chief-to-lead-new-behavioural-economics-technology-evidence-team/,receiving-firm announcement
-source-62076c660b2156fdb9fe,https://www.alixpartners.com/newsroom/julie-bon-former-cma-economist-joins-alixpartners-in-senior-advisory-role/,receiving-firm announcement
-source-6e5d9231f8b434543f7a,https://www.alixpartners.com/newsroom/welcome-new-pmds-nicola-mazzarotto-and-caitlin-wilkinson/,receiving-firm announcement
-source-a6e104430a946014cfea,https://www.alixpartners.com/our-people/32991/stefan-hunt/,employer biography
+source-fc08c1776b148c5def76,https://www.alixpartners.com/newsroom/alixpartners-appoints-former-cma-data-technology-chief-to-lead-new-behavioural-economics-technology-evidence-team/,Issuer announcement
+source-62076c660b2156fdb9fe,https://www.alixpartners.com/newsroom/julie-bon-former-cma-economist-joins-alixpartners-in-senior-advisory-role/,Issuer announcement
+source-6e5d9231f8b434543f7a,https://www.alixpartners.com/newsroom/welcome-new-pmds-nicola-mazzarotto-and-caitlin-wilkinson/,Issuer announcement
+source-a6e104430a946014cfea,https://www.alixpartners.com/our-people/32991/stefan-hunt/,Employer biography
 source-6cd61f190e22ccd68329,https://www.analysisgroup.com/about/locations/,official office/contact page
 source-9b7cf058ec2b9483629c,https://www.bdo.co.uk/en-gb/services/advisory/economic-consulting,primary identity source
 source-544964c35b0aa197d3cd,https://www.camecon.com/careers,official office/contact page
@@ -158,34 +160,41 @@ source-51f21fef1e8c1e35f010,https://www.capitaleconomics.com/contact-capital-eco
 source-c36c734bd20cc8b93310,https://www.catribunal.org.uk/sites/cat/files/2023-02/2023.02.07_NON-CONFIDENTIAL_Trucks_1284_90_Final.pdf,original tribunal judgment
 source-e20bc2d5920cd725a138,https://www.cepa.co.uk/contact,official office/contact page
 source-3e6f4fab9bc961ec24dd,https://www.compasslexecon.com/about/our-story,primary
+source-ab439f6c51d8cea727f7,https://www.compasslexecon.com/insights/news/compass-lexecon-appoints-chief-economist-at-ofgem-as-senior-vice-president-and-head-of-research,Issuer announcement
 source-147a99e8fc85cd6142b4,https://www.compasslexecon.com/insights/news/compass-lexecon-to-acquire-european-competition-practice-from-lecg,primary
-source-8cd354f0fdc23f69d131,https://www.compasslexecon.com/insights/news/competition-economics-expert-rameet-sangha-joins-compass-lexecon,receiving-firm announcement
-source-ac7357aab506f020fc90,https://www.compasslexecon.com/insights/news/faten-sabry-joins-compass-lexecon-as-senior-managing-director,receiving-firm announcement
-source-8ecfa4f455fb93e65af7,https://www.compasslexecon.com/professionals/faten-sabry,employer biography
+source-8cd354f0fdc23f69d131,https://www.compasslexecon.com/insights/news/competition-economics-expert-rameet-sangha-joins-compass-lexecon,Issuer announcement
+source-ac7357aab506f020fc90,https://www.compasslexecon.com/insights/news/faten-sabry-joins-compass-lexecon-as-senior-managing-director,Issuer announcement
+source-8ecfa4f455fb93e65af7,https://www.compasslexecon.com/professionals/faten-sabry,Employer biography
 source-d76b96d4bf4cf37b171f,https://www.crai.com/locations/,official office/contact page
 source-c9940782b57fffef0d14,https://www.deloitte.com/uk/en/services/consulting-financial/services/economic-advisory.html,primary identity source
 source-f5f51664510b4735b657,https://www.eiu.com/n/contact-us/,official office/contact page
 source-3385aeba307a6adf0749,https://www.fideres.com/about-us/,primary
-source-8529e38451271193bc1b,https://www.frontier-economics.com/uk/en/about/people/people-i21943-mike-walker/,primary identity source
+source-8529e38451271193bc1b,https://www.frontier-economics.com/uk/en/about/people/people-i21943-mike-walker/,Employer biography
 source-5e049b03c670a2271558,https://www.frontier-economics.com/uk/en/locations/,official office/contact page
-source-18bcddb4a383ff25e88c,https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i21944-frontier-economics-hires-cma-chief-economic-advisor/,receiving-firm announcement
+source-18bcddb4a383ff25e88c,https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i21944-frontier-economics-hires-cma-chief-economic-advisor/,Issuer announcement
+source-155f25840d0c7915bb86,https://www.fticonsulting.com/about/newsroom/press-releases/compass-lexecon-appoints-ofgem-chief-economist-senior-vice-president-head-research,Parent firm announcement
 source-5d9b6866537dc443dce8,https://www.fticonsulting.com/saudi-arabia/newsroom/compass-lexecon-appoints-ofgem-chief-economist-senior-vice-president-head-research,receiving-firm announcement
 source-1da72f8a009a97724402,https://www.gbv.de/dms/spk/sbb/toc/226695999.pdf,primary
 source-2dea151c4eb699f34658,https://www.gov.uk/government/news/new-competition-authority-completes-leadership-team,primary identity source
+source-31e0e8f1131cf10f483e,https://www.gov.uk/government/publications/cma-business-appointment-rules-advice-april-to-june-2025/cma-business-appointment-rules-advice-april-to-june-2025#francesca-sala,Regulator appointment record
+source-b4ae6023406dac626d3b,https://www.gov.uk/government/publications/cma-business-appointment-rules-advice-october-to-december-2025/cma-business-appointment-rules-advice-october-to-december-2025#mike-walker,Regulator appointment record
 source-6201a5e895a4e4e90376,https://www.grantthornton.co.uk/services/consulting/economic-consulting/,primary identity source
 source-ea214dfd8a4d507b57d6,https://www.johnkay.com/about/?am9ob=354723,primary
-source-97af0c5d383c36501fc5,https://www.keystone.com/news-publications/stefan-hunt-joins-keystone-to-build-the-european-data-and-technology-capability,receiving-firm announcement
-source-a46b28effe52408bfd31,https://www.ldc.co.uk/news/capital-economics-exit/,issuer transaction announcement
+source-5d1e1357170c096f50e9,https://www.keystone.com/news-publications/former-uk-cma-ceo-andrea-coscelli-to-join-keystone-as-co-head-of-europe,Issuer announcement
+source-d8932f24364298a5cbde,https://www.keystone.com/news-publications/keystone-a-global-technology-and-ecosystem-advisory-platform-announces-strategic-investment-and-partnership-with-audax-private-equity,Issuer announcement
+source-97af0c5d383c36501fc5,https://www.keystone.com/news-publications/stefan-hunt-joins-keystone-to-build-the-european-data-and-technology-capability,Issuer announcement
+source-2ae40a9778c2e25c16a4,https://www.keystone.com/newsroom#:~:text=Stefan%20Hunt%20Joins%20Keystone%20to%20Build%20the%20European%20Data%20and%20Technology%20Capability,Issuer newsroom index
+source-a46b28effe52408bfd31,https://www.ldc.co.uk/news/capital-economics-exit/,Seller announcement
 source-14678cd3d72e061f2cd7,https://www.london.edu/news/remembering-sir-james-ball-1393?entry=true,primary
 source-7b75292d94ef79992e83,https://www.nera.com/locations.html,official office/contact page
 source-bd12bccea531f8fbde1e,https://www.ofgem.gov.uk/sites/default/files/docs/2009/02/principles-processes-and-issues-con-doc_final---270209.pdf,primary regulator retrospective
 source-b4f6ac6ea88797ea03e5,https://www.oxera.com/about-us/media-centre/dr-helen-jenkins-appointed-as-oxeras-first-managing-partner/,primary
-source-2b89364c1e0dae2fc75d,https://www.oxera.com/about-us/media-centre/oxera-strengthens-merger-expertise-with-appointment-of-francesca-sala-as-partner/,receiving-firm announcement
+source-2b89364c1e0dae2fc75d,https://www.oxera.com/about-us/media-centre/oxera-strengthens-merger-expertise-with-appointment-of-francesca-sala-as-partner/,Issuer announcement
 source-cbfb744fcb4575aed806,https://www.oxera.com/locations/,official office/contact page
 source-3e7e3f4cb7ed5445c2e9,https://www.oxfordeconomics.com/about-us/,primary
 source-d0004a374eb7abcfcafe,https://www.paconsulting.com/about/legal/pa-consulting-group-companies-details,primary identity source
 source-7b913117d1360b5ace48,https://www.pantheonmacro.com/en-us/about-us,primary
-source-15c0e40bfd53d6b265f3,https://www.prnewswire.com/news-releases/former-uk-cma-ceo-andrea-coscelli-to-join-keystone-as-co-head-of-europe-301688887.html,Keystone-authored syndicated announcement
+source-15c0e40bfd53d6b265f3,https://www.prnewswire.com/news-releases/former-uk-cma-ceo-andrea-coscelli-to-join-keystone-as-co-head-of-europe-301688887.html,Issuer announcement via newswire
 source-b50510ded5684177da92,https://www.prnewswire.com/news-releases/keystone-enters-europe-through-new-partnership-with-cristina-caffarra-301581799.html,archived primary source
 source-f78e1a4f73a9f4847697,https://www.pwc.co.uk/services/economics.html,primary identity source
 source-443857f813a7446987e8,https://www.rbbecon.com/about/,primary

@@ -1,6 +1,6 @@
 # Economics consultancy catalogue
 
-November 2026 correction. Mike Walker and Michael Walker are one professional identity. The directory records the name used in the 2000 CRA release and the January 2026 start month confirmed by Frontier. The original Frontier announcement gave 5 January as the intended date, subject to final conflict checks. The accounts selection was frozen on 24 July 2026 and checked in September.
+November 2026 correction. Mike Walker and Michael Walker are one professional identity. The directory records the name used in the 2000 CRA release and the January 2026 start month confirmed by Frontier. The original Frontier announcement gave 5 January as the intended date, subject to final conflict checks. The accounts selection was frozen on 24 July 2026 and checked against the accounts, with exact references in the November edition.
 
 This edition contains 90 firm catalogue entries and 240 professional or research person entries. The people table includes a source-checked professional alias for Mike Walker.
 
@@ -33,3 +33,8 @@ FROM record_sources r JOIN sources s ON s.id=r.source_id;
 ## Financial filing provenance
 
 All 140 public financial observations link to specific Companies House PDF pages. Each locator records the filing date, PDF page, printed page where present and the cited line or statement. The database page makes the 110-row financial register and 30-row revenue register available as separate CSV downloads. Comparative values point to the column in the cited filing. Baringa's estimate and both Fideres non-disclosures also have a second source page. If your PDF viewer ignores the page fragment, go to the PDF page in the locator.
+
+
+## Career and event provenance
+
+The 11 affiliation rows and 11 career event rows describe the same appointments. The event table also contains two statutory LLP appointments and two ownership events. The event date and announcement date are separate. A start can be recorded to month precision, and an intended start does not establish a first working day. Where a source is dated, the public provenance register gives its own publication or filing date as well as its locator. The two LLP forms link to PDF page 1. The exact filing links for all 140 financial observations are retained.
