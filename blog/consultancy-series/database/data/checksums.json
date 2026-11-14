@@ -3,16 +3,16 @@
   "csv/affiliations.csv": "3e20768019406e233d14c1bda576c42a3896fa16adb5d5cbbb404914b223b243",
   "csv/events.csv": "d229b984d425796f3cd50743525e613e65ce9c6d366bf93a8eb00d90557272d1",
   "csv/financials.csv": "798097f4d4c4487f96a9d8a02c90909b388a59a8ae23963a2b158aa81a3663f0",
-  "csv/firm_identity_links.csv": "81acf090f4630035eb4734ac4cc63f0c5540fbed1e881e5fd3ba66bdf69f3463",
-  "csv/firms.csv": "8931719664214a1ff7358f7e3ec591027655b78ca53bc172f2347e10276f3db6",
+  "csv/firm_identity_links.csv": "f97e45fc5bd96df0388f38a492f9ca5996f2774c2f276298216df85c527a21ff",
+  "csv/firms.csv": "c962ef1cef11b3c1af2a7698bc41a8b6567a454fdaf6b757042bef85def1f7b2",
   "csv/offices.csv": "d806e158b02d6d7bb141093119e256a032a8dfa94229713b81a2f442a798768e",
   "csv/organisations.csv": "ddd675ce8cdf8146693ec82bc26d45f470977a6496940804239e4c212b5c5a9f",
   "csv/people.csv": "3cd90a2c75ea775792fe433d3e54bed83f635136d8f7080fa699c7d86869aff4",
   "csv/registered_addresses.csv": "8fb67112ec3b9c6894243c0f85fa73070e1d6ce08a4ae941a480cab95e8d6275",
-  "csv/sources.csv": "57eb38ab30fe212d3361a69b517c122589f784931bcf300604677da249b0e4bb",
-  "csv-tables.zip": "869cbc602a5e70013f1ce94eafcfd57ae0d05e5957444431105a162c987d1798",
-  "economics-consultancy-public.sqlite": "1cb26ce4dac0881dcdeecaec779d7ed44ac2ec371331bd1edc7c10adeabfbe14",
-  "economics-consultancy-public.zip": "e5fc3e3ad0c3b39d205296a37c4f35ff59043834c1a6a9a037dc09915f42d486",
+  "csv/sources.csv": "4434737322e5117d70d3deb401e6fd9dd98178c25e9f23480764213d559be118",
+  "csv-tables.zip": "fe76e6e608b8ff45b948ee0fc60a307ef1797c7c922950b6e6421e89a61a148b",
+  "economics-consultancy-public.sqlite": "afa2790d83ea3899e5ca8bd6ca3b12ce179cf403d2e3326e9fe372a3e0be7565",
+  "economics-consultancy-public.zip": "30c3f2421f07b491fd6f9d6855e73d20771dcba1390cf88e980ca2bcf84a8519",
   "field-dictionary.json": "c290f0ffc1058854f5c22339c0d7230cf632b917774e6387b8c650d0fafd303b",
-  "public-data.json": "167157ff7fdec0d2af2474a3e6dafbb4b48de084bdb27a02bcaf216a88c02d80"
+  "public-data.json": "683f62579460d38e9da3c4ff988a96d23711d6628538f2833f5070d780d14913"
 }

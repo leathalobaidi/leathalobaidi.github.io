@@ -11,7 +11,7 @@
     "events": 15,
     "registered_addresses": 84,
     "offices": 109,
-    "sources": 592,
+    "sources": 594,
     "firm_identity_links": 92,
     "people_with_related_sources": 59,
     "research_scope_people": 106,
@@ -75,11 +75,11 @@
               "field": "registration_date"
             },
             {
-              "source_id": "source-41088bb2fc4447188003",
-              "locator": "PDF page 2 schedule lists Alvarez & Marsal Disputes and Investigations LLP.",
+              "source_id": "source-0e429c2d29bd91f51d64",
+              "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC331411.",
               "checked_on": "2026-11-14",
-              "source_date": "2023",
-              "date_basis": "Statement year",
+              "source_date": "2025-10-04",
+              "date_basis": "Accounts filing date",
               "field": "relationship"
             }
           ],
@@ -101,11 +101,11 @@
           "field": "registered_name_and_number"
         },
         {
-          "source_id": "source-41088bb2fc4447188003",
-          "locator": "PDF page 2 schedule lists Alvarez & Marsal Disputes and Investigations LLP.",
+          "source_id": "source-0e429c2d29bd91f51d64",
+          "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC331411.",
           "checked_on": "2026-11-14",
-          "source_date": "2023",
-          "date_basis": "Statement year",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date",
           "field": "relationship"
         }
       ],
@@ -146,11 +146,11 @@
               "field": "registration_date"
             },
             {
-              "source_id": "source-41088bb2fc4447188003",
-              "locator": "PDF page 2 schedule lists Alvarez & Marsal Europe LLP separately from Europe Limited.",
+              "source_id": "source-fce9433f71c2186e4a2d",
+              "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC330414.",
               "checked_on": "2026-11-14",
-              "source_date": "2023",
-              "date_basis": "Statement year",
+              "source_date": "2025-10-04",
+              "date_basis": "Accounts filing date",
               "field": "relationship"
             }
           ],
@@ -172,11 +172,11 @@
           "field": "registered_name_and_number"
         },
         {
-          "source_id": "source-41088bb2fc4447188003",
-          "locator": "PDF page 2 schedule lists Alvarez & Marsal Europe LLP separately from Europe Limited.",
+          "source_id": "source-fce9433f71c2186e4a2d",
+          "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC330414.",
           "checked_on": "2026-11-14",
-          "source_date": "2023",
-          "date_basis": "Statement year",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date",
           "field": "relationship"
         }
       ],
@@ -217,11 +217,11 @@
               "field": "registration_date"
             },
             {
-              "source_id": "source-41088bb2fc4447188003",
-              "locator": "PDF page 2 schedule lists Alvarez & Marsal Tax LLP.",
+              "source_id": "source-adc6eedc99f586311142",
+              "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC332081.",
               "checked_on": "2026-11-14",
-              "source_date": "2023",
-              "date_basis": "Statement year",
+              "source_date": "2025-10-06",
+              "date_basis": "Accounts filing date",
               "field": "relationship"
             }
           ],
@@ -243,11 +243,11 @@
           "field": "registered_name_and_number"
         },
         {
-          "source_id": "source-41088bb2fc4447188003",
-          "locator": "PDF page 2 schedule lists Alvarez & Marsal Tax LLP.",
+          "source_id": "source-adc6eedc99f586311142",
+          "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC332081.",
           "checked_on": "2026-11-14",
-          "source_date": "2023",
-          "date_basis": "Statement year",
+          "source_date": "2025-10-06",
+          "date_basis": "Accounts filing date",
           "field": "relationship"
         }
       ],
@@ -24245,6 +24245,11 @@
       "kind": "Companies House register"
     },
     {
+      "id": "source-fce9433f71c2186e4a2d",
+      "url": "https://find-and-update.company-information.service.gov.uk/company/OC330414/filing-history/MzQ4Mzc3MjgzOWFkaXF6a2N4/document?format=pdf&download=0#page=1",
+      "kind": "Companies House identity filing"
+    },
+    {
       "id": "source-ba6b78fa826826ca7cd7",
       "url": "https://find-and-update.company-information.service.gov.uk/company/OC330414/filing-history/MzQ4Mzc3MjgzOWFkaXF6a2N4/document?format=pdf&download=0#page=14",
       "kind": "Companies House revenue filing"
@@ -24270,6 +24275,11 @@
       "kind": "Companies House register"
     },
     {
+      "id": "source-0e429c2d29bd91f51d64",
+      "url": "https://find-and-update.company-information.service.gov.uk/company/OC331411/filing-history/MzQ4Mzc3MzM1MmFkaXF6a2N4/document?format=pdf&download=0#page=1",
+      "kind": "Companies House identity filing"
+    },
+    {
       "id": "source-8fe9c29d52e1bdc9056f",
       "url": "https://find-and-update.company-information.service.gov.uk/company/OC331411/filing-history/MzQ4Mzc3MzM1MmFkaXF6a2N4/document?format=pdf&download=0#page=13",
       "kind": "Companies House revenue filing"
@@ -24293,6 +24303,11 @@
       "id": "source-4d6b415dc62db521e2f1",
       "url": "https://find-and-update.company-information.service.gov.uk/company/OC332081#roa-address",
       "kind": "Companies House register"
+    },
+    {
+      "id": "source-adc6eedc99f586311142",
+      "url": "https://find-and-update.company-information.service.gov.uk/company/OC332081/filing-history/MzQ4Mzc3OTY5N2FkaXF6a2N4/document?format=pdf&download=0#page=1",
+      "kind": "Companies House identity filing"
     },
     {
       "id": "source-15dcefc03c11b2011b9f",
@@ -24668,11 +24683,6 @@
       "id": "source-a6e104430a946014cfea",
       "url": "https://www.alixpartners.com/our-people/32991/stefan-hunt/",
       "kind": "Employer biography"
-    },
-    {
-      "id": "source-41088bb2fc4447188003",
-      "url": "https://www.alvarezandmarsal.com/sites/default/files/2023-06/Modern%20Slavery%20Statement%202023.pdf#page=2",
-      "kind": "Primary identity source"
     },
     {
       "id": "source-bf52bbd18b78fce1446f",
@@ -25587,11 +25597,11 @@
       "checked_on": "2026-11-14",
       "source_refs": [
         {
-          "source_id": "source-41088bb2fc4447188003",
-          "locator": "PDF page 2 schedule lists Alvarez & Marsal Europe LLP separately from Europe Limited.",
+          "source_id": "source-fce9433f71c2186e4a2d",
+          "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC330414.",
           "checked_on": "2026-11-14",
-          "source_date": "2023",
-          "date_basis": "Statement year",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date",
           "field": "relationship"
         }
       ]
@@ -25604,11 +25614,11 @@
       "checked_on": "2026-11-14",
       "source_refs": [
         {
-          "source_id": "source-41088bb2fc4447188003",
-          "locator": "PDF page 2 schedule lists Alvarez & Marsal Tax LLP.",
+          "source_id": "source-adc6eedc99f586311142",
+          "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC332081.",
           "checked_on": "2026-11-14",
-          "source_date": "2023",
-          "date_basis": "Statement year",
+          "source_date": "2025-10-06",
+          "date_basis": "Accounts filing date",
           "field": "relationship"
         }
       ]
@@ -25621,11 +25631,11 @@
       "checked_on": "2026-11-14",
       "source_refs": [
         {
-          "source_id": "source-41088bb2fc4447188003",
-          "locator": "PDF page 2 schedule lists Alvarez & Marsal Disputes and Investigations LLP.",
+          "source_id": "source-0e429c2d29bd91f51d64",
+          "locator": "PDF page 1, cover. The LLP gives its full registered name and number OC331411.",
           "checked_on": "2026-11-14",
-          "source_date": "2023",
-          "date_basis": "Statement year",
+          "source_date": "2025-10-04",
+          "date_basis": "Accounts filing date",
           "field": "relationship"
         }
       ]
