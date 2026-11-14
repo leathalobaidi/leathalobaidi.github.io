@@ -8509,8 +8509,8 @@
       "related_professional_claim_count": 0,
       "source_refs": [
         {
-          "source_id": "source-95fb6234acd92f898727",
-          "locator": "Hélder Vasconcelos · Partner",
+          "source_id": "source-ee3c77aee227c4b33e7d",
+          "locator": "Helder Vasconcelos · Partner",
           "checked_on": "2026-11-14",
           "source_date": null,
           "date_basis": null,
@@ -11020,7 +11020,7 @@
       "related_professional_claim_count": 0,
       "source_refs": [
         {
-          "source_id": "source-8096c2d50fecfafe7e12",
+          "source_id": "source-5ac0cd2f9cc01ab27be2",
           "locator": "Owen Good · Named in the Cebr brochure",
           "checked_on": "2026-11-14",
           "source_date": "2024",
@@ -12543,8 +12543,8 @@
       "related_professional_claim_count": 0,
       "source_refs": [
         {
-          "source_id": "source-70e30189efdd162b1066",
-          "locator": "Sujeet Indap · Named in the Financial Times author index",
+          "source_id": "source-12ac50b57ee521388fde",
+          "locator": "Sujeet Indap, US Editor of Lex, Financial Times · US Editor of Lex, as listed in the FT Alphaville event programme",
           "checked_on": "2026-11-14",
           "source_date": null,
           "date_basis": null,
@@ -25786,8 +25786,8 @@
       "kind": "Primary identity source"
     },
     {
-      "id": "source-8096c2d50fecfafe7e12",
-      "url": "https://cebr.com/wp-content/uploads/2024/02/Cebr-Brochure-2024.pdf#:~:text=Owen%20Good",
+      "id": "source-5ac0cd2f9cc01ab27be2",
+      "url": "https://cebr.com/wp-content/uploads/2024/02/Cebr-Brochure-2024.pdf#page=10",
       "kind": "Original professional source"
     },
     {
@@ -28761,6 +28761,11 @@
       "kind": "Original professional source"
     },
     {
+      "id": "source-12ac50b57ee521388fde",
+      "url": "https://ftalphaville-cdn.ft.com/wp-content/uploads/2016/06/EVENT-SCHEDULE.pdf#page=2",
+      "kind": "Original professional source"
+    },
+    {
       "id": "source-050cd3894cd710b76f8b",
       "url": "https://haas.berkeley.edu/faculty/teece-david/",
       "kind": "primary"
@@ -29596,11 +29601,6 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-70e30189efdd162b1066",
-      "url": "https://www.ft.com/sujeet-indap#:~:text=Sujeet%20Indap",
-      "kind": "Original professional source"
-    },
-    {
       "id": "source-414382b61290c4552a0e",
       "url": "https://www.fticonsulting.com/about/newsroom/press-releases/compass-lexecon-adds-leading-competition-and-regulatory-economist-in-london#:~:text=Nicola%20Mazzarotto",
       "kind": "Original professional source"
@@ -30256,8 +30256,8 @@
       "kind": "Original professional source"
     },
     {
-      "id": "source-95fb6234acd92f898727",
-      "url": "https://www.rbbecon.com/team/helder-vasconcelos/#:~:text=H%C3%A9lder%20Vasconcelos",
+      "id": "source-ee3c77aee227c4b33e7d",
+      "url": "https://www.rbbecon.com/team/helder-vasconcelos/#:~:text=Helder%20Vasconcelos",
       "kind": "Original professional source"
     },
     {
@@ -33749,7 +33749,7 @@
       "checked_on": "2026-11-14",
       "source_refs": [
         {
-          "source_id": "source-8096c2d50fecfafe7e12",
+          "source_id": "source-5ac0cd2f9cc01ab27be2",
           "locator": "Owen Good · Named in the Cebr brochure",
           "checked_on": "2026-11-14",
           "source_date": "2024",
@@ -36081,8 +36081,8 @@
       "checked_on": "2026-11-14",
       "source_refs": [
         {
-          "source_id": "source-95fb6234acd92f898727",
-          "locator": "Hélder Vasconcelos · Partner",
+          "source_id": "source-ee3c77aee227c4b33e7d",
+          "locator": "Helder Vasconcelos · Partner",
           "checked_on": "2026-11-14",
           "source_date": null,
           "date_basis": null,
@@ -38841,20 +38841,20 @@
       ]
     },
     {
-      "id": "person-affiliation-5e7e1c5fe8b29d59f5b5",
+      "id": "person-affiliation-a1d6aa4efafeff074041",
       "person_id": "fc5f20ca-cbc9-5a06-ad62-965a4c34267e",
       "organisation_id": null,
       "organisation_name": "Financial Times",
-      "role": "Named in the Financial Times author index",
+      "role": "US Editor of Lex, as listed in the FT Alphaville event programme",
       "evidence_type": "Professional source",
-      "date": "2026-11-14",
-      "date_basis": "Byline index observation",
+      "date": "2016-07-01",
+      "date_basis": "Event date",
       "end_date": null,
       "checked_on": "2026-11-14",
       "source_refs": [
         {
-          "source_id": "source-70e30189efdd162b1066",
-          "locator": "Sujeet Indap · Named in the Financial Times author index",
+          "source_id": "source-12ac50b57ee521388fde",
+          "locator": "Sujeet Indap, US Editor of Lex, Financial Times · US Editor of Lex, as listed in the FT Alphaville event programme",
           "checked_on": "2026-11-14",
           "source_date": null,
           "date_basis": null,
