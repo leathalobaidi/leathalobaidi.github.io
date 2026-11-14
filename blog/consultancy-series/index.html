@@ -223,6 +223,17 @@
         }
         .about strong { color: var(--color-text); font-weight: 600; }
 
+        #research-database { scroll-margin-top: 5rem; }
+        .database-heading { font: 600 1.6rem/1.25 var(--font-serif); }
+        .database-actions { margin: 0.5rem 0 1rem; }
+        .database-frame {
+            display: block;
+            width: 100%;
+            height: clamp(700px, 86vh, 900px);
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+        }
+
         footer {
             border-top: 1px solid var(--color-border);
             padding: var(--spacing-lg) 0;
@@ -252,7 +263,7 @@
 <p>One member of RBB Economics was entitled to £5.77m of profit in the year to March 2025. The <a href="https://find-and-update.company-information.service.gov.uk/company/OC315356/filing-history">group accounts</a> leave the member unnamed. They show a £60.2m pool available for division. Divide that pool by the average membership of 18 and the result is £3.35m per average member, before personal tax.</p>
 <p>Economics consultancies sell advice on mergers, regulation, damages and policy. This series asks how ownership and the movement of senior economists shape the rewards. Start with <a href="part5-profit-machine.html">the profits</a>, follow <a href="part1-who-was-here-in-2000.html">the history</a>, or inspect <a href="part0.3-the-full-market.html">the data</a>.</p>
 <p>The research catalogue contains 90 firms and practices. In the 24 July 2026 financial snapshot, checked against source accounts in September, 30 selected entities report a combined £2.44bn in revenue across year-ends from July 2024 to December 2025. The selection mixes activities, geographies and accounting bases. The <a href="methodology-claude-code.html">methodology</a> explains the boundaries and sources.</p>
-<p><a href="database/">Browse the public research database and download the CSV or SQLite files</a>.</p>
+<p><a href="#research-database">Explore the research database</a>.</p>
 </section>
 <section class="series-section">
 <div class="section-label">Visual introductions</div>
@@ -271,6 +282,11 @@
 <h2 class="piece-title"><a href="part0.3-the-full-market.html">Put the accounts side by side</a></h2>
 <p class="piece-excerpt">Compare selected firms by revenue, staff or operating margin, then inspect the entity, period and source behind each financial observation. The selection controls change the table, charts and totals together.</p>
 </article>
+</section>
+<section class="series-section" id="research-database" aria-labelledby="database-heading">
+<h2 id="database-heading" class="database-heading">Economics consultancy database</h2>
+<p class="database-actions"><a href="database/">Open the full database</a> · <a href="database/revenue-provenance.html">Revenue provenance notes</a></p>
+<iframe class="database-frame" src="database/?embed=1#view-financials" title="Search the economics consultancy database" loading="lazy"></iframe>
 </section>
 <section class="series-section">
 <div class="section-label">The numbered history (seven parts)</div>
@@ -318,7 +334,7 @@
 <p class="piece-excerpt">How Claude Code and OpenAI Codex helped build the catalogue, check the accounts and prepare the series for publication.</p>
 </article>
 </section>
-<section class="about"><p><strong>Correction, <time datetime="2026-11-14">14 November 2026</time>.</strong> The July edition gave a total of £2.4418bn. The checked figure is £2.4415bn across 30 reporting entities, including net revenue for AlixPartners. The total combines different periods, geographies and activities. <a href="methodology-claude-code.html#revision-note">Revision notes</a>.</p><p><strong>About the series.</strong> Written by Leath Al Obaidi in a private capacity. The work combines filed accounts, dated announcements and published histories. The <a href="database/">public database</a> contains selected observations and links to sources. The full research archive remains private. Corrections are welcome via <a href="https://leathalobaidi.com/">leathalobaidi.com</a>.</p></section>
+<section class="about"><p><strong>Correction, <time datetime="2026-11-14">14 November 2026</time>.</strong> The July edition gave a total of £2.4418bn. The checked figure is £2.4415bn across 30 reporting entities, including net revenue for AlixPartners. The total combines different periods, geographies and activities. <a href="methodology-claude-code.html#revision-note">Revision notes</a>.</p><p><strong>About the series.</strong> Written by Leath Al Obaidi in a private capacity. The work combines filed accounts, dated announcements and published histories. The <a href="#research-database">public database</a> contains selected observations and links to sources. The full research archive remains private. Corrections are welcome via <a href="https://leathalobaidi.com/">leathalobaidi.com</a>.</p></section>
 </div>
 <footer>
 <div class="container">

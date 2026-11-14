@@ -1,17 +1,17 @@
 {
-  "README.md": "9957b559b870bcd1874990f02bbdaa770167f0eb4f2a3549ee3cd4fdc8edf943",
+  "README.md": "e53d8c5d8c55351977bc3bf4cafe990620ab32fdd480dbd542a1c60766776475",
   "csv/affiliations.csv": "5424bc86092421dc9b149c36527cab1f071a30fb0d5f3721d43b087db14b2548",
   "csv/events.csv": "636981682e52afeddb8af987ce8c8c614aac0f21b326ea792dac168110f018a5",
-  "csv/financials.csv": "0ca91de0ae4c4676976725db3e54812535275fa0802db307d5f0f8d6161e28a9",
+  "csv/financials.csv": "1af08d3254639039cc8af80bd769de12895eb6a339d9a97256d9fbb169d58bfc",
   "csv/firms.csv": "b29aa8a33249c063fb94e0d8581ed35c2a088d8afbc2210e8a733f40b34c6626",
   "csv/offices.csv": "ff0e87386edf03647a173c4baf4e455c7361ab4cc39d61cdf283d2e0a78ecaba",
   "csv/organisations.csv": "55d0f9c4f45f59c37cd6588f71d1e193713d5cbbe26c6e229a7ab0f32469c2a4",
   "csv/people.csv": "aeb4dca8fe35fb73efa89ed5f03cc6d01bb78f9c86e6f14b0827c17bfc5602a3",
   "csv/registered_addresses.csv": "2125bbf289fda1a7623b960a86ecc660b19c24fcf2841988c2721f32f2b284dc",
-  "csv/sources.csv": "a9b83621ac08cb48cb2f6ea72b40359286f875748a8a9befdbf2f5d1f53f89b3",
-  "csv-tables.zip": "b848ad6809892d9c4b7afb78e6564c4634845cbaaaf2071ee187daaca1788b55",
-  "economics-consultancy-public.sqlite": "afd9d5a4cc39e9768aca596eec321861f2011af6fe95f971d772dda98a071954",
-  "economics-consultancy-public.zip": "cd8279d955d70e4f159d209f087d9bcd6f40d3bb3a9dc412127987d373c2be63",
+  "csv/sources.csv": "7928d7be1350ba886cf9846ad833efc7a57ffbd2393615155634ac694620078c",
+  "csv-tables.zip": "c2d2a75902f52dfb7f44ada586b46772476948da4eb476ec40cbe68168087aaa",
+  "economics-consultancy-public.sqlite": "adaf29a9f1792f05a15b560bd9ba28c41244608bf907c69f11656322a0dd78d7",
+  "economics-consultancy-public.zip": "4b283611f80429262464af2c5e09732ccd13c5f6c99b81e9d2d4bf3f81f742b7",
   "field-dictionary.json": "020d3c14f7cde78f3476004a4851d60b1ad6e6534ffa55085abb582d9601db26",
-  "public-data.json": "62415d9a4e21dfa9368cb820c2c756dcce9d9aa8905410b987750c4e7c72b9da"
+  "public-data.json": "61cdc87a91ac787637e5bf0b612d6710a2c7adadad10d1d714260d773e3064c3"
 }

@@ -29,3 +29,7 @@ FROM affiliations a JOIN people p ON p.id=a.person_id;
 SELECT r.table_name, r.record_id, s.url, r.locator, r.checked_on
 FROM record_sources r JOIN sources s ON s.id=r.source_id;
 ```
+
+## Revenue filing provenance
+
+For each of the 30 checked revenue rows in the July snapshot, the financial table links to the exact Companies House filing. The locator records the filing date, PDF and printed page, statement line and filed units. The companion provenance register on the database page gives the filing ID, SHA-256 and the figures as printed and after unit conversion. The trailing PDF page fragment requests the cited page. If a PDF viewer ignores the fragment, use the PDF page in the locator.

@@ -1,5 +1,6 @@
 'use strict';
 (() => {
+document.body.classList.toggle('embedded-database', new URLSearchParams(location.search).get('embed') === '1');
 const $=id=>document.getElementById(id);
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const plain=value=>String(value??'').replaceAll('_',' ');
@@ -16,7 +17,7 @@ const hasValue=f=>valueOf(f)!==null&&valueOf(f)!=='';
 const refsOf=r=>Array.isArray(r?.source_refs)?r.source_refs:[];
 function sourceList(refs,label='Sources'){
  const distinct=[...new Map(refs.map(r=>[[r.source_id,r.locator,r.checked_on].join('|'),r])).values()];
- const items=distinct.map(r=>{const s=S.get(r.source_id??r.id);const url=safeUrl(s?.url??r.url);if(!url)return '';const host=new URL(url).hostname.replace(/^www\./,'');return `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(s?.title||host)}</a>${r.locator?`<p>${esc(r.locator)}</p>`:''}${r.checked_on?`<p class="sub">Checked ${esc(date(r.checked_on))}</p>`:''}</li>`}).filter(Boolean);
+ const items=distinct.map(r=>{const s=S.get(r.source_id??r.id);const url=safeUrl(s?.url??r.url);if(!url)return '';const parsed=new URL(url);const host=parsed.hostname.replace(/^www\./,'');const filingPage=s?.kind==='Companies House revenue filing'?parsed.hash.match(/^#page=(\d+)$/)?.[1]:null;const title=filingPage?'Filed accounts (PDF page '+filingPage+')':s?.title||host;return `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a>${r.locator?`<p>${esc(r.locator)}</p>`:''}${r.checked_on?`<p class="sub">Checked ${esc(date(r.checked_on))}</p>`:''}</li>`}).filter(Boolean);
  return items.length?`<details class="evidence"><summary>${esc(label)} (${items.length})</summary><ul>${items.join('')}</ul></details>`:'<span class="sub">No public source link supplied</span>';
 }
 function firmName(id,fallback){return F.get(id)?.name||fallback||'Organisation not linked to catalogue'}
@@ -80,7 +81,10 @@ async function init(){try{const response=await fetch('data/public-data.json');if
  $('firmTotal').textContent=D.firms.length;$('peopleTotal').textContent=D.people.length;$('revenueTotal').textContent=new Set(D.financials.filter(f=>f.metric==='turnover'&&hasValue(f)).map(f=>f.firm_id)).size;
  $('publicLimits').textContent='The public download contains the catalogue and source-linked observations. Unreviewed career claims, private research files and original third-party documents are excluded. Sources remain available through their public links.';
  renderFirms();renderPeople();renderFinancials();renderLocations();renderSources();$('loading').hidden=true;$('app').hidden=false;
- document.querySelectorAll('.sections button').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+ const sections=document.querySelectorAll('.sections button');
+ sections.forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+ const initialView=[...sections].find(b=>location.hash==='#view-'+b.dataset.view);
+ if(initialView)showView(initialView.dataset.view);
  for(const [ids,fn]of [[['firmSearch','firmCoverage'],renderFirms],[['personSearch','personCoverage'],renderPeople],[['financeSearch','financeMetric','financePeriod','financeCurrency'],renderFinancials],[['locationSearch','locationType'],renderLocations]])for(const id of ids)$(id).addEventListener('input',()=>{if(id==='financeMetric'&&countMetrics.has($('financeMetric').value))$('financeCurrency').value='all';fn()});
  $('sourceSearch').addEventListener('input',()=>{sourceLimit=35;renderSources()});$('moreSources').addEventListener('click',()=>{sourceLimit+=35;renderSources()});document.querySelectorAll('[data-reset]').forEach(b=>b.addEventListener('click',()=>reset(b.dataset.reset)));
  document.addEventListener('click',ev=>{const f=ev.target.closest('button[data-firm]'),p=ev.target.closest('button[data-person]');if(f)openProfile('firm',f.dataset.firm);if(p)openProfile('person',p.dataset.person)});$('closeProfile').addEventListener('click',()=>$('profile').close());
