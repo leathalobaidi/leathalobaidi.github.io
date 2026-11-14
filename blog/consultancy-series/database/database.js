@@ -18,21 +18,32 @@ const hasValue=f=>valueOf(f)!==null&&valueOf(f)!=='';
 const refsOf=r=>Array.isArray(r?.source_refs)?r.source_refs:[];
 function sourceList(refs,label='Sources'){
  const distinct=[...new Map(refs.map(r=>[[r.source_id,r.locator,r.checked_on].join('|'),r])).values()];
- const items=distinct.map(r=>{const s=S.get(r.source_id??r.id);const url=safeUrl(s?.url??r.url);if(!url)return '';const parsed=new URL(url);const host=parsed.hostname.replace(/^www\./,'');const filingPage=host==='find-and-update.company-information.service.gov.uk'&&parsed.pathname.endsWith('/document')?parsed.hash.match(/^#page=(\d+)$/)?.[1]:null;const title=filingPage?(s?.kind==='Companies House appointment filing'?'LLP appointment filing':s?.kind==='Companies House location filing'?'Companies House filing':'Filed accounts')+' (PDF page '+filingPage+')':s?.title||s?.kind||host;return `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a>${r.locator?`<p>${esc(r.locator)}</p>`:''}${r.source_date?`<p class="sub">Source dated ${esc(date(r.source_date))}</p>`:''}${r.checked_on?`<p class="sub">Checked ${esc(date(r.checked_on))}</p>`:''}</li>`}).filter(Boolean);
+ const items=distinct.map(r=>{const s=S.get(r.source_id??r.id);const url=safeUrl(s?.url??r.url);if(!url)return '';const parsed=new URL(url);const host=parsed.hostname.replace(/^www\./,'');const filingPage=host==='find-and-update.company-information.service.gov.uk'&&parsed.pathname.endsWith('/document')?parsed.hash.match(/^#page=(\d+)$/)?.[1]:null;const title=filingPage?(s?.kind==='Companies House appointment filing'?'LLP appointment filing':s?.kind==='Companies House location filing'?'Companies House filing':'Filed accounts')+' (PDF page '+filingPage+')':s?.title||s?.kind||host;return `<li><a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(title)}</a>${r.locator?`<p>${esc(r.locator)}</p>`:''}${r.source_date?`<p class="sub">${esc(r.date_basis||'Source dated')} ${esc(date(r.source_date))}</p>`:''}${r.checked_on?`<p class="sub">Checked ${esc(date(r.checked_on))}</p>`:''}</li>`}).filter(Boolean);
  return items.length?`<details class="evidence"><summary>${esc(label)} (${items.length})</summary><ul>${items.join('')}</ul></details>`:'<span class="sub">No public source link supplied</span>';
 }
 function firmName(id,fallback){return F.get(id)?.name||fallback||'Organisation not linked to catalogue'}
 function organisationName(row){return row.organisation_name||row.firm_name||row.name||F.get(row.firm_id)?.name||O.get(row.organisation_id||row.legal_entity_id)?.name||row.label||'Organisation not linked to catalogue'}
 function scopeName(type){return ({catalogue_scope_linked_to_registered_entity:'Registered entity',overseas_company_uk_establishment:'UK establishment',service_line:'Practice',group_brand:'Group brand',brand:'Brand',university_institute:'University institute'})[type]||plain(type)}
-function companyReferences(f){return (f.company_references||[]).map(r=>{if(typeof r==='string')return r;const n=r.company_number||r.establishment_number;if(!n)return '';return n+(r.establishment_number?' (UK establishment)':r.relationship?.startsWith('host')?' (related legal entity)':'')}).filter(Boolean)}
+function identitySummary(f){
+ const entries=f.company_references||[];
+ return entries.length?entries.map(r=>`<p class="sub">${esc(r.registered_name)} · ${esc(r.company_number||r.establishment_number)}${r.register_status==='Dissolved'?' · Dissolved':''}</p>`).join(''):'<p class="sub">University institute</p>';
+}
+function identityProfile(f){
+ const entries=f.company_references||[];
+ return entries.map(r=>{
+   const number=r.company_number||r.establishment_number;
+   const dates=[r.registration_date&&`${r.registration_date_basis} ${date(r.registration_date)}`,r.ceased_on&&`Dissolved ${date(r.ceased_on)}`].filter(Boolean).join(' · ');
+   return `<div class="record"><p><strong>${esc(r.registered_name)}</strong> · ${esc(number)}</p><p class="sub">${esc(r.relationship)}</p>${dates?`<p class="sub">${esc(dates)}</p>`:''}${r.home_register_number?`<p class="sub">Home register ${esc(r.home_register_number)}</p>`:''}${sourceList(refsOf(r),'Original sources')}</div>`;
+ }).join('');
+}
 function amount(f){const v=valueOf(f);if(v===null||v==='')return 'Not disclosed';const n=Number(String(v).replaceAll(',',''));const formatted=Number.isFinite(n)?new Intl.NumberFormat('en-GB',{maximumFractionDigits:2}).format(n):esc(v);return countMetrics.has(f.metric)?formatted:`${esc(f.currency||'Currency unspecified')} ${formatted}`}
 function financeBasis(f){return [f.accounting_basis,f.metric_basis].filter(Boolean).map(plain).join(' · ')}
 function financialRecord(f){return `<div class="record"><p><strong>${esc(labels[f.metric]||plain(f.metric))}</strong> · ${amount(f)} ${f.estimated?'<span class="tag estimate">Estimate</span>':''}</p><p class="sub">Period ended ${esc(date(f.year_end))}${f.period_months?` · ${esc(f.period_months)} months`:''}</p><p class="sub">${esc(financeBasis(f))}</p>${sourceList(refsOf(f))}</div>`}
 function currentFinancials(rows){return rows.filter(f=>f.is_latest)}
 function empty(cols,text){return `<tr><td colspan="${cols}" class="empty">${esc(text)}</td></tr>`}
-function renderFirms(){const q=textQuery('firmSearch'),coverage=$('firmCoverage').value;const rows=D.firms.filter(f=>{const n=D.financials.filter(x=>x.firm_id===f.id&&hasValue(x)).length;return matches(q,f.name,...companyReferences(f))&&(coverage==='all'||(coverage==='checked'?n>0:n===0))}).sort(alpha);
+function renderFirms(){const q=textQuery('firmSearch'),coverage=$('firmCoverage').value;const rows=D.firms.filter(f=>{const n=D.financials.filter(x=>x.firm_id===f.id&&hasValue(x)).length;const identifiers=(f.company_references||[]).flatMap(r=>[r.registered_name,r.company_number,r.establishment_number,r.home_register_number]);return matches(q,f.name,...identifiers)&&(coverage==='all'||(coverage==='checked'?n>0:n===0))}).sort(alpha);
  $('firmCount').textContent=`${rows.length} of ${D.firms.length} catalogue entries`;
- $('firmRows').innerHTML=rows.map(f=>{const fs=D.financials.filter(x=>x.firm_id===f.id&&hasValue(x));const metrics=new Set(fs.map(x=>x.metric));return `<tr><td><button class="name" type="button" data-firm="${esc(f.id)}">${esc(f.name)}</button></td><td>${esc(scopeName(f.scope_type))}<p class="sub">${esc(companyReferences(f).join(' · ')||'No separate UK company number assigned')}</p></td><td>${fs.length?`${metrics.size} checked metric${metrics.size===1?'':'s'}`:'No checked values'}<p class="sub">${fs.length?'Open profile for dates and accounting scope':'Missing information is not zero'}</p></td><td>${sourceList(refsOf(f),'Identity sources')}</td></tr>`}).join('')||empty(4,'No matching firms. Try another name or reset the filters.');
+ $('firmRows').innerHTML=rows.map(f=>{const fs=D.financials.filter(x=>x.firm_id===f.id&&hasValue(x));const metrics=new Set(fs.map(x=>x.metric));return `<tr><td><button class="name" type="button" data-firm="${esc(f.id)}">${esc(f.name)}</button></td><td>${esc(scopeName(f.scope_type))}${identitySummary(f)}</td><td>${fs.length?`${metrics.size} checked metric${metrics.size===1?'':'s'}`:'No checked values'}<p class="sub">${fs.length?'Open profile for dates and accounting scope':'Missing information is not zero'}</p></td><td>${sourceList(refsOf(f),'Identity sources')}</td></tr>`}).join('')||empty(4,'No matching firms. Try another name or reset the filters.');
 }
 function personAffiliations(p){return D.affiliations.filter(a=>a.person_id===p.id)}
 function appointmentEvent(a){return D.events.find(e=>e.subject_id===a.person_id&&e.date===a.date&&e.participants.some(p=>p.role==='destination'&&p.entity_id===a.organisation_id))}
@@ -86,7 +97,8 @@ function openProfile(kind,id){
  if(isFirm){
   const order=Object.keys(labels),fs=currentFinancials(D.financials.filter(f=>f.firm_id===id)).sort((a,b)=>order.indexOf(a.metric)-order.indexOf(b.metric));
   const offices=D.offices.filter(o=>o.firm_id===id),addresses=D.registered_addresses.filter(a=>a.firm_id===id),transactions=D.events.filter(e=>e.subject_id===id&&e.event_type==='dated_ownership_transaction');
-  $('profileBody').innerHTML=`<p class="profile-intro">${esc(scopeName(record.scope_type))} · ${esc(companyReferences(record).join(' · ')||'No separate UK company number assigned')}</p><p class="profile-intro">${esc(record.scope_note||'')}</p><p class="sub">${esc(record.scope_limit||'')}</p>${sourceList(refsOf(record),'Identity sources')}
+  $('profileBody').innerHTML=`<p class="profile-intro">${esc(record.scope_note||'')}</p><p class="sub">Identity checked ${esc(date(record.identity_checked_on))} · <a href="identity-provenance.html#${esc(id)}">Provenance notes</a></p>
+   ${identityProfile(record)||sourceList(refsOf(record),'Identity sources')}
    <h3>Checked financial observations</h3>${fs.length?fs.map(financialRecord).join(''):'<p class="sub">No checked financial values in this edition.</p>'}
    ${transactions.length?`<h3>Dated ownership observations</h3>${transactions.map(eventRecord).join('')}`:''}
    ${addresses.length?`<h3>Dated registered addresses</h3>${addresses.map(a=>`<div class="record"><p>${esc(locationText(a,false))}</p><p class="sub">${esc(locationStatus(a))}</p>${locationDates(a)}<p class="sub">${esc(locationLimits(a))}</p>${sourceList(refsOf(a))}</div>`).join('')}`:''}

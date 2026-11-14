@@ -11,6 +11,7 @@
       "scope_limit": "TEXT",
       "company_references": "TEXT",
       "source_refs": "TEXT",
+      "identity_checked_on": "TEXT",
       "checked_financial_field_count": "INTEGER",
       "latest_checked_financial_field_count": "INTEGER"
     }
@@ -39,7 +40,16 @@
       "type": "TEXT",
       "company_number": "TEXT",
       "registered_name": "TEXT",
-      "firm_id": "TEXT"
+      "firm_id": "TEXT",
+      "registration_date": "TEXT",
+      "registration_date_basis": "TEXT",
+      "register_status": "TEXT",
+      "ceased_on": "TEXT",
+      "home_register_number": "TEXT",
+      "checked_on": "TEXT",
+      "establishment_number": "TEXT",
+      "foreign_company_number": "TEXT",
+      "source_refs": "TEXT"
     }
   },
   "financials": {
@@ -144,6 +154,17 @@
       "id": "TEXT",
       "url": "TEXT",
       "kind": "TEXT"
+    }
+  },
+  "firm_identity_links": {
+    "grain": "One record per firm_identity_link id",
+    "fields": {
+      "id": "TEXT",
+      "firm_id": "TEXT",
+      "organisation_id": "TEXT",
+      "relationship": "TEXT",
+      "checked_on": "TEXT",
+      "source_refs": "TEXT"
     }
   }
 }

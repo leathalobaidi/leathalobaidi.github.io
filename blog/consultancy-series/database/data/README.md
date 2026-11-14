@@ -6,7 +6,7 @@ This edition contains 90 firm catalogue entries and 240 professional or research
 
 The download includes 140 individually checked financial field observations, including comparative years and two explicit non-disclosures; 11 appointment/advisory relationships; 15 dated events; 84 dated registered-office observations across 80 legal entities and 109 office or contact-city observations from ten firms. Four registered addresses are superseded. Two city listings are historical. A dated observation can be historical even when it is the latest available record.
 
-`public-data.json` contains the full public dataset. `economics-consultancy-public.sqlite` contains matching tables and a `record_sources` bridge for source queries. `economics-consultancy-public.zip` bundles the dataset, database, dictionary, this README and all CSV tables. The `csv` directory contains one export per data table; `csv-tables.zip` bundles all nine CSVs. Nested arrays in CSV/SQLite cells are JSON strings. `field-dictionary.json` lists fields and their SQLite types. `checksums.json` records SHA-256 hashes for the downloads.
+`public-data.json` contains the full public dataset. `economics-consultancy-public.sqlite` contains matching tables and a `record_sources` bridge for source queries. `economics-consultancy-public.zip` bundles the dataset, database, dictionary, this README and all CSV tables. The `csv` directory contains one export per data table; `csv-tables.zip` bundles the CSV tables. Nested arrays in CSV/SQLite cells are JSON strings. `field-dictionary.json` lists fields and their SQLite types. `checksums.json` records SHA-256 hashes for the downloads.
 
 Financial values retain the reporting currency, period, entity and accounting basis. `value_exact` preserves the exact decimal value for calculations and `value` supports display. `is_latest` refers to the latest reporting period in the 24 July 2026 research extract for that firm. That selection includes 30 revenues, 29 operating profits, nine staff observations, four member counts and four member-profit pools. Blank values mark missing or non-comparable information. Staff definitions and the accounting treatment of member remuneration vary by firm.
 
@@ -45,3 +45,10 @@ The 11 affiliation rows and 11 career event rows describe the same appointments.
 The location register links each row to the original register, filing or issuer directory. Dates distinguish observation and review from filing, publication, replacement and dissolution. `in_latest_register_snapshot` describes the November register refresh. `included_in_latest_reader_selection` identifies the dated map selection. Both values are present to allow readers to reproduce the map or query the latest register.
 
 The companion location CSV lists source URLs and dates, passage locators and PDF page references where available. The current Cambridge Econometrics contact page lists Cambridge and Northampton. The Brussels and Budapest rows record the earlier directory listing.
+
+
+## Firm identity review
+
+The Firms view gives the registered name and number as observed at Companies House on 14 November 2026. `organisations` carries register status, incorporation or establishment-opening date, and the source links for those fields. The `firm_identity_links` table links catalogue entries to their registered entities, UK legal context, group companies or university. The relation and source locators describe the scope of the evidence. The company and establishment numbers occupy separate fields. The E.CA overseas-company record also carries the German home register number. Individual engagements may identify a specific contracting entity.
+
+A source date describes a filing, publication or event, as identified by its date basis. Every identity citation records its checking date. The separate [identity source register](../identity-provenance.csv) lists one row per catalogue link and supporting citation.
