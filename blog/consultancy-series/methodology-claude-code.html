@@ -1,22 +1,22 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend</title>
-<meta name="author" content="Leath Al Obaidi">
-<meta name="description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for GitHub release.">
-<link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code">
-<meta property="og:title" content="Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend">
-<meta property="og:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for GitHub release.">
-<meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Leath Al Obaidi">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Claude Code for an Economist: How one person built a 90-firm Companies House research pipeline in a weekend">
-<meta name="twitter:description" content="How a single researcher, with no programming background, built a 90-firm Companies House pipeline in a weekend, turned it into an eleven-piece series, and prepared the entire dataset for GitHub release.">
-
-<link rel="stylesheet" href="apple-theme.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI for an Economist | How the Series Was Researched</title>
+<meta content="Leath Al Obaidi" name="author"/>
+<meta content="How Claude Code and OpenAI Codex helped build and check a 90-firm economics consultancy catalogue, with worked examples from filed accounts." name="description"/>
+<link href="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code" rel="canonical"/>
+<meta content="AI for an Economist | How the Series Was Researched" property="og:title"/>
+<meta content="How Claude Code and OpenAI Codex helped build and check a 90-firm economics consultancy catalogue, with worked examples from filed accounts." property="og:description"/>
+<meta content="https://leathalobaidi.com/blog/consultancy-series/methodology-claude-code" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="Leath Al Obaidi" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<meta content="AI for an Economist | How the Series Was Researched" name="twitter:title"/>
+<meta content="How Claude Code and OpenAI Codex helped build and check a 90-firm economics consultancy catalogue, with worked examples from filed accounts." name="twitter:description"/>
+<link href="apple-theme.css" rel="stylesheet"/>
 <style>
   /* Methodology: all shared styles from apple-theme.css */
   .container { max-width: 720px; margin: 0 auto; padding: 40px 20px 80px; }
@@ -60,555 +60,57 @@
 </style>
 </head>
 <body>
-<div class="laptop-hint" id="laptop-hint">
-  <span>This post has interactive charts, best read on a laptop.</span>
-  <button class="dismiss" onclick="this.parentElement.classList.add('dismissed')" aria-label="Dismiss">&times;</button>
-</div>
-
 <div class="container">
-  <div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
-
-  <div class="series-nav">
-    <a href="part0.1-visual-story.html">Visual</a>
-    <a href="part0.2-uk-and-global-map.html">Maps</a>
-    <a href="part0.3-the-full-market.html">Data</a>
-    <a href="part1-who-was-here-in-2000.html">Part 1</a>
-    <a href="part2-founders-decade.html">Part 2</a>
-    <a href="part3-professionalisation.html">Part 3</a>
-    <a href="part4-global-arms-race.html">Part 4</a>
-    <a href="part5-profit-machine.html">Part 5</a>
-    <a href="part6-the-cma-drain.html">Part 6</a>
-    <a href="part7-the-people-network.html">Part 7</a>
-    <span class="current">Methodology</span>
-  </div>
-
-  <h1>Claude Code for an Economist</h1>
-
-  <p class="subtitle">How one researcher with no programming background built a 90-firm Companies House pipeline, then turned it into eleven pieces: three visual and data openers, seven numbered parts and this methodology.</p>
-
-  <p class="byline"><strong>Leath</strong> &middot; April 2026 &middot; 12 min read</p>
-
-  <!-- ============================================ -->
-  <!-- OPENING HOOK -->
-  <!-- ============================================ -->
-
-  <h2>The prompt</h2>
-
-  <p>In the first week of April 2026, the project began with one sentence typed into <a href="https://claude.com/code">Claude Code</a>.</p>
-
-  <blockquote>
-    "I want to understand why a small UK economics consultancy in the City makes its partners more money than a Magic Circle law-firm partner."
-  </blockquote>
-
-  <p>There was no firm list, database or script. Python had sat untouched for seven years. There was only a Companies House API key, a <a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a>, SQLite and a hunch: much of the answer was buried in Britain&rsquo;s corporate registry.</p>
-  <p>Ten days later, a 90-firm dataset and local repository existed. The first Substack drafts were written and dozens of chart variants rendered, though no public dataset repository had been released. The interactive work took roughly 60 hours. Doing it by hand would have meant pulling 8,293 filing records, matching account PDFs, building financial series, checking officer appointments and tracing the press record across 90 firms. It would plainly have taken longer, but this article claims no benchmark.</p>
-
-  <p>This is what worked, what failed, what the tools still cannot do and what another analyst might try next.</p>
-
-  <div class="pull-quote">
-    <div class="number">60 hours</div>
-    <div class="label">Approximate interactive time for a public-filings research build that would have taken materially longer by hand</div>
-  </div>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- WHAT IS CLAUDE CODE -->
-  <!-- ============================================ -->
-
-  <h2>What Claude Code actually is</h2>
-
-  <p><strong>Claude.ai</strong> is a chat product: ask in a browser and receive prose. <strong>Claude Code</strong> runs in a terminal. With permission it can read and write working files, run shell commands, query APIs through <a href="https://modelcontextprotocol.io">Model Context Protocol</a> servers and test its output. Here it served as a local coding collaborator. One Mac folder, <code>CH Econ Consultancy /</code>, held the SQLite database, API calls, downloaded PDFs, chart HTML and Substack drafts.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- THE FIRST HOUR -->
-  <!-- ============================================ -->
-
-  <h2>The first hour</h2>
-
-  <p>The one-sentence prompt produced this first 60 minutes of work.</p>
-
-  <ol style="margin-left: 20px; margin-bottom: 24px;">
-    <li style="margin-bottom: 12px;"><strong>Searched the web for UK economics consultancies</strong> and returned a seed list of 20 firms, including expected names such as Frontier, Oxera, RBB, Compass Lexecon and Capital Economics, plus less familiar candidates for review.</li>
-    <li style="margin-bottom: 12px;"><strong>Asked for scope clarification.</strong> Did the project mean pure-play competition boutiques, litigation houses too, or the macro research side as well? The answer became a combined scope covering those strands; the working scope expanded from a 20-firm seed list to a 90-firm public catalogue.</li>
-    <li style="margin-bottom: 12px;"><strong>Looked up each firm at Companies House</strong> via the MCP server, pulling legal structure, incorporation date, registered address, officers, PSCs, charges, and the filing history.</li>
-    <li style="margin-bottom: 12px;"><strong>Began downloading account PDFs</strong> for firms with public filings, starting with the latest years and later expanding into the historical filing series.</li>
-    <li style="margin-bottom: 12px;"><strong>Extracted the key financials</strong> (turnover, operating profit, profit to members, partner count, staff headcount, highest-paid-member where disclosed) and wrote them into a SQLite database with a simple schema.</li>
-    <li><strong>Built the first chart</strong>, a rough treemap of the market by revenue, and displayed it.</li>
-  </ol>
-
-  <p>The difference is workflow, not magic. A chat can explain how to pull Companies House data. Claude Code ran the scripts, wrote the database and rendered a chart in the same directory.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- PARALLEL AGENTS -->
-  <!-- ============================================ -->
-
-  <h2>The largest speed-up: parallel research</h2>
-
-  <p>Companies House was the easy part. The press record was harder. Who founded Keystone Europe? When did Phoenix Equity Partners buy Capital Economics? What followed when <a href="https://www.mckinsey.com/about-us/new-at-mckinsey-blog/mckinsey-acquires-vivid-economics-and-planetrics">McKinsey acquired Vivid Economics in 2021</a>? Repeating such questions across 90 firms meant searching GCR, Bloomberg, Concurrences, PYMNTS, the FT, Reuters, consultancy.uk and company releases. Done serially, research becomes typing.</p>
-
-  <p>Claude Code split the firms into four batches and ran four research agents at once. Each searched a fixed publication list: GCR, Concurrences, PYMNTS, Bloomberg, the FT, Reuters, consultancy.uk, LinkedIn and firm releases. The brief asked for dated foundings, hires, departures, acquisitions and roll-ups; every claim required a URL. Each agent wrote structured Markdown to <code>research/press_coverage/batch[N].md</code>. All four finished in roughly 12 minutes. Their consolidated file exceeds 1,300 cited lines.</p>
-
-  <p>Parallelism turned a serial search into a short review queue. The saved time went into checking sources, where it belonged.</p>
-
-  <div class="pull-quote">
-    <div class="number">12 min</div>
-    <div class="label">Elapsed time for four parallel research agents to cover 90 firms across eight publications</div>
-  </div>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- EXISTING RESEARCH ON THIS MARKET -->
-  <!-- ============================================ -->
-
-  <h2>What the published record already contained</h2>
-
-  <p>The search found one dedicated estimate of the UK economics-consultancy market. <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr&rsquo;s March 2018 report</a> put 2016/17 sector revenue at &pound;1.53 billion, growing by 11.3% a year, across 108 firms employing around 7,100 people. The project found no comparable public update. The table shows the remaining record, and its gaps.</p>
-
-  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <div class="table-wrap">
-    <table class="data-table">
-    <thead>
-      <tr>
-        <th>Source</th>
-        <th>What it covers</th>
-        <th>UK economics consulting?</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr (March 2018)</a></td>
-        <td>Dedicated UK economics consultancy market sizing: &pound;1.53bn, 108 firms, 7,100 employees</td>
-        <td>Dedicated market-size estimate used here; no newer Cebr update found in this source set</td>
-      </tr>
-      <tr>
-        <td><a href="https://globalcompetitionreview.com/survey/gcr-100/26th-edition">GCR 100</a> (26th edition, 2026)</td>
-        <td>Competition economics firm rankings by tier (Elite &rarr; Recommended)</td>
-        <td>Yes, firm-level rankings but no revenue or market-size data</td>
-      </tr>
-      <tr>
-        <td><a href="https://whoswholegal.com/practice-area/competition-economists">Who's Who Legal: Competition Economists</a></td>
-        <td>Individual economist rankings (Global Elite Thought Leader &rarr; Recommended)</td>
-        <td>Yes, people not firms</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.consultancy.uk/rankings/top-consulting-firms-in-the-uk-by-area-of-expertise/economics">Consultancy.uk Economics Rankings</a></td>
-        <td>48+ UK economics firms across 5 tiers (Diamond &rarr; Bronze)</td>
-        <td>Yes, firm tiers but no financials</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.sourceglobalresearch.com/reports/9494-the-uk-consulting-market-in-2024">Source Global Research</a></td>
-        <td>UK consulting market (&pound;15.2bn total, 2023)</td>
-        <td>No, does not break out economics as a segment</td>
-      </tr>
-      <tr>
-        <td><a href="https://www.kentleyinsights.com/economic-consulting-services-market-size-growth-report/">Kentley Insights</a></td>
-        <td>Global economic consulting ($25.4bn across 195 countries)</td>
-        <td>No, not UK-specific</td>
-      </tr>
-      <tr>
-        <td>IBISWorld / Statista</td>
-        <td>General UK management consulting</td>
-        <td>No, economics consulting not identified separately</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-  </div>
-
-  <p>The gaps are substantial. The CMA does not publish spending on external economics advisers. The project found neither a private-equity or M&amp;A report devoted to the sector nor a firm-authored public analysis of its structure. This series therefore offers a public supply-side map after Cebr&rsquo;s 2018 report.</p>
-
-  <p>Cebr found 108 firms in 2018; this catalogue tracks 90. Three factors probably explain the gap: dissolutions between 2018 and 2025; different definitions of economics consultancy, particularly for policy and forecasting; and filings under names missed by the API search.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- WHAT WENT WRONG -->
-  <!-- ============================================ -->
-
-  <h2>What went wrong the first time</h2>
-
-  <p>The first dataset was wrong in useful ways. Its mistakes reveal more about the method than its successes.</p>
-
-  <h3>The Arup mistake</h3>
-
-  <p>The seed list included Arup because the engineering group has an economics practice visible in public-sector policy work. It was removed within hours. Arup&rsquo;s main product is civil engineering, not economic evidence. Confusing a firm that has economists with an economics consultancy inflates the market. The corrected rule is blunt: economic analysis must be the product, not a supporting service.</p>
-
-  <h3>The full firm list</h3>
-
-  <p>The canonical <code>data/firms.csv</code> export contains ninety entries in seven categories: 80 active, 2 dissolved and 8 parent-filed practices. A firm appearing on both maps is counted once. Categories follow the main UK activity, though several US multi-practice firms could reasonably occupy more than one.</p>
-
-  <h3>A note on the two denominators</h3>
-
-  <p>Two firm counts recur and must not be confused. The <strong>public catalogue contains 90 firms</strong>, the number used in headlines, treemaps and categories. Of these, <strong>81 have a direct Companies House number</strong>. The other nine fall into sub-practices, academic or charity arms, overseas branches or parent-filed practices. They are <strong>BDO, Deloitte, Grant Thornton, PwC and RSM</strong>; <strong>E.CA Economics (UK)</strong>; the <strong>Fraser of Allander Institute</strong>; <strong>PA Consulting</strong>; and <strong>Keystone Strategy</strong>, an American firm without a UK-filed entity.</p>
-  <p>The working database separately carries <strong>87 internal firm rows</strong> for analytical continuity. These include registered entities and a pointer from <strong>Compass Lexecon</strong> to its parent, FTI Consulting LLP (CH OC372614). The number does not mean that 87 catalogue firms have standalone filings.</p>
-
-  <p><strong>Every quantitative slice states its denominator: the 90-row catalogue, 81 direct-Companies-House rows or 87-row internal table.</strong> Earlier drafts blurred them. The correction did not materially shift the estimates, but it made the arithmetic reconcile.</p>
-
-  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
-  <div class="table-wrap">
-    <table class="data-table" style="font-size:13px;">
-    <thead>
-      <tr><th>Category</th><th>Firms</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Competition</strong> (7)</td>
-        <td>E.CA Economics (UK), Econic Partners (UK), Fingleton Ltd, Frontier Economics Ltd, Keystone Strategy Ltd, Oxera Consulting LLP, RBB Economics LLP</td>
-      </tr>
-      <tr>
-        <td><strong>Competition + Litigation overlap</strong> (5)</td>
-        <td>Analysis Group Ltd, Brattle Group Ltd, CRA International UK, Cornerstone Research UK, NERA UK Limited</td>
-      </tr>
-      <tr>
-        <td><strong>Litigation / disputes</strong> (8)</td>
-        <td>A&amp;M Disputes &amp; Investigations LLP, A&amp;M Europe LLP, A&amp;M Tax LLP, Accuracy UK Ltd, BRG UK Ltd, FTI Consulting LLP, Fideres Partners LLP, Secretariat International UK</td>
-      </tr>
-      <tr>
-        <td><strong>Macro / forecasting</strong> (16)</td>
-        <td>Calverley Economic Advisors, Capital Economics Ltd, Capital Economics Research Ltd, Cebr, Continuum Economics (4Cast), Economic Perspectives Ltd, Fathom Financial Consulting, Independent Economics LLP, Longview Economics Ltd, Lorenzo Codogno Macro Advisors, Macro Advisory Partners LLP, Macro Hive Ltd, Oxford Analytica Ltd, Oxford Economics Ltd, Pantheon Macroeconomics Ltd, The Economist Intelligence Unit Ltd</td>
-      </tr>
-      <tr>
-        <td><strong>Policy / think tanks / climate</strong> (35)</td>
-        <td>AMION Consulting Ltd, Alma Economics Ltd, Analytically Driven Ltd, Aviation Economics Ltd, BiGGAR Economics Ltd, Buttermere Consulting Ltd, Cambridge Econometrics Ltd, Derrick Jones Economics Ltd, EKOS Consulting (UK) Ltd, Econance Ltd, Ecorys UK Ltd, Fraser of Allander Institute, Head and Heart Economics Ltd, ICF Consulting Services Ltd, LIVE Economics Ltd, London Economics Ltd, NEF Consulting, PA Consulting, Pragmatix Advisory Ltd, Public First Ltd, RSM Economics, SAMI Consulting Ltd, SQW Ltd, Saltmarsh Economics Ltd, Simetrica-Jacobs Ltd, Skylark Consulting Group, Steer Davies &amp; Gleave Ltd, Stephen Wells Consulting, Vivid Economics Ltd, Volterra Partners LLP, WPI Economics Ltd, Warwick Economics &amp; Development, Westbourne Research Services, York Aviation LLP, eftec</td>
-      </tr>
-      <tr>
-        <td><strong>Regulation</strong> (17)</td>
-        <td>AFRY Management Consulting, BDO Economic Consulting, Belmana Consultancy, CEPA (Cambridge Economic Policy Associates), Connected Economics Ltd, Deloitte Economic Consulting, DotEcon Ltd, ECA Economics Ltd, Economic Consulting Associates, Economic Insight Ltd, Flint Global Ltd, Grant Thornton Economics, Indepen Consulting Ltd, MCC Economics Ltd, Plum Consulting London LLP, PwC Economics, Reckon LLP</td>
-      </tr>
-      <tr>
-        <td><strong>Broad</strong> (2)</td>
-        <td>AlixPartners UK LLP, Baringa Partners LLP</td>
-      </tr>
-      <tr>
-        <td colspan="2" style="font-size:12px;color:#8e8e93;border-top:2px solid #d2d2d7;padding-top:12px;">
-          <strong>Also excluded from this dataset:</strong> Bain &amp; Company, BCG, Kearney, Arthur D. Little, Roland Berger, KPMG Economics, EY-Parthenon, LSE Consulting, and Arup. All appear in rankings or public-sector economics work. Here, however, economics is a supporting service rather than the core product, or the canonical directory tracks no separate UK economics-consultancy filing. McKinsey appears in the series narrative as the acquirer of Vivid Economics but is not tracked as a firm in the dataset for the same reason.
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-  </div>
-
-  <p>The <a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr report of March 2018</a> used a similar Companies House method and found 108 firms. This catalogue&rsquo;s 90 probably reflects dissolutions between 2018 and 2025, modest scope differences and names missed by the API search. The gap measures boundary uncertainty; it does not prove that either list is uniquely correct.</p>
-
-  <h3>The BRG placement</h3>
-
-  <p>The first pass put Berkeley Research Group in Litigation. BRG does much disputes work, but the American group also covers finance, restructuring and technology. The label overstated the segment. BRG moved to Overlap, reserved here for US firms spanning competition and litigation.</p>
-
-  <h3>The Caffarra error</h3>
-
-  <p>This error nearly reached print. The first pass described Cristina Caffarra as Keystone Europe&rsquo;s co-head in 2025 alongside Andrea Coscelli. That was true in November 2022, when Keystone announced her, but stale by 2025. Caffarra left in 2023, about a year after arriving. She became an Honorary Professor at UCL, co-founded the <a href="https://cepr.org/research/research-policy-networks/competition-policy">CEPR Competition Research Policy Network</a> and led EuroStack. (A previously cited UCL URL was removed because it showed no substantive profile in April 2026.)</p>
-
-  <p>A second research pass caught the error while checking two loose ends: Caffarra&rsquo;s path after Keystone and the nature of Faten Sabry&rsquo;s hire at Compass Lexecon. The draft was corrected before publication.</p>
-
-  <p><strong>Never rely on one research pass for a claim about a named person.</strong> Check the person&rsquo;s public profile, current LinkedIn headline or an authoritative third-party listing. A wrong career claim creates reputational and possibly legal risk. &ldquo;The first agent found it&rdquo; is not a standard.</p>
-
-  <h3>The Sabry misframing</h3>
-
-  <p>Faten Sabry was first cast as Compass Lexecon&rsquo;s London antitrust counter-hire after the Econic Partners exodus. Both location and practice were wrong. Sabry is in New York and works on securities valuation and financial damages, not antitrust. She joined from NERA after 27 years, having chaired its Global Securities and Finance Practice. This was an American financial-litigation hire, not London competition backfill. Both text and visual commentary were corrected.</p>
-
-  <h3>The Fingleton / LECG confusion</h3>
-
-  <p>An early founder tree placed two 2011&ndash;2013 entries side by side: &ldquo;LECG collapses&rdquo; and &ldquo;Fingleton Ltd&rdquo;. A reader reasonably wondered whether they were connected. They were not. The American firm LECG went bankrupt in 2011, scattering London economists to Berkeley Research Group and Compass Lexecon. John Fingleton, a former Office of Fair Trading head, founded his namesake boutique in 2013. Different people, years and stories. The timeline now says so.</p>
-
-  <div class="warning">
-    <strong>The pattern across all five mistakes:</strong> AI research tools are good at surface-level summarisation and bad at drawing distinctions. The model will happily merge two unrelated events into one narrative if the narrative reads well. It is on the human to notice when the story is too tidy and go check.
-  </div>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- TOOLING STACK -->
-  <!-- ============================================ -->
-
-  <h2>The tooling stack</h2>
-
-  <p>The stack was mostly public infrastructure, open-source software and one subscription.</p>
-
-  <div class="table-wrap">
-    <table class="stage-table">
-    <thead>
-      <tr>
-        <th>Tool</th>
-        <th>Purpose</th>
-        <th>Cost</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Claude Code</strong> (desktop terminal)</td>
-        <td>Main tool. Everything else happened inside a single Claude Code session.</td>
-        <td>Subscription</td>
-      </tr>
-      <tr>
-        <td><strong>Companies House REST API</strong></td>
-        <td>Firm profiles, officers, charges, PSCs, filings, document downloads.</td>
-        <td>Free, rate-limited</td>
-      </tr>
-      <tr>
-        <td><strong>Companies House MCP server</strong></td>
-        <td>Wrapper around the CH API so Claude Code could call endpoints without shelling out.</td>
-        <td>Open source</td>
-      </tr>
-      <tr>
-        <td><strong>SQLite</strong></td>
-        <td>Project database. Structured facts lived here; charts and articles read from it where possible.</td>
-        <td>Free</td>
-      </tr>
-      <tr>
-        <td><strong>ECharts</strong> and <strong>d3-svg-annotation</strong></td>
-        <td>Visualisation. Dark-theme charts in the Substack HTML. <a href="https://github.com/susielu/d3-annotation">Susie Lu's d3-annotation</a> layered on top for story-point callouts.</td>
-        <td>Free</td>
-      </tr>
-      <tr>
-        <td><strong>Observable Plot</strong>, <strong>Plotly</strong>, <strong>labella.js</strong></td>
-        <td>Chart-variant gallery files for picking between rendering idioms.</td>
-        <td>Free</td>
-      </tr>
-      <tr>
-        <td><strong>Hardik Pandya's stop-slop skill</strong></td>
-        <td>Post-editor that strips em-dashes, throat-clearing openers and passive voice from AI-written prose.</td>
-        <td>Free, <a href="https://github.com/hardikpandya/stop-slop">open source</a></td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-  <p>There were no paid data feeds, commercial databases or proprietary research platforms. Public infrastructure and a Claude Code subscription did the work.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- THE SQLITE PATTERN -->
-  <!-- ============================================ -->
-
-  <h2>The single pattern that made the rest work: SQLite as project database</h2>
-
-  <p>The best decision came in the first hour: put structured facts in SQLite, not only in a spreadsheet. Developers may find this obvious; economists often do not. The database became the one place to correct names, dates, categories and financial fields. CEPA&rsquo;s incorporation changed to September 2000 from 1993; A&amp;M was consolidated; BRG moved to Overlap. Each correction entered the database first, then flowed into HTML and charts where possible. Review remained necessary, but searching copied tables did not.</p>
-
-  <p>The schema is deliberately small: nine core tables and about 20 useful columns. Anyone can reproduce it.</p>
-
-  <pre><code>firms              (id, name, ch_number, category, year_founded, founders, ...)
-financials         (firm_id, year_end, turnover, operating_profit, num_members, ...)
-charges            (firm_id, charge_code, status, created_on, person_entitled, ...)
-officer_appointments (officer_name, company_number, role, appointed_on, resigned_on, ...)
-historical_filings (firm_id, filing_date, filing_type, description, category)
-psc_chain          (firm_id, parent_name, parent_type, level, ...)
-derived_metrics    (firm_id, metric, year, value)
-pe_deals           (year, firm, investor, deal_type, value, source_url)
-founder_timeline   (year, event, firm, people, description, source_url)</code></pre>
-
-  <p>The schema is ordinary. The rule matters: every structured fact needs a database home or an explicit source caveat.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- VISUALISATION FAILURES -->
-  <!-- ============================================ -->
-
-  <h2>Where the tooling is still not good enough: chart labels</h2>
-
-  <p>Scatter-plot labels consumed absurd amounts of time. The margin-versus-revenue chart contains 24 firms, 16 squeezed into a 400 &times; 200-pixel patch in the lower-left corner. <a href="https://echarts.apache.org">ECharts</a>&rsquo; <code>labelLayout</code> with <code>hideOverlap: true</code> hid labels; <code>moveOverlap: 'shiftY'</code> merely moved them. Neither made the chart readable.</p>
-
-  <p>ECharts&rsquo; built-in placement failed on the 16 overlapping points. Hiding small-bubble labels discarded information; alternating labels above and below helped only slightly. The shipped version layers d3-svg-annotation callouts over the ECharts canvas using <code>chart.convertToPixel</code>. Force-based labella.js worked on timelines but remained unproven on the scatter. A roughly 90-line implementation of <a href="https://github.com/tinker10/D3-Labeler">D3-Labeler</a>&rsquo;s simulated annealing over a plain d3 chart worked best overall.</p>
-
-  <p><strong>For this project, no JavaScript method handled &ldquo;label every point without overlap&rdquo; as cleanly as <a href="https://github.com/slowkow/ggrepel">ggrepel</a> in R.</strong> Dense final scatters were cleaner in R. The alternative is a hybrid: ECharts for axes and data, d3 for labels.</p>
-
-  <p>Three idioms shipped across eight Substack charts. ECharts handled axis-bound, tooltip-heavy work: treemap, bar, sankey and stacked bar. ECharts plus d3-svg-annotation handled stories with three to six highlighted points, including the scatter and PE deals. A hand-tuned two-lane ECharts layout with curved arrows handled the founder tree.</p>
-  <p>For the scatter, treemap and PE timeline, 15-variant gallery pages compared 15 approaches on a white background, one HTML file per chart. The final charts came from those trials. The companion GitHub repository includes the gallery.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- STOP SLOP -->
-  <!-- ============================================ -->
-
-  <h2>The stop-slop pass</h2>
-
-  <p>After the third draft of Part 6, &ldquo;The CMA Drain&rdquo;, <a href="https://github.com/hardikpandya/stop-slop">stop-slop</a> searched for predictable AI habits. It replaces gratuitous em dashes; cuts throat-clearing such as &ldquo;Here&rsquo;s the thing&rdquo;, &ldquo;It turns out&rdquo; and &ldquo;The real X is&rdquo;; rejects binary &ldquo;Not X. Y.&rdquo; and &ldquo;The answer isn&rsquo;t X. It&rsquo;s Y.&rdquo; constructions; and flags false agency such as &ldquo;the decision emerges&rdquo; or &ldquo;the market rewards&rdquo;. It also hunts weak adverbs, including &ldquo;really&rdquo;, &ldquo;simply&rdquo;, &ldquo;actually&rdquo; and &ldquo;literally&rdquo;, and the distant narrator who says &ldquo;Nobody designed this&rdquo;.</p>
-
-  <p>The before-and-after drafts were compared side by side. The edited version was tighter and less synthetic, but sometimes too harsh: a mechanical cleaner can remove honest qualification along with padding. The published text therefore kept the tighter draft and restored a few necessary hedges by hand. In this project the first draft was not fit to publish. Editing, not generation, produced the article.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- TIME BREAKDOWN -->
-  <!-- ============================================ -->
-
-  <h2>Where the 60 hours actually went</h2>
-
-  <div class="table-wrap">
-    <table class="stage-table">
-    <thead>
-      <tr>
-        <th>Phase</th>
-        <th class="num">Hours</th>
-        <th>What happened</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Firm discovery and dedup</td>
-        <td class="num">4</td>
-        <td>Seed list, web searches, manual review, removal of non-core firms.</td>
-      </tr>
-      <tr>
-        <td>Companies House lookup</td>
-        <td class="num">6</td>
-        <td>CH API calls for profile, officers, charges, filings. PDF download loop.</td>
-      </tr>
-      <tr>
-        <td>Financial extraction</td>
-        <td class="num">12</td>
-        <td>Reading account PDFs, extracting turnover, profit, partner count. Mostly by hand because the PDFs vary in format.</td>
-      </tr>
-      <tr>
-        <td>Parallel research agents</td>
-        <td class="num">3 (agents) + 4 (verify)</td>
-        <td>Four sub-agents running 12 minutes of research each, plus my verification pass against primary sources.</td>
-      </tr>
-      <tr>
-        <td>Schema and corrections</td>
-        <td class="num">6</td>
-        <td>SQLite schema, four rounds of corrections, deduplication.</td>
-      </tr>
-      <tr>
-        <td>Visualisation (initial)</td>
-        <td class="num">10</td>
-        <td>First dark-theme pass. ECharts config for eight charts.</td>
-      </tr>
-      <tr>
-        <td>Substack prose (Parts 1&ndash;7)</td>
-        <td class="num">10</td>
-        <td>Drafting, hyperlinking, stop-slop pass, re-editing.</td>
-      </tr>
-      <tr>
-        <td>Corrections and rewrites</td>
-        <td class="num">5</td>
-        <td>Caffarra fix, Sabry correction, A&amp;M consolidation, BRG move.</td>
-      </tr>
-      <tr>
-        <td colspan="2" class="num"><strong>Total: approximately 60 hours</strong></td>
-        <td>&nbsp;</td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
-
-  <p>Financial extraction was the largest item: 12 hours of reading PDFs. Next time a model-based parser could read them through an API. It should save time, but the saving needs a benchmark. The first pass stayed manual because the model had not earned trust on account notes. Later gap checks made a stronger case for using it, with review.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- WHAT THE TOOLING CANNOT DO -->
-  <!-- ============================================ -->
-
-  <h2>What the tooling cannot do, even now</h2>
-
-  <p>The limits are as important as the speed.</p>
-
-  <h3>Primary interviews</h3>
-
-  <p>Claude Code cannot ring John Vickers and ask what happened in 2002. Every quotation here comes from a published source. A reporter with Vickers&rsquo;s number would write a different piece. This is desk research, not fieldwork.</p>
-
-  <h3>Reading a room</h3>
-
-  <p>Nor can it sit at a GCR dinner in Brussels and sense which partners are preparing to leave. It cannot hear Mark Israel say &ldquo;we are very committed to Compass Lexecon&rdquo; six months before founding Econic Partners. Hallway talk may lead the filings in professional services, but leaves no Companies House trail.</p>
-
-  <h3>Legal risk</h3>
-
-  <p>A human must check anything defamatory, personal or suggestive of financial trouble. Three reports of late filings can tempt a model to write &ldquo;X firm is in financial difficulty&rdquo;. Late filing often means administrative delay, nothing more. Before publication, personnel claims were checked against the people ledger and source files; named career moves used several sources where available. A public error about someone&rsquo;s career would be unfair and hard to repair.</p>
-
-  <h3>Deal structure</h3>
-
-  <p>Part 6&rsquo;s private-equity valuations are reported figures, not Companies House values. For Flint Global, <a href="https://www.cinven.com/news-insights/cinven-to-invest-in-flint-global/">Cinven announced a majority investment</a>; the press supplied the valuation and structural detail. The reviewed public sources do not reveal ratchets, earn-outs, vendor loans or warranty caps. Filings alone cannot supply them.</p>
-
-  <h3>Judgment</h3>
-
-  <p>The hardest task is deciding what the story is. A model can find and group facts, then draft around them. It cannot own the choice to open Part 6 with Stefan Hunt&rsquo;s three-firm route rather than Econic Partners, or to call the piece &ldquo;the CMA drain&rdquo; instead of &ldquo;partner pay in UK economics consulting&rdquo;. Such choices turn a database into an article. They remain the author&rsquo;s.</p>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- GENERALISATION -->
-  <!-- ============================================ -->
-
-  <h2>What another economist should try next</h2>
-
-  <p><strong>Pick a small, bounded industry whose members file public accounts. Build its database in a weekend.</strong> Try water utilities, energy traders, football clubs, drinks companies, private schools, care homes, vets, funeral directors or abattoirs. Many contain 90-to-five-hundred firms, public financials and stories nobody has yet joined together.</p>
-
-  <p>The recipe runs as follows.</p>
-
-  <ol style="margin-left: 20px; margin-bottom: 24px;">
-    <li style="margin-bottom: 12px;"><strong>Get a Companies House API key.</strong> Free, five minutes. <a href="https://developer.company-information.service.gov.uk/">developer.company-information.service.gov.uk</a>.</li>
-    <li style="margin-bottom: 12px;"><strong>Install Claude Code.</strong> Desktop terminal, not the web app. Connect it to an Anthropic account.</li>
-    <li style="margin-bottom: 12px;"><strong>Install the Companies House MCP server</strong> or a similar wrapper. Claude Code can then call CH endpoints directly.</li>
-    <li style="margin-bottom: 12px;"><strong>Start with a seed list of 20 firms</strong>, and get Claude Code to expand it. Be ruthless about the definition of "in scope".</li>
-    <li style="margin-bottom: 12px;"><strong>Resolve every firm to a CH number where one exists.</strong> This is the anchor. Without it, the downstream financial and officer checks are much weaker.</li>
-    <li style="margin-bottom: 12px;"><strong>Put everything in SQLite.</strong> Not Excel. Not a Google Sheet. SQLite.</li>
-    <li style="margin-bottom: 12px;"><strong>Run parallel research agents</strong> for press coverage. Four at a time is the sweet spot. More than four and the ability to verify begins to go.</li>
-    <li style="margin-bottom: 12px;"><strong>Verify every dated personnel claim against a primary source before publishing.</strong> This is the most important publication rule in the workflow.</li>
-    <li style="margin-bottom: 12px;"><strong>Publish the dataset on GitHub under OGL + CC-BY.</strong> Companies House data is public domain under the Open Government Licence. Republishing derivatives is allowed, and should be done.</li>
-    <li><strong>Write about the process.</strong> The methodology article shows the method to other economists. The industry article carries the substantive market analysis.</li>
-  </ol>
-
-  <hr>
-
-  <!-- ============================================ -->
-  <!-- TAKEAWAYS -->
-  <!-- ============================================ -->
-
-  <div class="takeaways">
-    <h3>Key takeaways</h3>
-    <ol>
-      <li>One person with no prior programming used a single 60-hour Claude Code project to produce a 90-firm Companies House dataset. The same project produced eleven articles: seven numbered parts, three opening visual and data pieces, and this methodology. Doing the work by hand would have taken materially longer, though no precise benchmark is claimed.</li>
-      <li>The biggest speed-up was the dispatch of four parallel research agents across four firm batches. Total elapsed time was roughly 12 minutes; the time saved still had to be spent on verification.</li>
-      <li>The most important architectural choice was SQLite as project database, rather than a spreadsheet. Corrections went into one structured source first.</li>
-      <li>Five errors made it into early drafts and were caught before publication. In each case the model had summarised across unrelated facts into a tidy narrative. The human's job is to notice when the story is too tidy.</li>
-      <li>Label placement on crowded scatter plots remains difficult in JavaScript. For ggrepel-quality labelling, the final chart is better handled in R.</li>
-      <li>Publish the dataset. Companies House data is reusable under the Open Government Licence v3.0. Republishing it on GitHub is credibility for free.</li>
-      <li>The model cannot do primary interviews, legal-risk assessment, deal-structure inference, or own the editorial judgment. Those remain human responsibilities.</li>
-    </ol>
-  </div>
-
-  <hr>
-
-  <h2>A final observation</h2>
-
-  <p>The researcher is not a developer; Python had gone untouched for seven years. Claude Code received instructions in plain English and corrections when it failed. Coding mattered less than knowing which questions deserved asking and which numbers deserved suspicion. The tool shortened the cleaning between question and chart. It could not choose the question, exercise judgment or decide whether the result deserved publication. Those tasks remained human.</p>
-
-  <p>A Companies House API key, a Claude Code subscription and a free weekend are enough to map a neglected market seriously. The best candidates often file the dullest accounts. Few outsiders bother to read them. Go and find one.</p>
-
-  <div class="footer">
-    <p><strong>The full dataset</strong> has not yet been released in a public repository, and this article does not claim that one is currently available. The reviewed files contain 90 public-catalogue firms and 87 internal firm rows. They also contain 1,885 officer appointments, 8,293 historical filings, 15 dated private-equity and strategic-acquisition deals, and 30 founder-timeline events. The intended licensing is the Open Government Licence v3.0 for Companies House-derived data and CC BY 4.0 for original analysis, scripts and charts.</p>
-
-    <p><strong>Tools referenced in this article:</strong></p>
-    <ul>
-      <li><a href="https://claude.com/code">Claude Code</a> (Anthropic)</li>
-      <li><a href="https://developer.company-information.service.gov.uk/">Companies House API</a></li>
-      <li><a href="https://github.com/stefanoamorelli/companies-house-mcp">Companies House MCP server</a> (Stefano Amorelli)</li>
-      <li><a href="https://modelcontextprotocol.io">Model Context Protocol</a></li>
-      <li><a href="https://sqlite.org">SQLite</a></li>
-      <li><a href="https://echarts.apache.org">Apache ECharts</a></li>
-      <li><a href="https://github.com/susielu/d3-annotation">d3-svg-annotation</a> (Susie Lu, NYT / Netflix)</li>
-      <li><a href="https://observablehq.com/plot">Observable Plot</a> (Mike Bostock)</li>
-      <li><a href="https://github.com/twitter/labella.js">labella.js</a> (Twitter)</li>
-      <li><a href="https://github.com/tinker10/D3-Labeler">D3-Labeler</a> (Tim Evans)</li>
-      <li><a href="https://github.com/slowkow/ggrepel">ggrepel</a> (Kamil Slowikowski)</li>
-      <li><a href="https://github.com/hardikpandya/stop-slop">stop-slop</a> (Hardik Pandya)</li>
-    </ul>
-    <p style="margin-top:16px;padding-top:16px;border-top:1px solid #d2d2d7;"><strong>Leath Al Obaidi</strong>, independent research on the UK economics consultancy industry.</p>
-    <p style="font-size:12px;opacity:.75;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. Underlying Companies House data is &copy; Crown copyright, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.</p>
-    <p style="font-size:12px;opacity:.75;">Cite as: Al Obaidi, L. (2026). <em>UK Economics Consultancy: A Historical Series</em>. leathalobaidi.com</p>
-    <p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. The author holds no financial position in any firm discussed. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
-  </div>
-
+<div class="pub-name">Leath Al Obaidi · UK Economics Consultancy: A Historical Series</div>
+<div class="series-nav">
+<a href="part0.1-visual-story.html">Visual</a>
+<a href="part0.2-uk-and-global-map.html">Maps</a>
+<a href="part0.3-the-full-market.html">Data</a>
+<a href="part1-who-was-here-in-2000.html">Part 1</a>
+<a href="part2-founders-decade.html">Part 2</a>
+<a href="part3-professionalisation.html">Part 3</a>
+<a href="part4-global-arms-race.html">Part 4</a>
+<a href="part5-profit-machine.html">Part 5</a>
+<a href="part6-the-cma-drain.html">Part 6</a>
+<a href="part7-the-people-network.html">Part 7</a>
+<span class="current">Methodology</span>
 </div>
+<h1>AI for an Economist</h1>
+<p class="subtitle">How I used Claude Code and OpenAI Codex to build the catalogue, check the accounts and turn the research into a series.</p>
+<p class="byline"><strong>Leath Al Obaidi</strong> · Research and evidence audit · Revised November 2026</p>
+<p>RBB Economics’ accounts for the year to March 2025 report £60.2m of profit available to members. Divide it by the average membership of 18 and the result is £3.35m. How did a small group of economics advisers build such a profitable business?</p>
+<p>I used Claude Code and local scripts to assemble the initial catalogue, charts and drafts. OpenAI Codex helped review the evidence, reconcile the published records and prepare the revised series and database. The catalogue covers 90 firms and practices. The saved records provide no measured comparison with doing the work by hand.</p>
+<p>AI helped write scripts, search announcements and draft prose. It also joined facts that should have stayed apart. The useful lesson is in the distance between collecting an observation and knowing what it supports.</p>
+<h2 id="observation-units">What is being counted?</h2>
+<p>The catalogue is a research directory of businesses associated with UK economics consultancy. It includes specialist advisers, forecasting houses, policy firms and practices within larger groups. Its 90 entries are neither a census nor 90 independent companies with comparable accounts. Some brands share a filing entity; some practices file only within a parent.</p>
+<p>Categories help readers navigate that mixed population. They are editorial choices, not an official industry classification or a rule that economics must be every firm’s principal product. Broad consultancies remain useful comparators, provided their full revenue is not presented as revenue from economic advice.</p>
+<p>The maps answer different questions. The UK map has 80 dated registered-address rows from July and September 2026, including related entities, historical entries and one contextual firm outside the catalogue. The international views use a separate selection of ten firms, with 109 city observations checked against their office and contact pages on 12 September 2026. Neither is a headcount map. The selected career events in <a href="part7-the-people-network.html">Part 7</a> are another unit again: a named move supported by a dated source.</p>
+<h2 id="financial-basis">From accounts to comparisons</h2>
+<p>The financial selection was frozen on 24 July 2026. It takes each entity’s latest row in that research extract and retains a revenue figure after a September check against the original accounts. Thirty rows qualify. CRA UK, Analysis Group, Capital Economics and AlixPartners filed newer accounts after this cutoff. The 30 reporting periods end between July 2024 and December 2025, and the selected revenue observations sum to £2,441,511,439.47. The precision allows the calculation to be reproduced; £2.44bn is ample for the prose.</p>
+<p>That sum mixes geographical coverage and activities. It also includes AlixPartners’ net revenue after reimbursable expenses, alongside other firms’ reported revenue. The two foreign-currency observations use fixed analytical conversions of €1=£0.85 and $1=£0.78. They are not exchange rates taken from the filings. The total is unsuitable as either the size of the UK economics-consultancy market or a lower bound for it.</p>
+<p><a href="https://cebr.com/reports/the-size-and-growth-of-the-uk-economics-consultancy-market/">Cebr’s March 2018 study</a> estimated sector revenue of £1.53bn for 2016/17 and nominal average growth of 11.3% over three years. Extending that historical rate for eight years gives £3.60bn for 2024/25. This is a mechanical scenario calculated for this series, not a new observation, a Cebr forecast or an upper bound. The two totals cannot be combined into a market-size range.</p>
+<p>Profit requires its own definitions. Operating profit measures the result at one stage of the accounts. Profit available to LLP members may be reported after remuneration charged as an expense. Some firms charge the full member allocation before reporting a zero residual. A zero in that position does not mean their partners worked for nothing.</p>
+<p>The comparison of profit per member therefore uses four source-checked positive annual profit observations with average membership: RBB, Baringa, Oxera and Macro Advisory Partners. Fideres is excluded because its recorded amount owed to members is a balance-sheet liability, not annual profit. Each figure is the residual annual profit pool divided by average membership. Macro Advisory Partners’ pool is £312,000 after members’ remuneration, rather than the £4,279,000 before that charge. It is a small comparison of accounting observations, not a ranking of every consultancy’s partner pay. Blank fields mean missing or non-comparable data; they are not silently turned into zero.</p>
+<h2 id="worked-example">Reading one filing properly</h2>
+<p>RBB’s FY2025 <a href="https://find-and-update.company-information.service.gov.uk/company/OC315356/filing-history">filed accounts</a> show revenue of £108,402,487, operating profit of £60,988,932 and profit available for members’ discretionary division of £60,226,315. The income statement is on printed page 9; note 8 on printed page 21 gives 18 average members. The operating margin is 56.3%. The final pool divided by 18 is £3,345,906, rounded here to £3.35m.</p>
+<p>The arithmetic is the easy part. The consolidation policy includes overseas subsidiaries, and the revenue note splits income by destination. A London registered address cannot turn that group result into the output of one London office. Nor can the average allocation tell us each member’s income, personal tax or hours worked.</p>
+<p>The <a href="part0.3-the-full-market.html">explorer</a> exposes the legal entity, reporting period, accounting basis and source beside the financial observations. Estimates are identified: Baringa’s top-member figure, for example, applies a disclosed 7% share to the profit pool and excludes the separate share of disposal cash described in the note.</p>
+<h2 id="research-process">What the software did</h2>
+<p>Both tools worked with local files and scripts. The <a href="https://developer.company-information.service.gov.uk/">Companies House API</a> supplied company records and filing histories. Downloaded accounts held the financial detail. SQLite and CSV tables kept names, dates and numbers in a form that could feed the charts.</p>
+<p>Research agents searched groups of firms in parallel. Their output was a queue of possible claims and sources. A company announcement could establish that a hire had been announced; it did not necessarily establish the person’s first working day. An LLP appointment could date legal membership years after someone joined the business.</p>
+<p>A claim about a named person needs that distinction before it enters the prose or a diagram. The current people view records selected events without weights. It does not convert a launch roster into a count of departures, or a handful of senior hires into a measure of the regulator’s net staff loss.</p>
+<h2 id="review">Checking the result</h2>
+<p>File checks can confirm that a source exists, a link works or a calculation reproduces. They cannot, on their own, show that it supports the sentence. The initial 11 September revision used a targeted 30-claim audit. The 12 September review expanded to the whole series: prose, captions, timelines, metadata and the values behind the charts. The register preserves the original propositions, the source passages read and the reasons for correcting, qualifying or removing them. These are editorial judgements, not a measured error rate for the industry or for AI.</p>
+<h2 id="limits">What remains outside the evidence</h2>
+<p>The evidence used here is desk research: filed accounts, published histories and dated announcements. No interview material is used to establish the claims, and the series offers no claim to know private negotiations or motives. Transactions can reveal announced valuations and payment terms. They seldom disclose enough to reconstruct every owner’s proceeds.</p>
+<p>The selected accounts cannot establish sector-wide growth, and the selected career moves cannot establish retention or net workforce flows. Those questions would require a defined population and observations over time. The <a href="database/">public database</a> provides selected firm, people, financial and location records with source links, plus CSV, JSON and SQLite downloads. The full research archive, working notes and copies of the original sources remain private.</p>
+<p>For another economist attempting similar work, I would begin with one filing and one question. Preserve the page, identify the accounting line and reproduce the calculation before expanding the list. A larger database is useful only if its smallest observation can bear scrutiny.</p>
+<p class="callout" id="revision-note"><strong>Correction, <time datetime="2026-11-14">14 November 2026</time>.</strong> The July edition gave a total of £2.4418bn. The checked figure is £2.4415bn across 30 reporting entities, including net revenue for AlixPartners. The total combines different periods, geographies and activities. The September audit checked the 30 revenue observations against the original accounts and added dated address and office records. In November, the people directory linked the names Mike and Michael Walker to one record and recorded the confirmed month of his Frontier appointment. <a href="database/">See the corrected data and sources</a>.</p>
+<div class="footer">
+<p style="margin-top:16px;padding-top:16px;border-top:1px solid #d2d2d7;"><strong>Leath Al Obaidi</strong>, independent research on the UK economics consultancy industry.</p>
+<p style="font-size:12px;opacity:.75;">© 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. This licence covers the original analysis, code and visualisations; third-party source material is excluded.</p>
+<p style="font-size:12px;opacity:.75;">Cite as: Al Obaidi, L. (2026). <em>UK Economics Consultancy: A Historical Series</em>. leathalobaidi.com</p>
+<p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
+</div></div>
 </body>
 </html>

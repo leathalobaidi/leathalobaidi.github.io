@@ -6,7 +6,7 @@ const plain=value=>String(value??'').replaceAll('_',' ');
 const labels={turnover:'Revenue',operating_profit:'Operating profit',profit_before_tax:'Profit before tax',profit_after_tax:'Profit after tax',num_staff:'Staff / persons',num_members:'Average members',profit_to_members:'Profit available to members',highest_paid_member:'Highest-paid member amount'};
 const countMetrics=new Set(['num_staff','num_members']);
 const safeUrl=value=>{try{const u=new URL(value);return ['https:','http:'].includes(u.protocol)?u.href:null}catch{return null}};
-const date=value=>{if(!value)return 'Date not supplied';if(/^\d{4}-\d{2}-\d{2}$/.test(value))return new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T00:00:00Z'));return value};
+const date=value=>{if(!value)return 'Date not supplied';if(/^\d{4}-\d{2}-\d{2}$/.test(value))return new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'}).format(new Date(value+'T00:00:00Z'));if(/^\d{4}-\d{2}$/.test(value))return new Intl.DateTimeFormat('en-GB',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(value+'-01T00:00:00Z'));return value};
 const textQuery=id=>$(id).value.trim().toLocaleLowerCase('en-GB');
 const matches=(q,...values)=>!q||values.join(' ').toLocaleLowerCase('en-GB').includes(q);
 const alpha=(a,b)=>String(a.name??a.organisation_name??'').localeCompare(String(b.name??b.organisation_name??''),'en-GB');
@@ -36,7 +36,7 @@ function personAffiliations(p){return D.affiliations.filter(a=>a.person_id===p.i
 function appointmentEvent(a){return D.events.find(e=>e.subject_id===a.person_id&&e.date===a.date&&e.participants.some(p=>p.role==='destination'&&p.entity_id===a.organisation_id))}
 function eventRecord(e){return `<div class="record"><p><strong>${esc(e.label)}</strong></p><p class="sub">${esc(date(e.date))} · ${esc(plain(e.date_basis))}</p><p class="sub">${esc(e.qualification)}</p>${sourceList(refsOf(e))}</div>`}
 function affiliationRecord(a){const ev=appointmentEvent(a),origin=ev?.participants.find(p=>p.role==='origin');return `<div class="record"><p><strong>${esc(a.organisation_name)}</strong> · ${esc(a.role)}</p><p class="sub">${esc(date(a.date))} · ${esc(plain(a.date_basis))}</p>${ev?.announcement_date&&ev.announcement_date!==a.date?`<p class="sub">Announced ${esc(date(ev.announcement_date))}</p>`:''}${origin?`<p class="sub">Previous organisation: ${esc(origin.name)}</p>`:''}${ev?.geography?`<p class="sub">Scope: ${esc(ev.geography)}</p>`:''}<p class="sub">${esc(ev?.qualification||a.limit)}</p>${sourceList(refsOf(a))}</div>`}
-function renderPeople(){const q=textQuery('personSearch'),coverage=$('personCoverage').value,rows=D.people.filter(p=>matches(q,p.name)&&(coverage==='all'||(coverage==='scope'?p.in_research_scope:personAffiliations(p).length>0))).sort(alpha);
+function renderPeople(){const q=textQuery('personSearch'),coverage=$('personCoverage').value,rows=D.people.filter(p=>matches(q,p.name,...(p.professional_aliases||[]))&&(coverage==='all'||(coverage==='scope'?p.in_research_scope:personAffiliations(p).length>0))).sort(alpha);
  $('peopleCount').textContent=`${rows.length} of ${D.people.length} person entries`;
  $('peopleRows').innerHTML=rows.map(p=>`<tr><td><button class="name" type="button" data-person="${esc(p.id)}">${esc(p.name)}</button></td><td>${p.in_research_scope?'Main research scope':p.in_candidate_roster?'Additional research candidate':'Historical / professional context'}<p class="sub">${p.has_research_dossier?'Inherited research profile exists':'Background coverage is limited'}</p></td><td>${personAffiliations(p).length||'None in this edition'}</td><td>${sourceList(refsOf(p),'Related professional sources')}</td></tr>`).join('')||empty(4,'No matching people. Try another name or reset the filters.');
 }
@@ -67,6 +67,7 @@ function openProfile(kind,id){
  }else{
   const affiliations=personAffiliations(record),statutory=D.events.filter(e=>e.subject_id===id&&e.event_type==='LLP member appointment');
   $('profileBody').innerHTML=`<p class="profile-intro">${record.in_research_scope?'Part of the 106-person main research scope.':'Additional research or professional-context entry.'} ${record.has_research_dossier?'An inherited research profile exists; it is not a verified biography.':'Background coverage is limited.'}</p>
+   ${record.professional_aliases?.length?`<p class="sub">Also published as ${esc(record.professional_aliases.join(', '))}.</p>`:''}
    <h3>Checked appointment observations</h3>${affiliations.length?affiliations.map(affiliationRecord).join(''):'<p class="sub">No checked appointment observations in this edition. This does not mean the person has no professional role.</p>'}
    ${statutory.length?`<h3>Supporting statutory appointments</h3>${statutory.map(eventRecord).join('')}`:''}
    <h3>Related professional sources</h3><p class="sub">These sources relate to the person’s professional context. They do not verify every possible biographical claim.</p>${sourceList(refsOf(record),'Professional sources')}`;

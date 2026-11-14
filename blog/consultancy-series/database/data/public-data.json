@@ -1,18 +1,18 @@
 {
-  "schema_version": "1.0",
-  "updated_on": "2026-09-12",
+  "schema_version": "1.1",
+  "updated_on": "2026-11-14",
   "title": "UK economics consultancy research catalogue",
   "summary": {
     "firms": 90,
-    "people": 241,
+    "people": 240,
     "organisations": 107,
     "financials": 140,
     "affiliations": 11,
     "events": 15,
     "registered_addresses": 81,
     "offices": 109,
-    "sources": 178,
-    "people_with_related_sources": 60,
+    "sources": 180,
+    "people_with_related_sources": 59,
     "research_scope_people": 106,
     "people_with_research_dossier": 41,
     "latest_financial_value_counts": {
@@ -3082,7 +3082,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "02c97e19-9b3f-59e8-9fde-691854347be8",
@@ -3094,7 +3095,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-adrian-john-cooper",
@@ -3106,7 +3108,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-aileen-yi-wan-lam",
@@ -3118,7 +3121,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-alan-gray",
@@ -3130,7 +3134,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "5cd343f5-d695-53b1-8c37-03a96543b072",
@@ -3153,7 +3158,8 @@
           "source_id": "source-b08cbdcd8ccecef554d6"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-alexander-aganin",
@@ -3165,7 +3171,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-alexander-jesse-baker",
@@ -3177,7 +3184,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "c4f3264c-88ce-5d54-895b-798e8931bf0c",
@@ -3189,7 +3197,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "891ceeb8-364c-5830-973d-acb8acba17c1",
@@ -3201,7 +3210,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3566ca43-98f6-540a-b884-4371b5a1d40b",
@@ -3219,7 +3229,8 @@
           "source_id": "source-15c0e40bfd53d6b265f3"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-andrea-george-boltho",
@@ -3231,7 +3242,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a824c0e0-fc22-58e4-84f4-6d88417b427d",
@@ -3243,7 +3255,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-andrew-douglas-richmond",
@@ -3255,7 +3268,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "23adccfd-9e30-5959-95aa-be8b0061df17",
@@ -3273,7 +3287,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "f0780436-08ff-5394-af1f-f97c6fedbd72",
@@ -3285,7 +3300,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "34fc52d0-c3eb-59e6-9564-14bc991423ec",
@@ -3297,7 +3313,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-ann-bishop-indepen",
@@ -3309,7 +3326,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-anne-marie-pragnell",
@@ -3321,7 +3339,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "f7864f06-2cb4-55d4-9c75-e0f58f613ad8",
@@ -3333,7 +3352,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-benoit-felten",
@@ -3345,7 +3365,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-d0fd543874397bb7b1c5",
@@ -3363,7 +3384,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-bridget-rosewell",
@@ -3375,7 +3397,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-339a6fd8c7d6332fd84a",
@@ -3393,7 +3416,8 @@
           "source_id": "source-a6a24fcc00951c786116"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a350206c-8f54-5c4b-8a01-3262eaa25acb",
@@ -3405,7 +3429,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-bryan-michael-ricchetti",
@@ -3417,7 +3442,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "22e350a0-e5ee-506c-a313-b8547b94b435",
@@ -3435,7 +3461,8 @@
           "source_id": "source-6e5d9231f8b434543f7a"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3616501a-f0b3-5ae1-962c-86e1ae80f72d",
@@ -3453,7 +3480,8 @@
           "source_id": "source-0b8f2d54d157e9754488"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-carl-ludwig-oliver-haarmann",
@@ -3465,7 +3493,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-carlos-lapuerta",
@@ -3477,7 +3506,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "893e016f-3b7c-5061-906e-9eec7a46ab95",
@@ -3495,7 +3525,8 @@
           "source_id": "source-3de3af358281622cbe6d"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "history-c93980e703db3ed16e44",
@@ -3507,7 +3538,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "0809f588-d69b-57a0-9941-42fd9c84c3db",
@@ -3519,7 +3551,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-chris-stehling",
@@ -3531,7 +3564,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-chris-taylor-plum",
@@ -3543,7 +3577,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "2bcd7e13-e2f0-5091-b564-c794c62a160e",
@@ -3555,7 +3590,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "96d2c26e-7ec4-5347-b0ec-648dc6c780cb",
@@ -3567,7 +3603,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-christine-anne-shepherdson",
@@ -3579,7 +3616,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-christopher-david-watling",
@@ -3591,7 +3629,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "744ad718-fb43-5db1-8f12-0d48b36b4850",
@@ -3609,7 +3648,8 @@
           "source_id": "source-0f920e59a0bc1099c191"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "cc64e473-c002-5820-8bd8-87e1febcb36e",
@@ -3627,7 +3667,8 @@
           "source_id": "source-a1e6e965ccd576838307"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "cbbbcd3e-5069-56d4-bb83-bd71126afef9",
@@ -3655,7 +3696,8 @@
           "source_id": "source-97af0c5d383c36501fc5"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-3e644fb9226bea0f1389",
@@ -3673,7 +3715,8 @@
           "source_id": "source-c36c734bd20cc8b93310"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "14db5843-ce3e-5787-af52-dd66cee62cad",
@@ -3685,7 +3728,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "ddc24255-0565-513e-ba3f-22db3362266f",
@@ -3697,7 +3741,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "bc1d3d94-f916-5a78-a463-ed57d45d87b3",
@@ -3715,7 +3760,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "8d3e9972-dbb7-5369-93dc-fc414b82e5ac",
@@ -3727,7 +3773,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-daniel-maldoom",
@@ -3739,7 +3786,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "59e27ab2-2d56-503b-9af6-0e2af78b3ebf",
@@ -3751,7 +3799,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "60ad1991-f04d-5956-aa2b-7f6af3af6dce",
@@ -3763,7 +3812,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-david-f-marcus",
@@ -3775,7 +3825,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "67e77cf3-8602-531f-a48d-a8864defedc8",
@@ -3803,7 +3854,8 @@
           "source_id": "source-b04d30d28c697b5f4d6d"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-david-william-ernest-owen",
@@ -3815,7 +3867,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "b46ce60f-11ed-59bf-baa4-5b4415197247",
@@ -3833,7 +3886,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "8a725727-43a9-56bb-937a-97aae251fc05",
@@ -3845,7 +3899,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "377eabd4-3925-5bb1-9b26-90ab60fb352a",
@@ -3857,7 +3912,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "8b66ef69-6b55-5b27-81e9-f46df583588e",
@@ -3880,7 +3936,8 @@
           "source_id": "source-443857f813a7446987e8"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-derrick-jones",
@@ -3892,7 +3949,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-dessie-kirwan",
@@ -3904,7 +3962,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-dominic-walley",
@@ -3916,7 +3975,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "9adbf8e1-56d2-5257-b981-0e353e677e01",
@@ -3928,7 +3988,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "d19ad129-3339-5358-a519-4595e38c91c3",
@@ -3946,7 +4007,8 @@
           "source_id": "source-625211be1accaa95b513"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-edward-john-stephen-wells",
@@ -3958,7 +4020,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-eleanor-oakley",
@@ -3970,7 +4033,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "6de54f8f-5768-5030-9e3a-307eae909f1c",
@@ -3982,7 +4046,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-enrique-glotzer",
@@ -3994,7 +4059,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-erik-miles-britton",
@@ -4006,7 +4072,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "fbb00c91-735c-567e-a304-e1a8548d2695",
@@ -4024,7 +4091,8 @@
           "source_id": "source-ac7357aab506f020fc90"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "c04dbe40-625e-5eaa-bebb-a587ea6e52f6",
@@ -4042,7 +4110,8 @@
           "source_id": "source-2b89364c1e0dae2fc75d"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "45c8b557-cd87-514e-ae40-3218ee0cd492",
@@ -4054,7 +4123,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-gillian-mary-ringland",
@@ -4066,7 +4136,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-gloria-rizzi-codogno",
@@ -4078,7 +4149,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-graeme-ernest-john-llewellyn",
@@ -4090,7 +4162,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-graham-gleave",
@@ -4102,7 +4175,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-grant-david-saggers",
@@ -4114,7 +4188,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-grant-william-forsyth",
@@ -4126,7 +4201,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "32040cef-a0a6-56a7-a900-89b5c9148ee9",
@@ -4138,7 +4214,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-gregory-robert-leonard",
@@ -4150,7 +4227,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "edfb3774-f97c-5d1c-a55a-7d8a97d57143",
@@ -4162,7 +4240,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-gunnar-thorvald-niels",
@@ -4174,7 +4253,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a09bef6b-608d-5fbf-b41e-91dd5b7fdf0a",
@@ -4186,7 +4266,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-harry-alexander-colvin",
@@ -4198,7 +4279,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-heath-john-davies",
@@ -4210,7 +4292,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "e218b155-66c8-5b63-91a0-941cbc7acc7d",
@@ -4222,7 +4305,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-helen-elizabeth-jenkins",
@@ -4234,7 +4318,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a8649d79-577c-5674-b7eb-7e54c427ef32",
@@ -4252,7 +4337,8 @@
           "source_id": "source-b4f6ac6ea88797ea03e5"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "d7649bc5-8c69-5189-a2c2-291e53e8ff2c",
@@ -4264,7 +4350,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-ian-charles-shepherdson",
@@ -4276,7 +4363,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "72215f1b-36e0-5934-809e-5e83795d7e79",
@@ -4294,7 +4382,8 @@
           "source_id": "source-7b913117d1360b5ace48"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "dc411558-d4bd-5b42-9846-457194fd1e6c",
@@ -4306,7 +4395,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "662d2492-af2f-53af-88f2-3ec1f32de082",
@@ -4324,7 +4414,8 @@
           "source_id": "source-5167afe3e172ae547d8d"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-e9ffb834ca3da25ea4b9",
@@ -4342,7 +4433,8 @@
           "source_id": "source-14678cd3d72e061f2cd7"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-james-brass",
@@ -4354,7 +4446,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-james-david-warburton",
@@ -4366,7 +4459,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "5e7f8d6f-bb92-52c5-89b8-22cde837359a",
@@ -4378,7 +4472,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-james-harvey-economic-insight",
@@ -4396,7 +4491,8 @@
           "source_id": "source-c36c734bd20cc8b93310"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "87dda3d8-c42e-5124-bd56-b59fca8ec12e",
@@ -4408,7 +4504,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "77c5ab40-29cf-503d-bc3b-51812382af9d",
@@ -4426,7 +4523,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "9e208177-b71a-5187-b8cf-5704411c6714",
@@ -4438,7 +4536,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "59bc0e45-287b-53e5-802a-a28b10210b40",
@@ -4450,7 +4549,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-jeff-marowits",
@@ -4462,7 +4562,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-afd8f3a10927f343a090",
@@ -4480,7 +4581,8 @@
           "source_id": "source-4516861dc6f55e6c3864"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a5be23ff-4a40-5253-ba25-5bf3930cc127",
@@ -4492,7 +4594,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-jim-steer",
@@ -4504,7 +4607,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3bb30b8c-333e-5ed4-b0f1-f45dae00947f",
@@ -4527,7 +4631,8 @@
           "source_id": "source-bebf4d3be816989ae630"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-joel-martin-lange",
@@ -4539,7 +4644,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-joel-strange",
@@ -4551,7 +4657,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-john-davies-steer",
@@ -4563,7 +4670,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3e2c24d4-f38e-55d7-99c9-d042cb1b6c9f",
@@ -4586,7 +4694,8 @@
           "source_id": "source-0c3af99731cbbe6ede38"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-5930dffc94bf1589a08d",
@@ -4604,7 +4713,8 @@
           "source_id": "source-ea214dfd8a4d507b57d6"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-john-paul-calverley",
@@ -4616,7 +4726,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-john-reynolds",
@@ -4628,7 +4739,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3675ce14-8513-5f56-a630-e033c500c5ee",
@@ -4640,7 +4752,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "40cd9d8a-84a6-5ac1-8216-7a945ebd0e9b",
@@ -4658,7 +4771,8 @@
           "source_id": "source-3e7e3f4cb7ed5445c2e9"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "6becad8d-27d9-5b34-93e0-0b87fc9f527e",
@@ -4670,7 +4784,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-jonathan-andrew-isaacs",
@@ -4682,7 +4797,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-jonathan-gibbs",
@@ -4694,7 +4810,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "88f3f96a-cd93-5fe5-9731-57ec05851777",
@@ -4706,7 +4823,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "71b43266-22e4-5989-882d-371fd50ed089",
@@ -4729,7 +4847,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "c871a479-efe2-55ed-9b97-2484affd7621",
@@ -4747,7 +4866,8 @@
           "source_id": "source-147a99e8fc85cd6142b4"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-joseph-fabunmi",
@@ -4759,7 +4879,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "b1fe90d4-c363-5b57-af9d-eb51ef120285",
@@ -4777,7 +4898,8 @@
           "source_id": "source-5167afe3e172ae547d8d"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "4923e13d-90d6-5dec-80e6-918456ed1e11",
@@ -4795,7 +4917,8 @@
           "source_id": "source-62076c660b2156fdb9fe"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "f9e66996-2dec-598f-b3e8-eddedf4de633",
@@ -4813,7 +4936,8 @@
           "source_id": "source-147a99e8fc85cd6142b4"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-kawaljit-singh-arora",
@@ -4825,7 +4949,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-kenneth-currie",
@@ -4837,7 +4962,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a0482778-5cfe-566e-83c6-5802a85f8667",
@@ -4849,7 +4975,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-kirsten-warren",
@@ -4861,7 +4988,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-kristin-feitzinger",
@@ -4873,7 +5001,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-lara-salame-boro",
@@ -4885,7 +5014,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-laura-jane-eaton",
@@ -4897,7 +5027,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-lawrence-wu",
@@ -4909,7 +5040,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-liam-colley",
@@ -4921,7 +5053,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-lorenzo-codogno",
@@ -4933,7 +5066,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "9c0884fb-703f-571f-ba13-f28dbf9b6791",
@@ -4951,7 +5085,8 @@
           "source_id": "source-147a99e8fc85cd6142b4"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-louise-congdon",
@@ -4963,7 +5098,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "6b03b74d-4a43-505e-b113-4c1c0e6785d2",
@@ -4981,7 +5117,8 @@
           "source_id": "source-b4f6ac6ea88797ea03e5"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-luis-miguel-correia-da-silva-domingos",
@@ -4993,7 +5130,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-marchel-alexandrovich",
@@ -5005,7 +5143,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "4022f754-2e77-5fc9-a832-898e3a3a0375",
@@ -5017,7 +5156,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-marcus-balmforth",
@@ -5029,7 +5169,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-marcus-kumar-roy",
@@ -5041,7 +5182,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "db34b723-bd50-5b2a-b613-ecaa57184aff",
@@ -5053,7 +5195,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "9df51fbb-e00f-5f23-8a4c-f1f189be7af7",
@@ -5071,7 +5214,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-mark-andrew-pragnell",
@@ -5083,7 +5227,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "27b3de8c-33da-5e9d-994e-145848c35da5",
@@ -5095,7 +5240,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-mark-weighell",
@@ -5107,7 +5253,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "34622303-6402-5e0a-a074-eccd87502886",
@@ -5119,7 +5266,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "410ae7d4-ee65-51c4-921b-ce6038a70f76",
@@ -5131,7 +5279,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-matthew-john-cunningham",
@@ -5143,7 +5292,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-matthew-keegan",
@@ -5155,7 +5305,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "aba5b8c4-ef49-5368-a47e-e63a3626b1f1",
@@ -5167,7 +5318,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-michael-barrett-analysis-group",
@@ -5179,7 +5331,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "0a26b24e-2aa8-584f-a0c8-ca5f0b20f93d",
@@ -5191,7 +5344,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-michael-frank-thorogood",
@@ -5203,25 +5357,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
-    },
-    {
-      "id": "narrative-b6e16574df6fc9d16abe",
-      "name": "Michael Walker",
-      "in_research_scope": false,
-      "in_candidate_roster": false,
-      "has_research_dossier": false,
-      "coverage_status": "selected_professional_sources",
-      "checked_affiliation_count": 0,
-      "related_professional_claim_count": 1,
-      "source_refs": [
-        {
-          "checked_on": "2026-09-12",
-          "locator": "14 August 2000 release, paragraphs 1,4,6–8",
-          "source_id": "source-0f920e59a0bc1099c191"
-        }
-      ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "c1253507-56c8-5fc7-be8a-30e79e154fda",
@@ -5233,7 +5370,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "0c82ebd9-eceb-5cb7-8565-735bdac3f927",
@@ -5245,7 +5383,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "178931f5-bc4a-55d7-b160-8e5219e60123",
@@ -5255,8 +5394,13 @@
       "has_research_dossier": true,
       "coverage_status": "selected_professional_sources",
       "checked_affiliation_count": 1,
-      "related_professional_claim_count": 2,
+      "related_professional_claim_count": 3,
       "source_refs": [
+        {
+          "checked_on": "2026-09-12",
+          "locator": "14 August 2000 release, paragraphs 1,4,6–8",
+          "source_id": "source-0f920e59a0bc1099c191"
+        },
         {
           "checked_on": "2026-09-12",
           "locator": "24Oct2025 opening paragraphs",
@@ -5266,9 +5410,27 @@
           "checked_on": "2026-09-12",
           "locator": "Book title page",
           "source_id": "source-1da72f8a009a97724402"
+        },
+        {
+          "checked_on": "2026-11-14",
+          "locator": "11 September 2013 release, note 4 on the Chief Economic Adviser",
+          "source_id": "source-2dea151c4eb699f34658"
+        },
+        {
+          "checked_on": "2026-11-14",
+          "locator": "Biography, first paragraph and prior roles",
+          "source_id": "source-8529e38451271193bc1b"
+        },
+        {
+          "checked_on": "2026-11-14",
+          "locator": "Biography, first paragraph confirms the January 2026 start",
+          "source_id": "source-8529e38451271193bc1b"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": [
+        "Michael Walker"
+      ]
     },
     {
       "id": "a6fd6bc0-0c96-58d9-a080-1d3b6cb8c2f2",
@@ -5280,7 +5442,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-muhammad-hafeez",
@@ -5292,7 +5455,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-nader-alexander-mousavizadeh",
@@ -5304,7 +5468,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-neil-christopher-shearing",
@@ -5316,7 +5481,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3561ecd4-5eec-5f0a-bae2-4705465ba9b3",
@@ -5334,7 +5500,8 @@
           "source_id": "source-147a99e8fc85cd6142b4"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-neil-reeder",
@@ -5346,7 +5513,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "ec4169e0-e81f-5ae0-b665-eeab943d2be5",
@@ -5358,7 +5526,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "e53a1926-ad46-5b70-9645-acc24c96ef13",
@@ -5370,7 +5539,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "8de2acfe-1881-52cd-bece-56e4341a1206",
@@ -5382,7 +5552,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "015d02a7-f451-50c5-9995-57b0131ed5be",
@@ -5400,7 +5571,8 @@
           "source_id": "source-6e5d9231f8b434543f7a"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "25bf5334-1b7a-5669-8e35-ecc033c0a287",
@@ -5418,7 +5590,8 @@
           "source_id": "source-625211be1accaa95b513"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "0fd08184-f430-5dde-91ba-39e3c2c36e15",
@@ -5430,7 +5603,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "686c9592-ee42-52eb-b7cb-49c6fbc95bee",
@@ -5442,7 +5616,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-owen-montgomery-good",
@@ -5454,7 +5629,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-7fe12590036b2ac31733",
@@ -5466,7 +5642,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-paul-ormerod",
@@ -5478,7 +5655,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-paul-buchanan",
@@ -5490,7 +5668,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-8f376c4edda42ccde960",
@@ -5508,7 +5687,8 @@
           "source_id": "source-a6a24fcc00951c786116"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "80b7548f-18db-5981-b137-1b7cb80cbbd4",
@@ -5520,7 +5700,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-pedro-fernandes-reckon",
@@ -5532,7 +5713,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-peter-james-warburton",
@@ -5544,7 +5726,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "58beb3c8-b471-582a-900a-b349ae54ad99",
@@ -5556,7 +5739,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-peter-mccloskey",
@@ -5568,7 +5752,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "5bfe1cf5-49f8-533b-802f-6df4e5e8dfd8",
@@ -5586,7 +5771,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "7e00f1b8-c22d-5be9-9cc0-3a144e6d5b85",
@@ -5598,7 +5784,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "25d227d9-de71-540e-843e-f8e230b4439e",
@@ -5610,7 +5797,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "5428da68-9c52-5ae5-adbf-474b25675c80",
@@ -5622,7 +5810,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "8a9209ce-76af-5a7e-b5a3-da5c0c81afa7",
@@ -5634,7 +5823,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-pierre-yves-cremieux",
@@ -5646,7 +5836,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-prabhat-vaze",
@@ -5658,7 +5849,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-preston-john-llewellyn",
@@ -5670,7 +5862,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "7549ba4b-ea1e-5c62-b049-1a000f136fe7",
@@ -5682,7 +5875,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-rahul-kumar-guha",
@@ -5694,7 +5888,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a62ffcff-b8c2-5716-ab30-e60a8a028cd8",
@@ -5712,7 +5907,8 @@
           "source_id": "source-8cd354f0fdc23f69d131"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-rebecca-driver",
@@ -5724,7 +5920,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-richard-peter-edward-druce",
@@ -5736,7 +5933,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "b66f7439-0536-5849-b4fa-9582d70dcc2d",
@@ -5754,7 +5952,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "5468308d-91ad-5047-8e31-d82f99091960",
@@ -5766,7 +5965,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "04bbbd81-8478-56fa-9790-7e9c8ad3dade",
@@ -5778,7 +5978,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "708b7484-9fdf-5e4d-83d7-56fbbb503dc6",
@@ -5796,7 +5997,8 @@
           "source_id": "source-0f920e59a0bc1099c191"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "30b18dab-be1c-59ee-a29f-a9ba00f6b31e",
@@ -5808,7 +6010,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "e80e5a86-d668-5582-953f-d829aa22bbdf",
@@ -5826,7 +6029,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "d19cd94e-747c-5e56-a10f-58132cbe3655",
@@ -5844,7 +6048,8 @@
           "source_id": "source-0b8f2d54d157e9754488"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "b07d7a79-8cb4-5c5c-a73c-39a52eea0444",
@@ -5867,7 +6072,8 @@
           "source_id": "source-6fc558443c5a4b644b1d"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "837cde2b-83c8-51d5-9c5f-05c1974723e8",
@@ -5879,7 +6085,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "d1640299-4183-593b-be25-ba81d470ed59",
@@ -5891,7 +6098,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "6d598d00-593c-5af6-bc3c-5b7df9b06eb8",
@@ -5903,7 +6111,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "e6da12f7-e585-579c-ab5c-3d80d6f74e86",
@@ -5915,7 +6124,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "a9bd3f47-4816-5be0-ae8b-0acac73fb0bf",
@@ -5927,7 +6137,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-serena-hesmondhalgh",
@@ -5939,7 +6150,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-sharmila-ghosh",
@@ -5951,7 +6163,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-sharmila-whelan",
@@ -5963,7 +6176,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "95a4b5fe-6b43-567a-ae73-c5ddf50a459b",
@@ -5975,7 +6189,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3561e174-758f-5b63-9448-666ecddf5238",
@@ -5998,7 +6213,8 @@
           "source_id": "source-443857f813a7446987e8"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "d0960e6a-73c4-597e-98c2-d00c2c3d0ee3",
@@ -6026,7 +6242,8 @@
           "source_id": "source-443857f813a7446987e8"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "eee054fe-8913-509f-ad28-06e31ed68b1c",
@@ -6044,7 +6261,8 @@
           "source_id": "source-625211be1accaa95b513"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "c21d1f5a-2da5-57e3-a36f-7f3d9b145456",
@@ -6056,7 +6274,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "ab82f983-8b41-563d-a066-333667e772a6",
@@ -6084,7 +6303,8 @@
           "source_id": "source-ac4cbf6f2b2bf03b5f8d"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "b25c8f01-0c3a-57a7-a51f-a61004cd2f47",
@@ -6102,7 +6322,8 @@
           "source_id": "source-3385aeba307a6adf0749"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "c0255441-8479-5f88-b860-77ef3393ae33",
@@ -6114,7 +6335,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-55b2bea3251bbcfd74d9",
@@ -6132,7 +6354,8 @@
           "source_id": "source-bd12bccea531f8fbde1e"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-stephen-wells-historical-economist",
@@ -6144,7 +6367,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "4f0fa635-8c86-5a11-a362-96de217fad6e",
@@ -6156,7 +6380,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-145e42c4531d4ed3f26c",
@@ -6174,7 +6399,8 @@
           "source_id": "source-4516861dc6f55e6c3864"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "12ae3e6f-fe4e-5bcc-b093-3e6983a9de20",
@@ -6186,7 +6412,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "fc5f20ca-cbc9-5a06-ad62-965a4c34267e",
@@ -6198,7 +6425,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-suzanne-wells",
@@ -6210,7 +6438,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "da586448-18f9-5432-a2eb-6a48542b7844",
@@ -6222,7 +6451,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-thomas-cochrane-cepa",
@@ -6234,7 +6464,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "narrative-fa8fb994a89fde0dc2ce",
@@ -6252,7 +6483,8 @@
           "source_id": "source-30b5fe80cc6347d2f520"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-tim-miller-plum",
@@ -6264,7 +6496,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-timothy-john-jenkinson",
@@ -6276,7 +6509,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "c3373281-ffc1-54a3-86d7-2b621be4dc02",
@@ -6288,7 +6522,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-tom-middleton-grant-thornton",
@@ -6300,7 +6535,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-tony-lavender",
@@ -6312,7 +6548,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-torben-voetmann",
@@ -6324,7 +6561,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-ulrike-hotopp",
@@ -6336,7 +6574,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-william-derbyshire",
@@ -6348,7 +6587,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "d769c14e-1cc8-5274-842f-33247a21242b",
@@ -6366,7 +6606,8 @@
           "source_id": "source-3e6f4fab9bc961ec24dd"
         }
       ],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "3719441b-3da6-580f-b264-9a602f7cc64c",
@@ -6378,7 +6619,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "external-yesim-cilesiz-richardson",
@@ -6390,7 +6632,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     },
     {
       "id": "36f1e9c3-58d4-54f0-a914-d6f18e31fb8d",
@@ -6402,7 +6645,8 @@
       "checked_affiliation_count": 0,
       "related_professional_claim_count": 0,
       "source_refs": [],
-      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment."
+      "coverage_limit": "Research entry; related professional sources do not establish a complete biography or current employment.",
+      "professional_aliases": []
     }
   ],
   "organisations": [
@@ -10683,15 +10927,15 @@
       "organisation_name": "Frontier Economics",
       "firm_id": null,
       "role": "Senior Adviser",
-      "date": "2026-01-05",
+      "date": "2026-01",
       "end_date": null,
-      "date_basis": "announced_start",
+      "date_basis": "confirmed_start_month",
       "limit": "Selected appointment or advisory relationship. This does not establish a current role.",
       "source_refs": [
         {
-          "source_id": "source-18bcddb4a383ff25e88c",
-          "locator": "24Oct2025 opening paragraphs",
-          "checked_on": "2026-09-12"
+          "source_id": "source-8529e38451271193bc1b",
+          "locator": "Biography, first paragraph confirms the January 2026 start",
+          "checked_on": "2026-11-14"
         }
       ]
     }
@@ -11194,36 +11438,16 @@
       ]
     },
     {
-      "id": "event-9a96a6f417d3566b56ca",
-      "event_type": "dated_ownership_transaction",
-      "label": "Parent/brand: Audax majority investment (January 2026)",
-      "subject_id": "firm-40",
-      "date": "2026-01-02",
-      "end_date": null,
-      "date_basis": "Dated source transaction; does not establish unchanged current ownership",
-      "announcement_date": null,
-      "geography": "Brand/group scope in source",
-      "qualification": "Dated source observation; does not establish unchanged ownership or current employment.",
-      "participants": [],
-      "source_refs": [
-        {
-          "checked_on": "2026-09-11",
-          "locator": "Opening paragraph; closing transaction paragraph",
-          "source_id": "source-528902186587a9473d4d"
-        }
-      ]
-    },
-    {
       "id": "appointment-PP11",
       "event_type": "Advisory appointment",
       "label": "Mike Walker — Frontier Economics",
       "subject_id": "178931f5-bc4a-55d7-b160-8e5219e60123",
-      "date": "2026-01-05",
+      "date": "2026-01",
       "end_date": null,
-      "date_basis": "announced_start",
+      "date_basis": "confirmed_start_month",
       "announcement_date": "2025-10-24",
       "geography": "UK; Frontier Economics",
-      "qualification": "The announcement specified an intended 5 January 2026 start, subject to final conflict checks.",
+      "qualification": "Frontier confirms a January 2026 start. The announcement specified an intended 5 January 2026 start, subject to final conflict checks.",
       "participants": [
         {
           "entity_id": "brand-c3328e267cf6da135e0a",
@@ -11249,6 +11473,31 @@
           "checked_on": "2026-09-12",
           "locator": "24Oct2025 opening paragraphs",
           "source_id": "source-18bcddb4a383ff25e88c"
+        },
+        {
+          "checked_on": "2026-11-14",
+          "locator": "Biography, first paragraph confirms the January 2026 start",
+          "source_id": "source-8529e38451271193bc1b"
+        }
+      ]
+    },
+    {
+      "id": "event-9a96a6f417d3566b56ca",
+      "event_type": "dated_ownership_transaction",
+      "label": "Parent/brand: Audax majority investment (January 2026)",
+      "subject_id": "firm-40",
+      "date": "2026-01-02",
+      "end_date": null,
+      "date_basis": "Dated source transaction; does not establish unchanged current ownership",
+      "announcement_date": null,
+      "geography": "Brand/group scope in source",
+      "qualification": "Dated source observation; does not establish unchanged ownership or current employment.",
+      "participants": [],
+      "source_refs": [
+        {
+          "checked_on": "2026-09-11",
+          "locator": "Opening paragraph; closing transaction paragraph",
+          "source_id": "source-528902186587a9473d4d"
         }
       ]
     }
@@ -15664,6 +15913,11 @@
       "kind": "primary"
     },
     {
+      "id": "source-8529e38451271193bc1b",
+      "url": "https://www.frontier-economics.com/uk/en/about/people/people-i21943-mike-walker/",
+      "kind": "primary identity source"
+    },
+    {
       "id": "source-5e049b03c670a2271558",
       "url": "https://www.frontier-economics.com/uk/en/locations/",
       "kind": "official office/contact page"
@@ -15682,6 +15936,11 @@
       "id": "source-1da72f8a009a97724402",
       "url": "https://www.gbv.de/dms/spk/sbb/toc/226695999.pdf",
       "kind": "primary"
+    },
+    {
+      "id": "source-2dea151c4eb699f34658",
+      "url": "https://www.gov.uk/government/news/new-competition-authority-completes-leadership-team",
+      "kind": "primary identity source"
     },
     {
       "id": "source-6201a5e895a4e4e90376",

@@ -27,7 +27,8 @@
       "checked_affiliation_count": "INTEGER",
       "related_professional_claim_count": "INTEGER",
       "source_refs": "TEXT",
-      "coverage_limit": "TEXT"
+      "coverage_limit": "TEXT",
+      "professional_aliases": "TEXT"
     }
   },
   "organisations": {

@@ -1,12 +1,14 @@
 # Economics consultancy catalogue
 
-Updated 12 September 2026. This download contains 90 firm catalogue entries and 241 professional or research person entries. A record is not a complete or verified biography.
+November 2026 correction. Mike Walker and Michael Walker are one professional identity. The directory records the name used in the 2000 CRA release and the January 2026 start month confirmed by Frontier. The original Frontier announcement gave 5 January as the intended date, subject to final conflict checks. The accounts selection was frozen on 24 July 2026 and checked in September.
+
+This edition contains 90 firm catalogue entries and 240 professional or research person entries. The people table includes a source-checked professional alias for Mike Walker.
 
 The download includes 140 individually checked financial field observations, including comparative years and two explicit non-disclosures; 11 appointment/advisory relationships; 15 dated events; 81 dated registered-office observations; and 109 office/contact-city observations across ten international firms. Eighty registered-address observations form the latest reader selection. A dated observation can be historical even when it is the latest available record.
 
 `public-data.json` contains the full public dataset. `economics-consultancy-public.sqlite` contains matching tables and a `record_sources` bridge for source queries. `economics-consultancy-public.zip` bundles the dataset, database, dictionary, this README and all CSV tables. The `csv` directory contains one export per data table; `csv-tables.zip` bundles all nine CSVs. Nested arrays in CSV/SQLite cells are JSON strings. `field-dictionary.json` lists fields and their SQLite types. `checksums.json` records SHA-256 hashes for the downloads.
 
-Financial values retain the reporting currency, period, entity and accounting basis. `value_exact` preserves the exact decimal value; `value` is convenient for display. `is_latest` selects the latest reporting period in the research catalogue for that firm. The latest supported values include 30 revenues, 29 operating profits, nine staff observations, four member counts and four member-profit pools. A blank is not zero, staff definitions differ, and member profit is not necessarily cash pay.
+Financial values retain the reporting currency, period, entity and accounting basis. `value_exact` preserves the exact decimal value for calculations and `value` supports display. `is_latest` refers to the latest reporting period in the 24 July 2026 research extract for that firm. That selection includes 30 revenues, 29 operating profits, nine staff observations, four member counts and four member-profit pools. Blank values mark missing or non-comparable information. Staff definitions and the accounting treatment of member remuneration vary by firm.
 
 Firm, organisation and legal-entity IDs are distinct. A null `firm_id` on a brand-level office or affiliation means no exact catalogue relationship has been supplied; matching by a similar name can incorrectly turn a global brand observation into a UK-company claim.
 

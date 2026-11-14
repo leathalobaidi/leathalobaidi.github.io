@@ -3,73 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The People Network: Who moves between which firms</title>
+<title>The People Network: Selected Career Moves and Sources</title>
 <meta name="author" content="Leath Al Obaidi">
-<meta name="description" content="A sourced chord diagram of around 30 documented senior cross-firm moves in the UK economics consultancy market, 2000–2026. Who came from where. Who went where.">
+<meta name="description" content="A searchable reference to selected economics-consultancy career moves, with named people, dated events, roles, geography and original sources. Each arrow has equal weight.">
 <link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/part7-the-people-network">
-<meta property="og:title" content="The People Network: Who moves between which firms">
-<meta property="og:description" content="A sourced chord diagram of around 30 documented senior cross-firm moves in the UK economics consultancy market, 2000–2026. Who came from where. Who went where.">
+<meta property="og:title" content="The People Network: Selected Career Moves and Sources">
+<meta property="og:description" content="A searchable reference to selected economics-consultancy career moves, with named people, dated events, roles, geography and original sources. Each arrow has equal weight.">
 <meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/part7-the-people-network">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Leath Al Obaidi">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="The People Network: Who moves between which firms">
-<meta name="twitter:description" content="A sourced chord diagram of around 30 documented senior cross-firm moves in the UK economics consultancy market, 2000–2026. Who came from where. Who went where.">
+<meta name="twitter:title" content="The People Network: Selected Career Moves and Sources">
+<meta name="twitter:description" content="A searchable reference to selected economics-consultancy career moves, with named people, dated events, roles, geography and original sources. Each arrow has equal weight.">
 
 <link rel="stylesheet" href="apple-theme.css">
-<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
 <style>
-  /* Part 7: wider container for chord diagram; all other styles from apple-theme.css */
   .container { max-width: 820px; margin: 0 auto; padding: 40px 20px 80px; }
-
-  /* ── iPad (≤1024px) ──────────────────────────────────── */
-  @media (max-width: 1024px) {
-    .container { padding: 32px 24px 60px; }
-  }
-
-  /* ── iPhone (≤600px) ─────────────────────────────────── */
+  .event-tools { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; padding: 20px; border: 1px solid #d2d2d7; border-radius: 10px; margin: 24px 0 16px; }
+  .event-tools[hidden], .event-card[hidden], #event-empty[hidden] { display: none; }
+  .event-tools label { display: block; font: 600 13px/1.5 -apple-system, BlinkMacSystemFont, sans-serif; }
+  .event-tools input, .event-tools select { box-sizing: border-box; width: 100%; margin-top: 5px; padding: 10px; border: 1px solid #aaa; border-radius: 5px; background: #fff; color: #1d1d1f; font: inherit; }
+  .event-tools button { justify-self: start; border: 1px solid #aaa; border-radius: 5px; padding: 9px 14px; background: #fff; color: #1d1d1f; cursor: pointer; font: inherit; }
+  .event-tools :focus-visible { outline: 3px solid #0071e3; outline-offset: 3px; }
+  #event-status, .event-key { font-size: 13px; color: #555; }
+  .event-list { list-style: none; padding: 0; margin: 20px 0; }
+  .event-card { margin: 0 0 16px; padding: 22px; border: 1px solid #d2d2d7; border-radius: 10px; background: #fff; }
+  .event-card h3 { margin: 0 0 5px; font-size: 20px; }
+  .event-date { font: 600 12px/1.5 -apple-system, BlinkMacSystemFont, sans-serif; color: #555; margin: 0 0 14px; }
+  .event-route { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 14px 0; border-top: 1px solid #e5e5ea; border-bottom: 1px solid #e5e5ea; font-weight: 600; }
+  .event-route .route-arrow { color: #0071e3; font-size: 25px; font-weight: 400; }
+  .event-card dl { display: grid; grid-template-columns: 84px 1fr; gap: 5px 10px; font-size: 14px; margin: 16px 0 10px; }
+  .event-card dt { font-weight: 600; }
+  .event-card dd { margin: 0; }
+  .event-card p { font-size: 14px; margin: 10px 0 0; }
+  .event-sources { display: flex; flex-wrap: wrap; gap: 8px 18px; padding-top: 5px; }
+  .event-sources a { text-decoration: underline; text-underline-offset: 3px; }
+  #event-empty { padding: 24px; background: #f5f5f7; border-radius: 8px; }
   @media (max-width: 600px) {
-    body { font-size: 16px; line-height: 1.6; }
-    h1 { font-size: 28px; }
-    h2 { font-size: 22px; }
-    h3 { font-size: 16px; }
+    .container { padding: 24px 16px 48px; }
+    h1 { font-size: 28px; } h2 { font-size: 22px; }
     .subtitle { font-size: 17px; }
-    .byline { font-size: 12px; }
-    .container { padding: 24px 16px 48px; max-width: 100%; }
-    .series-nav {
-      flex-wrap: nowrap;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-    }
+    .series-nav { flex-wrap: nowrap; overflow-x: auto; }
     .series-nav a, .series-nav span { flex: 0 0 auto; }
-    .data-table { font-size: 12px; }
-    .data-table th { font-size: 10px; }
-    .takeaways { padding: 16px; font-size: 14px; }
-    .footer { padding: 32px 16px; font-size: 10px; }
-    .cliffhanger { padding: 20px 16px; }
-    .chart-box { padding: 12px; border-radius: 8px; }
-    .chart-box .title { font-size: 12px; }
-    .chart-box .sub { font-size: 9px; }
-    svg.chord { max-height: 400px; height: auto; }
-    .chord-label { font-size: 9px !important; }
-  }
-
-  /* ── iPhone SE (≤375px) ──────────────────────────────── */
-  @media (max-width: 375px) {
-    body { font-size: 15px; }
-    h1 { font-size: 24px; }
-    h2 { font-size: 20px; }
-    .data-table { font-size: 11px; }
-    svg.chord { max-height: 320px; }
+    .event-tools { grid-template-columns: 1fr; padding: 16px; }
+    .event-card { padding: 16px; }
+    .event-card dl { grid-template-columns: 74px 1fr; }
+    .event-route { gap: 8px; font-size: 15px; }
+    .event-card dd, .event-route span { overflow-wrap: anywhere; }
   }
 </style>
 </head>
 <body>
-<div class="laptop-hint" id="laptop-hint">
-  <span>This post has interactive charts, best read on a laptop.</span>
-  <button class="dismiss" onclick="this.parentElement.classList.add('dismissed')" aria-label="Dismiss">&times;</button>
-</div>
-
 <div class="container">
   <div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
 
@@ -88,277 +72,179 @@
   </div>
 
   <h1>The People Network</h1>
-  <p class="subtitle">A sourced chord diagram maps around 30 senior moves across UK economics consultancies in 2000&ndash;2026. It shows the market’s visible upper layer—not every career move.</p>
-  <p class="byline"><strong>Leath</strong> &middot; April 2026 &middot; 9 min read</p>
+  <p class="subtitle">Part 7 of 7: Selected career moves, with the source behind each appointment.</p>
+  <p class="byline"><strong>Leath</strong> &middot; Updated 14 November 2026</p>
+  <p>Stefan Hunt’s two moves connect the CMA, Keystone and AlixPartners. Rameet Sangha’s earlier move connects AlixPartners to Compass Lexecon. Reading the events together makes those paths visible, while the individual sources explain what happened at each step.</p>
+  <p>This reference contains 11 selected appointments involving 10 people, with recorded dates from January 2020 to January 2026. Ten concern UK or European roles; Faten Sabry’s New York appointment is included as a clearly marked US example. The selection covers events discussed in the series for which a receiving-firm announcement supplies a date and role. It is not a complete record of any firm’s hiring or departures.</p>
 
-  <h2>An industry the size of a village</h2>
-
-  <p>Britain’s competition consultancies may employ only a thousand senior economists. This map covers the visible senior layer, not every career move. Over 25 years, people have orbited three or four central firms, passed through regulators and occasionally broken away to redraw the market.</p>
-
-  <p>The chart uses the project ledger’s documented senior moves between firms. Each ribbon represents one person or group event. Its width reflects seniority: partners outweigh directors, who outweigh principal economists. Hover over a ribbon for the person, event and year.</p>
-
-  <div class="chart-box">
-    <div class="title">Cross-firm moves in the UK economics consultancy market, 2000&ndash;2026</div>
-    <div class="sub">Chord diagram &middot; source: Companies House officer appointments + primary press</div>
-    <div class="chord-wrap">
-      <div class="chart-wrap"><svg class="chord chart-live" id="chord"></svg><img class="chart-mobile" src="charts/chord.png" alt="People-movement chord diagram" loading="lazy"><div class="chart-mobile-caption">View on a laptop for the interactive chart.</div></div>
-    </div>
+  <h2 id="chord">Follow the events</h2>
+  <p class="event-key">One card represents one named person’s appointment. Every arrow is the same size. Dates distinguish confirmed starts, intended starts and announcements. Later statutory membership appears in the notes. The list is ordered by the date shown.</p>
+  <div class="event-tools" id="event-tools" hidden>
+    <label for="event-search">Find a person, firm or role<input id="event-search" type="search" placeholder="For example: Hunt or CMA" autocomplete="off"></label>
+    <label for="event-region">Geography<select id="event-region"><option value="all">All locations</option><option value="uk">UK and European roles</option><option value="us">United States</option></select></label>
+    <label for="event-type">Event type<select id="event-type"><option value="all">All appointments</option><option value="Firm appointment">Firm appointment</option><option value="Advisory appointment">Advisory appointment</option></select></label>
+    <button type="button" id="event-reset">Reset filters</button>
   </div>
-
-  <p>Five features stand out before the arithmetic begins.</p>
-
-  <h3>1. The big ribbon between Compass Lexecon and Econic</h3>
-
-  <p>The widest arc runs from Compass Lexecon to Econic Partners. The ledger and Econic’s profiles identify Jonathan Orszag, Mark Israel, Kirsten Edwards-Warren and <a href="https://econicpartners.com/people/enrique-andreu/">Enrique Andreu</a>. Andreu’s profile says he spent more than 10 years at Compass and led its Brussels office. Part 5 gives the details. Here the exodus is simply the largest documented single senior-move event in the dataset.</p>
-
-  <h3>2. The Keystone build-and-drain</h3>
-
-  <p>Keystone has two inbound ribbons carrying three arrivals: Coscelli and Hunt from the CMA, and Calanchi from Compass Lexecon. Two outbound ribbons carry Calanchi to Econic and Hunt to AlixPartners. Caffarra’s move to UCL falls outside this consultancy network. In two and a half years Keystone built a European leadership group, then lost much of it. Coscelli is the remaining leadership name in the charted set.</p>
-
-  <h3>3. The CMA as a source node, not a destination</h3>
-
-  <p>Arrows leave the CMA for Keystone, Oxera, Frontier and AlixPartners; almost none arrive. Part 6 calls this the regulator-as-recruiter effect. The public record shows no offsetting group of consultancy partners entering the CMA during the same period. The chart proves the senior departures. It cannot see every internal promotion or junior hire at the regulator.</p>
-
-  <h3>4. A surprising ribbon: AlixPartners to Compass Lexecon (Sangha, 2020)</h3>
-
-  <p>Rameet Sangha’s <a href="https://www.compasslexecon.com/insights/news/competition-economics-expert-rameet-sangha-joins-compass-lexecon">2020 move from AlixPartners, where she was a director, to Compass Lexecon</a> runs against the 2024&ndash;25 AlixPartners build. Five years before hiring former CMA economists to establish a competition practice, AlixPartners lost a senior director to Compass. That is a clue about market structure, not proof of strategy. Its visible position in 2025 differs sharply from the one implied by Sangha’s 2020 move.</p>
-
-  <h3>5. Frontier Economics has almost no arrows</h3>
-
-  <p>Frontier is the chart’s cleanest node, with few mid-career arrivals or departures. <a href="https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i21944-frontier-economics-hires-cma-chief-economic-advisor/">Mike Walker’s move from the CMA, effective 5 January 2026</a>, is one of the few inbound arrows in a quarter-century.</p>
-
-  <p>Employee ownership could help explain the stability, but the chart cannot prove it. Frontier distributes profit among staff rather than a small partner class; sharing the proceeds may reduce the urge to leave. Its <a href="part5-profit-machine.html">Part 5 story</a> looks unlike those of Baringa or Compass Lexecon.</p>
-
-  <hr>
-
-  <h2>The top ten most-moved firms</h2>
-
-  <p>Ranking firms by the seniority-weighted arcs touching each node—inbound and outbound, with the same partner/director/principal weights—produces this top ten:</p>
-
-  <div style="overflow-x:auto;-webkit-overflow-scrolling:touch">
-  <div class="table-wrap">
-    <table class="data-table">
-    <thead>
-      <tr><th>Rank</th><th>Firm</th><th class="num">Weighted arcs in</th><th class="num">Weighted arcs out</th><th class="num">Total</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>1</td><td>Compass Lexecon (FTI)</td><td class="num">14</td><td class="num">18</td><td class="num">32</td></tr>
-      <tr><td>2</td><td>CMA (regulator)</td><td class="num">0</td><td class="num">18</td><td class="num">18</td></tr>
-      <tr><td>3</td><td>Econic Partners</td><td class="num">18</td><td class="num">0</td><td class="num">18</td></tr>
-      <tr><td>4</td><td>Keystone Strategy</td><td class="num">9</td><td class="num">6</td><td class="num">15</td></tr>
-      <tr><td>5</td><td>NERA UK</td><td class="num">0</td><td class="num">12</td><td class="num">12</td></tr>
-      <tr><td>6</td><td>RBB Economics</td><td class="num">12</td><td class="num">0</td><td class="num">12</td></tr>
-      <tr><td>7</td><td>LECG</td><td class="num">0</td><td class="num">11</td><td class="num">11</td></tr>
-      <tr><td>8</td><td>AlixPartners UK</td><td class="num">6</td><td class="num">2</td><td class="num">8</td></tr>
-      <tr><td>9</td><td>Pragmatix Advisory</td><td class="num">6</td><td class="num">0</td><td class="num">6</td></tr>
-      <tr><td>10</td><td>Capital Economics</td><td class="num">0</td><td class="num">6</td><td class="num">6</td></tr>
-    </tbody>
-  </table>
-  </div>
-  </div>
-
-  <p>Three points follow. First, Compass Lexecon is the network’s hub, with the largest total weighted flow. Second, RBB is an anomaly rather than a normal high-churn node. Its founding 2002 NERA spinout contributes nine inbound points. Only one later senior move touches it on the chart: Beno&icirc;t Durand’s arrival from the European Commission’s competition side in 2008. Helder Vasconcelos joined RBB as a partner from Compass Lexecon in April 2025, but is not weighted here.</p>
-
-  <p>The project found no post-founding RBB partner who left to create a rival, nor a charted partner-level poach from the firm. RBB therefore has the lowest visible post-founding churn among this top ten. Third, Frontier sits close behind. Its only weighted inbound arc is Mike Walker’s move from the CMA, worth 3—again among the lowest churn of any major node.</p>
-
-  <p>The two lowest-churn firms also have unusual economic models. RBB runs a small closed partnership; Frontier is employee-owned. Ownership may help explain their stability. The chart cannot establish causation.</p>
-
-  <hr>
-
-  <h2>Four people to watch</h2>
-
-  <p>Four people sit near the network’s centre. Their recorded moves and leadership roles clarify much of the story since 2020.</p>
-
-  <h3>Stefan Hunt</h3>
-
-  <p>Hunt has two arcs across three organisations: CMA to Keystone, then Keystone to AlixPartners. By December 2025 his destination was <a href="https://find-and-update.company-information.service.gov.uk/officers/07oDguI2hqgxzwurJGLzWcljLR8/appointments">AlixPartners UK LLP</a>. Few people in the project moved twice in three years with each move becoming a story of its own.</p>
-
-  <h3>Gianmarco Calanchi</h3>
-
-  <p>Published profiles trace Calanchi from Whitehall and the competition authorities through Compass Lexecon and <a href="https://econicpartners.com/people/gianmarco-calanchi/">Keystone Europe</a> to <a href="https://econicpartners.com/people/gianmarco-calanchi/">Econic Partners</a>. No individual follows a longer path on the chart. His career is the market’s porousness in miniature.</p>
-
-  <h3>Jorge Padilla</h3>
-
-  <p>Padilla has one arc between firms and one later leadership marker. In 2011, after LECG’s bankruptcy, his European team moved together to Compass Lexecon. His elevation from partner to chair in 2024 is internal, so it produces no arc. It still matters: he held formal European leadership as the largest Compass breakaway formed around him. Much of the firm’s story in this series runs through his tenure.</p>
-
-  <h3>Kirsten Edwards-Warren</h3>
-
-  <p>Edwards-Warren has one cross-firm arc and one leadership marker, a year apart. Compass Lexecon named her <a href="https://www.fticonsulting.com/about/newsroom/press-releases/compass-lexecon-announces-executive-leadership-appointments">co-head of EMEA in February 2024</a>. A year later she left with Orszag and Israel to co-found Econic Partners. Alongside Orszag, she is the <a href="https://find-and-update.company-information.service.gov.uk/company/16147541/officers">second statutory director</a> of Econic U.K. Limited. That position makes her central to the exodus, dated December 2024 and made public in February 2025.</p>
-
-  <hr>
-
-  <div class="takeaways">
-    <h3>Key takeaways</h3>
-    <ol>
-      <li>The documented senior-move set currently traceable in this project fits on a single chord diagram; the visible market is smaller and more personal than the revenue numbers imply.</li>
-      <li>Compass Lexecon is the hub of the network, holding the largest total weighted flow on the chart and the single fattest ribbon &mdash; the one running to Econic Partners.</li>
-      <li>RBB Economics and Frontier Economics are the two lowest-churn nodes in the documented senior-move set; RBB's closed partnership and Frontier's employee ownership are plausible explanations, not proven causes.</li>
-      <li>The CMA has a cluster of outbound arcs and no inbound arcs at the senior level in this ledger; it is visibly a talent source in the period studied.</li>
-      <li>Four people—Hunt, Calanchi, Padilla and Edwards-Warren—appear on several arcs or leadership markers. Their careers show how the visible market has reorganised since 2020.</li>
-    </ol>
-  </div>
-
-  <div class="cliffhanger">
-    <div class="label">Final chapter</div>
-    <h3>Methodology: Claude Code for an Economist</h3>
-    <p>How the series was built in 60 hours with Claude Code, the Companies House API and no prior programming experience: the firm list, tools, failures and existing research.</p>
-    <a href="methodology-claude-code.html" class="cta">Read the Methodology &rarr;</a>
-  </div>
+  <p id="event-status" role="status" aria-live="polite">11 events · 10 people</p>
+  <p id="event-empty" hidden>No events match these filters. Try a different name or reset the filters.</p>
+  <ol class="event-list" id="events">
+    <li class="event-card" id="sangha-2020" data-person="Rameet Sangha" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="sangha-2020-title">
+        <h3 id="sangha-2020-title">Rameet Sangha</h3>
+        <p class="event-date"><time datetime="2020-01-06">Start: 6 January 2020</time></p>
+        <div class="event-route" aria-label="From AlixPartners to Compass Lexecon"><span>AlixPartners</span><span class="route-arrow" aria-hidden="true">→</span><span>Compass Lexecon</span></div>
+        <dl><dt>Role</dt><dd>Senior Vice President</dd><dt>Geography</dt><dd>London, UK</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>The release gives both the 6 January start and her previous role as a Director at AlixPartners.</p>
+        <p class="event-sources"><a href="https://www.compasslexecon.com/insights/news/competition-economics-expert-rameet-sangha-joins-compass-lexecon">Compass announcement, 20 January 2020</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="perkins-2020" data-person="Joe Perkins" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="perkins-2020-title">
+        <h3 id="perkins-2020-title">Joe Perkins</h3>
+        <p class="event-date"><time datetime="2020-06">Announced start month: June 2020</time></p>
+        <div class="event-route" aria-label="From Ofgem to Compass Lexecon"><span>Ofgem</span><span class="route-arrow" aria-hidden="true">→</span><span>Compass Lexecon</span></div>
+        <dl><dt>Role</dt><dd>Senior Vice President and Head of Research</dd><dt>Geography</dt><dd>London, UK</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>Former Ofgem Chief Economist. His FTI Consulting LLP membership began on 4 June 2024; that later legal appointment is not counted as another career move.</p>
+        <p class="event-sources"><a href="https://www.fticonsulting.com/saudi-arabia/newsroom/compass-lexecon-appoints-ofgem-chief-economist-senior-vice-president-head-research">FTI announcement, 22 April 2020</a><a href="https://find-and-update.company-information.service.gov.uk/company/OC372614/officers?page=3">Companies House: later LLP membership</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="coscelli-2023" data-person="Andrea Coscelli" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="coscelli-2023-title">
+        <h3 id="coscelli-2023-title">Andrea Coscelli</h3>
+        <p class="event-date"><time datetime="2023-01-03">Announced start: 3 January 2023</time></p>
+        <div class="event-route" aria-label="From CMA to Keystone"><span>CMA</span><span class="route-arrow" aria-hidden="true">→</span><span>Keystone</span></div>
+        <dl><dt>Role</dt><dd>Partner and Co-Head of Europe</dd><dt>Geography</dt><dd>London; European leadership role</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>Previously the CMA’s Chief Executive. The release specifies the intended start date.</p>
+        <p class="event-sources"><a href="https://www.prnewswire.com/news-releases/former-uk-cma-ceo-andrea-coscelli-to-join-keystone-as-co-head-of-europe-301688887.html">Keystone release, 29 November 2022</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="hunt-2023" data-person="Stefan Hunt" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="hunt-2023-title">
+        <h3 id="hunt-2023-title">Stefan Hunt</h3>
+        <p class="event-date"><time datetime="2023-01-24">Announced start: 24 January 2023</time></p>
+        <div class="event-route" aria-label="From CMA to Keystone"><span>CMA</span><span class="route-arrow" aria-hidden="true">→</span><span>Keystone</span></div>
+        <dl><dt>Role</dt><dd>Partner and Head of Advanced Technology Services in Europe</dd><dt>Geography</dt><dd>London; European role</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>Previously the CMA’s Chief Data and Technology Insight Officer. His subsequent AlixPartners move appears separately.</p>
+        <p class="event-sources"><a href="https://www.keystone.com/news-publications/stefan-hunt-joins-keystone-to-build-the-european-data-and-technology-capability">Keystone appointment release</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="mazzarotto-2024" data-person="Nicola Mazzarotto" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="mazzarotto-2024-title">
+        <h3 id="mazzarotto-2024-title">Nicola Mazzarotto</h3>
+        <p class="event-date"><time datetime="2024-10-03">Announced: 3 October 2024</time></p>
+        <div class="event-route" aria-label="From KPMG to AlixPartners"><span>KPMG</span><span class="route-arrow" aria-hidden="true">→</span><span>AlixPartners</span></div>
+        <dl><dt>Role</dt><dd>Senior competition-economics appointment</dd><dt>Geography</dt><dd>London; European practice</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>Previously Global Head of Economics at KPMG. This is one person in a joint announcement with Caitlin Wilkinson.</p>
+        <p class="event-sources"><a href="https://www.alixpartners.com/newsroom/welcome-new-pmds-nicola-mazzarotto-and-caitlin-wilkinson/">AlixPartners joint announcement</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="wilkinson-2024" data-person="Caitlin Wilkinson" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="wilkinson-2024-title">
+        <h3 id="wilkinson-2024-title">Caitlin Wilkinson</h3>
+        <p class="event-date"><time datetime="2024-10-03">Announced: 3 October 2024</time></p>
+        <div class="event-route" aria-label="From KPMG to AlixPartners"><span>KPMG</span><span class="route-arrow" aria-hidden="true">→</span><span>AlixPartners</span></div>
+        <dl><dt>Role</dt><dd>Senior competition-economics appointment</dd><dt>Geography</dt><dd>London; European practice</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>Previously a KPMG Partner. The joint announcement leaves her first working day unconfirmed.</p>
+        <p class="event-sources"><a href="https://www.alixpartners.com/newsroom/welcome-new-pmds-nicola-mazzarotto-and-caitlin-wilkinson/">AlixPartners joint announcement</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="sabry-2025" data-person="Faten Sabry" data-region="us" data-type="Firm appointment">
+      <article aria-labelledby="sabry-2025-title">
+        <h3 id="sabry-2025-title">Faten Sabry</h3>
+        <p class="event-date"><time datetime="2025-04-16">Announced: 16 April 2025</time></p>
+        <div class="event-route" aria-label="From NERA to Compass Lexecon"><span>NERA</span><span class="route-arrow" aria-hidden="true">→</span><span>Compass Lexecon</span></div>
+        <dl><dt>Role</dt><dd>Senior Managing Director</dd><dt>Geography</dt><dd>New York, United States</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>A US example, included to distinguish global firm moves from UK recruitment. Her biography identifies her previous leadership of NERA’s Global Securities and Finance Practice.</p>
+        <p class="event-sources"><a href="https://www.compasslexecon.com/insights/news/faten-sabry-joins-compass-lexecon-as-senior-managing-director">Compass appointment announcement</a><a href="https://www.compasslexecon.com/professionals/faten-sabry">Compass biography: previous NERA role</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="bon-2025" data-person="Julie Bon" data-region="uk" data-type="Advisory appointment">
+      <article aria-labelledby="bon-2025-title">
+        <h3 id="bon-2025-title">Julie Bon</h3>
+        <p class="event-date"><time datetime="2025-06-19">Announced: 19 June 2025</time></p>
+        <div class="event-route" aria-label="From CMA to AlixPartners"><span>CMA</span><span class="route-arrow" aria-hidden="true">→</span><span>AlixPartners</span></div>
+        <dl><dt>Role</dt><dd>Senior advisory role</dd><dt>Geography</dt><dd>UK competition work; office not specified in the release</dd><dt>Event</dt><dd>Advisory appointment</dd></dl>
+        <p>Previously Deputy Chief Economist at the CMA. The announcement describes a senior advisory role.</p>
+        <p class="event-sources"><a href="https://www.alixpartners.com/newsroom/julie-bon-former-cma-economist-joins-alixpartners-in-senior-advisory-role/">AlixPartners appointment announcement</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="sala-2025" data-person="Francesca Sala" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="sala-2025-title">
+        <h3 id="sala-2025-title">Francesca Sala</h3>
+        <p class="event-date"><time datetime="2025-09-16">Announced: 16 September 2025</time></p>
+        <div class="event-route" aria-label="From CMA to Oxera"><span>CMA</span><span class="route-arrow" aria-hidden="true">→</span><span>Oxera</span></div>
+        <dl><dt>Role</dt><dd>Partner, competition practice</dd><dt>Geography</dt><dd>London, UK</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>Previously Director of Economics at the CMA. The source identifies merger control as her particular focus.</p>
+        <p class="event-sources"><a href="https://www.oxera.com/about-us/media-centre/oxera-strengthens-merger-expertise-with-appointment-of-francesca-sala-as-partner/">Oxera appointment announcement</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="hunt-2025" data-person="Stefan Hunt" data-region="uk" data-type="Firm appointment">
+      <article aria-labelledby="hunt-2025-title">
+        <h3 id="hunt-2025-title">Stefan Hunt</h3>
+        <p class="event-date"><time datetime="2025-12-03">Announced: 3 December 2025</time></p>
+        <div class="event-route" aria-label="From Keystone to AlixPartners"><span>Keystone</span><span class="route-arrow" aria-hidden="true">→</span><span>AlixPartners</span></div>
+        <dl><dt>Role</dt><dd>Partner and Managing Director; new behavioural-economics and technology team</dd><dt>Geography</dt><dd>London, UK</dd><dt>Event</dt><dd>Firm appointment</dd></dl>
+        <p>The announcement identifies Keystone as his previous employer. LLP membership began on 2 December 2025; it is supporting evidence for this event, not a second move.</p>
+        <p class="event-sources"><a href="https://www.alixpartners.com/newsroom/alixpartners-appoints-former-cma-data-technology-chief-to-lead-new-behavioural-economics-technology-evidence-team/">AlixPartners appointment announcement</a><a href="https://find-and-update.company-information.service.gov.uk/officers/07oDguI2hqgxzwurJGLzWcljLR8/appointments">Companies House: LLP appointment</a></p>
+      </article>
+    </li>
+    <li class="event-card" id="walker-2026" data-person="Mike Walker" data-region="uk" data-type="Advisory appointment">
+      <article aria-labelledby="walker-2026-title">
+        <h3 id="walker-2026-title">Mike Walker</h3>
+        <p class="event-date"><time datetime="2026-01">Joined in January 2026</time></p>
+        <div class="event-route" aria-label="From CMA to Frontier Economics"><span>CMA</span><span class="route-arrow" aria-hidden="true">→</span><span>Frontier Economics</span></div>
+        <dl><dt>Role</dt><dd>Senior Adviser</dd><dt>Geography</dt><dd>UK; Frontier Economics</dd><dt>Event</dt><dd>Advisory appointment</dd></dl>
+        <p>Previously the CMA’s Chief Economic Adviser. Frontier’s biography confirms the month. Its original announcement gave 5 January as the intended date, subject to final conflict checks.</p>
+        <p class="event-sources"><a href="https://www.frontier-economics.com/uk/en/about/people/people-i21943-mike-walker/">Frontier biography</a> · <a href="https://www.frontier-economics.com/uk/en/news-and-insights/news/news-article-i21944-frontier-economics-hires-cma-chief-economic-advisor/">Frontier announcement, 24 October 2025</a></p>
+      </article>
+    </li>
+  </ol>
+  <h2 id="coverage">Reading the selection</h2>
+  <p>Two colleagues can be named in one release, as Mazzarotto and Wilkinson were; one person can appear in two events, as Hunt does. A later LLP appointment can concern a person who has worked in the same corporate family for years. Keeping those units separate makes the record useful.</p>
+  <p>Missing names do not establish loyalty or a lack of recruitment. Nor do repeated appearances measure a firm’s importance in the market. The reference lets readers inspect particular routes. <a href="part6-the-cma-drain.html">Part 6</a> considers what those routes suggest about demand for regulatory experience; <a href="part5-profit-machine.html">Part 5</a> examines the financial stakes.</p>
+  <div class="cliffhanger"><div class="label">How the series was researched</div><h3>Methodology</h3><p>Companies House data, original announcements and the limits of combining them.</p><a href="methodology-claude-code.html" class="cta">Read the Methodology &rarr;</a></div>
 
   <div class="footer">
-    <p><strong>Sources:</strong> <a href="https://find-and-update.company-information.service.gov.uk">Companies House officer appointments</a> (1,885 database rows) and primary releases cited in Parts 1, 5 and 6 and the RBB deep-dive. The diagram uses around 30 documented senior moves; it omits many internal promotions and junior moves. Julie Bon’s CMA &rarr; AlixPartners ribbon carries partner weight (3), though she joined as senior adviser. The A&amp;M Europe &rarr; Grant Thornton ribbon relies on career histories reported when the practice launched in 2021.</p>
+    <p><strong>Sources and scope.</strong> Original appointment announcements and biographies are linked on every card. The Companies House records supplement the Hunt and Perkins events. Sources reviewed in September 2026, with Walker’s start month confirmed for the November revision. The selection covers the dates shown. All cards remain readable without JavaScript.</p>
     <p style="margin-top:16px;padding-top:16px;border-top:1px solid #d2d2d7;"><strong>Leath Al Obaidi</strong>, independent research on the UK economics consultancy industry.</p>
-    <p style="font-size:12px;opacity:.75;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. Underlying Companies House data is &copy; Crown copyright, used under the <a href="https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/">Open Government Licence v3.0</a>.</p>
+    <p style="font-size:12px;opacity:.75;">&copy; 2026 Leath Al Obaidi. Analysis, code, and visualisations licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, you may reuse and build on this work; please credit "Leath Al Obaidi" with a link to <a href="https://leathalobaidi.com">leathalobaidi.com</a>. This licence covers the original analysis, code and visualisations; third-party source material is excluded.</p>
     <p style="font-size:12px;opacity:.75;">Cite as: Al Obaidi, L. (2026). <em>UK Economics Consultancy: A Historical Series</em>. leathalobaidi.com</p>
-    <p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. The author holds no financial position in any firm discussed. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
+    <p style="font-size:11px;opacity:.65;margin-top:16px;padding-top:12px;border-top:1px solid #e5e5ea;"><em>This series is independent analysis based on publicly filed data. It does not constitute investment advice. Any person who believes a factual claim in this series is incorrect is invited to contact the author and a correction will be published promptly.</em></p>
   </div>
 </div>
-
 <script>
-// ============================================================================
-// CHORD DIAGRAM, UK economics-consultancy cross-firm moves
-// ============================================================================
-// Nodes: firms (and the CMA as a source). Edges: documented senior moves.
-// Ribbon width is proportional to the number of moves between each pair.
-// ============================================================================
-
-const NODES = [
-  'NERA',
-  'RBB Economics',
-  'Compass Lexecon',
-  'LECG',
-  'BRG',
-  'Oxera',
-  'Frontier Economics',
-  'Capital Economics',
-  'Keystone',
-  'AlixPartners',
-  'A&M Europe',
-  'Econic Partners',
-  'Pantheon Macro',
-  'Cebr',
-  'Pragmatix',
-  'CMA',
-  'Grant Thornton',
-  'European Commission'
-];
-
-// Documented senior moves: [from, to, weight]
-// Weight reflects seniority (partner = 3, director = 2, principal = 1)
-const MOVES = [
-  // The original RBB spinout (2002)
-  ['NERA', 'RBB Economics', 9],
-  // LECG 2011 collapse
-  ['LECG', 'Compass Lexecon', 6],
-  ['LECG', 'BRG', 5],
-  // Compass Lexecon → Econic exodus (December 2024, public from February 2025)
-  ['Compass Lexecon', 'Econic Partners', 15],
-  // CMA outflow
-  ['CMA', 'Keystone', 6],        // Coscelli + Hunt
-  ['CMA', 'Oxera', 3],            // Sala
-  ['CMA', 'Frontier Economics', 3], // Walker
-  ['CMA', 'AlixPartners', 3],     // Bon
-  ['CMA', 'Compass Lexecon', 3],  // Calanchi (earlier CMA path)
-  // Keystone outflow
-  ['Keystone', 'AlixPartners', 3], // Stefan Hunt
-  ['Keystone', 'Econic Partners', 3], // Calanchi
-  // Compass Lexecon flows
-  ['Compass Lexecon', 'Keystone', 3], // Calanchi into Keystone
-  ['NERA', 'Compass Lexecon', 3],     // Sabry 2025 (though NY)
-  // Cebr / Pragmatix
-  ['Cebr', 'Pragmatix', 3],
-  ['Capital Economics', 'Pragmatix', 3],
-  // Capital Economics into Pantheon
-  ['Capital Economics', 'Pantheon Macro', 3],
-  // RBB inbound
-  ['European Commission', 'RBB Economics', 3], // Benoît Durand (senior hire from the European Commission's competition side / DG COMP, 2008; partner/MD tier)
-  // AlixPartners → Compass Lexecon (Sangha 2020)
-  ['AlixPartners', 'Compass Lexecon', 2],
-  // A&M → Grant Thornton (Horn, Williams 2021, founding partners of GT Economic Consulting)
-  ['A&M Europe', 'Grant Thornton', 3]
-];
-
-// Build a square matrix for d3.chord
-const N = NODES.length;
-const matrix = Array.from({length: N}, () => Array(N).fill(0));
-const idx = Object.fromEntries(NODES.map((n, i) => [n, i]));
-MOVES.forEach(([from, to, w]) => {
-  matrix[idx[from]][idx[to]] += w;
-});
-
-// Render
-const svg = d3.select('#chord');
-const bbox = svg.node().getBoundingClientRect();
-const width = bbox.width || 760;
-const height = bbox.height || 760;
-const outerRadius = Math.min(width, height) * 0.5 - 100;
-const innerRadius = outerRadius - 16;
-
-svg.attr('viewBox', [-width/2, -height/2, width, height]);
-
-const chord = d3.chord()
-  .padAngle(0.06)
-  .sortSubgroups(d3.descending)
-  .sortChords(d3.descending);
-
-const arc = d3.arc()
-  .innerRadius(innerRadius)
-  .outerRadius(outerRadius);
-
-const ribbon = d3.ribbon()
-  .radius(innerRadius);
-
-const colorScale = d3.scaleOrdinal()
-  .domain(NODES)
-  .range([
-    '#8e8e93','#0071e3','#af52de','#9ca3af','#34c759','#ff9500',
-    '#ff3b30','#1d1d1f','#5856d6','#5856d6','#34c759','#ff3b30',
-    '#8e8e93','#1d1d1f','#34c759','#1d1d1f','#0071e3'
-  ]);
-
-const chords = chord(matrix);
-
-// Draw group arcs
-const group = svg.append('g')
-  .selectAll('g')
-  .data(chords.groups)
-  .enter().append('g');
-
-group.append('path')
-  .attr('fill', d => colorScale(NODES[d.index]))
-  .attr('stroke', '#fff')
-  .attr('stroke-width', 1.5)
-  .attr('d', arc)
-  .append('title')
-  .text(d => `${NODES[d.index]}\n${d.value} move-weight units`);
-
-// Labels around the outside
-group.append('text')
-  .each(d => { d.angle = (d.startAngle + d.endAngle) / 2; })
-  .attr('dy', '.35em')
-  .attr('class', 'chord-label')
-  .attr('transform', d =>
-    `rotate(${(d.angle * 180 / Math.PI - 90)}) ` +
-    `translate(${outerRadius + 10}) ` +
-    `${d.angle > Math.PI ? 'rotate(180)' : ''}`
-  )
-  .attr('text-anchor', d => d.angle > Math.PI ? 'end' : null)
-  .text(d => NODES[d.index]);
-
-// Ribbons
-svg.append('g')
-  .attr('fill-opacity', 0.65)
-  .selectAll('path')
-  .data(chords)
-  .enter().append('path')
-  .attr('class', 'chord-ribbon')
-  .attr('d', ribbon)
-  .attr('fill', d => colorScale(NODES[d.source.index]))
-  .attr('stroke', '#fff')
-  .attr('stroke-width', 0.5)
-  .append('title')
-  .text(d => `${NODES[d.source.index]} → ${NODES[d.target.index]}\nweight ${d.source.value}`);
+(function () {
+  const tools = document.getElementById('event-tools');
+  const search = document.getElementById('event-search');
+  const region = document.getElementById('event-region');
+  const type = document.getElementById('event-type');
+  const cards = Array.from(document.querySelectorAll('.event-card'));
+  const status = document.getElementById('event-status');
+  const empty = document.getElementById('event-empty');
+  const normalise = value => value.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('en-GB');
+  const text = new Map(cards.map(card => [card, normalise(card.textContent)]));
+  function render() {
+    const query = normalise(search.value.trim());
+    const visible = cards.filter(card => {
+      const matches = (!query || text.get(card).includes(query)) &&
+        (region.value === 'all' || card.dataset.region === region.value) &&
+        (type.value === 'all' || card.dataset.type === type.value);
+      card.hidden = !matches;
+      return matches;
+    });
+    const people = new Set(visible.map(card => card.dataset.person)).size;
+    status.textContent = `${visible.length} ${visible.length === 1 ? 'event' : 'events'} · ${people} ${people === 1 ? 'person' : 'people'}`;
+    empty.hidden = visible.length !== 0;
+  }
+  search.addEventListener('input', render);
+  region.addEventListener('change', render);
+  type.addEventListener('change', render);
+  document.getElementById('event-reset').addEventListener('click', () => {
+    search.value = ''; region.value = 'all'; type.value = 'all'; render(); search.focus();
+  });
+  tools.hidden = false;
+  render();
+})();
 </script>
-
 </body>
 </html>

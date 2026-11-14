@@ -1,19 +1,20 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The project catalogue · Filter every firm</title>
-<meta name="author" content="Leath Al Obaidi">
-<meta name="description" content="An interactive explorer for a curated 90-firm UK economics-consultancy project catalogue. Filter by segment, structure and metric; totals recompute from a source-generated snapshot.">
-<link rel="canonical" href="https://leathalobaidi.com/blog/consultancy-series/part0.3-the-full-market">
-<meta property="og:title" content="The project catalogue · Filter every firm">
-<meta property="og:description" content="Interactive explorer for a curated 90-firm UK economics-consultancy project catalogue — filter by segment, structure and metric.">
-<meta property="og:url" content="https://leathalobaidi.com/blog/consultancy-series/part0.3-the-full-market">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="Leath Al Obaidi">
-<meta name="twitter:card" content="summary">
-<link rel="stylesheet" href="apple-theme.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Put the accounts side by side · UK economics consultancy</title>
+<meta content="Leath Al Obaidi" name="author"/>
+<meta content="An interactive explorer for a curated 90-firm UK economics-consultancy project catalogue. Filter by activity and metric; totals recompute from a source-generated snapshot." name="description"/>
+<link href="https://leathalobaidi.com/blog/consultancy-series/part0.3-the-full-market" rel="canonical"/>
+<meta content="Put the accounts side by side" property="og:title"/>
+<meta content="Interactive explorer for a curated 90-firm UK economics-consultancy project catalogue — filter by activity and metric." property="og:description"/>
+<meta content="https://leathalobaidi.com/blog/consultancy-series/part0.3-the-full-market" property="og:url"/>
+<meta content="article" property="og:type"/>
+<meta content="Leath Al Obaidi" property="og:site_name"/>
+<meta content="summary" name="twitter:card"/>
+<link href="apple-theme.css" rel="stylesheet"/>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 <style>
   .ex{--blue:#0071e3;--blue-soft:#e6f1fb;--text:#1f1f1c;--text2:#5f5e5a;--text3:#8a8980;--border:rgba(31,31,28,.12);--border2:rgba(31,31,28,.22);
@@ -57,149 +58,121 @@
   .ex td.firm{font-weight:550}
   .ex .note{font-size:12px;color:var(--text3);margin-top:13px;line-height:1.5}
   .ex .star{color:var(--blue)}
-</style>
+
+.ex .chart-scroll{max-height:680px;overflow-y:auto;min-width:0}.ex .layout>div{min-width:0}.ex td.entity{min-width:210px;text-align:left}.ex td.origin{min-width:130px;text-align:left}.ex details{text-align:left;max-width:900px;font-size:12px}.ex details p{font-size:12px!important;line-height:1.5!important;margin:6px 0}.ex summary{cursor:pointer;color:#0066cc}.ex .source-row td{background:#fafafa;padding:4px 9px 10px}.ex .entity small{display:block;font-size:11px;color:#666}.ex table{min-width:1050px}.ex #metricNote{color:#57575d}.ex button:focus-visible,.ex input:focus-visible,.ex summary:focus-visible{outline:2px solid #0071e3;outline-offset:3px}</style>
 </head>
 <body>
 <div class="progress-bar" id="progress"></div>
 <div class="container">
-  <div class="pub-name">Leath Al Obaidi &middot; UK Economics Consultancy: A Historical Series</div>
-  <div class="series-nav">
-    <a href="part0.1-visual-story.html">Visual</a>
-    <a href="part0.2-uk-and-global-map.html">Maps</a>
-    <span class="current">Data</span>
-    <a href="part1-who-was-here-in-2000.html">Part 1</a>
-    <a href="part2-founders-decade.html">Part 2</a>
-    <a href="part3-professionalisation.html">Part 3</a>
-    <a href="part4-global-arms-race.html">Part 4</a>
-    <a href="part5-profit-machine.html">Part 5</a>
-    <a href="part6-the-cma-drain.html">Part 6</a>
-    <a href="part7-the-people-network.html">Part 7</a>
-    <a href="methodology-claude-code.html">Methodology</a>
-  </div>
-
-  <h1>The project catalogue, your way</h1>
-  <p class="subtitle">The catalogue includes the obscure firms as well as the famous ones. Filter it by activity, structure or metric; add or remove a firm; watch the chart, totals and table recalculate. A <span style="color:#0071e3">&#9733;</span> marks the ten firms examined most closely in the series.</p>
-  <p class="byline"><strong>Interactive explorer</strong> &middot; curated 90-firm project catalogue, not a census &middot; positive turnover observations for 30 selected legal entities &middot; source: project financial table derived from Companies House filings, latest available year for each firm (2024&ndash;2025)</p>
-
-  <div class="ex" id="ex">
-    <input class="search" id="search" type="search" placeholder="Search firms…">
-    <div class="segs" id="segs"></div>
-    <div class="struct" id="struct"><span class="struct-lbl">Structure</span><button data-st="All" aria-pressed="true">All</button><button data-st="LLP" aria-pressed="false">LLP (19)</button><button data-st="Ltd" aria-pressed="false">Ltd (70)</button></div>
-    <div class="row">
-      <div class="tabs" id="tabs">
-        <button data-m="gbp_m" aria-pressed="false">Turnover (£m)</button>
-        <button data-m="margin" aria-pressed="false">Margin (%)</button>
-        <button data-m="staff" aria-pressed="true">Staff</button>
-        <button data-m="members" aria-pressed="false">LLP members</button>
-        <button data-m="top_earner_m" aria-pressed="false">Top earner (£m, converted)</button>
-      </div>
-      <div class="quick">
-        <button data-q="top10">&#9733; Top 10</button>
-        <button data-q="allvis">Select all (filtered)</button>
-        <button data-q="clear">Clear</button>
-      </div>
-    </div>
-    <div class="summary" id="summary"></div>
-    <div class="layout">
-      <div class="firmlist" id="firmlist"></div>
-      <div><div id="chart"></div></div>
-    </div>
-    <div class="table-scroll" role="region" aria-label="Firm data table" tabindex="0">
-      <table id="tbl"><thead></thead><tbody></tbody></table>
-    </div>
-    <p class="note" id="metricNote"></p>
-    <p class="note">Figures filed in another currency are converted to GBP at €/£ 0.85 and $/£ 0.78. Before display rounding, the 30 positive turnover rows total £2.4418bn; their year-ends run from July 2024 to December 2025. This is gross reported turnover for selected legal entities. It includes non-economics work inside broad and litigation consultancies, so it is neither UK sector revenue nor a market floor.</p>
-    <p class="note">“Members” and “top earner” come from filed LLP accounts, or from Ltd-company accounts that disclose an equivalent partner or member figure. “Staff” means average headcount where disclosed. The Fraser of Allander Institute, whose structure is “Other”, sits outside both the LLP and Ltd chips; choose “All” to see it.</p>
-    <p class="note">The explorer has no turnover figure for Cebr or the named overseas, parent-filed and sub-brand practices: BDO, Deloitte, PwC, Grant Thornton, RSM economics arms, PA Consulting, E.CA and Fraser of Allander. Several also lack headcount. They remain in the catalogue and table as &ldquo;&mdash;&rdquo;.</p>
-    <p class="note">&ldquo;Est.&rdquo; means the recorded brand-founding year for 24 catalogue rows, including NERA 1961, CRA 1965 and PA 1943; for the other 66 it means the UK incorporation year. The explorer therefore shows FTI 2012, AlixPartners 2010, A&amp;M 2007, Cornerstone 2014, ICF 2001, EIU 1983, Ecorys 1982 and AFRY 1991. The <a href="methodology-claude-code.html">project ledger</a> reconciles each firm's Companies House-derived facts.</p>
-  </div>
+<div class="pub-name">Leath Al Obaidi · UK Economics Consultancy: A Historical Series</div>
+<div class="series-nav">
+<a href="part0.1-visual-story.html">Visual</a>
+<a href="part0.2-uk-and-global-map.html">Maps</a>
+<span class="current">Data</span>
+<a href="part1-who-was-here-in-2000.html">Part 1</a>
+<a href="part2-founders-decade.html">Part 2</a>
+<a href="part3-professionalisation.html">Part 3</a>
+<a href="part4-global-arms-race.html">Part 4</a>
+<a href="part5-profit-machine.html">Part 5</a>
+<a href="part6-the-cma-drain.html">Part 6</a>
+<a href="part7-the-people-network.html">Part 7</a>
+<a href="methodology-claude-code.html">Methodology</a>
 </div>
+<h1>Put the accounts side by side</h1>
+<p class="subtitle">Filter by activity or name. The list, chart, table and totals all use the same selection. Untick a firm to leave it out. A star marks ten selected firms featured in the series.</p>
+<p class="byline">90-firm project catalogue · 24 July 2026 financial snapshot, checked against source accounts in September</p>
+<div class="ex" id="ex">
+<input aria-label="Filter firms by name" class="search" id="search" placeholder="Search firms…" type="search"/>
+<div class="segs" id="segs"></div>
 
+<div class="row">
+<div class="tabs" id="tabs">
+<button aria-pressed="true" data-m="gbp_m">Turnover (£m)</button>
+<button aria-pressed="false" data-m="margin">Margin (%)</button>
+<button aria-pressed="false" data-m="staff">Staff / persons</button>
+<button aria-pressed="false" data-m="members">Members / partners</button>
+<button aria-pressed="false" data-m="top_earner_m">Top allocation (£m)</button>
+</div>
+<div class="quick">
+<button data-q="top10">★ Featured ten</button>
+<button data-q="allvis">Select all (filtered)</button>
+<button data-q="clear">Clear selection</button>
+</div>
+</div>
+<div class="summary" id="summary"></div>
+<div class="layout">
+<div class="firmlist" id="firmlist"></div>
+<div class="chart-scroll"><div id="chart"></div></div>
+</div>
+<div aria-label="Firm data table" class="table-scroll" role="region" tabindex="0">
+<table id="tbl"><thead></thead><tbody></tbody></table>
+</div>
+<p class="note" id="metricNote"></p>
+<p class="note"><strong>Correction, <time datetime="2026-11-14">14 November 2026</time>.</strong> The July edition gave a total of £2.4418bn. The checked figure is £2.4415bn across 30 reporting entities, including net revenue for AlixPartners. The total combines different periods, geographies and activities. <a href="methodology-claude-code.html#revision-note">Revision notes</a>.</p>
+
+
+
+
+<p class="note">The 24 July 2026 financial snapshot includes 30 positive revenue observations checked against source accounts in September. The positive observations total £2.4415bn, before display rounding; their year-ends run from July 2024 to December 2025. They include overseas operations and non-economics work; AlixPartners is on a net-revenue basis. This is a selected-entity total, not UK sector revenue or a market floor. Fixed exchange rates: £0.85 per euro and £0.78 per dollar.</p><p class="note">Open “Source and accounting basis” under a row to see its legal entity, period, source and limits. Only financial fields checked against original account pages enter these comparisons. A dash means that no source-checked figure is available; it does not mean zero. Founding dates and unverified research values remain in the accompanying database for further investigation. Staff/persons and member counts follow each filing’s definition, so they cannot be added into a sector employment estimate. Macro Advisory’s persons include employed directors and partners; the four member comparisons use the average LLP membership stated in each filing.</p><p class="note">Margins use operating profit divided by the recorded revenue line. They do not measure total owner pay. Baringa’s top allocation is an estimate: 7% of discretionary profit, excluding the separate 8% share of disposal cash receipts. The displayed top-member amounts follow the original disclosure; they are not necessarily cash received. <a href="methodology-claude-code.html">Methodology</a> explains coverage and missing values.</p></div>
+</div>
 <script src="market-snapshot.js"></script>
 <script>
 const DATA = window.CH_MARKET_DATA.rows;
 const TOP10 = ["RBB Economics LLP","Baringa Partners LLP","Oxera Consulting LLP","Frontier Economics Ltd","Capital Economics Ltd","AlixPartners UK LLP","A&M Europe LLP","FTI Consulting LLP","Oxford Economics Ltd","Cebr"];
-const SEG_COLORS = {Competition:"#0071e3",Regulation:"#34c759",Macro:"#af52de",Litigation:"#ff9500",Policy:"#5ac8fa",Overlap:"#ff2d55",Broad:"#8e8e93",Other:"#c7c7cc"};
+const SEG_COLORS = {Competition:"#0071e3",Regulation:"#34a36b",Macro:"#af52de",Litigation:"#da7900",Policy:"#3994aa",Overlap:"#ca405d",Broad:"#777",Other:"#888"};
 const METRICS = {
-  gbp_m:{label:"Turnover", unit:"£m", fmt:v=>"£"+v.toFixed(1)+"m"},
-  margin:{label:"Operating margin", unit:"%", fmt:v=>v.toFixed(1)+"%"},
-  staff:{label:"Staff", unit:"headcount", fmt:v=>v.toFixed(0)},
-  members:{label:"LLP members", unit:"members", fmt:v=>v.toFixed(0)},
-  top_earner_m:{label:"Top earner", unit:"£m", fmt:v=>"£"+v.toFixed(2)+"m"},
+ gbp_m:{label:"Revenue",unit:"£m",fmt:v=>"£"+v.toFixed(1)+"m"},
+ margin:{label:"Operating margin",unit:"%",fmt:v=>v.toFixed(1)+"%"},
+ staff:{label:"Staff / persons",unit:"headcount",fmt:v=>v.toFixed(0)},
+ members:{label:"Members / partners",unit:"people",fmt:v=>v.toFixed(0)},
+ top_earner_m:{label:"Top allocation",unit:"£m",fmt:v=>"£"+v.toFixed(2)+"m"}
 };
-const SEGS = [...new Set(DATA.map(d=>d.seg))].sort();
-let metric="staff";
-const segOn = new Set(SEGS);
-let search="";
-let structOn="All";
-const selected = new Set(DATA.map(d=>d.firm));
-const chart = echarts.init(document.getElementById('chart'));
-const isTop=n=>TOP10.includes(n);
-const short=n=>n.replace(/ (LLP|Ltd|Limited)$/,'');
-
-function visibleFirms(){
-  return DATA.filter(d=>segOn.has(d.seg) && (structOn==="All"||d.structure===structOn) && (!search || d.firm.toLowerCase().includes(search)));
-}
+const SEGS=[...new Set(DATA.map(d=>d.seg))].sort(),segOn=new Set(SEGS),selected=new Set(DATA.map(d=>d.firm));
+let metric="gbp_m",search="";
+const chart=echarts.init(document.getElementById('chart'));
+const isTop=n=>TOP10.includes(n),short=n=>n.replace(/ (LLP|Ltd|Limited)$/,'');
+const rowLabel=n=>n===1?'row':'rows';
+const fieldLabels={turnover:'revenue',operating_profit:'operating profit',profit_to_members:'discretionary member profit',highest_paid_member:'highest member allocation',num_members:'average members',num_staff:'staff / persons'};
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function visibleFirms(){return DATA.filter(d=>segOn.has(d.seg)&&(!search||d.firm.toLowerCase().includes(search)));}
+function analyticalFirms(){return visibleFirms().filter(d=>selected.has(d.firm));}
 function renderSegs(){
-  document.getElementById('segs').innerHTML = SEGS.map(s=>{
-    const on=segOn.has(s);
-    return `<button class="seg" data-s="${s}" aria-pressed="${on}" style="${on?`background:${SEG_COLORS[s]};border-color:${SEG_COLORS[s]}`:''}">${s} <span style="opacity:.7">${DATA.filter(d=>d.seg===s).length}</span></button>`;
-  }).join('');
-  document.querySelectorAll('#segs .seg').forEach(b=>b.onclick=()=>{const s=b.dataset.s;segOn.has(s)?segOn.delete(s):segOn.add(s);renderSegs();renderList();render();});
+ document.getElementById('segs').innerHTML=SEGS.map(s=>`<button class="seg" data-s="${s}" aria-pressed="${segOn.has(s)}" style="${segOn.has(s)?`background:${SEG_COLORS[s]};border-color:${SEG_COLORS[s]}`:''}">${s} (${DATA.filter(d=>d.seg===s).length})</button>`).join('');
+ document.querySelectorAll('#segs button').forEach(b=>b.onclick=()=>{segOn.has(b.dataset.s)?segOn.delete(b.dataset.s):segOn.add(b.dataset.s);renderSegs();renderList();render();});
 }
 function renderList(){
-  const vis=[...visibleFirms()].sort((a,b)=>(b.gbp_m||0)-(a.gbp_m||0)||(b.staff||0)-(a.staff||0));
-  document.getElementById('firmlist').innerHTML = vis.length? vis.map(d=>{
-    const on=selected.has(d.firm)?'checked':'';
-    const v=d.gbp_m!=null?`£${d.gbp_m.toFixed(0)}m`:(d.staff!=null?`${d.staff} staff`:'—');
-    return `<label class="firmrow"><input type="checkbox" data-f="${d.firm.replace(/"/g,'&quot;')}" ${on}>
-      <span class="seg-dot" style="background:${SEG_COLORS[d.seg]||'#ccc'}" title="${d.seg}"></span>
-      <span class="nm">${short(d.firm)}${isTop(d.firm)?'<span class="badge">★</span>':''}</span><span class="val">${v}</span></label>`;
-  }).join('') : '<div style="padding:12px;color:#8a8980;font-size:13px">No firms match the current filters.</div>';
-  document.querySelectorAll('#firmlist input').forEach(cb=>cb.onchange=()=>{cb.checked?selected.add(cb.dataset.f):selected.delete(cb.dataset.f);render();});
+ const rows=[...visibleFirms()].sort((a,b)=>(b.gbp_m??-1)-(a.gbp_m??-1)||a.firm.localeCompare(b.firm));
+ document.getElementById('firmlist').innerHTML=rows.length?rows.map(d=>`<label class="firmrow"><input type="checkbox" data-f="${esc(d.firm)}" ${selected.has(d.firm)?'checked':''}><span class="seg-dot" style="background:${SEG_COLORS[d.seg]}"></span><span class="nm">${esc(short(d.firm))}${isTop(d.firm)?'<span class="badge">★</span>':''}</span><span class="val">${d.gbp_m!=null?'£'+d.gbp_m.toFixed(1)+'m':'—'}</span></label>`).join(''):'<p class="note">No firms match these filters.</p>';
+ document.querySelectorAll('#firmlist input').forEach(cb=>cb.onchange=()=>{cb.checked?selected.add(cb.dataset.f):selected.delete(cb.dataset.f);render();});
 }
 function render(){
-  const m=metric, cfg=METRICS[m];
-  const sel=DATA.filter(d=>selected.has(d.firm));
-  const bars=sel.filter(d=>d[m]!=null).sort((a,b)=>a[m]-b[m]);
-  const totT=sel.reduce((s,d)=>s+(d.gbp_m||0),0);
-  const totStaff=sel.reduce((s,d)=>s+(d.staff||0),0);
-  const wm=sel.filter(d=>d.margin!=null);
-  const wAvg=wm.length? wm.reduce((s,d)=>s+d.margin*(d.gbp_m||0.0001),0)/wm.reduce((s,d)=>s+(d.gbp_m||0.0001),0):0;
-  document.getElementById('summary').innerHTML=
-    `<div><div class="n">${sel.length}</div><div class="l">firms selected</div></div>
-     <div><div class="n">£${(totT/1000).toFixed(2)}bn</div><div class="l">combined turnover</div></div>
-     <div><div class="n">${wAvg.toFixed(1)}%</div><div class="l">weighted margin</div></div>
-     <div><div class="n">${totStaff.toLocaleString()}</div><div class="l">total staff</div></div>
-     <div><div class="n">${bars.length}</div><div class="l">disclose ${cfg.label.toLowerCase()}</div></div>`;
-  if(!bars.length){chart.clear();chart.setOption({graphic:{type:'text',left:'center',top:'middle',style:{text:'No selected firm discloses '+cfg.label.toLowerCase(),fill:'#8a8980',font:'14px sans-serif'}}});}
-  else chart.setOption({
-    grid:{left:180,right:64,top:8,bottom:30},
-    xAxis:{type:'value',name:cfg.unit,nameLocation:'middle',nameGap:26,axisLine:{lineStyle:{color:'#d9d8d2'}},splitLine:{lineStyle:{color:'#eee'}},axisLabel:{color:'#8a8980'}},
-    yAxis:{type:'category',data:bars.map(d=>short(d.firm)),axisLine:{show:false},axisTick:{show:false},axisLabel:{color:'#1f1f1c',fontSize:11.5}},
-    tooltip:{trigger:'item',formatter:p=>{const d=bars[p.dataIndex];return `<b>${short(d.firm)}</b> · ${d.seg}<br>${cfg.label}: ${cfg.fmt(d[m])}<br>turnover ${d.gbp_m!=null?'£'+d.gbp_m+'m':'n/d'} · margin ${d.margin!=null?d.margin+'%':'n/d'} · est. ${d.founded||'?'} · FY ${d.year||'—'}`;}},
-    series:[{type:'bar',barWidth:'64%',label:{show:bars.length<=40,position:'right',formatter:p=>cfg.fmt(bars[p.dataIndex][m]),color:'#5f5e5a',fontSize:10.5},
-      data:bars.map(d=>({value:d[m],itemStyle:{color:SEG_COLORS[d.seg]||'#bcbbb4',borderRadius:[0,4,4,0],opacity:isTop(d.firm)?1:0.78}}))}]
-  },true);
-  const head=`<tr><th>Firm</th><th>Segment</th><th>Est.</th><th>Turnover £m</th><th>Margin %</th><th>Staff</th><th>Members</th><th>Top £m</th></tr>`;
-  const body=[...sel].sort((a,b)=>(b[m]??-1e12)-(a[m]??-1e12)).map(d=>
-    `<tr><td class="firm">${isTop(d.firm)?'<span class="star">★ </span>':''}${short(d.firm)}</td><td>${d.seg}</td><td>${d.founded||'—'}</td>
-     <td>${d.gbp_m!=null?d.gbp_m.toFixed(1):'—'}</td><td>${d.margin!=null?d.margin.toFixed(1):'—'}</td>
-     <td>${d.staff!=null?d.staff:'—'}</td><td>${d.members!=null?d.members:'—'}</td><td>${d.top_earner_m!=null?d.top_earner_m.toFixed(2):'—'}</td></tr>`).join('');
-  const t=document.getElementById('tbl');t.querySelector('thead').innerHTML=head;t.querySelector('tbody').innerHTML=body||'<tr><td colspan="8" style="color:#8a8980;padding:10px">No firms selected.</td></tr>';
-  const miss=sel.length-bars.length;
-  document.getElementById('metricNote').textContent=miss>0?`${miss} selected firm(s) do not disclose ${cfg.label.toLowerCase()} and are omitted from the chart (still shown in the table).`:'';
+ const renderMetric=metric;
+ const cfg=METRICS[renderMetric],sel=analyticalFirms(),bars=sel.filter(d=>d[renderMetric]!=null).sort((a,b)=>a[renderMetric]-b[renderMetric]);
+ const revenue=sel.filter(d=>d.gbp_m!=null);
+ const total=revenue.reduce((sum,d)=>sum+d.gbp_m,0);
+ document.getElementById('summary').innerHTML=`<div><div class="n">${sel.length}</div><div class="l">firms shown</div></div><div><div class="n">${revenue.length?'£'+(total/1000).toFixed(4)+'bn':'—'}</div><div class="l">reported revenue · ${revenue.length} ${rowLabel(revenue.length)}</div></div><div><div class="n">${sel.length-revenue.length}</div><div class="l">without checked revenue</div></div><div><div class="n">${bars.length}</div><div class="l">rows with ${cfg.label.toLowerCase()}</div></div>`;
+ document.getElementById('chart').style.height=Math.max(350,bars.length*26+60)+'px';chart.resize();
+ if(!bars.length){chart.clear();chart.setOption({graphic:{type:'text',left:'center',top:'middle',style:{text:sel.length?'No '+cfg.label.toLowerCase()+' figure for this selection':'No firms selected within these filters',fill:'#57575d',font:'13px sans-serif'}}});}
+ else chart.setOption({animation:false,grid:{left:window.innerWidth<600?135:175,right:80,top:12,bottom:38},
+ xAxis:{type:'value',name:cfg.unit,nameLocation:'middle',nameGap:25,splitLine:{lineStyle:{color:'#eee'}}},
+ yAxis:{type:'category',data:bars.map(d=>short(d.firm)),axisTick:{show:false},axisLine:{show:false},axisLabel:{fontSize:11,width:window.innerWidth<600?125:165,overflow:'break'}},
+ tooltip:{trigger:'item',confine:true,formatter:p=>{const d=bars[p.dataIndex];return `<b>${esc(d.firm)}</b><br>${cfg.label}: ${cfg.fmt(d[renderMetric])}${renderMetric==='top_earner_m'&&d.top_earner_estimated?' (estimate)':''}<br>Year ended ${esc(d.year||'not recorded')}<br>${esc(d.accounting_basis)}`;}},
+ series:[{type:'bar',barMaxWidth:20,label:{show:true,position:'right',fontSize:10,formatter:p=>cfg.fmt(bars[p.dataIndex][renderMetric])+(renderMetric==='top_earner_m'&&bars[p.dataIndex].top_earner_estimated?'*':'')},data:bars.map(d=>({value:d[renderMetric],itemStyle:{color:SEG_COLORS[d.seg]}}))}]},true);
+ const num=(v,n)=>v==null?'—':Number(v).toFixed(n);
+ const head='<tr><th>Catalogue entry</th><th>Activity</th><th>Year-end</th><th>Revenue £m</th><th>Op. margin %</th><th>Staff / persons</th><th>Members</th><th>Top £m</th></tr>';
+ const body=[...sel].sort((a,b)=>(b[renderMetric]??-Infinity)-(a[renderMetric]??-Infinity)||a.firm.localeCompare(b.firm)).map(d=>{
+ const source=d.source_url?`<a href="${esc(d.source_url)}">Companies House accounts</a>`:'No separate UK filing linked';
+ return `<tr data-firm="${esc(d.firm)}"><td class="entity">${isTop(d.firm)?'<span class="star">★ </span>':''}${esc(d.firm)}<small>${esc(d.ch||'No separate company number linked')}</small></td><td>${esc(d.seg)}</td><td>${d.year||'—'}</td><td>${num(d.gbp_m,1)}</td><td>${num(d.margin,1)}</td><td>${num(d.staff,0)}</td><td>${num(d.members,0)}</td><td>${num(d.top_earner_m,2)}${d.top_earner_estimated?'*':''}</td></tr><tr class="source-row"><td colspan="8"><details><summary>Source and accounting basis · ${esc(d.firm)}</summary><p>${source}. ${esc(d.source_locator)}.</p><p>${esc(d.accounting_basis)}. ${d.period_months?d.period_months+'-month period.':'Period length not classified in the project row.'} Currency: ${esc(d.cur||'not recorded')}.</p>${d.staff!=null?`<p>Staff / persons: ${esc(d.staff_basis)}</p>`:''}${d.top_earner_m!=null?`<p>Top allocation: ${esc(d.top_earner_basis)}.</p>`:''}<p>${d.verified_fields.length?'Checked against the original filing in September 2026: '+esc(d.verified_fields.map(f=>fieldLabels[f]||f.replace(/_/g,' ')).join(', '))+'. Unchecked numeric fields are withheld from these comparisons.':'No individually checked financial fields are available for this catalogue entry.'}</p></details></td></tr>`;
+ }).join('');
+ document.querySelector('#tbl thead').innerHTML=head;
+ document.querySelector('#tbl tbody').innerHTML=body||'<tr><td colspan="8">No firms selected within these filters.</td></tr>';
+ const missing=sel.length-bars.length;
+ document.getElementById('metricNote').textContent=`${missing} shown ${missing===1?'firm has':'firms have'} no ${cfg.label.toLowerCase()} figure and ${missing===1?'is':'are'} omitted from the chart. Totals sum the recorded figures; they do not deduplicate group overlap or harmonise periods. ${renderMetric==='top_earner_m'?'* Baringa is a percentage-derived estimate, excluding disposal cash.':''}`;
 }
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>{metric=b.dataset.m;document.querySelectorAll('#tabs button').forEach(x=>x.setAttribute('aria-pressed',x===b));render();});
-document.querySelectorAll('.quick button').forEach(b=>b.onclick=()=>{const q=b.dataset.q;
-  if(q==='clear')selected.clear();
-  else if(q==='top10'){selected.clear();TOP10.forEach(n=>{if(DATA.some(d=>d.firm===n))selected.add(n);});}
-  else if(q==='allvis')visibleFirms().forEach(d=>selected.add(d.firm));
-  renderList();render();});
-document.querySelectorAll('#struct button').forEach(b=>b.onclick=()=>{structOn=b.dataset.st;document.querySelectorAll('#struct button').forEach(x=>x.setAttribute('aria-pressed',x===b));renderList();render();});
-document.getElementById('search').oninput=e=>{search=e.target.value.toLowerCase().trim();renderList();};
+document.querySelectorAll('.quick button').forEach(b=>b.onclick=()=>{if(b.dataset.q==='clear')selected.clear();else if(b.dataset.q==='top10'){selected.clear();TOP10.forEach(n=>selected.add(n));}else visibleFirms().forEach(d=>selected.add(d.firm));renderList();render();});
+document.getElementById('search').oninput=e=>{search=e.target.value.trim().toLowerCase();renderList();render();};
 window.addEventListener('resize',()=>chart.resize());
-window.addEventListener('scroll',()=>{const h=document.documentElement;const p=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;const pb=document.getElementById('progress');if(pb)pb.style.width=p+'%';});
 renderSegs();renderList();render();
 </script>
 </body>
